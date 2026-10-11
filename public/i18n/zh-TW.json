@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "待入帳收益",
     "TOTAL_EARNED": "總收益",
     "INVITE_COUNT": "邀請人數",
+    "PAYING_COUNT": "{count} 位已付費",
     "INVITE_LINK": "邀請連結",
     "COPY_LINK": "複製連結",
     "LINK_COPIED": "邀請連結已複製到剪貼簿",

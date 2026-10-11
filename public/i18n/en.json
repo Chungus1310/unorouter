@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "Pending Earnings",
     "TOTAL_EARNED": "Total Earned",
     "INVITE_COUNT": "Invited Users",
+    "PAYING_COUNT": "{count} paying",
     "INVITE_LINK": "Invite Link",
     "COPY_LINK": "Copy Link",
     "LINK_COPIED": "Invite link copied to clipboard",

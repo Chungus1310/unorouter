@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "Gains en attente",
     "TOTAL_EARNED": "Total gagné",
     "INVITE_COUNT": "Utilisateurs invités",
+    "PAYING_COUNT": "{count} payants",
     "INVITE_LINK": "Lien d'invitation",
     "COPY_LINK": "Copier le lien",
     "LINK_COPIED": "Lien d'invitation copié dans le presse-papiers",

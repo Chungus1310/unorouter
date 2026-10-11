@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "Guadagni in sospeso",
     "TOTAL_EARNED": "Totale guadagnato",
     "INVITE_COUNT": "Utenti invitati",
+    "PAYING_COUNT": "{count} paganti",
     "INVITE_LINK": "Link di invito",
     "COPY_LINK": "Copia link",
     "LINK_COPIED": "Link di invito copiato negli appunti",

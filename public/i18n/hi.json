@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "Pending कमाई",
     "TOTAL_EARNED": "कुल कमाया",
     "INVITE_COUNT": "Invited Users",
+    "PAYING_COUNT": "{count} भुगतान करने वाले",
     "INVITE_LINK": "Invite Link",
     "COPY_LINK": "Link copy करें",
     "LINK_COPIED": "Invite link clipboard पर copy किया गया",

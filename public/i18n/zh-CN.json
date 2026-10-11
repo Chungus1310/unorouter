@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "待结算收益",
     "TOTAL_EARNED": "累计收益",
     "INVITE_COUNT": "已邀请用户",
+    "PAYING_COUNT": "{count} 位已付费",
     "INVITE_LINK": "邀请链接",
     "COPY_LINK": "复制链接",
     "LINK_COPIED": "邀请链接已复制到剪贴板",

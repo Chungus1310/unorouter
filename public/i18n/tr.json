@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "Bekleyen Kazançlar",
     "TOTAL_EARNED": "Toplam Kazanılan",
     "INVITE_COUNT": "Davet Edilen Kullanıcılar",
+    "PAYING_COUNT": "{count} ödeme yapan",
     "INVITE_LINK": "Davet Bağlantısı",
     "COPY_LINK": "Bağlantıyı Kopyala",
     "LINK_COPIED": "Davet bağlantısı panoya kopyalandı",

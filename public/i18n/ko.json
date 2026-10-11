@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "보류 중인 수익",
     "TOTAL_EARNED": "총 획득",
     "INVITE_COUNT": "초대한 사용자",
+    "PAYING_COUNT": "{count}명 결제",
     "INVITE_LINK": "초대 링크",
     "COPY_LINK": "링크 복사",
     "LINK_COPIED": "초대 링크가 클립보드에 복사됨",

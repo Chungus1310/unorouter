@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "保留中の獲得額",
     "TOTAL_EARNED": "総獲得額",
     "INVITE_COUNT": "招待済みユーザー",
+    "PAYING_COUNT": "{count} 人が支払い済み",
     "INVITE_LINK": "招待リンク",
     "COPY_LINK": "リンクをコピー",
     "LINK_COPIED": "招待リンクをクリップボードにコピーしました",

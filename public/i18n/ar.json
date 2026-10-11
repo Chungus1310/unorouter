@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "الأرباح المعلّقة",
     "TOTAL_EARNED": "إجمالي المُكتسب",
     "INVITE_COUNT": "المستخدمون المدعوّون",
+    "PAYING_COUNT": "{count} يدفعون",
     "INVITE_LINK": "رابط الدعوة",
     "COPY_LINK": "نسخ الرابط",
     "LINK_COPIED": "تمّ نسخ رابط الدعوة إلى الحافظة",

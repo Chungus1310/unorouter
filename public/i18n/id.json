@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "Penghasilan Tertunda",
     "TOTAL_EARNED": "Total Diperoleh",
     "INVITE_COUNT": "Pengguna Diundang",
+    "PAYING_COUNT": "{count} membayar",
     "INVITE_LINK": "Tautan Undangan",
     "COPY_LINK": "Salin Tautan",
     "LINK_COPIED": "Tautan undangan disalin ke clipboard",

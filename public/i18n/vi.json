@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "Thu nhập đang chờ",
     "TOTAL_EARNED": "Tổng đã nhận",
     "INVITE_COUNT": "Người dùng đã mời",
+    "PAYING_COUNT": "{count} đã thanh toán",
     "INVITE_LINK": "Liên kết mời",
     "COPY_LINK": "Sao chép liên kết",
     "LINK_COPIED": "Đã sao chép liên kết mời vào bộ nhớ tạm",

@@ -3109,6 +3109,7 @@
     "PENDING_EARNINGS": "רווחים ממתינים",
     "TOTAL_EARNED": "סך הרווח",
     "INVITE_COUNT": "משתמשים שהוזמנו",
+    "PAYING_COUNT": "{count} משלמים",
     "INVITE_LINK": "קישור הזמנה",
     "COPY_LINK": "העתק קישור",
     "LINK_COPIED": "קישור ההזמנה הועתק ללוח",

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
+import { useAffiliateInviteesQuery } from "@/hooks/billing/affiliate-hook";
 import { analytics } from "@/lib/analytics";
 import { renderQuota } from "@/lib/config/constants";
 import { env } from "@/lib/config/env";
@@ -21,6 +22,7 @@ import { TransferDialog } from "./transfer-dialog";
 export function Affiliate() {
   const t = useTranslations();
   const authQuery = useAuthQuery();
+  const inviteesQuery = useAffiliateInviteesQuery({ p: 1, page_size: 1 });
   const [transferOpen, setTransferOpen] = useState(false);
 
   const user = authQuery.data;
@@ -28,7 +30,9 @@ export function Affiliate() {
   const affCode = user?.aff_code ?? "";
   const pendingQuota = user?.aff_quota ?? 0;
   const totalEarned = user?.aff_history_quota ?? 0;
-  const inviteCount = user?.aff_count ?? 0;
+  const inviteCount = inviteesQuery.data?.total ?? 0;
+  // aff_count only counts invitees that have paid a commission
+  const payingCount = user?.aff_count ?? 0;
   const commissionRate = user?.aff_commission_rate ?? 0;
   const maxRecharges = user?.aff_commission_max_recharges ?? 0;
 
@@ -107,7 +111,12 @@ export function Affiliate() {
             label={t("AFFILIATE.INVITE_COUNT")}
             value={inviteCount}
             icon={<Icon name="users" className="h-4 w-4" />}
-            isLoading={isLoading}
+            isLoading={isLoading || inviteesQuery.isLoading}
+            trend={
+              <span className="text-muted-foreground font-mono text-xs tabular-nums">
+                {t("AFFILIATE.PAYING_COUNT", { count: payingCount })}
+              </span>
+            }
             accentColor="var(--chart-1)"
           />
         </div>
