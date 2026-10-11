@@ -4579,9 +4579,12 @@
       "RANKINGS": "Siralama"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "OpenAI uyumlu",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT, DeepSeek, GLM, Kimi, Qwen, Grok, Mistral, MiniMax ve çoğu aktarıcı",
+      "ANTHROPIC_MAKERS": "Claude ve Messages API sunan aktarıcılar",
+      "GEMINI_MAKERS": "Google'ın yerel API'sinde Gemini"
     },
     "FORM": {
       "PROVIDER": "API bicimi",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "Sunucumuzda dogrula ve yayinla",
       "SECTION_TITLE": "Istek yapilandirmasi",
       "SECTION_DESC": "Uc noktayi ve anahtari yapilandirin, sonra testi tarayicinizda calistirin.",
-      "FORMAT_MISMATCH": "{model} bir {format} modelidir. Test etmek için API biçimini {format} olarak değiştirin."
+      "JUDGED_AS": "{maker} ile karşılaştırılır: kimlik, seviyeler ve bilinen davranış.",
+      "JUDGED_UNKNOWN": "Bilinmeyen model: {format} biçiminin varsayılan üreticisiyle karşılaştırılır.",
+      "FORMAT_HINT": "{model} yerel olarak {format} biçiminde sunulur. Birçok aktarıcı onu OpenAI uyumlu olarak da sunar; uç noktanız böyle çalışıyorsa bu biçimi koruyun.",
+      "FORMAT_SWITCH": "{format} kullan"
     },
     "VERDICT": {
       "GENUINE": "Gercek",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "Sunucumuz tarafından doğrulandı, ancak genel sıralama şu anda kullanılamıyor, bu yüzden sonuç kaydedilmedi. Aşağıda gösteriliyor.",
       "DEDUPED": "Bu uc nokta icin yakin zamanda zaten yayinlandi.",
       "FAILED": "Bu uc nokta dogrulanamadi. Hicbir sey yayinlanmadi.",
-      "UNVERIFIED_RUN": "Test tamamlanamadı: sondalar hız sınırlarına takıldı veya zaman aşımına uğradı, bu yüzden hiçbir şey yayımlanmadı. Birazdan tekrar deneyin.",
-      "FORMAT_MISMATCH": "Model kimliği seçilen API biçimiyle eşleşmiyor."
+      "UNVERIFIED_RUN": "Test tamamlanamadı: sondalar hız sınırlarına takıldı veya zaman aşımına uğradı, bu yüzden hiçbir şey yayımlanmadı. Birazdan tekrar deneyin."
     },
     "TRUST": {
       "TITLE": "Acik kaynak. Dogrulayin ve gelistirin.",

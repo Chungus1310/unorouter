@@ -9,28 +9,34 @@ import {
 import { useTranslations } from "next-intl";
 import type { TranslationKey } from "@/lib/types";
 
+// Ordered by how many models use the format: most makers and relays speak the
+// OpenAI chat format, whatever model sits behind it.
 const CARDS: {
   value: VerifyProviderValue;
   vendor: string;
   labelKey: TranslationKey;
+  makersKey: TranslationKey;
   endpoint: string;
 }[] = [
-  {
-    value: "anthropic",
-    vendor: "anthropic",
-    labelKey: "MODEL_TESTER.PROVIDER.ANTHROPIC",
-    endpoint: "/v1/messages",
-  },
   {
     value: "openai",
     vendor: "openai",
     labelKey: "MODEL_TESTER.PROVIDER.OPENAI",
+    makersKey: "MODEL_TESTER.PROVIDER.OPENAI_MAKERS",
     endpoint: "/v1/chat/completions",
+  },
+  {
+    value: "anthropic",
+    vendor: "anthropic",
+    labelKey: "MODEL_TESTER.PROVIDER.ANTHROPIC",
+    makersKey: "MODEL_TESTER.PROVIDER.ANTHROPIC_MAKERS",
+    endpoint: "/v1/messages",
   },
   {
     value: "gemini",
     vendor: "google",
     labelKey: "MODEL_TESTER.PROVIDER.GEMINI",
+    makersKey: "MODEL_TESTER.PROVIDER.GEMINI_MAKERS",
     endpoint: "/v1beta/.../generateContent",
   },
 ];
@@ -41,7 +47,7 @@ export function ProviderCards(props: {
 }) {
   const t = useTranslations();
   return (
-    <div className="grid grid-cols-3 gap-2">
+    <div className="grid gap-2 sm:grid-cols-3">
       {CARDS.map((card) => {
         const active = props.value === card.value;
         return (
@@ -50,7 +56,7 @@ export function ProviderCards(props: {
             type="button"
             onClick={() => props.onChange(card.value)}
             className={cn(
-              "flex min-w-0 items-center gap-2.5 rounded-lg border px-3 py-2.5 text-left transition-colors",
+              "flex min-w-0 items-start gap-2.5 rounded-lg border px-3 py-2.5 text-left transition-colors",
               active
                 ? "border-primary bg-primary/5"
                 : "border-border hover:border-border/80 hover:bg-muted/40",
@@ -60,6 +66,9 @@ export function ProviderCards(props: {
             <span className="flex min-w-0 flex-col">
               <span className="truncate text-sm font-medium">
                 {t(card.labelKey)}
+              </span>
+              <span className="text-muted-foreground line-clamp-2 text-[11px] leading-snug">
+                {t(card.makersKey)}
               </span>
               <span className="text-muted-foreground hidden truncate font-mono text-[10px] sm:block">
                 {card.endpoint}

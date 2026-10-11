@@ -4579,9 +4579,12 @@
       "RANKINGS": "Classifica"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "Compatibile con OpenAI",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT, DeepSeek, GLM, Kimi, Qwen, Grok, Mistral, MiniMax e la maggior parte dei relay",
+      "ANTHROPIC_MAKERS": "Claude e i relay che offrono la API Messages",
+      "GEMINI_MAKERS": "Gemini sulla API nativa di Google"
     },
     "FORM": {
       "PROVIDER": "Formato API",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "Verifica sul nostro server e pubblica",
       "SECTION_TITLE": "Configurazione della richiesta",
       "SECTION_DESC": "Configura endpoint e chiave, poi esegui il test nel browser.",
-      "FORMAT_MISMATCH": "{model} è un modello {format}. Cambia il formato API in {format} per testarlo."
+      "JUDGED_AS": "Confrontato con {maker}: identità, livelli e comportamento noto.",
+      "JUDGED_UNKNOWN": "Modello sconosciuto: confrontato con il produttore predefinito del formato {format}.",
+      "FORMAT_HINT": "{model} è servito nativamente in {format}. Molti relay lo servono anche compatibile con OpenAI, quindi mantieni questo formato se il tuo endpoint funziona così.",
+      "FORMAT_SWITCH": "Usa {format}"
     },
     "VERDICT": {
       "GENUINE": "Autentico",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "Verificato dal nostro server, ma la classifica pubblica non è al momento disponibile, quindi il risultato non è stato salvato. Viene mostrato qui sotto.",
       "DEDUPED": "Gia pubblicato di recente per questo endpoint.",
       "FAILED": "Impossibile verificare questo endpoint. Nulla e stato pubblicato.",
-      "UNVERIFIED_RUN": "Il test non è stato completato: le sonde hanno incontrato limiti di frequenza o timeout, quindi non è stato pubblicato nulla. Riprova tra poco.",
-      "FORMAT_MISMATCH": "L'identificativo del modello non corrisponde al formato API selezionato."
+      "UNVERIFIED_RUN": "Il test non è stato completato: le sonde hanno incontrato limiti di frequenza o timeout, quindi non è stato pubblicato nulla. Riprova tra poco."
     },
     "TRUST": {
       "TITLE": "Open source. Verificalo e miglioralo.",

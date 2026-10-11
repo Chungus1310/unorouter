@@ -4579,9 +4579,12 @@
       "RANKINGS": "Clasificacion"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "Compatible con OpenAI",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT, DeepSeek, GLM, Kimi, Qwen, Grok, Mistral, MiniMax y la mayoría de los relays",
+      "ANTHROPIC_MAKERS": "Claude y los relays que ofrecen la API Messages",
+      "GEMINI_MAKERS": "Gemini en la API nativa de Google"
     },
     "FORM": {
       "PROVIDER": "Formato de API",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "Verificar en nuestro servidor y publicar",
       "SECTION_TITLE": "Configuracion de la solicitud",
       "SECTION_DESC": "Configura el endpoint y la clave, luego ejecuta la prueba en tu navegador.",
-      "FORMAT_MISMATCH": "{model} es un modelo de {format}. Cambia el formato de API a {format} para probarlo."
+      "JUDGED_AS": "Comparado con {maker}: identidad, niveles y comportamiento conocido.",
+      "JUDGED_UNKNOWN": "Modelo desconocido: comparado con el fabricante predeterminado del formato {format}.",
+      "FORMAT_HINT": "{model} se sirve de forma nativa en {format}. Muchos relays también lo sirven compatible con OpenAI, así que mantén este formato si tu endpoint funciona así.",
+      "FORMAT_SWITCH": "Usar {format}"
     },
     "VERDICT": {
       "GENUINE": "Autentico",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "Verificado por nuestro servidor, pero las clasificaciones públicas no están disponibles ahora mismo, así que el resultado no se guardó. Se muestra abajo.",
       "DEDUPED": "Ya publicado recientemente para este endpoint.",
       "FAILED": "No se pudo verificar este endpoint. No se publico nada.",
-      "UNVERIFIED_RUN": "La prueba no pudo completarse: los sondeos alcanzaron límites de tasa o expiraron, así que no se publicó nada. Inténtalo de nuevo en un momento.",
-      "FORMAT_MISMATCH": "El identificador del modelo no coincide con el formato de API seleccionado."
+      "UNVERIFIED_RUN": "La prueba no pudo completarse: los sondeos alcanzaron límites de tasa o expiraron, así que no se publicó nada. Inténtalo de nuevo en un momento."
     },
     "TRUST": {
       "TITLE": "Codigo abierto. Verificalo y mejoralo.",

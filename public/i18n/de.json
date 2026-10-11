@@ -4579,9 +4579,12 @@
       "RANKINGS": "Rangliste"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "OpenAI-kompatibel",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT, DeepSeek, GLM, Kimi, Qwen, Grok, Mistral, MiniMax und die meisten Relays",
+      "ANTHROPIC_MAKERS": "Claude und Relays mit der Messages-API",
+      "GEMINI_MAKERS": "Gemini über Googles native API"
     },
     "FORM": {
       "PROVIDER": "API-Format",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "Auf unserem Server pruefen und veroeffentlichen",
       "SECTION_TITLE": "Anfragekonfiguration",
       "SECTION_DESC": "Konfiguriere Endpunkt und Schluessel und fuehre den Test im Browser aus.",
-      "FORMAT_MISMATCH": "{model} ist ein {format}-Modell. Wechsle das API-Format zu {format}, um es zu testen."
+      "JUDGED_AS": "Geprüft gegen {maker}: Identität, Stufen und bekanntes Verhalten.",
+      "JUDGED_UNKNOWN": "Unbekanntes Modell: geprüft gegen den Standardhersteller des Formats {format}.",
+      "FORMAT_HINT": "{model} wird nativ über {format} angeboten. Viele Relays bieten es auch OpenAI-kompatibel an, behalte dieses Format also, wenn dein Endpunkt so funktioniert.",
+      "FORMAT_SWITCH": "{format} verwenden"
     },
     "VERDICT": {
       "GENUINE": "Echt",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "Von unserem Server verifiziert, aber die öffentliche Rangliste ist derzeit nicht verfügbar, daher wurde das Ergebnis nicht gespeichert. Es wird unten angezeigt.",
       "DEDUPED": "Fuer diesen Endpunkt bereits kuerzlich veroeffentlicht.",
       "FAILED": "Endpunkt konnte nicht verifiziert werden. Nichts veroeffentlicht.",
-      "UNVERIFIED_RUN": "Der Lauf konnte nicht abgeschlossen werden: Die Prüfungen liefen in Rate-Limits oder Timeouts, daher wurde nichts veröffentlicht. Versuche es gleich noch einmal.",
-      "FORMAT_MISMATCH": "Die Modell-ID passt nicht zum gewählten API-Format."
+      "UNVERIFIED_RUN": "Der Lauf konnte nicht abgeschlossen werden: Die Prüfungen liefen in Rate-Limits oder Timeouts, daher wurde nichts veröffentlicht. Versuche es gleich noch einmal."
     },
     "TRUST": {
       "TITLE": "Open Source. Pruefe und verbessere es.",

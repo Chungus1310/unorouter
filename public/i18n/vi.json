@@ -4579,9 +4579,12 @@
       "RANKINGS": "Xep hang"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "Tương thích OpenAI",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT, DeepSeek, GLM, Kimi, Qwen, Grok, Mistral, MiniMax và hầu hết các relay",
+      "ANTHROPIC_MAKERS": "Claude và các relay cung cấp API Messages",
+      "GEMINI_MAKERS": "Gemini trên API gốc của Google"
     },
     "FORM": {
       "PROVIDER": "Dinh dang API",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "Xac minh tren may chu cua chung toi va dang",
       "SECTION_TITLE": "Cau hinh yeu cau",
       "SECTION_DESC": "Cau hinh diem cuoi va khoa, sau do chay bai kiem tra trong trinh duyet cua ban.",
-      "FORMAT_MISMATCH": "{model} là mô hình {format}. Hãy đổi định dạng API sang {format} để kiểm tra."
+      "JUDGED_AS": "Được đối chiếu với {maker}: danh tính, cấp bậc và hành vi đã biết.",
+      "JUDGED_UNKNOWN": "Mô hình chưa biết: được đối chiếu với nhà sản xuất mặc định của định dạng {format}.",
+      "FORMAT_HINT": "{model} được phục vụ gốc theo định dạng {format}. Nhiều relay cũng phục vụ nó theo dạng tương thích OpenAI, nên hãy giữ định dạng này nếu endpoint của bạn hoạt động như vậy.",
+      "FORMAT_SWITCH": "Dùng {format}"
     },
     "VERDICT": {
       "GENUINE": "That",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "Đã được máy chủ của chúng tôi xác minh, nhưng bảng xếp hạng công khai hiện không khả dụng nên kết quả chưa được lưu. Kết quả hiển thị bên dưới.",
       "DEDUPED": "Da dang gan day cho diem cuoi nay.",
       "FAILED": "Khong the xac minh diem cuoi nay. Khong co gi duoc dang.",
-      "UNVERIFIED_RUN": "Không thể hoàn tất lần chạy: các phép thử gặp giới hạn tần suất hoặc hết thời gian chờ, nên không có gì được đăng. Hãy thử lại sau giây lát.",
-      "FORMAT_MISMATCH": "Mã mô hình không khớp với định dạng API đã chọn."
+      "UNVERIFIED_RUN": "Không thể hoàn tất lần chạy: các phép thử gặp giới hạn tần suất hoặc hết thời gian chờ, nên không có gì được đăng. Hãy thử lại sau giây lát."
     },
     "TRUST": {
       "TITLE": "Ma nguon mo. Hay xac minh va cai thien.",

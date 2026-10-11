@@ -11,7 +11,13 @@ import {
   useVerifyAndPublish,
 } from "@/hooks/ai/model-tester/tester-hooks";
 import { useRpForm } from "@/hooks/ui/use-rp-form";
-import { CURATED_MODELS, wireForModel } from "ai-model-verifier/models";
+import {
+  CURATED_MODELS,
+  makerForModel,
+  wireForModel,
+} from "ai-model-verifier/models";
+import { MAKERS } from "ai-model-verifier/makers";
+import { VendorIcon } from "@/components/elements/brand/vendor-icon";
 import { verify, type VerifyResult } from "ai-model-verifier";
 import {
   modelTesterForm,
@@ -21,6 +27,7 @@ import { cn } from "@/lib/utils";
 import { TESTER_CHECKS } from "@/lib/api/model-tester-rows";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
+import type { TranslationKey } from "@/lib/types";
 import { Controller } from "react-hook-form";
 import { ProviderCards } from "./provider-cards";
 import { fromVerifyResult } from "../shared/result-adapters";
@@ -28,6 +35,30 @@ import { ScoreGauge, type GaugeArc } from "../shared/score-gauge";
 import { CONN_KEY, TestResultCard } from "../shared/test-result-card";
 
 const INPUT_CLASS = "bg-muted/40 font-mono text-sm shadow-none";
+
+// Open-weight models are sold on the OpenAI chat format by their makers and by
+// nearly every relay, so that format suggests them beside OpenAI's own.
+const OPEN_WEIGHT_MODELS = [
+  "glm-5.3",
+  "kimi-k3",
+  "deepseek-v4-pro",
+  "qwen3.8-max",
+  "minimax-m3",
+  "grok-4.7",
+  "mistral-large-4",
+  "mimo-v2.6-pro",
+];
+
+const suggestionsFor = (format: ModelTesterForm["provider"]) =>
+  format === "openai"
+    ? [...CURATED_MODELS.openai, ...OPEN_WEIGHT_MODELS]
+    : CURATED_MODELS[format];
+
+const FORMAT_LABEL: Record<ModelTesterForm["provider"], TranslationKey> = {
+  openai: "MODEL_TESTER.PROVIDER.OPENAI",
+  anthropic: "MODEL_TESTER.PROVIDER.ANTHROPIC",
+  gemini: "MODEL_TESTER.PROVIDER.GEMINI",
+};
 
 function gaugeArcs(result: VerifyResult | null, running: boolean): GaugeArc[] {
   if (running || !result) return ["pending", "pending", "pending", "pending"];
@@ -50,8 +81,12 @@ export function TesterForm() {
   const watchedModel = form.watch("model");
   const watchedProvider = form.watch("provider");
   const inferredFmt = watchedModel ? wireForModel(watchedModel) : null;
-  const formatMismatch =
-    inferredFmt !== null && inferredFmt !== watchedProvider;
+  // A hint, never a block: relays serve Claude and Gemini on the OpenAI format too.
+  const formatDiffers = inferredFmt !== null && inferredFmt !== watchedProvider;
+  const makerId = watchedModel ? makerForModel(watchedModel) : null;
+  const makerName = makerId
+    ? (MAKERS.find((m) => m.id === makerId)?.name ?? makerId)
+    : null;
 
   async function runLocal(values: ModelTesterForm, mode: "direct" | "server") {
     setRunning(true);
@@ -97,10 +132,7 @@ export function TesterForm() {
         if (res.error === "unverified-run")
           setPublishMsg(t("MODEL_TESTER.PUBLISH.UNVERIFIED_RUN"));
         else {
-          const reasonKey =
-            res.error === "format-mismatch"
-              ? "MODEL_TESTER.PUBLISH.FORMAT_MISMATCH"
-              : CONN_KEY[res.error];
+          const reasonKey = CONN_KEY[res.error];
           setPublishMsg(
             reasonKey
               ? `${t("MODEL_TESTER.PUBLISH.FAILED")} ${t(reasonKey)}`
@@ -158,12 +190,7 @@ export function TesterForm() {
                   render={({ field }) => (
                     <ProviderCards
                       value={field.value}
-                      onChange={(next) => {
-                        field.onChange(next);
-                        const cur = form.getValues("model");
-                        const fmt = cur ? wireForModel(cur) : null;
-                        if (fmt && fmt !== next) form.setValue("model", "");
-                      }}
+                      onChange={field.onChange}
                     />
                   )}
                 />
@@ -202,15 +229,9 @@ export function TesterForm() {
                       id="tester-model"
                       list="tester-model-options"
                       value={field.value ?? ""}
-                      onChange={(e) => {
-                        const next = e.target.value;
-                        field.onChange(next);
-                        const fmt = wireForModel(next);
-                        if (fmt && fmt !== form.getValues("provider"))
-                          form.setValue("provider", fmt);
-                      }}
+                      onChange={(e) => field.onChange(e.target.value)}
                       placeholder={
-                        CURATED_MODELS[form.watch("provider")][0] ?? "model-id"
+                        suggestionsFor(form.watch("provider"))[0] ?? "model-id"
                       }
                       className={cn(
                         "border-input focus-visible:border-ring focus-visible:ring-ring/50 h-9 w-full min-w-0 rounded-md border px-2.5 py-1 text-sm transition-[color,box-shadow] outline-none focus-visible:ring-3 md:text-sm",
@@ -218,10 +239,28 @@ export function TesterForm() {
                       )}
                     />
                     <datalist id="tester-model-options">
-                      {CURATED_MODELS[form.watch("provider")].map((m) => (
+                      {suggestionsFor(form.watch("provider")).map((m) => (
                         <option key={m} value={m} />
                       ))}
                     </datalist>
+                    {watchedModel ? (
+                      <p className="text-muted-foreground flex items-center gap-1.5 text-xs">
+                        {makerId ? (
+                          <VendorIcon
+                            vendor={makerId}
+                            size={14}
+                            className="shrink-0"
+                          />
+                        ) : null}
+                        {makerName
+                          ? t("MODEL_TESTER.FORM.JUDGED_AS", {
+                              maker: makerName,
+                            })
+                          : t("MODEL_TESTER.FORM.JUDGED_UNKNOWN", {
+                              format: t(FORMAT_LABEL[watchedProvider]),
+                            })}
+                      </p>
+                    ) : null}
                     <MyFormError
                       name="model"
                       schema={modelTesterForm}
@@ -252,21 +291,29 @@ export function TesterForm() {
                 </div>
               ) : null}
 
-              {formatMismatch ? (
-                <p className="flex items-center gap-2 text-sm text-amber-600 dark:text-amber-400">
-                  <Icon name="triangle-alert" className="size-4 shrink-0" />
-                  {t("MODEL_TESTER.FORM.FORMAT_MISMATCH", {
-                    model: watchedModel,
-                    format: inferredFmt ?? "",
-                  })}
-                </p>
+              {formatDiffers && inferredFmt ? (
+                <div className="flex flex-wrap items-center gap-2 text-xs text-amber-600 dark:text-amber-400">
+                  <Icon name="info" className="size-4 shrink-0" />
+                  <span className="min-w-0 flex-1">
+                    {t("MODEL_TESTER.FORM.FORMAT_HINT", {
+                      model: watchedModel,
+                      format: t(FORMAT_LABEL[inferredFmt]),
+                    })}
+                  </span>
+                  <Button
+                    type="button"
+                    size="sm"
+                    variant="outline"
+                    onClick={() => form.setValue("provider", inferredFmt)}
+                  >
+                    {t("MODEL_TESTER.FORM.FORMAT_SWITCH", {
+                      format: t(FORMAT_LABEL[inferredFmt]),
+                    })}
+                  </Button>
+                </div>
               ) : null}
 
-              <Button
-                type="submit"
-                disabled={running || formatMismatch}
-                className="w-full"
-              >
+              <Button type="submit" disabled={running} className="w-full">
                 <Icon
                   name="refresh-cw"
                   className={running ? "size-4 animate-spin" : "size-4"}

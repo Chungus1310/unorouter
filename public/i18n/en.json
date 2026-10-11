@@ -4579,9 +4579,12 @@
       "RANKINGS": "Rankings"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "OpenAI-compatible",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT, DeepSeek, GLM, Kimi, Qwen, Grok, Mistral, MiniMax and most relays",
+      "ANTHROPIC_MAKERS": "Claude, and relays that offer the Messages API",
+      "GEMINI_MAKERS": "Gemini on Google's native API"
     },
     "FORM": {
       "PROVIDER": "API format",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "Verify on our backend & publish",
       "SECTION_TITLE": "Request configuration",
       "SECTION_DESC": "Configure the endpoint and key, then run the test in your browser.",
-      "FORMAT_MISMATCH": "{model} is a {format} model. Switch the API format to {format} to test it."
+      "JUDGED_AS": "Checked against {maker}: identity, tiers and known behaviour.",
+      "JUDGED_UNKNOWN": "Unknown model: checked against the default maker of the {format} format.",
+      "FORMAT_HINT": "{model} is natively served on {format}. Many relays serve it OpenAI-compatible too, so keep this format if that is how your endpoint works.",
+      "FORMAT_SWITCH": "Use {format}"
     },
     "VERDICT": {
       "GENUINE": "Genuine",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "Verified by our server, but the public rankings are unavailable right now, so the result was not saved. It is shown below.",
       "DEDUPED": "Already published recently for this endpoint.",
       "FAILED": "Could not verify this endpoint. Nothing was published.",
-      "UNVERIFIED_RUN": "The run could not be completed: probes hit rate limits or timeouts, so nothing was published. Try again in a moment.",
-      "FORMAT_MISMATCH": "The model id does not match the selected API format."
+      "UNVERIFIED_RUN": "The run could not be completed: probes hit rate limits or timeouts, so nothing was published. Try again in a moment."
     },
     "TRUST": {
       "TITLE": "Open source. Verify and improve it.",

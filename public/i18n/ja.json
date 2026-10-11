@@ -4579,9 +4579,12 @@
       "RANKINGS": "ランキング"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "OpenAI 互換",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT、DeepSeek、GLM、Kimi、Qwen、Grok、Mistral、MiniMax、ほとんどのリレー",
+      "ANTHROPIC_MAKERS": "Claude、および Messages API を提供するリレー",
+      "GEMINI_MAKERS": "Google ネイティブ API の Gemini"
     },
     "FORM": {
       "PROVIDER": "API形式",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "サーバーで検証して投稿",
       "SECTION_TITLE": "リクエスト設定",
       "SECTION_DESC": "エンドポイントとキーを設定し、ブラウザでテストを実行します。",
-      "FORMAT_MISMATCH": "{model} は {format} のモデルです。テストするには API 形式を {format} に切り替えてください。"
+      "JUDGED_AS": "{maker} と照合します：アイデンティティ、ティア、既知の挙動。",
+      "JUDGED_UNKNOWN": "不明なモデル：{format} 形式の既定メーカーと照合します。",
+      "FORMAT_HINT": "{model} は本来 {format} 形式で提供されています。多くのリレーは OpenAI 互換形式でも提供しているので、エンドポイントがそうであればこの形式のままで構いません。",
+      "FORMAT_SWITCH": "{format} を使う"
     },
     "VERDICT": {
       "GENUINE": "本物",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "当社のサーバーで検証しましたが、現在パブリックランキングを利用できないため、結果は保存されていません。下に表示しています。",
       "DEDUPED": "このエンドポイントは最近すでに投稿されています。",
       "FAILED": "このエンドポイントを検証できませんでした。何も投稿されていません。",
-      "UNVERIFIED_RUN": "実行を完了できませんでした。プローブがレート制限またはタイムアウトに達したため、何も公開されていません。しばらくしてからもう一度お試しください。",
-      "FORMAT_MISMATCH": "モデルIDが選択したAPI形式と一致しません。"
+      "UNVERIFIED_RUN": "実行を完了できませんでした。プローブがレート制限またはタイムアウトに達したため、何も公開されていません。しばらくしてからもう一度お試しください。"
     },
     "TRUST": {
       "TITLE": "オープンソース。検証して改善できます。",

@@ -4579,9 +4579,12 @@
       "RANKINGS": "Classement"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "Compatible OpenAI",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT, DeepSeek, GLM, Kimi, Qwen, Grok, Mistral, MiniMax et la plupart des relais",
+      "ANTHROPIC_MAKERS": "Claude, et les relais qui proposent l'API Messages",
+      "GEMINI_MAKERS": "Gemini via l'API native de Google"
     },
     "FORM": {
       "PROVIDER": "Format d'API",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "Verifier sur notre serveur et publier",
       "SECTION_TITLE": "Configuration de la requete",
       "SECTION_DESC": "Configurez le point de terminaison et la cle, puis lancez le test dans votre navigateur.",
-      "FORMAT_MISMATCH": "{model} est un modèle {format}. Changez le format d'API pour {format} afin de le tester."
+      "JUDGED_AS": "Comparé à {maker} : identité, niveaux et comportement connu.",
+      "JUDGED_UNKNOWN": "Modèle inconnu : comparé au fabricant par défaut du format {format}.",
+      "FORMAT_HINT": "{model} est servi nativement au format {format}. Beaucoup de relais le servent aussi au format compatible OpenAI : gardez ce format si votre point d'accès fonctionne ainsi.",
+      "FORMAT_SWITCH": "Utiliser {format}"
     },
     "VERDICT": {
       "GENUINE": "Authentique",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "Vérifié par notre serveur, mais le classement public est indisponible pour le moment, donc le résultat n'a pas été enregistré. Il s'affiche ci-dessous.",
       "DEDUPED": "Deja publie recemment pour ce point de terminaison.",
       "FAILED": "Impossible de verifier ce point de terminaison. Rien n'a ete publie.",
-      "UNVERIFIED_RUN": "Le test n'a pas pu aboutir : les sondes ont rencontré des limites de débit ou des délais dépassés, donc rien n'a été publié. Réessayez dans un instant.",
-      "FORMAT_MISMATCH": "L'identifiant du modèle ne correspond pas au format d'API sélectionné."
+      "UNVERIFIED_RUN": "Le test n'a pas pu aboutir : les sondes ont rencontré des limites de débit ou des délais dépassés, donc rien n'a été publié. Réessayez dans un instant."
     },
     "TRUST": {
       "TITLE": "Open source. Verifiez-le et ameliorez-le.",

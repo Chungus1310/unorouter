@@ -4579,9 +4579,12 @@
       "RANKINGS": "דירוג"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "תואם OpenAI",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT,‏ DeepSeek,‏ GLM,‏ Kimi,‏ Qwen,‏ Grok,‏ Mistral,‏ MiniMax ורוב הממסרים",
+      "ANTHROPIC_MAKERS": "Claude, וממסרים שמציעים את Messages API",
+      "GEMINI_MAKERS": "Gemini דרך ה-API המקורי של Google"
     },
     "FORM": {
       "PROVIDER": "פורמט API",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "אמת בשרת שלנו ופרסם",
       "SECTION_TITLE": "הגדרת הבקשה",
       "SECTION_DESC": "הגדירו את נקודת הקצה והמפתח, ואז הריצו את הבדיקה בדפדפן.",
-      "FORMAT_MISMATCH": "{model} הוא מודל {format}. החלף את פורמט ה-API ל-{format} כדי לבדוק אותו."
+      "JUDGED_AS": "נבדק מול {maker}: זהות, דרגות והתנהגות ידועה.",
+      "JUDGED_UNKNOWN": "מודל לא מוכר: נבדק מול היצרן ברירת המחדל של פורמט {format}.",
+      "FORMAT_HINT": "{model} מוגש במקור בפורמט {format}. ממסרים רבים מגישים אותו גם בפורמט תואם OpenAI, אז השאירו את הפורמט הזה אם כך נקודת הקצה שלכם עובדת.",
+      "FORMAT_SWITCH": "להשתמש ב-{format}"
     },
     "VERDICT": {
       "GENUINE": "אמיתי",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "אומת על ידי השרת שלנו, אך דירוג הציבורי אינו זמין כרגע, ולכן התוצאה לא נשמרה. היא מוצגת למטה.",
       "DEDUPED": "כבר פורסם לאחרונה עבור נקודת קצה זו.",
       "FAILED": "לא ניתן לאמת נקודת קצה זו. שום דבר לא פורסם.",
-      "UNVERIFIED_RUN": "לא ניתן היה להשלים את הבדיקה: הבדיקות נתקלו במגבלות קצב או בפסק זמן, ולכן דבר לא פורסם. נסו שוב בעוד רגע.",
-      "FORMAT_MISMATCH": "מזהה המודל אינו תואם לתבנית ה-API שנבחרה."
+      "UNVERIFIED_RUN": "לא ניתן היה להשלים את הבדיקה: הבדיקות נתקלו במגבלות קצב או בפסק זמן, ולכן דבר לא פורסם. נסו שוב בעוד רגע."
     },
     "TRUST": {
       "TITLE": "קוד פתוח. אמתו ושפרו אותו.",

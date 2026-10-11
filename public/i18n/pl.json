@@ -4579,9 +4579,12 @@
       "RANKINGS": "Ranking"
     },
     "PROVIDER": {
-      "ANTHROPIC": "Anthropic (Claude)",
-      "OPENAI": "OpenAI (GPT)",
-      "GEMINI": "Google (Gemini)"
+      "ANTHROPIC": "Anthropic Messages",
+      "OPENAI": "Zgodny z OpenAI",
+      "GEMINI": "Google Gemini",
+      "OPENAI_MAKERS": "GPT, DeepSeek, GLM, Kimi, Qwen, Grok, Mistral, MiniMax i większość relayów",
+      "ANTHROPIC_MAKERS": "Claude oraz relaye z API Messages",
+      "GEMINI_MAKERS": "Gemini przez natywne API Google"
     },
     "FORM": {
       "PROVIDER": "Format API",
@@ -4597,7 +4600,10 @@
       "RUN_PUBLISH": "Zweryfikuj na naszym serwerze i opublikuj",
       "SECTION_TITLE": "Konfiguracja zadania",
       "SECTION_DESC": "Skonfiguruj punkt koncowy i klucz, a nastepnie uruchom test w przegladarce.",
-      "FORMAT_MISMATCH": "{model} to model {format}. Zmień format API na {format}, aby go przetestować."
+      "JUDGED_AS": "Porównywany z {maker}: tożsamość, poziomy i znane zachowanie.",
+      "JUDGED_UNKNOWN": "Nieznany model: porównywany z domyślnym producentem formatu {format}.",
+      "FORMAT_HINT": "{model} jest natywnie udostępniany w formacie {format}. Wiele relayów udostępnia go też w formacie zgodnym z OpenAI, więc zostaw ten format, jeśli tak działa Twój endpoint.",
+      "FORMAT_SWITCH": "Użyj {format}"
     },
     "VERDICT": {
       "GENUINE": "Autentyczny",
@@ -4734,8 +4740,7 @@
       "NOT_SAVED": "Zweryfikowane przez nasz serwer, ale publiczny ranking jest teraz niedostępny, więc wynik nie został zapisany. Jest pokazany poniżej.",
       "DEDUPED": "Juz niedawno opublikowano dla tego punktu koncowego.",
       "FAILED": "Nie udalo sie zweryfikowac tego punktu koncowego. Nic nie opublikowano.",
-      "UNVERIFIED_RUN": "Nie udało się ukończyć testu: sondy napotkały limity zapytań lub przekroczenia czasu, więc nic nie opublikowano. Spróbuj ponownie za chwilę.",
-      "FORMAT_MISMATCH": "Identyfikator modelu nie pasuje do wybranego formatu API."
+      "UNVERIFIED_RUN": "Nie udało się ukończyć testu: sondy napotkały limity zapytań lub przekroczenia czasu, więc nic nie opublikowano. Spróbuj ponownie za chwilę."
     },
     "TRUST": {
       "TITLE": "Otwarty kod. Zweryfikuj i ulepsz.",
