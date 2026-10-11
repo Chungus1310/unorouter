@@ -83,6 +83,13 @@ export function BackupReminder() {
       {
         id: TOAST_ID,
         duration: Infinity,
+        // At the bottom it sat on the composer until dismissed.
+        position: "top-center",
+        classNames: {
+          toast: "flex-wrap",
+          content: "basis-[calc(100%-2rem)]",
+          cancelButton: "ml-auto",
+        },
         description: (
           <span className="flex flex-col items-start gap-1">
             {t(
