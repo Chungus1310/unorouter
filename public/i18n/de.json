@@ -4745,6 +4745,12 @@
         "WHY": "Wie viele Tokens ein fester Text kostet, entscheidet der Tokenizer des Backends, und kein System-Prompt kann das beeinflussen. Ein Delta, das einer kalibrierten günstigeren Stufe entspricht, bedeutet: diese Stufe hat geantwortet.",
         "EXCEPTION": "Ohne Kalibrierung für diesen Endpunkt wird das Delta nur aufgezeichnet; Modelle mit demselben Tokenizer berechnen dasselbe Delta und lassen sich damit nie unterscheiden."
       },
+      "MASKED-IDENTITY": {
+        "TITLE": "Verschleierte Identität",
+        "MEANS": "Das eigene Reasoning des Modells wiederholt eine Anweisung, den echten Hersteller oder Anbieter zu verbergen, zum Beispiel „erwähne niemals OpenAI“ oder „antworte nur mit der deklarierten Profilidentität“.",
+        "WHY": "Ein Wrapper kann jede Identitätsantwort vorgeben, doch das Reasoning verrät die Vorgabe trotzdem. Ein echtes Modell hat keinen Grund, den Namen eines anderen Labors zu verschweigen.",
+        "EXCEPTION": "das Reasoning lehnt nur ab, seinen Systemprompt zu teilen, ohne einen Hersteller oder Anbieter zu verbergen."
+      },
       "CODING-TOOL": {
         "TITLE": "Coding-Tool-Wrapper",
         "MEANS": "Die Antwort verwendet vorgefertigte Floskeln eines Programmierassistenten (Kiro, Cascade, Codeium und ähnliche) und verweigert einen gewöhnlichen kreativen oder emotionalen Prompt.",

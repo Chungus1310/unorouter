@@ -4745,6 +4745,12 @@
         "WHY": "Một đoạn văn bản cố định tốn bao nhiêu token là do tokenizer của backend quyết định, và không system prompt nào thay đổi được. Một delta trùng với bậc rẻ hơn đã được hiệu chuẩn nghĩa là bậc đó đã trả lời.",
         "EXCEPTION": "Không có hiệu chuẩn cho endpoint này thì delta chỉ được ghi lại; các mô hình dùng chung một tokenizer tính cùng một delta và không bao giờ phân biệt được bằng nó."
       },
+      "MASKED-IDENTITY": {
+        "TITLE": "Danh tính bị che giấu",
+        "MEANS": "Chính phần suy luận của mô hình lặp lại chỉ dẫn che giấu nhà phát triển hoặc nhà cung cấp thật, ví dụ “không bao giờ nhắc đến OpenAI” hoặc “chỉ trả lời bằng danh tính hồ sơ đã khai báo”.",
+        "WHY": "Một lớp bọc có thể chỉ định mọi câu trả lời về danh tính, nhưng phần suy luận vẫn để lộ chỉ dẫn đó. Một mô hình thật không có lý do gì để giấu tên của phòng thí nghiệm khác.",
+        "EXCEPTION": "phần suy luận chỉ từ chối chia sẻ system prompt, không che giấu nhà phát triển hay nhà cung cấp nào."
+      },
       "CODING-TOOL": {
         "TITLE": "Lớp bọc công cụ lập trình",
         "MEANS": "Câu trả lời dùng những cụm từ rập khuôn của một trợ lý lập trình (Kiro, Cascade, Codeium và tương tự), từ chối một lời nhắc sáng tạo hoặc cảm xúc thông thường.",

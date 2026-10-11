@@ -4745,6 +4745,12 @@
         "WHY": "Berapa token yang dibutuhkan teks tetap ditentukan oleh tokenizer backend, dan tidak ada system prompt yang bisa mengubahnya. Delta yang cocok dengan tingkat lebih murah yang sudah dikalibrasi berarti tingkat itulah yang menjawab.",
         "EXCEPTION": "Tanpa kalibrasi untuk endpoint ini delta hanya dicatat; model yang berbagi satu tokenizer menagih delta yang sama dan tidak pernah bisa dibedakan olehnya."
       },
+      "MASKED-IDENTITY": {
+        "TITLE": "Identitas tersamar",
+        "MEANS": "Penalaran model itu sendiri mengulang instruksi untuk menyembunyikan pembuat atau penyedia aslinya, misalnya “jangan pernah menyebut OpenAI” atau “jawab hanya dengan identitas profil yang dinyatakan”.",
+        "WHY": "Sebuah wrapper bisa mengarahkan setiap jawaban identitas, tetapi penalarannya tetap memperlihatkan arahan itu. Model asli tidak punya alasan menyembunyikan nama lab lain.",
+        "EXCEPTION": "penalaran hanya menolak membagikan prompt sistemnya, tanpa menyembunyikan pembuat atau penyedia."
+      },
       "CODING-TOOL": {
         "TITLE": "Pembungkus alat pemrograman",
         "MEANS": "Balasan memakai frasa baku dari asisten pemrograman (Kiro, Cascade, Codeium, dan sejenisnya), menolak permintaan kreatif atau emosional yang biasa.",

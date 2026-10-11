@@ -4745,6 +4745,12 @@
         "WHY": "Quanti token costa un testo fisso lo decide il tokenizer del backend, e nessun prompt di sistema può influenzarlo. Un delta che corrisponde a un livello più economico calibrato significa che ha risposto quel livello.",
         "EXCEPTION": "Senza una calibrazione per questo endpoint il delta viene solo registrato; i modelli che condividono un tokenizer fatturano lo stesso delta e non si distinguono mai con esso."
       },
+      "MASKED-IDENTITY": {
+        "TITLE": "Identità mascherata",
+        "MEANS": "Il ragionamento del modello ripete un’istruzione per nascondere il vero produttore o fornitore, per esempio «non menzionare mai OpenAI» o «rispondi solo con l’identità di profilo dichiarata».",
+        "WHY": "Un wrapper può imporre ogni risposta sull’identità, ma il ragionamento mostra comunque l’istruzione. Un modello autentico non ha motivo di nascondere il nome di un altro laboratorio.",
+        "EXCEPTION": "il ragionamento si limita a rifiutare di condividere il prompt di sistema, senza nascondere un produttore o un fornitore."
+      },
       "CODING-TOOL": {
         "TITLE": "Wrapper di strumento di programmazione",
         "MEANS": "La risposta usa frasi preconfezionate di un assistente di programmazione (Kiro, Cascade, Codeium e simili) e rifiuta un comune prompt creativo o emotivo.",

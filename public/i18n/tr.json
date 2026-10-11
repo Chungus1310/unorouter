@@ -4745,6 +4745,12 @@
         "WHY": "Sabit bir metnin kaç token'a mal olacağını arka ucun tokenizer'ı belirler ve hiçbir sistem istemi bunu değiştiremez. Kalibre edilmiş daha ucuz bir katmanla eşleşen bir delta, o katmanın yanıt verdiği anlamına gelir.",
         "EXCEPTION": "Bu uç nokta için kalibrasyon yoksa delta yalnızca kaydedilir; aynı tokenizer'ı paylaşan modeller aynı deltayı faturalar ve bununla asla ayırt edilemez."
       },
+      "MASKED-IDENTITY": {
+        "TITLE": "Maskelenmiş kimlik",
+        "MEANS": "Modelin kendi akıl yürütmesi, gerçek üreticisini veya sağlayıcısını gizleme talimatını tekrarlıyor; örneğin “OpenAI’den asla bahsetme” ya da “yalnızca beyan edilen profil kimliğiyle yanıt ver”.",
+        "WHY": "Bir sarmalayıcı her kimlik yanıtını yönlendirebilir, ancak akıl yürütme bu yönlendirmeyi yine de ele verir. Gerçek bir modelin başka bir laboratuvarın adını gizlemesi için bir neden yoktur.",
+        "EXCEPTION": "akıl yürütme yalnızca sistem istemini paylaşmayı reddediyor, bir üretici ya da sağlayıcı gizlemiyor."
+      },
       "CODING-TOOL": {
         "TITLE": "Kodlama aracı sarmalayıcısı",
         "MEANS": "Yanıt, bir kodlama asistanının (Kiro, Cascade, Codeium ve benzerleri) kalıplaşmış ifadelerini kullanır ve sıradan bir yaratıcı ya da duygusal istemi reddeder.",

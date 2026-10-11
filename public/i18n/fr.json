@@ -4745,6 +4745,12 @@
         "WHY": "Le nombre de jetons que coûte un texte fixe dépend du tokenizer du backend, et aucun prompt système ne peut l'influencer. Un delta qui correspond à un palier moins cher calibré signifie que ce palier a répondu.",
         "EXCEPTION": "Sans calibration pour cet endpoint, le delta est seulement enregistré ; les modèles partageant un tokenizer facturent le même delta et ne sont jamais distingués par lui."
       },
+      "MASKED-IDENTITY": {
+        "TITLE": "Identité masquée",
+        "MEANS": "Le raisonnement du modèle répète une consigne visant à cacher son véritable créateur ou fournisseur, par exemple « ne mentionne jamais OpenAI » ou « réponds uniquement avec l’identité de profil déclarée ».",
+        "WHY": "Un wrapper peut dicter chaque réponse d’identité, mais le raisonnement révèle quand même la consigne. Un vrai modèle n’a aucune raison de cacher le nom d’un autre laboratoire.",
+        "EXCEPTION": "le raisonnement refuse seulement de partager son prompt système, sans cacher de créateur ni de fournisseur."
+      },
       "CODING-TOOL": {
         "TITLE": "Surcouche d'outil de codage",
         "MEANS": "La réponse emploie des formules toutes faites d'un assistant de codage (Kiro, Cascade, Codeium et similaires) et refuse une demande créative ou émotionnelle ordinaire.",

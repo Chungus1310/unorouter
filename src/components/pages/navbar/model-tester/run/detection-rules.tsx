@@ -15,6 +15,7 @@ import type { TranslationKey } from "@/lib/types";
 const RULE_TITLE: Record<VerdictRuleId, TranslationKey> = {
   "thinking-floor": "MODEL_TESTER.RULES.THINKING-FLOOR.TITLE",
   "tokenizer-fingerprint": "MODEL_TESTER.RULES.TOKENIZER-FINGERPRINT.TITLE",
+  "masked-identity": "MODEL_TESTER.RULES.MASKED-IDENTITY.TITLE",
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.TITLE",
   scam: "MODEL_TESTER.RULES.SCAM.TITLE",
   "cjk-leak": "MODEL_TESTER.RULES.CJK-LEAK.TITLE",
@@ -27,6 +28,7 @@ const RULE_TITLE: Record<VerdictRuleId, TranslationKey> = {
 const RULE_MEANS: Record<VerdictRuleId, TranslationKey> = {
   "thinking-floor": "MODEL_TESTER.RULES.THINKING-FLOOR.MEANS",
   "tokenizer-fingerprint": "MODEL_TESTER.RULES.TOKENIZER-FINGERPRINT.MEANS",
+  "masked-identity": "MODEL_TESTER.RULES.MASKED-IDENTITY.MEANS",
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.MEANS",
   scam: "MODEL_TESTER.RULES.SCAM.MEANS",
   "cjk-leak": "MODEL_TESTER.RULES.CJK-LEAK.MEANS",
@@ -39,6 +41,7 @@ const RULE_MEANS: Record<VerdictRuleId, TranslationKey> = {
 const RULE_WHY: Record<VerdictRuleId, TranslationKey> = {
   "thinking-floor": "MODEL_TESTER.RULES.THINKING-FLOOR.WHY",
   "tokenizer-fingerprint": "MODEL_TESTER.RULES.TOKENIZER-FINGERPRINT.WHY",
+  "masked-identity": "MODEL_TESTER.RULES.MASKED-IDENTITY.WHY",
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.WHY",
   scam: "MODEL_TESTER.RULES.SCAM.WHY",
   "cjk-leak": "MODEL_TESTER.RULES.CJK-LEAK.WHY",
@@ -51,6 +54,7 @@ const RULE_WHY: Record<VerdictRuleId, TranslationKey> = {
 const RULE_EXCEPTION: Record<VerdictRuleId, TranslationKey> = {
   "thinking-floor": "MODEL_TESTER.RULES.THINKING-FLOOR.EXCEPTION",
   "tokenizer-fingerprint": "MODEL_TESTER.RULES.TOKENIZER-FINGERPRINT.EXCEPTION",
+  "masked-identity": "MODEL_TESTER.RULES.MASKED-IDENTITY.EXCEPTION",
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.EXCEPTION",
   scam: "MODEL_TESTER.RULES.SCAM.EXCEPTION",
   "cjk-leak": "MODEL_TESTER.RULES.CJK-LEAK.EXCEPTION",

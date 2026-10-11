@@ -4745,6 +4745,12 @@
         "WHY": "How many tokens a fixed text costs is decided by the backend's tokenizer, and no system prompt can coach it. A delta that matches a calibrated cheaper tier means that tier answered.",
         "EXCEPTION": "Without a calibration for this endpoint the delta is only recorded; models sharing one tokenizer bill the same delta and are never told apart by it."
       },
+      "MASKED-IDENTITY": {
+        "TITLE": "Masked identity",
+        "MEANS": "The model's own reasoning repeats an instruction to hide its real maker or provider, for example \"never mention OpenAI\" or \"answer only with the declared profile identity\".",
+        "WHY": "A wrapper can coach every identity answer, but the reasoning still shows the coaching. A genuine model has no reason to hide another lab's name.",
+        "EXCEPTION": "the reasoning only declines to share its system prompt, without hiding a maker or provider."
+      },
       "CODING-TOOL": {
         "TITLE": "Coding-tool wrapper",
         "MEANS": "The reply uses canned phrases from a coding assistant (Kiro, Cascade, Codeium and similar), refusing an ordinary creative or emotional prompt.",

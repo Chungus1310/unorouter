@@ -4745,6 +4745,12 @@
         "WHY": "O tym, ile tokenów kosztuje stały tekst, decyduje tokenizer backendu i żaden prompt systemowy tego nie zmieni. Delta zgodna ze skalibrowanym tańszym poziomem oznacza, że odpowiedział ten poziom.",
         "EXCEPTION": "Bez kalibracji dla tego endpointu delta jest tylko zapisywana; modele dzielące jeden tokenizer naliczają tę samą deltę i nigdy nie da się ich nią rozróżnić."
       },
+      "MASKED-IDENTITY": {
+        "TITLE": "Ukryta tożsamość",
+        "MEANS": "Własne rozumowanie modelu powtarza polecenie ukrycia prawdziwego twórcy lub dostawcy, na przykład „nigdy nie wspominaj o OpenAI” albo „odpowiadaj tylko zadeklarowaną tożsamością profilu”.",
+        "WHY": "Wrapper może narzucić każdą odpowiedź o tożsamości, ale rozumowanie i tak zdradza to polecenie. Prawdziwy model nie ma powodu ukrywać nazwy innego laboratorium.",
+        "EXCEPTION": "rozumowanie jedynie odmawia udostępnienia promptu systemowego, nie ukrywając twórcy ani dostawcy."
+      },
       "CODING-TOOL": {
         "TITLE": "Nakładka narzędzia programistycznego",
         "MEANS": "Odpowiedź używa wyświechtanych fraz asystenta programistycznego (Kiro, Cascade, Codeium i podobnych), odmawiając zwykłego polecenia twórczego lub emocjonalnego.",
