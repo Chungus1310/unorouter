@@ -141,11 +141,12 @@ export function RpEntityRow(props: {
       // shrink-0 because the list is a flex column: without it a long list
       // compresses every row to a fraction of its content height and the text
       // of one row renders over the next.
-      className="hover:bg-accent flex shrink-0 cursor-pointer flex-row items-center gap-3 p-3 transition-colors"
+      className="hover:bg-accent flex shrink-0 cursor-pointer flex-row items-center gap-3 p-3 transition-colors max-sm:flex-wrap"
       onClick={props.onOpen}
     >
       {props.leading}
-      <div className="flex min-w-0 flex-1 flex-col">
+      {/* Beside four buttons a phone showed about six characters of the name. */}
+      <div className="flex min-w-0 flex-1 flex-col max-sm:basis-[calc(100%-3.25rem)]">
         <span className="truncate text-sm font-medium">{props.name}</span>
         {props.description != null && props.description !== "" && (
           <span className="text-muted-foreground truncate text-xs">
@@ -154,49 +155,51 @@ export function RpEntityRow(props: {
         )}
         <RpEntityDates created={props.createdAt} updated={props.updatedAt} />
       </div>
-      {props.favorite && (
+      <div className="flex shrink-0 items-center gap-1 max-sm:ml-auto">
+        {props.favorite && (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            aria-label={t(props.favorite.on ? "RP.UNFAVORITE" : "RP.FAVORITE")}
+            onClick={(e) => {
+              e.stopPropagation();
+              props.favorite!.onToggle();
+            }}
+          >
+            <Icon
+              name="star"
+              className={cn(
+                "size-4",
+                props.favorite.on && "fill-current text-amber-500",
+              )}
+            />
+          </Button>
+        )}
+        {props.actions}
+        {props.onDuplicate && (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            aria-label={t("RP.DUPLICATE")}
+            onClick={(e) => {
+              e.stopPropagation();
+              void props.onDuplicate!();
+            }}
+          >
+            <Icon name="copy" className="size-4" />
+          </Button>
+        )}
         <Button
           variant="ghost"
           size="icon-sm"
-          aria-label={t(props.favorite.on ? "RP.UNFAVORITE" : "RP.FAVORITE")}
           onClick={(e) => {
             e.stopPropagation();
-            props.favorite!.onToggle();
+            void props.onDelete();
           }}
         >
-          <Icon
-            name="star"
-            className={cn(
-              "size-4",
-              props.favorite.on && "fill-current text-amber-500",
-            )}
-          />
+          <Icon name="trash-2" className="size-4" />
         </Button>
-      )}
-      {props.actions}
-      {props.onDuplicate && (
-        <Button
-          variant="ghost"
-          size="icon-sm"
-          aria-label={t("RP.DUPLICATE")}
-          onClick={(e) => {
-            e.stopPropagation();
-            void props.onDuplicate!();
-          }}
-        >
-          <Icon name="copy" className="size-4" />
-        </Button>
-      )}
-      <Button
-        variant="ghost"
-        size="icon-sm"
-        onClick={(e) => {
-          e.stopPropagation();
-          void props.onDelete();
-        }}
-      >
-        <Icon name="trash-2" className="size-4" />
-      </Button>
+      </div>
     </Card>
   );
 }
