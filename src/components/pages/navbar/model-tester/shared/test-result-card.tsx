@@ -8,11 +8,14 @@ import { highlightSpans } from "ai-model-verifier/highlight";
 import type { HighlightKind } from "ai-model-verifier/highlight";
 import { vendorForRow } from "ai-model-verifier/models";
 import { RULE_FOR_SIGNAL, type VerdictRuleId } from "ai-model-verifier/rules";
-import type { VendorId } from "ai-model-verifier";
+import type { SurveyOutcome, VendorId } from "ai-model-verifier";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import type { TestResultProbe } from "@/lib/api/typebox/model-tester";
+import type {
+  StoredFinding,
+  TestResultProbe,
+} from "@/lib/api/typebox/model-tester";
 import type { TranslationKey } from "@/lib/types";
 
 const SIGNATURE_LABEL: Record<string, TranslationKey> = {
@@ -44,6 +47,18 @@ export type ResultCardData = {
   /** Free envelope observations; notes are descriptive, never a verdict. */
   envelopeNotes?: string[] | undefined;
   tokensPerSecond?: number | undefined;
+  /** Present when the model must always think (glm-5.3, kimi-k3, gemini pro...). */
+  thinkingFloor?:
+    | {
+        state: string;
+        completionTokens: number | null;
+        reasoningTokens: number | null;
+      }
+    | undefined;
+  /** Survey answers as they came; only the sensitive question is judged (fake-200). */
+  survey?: SurveyOutcome[] | undefined;
+  /** Every rule's finding, notes included. */
+  findings: StoredFinding[];
   probes: TestResultProbe[];
 };
 
@@ -101,10 +116,40 @@ export const CONN_KEY: Record<string, TranslationKey> = {
 };
 
 const RULE_TITLE_KEY: Record<string, TranslationKey> = {
+  "thinking-floor": "MODEL_TESTER.RULES.THINKING-FLOOR.TITLE",
+  "tokenizer-fingerprint": "MODEL_TESTER.RULES.TOKENIZER-FINGERPRINT.TITLE",
+  "masked-identity": "MODEL_TESTER.RULES.MASKED-IDENTITY.TITLE",
+  "fake-200": "MODEL_TESTER.RULES.FAKE-200.TITLE",
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.TITLE",
   scam: "MODEL_TESTER.RULES.SCAM.TITLE",
   "cjk-leak": "MODEL_TESTER.RULES.CJK-LEAK.TITLE",
+  mux: "MODEL_TESTER.RULES.MUX.TITLE",
   foreign: "MODEL_TESTER.RULES.FOREIGN.TITLE",
+  "served-model-mismatch": "MODEL_TESTER.RULES.SERVED-MODEL-MISMATCH.TITLE",
+  substituted: "MODEL_TESTER.RULES.SUBSTITUTED.TITLE",
+  quorum: "MODEL_TESTER.RULES.QUORUM.TITLE",
+};
+
+const SEVERITY_KEY: Record<string, TranslationKey> = {
+  fail: "MODEL_TESTER.RESULT.SEVERITY.FAIL",
+  suspect: "MODEL_TESTER.RESULT.SEVERITY.SUSPECT",
+  inconclusive: "MODEL_TESTER.RESULT.SEVERITY.INCONCLUSIVE",
+  note: "MODEL_TESTER.RESULT.SEVERITY.NOTE",
+};
+const SEVERITY_TONE: Record<string, string> = {
+  fail: "border-destructive/30 bg-destructive/10 text-destructive",
+  suspect: "border-destructive/30 bg-destructive/10 text-destructive",
+  inconclusive:
+    "border-amber-500/30 bg-amber-500/10 text-amber-700 dark:text-amber-400",
+  note: "border-border bg-muted/40 text-muted-foreground",
+};
+
+const SURVEY_KEY: Record<string, TranslationKey> = {
+  "system-prompt": "MODEL_TESTER.SURVEY.SYSTEM-PROMPT",
+  arithmetic: "MODEL_TESTER.SURVEY.ARITHMETIC",
+  json: "MODEL_TESTER.SURVEY.JSON",
+  self: "MODEL_TESTER.SURVEY.SELF",
+  sensitive: "MODEL_TESTER.SURVEY.SENSITIVE",
 };
 const RULE_WHY_KEY: Record<string, TranslationKey> = {
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.WHY",
@@ -233,6 +278,18 @@ function ProbeRow(props: { probe: TestResultProbe; provider: VendorId }) {
               {t("MODEL_TESTER.PROBE_DETAIL.TOKENS")}:{" "}
               {probe.promptTokens ?? "-"} / {probe.completionTokens ?? "-"}
             </span>
+            {probe.reasoningTokens !== null ? (
+              <span>
+                {t("MODEL_TESTER.PROBE_DETAIL.REASONING_TOKENS")}:{" "}
+                {probe.reasoningTokens}
+              </span>
+            ) : null}
+            {probe.finishReason ? (
+              <span>
+                {t("MODEL_TESTER.PROBE_DETAIL.FINISH_REASON")}:{" "}
+                <span className="font-mono">{probe.finishReason}</span>
+              </span>
+            ) : null}
             {probe.reason ? (
               <span>
                 {t("MODEL_TESTER.PROBE_DETAIL.REASON")}: {probe.reason}
@@ -293,8 +350,109 @@ function ProbeRow(props: { probe: TestResultProbe; provider: VendorId }) {
               </pre>
             )}
           </div>
+          {probe.errorBody ? (
+            <div className="flex flex-col gap-1">
+              <span className="text-muted-foreground font-medium">
+                {t("MODEL_TESTER.PROBE_DETAIL.ERROR_BODY")}
+              </span>
+              <pre className="bg-muted/50 max-h-40 overflow-auto rounded-md p-2 font-mono text-[11px] whitespace-pre-wrap">
+                {probe.errorBody}
+              </pre>
+            </div>
+          ) : null}
         </div>
       ) : null}
+    </div>
+  );
+}
+
+function FindingsList(props: { findings: StoredFinding[] }) {
+  const t = useTranslations();
+  return (
+    <div className="flex flex-col gap-1.5">
+      <span className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+        {t("MODEL_TESTER.RESULT.FINDINGS")}
+      </span>
+      {props.findings.map((f, i) => {
+        const titleKey = RULE_TITLE_KEY[f.rule];
+        const severityKey = SEVERITY_KEY[f.severity];
+        return (
+          <div
+            key={`${f.rule}-${i}`}
+            className="border-border/60 flex flex-col gap-1 rounded-md border px-3 py-2 text-xs"
+          >
+            <span className="flex flex-wrap items-center gap-2">
+              <span
+                className={cn(
+                  "rounded-md border px-1.5 py-0.5 text-[10px] font-medium",
+                  SEVERITY_TONE[f.severity] ?? SEVERITY_TONE.note,
+                )}
+              >
+                {severityKey ? t(severityKey) : f.severity}
+              </span>
+              <span className="text-foreground font-medium">
+                {titleKey ? t(titleKey) : f.rule}
+              </span>
+              <span className="text-muted-foreground font-mono">{f.rule}</span>
+            </span>
+            <span className="text-muted-foreground font-mono break-words">
+              {f.reason}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function SurveyList(props: { survey: SurveyOutcome[] }) {
+  const t = useTranslations();
+  return (
+    <div className="flex flex-col gap-1.5">
+      <span className="text-muted-foreground text-xs font-medium tracking-wide uppercase">
+        {t("MODEL_TESTER.RESULT.SURVEY")}
+      </span>
+      <span className="text-muted-foreground text-xs">
+        {t("MODEL_TESTER.RESULT.SURVEY_HINT")}
+      </span>
+      {props.survey.map((s) => {
+        const labelKey = SURVEY_KEY[s.label];
+        return (
+          <div
+            key={s.label}
+            className="border-border/60 flex flex-col gap-1 rounded-md border px-3 py-2 text-xs"
+          >
+            <span className="text-foreground font-medium">
+              {labelKey ? t(labelKey) : s.label}
+            </span>
+            <span className="text-muted-foreground flex flex-wrap gap-x-4 gap-y-1">
+              <span>
+                {t("MODEL_TESTER.PROBE_DETAIL.STATUS")}: {s.httpStatus ?? "-"}
+              </span>
+              {s.finishReason ? (
+                <span>
+                  {t("MODEL_TESTER.PROBE_DETAIL.FINISH_REASON")}:{" "}
+                  <span className="font-mono">{s.finishReason}</span>
+                </span>
+              ) : null}
+              {s.reasoning?.reasoning !== null &&
+              s.reasoning?.reasoning !== undefined ? (
+                <span>
+                  {t("MODEL_TESTER.PROBE_DETAIL.REASONING_TOKENS")}:{" "}
+                  {s.reasoning.reasoning}
+                </span>
+              ) : null}
+              <span>{s.latencyMs}ms</span>
+            </span>
+            <pre className="bg-muted/50 max-h-40 overflow-auto rounded-md p-2 font-mono text-[11px] whitespace-pre-wrap">
+              {s.answer ??
+                s.errorBody ??
+                s.error ??
+                t("MODEL_TESTER.PROBE_DETAIL.NO_RESPONSE")}
+            </pre>
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -462,6 +620,26 @@ export function TestResultCard(props: {
               </span>
             </span>
           ) : null}
+          {result.thinkingFloor &&
+          result.thinkingFloor.state !== "skipped" &&
+          result.thinkingFloor.state !== "unmeasured" ? (
+            <span>
+              {t("MODEL_TESTER.RESULT.THINKING")}:{" "}
+              <span
+                className={
+                  result.thinkingFloor.state === "no-thinking"
+                    ? "font-mono text-red-600 dark:text-red-400"
+                    : "font-mono text-emerald-600 dark:text-emerald-400"
+                }
+              >
+                {t(
+                  result.thinkingFloor.state === "no-thinking"
+                    ? "MODEL_TESTER.RESULT.THINKING_NONE"
+                    : "MODEL_TESTER.RESULT.THINKING_THOUGHT",
+                )}
+              </span>
+            </span>
+          ) : null}
           {result.tokensPerSecond !== undefined ? (
             <span>
               {result.tokensPerSecond} {t("MODEL_TESTER.RESULT.THROUGHPUT")}
@@ -530,6 +708,9 @@ export function TestResultCard(props: {
               {t("MODEL_TESTER.VERDICT.VERSION_UNVERIFIABLE")}
             </p>
           ) : null}
+          {result.findings.length > 0 ? (
+            <FindingsList findings={result.findings} />
+          ) : null}
           {result.probes.map((probe, i) => (
             <ProbeRow
               key={`${probe.label}-${i}`}
@@ -537,6 +718,7 @@ export function TestResultCard(props: {
               provider={result.provider}
             />
           ))}
+          {result.survey?.length ? <SurveyList survey={result.survey} /> : null}
         </div>
       )}
     </section>

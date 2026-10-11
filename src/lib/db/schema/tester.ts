@@ -14,6 +14,10 @@ import type {
   VerifyProviderValue,
   VerifyVerdictValue,
 } from "@/lib/validation/model-tester";
+import type {
+  StoredFinding,
+  StoredReports,
+} from "@/lib/api/typebox/model-tester";
 import { timestamps } from "./shared";
 
 export const testerProviders = sqliteTable(
@@ -95,6 +99,8 @@ export const testerTests = sqliteTable(
     kind: text("kind").$type<VerifyProviderValue>(),
     baseUrlHost: text("base_url_host"),
     requestedModel: text("requested_model"),
+    findings: text("findings", { mode: "json" }).$type<StoredFinding[]>(),
+    reports: text("reports", { mode: "json" }).$type<StoredReports>(),
     ...timestamps(),
   },
   (table) => [
@@ -137,6 +143,9 @@ export const testerProbes = sqliteTable(
     promptTokens: integer("prompt_tokens"),
     completionTokens: integer("completion_tokens"),
     latencyMs: integer("latency_ms").notNull().default(0),
+    finishReason: text("finish_reason"),
+    reasoningTokens: integer("reasoning_tokens"),
+    errorBody: text("error_body"),
   },
   (table) => [
     index("idx_tester_probe_test").on(table.testId, table.orderIndex),

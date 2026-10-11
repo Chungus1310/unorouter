@@ -4636,7 +4636,19 @@
         "HOME": "Zgodność oczekiwanej tożsamości"
       },
       "INSPECT_PROBES": "Zobacz szczegóły testów",
-      "HIDE_PROBES": "Ukryj szczegóły testów"
+      "HIDE_PROBES": "Ukryj szczegóły testów",
+      "THINKING": "Rozumowanie",
+      "THINKING_THOUGHT": "rozumował",
+      "THINKING_NONE": "brak rozumowania",
+      "FINDINGS": "Wyniki reguł",
+      "SURVEY": "Ankieta",
+      "SURVEY_HINT": "Zadawana obok sond i zapisywana tak, jak odpowiedziano. Oceniane jest tylko pytanie historyczne, przez regułę odmowy platformy.",
+      "SEVERITY": {
+        "FAIL": "Niezaliczone",
+        "SUSPECT": "Podejrzane",
+        "INCONCLUSIVE": "Niejednoznaczne",
+        "NOTE": "Uwaga"
+      }
     },
     "HISTORY": {
       "EMPTY": "Brak testow. Uruchom jeden, aby zbudowac historie.",
@@ -4697,7 +4709,10 @@
       "TOKENS": "Tokeny (we/wy)",
       "REASON": "Powod",
       "NO_RESPONSE": "Nie przechwycono odpowiedzi.",
-      "WHAT_WE_CHECK": "Co sprawdza ten test"
+      "WHAT_WE_CHECK": "Co sprawdza ten test",
+      "FINISH_REASON": "Powód zakończenia",
+      "REASONING_TOKENS": "Tokeny rozumowania",
+      "ERROR_BODY": "Treść błędu"
     },
     "NAV": {
       "HISTORY_DESC": "Twoje poprzednie testy",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "Masz pomysł na lepszą sondę? Zaproponuj go tutaj:",
-      "SOURCE_LINK": "Zobacz kod wykrywania"
+      "SOURCE_LINK": "Zobacz kod wykrywania",
+      "FAKE-200": {
+        "TITLE": "Odmowa platformy wysłana jako odpowiedź",
+        "MEANS": "Endpoint odpowiedział HTTP 200, ale komunikatem filtra lub stroną błędu platformy zamiast modelu, na przykład „系统检测到您当前输入的信息存在敏感内容” albo „Request rejected by AI provider”.",
+        "WHY": "Bramka rozlicza 200 jako prawdziwą odpowiedź i nigdy nie ponawia gdzie indziej, więc użytkownik dostaje tekst odmowy jako odpowiedź. To historyczne pytanie z ankiety uruchamia takie filtry.",
+        "EXCEPTION": "model odmawia własnymi słowami albo żądanie kończy się statusem błędu."
+      }
     },
     "FAQ": {
       "TITLE": "Najczęściej zadawane pytania",
@@ -4886,6 +4907,13 @@
         "CHECKS": "Prosi model o podanie własnej nazwy modelu.",
         "WHY": "Błędna, niejasna lub odmówiona nazwa sygnalizuje, że punkt końcowy nie udostępnia reklamowanego modelu."
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "Powtórzenie wcześniejszych instrukcji",
+      "ARITHMETIC": "Arytmetyka",
+      "JSON": "Samoopis w JSON",
+      "SELF": "Samoopis",
+      "SENSITIVE": "Pytanie historyczne (filtr treści)"
     }
   },
   "DOCS_CHAT": {

@@ -4636,7 +4636,19 @@
         "HOME": "Expected identity match"
       },
       "INSPECT_PROBES": "Inspect probe details",
-      "HIDE_PROBES": "Hide probe details"
+      "HIDE_PROBES": "Hide probe details",
+      "THINKING": "Thinking",
+      "THINKING_THOUGHT": "thought",
+      "THINKING_NONE": "no thinking",
+      "FINDINGS": "Rule findings",
+      "SURVEY": "Survey",
+      "SURVEY_HINT": "Asked beside the probes and recorded as answered. Only the historical question is judged, by the platform refusal rule.",
+      "SEVERITY": {
+        "FAIL": "Fail",
+        "SUSPECT": "Suspect",
+        "INCONCLUSIVE": "Inconclusive",
+        "NOTE": "Note"
+      }
     },
     "HISTORY": {
       "EMPTY": "No tests yet. Run one to build your history.",
@@ -4697,7 +4709,10 @@
       "TOKENS": "Tokens (in/out)",
       "REASON": "Reason",
       "NO_RESPONSE": "No response captured.",
-      "WHAT_WE_CHECK": "What this probe checks"
+      "WHAT_WE_CHECK": "What this probe checks",
+      "FINISH_REASON": "Finish reason",
+      "REASONING_TOKENS": "Reasoning tokens",
+      "ERROR_BODY": "Error body"
     },
     "NAV": {
       "HISTORY_DESC": "Your past tests",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "Have an idea for a better probe? Suggest one here:",
-      "SOURCE_LINK": "View the detection code"
+      "SOURCE_LINK": "View the detection code",
+      "FAKE-200": {
+        "TITLE": "Platform refusal sent as the answer",
+        "MEANS": "The endpoint answered HTTP 200 with a platform's own filter line or error page instead of the model, for example \"系统检测到您当前输入的信息存在敏感内容\" or \"Request rejected by AI provider\".",
+        "WHY": "A gateway bills a 200 as a real answer and never retries elsewhere, so users get the refusal text as the reply. The survey's historical question is the one that trips these filters.",
+        "EXCEPTION": "the model refuses in its own words, or the request fails with an error status."
+      }
     },
     "FAQ": {
       "TITLE": "Frequently asked questions",
@@ -4886,6 +4907,13 @@
         "CHECKS": "Asks the model to state its own model name.",
         "WHY": "A wrong, vague or refused name signals the endpoint is not serving the model it advertises."
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "Replay of prior instructions",
+      "ARITHMETIC": "Arithmetic",
+      "JSON": "JSON self description",
+      "SELF": "Self description",
+      "SENSITIVE": "Historical question (content filter)"
     }
   },
   "DOCS_CHAT": {

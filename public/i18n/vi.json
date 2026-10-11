@@ -4636,7 +4636,19 @@
         "HOME": "Khớp danh tính như dự kiến"
       },
       "INSPECT_PROBES": "Xem chi tiết phép thử",
-      "HIDE_PROBES": "Ẩn chi tiết phép thử"
+      "HIDE_PROBES": "Ẩn chi tiết phép thử",
+      "THINKING": "Suy luận",
+      "THINKING_THOUGHT": "có suy luận",
+      "THINKING_NONE": "không suy luận",
+      "FINDINGS": "Kết quả theo quy tắc",
+      "SURVEY": "Khảo sát",
+      "SURVEY_HINT": "Được hỏi cùng các probe và ghi lại đúng như câu trả lời. Chỉ câu hỏi lịch sử được đánh giá, bằng quy tắc từ chối của nền tảng.",
+      "SEVERITY": {
+        "FAIL": "Không đạt",
+        "SUSPECT": "Đáng ngờ",
+        "INCONCLUSIVE": "Chưa kết luận",
+        "NOTE": "Ghi chú"
+      }
     },
     "HISTORY": {
       "EMPTY": "Chua co bai kiem tra nao. Chay mot bai de tao lich su.",
@@ -4697,7 +4709,10 @@
       "TOKENS": "Token (vao/ra)",
       "REASON": "Ly do",
       "NO_RESPONSE": "Khong co phan hoi nao duoc ghi lai.",
-      "WHAT_WE_CHECK": "Phép thử này kiểm tra gì"
+      "WHAT_WE_CHECK": "Phép thử này kiểm tra gì",
+      "FINISH_REASON": "Lý do kết thúc",
+      "REASONING_TOKENS": "Token suy luận",
+      "ERROR_BODY": "Nội dung lỗi"
     },
     "NAV": {
       "HISTORY_DESC": "Cac bai kiem tra truoc cua ban",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "Có ý tưởng cho một phép thử tốt hơn? Đề xuất tại đây:",
-      "SOURCE_LINK": "Xem mã phát hiện"
+      "SOURCE_LINK": "Xem mã phát hiện",
+      "FAKE-200": {
+        "TITLE": "Lời từ chối của nền tảng được gửi như câu trả lời",
+        "MEANS": "Endpoint trả về HTTP 200 nhưng là thông báo bộ lọc hoặc trang lỗi của nền tảng thay vì mô hình, ví dụ \"系统检测到您当前输入的信息存在敏感内容\" hoặc \"Request rejected by AI provider\".",
+        "WHY": "Cổng tính phí phản hồi 200 như một câu trả lời thật và không bao giờ thử lại ở nơi khác, nên người dùng nhận văn bản từ chối làm câu trả lời. Câu hỏi lịch sử trong khảo sát là câu kích hoạt các bộ lọc này.",
+        "EXCEPTION": "mô hình từ chối bằng lời của chính nó, hoặc yêu cầu thất bại với mã lỗi."
+      }
     },
     "FAQ": {
       "TITLE": "Câu hỏi thường gặp",
@@ -4886,6 +4907,13 @@
         "CHECKS": "Yêu cầu mô hình nêu tên mô hình của chính nó.",
         "WHY": "Tên sai, mơ hồ hoặc bị từ chối cho thấy điểm cuối không phục vụ mô hình như quảng cáo."
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "Lặp lại chỉ dẫn trước đó",
+      "ARITHMETIC": "Số học",
+      "JSON": "Tự mô tả bằng JSON",
+      "SELF": "Tự mô tả",
+      "SENSITIVE": "Câu hỏi lịch sử (bộ lọc nội dung)"
     }
   },
   "DOCS_CHAT": {

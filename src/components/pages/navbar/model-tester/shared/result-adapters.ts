@@ -1,6 +1,40 @@
 import type { ResultCardData } from "./test-result-card";
-import type { TestResultDetail } from "@/lib/api/typebox/model-tester";
+import type {
+  StoredReports,
+  TestResultDetail,
+} from "@/lib/api/typebox/model-tester";
 import type { VerifyResult } from "ai-model-verifier";
+import {
+  probeColumns,
+  storedFindings,
+  storedReports,
+  toTestResultProbe,
+} from "@/lib/api/model-tester-rows";
+
+/** The report-derived fields, the same for a live run and a stored one. */
+function fromReports(reports: StoredReports) {
+  return {
+    ...(reports.signature
+      ? {
+          signature: {
+            state: reports.signature.state,
+            signatureLength: reports.signature.signatureLength,
+          },
+        }
+      : {}),
+    ...(reports.tokenTruth
+      ? { tokenTruth: { ok: reports.tokenTruth.ok } }
+      : {}),
+    ...(reports.responseMetadata?.notes.length
+      ? { envelopeNotes: reports.responseMetadata.notes }
+      : {}),
+    ...(reports.throughput
+      ? { tokensPerSecond: reports.throughput.tokensPerSecond }
+      : {}),
+    ...(reports.thinkingFloor ? { thinkingFloor: reports.thinkingFloor } : {}),
+    ...(reports.survey ? { survey: reports.survey } : {}),
+  };
+}
 
 export function fromVerifyResult(r: VerifyResult): ResultCardData {
   return {
@@ -19,39 +53,22 @@ export function fromVerifyResult(r: VerifyResult): ResultCardData {
     resolvedFormat: r.resolvedVendor,
     formatFellBack: r.resolvedVendor !== r.vendor,
     connectivityError: r.connectivityError,
-    ...(r.signature
-      ? {
-          signature: {
-            state: r.signature.state,
-            signatureLength: r.signature.signatureLength,
-          },
-        }
-      : {}),
-    ...(r.tokenTruth ? { tokenTruth: { ok: r.tokenTruth.ok } } : {}),
-    ...(r.responseMetadata?.notes.length
-      ? { envelopeNotes: r.responseMetadata.notes }
-      : {}),
-    ...(r.throughput ? { tokensPerSecond: r.throughput.tokensPerSecond } : {}),
-    probes: r.probes.map((p) => ({
-      label: p.label,
-      pass: p.pass,
-      transient: p.transient,
-      signal: p.signal,
-      reason: p.reason,
-      prompt: p.prompt,
-      responseText: p.responseText,
-      httpStatus: p.httpStatus,
-      promptTokens: p.usage?.prompt ?? null,
-      completionTokens: p.usage?.completion ?? null,
-      latencyMs: p.latencyMs,
-    })),
+    ...fromReports(storedReports(r)),
+    findings: storedFindings(r),
+    probes: r.probes.map((p) => toTestResultProbe(probeColumns(p))),
   };
 }
 
 export function toResultCardData(detail: TestResultDetail): ResultCardData {
-  const reasons = detail.probes
-    .filter((p) => !p.pass && p.reason)
-    .map((p) => `${p.label}: ${p.reason}`);
+  // Rows from before findings were stored rebuild the evidence from the probes.
+  const reasons =
+    detail.findings.length > 0
+      ? detail.findings
+          .filter((f) => f.severity !== "note")
+          .map((f) => f.reason)
+      : detail.probes
+          .filter((p) => !p.pass && p.reason)
+          .map((p) => `${p.label}: ${p.reason}`);
   return {
     model: detail.model,
     baseUrlHost: detail.baseUrlHost,
@@ -68,18 +85,8 @@ export function toResultCardData(detail: TestResultDetail): ResultCardData {
     resolvedFormat: detail.resolvedFormat,
     formatFellBack: detail.formatFellBack,
     connectivityError: null,
-    probes: detail.probes.map((p) => ({
-      label: p.label,
-      pass: p.pass,
-      transient: p.transient,
-      signal: p.signal,
-      reason: p.reason,
-      prompt: p.prompt,
-      responseText: p.responseText,
-      httpStatus: p.httpStatus,
-      promptTokens: p.promptTokens,
-      completionTokens: p.completionTokens,
-      latencyMs: p.latencyMs,
-    })),
+    ...fromReports(detail.reports),
+    findings: detail.findings,
+    probes: detail.probes,
   };
 }

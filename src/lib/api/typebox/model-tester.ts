@@ -1,4 +1,5 @@
 import { t, type Static } from "elysia";
+import type { VerifyResult } from "ai-model-verifier";
 import type { VerifyProviderValue } from "@/lib/validation/model-tester";
 
 export const verifyAndPublishBody = t.Object({
@@ -87,7 +88,32 @@ export type TestResultProbe = {
   promptTokens: number | null;
   completionTokens: number | null;
   latencyMs: number;
+  /** Why generation stopped, as the wire spells it; null on rows from before 3.7. */
+  finishReason: string | null;
+  reasoningTokens: number | null;
+  /** Body of a refused request, capped by the verifier. */
+  errorBody: string | null;
 };
+
+/** Every rule's finding on a run, notes included. */
+export type StoredFinding = {
+  rule: string;
+  layer: string;
+  severity: string;
+  reason: string;
+};
+
+/** The rule reports a run carries beside its probes. */
+export type StoredReports = Pick<
+  VerifyResult,
+  | "signature"
+  | "tokenTruth"
+  | "thinkingFloor"
+  | "tokenizerFingerprint"
+  | "responseMetadata"
+  | "throughput"
+  | "survey"
+>;
 
 export type TestResultDetail = {
   model: string;
@@ -105,4 +131,6 @@ export type TestResultDetail = {
   formatFellBack: boolean;
   testedAt: number;
   probes: TestResultProbe[];
+  findings: StoredFinding[];
+  reports: StoredReports;
 };

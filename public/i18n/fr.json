@@ -4636,7 +4636,19 @@
         "HOME": "Identité attendue confirmée"
       },
       "INSPECT_PROBES": "Voir le détail des tests",
-      "HIDE_PROBES": "Masquer le détail des tests"
+      "HIDE_PROBES": "Masquer le détail des tests",
+      "THINKING": "Réflexion",
+      "THINKING_THOUGHT": "a réfléchi",
+      "THINKING_NONE": "aucune réflexion",
+      "FINDINGS": "Constats des règles",
+      "SURVEY": "Questionnaire",
+      "SURVEY_HINT": "Posé à côté des sondes et enregistré tel que répondu. Seule la question historique est évaluée, par la règle de refus de la plateforme.",
+      "SEVERITY": {
+        "FAIL": "Échec",
+        "SUSPECT": "Suspect",
+        "INCONCLUSIVE": "Non concluant",
+        "NOTE": "Note"
+      }
     },
     "HISTORY": {
       "EMPTY": "Aucun test pour l'instant. Lancez-en un pour constituer votre historique.",
@@ -4697,7 +4709,10 @@
       "TOKENS": "Jetons (entree/sortie)",
       "REASON": "Raison",
       "NO_RESPONSE": "Aucune reponse capturee.",
-      "WHAT_WE_CHECK": "Ce que vérifie ce test"
+      "WHAT_WE_CHECK": "Ce que vérifie ce test",
+      "FINISH_REASON": "Raison de fin",
+      "REASONING_TOKENS": "Jetons de raisonnement",
+      "ERROR_BODY": "Corps de l'erreur"
     },
     "NAV": {
       "HISTORY_DESC": "Vos tests passes",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "Une idée pour une meilleure sonde ? Proposez-la ici :",
-      "SOURCE_LINK": "Voir le code de détection"
+      "SOURCE_LINK": "Voir le code de détection",
+      "FAKE-200": {
+        "TITLE": "Refus de la plateforme renvoyé comme réponse",
+        "MEANS": "Le point d'accès a répondu HTTP 200 avec le message de filtrage ou la page d'erreur d'une plateforme au lieu du modèle, par exemple « 系统检测到您当前输入的信息存在敏感内容 » ou « Request rejected by AI provider ».",
+        "WHY": "Une passerelle facture un 200 comme une vraie réponse et ne réessaie jamais ailleurs : l'utilisateur reçoit le texte de refus comme réponse. C'est la question historique du questionnaire qui déclenche ces filtres.",
+        "EXCEPTION": "le modèle refuse avec ses propres mots, ou la requête échoue avec un code d'erreur."
+      }
     },
     "FAQ": {
       "TITLE": "Questions fréquentes",
@@ -4886,6 +4907,13 @@
         "CHECKS": "Demande au modèle d'indiquer son propre nom de modèle.",
         "WHY": "Un nom erroné, vague ou refusé signale que le point de terminaison ne sert pas le modèle annoncé."
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "Répétition des instructions préalables",
+      "ARITHMETIC": "Arithmétique",
+      "JSON": "Autodescription JSON",
+      "SELF": "Autodescription",
+      "SENSITIVE": "Question historique (filtre de contenu)"
     }
   },
   "DOCS_CHAT": {

@@ -4636,7 +4636,19 @@
         "HOME": "Beklenen kimlik eşleşmesi"
       },
       "INSPECT_PROBES": "Denetim ayrıntılarını incele",
-      "HIDE_PROBES": "Denetim ayrıntılarını gizle"
+      "HIDE_PROBES": "Denetim ayrıntılarını gizle",
+      "THINKING": "Akıl yürütme",
+      "THINKING_THOUGHT": "akıl yürüttü",
+      "THINKING_NONE": "akıl yürütme yok",
+      "FINDINGS": "Kural bulguları",
+      "SURVEY": "Anket",
+      "SURVEY_HINT": "Probların yanında sorulur ve verildiği gibi kaydedilir. Yalnızca tarih sorusu, platform reddi kuralıyla değerlendirilir.",
+      "SEVERITY": {
+        "FAIL": "Başarısız",
+        "SUSPECT": "Şüpheli",
+        "INCONCLUSIVE": "Belirsiz",
+        "NOTE": "Not"
+      }
     },
     "HISTORY": {
       "EMPTY": "Henuz test yok. Gecmis olusturmak icin bir tane calistirin.",
@@ -4697,7 +4709,10 @@
       "TOKENS": "Token (giris/cikis)",
       "REASON": "Neden",
       "NO_RESPONSE": "Yanit yakalanmadi.",
-      "WHAT_WE_CHECK": "Bu denetimin neyi sınadığı"
+      "WHAT_WE_CHECK": "Bu denetimin neyi sınadığı",
+      "FINISH_REASON": "Bitiş nedeni",
+      "REASONING_TOKENS": "Akıl yürütme tokenleri",
+      "ERROR_BODY": "Hata gövdesi"
     },
     "NAV": {
       "HISTORY_DESC": "Gecmis testleriniz",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "Daha iyi bir prob için fikrin mi var? Buradan öner:",
-      "SOURCE_LINK": "Tespit kodunu görüntüle"
+      "SOURCE_LINK": "Tespit kodunu görüntüle",
+      "FAKE-200": {
+        "TITLE": "Yanıt olarak gönderilen platform reddi",
+        "MEANS": "Uç nokta HTTP 200 döndürdü, ancak model yerine bir platformun kendi filtre mesajını veya hata sayfasını gönderdi; örneğin „系统检测到您当前输入的信息存在敏感内容” ya da „Request rejected by AI provider”.",
+        "WHY": "Bir ağ geçidi 200 yanıtını gerçek yanıt olarak faturalandırır ve başka yerde yeniden denemez, bu yüzden kullanıcı ret metnini yanıt olarak alır. Bu filtreleri tetikleyen, anketteki tarih sorusudur.",
+        "EXCEPTION": "model kendi sözleriyle reddeder ya da istek bir hata durumuyla başarısız olur."
+      }
     },
     "FAQ": {
       "TITLE": "Sıkça sorulan sorular",
@@ -4886,6 +4907,13 @@
         "CHECKS": "Modelden kendi model adını belirtmesini ister.",
         "WHY": "Yanlış, belirsiz veya reddedilen bir ad, uç noktanın tanıtılan modeli sunmadığını gösterir."
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "Önceki talimatların tekrarı",
+      "ARITHMETIC": "Aritmetik",
+      "JSON": "JSON ile kendini tanıtma",
+      "SELF": "Kendini tanıtma",
+      "SENSITIVE": "Tarih sorusu (içerik filtresi)"
     }
   },
   "DOCS_CHAT": {

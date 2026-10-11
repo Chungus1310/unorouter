@@ -4636,7 +4636,19 @@
         "HOME": "Identitas yang diharapkan cocok"
       },
       "INSPECT_PROBES": "Lihat detail probe",
-      "HIDE_PROBES": "Sembunyikan detail probe"
+      "HIDE_PROBES": "Sembunyikan detail probe",
+      "THINKING": "Penalaran",
+      "THINKING_THOUGHT": "bernalar",
+      "THINKING_NONE": "tanpa penalaran",
+      "FINDINGS": "Temuan aturan",
+      "SURVEY": "Survei",
+      "SURVEY_HINT": "Ditanyakan di samping probe dan dicatat apa adanya. Hanya pertanyaan sejarah yang dinilai, oleh aturan penolakan platform.",
+      "SEVERITY": {
+        "FAIL": "Gagal",
+        "SUSPECT": "Mencurigakan",
+        "INCONCLUSIVE": "Tidak meyakinkan",
+        "NOTE": "Catatan"
+      }
     },
     "HISTORY": {
       "EMPTY": "Belum ada uji. Jalankan satu untuk membangun riwayat Anda.",
@@ -4697,7 +4709,10 @@
       "TOKENS": "Token (masuk/keluar)",
       "REASON": "Alasan",
       "NO_RESPONSE": "Tidak ada respons yang ditangkap.",
-      "WHAT_WE_CHECK": "Apa yang diperiksa probe ini"
+      "WHAT_WE_CHECK": "Apa yang diperiksa probe ini",
+      "FINISH_REASON": "Alasan selesai",
+      "REASONING_TOKENS": "Token penalaran",
+      "ERROR_BODY": "Isi galat"
     },
     "NAV": {
       "HISTORY_DESC": "Uji Anda sebelumnya",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "Punya ide untuk probe yang lebih baik? Ajukan di sini:",
-      "SOURCE_LINK": "Lihat kode deteksi"
+      "SOURCE_LINK": "Lihat kode deteksi",
+      "FAKE-200": {
+        "TITLE": "Penolakan platform dikirim sebagai jawaban",
+        "MEANS": "Endpoint menjawab HTTP 200 dengan pesan filter atau halaman galat milik platform, bukan dari model, misalnya \"系统检测到您当前输入的信息存在敏感内容\" atau \"Request rejected by AI provider\".",
+        "WHY": "Gateway menagih respons 200 sebagai jawaban sungguhan dan tidak pernah mencoba ulang di tempat lain, jadi pengguna menerima teks penolakan sebagai jawaban. Pertanyaan sejarah dalam survei itulah yang memicu filter ini.",
+        "EXCEPTION": "model menolak dengan kata-katanya sendiri, atau permintaan gagal dengan status galat."
+      }
     },
     "FAQ": {
       "TITLE": "Pertanyaan yang sering diajukan",
@@ -4886,6 +4907,13 @@
         "CHECKS": "Meminta model menyebutkan nama modelnya sendiri.",
         "WHY": "Nama yang salah, kabur, atau ditolak menandakan endpoint tidak menyajikan model yang diiklankan."
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "Pengulangan instruksi sebelumnya",
+      "ARITHMETIC": "Aritmetika",
+      "JSON": "Deskripsi diri dalam JSON",
+      "SELF": "Deskripsi diri",
+      "SENSITIVE": "Pertanyaan sejarah (filter konten)"
     }
   },
   "DOCS_CHAT": {

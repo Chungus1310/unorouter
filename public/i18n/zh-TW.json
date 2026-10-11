@@ -4636,7 +4636,19 @@
         "HOME": "符合預期的身分"
       },
       "INSPECT_PROBES": "查看探測詳情",
-      "HIDE_PROBES": "隱藏探測詳情"
+      "HIDE_PROBES": "隱藏探測詳情",
+      "THINKING": "思考",
+      "THINKING_THOUGHT": "有思考",
+      "THINKING_NONE": "沒有思考",
+      "FINDINGS": "規則判定",
+      "SURVEY": "調查",
+      "SURVEY_HINT": "與探測一同提問，按回答原樣記錄。只有歷史問題會被評判，由平台拒絕規則判定。",
+      "SEVERITY": {
+        "FAIL": "失敗",
+        "SUSPECT": "可疑",
+        "INCONCLUSIVE": "無法判定",
+        "NOTE": "備註"
+      }
     },
     "HISTORY": {
       "EMPTY": "尚無檢測記錄。執行一次以建立歷史。",
@@ -4697,7 +4709,10 @@
       "TOKENS": "權杖（入/出）",
       "REASON": "原因",
       "NO_RESPONSE": "未擷取到回應。",
-      "WHAT_WE_CHECK": "此探測檢查什麼"
+      "WHAT_WE_CHECK": "此探測檢查什麼",
+      "FINISH_REASON": "結束原因",
+      "REASONING_TOKENS": "推理 token",
+      "ERROR_BODY": "錯誤內容"
     },
     "NAV": {
       "HISTORY_DESC": "你過去的檢測",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "對更好的探測有想法嗎？在這裡提交：",
-      "SOURCE_LINK": "查看偵測程式碼"
+      "SOURCE_LINK": "查看偵測程式碼",
+      "FAKE-200": {
+        "TITLE": "平台拒絕文字被當作回答傳回",
+        "MEANS": "該端點傳回了 HTTP 200，但內容是平台自己的過濾提示或錯誤頁面，而不是模型的回答，例如「系统检测到您当前输入的信息存在敏感内容」或「Request rejected by AI provider」。",
+        "WHY": "閘道會把 200 當作真實回答計費，而且不會改到別處重試，所以使用者收到的回答就是這段拒絕文字。觸發這類過濾的是調查中的歷史問題。",
+        "EXCEPTION": "模型用自己的話拒絕，或者請求以錯誤狀態失敗。"
+      }
     },
     "FAQ": {
       "TITLE": "常見問題",
@@ -4886,6 +4907,13 @@
         "CHECKS": "要求模型說出自己的模型名稱。",
         "WHY": "名稱錯誤、含糊或拒答，說明該端點提供的並非其所宣傳的模型。"
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "複述先前的指令",
+      "ARITHMETIC": "算術題",
+      "JSON": "JSON 自我介紹",
+      "SELF": "自我介紹",
+      "SENSITIVE": "歷史問題（內容過濾）"
     }
   },
   "DOCS_CHAT": {

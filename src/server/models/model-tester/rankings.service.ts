@@ -11,6 +11,13 @@ import { GUEST_USER_ID } from "@/lib/config/constants";
 import { wireForModel } from "ai-model-verifier/models";
 import { verify, type VerifyResult } from "ai-model-verifier";
 import { serverTransport } from "./server-verify.service";
+import {
+  TESTER_CHECKS,
+  probeColumns,
+  storedFindings,
+  storedReports,
+  toTestResultProbe,
+} from "@/lib/api/model-tester-rows";
 import { and, desc, eq, gt, isNotNull, ne, sql } from "drizzle-orm";
 import type {
   ProviderAggregateRow,
@@ -126,7 +133,7 @@ export async function verifyAndPublish(
     model: body.model,
     mode: "direct",
     transport: serverTransport,
-    checks: { signature: true, tokenTruth: true },
+    checks: TESTER_CHECKS,
   });
   if (result.connectivityError)
     return { published: false, error: result.connectivityError, result };
@@ -195,6 +202,8 @@ async function persistPublishedTest(opts: {
     transport: result.transport,
     formatFellBack: result.resolvedVendor !== result.vendor,
     resolvedFormat: result.resolvedVendor,
+    findings: storedFindings(result),
+    reports: storedReports(result),
     testedAt: now,
     verifiedAt: now,
   });
@@ -204,17 +213,7 @@ async function persistPublishedTest(opts: {
     result.probes.map((p, orderIndex) => ({
       testId,
       orderIndex,
-      label: p.label,
-      prompt: p.prompt,
-      responseText: p.responseText,
-      httpStatus: p.httpStatus,
-      pass: p.pass,
-      transient: p.transient,
-      signal: p.signal,
-      reason: p.reason,
-      promptTokens: p.usage?.prompt ?? null,
-      completionTokens: p.usage?.completion ?? null,
-      latencyMs: p.latencyMs,
+      ...probeColumns(p),
     })),
   );
 }
@@ -458,19 +457,9 @@ export async function getPublishedTestDetail(
     resolvedFormat: test.resolvedFormat ?? test.kind ?? "openai",
     formatFellBack: test.formatFellBack ?? false,
     testedAt: test.testedAt.getTime(),
-    probes: probes.map((p) => ({
-      label: p.label,
-      pass: p.pass,
-      transient: p.transient,
-      signal: p.signal,
-      reason: p.reason,
-      prompt: p.prompt,
-      responseText: p.responseText,
-      httpStatus: p.httpStatus,
-      promptTokens: p.promptTokens,
-      completionTokens: p.completionTokens,
-      latencyMs: p.latencyMs,
-    })),
+    probes: probes.map(toTestResultProbe),
+    findings: test.findings ?? [],
+    reports: test.reports ?? {},
   };
 }
 

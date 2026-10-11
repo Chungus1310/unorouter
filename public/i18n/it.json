@@ -4636,7 +4636,19 @@
         "HOME": "Identità prevista confermata"
       },
       "INSPECT_PROBES": "Esamina i dettagli delle prove",
-      "HIDE_PROBES": "Nascondi i dettagli delle prove"
+      "HIDE_PROBES": "Nascondi i dettagli delle prove",
+      "THINKING": "Ragionamento",
+      "THINKING_THOUGHT": "ha ragionato",
+      "THINKING_NONE": "nessun ragionamento",
+      "FINDINGS": "Esiti delle regole",
+      "SURVEY": "Questionario",
+      "SURVEY_HINT": "Posto accanto alle sonde e registrato così come risposto. Viene valutata solo la domanda storica, dalla regola sul rifiuto della piattaforma.",
+      "SEVERITY": {
+        "FAIL": "Fallito",
+        "SUSPECT": "Sospetto",
+        "INCONCLUSIVE": "Non conclusivo",
+        "NOTE": "Nota"
+      }
     },
     "HISTORY": {
       "EMPTY": "Ancora nessun test. Avviane uno per creare la cronologia.",
@@ -4697,7 +4709,10 @@
       "TOKENS": "Token (in/out)",
       "REASON": "Motivo",
       "NO_RESPONSE": "Nessuna risposta acquisita.",
-      "WHAT_WE_CHECK": "Cosa verifica questa prova"
+      "WHAT_WE_CHECK": "Cosa verifica questa prova",
+      "FINISH_REASON": "Motivo di fine",
+      "REASONING_TOKENS": "Token di ragionamento",
+      "ERROR_BODY": "Corpo dell'errore"
     },
     "NAV": {
       "HISTORY_DESC": "I tuoi test passati",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "Hai un'idea per una sonda migliore? Proponila qui:",
-      "SOURCE_LINK": "Vedi il codice di rilevamento"
+      "SOURCE_LINK": "Vedi il codice di rilevamento",
+      "FAKE-200": {
+        "TITLE": "Rifiuto della piattaforma inviato come risposta",
+        "MEANS": "L'endpoint ha risposto HTTP 200 con il messaggio di filtro o la pagina di errore di una piattaforma al posto del modello, per esempio «系统检测到您当前输入的信息存在敏感内容» o «Request rejected by AI provider».",
+        "WHY": "Un gateway fattura un 200 come una risposta vera e non riprova mai altrove, quindi l'utente riceve il testo di rifiuto come risposta. È la domanda storica del questionario a far scattare questi filtri.",
+        "EXCEPTION": "il modello rifiuta con parole sue, oppure la richiesta fallisce con uno stato di errore."
+      }
     },
     "FAQ": {
       "TITLE": "Domande frequenti",
@@ -4886,6 +4907,13 @@
         "CHECKS": "Chiede al modello di dichiarare il proprio nome.",
         "WHY": "Un nome sbagliato, vago o rifiutato segnala che l'endpoint non serve il modello pubblicizzato."
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "Ripetizione delle istruzioni precedenti",
+      "ARITHMETIC": "Aritmetica",
+      "JSON": "Autodescrizione JSON",
+      "SELF": "Autodescrizione",
+      "SENSITIVE": "Domanda storica (filtro dei contenuti)"
     }
   },
   "DOCS_CHAT": {

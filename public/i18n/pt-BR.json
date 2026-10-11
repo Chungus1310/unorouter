@@ -4636,7 +4636,19 @@
         "HOME": "Identidade esperada confirmada"
       },
       "INSPECT_PROBES": "Ver detalhes das provas",
-      "HIDE_PROBES": "Ocultar detalhes das provas"
+      "HIDE_PROBES": "Ocultar detalhes das provas",
+      "THINKING": "Raciocínio",
+      "THINKING_THOUGHT": "raciocinou",
+      "THINKING_NONE": "sem raciocínio",
+      "FINDINGS": "Resultados das regras",
+      "SURVEY": "Questionário",
+      "SURVEY_HINT": "Perguntado junto com as sondas e registrado como respondido. Só a pergunta histórica é avaliada, pela regra de recusa da plataforma.",
+      "SEVERITY": {
+        "FAIL": "Falha",
+        "SUSPECT": "Suspeito",
+        "INCONCLUSIVE": "Inconclusivo",
+        "NOTE": "Observação"
+      }
     },
     "HISTORY": {
       "EMPTY": "Ainda sem testes. Execute um para criar seu historico.",
@@ -4697,7 +4709,10 @@
       "TOKENS": "Tokens (ent/sai)",
       "REASON": "Motivo",
       "NO_RESPONSE": "Nenhuma resposta capturada.",
-      "WHAT_WE_CHECK": "O que esta prova verifica"
+      "WHAT_WE_CHECK": "O que esta prova verifica",
+      "FINISH_REASON": "Motivo de término",
+      "REASONING_TOKENS": "Tokens de raciocínio",
+      "ERROR_BODY": "Corpo do erro"
     },
     "NAV": {
       "HISTORY_DESC": "Seus testes anteriores",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "Tem uma ideia para uma sonda melhor? Sugira aqui:",
-      "SOURCE_LINK": "Ver o código de detecção"
+      "SOURCE_LINK": "Ver o código de detecção",
+      "FAKE-200": {
+        "TITLE": "Recusa da plataforma enviada como resposta",
+        "MEANS": "O endpoint respondeu HTTP 200 com a mensagem de filtro ou a página de erro de uma plataforma em vez do modelo, por exemplo “系统检测到您当前输入的信息存在敏感内容” ou “Request rejected by AI provider”.",
+        "WHY": "Um gateway cobra um 200 como resposta real e nunca tenta em outro lugar, então o usuário recebe o texto de recusa como resposta. É a pergunta histórica do questionário que aciona esses filtros.",
+        "EXCEPTION": "o modelo recusa com as próprias palavras, ou a requisição falha com um status de erro."
+      }
     },
     "FAQ": {
       "TITLE": "Perguntas frequentes",
@@ -4886,6 +4907,13 @@
         "CHECKS": "Pede ao modelo que declare o próprio nome de modelo.",
         "WHY": "Um nome errado, vago ou recusado indica que o endpoint não serve o modelo anunciado."
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "Repetição das instruções anteriores",
+      "ARITHMETIC": "Aritmética",
+      "JSON": "Autodescrição em JSON",
+      "SELF": "Autodescrição",
+      "SENSITIVE": "Pergunta histórica (filtro de conteúdo)"
     }
   },
   "DOCS_CHAT": {

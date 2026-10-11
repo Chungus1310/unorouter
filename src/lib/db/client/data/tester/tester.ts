@@ -14,6 +14,12 @@ import type { TesterProbeRow, TesterTestRow } from "@/lib/db/schema/rows";
 import type { VerifyResult } from "ai-model-verifier";
 import type { VerifyProviderValue } from "@/lib/validation/model-tester";
 import type { TestResultDetail } from "@/lib/api/typebox/model-tester";
+import {
+  probeColumns,
+  storedFindings,
+  storedReports,
+  toTestResultProbe,
+} from "@/lib/api/model-tester-rows";
 
 export type HistoryProviderRow = {
   baseUrlHost: string;
@@ -56,19 +62,9 @@ function toTestResultDetail(
     resolvedFormat: test.resolvedFormat ?? provider.kind,
     formatFellBack: test.formatFellBack,
     testedAt: test.testedAt.getTime(),
-    probes: probes.map((p) => ({
-      label: p.label,
-      pass: p.pass,
-      transient: p.transient,
-      signal: p.signal,
-      reason: p.reason,
-      prompt: p.prompt,
-      responseText: p.responseText,
-      httpStatus: p.httpStatus,
-      promptTokens: p.promptTokens,
-      completionTokens: p.completionTokens,
-      latencyMs: p.latencyMs,
-    })),
+    probes: probes.map(toTestResultProbe),
+    findings: test.findings ?? [],
+    reports: test.reports ?? {},
   };
 }
 
@@ -182,6 +178,8 @@ export async function recordTestRun(
     transport: result.transport,
     resolvedFormat: result.resolvedVendor,
     formatFellBack: result.resolvedVendor !== result.vendor,
+    findings: storedFindings(result),
+    reports: storedReports(result),
     testedAt: now,
     publishedAt: publish ? now : null,
   });
@@ -192,17 +190,7 @@ export async function recordTestRun(
       id: genId(),
       testId,
       orderIndex: i,
-      label: p.label,
-      prompt: p.prompt,
-      responseText: p.responseText,
-      httpStatus: p.httpStatus,
-      pass: p.pass,
-      transient: p.transient,
-      signal: p.signal,
-      reason: p.reason,
-      promptTokens: p.usage?.prompt ?? null,
-      completionTokens: p.usage?.completion ?? null,
-      latencyMs: p.latencyMs,
+      ...probeColumns(p),
     });
   }
   return testId;

@@ -18,6 +18,7 @@ import {
   type ModelTesterForm,
 } from "@/lib/validation/model-tester";
 import { cn } from "@/lib/utils";
+import { TESTER_CHECKS } from "@/lib/api/model-tester-rows";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Controller } from "react-hook-form";
@@ -64,7 +65,7 @@ export function TesterForm() {
         model: values.model,
         mode,
         serverProxyUrl: "/api/models/verify/probe",
-        checks: { signature: true, tokenTruth: true },
+        checks: TESTER_CHECKS,
       });
       setResult(r);
       if (r.corsBlocked) {

@@ -4636,7 +4636,19 @@
         "HOME": "Erwartete Identität stimmt überein"
       },
       "INSPECT_PROBES": "Probe-Details ansehen",
-      "HIDE_PROBES": "Probe-Details ausblenden"
+      "HIDE_PROBES": "Probe-Details ausblenden",
+      "THINKING": "Denken",
+      "THINKING_THOUGHT": "hat nachgedacht",
+      "THINKING_NONE": "kein Denken",
+      "FINDINGS": "Regelbefunde",
+      "SURVEY": "Umfrage",
+      "SURVEY_HINT": "Neben den Proben gestellt und so erfasst, wie geantwortet wurde. Bewertet wird nur die historische Frage, durch die Regel zur Plattform-Ablehnung.",
+      "SEVERITY": {
+        "FAIL": "Fehlgeschlagen",
+        "SUSPECT": "Verdächtig",
+        "INCONCLUSIVE": "Unklar",
+        "NOTE": "Hinweis"
+      }
     },
     "HISTORY": {
       "EMPTY": "Noch keine Tests. Starte einen, um deinen Verlauf aufzubauen.",
@@ -4697,7 +4709,10 @@
       "TOKENS": "Tokens (ein/aus)",
       "REASON": "Grund",
       "NO_RESPONSE": "Keine Antwort erfasst.",
-      "WHAT_WE_CHECK": "Was diese Prüfung testet"
+      "WHAT_WE_CHECK": "Was diese Prüfung testet",
+      "FINISH_REASON": "Abbruchgrund",
+      "REASONING_TOKENS": "Reasoning-Tokens",
+      "ERROR_BODY": "Fehlerinhalt"
     },
     "NAV": {
       "HISTORY_DESC": "Deine bisherigen Tests",
@@ -4823,7 +4838,13 @@
         }
       },
       "COMMUNITY": "Eine Idee für eine bessere Probe? Schlage sie hier vor:",
-      "SOURCE_LINK": "Erkennungscode ansehen"
+      "SOURCE_LINK": "Erkennungscode ansehen",
+      "FAKE-200": {
+        "TITLE": "Plattform-Ablehnung als Antwort gesendet",
+        "MEANS": "Der Endpunkt antwortete mit HTTP 200, aber mit der eigenen Filtermeldung oder Fehlerseite einer Plattform statt mit dem Modell, zum Beispiel „系统检测到您当前输入的信息存在敏感内容“ oder „Request rejected by AI provider“.",
+        "WHY": "Ein Gateway rechnet eine 200 als echte Antwort ab und versucht es nirgends erneut, also bekommen Nutzer den Ablehnungstext als Antwort. Die historische Frage der Umfrage ist es, die solche Filter auslöst.",
+        "EXCEPTION": "das Modell lehnt mit eigenen Worten ab oder die Anfrage scheitert mit einem Fehlerstatus."
+      }
     },
     "FAQ": {
       "TITLE": "Häufig gestellte Fragen",
@@ -4886,6 +4907,13 @@
         "CHECKS": "Fordert das Modell auf, seinen eigenen Modellnamen zu nennen.",
         "WHY": "Ein falscher, vager oder verweigerter Name zeigt, dass der Endpunkt nicht das beworbene Modell ausliefert."
       }
+    },
+    "SURVEY": {
+      "SYSTEM-PROMPT": "Wiedergabe vorheriger Anweisungen",
+      "ARITHMETIC": "Rechenaufgabe",
+      "JSON": "JSON-Selbstbeschreibung",
+      "SELF": "Selbstbeschreibung",
+      "SENSITIVE": "Historische Frage (Inhaltsfilter)"
     }
   },
   "DOCS_CHAT": {
