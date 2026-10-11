@@ -104,7 +104,6 @@ export function OverridesBindingFields(props: {
 
 export function OverridesGenerationFields(props: {
   control: Control<ConversationOverridesForm>;
-  showConversationFields: boolean;
   webSearchEnabled: boolean;
 }) {
   const t = useTranslations();
@@ -227,54 +226,50 @@ export function OverridesGenerationFields(props: {
             </FormItem>
           )}
         />
-        {props.showConversationFields && (
-          <>
-            <FormField
-              control={props.control}
-              name="webSearchEnabled"
-              render={({ field }) => (
-                <FormItem className="flex-row items-center gap-2">
+        <>
+          <FormField
+            control={props.control}
+            name="webSearchEnabled"
+            render={({ field }) => (
+              <FormItem className="flex-row items-center gap-2">
+                <FormLabel className="text-xs">
+                  {t("CHAT.OVERRIDES.WEB_SEARCH")}
+                </FormLabel>
+                <FormControl>
+                  <Switch
+                    size="sm"
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={props.control}
+            name="memoryEnabled"
+            render={({ field }) => (
+              <FormItem className="flex-row items-center gap-2">
+                <div className="flex items-center gap-1.5">
                   <FormLabel className="text-xs">
-                    {t("CHAT.OVERRIDES.WEB_SEARCH")}
+                    {t("CHAT.OVERRIDES.MEMORY_ENABLED")}
                   </FormLabel>
-                  <FormControl>
-                    <Switch
-                      size="sm"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={props.control}
-              name="memoryEnabled"
-              render={({ field }) => (
-                <FormItem className="flex-row items-center gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <FormLabel className="text-xs">
-                      {t("CHAT.OVERRIDES.MEMORY_ENABLED")}
-                    </FormLabel>
-                    <InfoPopover
-                      text={t("CHAT.OVERRIDES.MEMORY_ENABLED_HINT")}
-                    />
-                  </div>
-                  <FormControl>
-                    <Switch
-                      size="sm"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-          </>
-        )}
+                  <InfoPopover text={t("CHAT.OVERRIDES.MEMORY_ENABLED_HINT")} />
+                </div>
+                <FormControl>
+                  <Switch
+                    size="sm"
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+        </>
       </div>
 
-      {props.showConversationFields && props.webSearchEnabled && (
+      {props.webSearchEnabled && (
         <div className="grid grid-cols-2 gap-3">
           <MyFormKeyedSelect
             control={props.control}
@@ -303,94 +298,90 @@ export function OverridesGenerationFields(props: {
         {t("CHAT.OVERRIDES.AUTO_SCROLL_STREAM_HINT")}
       </span>
 
-      {props.showConversationFields && (
-        <div className="flex flex-col gap-3 border-t pt-3">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <FormField
-              control={props.control}
-              name="imageEnabled"
-              render={({ field }) => (
-                <FormItem className="flex-row items-center gap-2">
+      <div className="flex flex-col gap-3 border-t pt-3">
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <FormField
+            control={props.control}
+            name="imageEnabled"
+            render={({ field }) => (
+              <FormItem className="flex-row items-center gap-2">
+                <FormLabel className="text-xs">
+                  {t("CHAT.OVERRIDES.IMAGE_ENABLED")}
+                </FormLabel>
+                <FormControl>
+                  <Switch
+                    size="sm"
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={props.control}
+            name="imagePreview"
+            render={({ field }) => (
+              <FormItem className="flex-row items-center gap-2">
+                <div className="flex items-center gap-1.5">
                   <FormLabel className="text-xs">
-                    {t("CHAT.OVERRIDES.IMAGE_ENABLED")}
+                    {t("CHAT.OVERRIDES.IMAGE_PREVIEW")}
                   </FormLabel>
-                  <FormControl>
-                    <Switch
-                      size="sm"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={props.control}
-              name="imagePreview"
-              render={({ field }) => (
-                <FormItem className="flex-row items-center gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <FormLabel className="text-xs">
-                      {t("CHAT.OVERRIDES.IMAGE_PREVIEW")}
-                    </FormLabel>
-                    <InfoPopover
-                      text={t("CHAT.OVERRIDES.IMAGE_PREVIEW_HINT")}
-                    />
-                  </div>
-                  <FormControl>
-                    <Switch
-                      size="sm"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={props.control}
-              name="useCharAvatarRef"
-              render={({ field }) => (
-                <FormItem className="flex-row items-center gap-2">
-                  <div className="flex items-center gap-1.5">
-                    <FormLabel className="text-xs">
-                      {t("CHAT.OVERRIDES.USE_CHAR_AVATAR_REF")}
-                    </FormLabel>
-                    <InfoPopover
-                      text={t("CHAT.OVERRIDES.USE_CHAR_AVATAR_REF_HINT")}
-                    />
-                  </div>
-                  <FormControl>
-                    <Switch
-                      size="sm"
-                      checked={field.value}
-                      onCheckedChange={field.onChange}
-                    />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
-          </div>
-          <UtilityModelField
-            control={props.control}
-            name="utilityModel"
-            labelKey="CHAT.OVERRIDES.UTILITY_MODEL"
+                  <InfoPopover text={t("CHAT.OVERRIDES.IMAGE_PREVIEW_HINT")} />
+                </div>
+                <FormControl>
+                  <Switch
+                    size="sm"
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
           />
-          <UtilityModelField
+          <FormField
             control={props.control}
-            name="titleModel"
-            labelKey="CHAT.OVERRIDES.TITLE_MODEL"
-            hintKey="CHAT.OVERRIDES.TITLE_MODEL_HINT"
+            name="useCharAvatarRef"
+            render={({ field }) => (
+              <FormItem className="flex-row items-center gap-2">
+                <div className="flex items-center gap-1.5">
+                  <FormLabel className="text-xs">
+                    {t("CHAT.OVERRIDES.USE_CHAR_AVATAR_REF")}
+                  </FormLabel>
+                  <InfoPopover
+                    text={t("CHAT.OVERRIDES.USE_CHAR_AVATAR_REF_HINT")}
+                  />
+                </div>
+                <FormControl>
+                  <Switch
+                    size="sm"
+                    checked={field.value}
+                    onCheckedChange={field.onChange}
+                  />
+                </FormControl>
+              </FormItem>
+            )}
           />
-          <TitlePromptField control={props.control} />
-          <ImageModelField
-            control={props.control}
-            name="imageModel"
-            labelKey="CHAT.OVERRIDES.IMAGE_MODEL"
-          />
-          <ImagePromptInstructionField control={props.control} />
         </div>
-      )}
+        <UtilityModelField
+          control={props.control}
+          name="utilityModel"
+          labelKey="CHAT.OVERRIDES.UTILITY_MODEL"
+        />
+        <UtilityModelField
+          control={props.control}
+          name="titleModel"
+          labelKey="CHAT.OVERRIDES.TITLE_MODEL"
+          hintKey="CHAT.OVERRIDES.TITLE_MODEL_HINT"
+        />
+        <TitlePromptField control={props.control} />
+        <ImageModelField
+          control={props.control}
+          name="imageModel"
+          labelKey="CHAT.OVERRIDES.IMAGE_MODEL"
+        />
+        <ImagePromptInstructionField control={props.control} />
+      </div>
     </>
   );
 }

@@ -125,6 +125,15 @@ async function seed(args: SeedArgs): Promise<void> {
     autoScrollStream:
       boundPreset?.autoScrollStream ?? defaults.autoScrollStream ?? null,
     showReasoning: hasPreset ? null : (defaults.showReasoning ?? null),
+    memoryEnabled: seedField("memoryEnabled"),
+    imageEnabled: seedField("imageEnabled"),
+    utilityModel: seedField("utilityModel"),
+    titleModel: seedField("titleModel"),
+    titlePrompt: seedField("titlePrompt"),
+    promptInstruction: seedField("promptInstruction"),
+    imageModel: seedField("imageModel"),
+    imagePreview: seedField("imagePreview"),
+    useCharAvatarRef: seedField("useCharAvatarRef"),
     group: chatStore.get(chatGroupAtom),
   });
 

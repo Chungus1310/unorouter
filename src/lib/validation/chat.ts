@@ -179,6 +179,25 @@ export function formReasoningEffortToValue(
   return REASONING_EFFORTS.find((v) => v === raw) ?? null;
 }
 
+// Also new-chat defaults, so a fresh chat can be set up before its first send.
+const toolSettings = {
+  memoryEnabled: t.Optional(t.Union([t.Boolean(), t.Null()])),
+  imageEnabled: t.Optional(t.Union([t.Boolean(), t.Null()])),
+  utilityModel: t.Optional(
+    t.Union([t.String({ maxLength: MAX_MODEL_LEN }), t.Null()]),
+  ),
+  titleModel: t.Optional(
+    t.Union([t.String({ maxLength: MAX_MODEL_LEN }), t.Null()]),
+  ),
+  titlePrompt: t.Optional(t.Union([t.String({ maxLength: 4_096 }), t.Null()])),
+  promptInstruction: t.Optional(
+    t.Union([t.String({ maxLength: 4_096 }), t.Null()]),
+  ),
+  imageModel: t.Optional(t.Union([t.String({ maxLength: 512 }), t.Null()])),
+  imagePreview: t.Optional(t.Union([t.Boolean(), t.Null()])),
+  useCharAvatarRef: t.Optional(t.Union([t.Boolean(), t.Null()])),
+};
+
 export const streamOverrides = t.Object({
   reasoningEffort: t.Optional(t.Union([reasoningEffort, t.Null()])),
   chatMemory: t.Optional(
@@ -199,6 +218,7 @@ export const streamOverrides = t.Object({
   streamingEnabled: t.Optional(t.Union([t.Boolean(), t.Null()])),
   autoScrollStream: t.Optional(t.Union([t.Boolean(), t.Null()])),
   showReasoning: t.Optional(t.Union([t.Boolean(), t.Null()])),
+  ...toolSettings,
 });
 export type StreamOverrides = Static<typeof streamOverrides>;
 
@@ -233,22 +253,8 @@ export const updateConversationSettingsBody = t.Object({
   showReasoning: t.Optional(t.Union([t.Boolean(), t.Null()])),
   groupOrderByOrder: t.Optional(t.Union([t.Boolean(), t.Null()])),
   autoContinue: t.Optional(t.Union([t.Boolean(), t.Null()])),
-  memoryEnabled: t.Optional(t.Union([t.Boolean(), t.Null()])),
-  imageEnabled: t.Optional(t.Union([t.Boolean(), t.Null()])),
-  utilityModel: t.Optional(
-    t.Union([t.String({ maxLength: MAX_MODEL_LEN }), t.Null()]),
-  ),
-  titleModel: t.Optional(
-    t.Union([t.String({ maxLength: MAX_MODEL_LEN }), t.Null()]),
-  ),
-  titlePrompt: t.Optional(t.Union([t.String({ maxLength: 4_096 }), t.Null()])),
-  promptInstruction: t.Optional(
-    t.Union([t.String({ maxLength: 4_096 }), t.Null()]),
-  ),
-  imageModel: t.Optional(t.Union([t.String({ maxLength: 512 }), t.Null()])),
-  imagePreview: t.Optional(t.Union([t.Boolean(), t.Null()])),
+  ...toolSettings,
   imageRefIds: t.Optional(t.Union([t.String({ maxLength: 4_096 }), t.Null()])),
-  useCharAvatarRef: t.Optional(t.Union([t.Boolean(), t.Null()])),
   summaryMemory: t.Optional(
     t.Union([t.String({ maxLength: 16_384 }), t.Null()]),
   ),

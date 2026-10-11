@@ -256,7 +256,6 @@ export function ConversationOverridesDrawer(props: DrawerProps) {
 
               <OverridesGenerationFields
                 control={form.control}
-                showConversationFields={showConversationFields}
                 webSearchEnabled={webSearchEnabled}
               />
 
