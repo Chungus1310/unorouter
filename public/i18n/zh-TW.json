@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "清空所有本地 OPFS 資料並重新載入？",
       "BACKUP_REMINDER": "備份提醒",
       "BACKUP_REMINDER_EVERY": "{days, plural, other {每 # 天}}",
-      "BACKUP_REMINDER_OFF": "關閉"
+      "BACKUP_REMINDER_OFF": "關閉",
+      "PULL_TO_REFRESH": "下拉重新整理"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "傳送到另一台裝置",

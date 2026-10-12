@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "TÜM yerel OPFS verisini sil ve yeniden yükle?",
       "BACKUP_REMINDER": "Yedek hatırlatıcısı",
       "BACKUP_REMINDER_EVERY": "{days, plural, one {Her gün} other {# günde bir}}",
-      "BACKUP_REMINDER_OFF": "Kapalı"
+      "BACKUP_REMINDER_OFF": "Kapalı",
+      "PULL_TO_REFRESH": "Yenilemek için çek"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "Başka bir cihaza gönder",

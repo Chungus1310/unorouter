@@ -1,4 +1,5 @@
 import { AuthRedirectCleanup } from "@/components/provider/app/auth-redirect-cleanup";
+import { PullToRefresh } from "@/components/pages/sidebar/chat/runtime/pull-to-refresh";
 import { BackupReminder } from "@/components/pages/sidebar/chat/runtime/backup-reminder";
 import { SidebarLayout } from "@/components/layout/sidebar/sidebar-layout";
 import { RpDialogs } from "@/components/pages/sidebar/chat/rp/rp-dialogs";
@@ -41,6 +42,7 @@ export default async function ChatLayout(props: Props) {
         <ChatRuntimeProvider>
           <ViewportDebugLogger />
           <BackupReminder />
+          <PullToRefresh />
           <SidebarLayout
             before={<AuthRedirectCleanup />}
             navConfig="chat"

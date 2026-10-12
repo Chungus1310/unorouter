@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "모든 로컬 OPFS 데이터를 지우고 다시 로드하시겠습니까?",
       "BACKUP_REMINDER": "백업 알림",
       "BACKUP_REMINDER_EVERY": "{days, plural, other {#일마다}}",
-      "BACKUP_REMINDER_OFF": "끄기"
+      "BACKUP_REMINDER_OFF": "끄기",
+      "PULL_TO_REFRESH": "당겨서 새로고침"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "다른 기기로 보내기",

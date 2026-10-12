@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "ALLE lokalen OPFS-Daten löschen und neu laden?",
       "BACKUP_REMINDER": "Backup-Erinnerung",
       "BACKUP_REMINDER_EVERY": "{days, plural, one {Jeden Tag} other {Alle # Tage}}",
-      "BACKUP_REMINDER_OFF": "Aus"
+      "BACKUP_REMINDER_OFF": "Aus",
+      "PULL_TO_REFRESH": "Zum Aktualisieren ziehen"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "An ein anderes Gerät senden",

@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "ローカルOPFSデータをすべて削除して再読み込みしますか？",
       "BACKUP_REMINDER": "バックアップのリマインダー",
       "BACKUP_REMINDER_EVERY": "{days, plural, other {# 日ごと}}",
-      "BACKUP_REMINDER_OFF": "オフ"
+      "BACKUP_REMINDER_OFF": "オフ",
+      "PULL_TO_REFRESH": "引っ張って更新"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "別の端末に送る",

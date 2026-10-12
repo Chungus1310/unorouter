@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "למחוק את כל הנתונים המקומיים של OPFS ולטעון מחדש?",
       "BACKUP_REMINDER": "תזכורת גיבוי",
       "BACKUP_REMINDER_EVERY": "{days, plural, one {כל יום} two {כל יומיים} other {כל # ימים}}",
-      "BACKUP_REMINDER_OFF": "כבוי"
+      "BACKUP_REMINDER_OFF": "כבוי",
+      "PULL_TO_REFRESH": "משיכה לרענון"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "שליחה למכשיר אחר",

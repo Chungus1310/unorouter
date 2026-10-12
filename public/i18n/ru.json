@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "Удалить ВСЕ локальные данные OPFS и перезагрузить?",
       "BACKUP_REMINDER": "Напоминание о копии",
       "BACKUP_REMINDER_EVERY": "{days, plural, one {Каждый день} few {Каждые # дня} many {Каждые # дней} other {Каждые # дня}}",
-      "BACKUP_REMINDER_OFF": "Выключено"
+      "BACKUP_REMINDER_OFF": "Выключено",
+      "PULL_TO_REFRESH": "Потяните для обновления"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "Отправить на другое устройство",

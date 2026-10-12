@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "सभी local OPFS डेटा wipe करें और reload करें?",
       "BACKUP_REMINDER": "बैकअप रिमाइंडर",
       "BACKUP_REMINDER_EVERY": "{days, plural, one {हर दिन} other {हर # दिन}}",
-      "BACKUP_REMINDER_OFF": "बंद"
+      "BACKUP_REMINDER_OFF": "बंद",
+      "PULL_TO_REFRESH": "रीफ़्रेश करने के लिए खींचें"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "दूसरे डिवाइस पर भेजें",

@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "محو كل بيانات OPFS المحلية وإعادة التحميل؟",
       "BACKUP_REMINDER": "تذكير النسخ الاحتياطي",
       "BACKUP_REMINDER_EVERY": "{days, plural, one {كل يوم} two {كل يومين} few {كل # أيام} many {كل # يومًا} other {كل # يوم}}",
-      "BACKUP_REMINDER_OFF": "إيقاف"
+      "BACKUP_REMINDER_OFF": "إيقاف",
+      "PULL_TO_REFRESH": "اسحب للتحديث"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "إرسال إلى جهاز آخر",

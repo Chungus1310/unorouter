@@ -13,6 +13,7 @@ import { matchPathname, useRouter } from "@/i18n/navigation";
 import { analytics } from "@/lib/analytics";
 import { LANGUAGES } from "@/lib/config/constants";
 import {
+  pullToRefreshAtom,
   showStatsCostAtom,
   showStatsMessagesAtom,
   showStatsTokensAtom,
@@ -30,6 +31,7 @@ export function AppearanceSubmenu(props: { onOpenCustomizer: () => void }) {
   const [showTokens, setShowTokens] = useAtom(showStatsTokensAtom);
   const [showMessages, setShowMessages] = useAtom(showStatsMessagesAtom);
   const [showThinking, setShowThinking] = useAtom(showThinkingTokensAtom);
+  const [pullToRefresh, setPullToRefresh] = useAtom(pullToRefreshAtom);
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
@@ -122,6 +124,14 @@ export function AppearanceSubmenu(props: { onOpenCustomizer: () => void }) {
           closeOnClick={false}
         >
           {t("CHAT.STATS.SHOW_THINKING_TOKENS")}
+        </DropdownMenuCheckboxItem>
+        <DropdownMenuCheckboxItem
+          className="md:hidden"
+          checked={pullToRefresh}
+          onCheckedChange={setPullToRefresh}
+          closeOnClick={false}
+        >
+          {t("CHAT.MORE.PULL_TO_REFRESH")}
         </DropdownMenuCheckboxItem>
         {/* Desktop reaches the theme menu from the header, but the customizer
             is only offered there, so without this it is unreachable here. */}

@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "Wipe ALL local OPFS data and reload?",
       "BACKUP_REMINDER": "Backup reminder",
       "BACKUP_REMINDER_EVERY": "{days, plural, one {Every day} other {Every # days}}",
-      "BACKUP_REMINDER_OFF": "Off"
+      "BACKUP_REMINDER_OFF": "Off",
+      "PULL_TO_REFRESH": "Pull to refresh"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "Send to another device",

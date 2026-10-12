@@ -49,6 +49,7 @@ export type ChatState = {
   showStatsCost: boolean;
   showStatsMessages: boolean;
   showThinkingTokens: boolean;
+  pullToRefresh: boolean;
 };
 
 export const INITIAL_CHAT_STATE: ChatState = {
@@ -62,6 +63,7 @@ export const INITIAL_CHAT_STATE: ChatState = {
   showStatsCost: true,
   showStatsMessages: false,
   showThinkingTokens: true,
+  pullToRefresh: false,
 };
 
 // getOnInit is a load-bearing PAIR with ChatStoreProvider; neither may be removed alone.
@@ -83,6 +85,7 @@ export const samplerMemoryByModelAtom = storeField("samplerMemoryByModel");
 export const showStatsTokensAtom = storeField("showStatsTokens");
 export const showStatsCostAtom = storeField("showStatsCost");
 export const showStatsMessagesAtom = storeField("showStatsMessages");
+export const pullToRefreshAtom = storeField("pullToRefresh");
 export const showThinkingTokensAtom = storeField("showThinkingTokens");
 
 export const groupByModelAtom = atom(

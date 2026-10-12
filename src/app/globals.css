@@ -172,6 +172,13 @@
     overscroll-behavior: none;
   }
 
+  /* Opt-in: the root overscroll rule above is also what turns off the
+     browser's own pull to refresh. */
+  html.pull-to-refresh,
+  html.pull-to-refresh body {
+    overscroll-behavior-y: auto;
+  }
+
   h1,
   h2,
   h3,

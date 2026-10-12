@@ -3847,7 +3847,8 @@
       "LOCAL_DB_WIPE_CONFIRM": "Xóa TẤT CẢ dữ liệu OPFS cục bộ và tải lại?",
       "BACKUP_REMINDER": "Nhắc sao lưu",
       "BACKUP_REMINDER_EVERY": "{days, plural, other {Mỗi # ngày}}",
-      "BACKUP_REMINDER_OFF": "Tắt"
+      "BACKUP_REMINDER_OFF": "Tắt",
+      "PULL_TO_REFRESH": "Kéo để làm mới"
     },
     "DB_TRANSFER": {
       "SEND_TITLE": "Gửi sang thiết bị khác",
