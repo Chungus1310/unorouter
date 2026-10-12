@@ -206,42 +206,44 @@ function GroupTokens(props: {
 }) {
   const t = useTranslations();
   return (
-    <table className={MINI_TABLE}>
-      <thead>
-        <tr className={MINI_TABLE_HEAD_ROW}>
-          <th className="w-full py-1.5 text-left font-normal">
-            {t("MODELS.DETAIL.GROUP_HEADER_GROUP")}
-          </th>
-          <th className="py-1.5 pl-4 text-right font-normal">
-            {t("MODELS.DETAIL.GROUP_HEADER_INPUT")}
-          </th>
-          <th className="py-1.5 pl-4 text-right font-normal">
-            {t("MODELS.DETAIL.GROUP_HEADER_OUTPUT")}
-          </th>
-          <HealthHeaders />
-        </tr>
-      </thead>
-      <tbody>
-        {props.entries.map((ge) => {
-          const inputPrice = props.modelRatio * QUOTA_TO_USD * ge.ratio;
-          const outputPrice = inputPrice * props.completionRatio;
-          return (
-            <tr key={ge.group} className={MINI_TABLE_BODY_ROW}>
-              <td className="text-muted-foreground py-1.5">
-                <GroupNameCell group={ge.group} />
-              </td>
-              <td className={cn("py-1.5 pl-4 text-right", props.theme.text)}>
-                {formatPrice(inputPrice)}
-              </td>
-              <td className={cn("py-1.5 pl-4 text-right", props.theme.text)}>
-                {formatPrice(outputPrice)}
-              </td>
-              <HealthCells health={props.health.get(ge.group)} />
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <div className="overflow-x-auto">
+      <table className={MINI_TABLE}>
+        <thead>
+          <tr className={MINI_TABLE_HEAD_ROW}>
+            <th className="w-full py-1.5 text-left font-normal">
+              {t("MODELS.DETAIL.GROUP_HEADER_GROUP")}
+            </th>
+            <th className="py-1.5 pl-4 text-right font-normal">
+              {t("MODELS.DETAIL.GROUP_HEADER_INPUT")}
+            </th>
+            <th className="py-1.5 pl-4 text-right font-normal">
+              {t("MODELS.DETAIL.GROUP_HEADER_OUTPUT")}
+            </th>
+            <HealthHeaders />
+          </tr>
+        </thead>
+        <tbody>
+          {props.entries.map((ge) => {
+            const inputPrice = props.modelRatio * QUOTA_TO_USD * ge.ratio;
+            const outputPrice = inputPrice * props.completionRatio;
+            return (
+              <tr key={ge.group} className={MINI_TABLE_BODY_ROW}>
+                <td className="text-muted-foreground py-1.5">
+                  <GroupNameCell group={ge.group} />
+                </td>
+                <td className={cn("py-1.5 pl-4 text-right", props.theme.text)}>
+                  {formatPrice(inputPrice)}
+                </td>
+                <td className={cn("py-1.5 pl-4 text-right", props.theme.text)}>
+                  {formatPrice(outputPrice)}
+                </td>
+                <HealthCells health={props.health.get(ge.group)} />
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
@@ -254,35 +256,37 @@ function GroupFixed(props: {
 }) {
   const t = useTranslations();
   return (
-    <table className={MINI_TABLE}>
-      <thead>
-        <tr className={MINI_TABLE_HEAD_ROW}>
-          <th className="w-full py-1.5 text-left font-normal">
-            {t("MODELS.DETAIL.GROUP_HEADER_GROUP")}
-          </th>
-          <th className="py-1.5 pl-4 text-right font-normal">
-            {t("MODELS.DETAIL.PRICING")}
-          </th>
-          <HealthHeaders />
-        </tr>
-      </thead>
-      <tbody>
-        {props.entries.map((ge) => (
-          <tr key={ge.group} className={MINI_TABLE_BODY_ROW}>
-            <td className="text-muted-foreground py-1.5">
-              <GroupNameCell group={ge.group} />
-            </td>
-            <td className={cn("py-1.5 pl-4 text-right", props.theme.text)}>
-              {formatPrice(props.fixedPrice * ge.ratio)}
-              <span className="text-muted-foreground ml-1 text-[10px] font-normal">
-                <FixedPriceUnit model={props.model} />
-              </span>
-            </td>
-            <HealthCells health={props.health.get(ge.group)} />
+    <div className="overflow-x-auto">
+      <table className={MINI_TABLE}>
+        <thead>
+          <tr className={MINI_TABLE_HEAD_ROW}>
+            <th className="w-full py-1.5 text-left font-normal">
+              {t("MODELS.DETAIL.GROUP_HEADER_GROUP")}
+            </th>
+            <th className="py-1.5 pl-4 text-right font-normal">
+              {t("MODELS.DETAIL.PRICING")}
+            </th>
+            <HealthHeaders />
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {props.entries.map((ge) => (
+            <tr key={ge.group} className={MINI_TABLE_BODY_ROW}>
+              <td className="text-muted-foreground py-1.5">
+                <GroupNameCell group={ge.group} />
+              </td>
+              <td className={cn("py-1.5 pl-4 text-right", props.theme.text)}>
+                {formatPrice(props.fixedPrice * ge.ratio)}
+                <span className="text-muted-foreground ml-1 text-[10px] font-normal">
+                  <FixedPriceUnit model={props.model} />
+                </span>
+              </td>
+              <HealthCells health={props.health.get(ge.group)} />
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
 
