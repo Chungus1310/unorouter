@@ -1,4 +1,4 @@
-import { jotaiCookieStorage, storeFieldAtom } from "@/lib/config/table-storage";
+import { splitCookieStorage, storeFieldAtom } from "@/lib/config/table-storage";
 import type { StreamOverrides } from "@/lib/validation/chat";
 import type { DbExportOptions } from "@/lib/db/client/data/diagnostics/db-export";
 import { logChatDebug } from "@/lib/utils/chat-debug-log";
@@ -66,11 +66,16 @@ export const INITIAL_CHAT_STATE: ChatState = {
   pullToRefresh: false,
 };
 
+export const chatStoreStorage = splitCookieStorage<ChatState>([
+  "defaults",
+  "samplerMemoryByModel",
+]);
+
 // getOnInit is a load-bearing PAIR with ChatStoreProvider; neither may be removed alone.
 export const chatStoreAtom = atomWithStorage<ChatState>(
   CHAT_STORE_KEY,
   INITIAL_CHAT_STATE,
-  jotaiCookieStorage,
+  chatStoreStorage,
   { getOnInit: true },
 );
 

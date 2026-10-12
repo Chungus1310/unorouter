@@ -1,7 +1,9 @@
 "use client";
 
 import {
+  CHAT_STORE_KEY,
   chatStoreAtom,
+  chatStoreStorage,
   INITIAL_CHAT_STATE,
   type ChatState,
 } from "@/store/chat-store";
@@ -22,7 +24,15 @@ export function ChatStoreProvider(props: {
   // because a server render happens once and never re-renders. On the client the flag is
   // still wrong (b56c0328): it re-runs store.set on EVERY render, and once a consumer has
   // mounted that writes during render.
-  useHydrateAtoms([[chatStoreAtom, props.data ?? INITIAL_CHAT_STATE]], {
+  // The cookie the server rendered from leaves out the fields kept in
+  // localStorage; seeding without them would wipe them on the next save.
+  const seed = environmentManager.isServer()
+    ? (props.data ?? INITIAL_CHAT_STATE)
+    : {
+        ...(props.data ?? INITIAL_CHAT_STATE),
+        ...chatStoreStorage.readLocal(CHAT_STORE_KEY),
+      };
+  useHydrateAtoms([[chatStoreAtom, seed]], {
     dangerouslyForceHydrate: environmentManager.isServer(),
   });
 

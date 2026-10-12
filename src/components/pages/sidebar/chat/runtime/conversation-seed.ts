@@ -24,6 +24,7 @@ import type { PricingCatalogData } from "@/openapi";
 import { queryKeys } from "@/lib/react-query/keys";
 import {
   CHAT_STORE_KEY,
+  chatStoreStorage,
   chatDefaultsAtom,
   chatGroupAtom,
   chatLoadoutAtom,
@@ -33,7 +34,6 @@ import {
   greetingIndexAtom,
   INITIAL_CHAT_STATE,
 } from "@/store/chat-store";
-import { jotaiCookieStorage } from "@/lib/config/table-storage";
 import type { QueryClient } from "@tanstack/react-query";
 import { dayjs } from "@/lib/utils/format/date";
 
@@ -74,7 +74,7 @@ async function seed(args: SeedArgs): Promise<void> {
 
   // Cookie directly, not just the atom: the atom hydrates after mount, so a new chat
   // created in that window seeds null over the user's defaults.
-  const cookieState = jotaiCookieStorage.getItem(
+  const cookieState = chatStoreStorage.getItem(
     CHAT_STORE_KEY,
     INITIAL_CHAT_STATE,
   );

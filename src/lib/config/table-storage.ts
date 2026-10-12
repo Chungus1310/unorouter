@@ -24,6 +24,55 @@ export function storeFieldAtom<S extends object, K extends keyof S>(
   );
 }
 
+// A cookie over about 4KB is dropped by the browser without an error, after
+// which no change to the store survives a reload. Fields that grow with use go
+// to localStorage; the cookie keeps what the server needs to render.
+export function splitCookieStorage<T extends object>(
+  localFields: readonly (keyof T)[],
+) {
+  const readLocal = (key: string): Partial<T> => {
+    if (environmentManager.isServer()) return {};
+    try {
+      const parsed: unknown = JSON.parse(localStorage.getItem(key) ?? "{}");
+      return parsed && typeof parsed === "object" ? (parsed as Partial<T>) : {};
+    } catch {
+      return {};
+    }
+  };
+  return {
+    readLocal,
+    getItem(key: string, initialValue: T): T {
+      if (environmentManager.isServer()) return initialValue;
+      return {
+        ...jotaiCookieStorage.getItem(key, initialValue),
+        ...readLocal(key),
+      };
+    },
+    setItem(key: string, value: T) {
+      if (environmentManager.isServer()) return;
+      const local: Partial<T> = {};
+      const rest: Partial<T> = { ...value };
+      for (const field of localFields) {
+        local[field] = value[field];
+        delete rest[field];
+      }
+      try {
+        localStorage.setItem(key, JSON.stringify(local));
+        jotaiCookieStorage.setItem(key, rest);
+      } catch {
+        jotaiCookieStorage.setItem(key, value);
+      }
+    },
+    removeItem(key: string) {
+      if (environmentManager.isServer()) return;
+      try {
+        localStorage.removeItem(key);
+      } catch {}
+      jotaiCookieStorage.removeItem(key);
+    },
+  };
+}
+
 export const jotaiCookieStorage = {
   getItem<T>(key: string, initialValue: T): T {
     if (environmentManager.isServer()) return initialValue;
