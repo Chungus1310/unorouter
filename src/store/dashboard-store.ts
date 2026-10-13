@@ -11,7 +11,8 @@ export type TimeRange = Required<
 >;
 
 export function burnRateWindow(days = BURN_RATE_WINDOW_DAYS): TimeRange {
-  const end = dayjs().endOf("day");
+  // UTC so the server prefetch and the browser build the same query key.
+  const end = dayjs.utc().endOf("day");
   const start = end.subtract(days - 1, "day").startOf("day");
   return { start_timestamp: start.unix(), end_timestamp: end.unix() };
 }
