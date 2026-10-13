@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "중간",
       "EFFORT_HIGH": "높음",
       "EFFORT_XHIGH": "매우 높음",
+      "EFFORT_MAX": "최대",
       "ENGINE_AUTO": "자동",
       "ENGINE_NATIVE": "네이티브",
       "ENGINE_TAVILY": "Tavily",

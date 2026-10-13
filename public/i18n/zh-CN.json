@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "中",
       "EFFORT_HIGH": "高",
       "EFFORT_XHIGH": "最高",
+      "EFFORT_MAX": "最大",
       "ENGINE_AUTO": "自动",
       "ENGINE_NATIVE": "原生",
       "ENGINE_TAVILY": "Tavily",

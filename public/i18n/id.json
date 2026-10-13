@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "Sedang",
       "EFFORT_HIGH": "Tinggi",
       "EFFORT_XHIGH": "Ekstra tinggi",
+      "EFFORT_MAX": "Maksimal",
       "ENGINE_AUTO": "Otomatis",
       "ENGINE_NATIVE": "Native",
       "ENGINE_TAVILY": "Tavily",

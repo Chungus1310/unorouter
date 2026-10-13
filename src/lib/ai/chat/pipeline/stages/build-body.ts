@@ -161,11 +161,11 @@ export function buildBodyMutations(
         : undefined,
     claudeAdaptive:
       autoFlags.claudeAdaptiveThinking &&
-      (effort === "high" || effort === "xhigh")
+      (effort === "high" || effort === "xhigh" || effort === "max")
         ? {
             effort:
-              effort === "xhigh" && autoFlags.claudeXHighEffort
-                ? "xhigh"
+              effort !== "high" && autoFlags.claudeXHighEffort
+                ? effort
                 : "high",
           }
         : undefined,

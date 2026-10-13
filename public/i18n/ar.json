@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "متوسّط",
       "EFFORT_HIGH": "عالٍ",
       "EFFORT_XHIGH": "عالٍ جداً",
+      "EFFORT_MAX": "أقصى",
       "ENGINE_AUTO": "تلقائي",
       "ENGINE_NATIVE": "أصلي",
       "ENGINE_TAVILY": "Tavily",

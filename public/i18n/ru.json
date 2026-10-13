@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "Средний",
       "EFFORT_HIGH": "Высокий",
       "EFFORT_XHIGH": "Очень высокий",
+      "EFFORT_MAX": "Максимальный",
       "ENGINE_AUTO": "Авто",
       "ENGINE_NATIVE": "Встроенный",
       "ENGINE_TAVILY": "Tavily",

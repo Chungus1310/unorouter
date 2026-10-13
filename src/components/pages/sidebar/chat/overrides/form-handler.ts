@@ -32,6 +32,7 @@ export const REASONING_EFFORT_KEY: Record<
   medium: msg("CHAT.OVERRIDES.EFFORT_MEDIUM"),
   high: msg("CHAT.OVERRIDES.EFFORT_HIGH"),
   xhigh: msg("CHAT.OVERRIDES.EFFORT_XHIGH"),
+  max: msg("CHAT.OVERRIDES.EFFORT_MAX"),
 };
 
 export const WEB_SEARCH_ENGINE_KEY: Record<WebSearchEngine, TranslationKey> = {

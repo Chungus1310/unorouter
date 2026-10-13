@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "मध्यम",
       "EFFORT_HIGH": "उच्च",
       "EFFORT_XHIGH": "अतिरिक्त उच्च",
+      "EFFORT_MAX": "अधिकतम",
       "ENGINE_AUTO": "Auto",
       "ENGINE_NATIVE": "Native",
       "ENGINE_TAVILY": "Tavily",

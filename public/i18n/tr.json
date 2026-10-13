@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "Orta",
       "EFFORT_HIGH": "Yüksek",
       "EFFORT_XHIGH": "Ekstra yüksek",
+      "EFFORT_MAX": "Maksimum",
       "ENGINE_AUTO": "Otomatik",
       "ENGINE_NATIVE": "Yerel",
       "ENGINE_TAVILY": "Tavily",

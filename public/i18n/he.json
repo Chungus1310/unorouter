@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "בינוני",
       "EFFORT_HIGH": "גבוה",
       "EFFORT_XHIGH": "גבוה במיוחד",
+      "EFFORT_MAX": "מקסימלי",
       "ENGINE_AUTO": "אוטומטי",
       "ENGINE_NATIVE": "מובנה",
       "ENGINE_TAVILY": "Tavily",

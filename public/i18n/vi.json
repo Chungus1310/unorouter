@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "Trung bình",
       "EFFORT_HIGH": "Cao",
       "EFFORT_XHIGH": "Rất cao",
+      "EFFORT_MAX": "Tối đa",
       "ENGINE_AUTO": "Tự động",
       "ENGINE_NATIVE": "Tích hợp",
       "ENGINE_TAVILY": "Tavily",

@@ -3764,6 +3764,7 @@
       "EFFORT_MEDIUM": "Medium",
       "EFFORT_HIGH": "High",
       "EFFORT_XHIGH": "Extra high",
+      "EFFORT_MAX": "Max",
       "ENGINE_AUTO": "Auto",
       "ENGINE_NATIVE": "Native",
       "ENGINE_TAVILY": "Tavily",

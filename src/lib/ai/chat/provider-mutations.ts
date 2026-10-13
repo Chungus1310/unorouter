@@ -5,7 +5,7 @@ export type BodyMutations = {
   deepSeekPrefix?: boolean;
   deepSeekThinking?: { enabled: boolean; effort: string };
   deepSeekReasoningContent?: string;
-  claudeAdaptive?: { effort: "high" | "xhigh" };
+  claudeAdaptive?: { effort: "high" | "xhigh" | "max" };
   cacheBust?: boolean;
 };
 

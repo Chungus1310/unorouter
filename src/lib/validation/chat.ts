@@ -109,6 +109,7 @@ export const messageItemType = t.Union([
 export type MessageItemType = Static<typeof messageItemType>;
 
 export const reasoningEffort = t.Union([
+  t.Literal("max"),
   t.Literal("xhigh"),
   t.Literal("high"),
   t.Literal("medium"),
