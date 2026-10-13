@@ -21,6 +21,8 @@ export const SAMPLING_PARAMS = [
     field: "temperature",
     apiKey: "temperature",
     labelKey: "RP.SAMPLING_TEMPERATURE",
+    hintKey: "RP.SAMPLING_TEMPERATURE_HINT",
+    exampleKey: "RP.SAMPLING_TEMPERATURE_EXAMPLE",
     min: 0,
     max: 2,
     fallback: 1,
@@ -29,6 +31,8 @@ export const SAMPLING_PARAMS = [
     field: "topP",
     apiKey: "top_p",
     labelKey: "RP.SAMPLING_TOP_P",
+    hintKey: "RP.SAMPLING_TOP_P_HINT",
+    exampleKey: "RP.SAMPLING_TOP_P_EXAMPLE",
     min: 0,
     max: 1,
     fallback: 1,
@@ -37,6 +41,8 @@ export const SAMPLING_PARAMS = [
     field: "topK",
     apiKey: "top_k",
     labelKey: "RP.SAMPLING_TOP_K",
+    hintKey: "RP.SAMPLING_TOP_K_HINT",
+    exampleKey: "RP.SAMPLING_TOP_K_EXAMPLE",
     min: 0,
     max: 200,
     step: 1,
@@ -46,6 +52,8 @@ export const SAMPLING_PARAMS = [
     field: "minP",
     apiKey: "min_p",
     labelKey: "RP.SAMPLING_MIN_P",
+    hintKey: "RP.SAMPLING_MIN_P_HINT",
+    exampleKey: "RP.SAMPLING_MIN_P_EXAMPLE",
     min: 0,
     max: 1,
     fallback: 0,
@@ -54,6 +62,8 @@ export const SAMPLING_PARAMS = [
     field: "topA",
     apiKey: "top_a",
     labelKey: "RP.SAMPLING_TOP_A",
+    hintKey: "RP.SAMPLING_TOP_A_HINT",
+    exampleKey: "RP.SAMPLING_TOP_A_EXAMPLE",
     min: 0,
     max: 1,
     fallback: 0,
@@ -62,6 +72,8 @@ export const SAMPLING_PARAMS = [
     field: "frequencyPenalty",
     apiKey: "frequency_penalty",
     labelKey: "RP.SAMPLING_FREQUENCY_PENALTY",
+    hintKey: "RP.SAMPLING_FREQUENCY_PENALTY_HINT",
+    exampleKey: "RP.SAMPLING_FREQUENCY_PENALTY_EXAMPLE",
     min: -2,
     max: 2,
     fallback: 0,
@@ -70,6 +82,8 @@ export const SAMPLING_PARAMS = [
     field: "presencePenalty",
     apiKey: "presence_penalty",
     labelKey: "RP.SAMPLING_PRESENCE_PENALTY",
+    hintKey: "RP.SAMPLING_PRESENCE_PENALTY_HINT",
+    exampleKey: "RP.SAMPLING_PRESENCE_PENALTY_EXAMPLE",
     min: -2,
     max: 2,
     fallback: 0,
@@ -78,6 +92,8 @@ export const SAMPLING_PARAMS = [
     field: "repetitionPenalty",
     apiKey: "repetition_penalty",
     labelKey: "RP.SAMPLING_REPETITION_PENALTY",
+    hintKey: "RP.SAMPLING_REPETITION_PENALTY_HINT",
+    exampleKey: "RP.SAMPLING_REPETITION_PENALTY_EXAMPLE",
     min: 0,
     max: 2,
     fallback: 1,
@@ -86,6 +102,8 @@ export const SAMPLING_PARAMS = [
     field: "maxTokens",
     apiKey: "max_tokens",
     labelKey: "RP.SAMPLING_MAX_TOKENS",
+    hintKey: "RP.SAMPLING_MAX_TOKENS_HINT",
+    exampleKey: "RP.SAMPLING_MAX_TOKENS_EXAMPLE",
     min: 1,
     max: 200_000,
     step: 1,
@@ -95,6 +113,8 @@ export const SAMPLING_PARAMS = [
   field: string;
   apiKey: string;
   labelKey: TranslationKey;
+  hintKey: TranslationKey;
+  exampleKey: TranslationKey;
   min: number;
   max: number;
   step?: number;

@@ -7,6 +7,7 @@ import type { Control, Path } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import { Icon } from "@/components/ui/icon";
 import { NumberKnob } from "@/components/ui/number-knob";
+import { InfoPopover } from "@/components/ui/popover";
 import {
   SAMPLING_PARAMS,
   type SamplingFieldName,
@@ -78,6 +79,13 @@ export function SamplingFields<TForm extends Record<string, unknown>>(
               render={({ field }) => (
                 <NumberKnob
                   label={label}
+                  info={
+                    <InfoPopover
+                      text={t(param.hintKey)}
+                      details={t(param.exampleKey)}
+                      detailsLabel={t("RP.SAMPLING_ADVANCED")}
+                    />
+                  }
                   value={(field.value as number | null) ?? null}
                   onChange={field.onChange}
                   min={param.min}

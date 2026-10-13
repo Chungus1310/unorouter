@@ -24,7 +24,10 @@ import { useCharactersQuery } from "@/hooks/ai/rp/characters";
 import { useLorebooksQuery } from "@/hooks/ai/rp/lorebooks";
 import { usePersonasQuery } from "@/hooks/ai/rp/personas";
 import { usePresetsQuery } from "@/hooks/ai/rp/presets";
+import { useMediaFocal, useMediaSrc } from "@/hooks/ai/use-media-src";
 import { readLocalCard } from "@/lib/db/client/data/rp/rp";
+import { Icon } from "@/components/ui/icon";
+import { cn } from "@/lib/utils";
 import { NONE_VALUE } from "@/lib/config/constants";
 import { RpAvatar } from "./rp/shared/rp-list-parts";
 import type { NamedEntity } from "@/lib/types";
@@ -134,6 +137,94 @@ function MultiPicker(props: {
   );
 }
 
+type GalleryCharacter = NonNullable<
+  ReturnType<typeof useCharactersQuery>["data"]
+>[number];
+
+function GalleryTile(props: {
+  character: GalleryCharacter;
+  selected: boolean;
+  onToggle: () => void;
+}) {
+  const src = useMediaSrc(props.character.avatarMediaId);
+  const objectPosition = useMediaFocal(props.character.avatarMediaId);
+  return (
+    <button
+      type="button"
+      onClick={props.onToggle}
+      aria-pressed={props.selected}
+      className={cn(
+        "bg-muted/40 hover:bg-muted relative flex w-28 shrink-0 snap-start flex-col overflow-hidden rounded-md border text-left transition-colors",
+        props.selected && "border-primary ring-primary ring-2",
+      )}
+    >
+      <div className="bg-muted relative aspect-[3/4] w-full">
+        {src ? (
+          // eslint-disable-next-line @next/next/no-img-element -- local blob URL, next/image cannot optimize it
+          <img
+            src={src}
+            alt={props.character.name}
+            className="absolute inset-0 size-full object-cover"
+            style={{ objectPosition }}
+          />
+        ) : (
+          <span className="text-muted-foreground absolute inset-0 flex items-center justify-center text-3xl font-medium">
+            {props.character.name[0]?.toUpperCase() ?? "?"}
+          </span>
+        )}
+        {props.selected && (
+          <span className="bg-primary text-primary-foreground absolute top-1 right-1 rounded-full p-0.5">
+            <Icon name="check" className="size-3" />
+          </span>
+        )}
+      </div>
+      <div className="flex flex-col gap-0.5 p-1.5">
+        <span className="truncate text-xs font-medium">
+          {props.character.name}
+        </span>
+        {props.character.description && (
+          <span className="text-muted-foreground line-clamp-2 text-[10px] leading-tight">
+            {props.character.description}
+          </span>
+        )}
+      </div>
+    </button>
+  );
+}
+
+function CharacterGallery(props: {
+  characters: GalleryCharacter[];
+  value: string[];
+  onChange: (ids: string[]) => void;
+}) {
+  const sorted = [...props.characters].sort(
+    (a, b) =>
+      Number(b.isFavorite) - Number(a.isFavorite) ||
+      b.updatedAt.getTime() - a.updatedAt.getTime(),
+  );
+  return (
+    <div className="-mx-3 flex snap-x gap-2 overflow-x-auto px-3 pb-1">
+      {sorted.map((c) => {
+        const selected = props.value.includes(c.id);
+        return (
+          <GalleryTile
+            key={c.id}
+            character={c}
+            selected={selected}
+            onToggle={() =>
+              props.onChange(
+                selected
+                  ? props.value.filter((id) => id !== c.id)
+                  : [...props.value, c.id],
+              )
+            }
+          />
+        );
+      })}
+    </div>
+  );
+}
+
 export function ChatLoadout() {
   const t = useTranslations();
   const [loadout, setLoadout] = useAtom(chatLoadoutAtom);
@@ -190,6 +281,13 @@ export function ChatLoadout() {
           onChange={(id) => patch({ personaId: id })}
         />
       </div>
+      {(characters?.length ?? 0) > 0 && (
+        <CharacterGallery
+          characters={characters ?? []}
+          value={loadout.characterIds}
+          onChange={(ids) => patch({ characterIds: ids })}
+        />
+      )}
       <MultiPicker
         label={t("CHAT.OVERRIDES.CHARACTERS")}
         searchPlaceholder={t("CHAT.OVERRIDES.SEARCH_CHARACTERS")}

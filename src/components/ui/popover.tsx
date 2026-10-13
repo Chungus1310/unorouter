@@ -81,7 +81,11 @@ function PopoverDescription({
   );
 }
 
-function InfoPopover(props: { text: string }) {
+function InfoPopover(props: {
+  text: string;
+  details?: string;
+  detailsLabel?: string;
+}) {
   return (
     <Popover>
       <PopoverTrigger
@@ -97,6 +101,14 @@ function InfoPopover(props: { text: string }) {
       />
       <PopoverContent className="text-muted-foreground max-w-xs text-xs">
         {props.text}
+        {props.details && (
+          <details>
+            <summary className="text-foreground cursor-pointer select-none">
+              {props.detailsLabel}
+            </summary>
+            <p className="mt-2 whitespace-pre-line">{props.details}</p>
+          </details>
+        )}
       </PopoverContent>
     </Popover>
   );

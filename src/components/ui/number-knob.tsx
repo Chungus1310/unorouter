@@ -9,9 +9,11 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
+import type { ReactNode } from "react";
 
 type Props = {
   label: string;
+  info?: ReactNode;
   value: number | null;
   onChange: (v: number | null) => void;
   min: number;
@@ -39,7 +41,10 @@ export function NumberKnob(props: Props) {
       )}
     >
       <div className="flex items-center justify-between gap-3">
-        <span className="text-foreground text-sm">{props.label}</span>
+        <span className="text-foreground flex items-center gap-1.5 text-sm">
+          {props.label}
+          {props.info}
+        </span>
         <div className="flex items-center gap-2">
           <span
             className={cn(
