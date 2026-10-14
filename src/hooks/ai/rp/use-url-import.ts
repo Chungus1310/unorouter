@@ -6,27 +6,16 @@ import {
   type GetApiJobsById200,
 } from "@/lib/api/uno-import";
 import { msg } from "@/lib/config/constants";
+import {
+  importedResultChecker,
+  type ImportedResult,
+} from "@/lib/validation/uno-import";
 
 const POLL_MS = 1500;
 // Must outlast the worker's own deadline. At 3 minutes this gave up while the
 // job was still rolling exits and later succeeded, so a card that WOULD have
 // imported was reported as a failure to the user.
 const POLL_TIMEOUT_MS = 16 * 60_000;
-
-// Still generated, not hand-written: the arms come from uno-import's OpenAPI
-// doc. Only the ARITY is repaired here. A job returns a list (one URL can hold
-// many characters), but fromTypes distributes an array across a union, so the
-// emitted schema reads "one of the six variants, or an array of the last one".
-// Flattening the array arm back out recovers the element type without
-// restating any variant, so a change upstream still flows through.
-type GeneratedResult = NonNullable<GetApiJobsById200["result"]>;
-export type ImportedResult = GeneratedResult extends readonly (infer E)[]
-  ? E
-  : GeneratedResult extends infer U
-    ? U extends readonly (infer E2)[]
-      ? E2
-      : U
-    : never;
 
 const SUBMIT_ERRORS: Record<string, string> = {
   "unsupported source": msg("ERRORS.CARD_IMPORT_UNSUPPORTED"),
@@ -105,14 +94,12 @@ export async function runUrlImport<T>(
       throw new Error(importFailureMessage(state.error));
     }
     if (state.status !== "done" || !state.result) continue;
-    // Older workers answered with one object; normalise so a hook never has to
-    // care which it is talking to.
-    const list = (
-      Array.isArray(state.result) ? state.result : [state.result]
-    ) as ImportedResult[];
-    if (list.length === 0) {
+    if (state.result.length === 0) {
       throw new Error(msg("ERRORS.CARD_IMPORT_EMPTY"));
     }
+    const list = state.result.filter((item) =>
+      importedResultChecker.Check(item),
+    );
     return persist(list);
   }
 }

@@ -12,7 +12,8 @@ import {
 import { queryKeys } from "@/lib/react-query/keys";
 import { base64ToUint8, uid, uint8ToBase64 } from "@/lib/utils/base";
 import { msg } from "@/lib/config/constants";
-import { runUrlImport, type ImportedResult } from "./use-url-import";
+import type { ImportedResult } from "@/lib/validation/uno-import";
+import { runUrlImport } from "./use-url-import";
 import { useApiMutation } from "@/lib/react-query/hooks";
 import { dayjs } from "@/lib/utils/format/date";
 import { makeRpEntity } from "./factory";

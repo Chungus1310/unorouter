@@ -13,17 +13,16 @@ import {
   emailBind,
   enable2FA,
   generateAccessToken,
-  get2FAStatus,
   passkeyDelete,
   passkeyRegisterBegin,
   passkeyRegisterFinish,
   passkeyStatus,
   sendEmailVerification,
-  setup2FA,
   updateSelf,
   updateTimeoutPreference,
   updateUserSetting,
 } from "@/openapi";
+import { get2FAStatus, setup2FA } from "@/lib/api/gateway-gaps";
 import { Elysia } from "elysia";
 import { deriveUpstream } from "@/server/constants";
 
@@ -114,7 +113,10 @@ export const settingsRoute = new Elysia({ prefix: "/settings" })
   .post(
     "/2fa/enable",
     async ({ body, upstream }) => {
-      const res = await enable2FA(body, { headers: upstream.headers });
+      const res = await enable2FA({
+        headers: { "Content-Type": "application/json", ...upstream.headers },
+        body: JSON.stringify(body),
+      });
       return unwrap(res);
     },
     { body: twoFACodeBody },
@@ -123,7 +125,10 @@ export const settingsRoute = new Elysia({ prefix: "/settings" })
   .post(
     "/2fa/disable",
     async ({ body, upstream }) => {
-      const res = await disable2FA(body, { headers: upstream.headers });
+      const res = await disable2FA({
+        headers: { "Content-Type": "application/json", ...upstream.headers },
+        body: JSON.stringify(body),
+      });
       return unwrap(res);
     },
     { body: twoFACodeBody },

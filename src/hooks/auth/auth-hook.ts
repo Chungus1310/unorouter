@@ -7,9 +7,9 @@ import { queryKeys } from "@/lib/react-query/keys";
 import { rpc } from "@/lib/rpc";
 import type { EdenArgs } from "@/lib/types/eden";
 import { handleElysia } from "@/lib/utils/base";
-import type { SelfUser } from "@/lib/validation/auth";
 import { useQueryClient, type QueryKey } from "@tanstack/react-query";
 import { useSyncExternalStore } from "react";
+import type { UserSelfData } from "@/openapi";
 
 type AuthLogin = typeof rpc.api.auth.account.login;
 
@@ -23,7 +23,7 @@ export function useAuthQuery() {
 }
 
 export function useAuthUser() {
-  return useAuthCache<SelfUser>(queryKeys.auth());
+  return useAuthCache<UserSelfData>(queryKeys.auth());
 }
 
 export function useAuthUserId(): number {
@@ -32,7 +32,7 @@ export function useAuthUserId(): number {
 
 export function authUserId(): number {
   return Number(
-    getQueryClient().getQueryData<SelfUser>(queryKeys.auth())?.id ??
+    getQueryClient().getQueryData<UserSelfData>(queryKeys.auth())?.id ??
       GUEST_USER_ID,
   );
 }

@@ -20,13 +20,11 @@ import {
   OAUTH_ERROR_QUERY,
 } from "@/lib/config/constants";
 import { unwrap } from "@/lib/utils/base";
-import type { CustomerType } from "@/lib/validation/auth";
 import { sanitizeRedirectPath } from "@/lib/utils/server";
 import {
   exchangeOAuthCode,
-  generateOAuthCode,
+  generateOAuthCodeQuery,
   getStatus,
-  login,
   logout,
   register,
   resetPassword,
@@ -34,8 +32,8 @@ import {
   sendEmailVerification,
   sendPasswordResetEmail,
   verify2FALogin,
-  type GenerateOAuthCodeParams,
 } from "@/openapi";
+import { loginWithPassword } from "@/lib/api/gateway-gaps";
 import { resolveSelf } from "@/server/auth/account/self.service";
 import { deriveUpstream } from "@/server/constants";
 import { Elysia, t } from "elysia";
@@ -47,10 +45,10 @@ export const authRoute = new Elysia({ prefix: "/account" })
     "/login",
     async ({ body, cookie, upstream }) => {
       const { turnstile, ...loginRequest } = body;
-      const res = await login(
+      const res = await loginWithPassword(
         loginRequest,
         { turnstile },
-        { headers: upstream.headers },
+        upstream.headers,
       );
       return await handleAuthResponse(res, cookie);
     },
@@ -124,9 +122,7 @@ export const authRoute = new Elysia({ prefix: "/account" })
   .get(
     "/oauth/state",
     async ({ query, upstream }) => {
-      // customer_type is newer than src/openapi.ts; the generated client
-      // forwards every key of params as a query parameter.
-      const params: GenerateOAuthCodeParams & { customer_type?: CustomerType } =
+      const res = await generateOAuthCodeQuery(
         {
           provider: query.provider,
           aff: query.aff,
@@ -134,8 +130,9 @@ export const authRoute = new Elysia({ prefix: "/account" })
           action: query.action,
           customer_type: query.customer_type,
           turnstile: query.turnstile,
-        };
-      const res = await generateOAuthCode(params, upstream);
+        },
+        upstream,
+      );
       return unwrap(res);
     },
     { query: oauthStateQuery },

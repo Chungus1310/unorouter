@@ -70,234 +70,7 @@ export type PostApiJobs429 = {
   error: "too many jobs in flight";
 };
 
-export type GetApiJobsById200ResultAnyOfAvatar = {
-  name: string;
-  mimeType: string;
-  base64: string;
-};
-
-export type GetApiJobsById200ResultAnyOfCardData = { [key: string]: unknown };
-
-export type GetApiJobsById200ResultAnyOfCard = {
-  spec: string;
-  spec_version?: string;
-  data: GetApiJobsById200ResultAnyOfCardData;
-};
-
-export type GetApiJobsById200ResultAnyOfLorebooksItemEntriesItemInjectionRole =
-  "system" | "user" | "assistant";
-
-export type GetApiJobsById200ResultAnyOfLorebooksItemEntriesItem = {
-  keys: string[];
-  secondaryKeys?: string[];
-  content: string;
-  comment?: string;
-  enabled: boolean;
-  constant: boolean;
-  selective: boolean;
-  priority: number;
-  orderIndex: number;
-  matchWholeWords: boolean;
-  injectionRole?: GetApiJobsById200ResultAnyOfLorebooksItemEntriesItemInjectionRole;
-  chance?: number;
-};
-
-export type GetApiJobsById200ResultAnyOfLorebooksItem = {
-  name: string;
-  scanDepth?: number;
-  entries: GetApiJobsById200ResultAnyOfLorebooksItemEntriesItem[];
-};
-
-export type GetApiJobsById200ResultAnyOfSkippedItemReason =
-  "private" | "not_found";
-
-export type GetApiJobsById200ResultAnyOfSkippedItem = {
-  title: string;
-  reason: GetApiJobsById200ResultAnyOfSkippedItemReason;
-};
-
-export type GetApiJobsById200ResultAnyOf = {
-  kind?: "character";
-  source: string;
-  sourceUrl: string;
-  avatar?: GetApiJobsById200ResultAnyOfAvatar;
-  card: GetApiJobsById200ResultAnyOfCard;
-  lorebooks: GetApiJobsById200ResultAnyOfLorebooksItem[];
-  skipped: GetApiJobsById200ResultAnyOfSkippedItem[];
-};
-
-export type GetApiJobsById200ResultAnyOfOnezeroLorebooksItemEntriesItemInjectionRole =
-  "system" | "user" | "assistant";
-
-export type GetApiJobsById200ResultAnyOfOnezeroLorebooksItemEntriesItem = {
-  keys: string[];
-  secondaryKeys?: string[];
-  content: string;
-  comment?: string;
-  enabled: boolean;
-  constant: boolean;
-  selective: boolean;
-  priority: number;
-  orderIndex: number;
-  matchWholeWords: boolean;
-  injectionRole?: GetApiJobsById200ResultAnyOfOnezeroLorebooksItemEntriesItemInjectionRole;
-  chance?: number;
-};
-
-export type GetApiJobsById200ResultAnyOfOnezeroLorebooksItem = {
-  name: string;
-  scanDepth?: number;
-  entries: GetApiJobsById200ResultAnyOfOnezeroLorebooksItemEntriesItem[];
-};
-
-export type GetApiJobsById200ResultAnyOfOnezeroSkippedItemReason =
-  "private" | "not_found";
-
-export type GetApiJobsById200ResultAnyOfOnezeroSkippedItem = {
-  title: string;
-  reason: GetApiJobsById200ResultAnyOfOnezeroSkippedItemReason;
-};
-
-export type GetApiJobsById200ResultAnyOfOnezero = {
-  kind: "lorebook";
-  source: string;
-  sourceUrl: string;
-  lorebooks: GetApiJobsById200ResultAnyOfOnezeroLorebooksItem[];
-  skipped: GetApiJobsById200ResultAnyOfOnezeroSkippedItem[];
-};
-
-export type GetApiJobsById200ResultAnyOfOnesixPersonasItemAttributes = {
-  [key: string]: unknown;
-};
-
-export type GetApiJobsById200ResultAnyOfOnesixPersonasItem = {
-  name: string;
-  description: string;
-  attributes?: GetApiJobsById200ResultAnyOfOnesixPersonasItemAttributes;
-};
-
-export type GetApiJobsById200ResultAnyOfOnesix = {
-  kind: "persona";
-  source: string;
-  sourceUrl: string;
-  personas: GetApiJobsById200ResultAnyOfOnesixPersonasItem[];
-};
-
-export type GetApiJobsById200ResultAnyOfOneninePlugin = {
-  name: string;
-  script: string;
-};
-
-export type GetApiJobsById200ResultAnyOfOnenine = {
-  kind: "plugin";
-  source: string;
-  sourceUrl: string;
-  plugin: GetApiJobsById200ResultAnyOfOneninePlugin;
-};
-
-export type GetApiJobsById200ResultAnyOfTwoonePreset = {
-  name: string;
-  promptTemplate: string;
-};
-
-export type GetApiJobsById200ResultAnyOfTwooneLorebooksItemEntriesItemInjectionRole =
-  "system" | "user" | "assistant";
-
-export type GetApiJobsById200ResultAnyOfTwooneLorebooksItemEntriesItem = {
-  keys: string[];
-  secondaryKeys?: string[];
-  content: string;
-  comment?: string;
-  enabled: boolean;
-  constant: boolean;
-  selective: boolean;
-  priority: number;
-  orderIndex: number;
-  matchWholeWords: boolean;
-  injectionRole?: GetApiJobsById200ResultAnyOfTwooneLorebooksItemEntriesItemInjectionRole;
-  chance?: number;
-};
-
-export type GetApiJobsById200ResultAnyOfTwooneLorebooksItem = {
-  name: string;
-  scanDepth?: number;
-  entries: GetApiJobsById200ResultAnyOfTwooneLorebooksItemEntriesItem[];
-};
-
-export type GetApiJobsById200ResultAnyOfTwoone = {
-  kind: "preset";
-  source: string;
-  sourceUrl: string;
-  preset: GetApiJobsById200ResultAnyOfTwoonePreset;
-  lorebooks: GetApiJobsById200ResultAnyOfTwooneLorebooksItem[];
-};
-
-export type GetApiJobsById200ResultAnyOfTwosixItemAvatar = {
-  name: string;
-  mimeType: string;
-  base64: string;
-};
-
-export type GetApiJobsById200ResultAnyOfTwosixItemCardData = {
-  [key: string]: unknown;
-};
-
-export type GetApiJobsById200ResultAnyOfTwosixItemCard = {
-  spec: string;
-  spec_version?: string;
-  data: GetApiJobsById200ResultAnyOfTwosixItemCardData;
-};
-
-export type GetApiJobsById200ResultAnyOfTwosixItemLorebooksItemEntriesItemInjectionRole =
-  "system" | "user" | "assistant";
-
-export type GetApiJobsById200ResultAnyOfTwosixItemLorebooksItemEntriesItem = {
-  keys: string[];
-  secondaryKeys?: string[];
-  content: string;
-  comment?: string;
-  enabled: boolean;
-  constant: boolean;
-  selective: boolean;
-  priority: number;
-  orderIndex: number;
-  matchWholeWords: boolean;
-  injectionRole?: GetApiJobsById200ResultAnyOfTwosixItemLorebooksItemEntriesItemInjectionRole;
-  chance?: number;
-};
-
-export type GetApiJobsById200ResultAnyOfTwosixItemLorebooksItem = {
-  name: string;
-  scanDepth?: number;
-  entries: GetApiJobsById200ResultAnyOfTwosixItemLorebooksItemEntriesItem[];
-};
-
-export type GetApiJobsById200ResultAnyOfTwosixItemAssetsItem = {
-  name: string;
-  mimeType: string;
-  base64: string;
-};
-
-export type GetApiJobsById200ResultAnyOfTwosixItem = {
-  kind: "rich-character";
-  source: string;
-  sourceUrl: string;
-  avatar?: GetApiJobsById200ResultAnyOfTwosixItemAvatar;
-  card: GetApiJobsById200ResultAnyOfTwosixItemCard;
-  lorebooks: GetApiJobsById200ResultAnyOfTwosixItemLorebooksItem[];
-  regexScripts?: unknown;
-  triggers?: unknown;
-  assets: GetApiJobsById200ResultAnyOfTwosixItemAssetsItem[];
-};
-
-export type GetApiJobsById200Result =
-  | GetApiJobsById200ResultAnyOf
-  | GetApiJobsById200ResultAnyOfOnezero
-  | GetApiJobsById200ResultAnyOfOnesix
-  | GetApiJobsById200ResultAnyOfOnenine
-  | GetApiJobsById200ResultAnyOfTwoone
-  | GetApiJobsById200ResultAnyOfTwosixItem[]
-  | null;
+export type GetApiJobsById200Result = unknown[] | null;
 
 export type GetApiJobsById200Error = string | null;
 
@@ -309,7 +82,7 @@ export type GetApiJobsById200 = {
 };
 
 export type GetApiJobsById404 = {
-  error: "not found";
+  error: string;
 };
 
 export type GetApiJobsById422 = {
@@ -328,6 +101,7 @@ export type GetApiHealth200 = {
   exitIp: string;
   queueDepth: number;
   failStreak: number;
+  attemptFailStreak: number;
 };
 
 export type GetApiHealthLive200 = {
@@ -336,6 +110,7 @@ export type GetApiHealthLive200 = {
   exitIp: string;
   queueDepth: number;
   failStreak: number;
+  attemptFailStreak: number;
 };
 
 export type GetApiHealthLive503 = {
@@ -344,6 +119,7 @@ export type GetApiHealthLive503 = {
   exitIp: string;
   queueDepth: number;
   failStreak: number;
+  attemptFailStreak: number;
 };
 
 export type PostV1ChatCompletions200ChoicesItemMessage = {

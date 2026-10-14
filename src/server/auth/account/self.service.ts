@@ -2,8 +2,7 @@ import { clearSessionCookies, setSessionCookies } from "@/lib/api/auth";
 import { NEW_API_USER } from "@/lib/config/constants";
 import { isUpstreamError } from "@/lib/custom-fetch";
 import { unwrap } from "@/lib/utils/base";
-import type { SelfUser } from "@/lib/validation/auth";
-import { getSelf } from "@/openapi";
+import { getSelf, type UserSelfData } from "@/openapi";
 import { deriveUpstream } from "@/server/constants";
 import type { Context } from "elysia";
 
@@ -11,7 +10,7 @@ import type { Context } from "elysia";
 export async function resolveSelf(
   request: Request,
   cookie?: Context["cookie"],
-): Promise<{ user: SelfUser | null; expired: boolean }> {
+): Promise<{ user: UserSelfData | null; expired: boolean }> {
   const { upstream } = await deriveUpstream({ request });
   if (!upstream.headers[NEW_API_USER]) return { user: null, expired: false };
   try {
