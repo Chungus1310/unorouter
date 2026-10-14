@@ -3,6 +3,7 @@ import {
   AUTO_GROUP,
   msg,
   NEW_API_USER,
+  SECURITY_PROOF_HEADER,
   USER_ID_COOKIE,
 } from "@/lib/config/constants";
 import { env } from "@/lib/config/env";
@@ -123,6 +124,10 @@ export async function deriveUpstream({ request }: { request: Request }) {
   // this every web login reads as the server runtime.
   const userAgent = request.headers.get("user-agent");
   if (userAgent) headers["User-Agent"] = userAgent;
+  // A step-up proof is single use and bound to one scope, so forwarding it on
+  // every call only matters for the routes that consume it.
+  const proof = request.headers.get(SECURITY_PROOF_HEADER);
+  if (proof) headers[SECURITY_PROOF_HEADER] = proof;
   if (upstreamIsProxied && serverEnv.edgeDevToken)
     headers["x-edge-dev"] = serverEnv.edgeDevToken;
 

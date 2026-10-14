@@ -1,17 +1,20 @@
-import { twoFACodeBody, verificationQuery } from "@/lib/api/typebox/common";
+import { setSessionCookies } from "@/lib/api/auth";
+import { twoFAEnableBody, verificationQuery } from "@/lib/api/typebox/common";
 import {
   emailBindQuery,
   passkeyCredentialBody,
+  passkeyVerifyBeginBody,
+  passkeyVerifyFinishBody,
+  securityVerifyBody,
   updateSelfBody,
   updateSettingBody,
   updateTimeoutBody,
+  verificationMethodsQuery,
 } from "@/lib/api/typebox/settings";
 import { unwrap } from "@/lib/utils/base";
 import {
   deleteSelf,
-  disable2FA,
   emailBind,
-  enable2FA,
   generateAccessToken,
   passkeyDelete,
   passkeyRegisterBegin,
@@ -22,9 +25,34 @@ import {
   updateTimeoutPreference,
   updateUserSetting,
 } from "@/openapi";
-import { get2FAStatus, setup2FA } from "@/lib/api/gateway-gaps";
-import { Elysia } from "elysia";
-import { deriveUpstream } from "@/server/constants";
+import {
+  type AuthRotationData,
+  beginPasskeyVerification,
+  disable2FAWithProof,
+  enable2FAEnrollment,
+  finishPasskeyVerification,
+  get2FAStatus,
+  getVerificationMethods,
+  setup2FA,
+  verifySecurity,
+} from "@/lib/api/gateway-gaps";
+import { Elysia, type Context } from "elysia";
+import { deriveUpstream, getUserId } from "@/server/constants";
+
+// Changing 2FA bumps the user's auth version, so the old token stops working
+// and the gateway hands back its replacement.
+async function keepRotatedSession(
+  cookie: Context["cookie"],
+  data: AuthRotationData | undefined,
+) {
+  if (!data?.access_token) return;
+  await setSessionCookies(
+    cookie,
+    await getUserId(cookie),
+    data.access_token,
+    data.access_expires_at,
+  );
+}
 
 export const settingsRoute = new Elysia({ prefix: "/settings" })
   .derive(deriveUpstream)
@@ -105,6 +133,42 @@ export const settingsRoute = new Elysia({ prefix: "/settings" })
     return unwrap(res);
   })
 
+  .get(
+    "/verify/methods",
+    async ({ query, upstream }) => {
+      const res = await getVerificationMethods(query.scope, upstream);
+      return unwrap(res);
+    },
+    { query: verificationMethodsQuery },
+  )
+
+  .post(
+    "/verify",
+    async ({ body, upstream }) => {
+      const res = await verifySecurity(body, upstream);
+      return unwrap(res);
+    },
+    { body: securityVerifyBody },
+  )
+
+  .post(
+    "/passkey/verify/begin",
+    async ({ body, upstream }) => {
+      const res = await beginPasskeyVerification(body, upstream);
+      return unwrap(res);
+    },
+    { body: passkeyVerifyBeginBody },
+  )
+
+  .post(
+    "/passkey/verify/finish",
+    async ({ body, upstream }) => {
+      const res = await finishPasskeyVerification(body, upstream);
+      return unwrap(res);
+    },
+    { body: passkeyVerifyFinishBody },
+  )
+
   .post("/2fa/setup", async ({ upstream }) => {
     const res = await setup2FA({ headers: upstream.headers });
     return unwrap(res);
@@ -112,27 +176,19 @@ export const settingsRoute = new Elysia({ prefix: "/settings" })
 
   .post(
     "/2fa/enable",
-    async ({ body, upstream }) => {
-      const res = await enable2FA({
-        headers: { "Content-Type": "application/json", ...upstream.headers },
-        body: JSON.stringify(body),
-      });
+    async ({ body, cookie, upstream }) => {
+      const res = await enable2FAEnrollment(body, upstream);
+      await keepRotatedSession(cookie, res.data.data);
       return unwrap(res);
     },
-    { body: twoFACodeBody },
+    { body: twoFAEnableBody },
   )
 
-  .post(
-    "/2fa/disable",
-    async ({ body, upstream }) => {
-      const res = await disable2FA({
-        headers: { "Content-Type": "application/json", ...upstream.headers },
-        body: JSON.stringify(body),
-      });
-      return unwrap(res);
-    },
-    { body: twoFACodeBody },
-  )
+  .post("/2fa/disable", async ({ cookie, upstream }) => {
+    const res = await disable2FAWithProof(upstream);
+    await keepRotatedSession(cookie, res.data.data);
+    return unwrap(res);
+  })
 
   .get("/passkey", async ({ upstream }) => {
     const res = await passkeyStatus({ headers: upstream.headers });

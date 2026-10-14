@@ -45,6 +45,17 @@ export const twoFACodeSchema = t.Object({
 });
 export type TwoFACodeSchema = Static<typeof twoFACodeSchema>;
 
+// One field for the step-up secret: an authenticator or backup code, or the
+// account password, depending on the chosen method.
+export const securityVerifySchema = t.Object({
+  secret: t.String({
+    minLength: 1,
+    default: "",
+    error: msg("FORM.ERROR.REQUIRED"),
+  }),
+});
+export type SecurityVerifySchema = Static<typeof securityVerifySchema>;
+
 export const deleteAccountSchema = t.Object({
   username: t.String({
     minLength: 1,

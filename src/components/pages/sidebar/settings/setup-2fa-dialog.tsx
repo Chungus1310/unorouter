@@ -33,6 +33,11 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { formDefaults } from "@/lib/validation/helpers";
+import { handleError } from "@/lib/utils/client";
+import {
+  needsReverification,
+  SecurityVerification,
+} from "./security-verification";
 
 export function Setup2FADialog(props: {
   open: boolean;
@@ -44,11 +49,12 @@ export function Setup2FADialog(props: {
   const enable2FAMutation = useEnable2FAMutation();
   const disable2FAMutation = useDisable2FAMutation();
 
-  const [step, setStep] = useState<"init" | "qr" | "verify">("init");
+  const [step, setStep] = useState<"verify" | "qr" | "code">("verify");
   const [setupData, setSetupData] = useState<{
     secret: string;
     qr_code_data: string;
     backup_codes: string[];
+    flow_token: string;
   } | null>(null);
 
   const form = useForm({
@@ -56,21 +62,32 @@ export function Setup2FADialog(props: {
     defaultValues: formDefaults(twoFACodeSchema),
   });
 
-  function handleSetup() {
-    setup2FAMutation.mutate(undefined, {
-      onSuccess: (data) => {
-        setSetupData({ ...data, backup_codes: data.backup_codes ?? [] });
-        setStep("qr");
+  function onProtectedError(error: Error) {
+    if (needsReverification(error)) {
+      toast.error(t("SETTINGS.SECURITY.VERIFY.EXPIRED"));
+      resetState();
+      return;
+    }
+    handleError(error, t);
+  }
+
+  function handleSetupVerified(proof: string) {
+    setup2FAMutation.mutate(
+      { proof },
+      {
+        onSuccess: (data) => {
+          setSetupData({ ...data, backup_codes: data.backup_codes ?? [] });
+          setStep("qr");
+        },
+        onError: onProtectedError,
       },
-      onError: (error) => {
-        toast.error(error.message);
-      },
-    });
+    );
   }
 
   function onSubmitEnable(data: TwoFACodeSchema) {
+    if (!setupData) return;
     enable2FAMutation.mutate(
-      { body: { code: data.code } },
+      { body: { code: data.code, flow_token: setupData.flow_token } },
       {
         onSuccess: () => {
           analytics.settings.twoFAEnabled();
@@ -78,16 +95,14 @@ export function Setup2FADialog(props: {
           props.onOpenChange(false);
           resetState();
         },
-        onError: (error) => {
-          toast.error(error.message);
-        },
+        onError: onProtectedError,
       },
     );
   }
 
-  function onSubmitDisable(data: TwoFACodeSchema) {
+  function handleDisableVerified(proof: string) {
     disable2FAMutation.mutate(
-      { body: { code: data.code } },
+      { proof },
       {
         onSuccess: () => {
           analytics.settings.twoFADisabled();
@@ -95,15 +110,13 @@ export function Setup2FADialog(props: {
           props.onOpenChange(false);
           resetState();
         },
-        onError: (error) => {
-          toast.error(error.message);
-        },
+        onError: onProtectedError,
       },
     );
   }
 
   function resetState() {
-    setStep("init");
+    setStep("verify");
     setSetupData(null);
     form.reset(formDefaults(twoFACodeSchema));
   }
@@ -130,36 +143,20 @@ export function Setup2FADialog(props: {
               {t("SETTINGS.SECURITY.ENTER_CODE_TO_DISABLE")}
             </DialogDescription>
           </DialogHeader>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmitDisable)}>
-              <div className="py-4">
-                <MyFormInput
-                  control={form.control}
-                  name="code"
-                  schema={twoFACodeSchema}
-                  placeholder={t("SETTINGS.SECURITY.ENTER_TOTP_CODE")}
-                  maxLength={6}
-                  className="text-center text-lg tracking-widest"
-                />
-              </div>
-              <DialogFooter>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => props.onOpenChange(false)}
-                >
-                  {t("COMMON.CANCEL")}
-                </Button>
-                <Button
-                  type="submit"
-                  variant="destructive"
-                  disabled={disable2FAMutation.isPending}
-                >
-                  {t("SETTINGS.SECURITY.DISABLE_2FA")}
-                </Button>
-              </DialogFooter>
-            </form>
-          </Form>
+          <SecurityVerification
+            scope="2fa.disable"
+            onVerified={handleDisableVerified}
+            busy={disable2FAMutation.isPending}
+          />
+          <DialogFooter>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => props.onOpenChange(false)}
+            >
+              {t("COMMON.CANCEL")}
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     );
@@ -178,20 +175,17 @@ export function Setup2FADialog(props: {
           <DialogTitle>{t("SETTINGS.SECURITY.SETUP_2FA")}</DialogTitle>
         </DialogHeader>
 
-        {step === "init" && (
-          <>
+        {step === "verify" && (
+          <div className="space-y-4">
             <p className="text-muted-foreground text-sm">
               {t("SETTINGS.SECURITY.TWO_FACTOR_DESC")}
             </p>
-            <DialogFooter>
-              <Button
-                onClick={handleSetup}
-                disabled={setup2FAMutation.isPending}
-              >
-                {t("SETTINGS.SECURITY.SETUP_2FA")}
-              </Button>
-            </DialogFooter>
-          </>
+            <SecurityVerification
+              scope="2fa.setup"
+              onVerified={handleSetupVerified}
+              busy={setup2FAMutation.isPending}
+            />
+          </div>
         )}
 
         {step === "qr" && setupData && (
@@ -247,14 +241,14 @@ export function Setup2FADialog(props: {
             </div>
 
             <DialogFooter>
-              <Button onClick={() => setStep("verify")}>
+              <Button onClick={() => setStep("code")}>
                 {t("SETTINGS.CONTINUE")}
               </Button>
             </DialogFooter>
           </div>
         )}
 
-        {step === "verify" && (
+        {step === "code" && (
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmitEnable)}>
               <div className="space-y-4">
