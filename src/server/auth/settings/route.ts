@@ -2,7 +2,7 @@ import { setSessionCookies } from "@/lib/api/auth";
 import { twoFAEnableBody, verificationQuery } from "@/lib/api/typebox/common";
 import {
   emailBindQuery,
-  passkeyCredentialBody,
+  passkeyRegisterFinishBody,
   passkeyVerifyBeginBody,
   passkeyVerifyFinishBody,
   securityVerifyBody,
@@ -16,9 +16,7 @@ import {
   deleteSelf,
   emailBind,
   generateAccessToken,
-  passkeyDelete,
   passkeyRegisterBegin,
-  passkeyRegisterFinish,
   passkeyStatus,
   sendEmailVerification,
   updateSelf,
@@ -28,8 +26,10 @@ import {
 import {
   type AuthRotationData,
   beginPasskeyVerification,
+  deletePasskeyWithProof,
   disable2FAWithProof,
   enable2FAEnrollment,
+  finishPasskeyRegistration,
   finishPasskeyVerification,
   get2FAStatus,
   getVerificationMethods,
@@ -39,8 +39,8 @@ import {
 import { Elysia, type Context } from "elysia";
 import { deriveUpstream, getUserId } from "@/server/constants";
 
-// Changing 2FA bumps the user's auth version, so the old token stops working
-// and the gateway hands back its replacement.
+// Changing 2FA or the passkey bumps the user's auth version, so the old token
+// stops working and the gateway hands back its replacement.
 async function keepRotatedSession(
   cookie: Context["cookie"],
   data: AuthRotationData | undefined,
@@ -202,20 +202,16 @@ export const settingsRoute = new Elysia({ prefix: "/settings" })
 
   .post(
     "/passkey/register/finish",
-    async ({ body, upstream }) => {
-      const res = await passkeyRegisterFinish({
-        headers: {
-          "Content-Type": "application/json",
-          ...upstream.headers,
-        },
-        body: JSON.stringify(body),
-      });
+    async ({ body, cookie, upstream }) => {
+      const res = await finishPasskeyRegistration(body, upstream);
+      await keepRotatedSession(cookie, res.data.data);
       return unwrap(res);
     },
-    { body: passkeyCredentialBody },
+    { body: passkeyRegisterFinishBody },
   )
 
-  .delete("/passkey", async ({ upstream }) => {
-    const res = await passkeyDelete({ headers: upstream.headers });
+  .delete("/passkey", async ({ cookie, upstream }) => {
+    const res = await deletePasskeyWithProof(upstream);
+    await keepRotatedSession(cookie, res.data.data);
     return unwrap(res);
   });

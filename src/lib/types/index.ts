@@ -131,6 +131,7 @@ export type SnapshotView = {
 export type EntityEditId = string | "new" | null;
 
 export type TwoFAMode = "setup" | "disable";
+export type PasskeyMode = "register" | "delete";
 
 type MigrationEntry = { tag: string; sql: string };
 export type MigrationManifest = { migrations: MigrationEntry[] };

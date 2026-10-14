@@ -20,26 +20,98 @@ function toRequestOptions(
   const publicKey = isRecord(assertion) ? assertion.publicKey : undefined;
   if (!isRecord(publicKey) || typeof publicKey.challenge !== "string")
     throw new Error(msg("ERRORS.UNEXPECTED_RESPONSE"));
-  const allowed = Array.isArray(publicKey.allowCredentials)
-    ? publicKey.allowCredentials
-    : [];
-  const allowCredentials: PublicKeyCredentialDescriptor[] = allowed.flatMap(
-    (credential) =>
-      isRecord(credential) && typeof credential.id === "string"
-        ? [{ type: "public-key", id: fromBase64Url(credential.id) }]
-        : [],
-  );
-  const uv = publicKey.userVerification;
+  const allowCredentials = toCredentialDescriptors(publicKey.allowCredentials);
   return {
     challenge: fromBase64Url(publicKey.challenge),
     rpId: typeof publicKey.rpId === "string" ? publicKey.rpId : undefined,
     timeout:
       typeof publicKey.timeout === "number" ? publicKey.timeout : undefined,
-    userVerification:
-      uv === "required" || uv === "preferred" || uv === "discouraged"
-        ? uv
-        : "required",
+    userVerification: toRequirement(publicKey.userVerification) ?? "required",
     allowCredentials,
+  };
+}
+
+function toRequirement(value: unknown) {
+  return value === "required" ||
+    value === "preferred" ||
+    value === "discouraged"
+    ? value
+    : undefined;
+}
+
+function toCredentialDescriptors(
+  value: unknown,
+): PublicKeyCredentialDescriptor[] {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((credential) =>
+    isRecord(credential) && typeof credential.id === "string"
+      ? [{ type: "public-key", id: fromBase64Url(credential.id) }]
+      : [],
+  );
+}
+
+function toCreationOptions(
+  creation: unknown,
+): PublicKeyCredentialCreationOptions {
+  const publicKey = isRecord(creation) ? creation.publicKey : undefined;
+  const rp = isRecord(publicKey) ? publicKey.rp : undefined;
+  const user = isRecord(publicKey) ? publicKey.user : undefined;
+  if (
+    !isRecord(publicKey) ||
+    typeof publicKey.challenge !== "string" ||
+    !isRecord(rp) ||
+    typeof rp.name !== "string" ||
+    !isRecord(user) ||
+    typeof user.id !== "string" ||
+    typeof user.name !== "string"
+  )
+    throw new Error(msg("ERRORS.UNEXPECTED_RESPONSE"));
+  const params = Array.isArray(publicKey.pubKeyCredParams)
+    ? publicKey.pubKeyCredParams
+    : [];
+  const pubKeyCredParams: PublicKeyCredentialParameters[] = params.flatMap(
+    (param) =>
+      isRecord(param) && typeof param.alg === "number"
+        ? [{ type: "public-key", alg: param.alg }]
+        : [],
+  );
+  const selection = isRecord(publicKey.authenticatorSelection)
+    ? publicKey.authenticatorSelection
+    : {};
+  const attachment = selection.authenticatorAttachment;
+  const attestation = publicKey.attestation;
+  return {
+    challenge: fromBase64Url(publicKey.challenge),
+    rp: { name: rp.name, id: typeof rp.id === "string" ? rp.id : undefined },
+    user: {
+      id: fromBase64Url(user.id),
+      name: user.name,
+      displayName:
+        typeof user.displayName === "string" ? user.displayName : user.name,
+    },
+    pubKeyCredParams,
+    timeout:
+      typeof publicKey.timeout === "number" ? publicKey.timeout : undefined,
+    excludeCredentials: toCredentialDescriptors(publicKey.excludeCredentials),
+    authenticatorSelection: {
+      authenticatorAttachment:
+        attachment === "platform" || attachment === "cross-platform"
+          ? attachment
+          : undefined,
+      requireResidentKey:
+        typeof selection.requireResidentKey === "boolean"
+          ? selection.requireResidentKey
+          : undefined,
+      residentKey: toRequirement(selection.residentKey),
+      userVerification: toRequirement(selection.userVerification) ?? "required",
+    },
+    attestation:
+      attestation === "none" ||
+      attestation === "indirect" ||
+      attestation === "direct" ||
+      attestation === "enterprise"
+        ? attestation
+        : undefined,
   };
 }
 
@@ -64,5 +136,28 @@ export async function getPasskeyAssertion(assertion: unknown) {
         userHandle: toBase64Url(response.userHandle),
       }),
     },
+  };
+}
+
+// Runs the browser prompt that creates a passkey for a gateway registration.
+// Null when the browser returns something other than an attestation.
+export async function createPasskeyCredential(creation: unknown) {
+  const credential = await navigator.credentials.create({
+    publicKey: toCreationOptions(creation),
+  });
+  if (!(credential instanceof PublicKeyCredential)) return null;
+  const response = credential.response;
+  if (!(response instanceof AuthenticatorAttestationResponse)) return null;
+  const attachment = credential.authenticatorAttachment;
+  return {
+    id: credential.id,
+    rawId: toBase64Url(credential.rawId),
+    type: "public-key" as const,
+    response: {
+      attestationObject: toBase64Url(response.attestationObject),
+      clientDataJSON: toBase64Url(response.clientDataJSON),
+      transports: response.getTransports(),
+    },
+    ...(attachment && { authenticatorAttachment: attachment }),
   };
 }

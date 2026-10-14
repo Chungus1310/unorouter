@@ -43,13 +43,15 @@ function findCode(value: unknown, depth = 0): string | undefined {
 }
 
 // True when the gateway refused the proof itself (missing, expired, used,
-// wrong scope) or the 2FA enrollment it started has lapsed: asking the user
-// to verify again is the fix for all of them.
+// wrong scope) or the 2FA enrollment or passkey ceremony it started has
+// lapsed: asking the user to verify again is the fix for all of them.
 export function needsReverification(error: unknown): boolean {
   const code = findCode(error);
   return (
     !!code &&
-    (code.startsWith("SECURITY_PROOF_") || code === "TWOFA_SETUP_INVALID")
+    (code.startsWith("SECURITY_PROOF_") ||
+      code === "TWOFA_SETUP_INVALID" ||
+      code === "AUTH_FLOW_INVALID")
   );
 }
 

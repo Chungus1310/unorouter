@@ -10,16 +10,20 @@ export const updateSelfBody = t.Object({
   customer_type: t.Optional(customerTypeSchema),
 });
 
-export const passkeyCredentialBody = t.Object({
-  id: t.String(),
-  rawId: t.String(),
-  response: t.Object({
-    clientDataJSON: t.String(),
-    attestationObject: t.String(),
+// The begin call's flow_token ties the credential to that verified ceremony.
+export const passkeyRegisterFinishBody = t.Object({
+  flow_token: t.String(),
+  credential: t.Object({
+    id: t.String(),
+    rawId: t.String(),
+    type: t.Literal("public-key"),
+    response: t.Object({
+      clientDataJSON: t.String(),
+      attestationObject: t.String(),
+      transports: t.Optional(t.Array(t.String())),
+    }),
+    authenticatorAttachment: t.Optional(t.String()),
   }),
-  type: t.Literal("public-key"),
-  authenticatorAttachment: t.Optional(t.String()),
-  clientExtensionResults: t.Optional(t.Record(t.String(), t.Unknown())),
 });
 
 export const emailBindQuery = t.Object({
@@ -54,6 +58,8 @@ export const updateTimeoutBody = t.Object({
 export const securityScope = t.Union([
   t.Literal("2fa.setup"),
   t.Literal("2fa.disable"),
+  t.Literal("passkey.register"),
+  t.Literal("passkey.delete"),
 ]);
 export type SecurityScope = typeof securityScope.static;
 

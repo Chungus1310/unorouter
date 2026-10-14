@@ -11,7 +11,10 @@ import type { PasskeyStatusData, UserSelfData } from "@/openapi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { msg, SECURITY_PROOF_HEADER } from "@/lib/config/constants";
 import type { SecurityScope } from "@/lib/api/typebox/settings";
-import { getPasskeyAssertion } from "@/lib/utils/webauthn";
+import {
+  createPasskeyCredential,
+  getPasskeyAssertion,
+} from "@/lib/utils/webauthn";
 import { dayjs } from "@/lib/utils/format/date";
 
 type TwoFA = (typeof rpc.api.auth.settings)["2fa"];
@@ -216,25 +219,28 @@ export function useDisable2FAMutation() {
   });
 }
 
-export function usePasskeyRegisterBeginMutation() {
+// Plain useMutation like the 2FA ones: a refused proof re-prompts verification
+// and a dismissed browser prompt is not an error.
+export function usePasskeyRegisterMutation() {
+  const qc = useQueryClient();
   return useMutation({
-    mutationFn: async () =>
-      handleElysia(await rpc.api.auth.settings.passkey.register.begin.post()),
-  });
-}
-
-export function usePasskeyRegisterFinishMutation() {
-  return useApiMutation({
-    mutationFn: async (
-      args: EdenArgs<
-        typeof rpc.api.auth.settings.passkey.register.finish,
-        "post"
-      >,
-    ) =>
-      handleElysia(
-        await rpc.api.auth.settings.passkey.register.finish.post(args.body),
-      ),
-    onSuccess: (_data, _args, qc) => {
+    mutationFn: async (args: { proof: string }) => {
+      const begin = handleElysia(
+        await rpc.api.auth.settings.passkey.register.begin.post(undefined, {
+          headers: { [SECURITY_PROOF_HEADER]: args.proof },
+        }),
+      );
+      const credential = await createPasskeyCredential(begin.options);
+      if (!credential || !begin.flow_token)
+        throw new Error(msg("ERRORS.UNEXPECTED_RESPONSE"));
+      return handleElysia(
+        await rpc.api.auth.settings.passkey.register.finish.post({
+          flow_token: begin.flow_token,
+          credential,
+        }),
+      );
+    },
+    onSuccess: () => {
       qc.setQueryData<PasskeyStatusData>(queryKeys.passkeyStatus(), (old) =>
         old ? { ...old, enabled: true } : old,
       );
@@ -243,10 +249,15 @@ export function usePasskeyRegisterFinishMutation() {
 }
 
 export function usePasskeyDeleteMutation() {
-  return useApiMutation({
-    mutationFn: async () =>
-      handleElysia(await rpc.api.auth.settings.passkey.delete()),
-    onSuccess: (_data, _args, qc) => {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (args: { proof: string }) =>
+      handleElysia(
+        await rpc.api.auth.settings.passkey.delete(undefined, {
+          headers: { [SECURITY_PROOF_HEADER]: args.proof },
+        }),
+      ),
+    onSuccess: () => {
       qc.setQueryData<PasskeyStatusData>(queryKeys.passkeyStatus(), (old) =>
         old ? { ...old, enabled: false } : old,
       );
