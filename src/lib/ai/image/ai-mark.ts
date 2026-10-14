@@ -21,6 +21,8 @@ const EXISTING_MARKS = [
   "compositeSynthetic",
   "c2pa",
 ];
+const XMP_UUID = Buffer.from("be7acfcb97a942e89c71999491e3afac", "hex");
+const C2PA_UUID = Buffer.from("d8fec3d61b0e483c92975828877ec481", "hex");
 const WEBP_FLAG_ALPHA = 0x10;
 const WEBP_FLAG_XMP = 0x04;
 
@@ -149,9 +151,51 @@ function markWebp(img: Buffer): Buffer {
   return out;
 }
 
-// Returns the image with the mark added; unsupported formats and images that
-// already carry a mark or their own XMP packet come back unchanged.
+// Appends a top-level XMP uuid box, which moves no offsets. Same rules as
+// new-api's MP4Tracker: only when the file ends exactly on a box boundary,
+// carries no C2PA manifest or XMP box, and does not end in mfra, which readers
+// locate from the end of the file.
+function markMp4(file: Buffer): Buffer {
+  let pos = 0;
+  let lastType = "";
+  while (pos < file.length) {
+    if (pos + 8 > file.length) return file;
+    const type = file.toString("latin1", pos + 4, pos + 8);
+    let size = file.readUInt32BE(pos);
+    let headerLen = 8;
+    if (size === 1) {
+      if (pos + 16 > file.length) return file;
+      const large = file.readBigUInt64BE(pos + 8);
+      if (large > BigInt(Number.MAX_SAFE_INTEGER)) return file;
+      size = Number(large);
+      headerLen = 16;
+    }
+    if (type === "uuid") {
+      if (pos + headerLen + 16 > file.length) return file;
+      const id = file.subarray(pos + headerLen, pos + headerLen + 16);
+      if (id.equals(C2PA_UUID) || id.equals(XMP_UUID)) return file;
+      headerLen += 16;
+    }
+    // Size 0 runs to EOF, so anything appended would land inside that box.
+    if (type === "jumb" || size === 0 || size < headerLen) return file;
+    lastType = type;
+    pos += size;
+  }
+  if (pos !== file.length || lastType === "mfra") return file;
+  const head = Buffer.alloc(8);
+  head.writeUInt32BE(8 + XMP_UUID.length + XMP.length, 0);
+  head.write("uuid", 4, "latin1");
+  return Buffer.concat([file, head, XMP_UUID, XMP]);
+}
+
+// Returns the image or MP4/MOV video with the mark added; unsupported formats
+// and files that already carry a mark or their own XMP packet come back
+// unchanged.
 export function markAiGenerated(img: Buffer): Buffer {
+  // A byte scan of a whole video would hit "c2pa" by chance; the box walk is exact.
+  if (img.length >= 8 && img.toString("latin1", 4, 8) === "ftyp") {
+    return markMp4(img);
+  }
   if (EXISTING_MARKS.some((m) => img.includes(m, 0, "latin1"))) return img;
   if (img.subarray(0, 8).equals(PNG_SIGNATURE)) return markPng(img);
   if (img.length > 3 && img[0] === 0xff && img[1] === 0xd8 && img[2] === 0xff) {

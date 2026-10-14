@@ -1,7 +1,7 @@
 import type { Built, ExtractedResult } from "@/lib/ai/image/dispatch";
 import { downloadGenerationBytes } from "@/lib/config/safe-fetch";
 import type { GeneratedImage, ImageSubmitBody } from "@/lib/validation/image";
-import { upstreamApiUrl } from "@/server/constants";
+import { bffServiceHeader, upstreamApiUrl } from "@/server/constants";
 import sharp from "sharp";
 
 // The request's width/height are not authoritative: the gateway clamps to 1MP
@@ -66,6 +66,7 @@ export async function postImageRequest(
   const headers: Record<string, string> = {
     Authorization: `Bearer ${apiKey}`,
     ...extraHeaders,
+    ...bffServiceHeader(),
   };
   if (built.kind === "json") headers["Content-Type"] = "application/json";
   const res = await fetch(`${upstreamApiUrl}${built.path}`, {

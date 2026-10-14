@@ -25,6 +25,14 @@ export const upstreamApiUrl = serverEnv.internalApiUrl ?? env.apiUrl;
 // dev: the cluster sets INTERNAL_API_URL to the ClusterIP.
 export const upstreamIsProxied = upstreamApiUrl === env.apiUrl;
 
+// Proves a gateway call came from this server, never the browser: the gateway then
+// skips the key-reveal audit and leaves generated image links unwrapped, since
+// every such image is downloaded and marked here.
+export function bffServiceHeader(): Record<string, string> {
+  const token = serverEnv.bffServiceToken;
+  return token ? { "X-Bff-Service-Token": token } : {};
+}
+
 // "auto" means let the gateway pick, so the header is omitted entirely rather
 // than sent with a sentinel value.
 export function groupHeader(group?: string | null): Record<string, string> {
