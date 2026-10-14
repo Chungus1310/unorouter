@@ -13,6 +13,7 @@ import {
   getSubscriptionPlansSummary,
 } from "@/server/models/pricing/pricing.service";
 import { Elysia, t } from "elysia";
+import type { ModelGroupsData } from "@/lib/validation/data-policy";
 
 export const pricingRoute = new Elysia({ prefix: "/pricing" })
   .get("/counts", async () => unwrap(await getPricingCounts()))
@@ -51,7 +52,7 @@ export const pricingRoute = new Elysia({ prefix: "/pricing" })
 
   .get(
     "/model-groups",
-    async (ctx) =>
+    async (ctx): Promise<ModelGroupsData> =>
       unwrap(await getPricingModelGroups({ model: ctx.query.model })),
     { query: t.Object({ model: t.String() }) },
   )

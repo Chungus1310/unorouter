@@ -481,7 +481,19 @@
       "AT_CAPACITY_NOTE": "Semua penyedia untuk model ini telah mencapai batas permintaan. Model akan kembali otomatis setelah batas direset.",
       "AT_CAPACITY_BADGE": "Sibuk"
     },
-    "DISCORD": "Minta model di Discord"
+    "DISCORD": "Minta model di Discord",
+    "DATA_POLICY": {
+      "SEAT": "Kedudukan penyedia: {country}",
+      "UNSAFE_COUNTRY": "Negara ketiga tanpa perlindungan data UE ({country}). Jangan kirim data pribadi.",
+      "UNSAFE": "Tidak ada perlindungan data UE untuk penyedia ini. Jangan kirim data pribadi.",
+      "TRAINS": "Penyedia ini mungkin menggunakan prompt untuk melatih model",
+      "RETAINS": "Penyedia ini mungkin menyimpan prompt",
+      "SAFEGUARDS": "Perlindungan data UE: {basis}",
+      "BASIS_ADEQUACY": "Keputusan kecukupan UE",
+      "BASIS_DPF": "Kerangka Privasi Data UE-AS",
+      "BASIS_SCC": "Klausul kontrak standar",
+      "UNKNOWN": "Tidak ada informasi perlindungan data untuk penyedia ini"
+    }
   },
   "RANKINGS": {
     "META": {

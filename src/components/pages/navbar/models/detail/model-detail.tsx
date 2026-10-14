@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { Link } from "@/i18n/navigation";
 import { findContextTag, findSimilarModels } from "@/lib/api/pricing";
-import type { PricingCatalogDetail, PricingCatalogModel } from "@/openapi";
+import type { PricingCatalogModel } from "@/openapi";
+import type { ModelDetailData } from "@/lib/validation/data-policy";
 import { APP_VALUES } from "@/lib/config/constants";
 import { getVendorTheme } from "@/lib/config/vendor-registry";
 import { modelHref } from "@/lib/utils/base";
@@ -36,7 +37,7 @@ import { TryInChatButton } from "./header/try-in-chat-button";
 import { WatchModelButton } from "./header/watch-model-button";
 
 interface ModelDetailProps {
-  model: PricingCatalogDetail;
+  model: ModelDetailData;
   // Only for the similar-models lookup, which compares vendor id and tags.
   models: PricingCatalogModel[];
   groupRatioMap: Record<string, number>;
@@ -357,6 +358,7 @@ print(res.choices[0].message.content)`;
                 <GroupPricingSection
                   model={m}
                   groupRatioMap={props.groupRatioMap}
+                  groupProviders={m.group_providers ?? {}}
                   theme={theme}
                 />
               )}

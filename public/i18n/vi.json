@@ -481,7 +481,19 @@
       "AT_CAPACITY_NOTE": "Tất cả nhà cung cấp cho các mô hình này đã đạt giới hạn yêu cầu. Chúng sẽ tự động hoạt động trở lại khi giới hạn được đặt lại.",
       "AT_CAPACITY_BADGE": "Đang bận"
     },
-    "DISCORD": "Yêu cầu một mô hình trên Discord"
+    "DISCORD": "Yêu cầu một mô hình trên Discord",
+    "DATA_POLICY": {
+      "SEAT": "Trụ sở nhà cung cấp: {country}",
+      "UNSAFE_COUNTRY": "Quốc gia thứ ba không có biện pháp bảo vệ dữ liệu của EU ({country}). Không gửi dữ liệu cá nhân.",
+      "UNSAFE": "Nhà cung cấp này không có biện pháp bảo vệ dữ liệu của EU. Không gửi dữ liệu cá nhân.",
+      "TRAINS": "Nhà cung cấp này có thể dùng prompt để huấn luyện mô hình",
+      "RETAINS": "Nhà cung cấp này có thể lưu trữ prompt",
+      "SAFEGUARDS": "Biện pháp bảo vệ dữ liệu của EU: {basis}",
+      "BASIS_ADEQUACY": "Quyết định về mức độ bảo vệ tương xứng của EU",
+      "BASIS_DPF": "Khung bảo mật dữ liệu EU-Mỹ",
+      "BASIS_SCC": "Điều khoản hợp đồng tiêu chuẩn",
+      "UNKNOWN": "Không có thông tin bảo vệ dữ liệu cho nhà cung cấp này"
+    }
   },
   "RANKINGS": {
     "META": {

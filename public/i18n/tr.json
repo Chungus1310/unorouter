@@ -481,7 +481,19 @@
       "AT_CAPACITY_NOTE": "Bu modellerin tüm sağlayıcıları istek sınırına ulaştı. Sınırlar kalktığında otomatik olarak geri gelirler.",
       "AT_CAPACITY_BADGE": "Meşgul"
     },
-    "DISCORD": "Discord'da bir model iste"
+    "DISCORD": "Discord'da bir model iste",
+    "DATA_POLICY": {
+      "SEAT": "Sağlayıcının merkezi: {country}",
+      "UNSAFE_COUNTRY": "AB veri koruma güvenceleri olmayan üçüncü ülke ({country}). Kişisel veri göndermeyin.",
+      "UNSAFE": "Bu sağlayıcı için AB veri koruma güvencesi yok. Kişisel veri göndermeyin.",
+      "TRAINS": "Bu sağlayıcı istemleri model eğitmek için kullanabilir",
+      "RETAINS": "Bu sağlayıcı istemleri saklayabilir",
+      "SAFEGUARDS": "AB veri koruma güvenceleri: {basis}",
+      "BASIS_ADEQUACY": "AB yeterlilik kararı",
+      "BASIS_DPF": "AB-ABD Veri Gizliliği Çerçevesi",
+      "BASIS_SCC": "Standart sözleşme maddeleri",
+      "UNKNOWN": "Bu sağlayıcı için veri koruma bilgisi yok"
+    }
   },
   "RANKINGS": {
     "META": {

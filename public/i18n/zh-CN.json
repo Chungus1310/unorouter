@@ -481,7 +481,19 @@
       "AT_CAPACITY_NOTE": "这些模型的所有供应商都已达到请求上限。限制解除后会自动恢复。",
       "AT_CAPACITY_BADGE": "繁忙"
     },
-    "DISCORD": "在 Discord 上请求模型"
+    "DISCORD": "在 Discord 上请求模型",
+    "DATA_POLICY": {
+      "SEAT": "提供商所在地：{country}",
+      "UNSAFE_COUNTRY": "缺乏欧盟数据保护保障的第三国（{country}）。请勿发送个人数据。",
+      "UNSAFE": "该提供商没有欧盟数据保护保障。请勿发送个人数据。",
+      "TRAINS": "该提供商可能使用提示词训练模型",
+      "RETAINS": "该提供商可能存储提示词",
+      "SAFEGUARDS": "欧盟数据保护保障：{basis}",
+      "BASIS_ADEQUACY": "欧盟充分性认定",
+      "BASIS_DPF": "欧盟美国数据隐私框架",
+      "BASIS_SCC": "标准合同条款",
+      "UNKNOWN": "暂无该提供商的数据保护信息"
+    }
   },
   "RANKINGS": {
     "META": {

@@ -481,7 +481,19 @@
       "AT_CAPACITY_NOTE": "Todos os provedores desses modelos atingiram o limite de requisições. Eles voltam automaticamente assim que os limites são liberados.",
       "AT_CAPACITY_BADGE": "Ocupado"
     },
-    "DISCORD": "Solicite um modelo no Discord"
+    "DISCORD": "Solicite um modelo no Discord",
+    "DATA_POLICY": {
+      "SEAT": "Sede do provedor: {country}",
+      "UNSAFE_COUNTRY": "País terceiro sem garantias de proteção de dados da UE ({country}). Não envie dados pessoais.",
+      "UNSAFE": "Sem garantias de proteção de dados da UE para este provedor. Não envie dados pessoais.",
+      "TRAINS": "Este provedor pode usar os prompts para treinar modelos",
+      "RETAINS": "Este provedor pode armazenar os prompts",
+      "SAFEGUARDS": "Garantias de proteção de dados da UE: {basis}",
+      "BASIS_ADEQUACY": "Decisão de adequação da UE",
+      "BASIS_DPF": "Data Privacy Framework UE-EUA",
+      "BASIS_SCC": "Cláusulas contratuais-padrão",
+      "UNKNOWN": "Sem informações de proteção de dados para este provedor"
+    }
   },
   "RANKINGS": {
     "META": {
