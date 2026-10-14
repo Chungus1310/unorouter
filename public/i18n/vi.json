@@ -3564,7 +3564,15 @@
         "SUBMIT": "Xác minh",
         "OAUTH_ONLY": "Tài khoản của bạn chỉ đăng nhập qua nhà cung cấp đã liên kết, và nhà cung cấp đó không thể xác nhận thay đổi này tại đây. Hãy đặt mật khẩu trước rồi thử lại.",
         "NONE_AVAILABLE": "Hiện không có phương thức xác minh nào cho thao tác này.",
-        "EXPIRED": "Phiên xác minh đã hết hạn hoặc đã được sử dụng. Vui lòng xác minh lại."
+        "EXPIRED": "Phiên xác minh đã hết hạn hoặc đã được sử dụng. Vui lòng xác minh lại.",
+        "METHOD_OAUTH": "Tài khoản đã liên kết",
+        "OAUTH_HINT": "Đăng nhập lại bằng tài khoản đã liên kết với hồ sơ của bạn. Một cửa sổ mới sẽ mở ra và tự đóng khi bạn hoàn tất.",
+        "OAUTH_BUTTON": "Tiếp tục với {provider}",
+        "OAUTH_WAITING": "Hãy hoàn tất đăng nhập trong cửa sổ vừa mở.",
+        "OAUTH_POPUP_BLOCKED": "Cửa sổ đăng nhập đã bị chặn. Hãy cho phép cửa sổ bật lên cho trang này và thử lại.",
+        "OAUTH_FAILED": "Tài khoản đã liên kết không thể xác nhận danh tính của bạn.",
+        "OAUTH_DONE": "Đã xác minh xong",
+        "OAUTH_CLOSE_WINDOW": "Bạn có thể đóng cửa sổ này."
       },
       "DELETE_ACCOUNT": "Xóa tài khoản",
       "DELETE_ACCOUNT_DESC": "Xóa vĩnh viễn tài khoản và mọi dữ liệu liên quan. Hành động này không thể hoàn tác.",

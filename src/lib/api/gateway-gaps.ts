@@ -2,6 +2,8 @@ import { customFetch } from "@/lib/custom-fetch";
 import {
   getDisable2FAUrl,
   getEnable2FAUrl,
+  getExchangeOAuthCodeUrl,
+  getGenerateOAuthCodeQueryUrl,
   getGet2FAStatusUrl,
   getGetVerificationMethodsUrl,
   getLoginUrl,
@@ -58,6 +60,31 @@ export type SecurityProof = {
   method: string;
   scope: string;
 };
+
+// GET /api/oauth/state with intent=verify: the spec predates its scope query.
+export const startOAuthVerification = (
+  params: { provider: string; scope: string; redirect_uri: string },
+  options?: GapOptions,
+) =>
+  customFetch<Envelope<string>>(
+    `${getGenerateOAuthCodeQueryUrl()}?${new URLSearchParams({ ...params, intent: "verify" })}`,
+    { ...options, method: "GET" },
+  );
+
+// POST /api/oauth/exchange for a verify flow; the spec predates the proof fields.
+export type OAuthVerifyExchangeData = {
+  user_id: number;
+  action?: string;
+  proof_token?: string;
+  proof_expires_at?: number;
+  scope?: string;
+};
+
+export const exchangeOAuthVerification = (code: string) =>
+  customFetch<Envelope<OAuthVerifyExchangeData>>(
+    getExchangeOAuthCodeUrl(),
+    postJson({ code }),
+  );
 
 // `options` is the go-webauthn CredentialAssertion, binary fields base64url.
 export type PasskeyVerifyOptions = {

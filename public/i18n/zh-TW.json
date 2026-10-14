@@ -3564,7 +3564,15 @@
         "SUBMIT": "驗證",
         "OAUTH_ONLY": "你的帳號僅透過已連結的第三方登入，無法在此確認此變更。請先設定密碼，然後再試一次。",
         "NONE_AVAILABLE": "目前沒有可用於此操作的驗證方式。",
-        "EXPIRED": "驗證已過期或已被使用，請重新驗證。"
+        "EXPIRED": "驗證已過期或已被使用，請重新驗證。",
+        "METHOD_OAUTH": "已連結帳戶",
+        "OAUTH_HINT": "請使用與你的個人資料連結的帳戶重新登入。將開啟一個新視窗，完成後會自動關閉。",
+        "OAUTH_BUTTON": "使用 {provider} 繼續",
+        "OAUTH_WAITING": "請在開啟的視窗中完成登入。",
+        "OAUTH_POPUP_BLOCKED": "登入視窗遭到封鎖。請允許此網站的彈出視窗，然後再試一次。",
+        "OAUTH_FAILED": "已連結帳戶無法確認你的身分。",
+        "OAUTH_DONE": "驗證完成",
+        "OAUTH_CLOSE_WINDOW": "你可以關閉此視窗。"
       },
       "DELETE_ACCOUNT": "刪除帳戶",
       "DELETE_ACCOUNT_DESC": "永久刪除您的帳戶與所有相關資料。此動作無法復原。",

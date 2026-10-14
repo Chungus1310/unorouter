@@ -65,6 +65,12 @@ export type SecurityScope = typeof securityScope.static;
 
 export const verificationMethodsQuery = t.Object({ scope: securityScope });
 
+export const oauthVerifyStateQuery = t.Object({
+  provider: t.String(),
+  scope: securityScope,
+  redirect: t.String(),
+});
+
 // Passkey and OAuth have their own ceremonies, so only these two post here.
 export const securityVerifyBody = t.Object({
   method: t.Union([t.Literal("2fa"), t.Literal("password")]),

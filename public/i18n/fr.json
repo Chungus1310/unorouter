@@ -3564,7 +3564,15 @@
         "SUBMIT": "Vérifier",
         "OAUTH_ONLY": "Votre compte se connecte uniquement via un fournisseur lié, qui ne peut pas confirmer cette modification ici. Définissez d'abord un mot de passe, puis réessayez.",
         "NONE_AVAILABLE": "Aucune méthode de vérification n'est disponible pour cette action pour le moment.",
-        "EXPIRED": "Votre vérification a expiré ou a déjà été utilisée. Veuillez vérifier à nouveau."
+        "EXPIRED": "Votre vérification a expiré ou a déjà été utilisée. Veuillez vérifier à nouveau.",
+        "METHOD_OAUTH": "Compte associé",
+        "OAUTH_HINT": "Reconnecte-toi avec le compte associé à ton profil. Une nouvelle fenêtre s'ouvre et se ferme toute seule une fois terminé.",
+        "OAUTH_BUTTON": "Continuer avec {provider}",
+        "OAUTH_WAITING": "Termine la connexion dans la fenêtre qui s'est ouverte.",
+        "OAUTH_POPUP_BLOCKED": "La fenêtre de connexion a été bloquée. Autorise les fenêtres pop-up pour ce site et réessaie.",
+        "OAUTH_FAILED": "Ton compte associé n'a pas pu confirmer ton identité.",
+        "OAUTH_DONE": "Vérification terminée",
+        "OAUTH_CLOSE_WINDOW": "Tu peux fermer cette fenêtre."
       },
       "DELETE_ACCOUNT": "Supprimer le compte",
       "DELETE_ACCOUNT_DESC": "Supprimez définitivement votre compte et toutes les données associées. Cette action ne peut pas être annulée.",

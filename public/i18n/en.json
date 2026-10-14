@@ -3564,7 +3564,15 @@
         "SUBMIT": "Verify",
         "OAUTH_ONLY": "Your account signs in only through a linked provider, which cannot confirm this change here. Set a password first, then try again.",
         "NONE_AVAILABLE": "No verification method is available for this action right now.",
-        "EXPIRED": "Your verification expired or was already used. Please verify again."
+        "EXPIRED": "Your verification expired or was already used. Please verify again.",
+        "METHOD_OAUTH": "Linked account",
+        "OAUTH_HINT": "Sign in again with the account linked to your profile. A new window opens and closes on its own when you are done.",
+        "OAUTH_BUTTON": "Continue with {provider}",
+        "OAUTH_WAITING": "Finish signing in in the window that opened.",
+        "OAUTH_POPUP_BLOCKED": "The sign in window was blocked. Allow pop-ups for this site and try again.",
+        "OAUTH_FAILED": "Your linked account could not confirm your identity.",
+        "OAUTH_DONE": "Verification complete",
+        "OAUTH_CLOSE_WINDOW": "You can close this window."
       },
       "DELETE_ACCOUNT": "Delete Account",
       "DELETE_ACCOUNT_DESC": "Permanently delete your account and all associated data. This action cannot be undone.",

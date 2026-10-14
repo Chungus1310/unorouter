@@ -3564,7 +3564,15 @@
         "SUBMIT": "Zweryfikuj",
         "OAUTH_ONLY": "Twoje konto loguje się tylko przez połączonego dostawcę, który nie może tutaj potwierdzić tej zmiany. Najpierw ustaw hasło, a potem spróbuj ponownie.",
         "NONE_AVAILABLE": "Dla tej akcji nie jest obecnie dostępna żadna metoda weryfikacji.",
-        "EXPIRED": "Weryfikacja wygasła lub została już użyta. Zweryfikuj ponownie."
+        "EXPIRED": "Weryfikacja wygasła lub została już użyta. Zweryfikuj ponownie.",
+        "METHOD_OAUTH": "Połączone konto",
+        "OAUTH_HINT": "Zaloguj się ponownie kontem połączonym z Twoim profilem. Otworzy się nowe okno, które zamknie się samo po zakończeniu.",
+        "OAUTH_BUTTON": "Kontynuuj przez {provider}",
+        "OAUTH_WAITING": "Dokończ logowanie w otwartym oknie.",
+        "OAUTH_POPUP_BLOCKED": "Okno logowania zostało zablokowane. Zezwól na wyskakujące okienka dla tej witryny i spróbuj ponownie.",
+        "OAUTH_FAILED": "Połączone konto nie mogło potwierdzić Twojej tożsamości.",
+        "OAUTH_DONE": "Weryfikacja zakończona",
+        "OAUTH_CLOSE_WINDOW": "Możesz zamknąć to okno."
       },
       "DELETE_ACCOUNT": "Usuń konto",
       "DELETE_ACCOUNT_DESC": "Trwale usuń swoje konto i wszystkie powiązane dane. Ta akcja nie może być cofnięta.",

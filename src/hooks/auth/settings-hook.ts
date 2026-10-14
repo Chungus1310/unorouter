@@ -154,6 +154,19 @@ export function useSecurityVerifyMutation() {
   });
 }
 
+// Returns the OAuth state for a re-authentication whose callback lands on
+// `redirect`, which carries the panel's nonce.
+export function useOAuthVerifyStateMutation() {
+  return useApiMutation({
+    mutationFn: async (
+      args: EdenArgs<typeof rpc.api.auth.settings.verify.oauth, "get">,
+    ) =>
+      handleElysia(
+        await rpc.api.auth.settings.verify.oauth.get({ query: args.query }),
+      ),
+  });
+}
+
 // Plain useMutation: a dismissed passkey prompt is not an error worth a toast,
 // so the caller decides what to show.
 export function usePasskeyVerifyMutation() {

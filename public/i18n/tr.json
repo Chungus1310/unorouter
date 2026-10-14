@@ -3564,7 +3564,15 @@
         "SUBMIT": "Doğrula",
         "OAUTH_ONLY": "Hesabınız yalnızca bağlı bir sağlayıcı üzerinden giriş yapıyor ve bu sağlayıcı bu değişikliği burada onaylayamaz. Önce bir şifre belirleyin, ardından tekrar deneyin.",
         "NONE_AVAILABLE": "Şu anda bu işlem için kullanılabilir bir doğrulama yöntemi yok.",
-        "EXPIRED": "Doğrulamanızın süresi doldu veya zaten kullanıldı. Lütfen tekrar doğrulayın."
+        "EXPIRED": "Doğrulamanızın süresi doldu veya zaten kullanıldı. Lütfen tekrar doğrulayın.",
+        "METHOD_OAUTH": "Bağlı hesap",
+        "OAUTH_HINT": "Profilinize bağlı hesapla yeniden giriş yapın. Yeni bir pencere açılır ve işiniz bitince kendiliğinden kapanır.",
+        "OAUTH_BUTTON": "{provider} ile devam et",
+        "OAUTH_WAITING": "Açılan pencerede girişi tamamlayın.",
+        "OAUTH_POPUP_BLOCKED": "Giriş penceresi engellendi. Bu site için açılır pencerelere izin verin ve tekrar deneyin.",
+        "OAUTH_FAILED": "Bağlı hesabınız kimliğinizi doğrulayamadı.",
+        "OAUTH_DONE": "Doğrulama tamamlandı",
+        "OAUTH_CLOSE_WINDOW": "Bu pencereyi kapatabilirsiniz."
       },
       "DELETE_ACCOUNT": "Hesabı Sil",
       "DELETE_ACCOUNT_DESC": "Hesabınızı ve ilgili tüm verileri kalıcı olarak silin. Bu eylem geri alınamaz.",

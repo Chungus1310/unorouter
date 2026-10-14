@@ -3564,7 +3564,15 @@
         "SUBMIT": "Verificar",
         "OAUTH_ONLY": "Tu cuenta solo inicia sesión mediante un proveedor vinculado, que no puede confirmar este cambio aquí. Primero establece una contraseña y vuelve a intentarlo.",
         "NONE_AVAILABLE": "No hay ningún método de verificación disponible para esta acción en este momento.",
-        "EXPIRED": "Tu verificación caducó o ya se usó. Vuelve a verificar."
+        "EXPIRED": "Tu verificación caducó o ya se usó. Vuelve a verificar.",
+        "METHOD_OAUTH": "Cuenta vinculada",
+        "OAUTH_HINT": "Vuelve a iniciar sesión con la cuenta vinculada a tu perfil. Se abrirá una ventana nueva que se cerrará sola cuando termines.",
+        "OAUTH_BUTTON": "Continuar con {provider}",
+        "OAUTH_WAITING": "Termina de iniciar sesión en la ventana que se abrió.",
+        "OAUTH_POPUP_BLOCKED": "Se bloqueó la ventana de inicio de sesión. Permite las ventanas emergentes para este sitio e inténtalo de nuevo.",
+        "OAUTH_FAILED": "Tu cuenta vinculada no pudo confirmar tu identidad.",
+        "OAUTH_DONE": "Verificación completada",
+        "OAUTH_CLOSE_WINDOW": "Ya puedes cerrar esta ventana."
       },
       "DELETE_ACCOUNT": "Eliminar cuenta",
       "DELETE_ACCOUNT_DESC": "Elimina permanentemente tu cuenta y todos los datos asociados. Esta acción no se puede deshacer.",

@@ -3564,7 +3564,15 @@
         "SUBMIT": "Verifikasi",
         "OAUTH_ONLY": "Akun Anda hanya masuk melalui penyedia yang ditautkan, yang tidak dapat mengonfirmasi perubahan ini di sini. Atur kata sandi terlebih dahulu, lalu coba lagi.",
         "NONE_AVAILABLE": "Saat ini tidak ada metode verifikasi yang tersedia untuk tindakan ini.",
-        "EXPIRED": "Verifikasi Anda sudah kedaluwarsa atau sudah digunakan. Silakan verifikasi ulang."
+        "EXPIRED": "Verifikasi Anda sudah kedaluwarsa atau sudah digunakan. Silakan verifikasi ulang.",
+        "METHOD_OAUTH": "Akun tertaut",
+        "OAUTH_HINT": "Masuk lagi dengan akun yang tertaut ke profil Anda. Jendela baru akan terbuka dan tertutup sendiri setelah selesai.",
+        "OAUTH_BUTTON": "Lanjutkan dengan {provider}",
+        "OAUTH_WAITING": "Selesaikan proses masuk di jendela yang terbuka.",
+        "OAUTH_POPUP_BLOCKED": "Jendela masuk diblokir. Izinkan pop-up untuk situs ini lalu coba lagi.",
+        "OAUTH_FAILED": "Akun tertaut Anda tidak dapat mengonfirmasi identitas Anda.",
+        "OAUTH_DONE": "Verifikasi selesai",
+        "OAUTH_CLOSE_WINDOW": "Anda dapat menutup jendela ini."
       },
       "DELETE_ACCOUNT": "Hapus Akun",
       "DELETE_ACCOUNT_DESC": "Hapus akun Anda dan semua data terkait secara permanen. Tindakan ini tidak dapat dibatalkan.",

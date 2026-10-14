@@ -34,6 +34,7 @@ import {
   verify2FALogin,
 } from "@/openapi";
 import { loginWithPassword } from "@/lib/api/gateway-gaps";
+import { oauthVerifyResultPage } from "@/server/auth/account/oauth-verify.service";
 import { resolveSelf } from "@/server/auth/account/self.service";
 import { deriveUpstream } from "@/server/constants";
 import { Elysia, t } from "elysia";
@@ -148,6 +149,14 @@ export const authRoute = new Elysia({ prefix: "/account" })
         set.status = 302;
         set.headers.location = location;
       };
+
+      if (query.verify)
+        return await oauthVerifyResultPage({
+          nonce: query.verify,
+          code: query.code,
+          error: query.error,
+          cookie,
+        });
 
       if (query.error) {
         // A failed bind comes from settings; a failed login has no session yet.

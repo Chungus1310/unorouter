@@ -3564,7 +3564,15 @@
         "SUBMIT": "Verificar",
         "OAUTH_ONLY": "Sua conta entra apenas por um provedor vinculado, que não pode confirmar esta alteração aqui. Defina uma senha primeiro e tente novamente.",
         "NONE_AVAILABLE": "Nenhum método de verificação está disponível para esta ação no momento.",
-        "EXPIRED": "Sua verificação expirou ou já foi usada. Verifique novamente."
+        "EXPIRED": "Sua verificação expirou ou já foi usada. Verifique novamente.",
+        "METHOD_OAUTH": "Conta vinculada",
+        "OAUTH_HINT": "Entre novamente com a conta vinculada ao seu perfil. Uma nova janela será aberta e fechará sozinha quando você terminar.",
+        "OAUTH_BUTTON": "Continuar com {provider}",
+        "OAUTH_WAITING": "Conclua o login na janela que foi aberta.",
+        "OAUTH_POPUP_BLOCKED": "A janela de login foi bloqueada. Permita pop-ups para este site e tente novamente.",
+        "OAUTH_FAILED": "Sua conta vinculada não conseguiu confirmar sua identidade.",
+        "OAUTH_DONE": "Verificação concluída",
+        "OAUTH_CLOSE_WINDOW": "Você já pode fechar esta janela."
       },
       "DELETE_ACCOUNT": "Deletar conta",
       "DELETE_ACCOUNT_DESC": "Delete permanentemente sua conta e todos os dados associados. Esta ação não pode ser desfeita.",

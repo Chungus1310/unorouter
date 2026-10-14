@@ -3564,7 +3564,15 @@
         "SUBMIT": "验证",
         "OAUTH_ONLY": "你的账户仅通过已关联的第三方登录，无法在此确认此更改。请先设置密码，然后重试。",
         "NONE_AVAILABLE": "目前没有可用于此操作的验证方式。",
-        "EXPIRED": "验证已过期或已被使用，请重新验证。"
+        "EXPIRED": "验证已过期或已被使用，请重新验证。",
+        "METHOD_OAUTH": "已关联账户",
+        "OAUTH_HINT": "请使用与你的资料关联的账户重新登录。将打开一个新窗口，完成后会自动关闭。",
+        "OAUTH_BUTTON": "使用 {provider} 继续",
+        "OAUTH_WAITING": "请在打开的窗口中完成登录。",
+        "OAUTH_POPUP_BLOCKED": "登录窗口被拦截。请允许此网站弹出窗口，然后重试。",
+        "OAUTH_FAILED": "已关联账户未能确认你的身份。",
+        "OAUTH_DONE": "验证完成",
+        "OAUTH_CLOSE_WINDOW": "你可以关闭此窗口。"
       },
       "DELETE_ACCOUNT": "删除账户",
       "DELETE_ACCOUNT_DESC": "永久删除您的账户及所有相关数据。此操作无法撤销。",

@@ -52,6 +52,10 @@ export const LOCALE_COOKIE = "NEXT_LOCALE" as const;
 export const AUTH_REDIRECT_COOKIE = "auth_redirect" as const;
 export const AUTH_REDIRECT_QUERY = "redirect" as const;
 export const OAUTH_ERROR_QUERY = "oauth_error" as const;
+// The OAuth step-up window reports back on this channel: a provider page with
+// its own opener policy severs window.opener, a same-origin channel survives it.
+export const OAUTH_VERIFY_CHANNEL = "oauth-verify" as const;
+export const OAUTH_VERIFY_QUERY = "verify" as const;
 
 export const RESEND_COOLDOWN_SECONDS = 60;
 export const AFF_CODE_KEY = "aff" as const;

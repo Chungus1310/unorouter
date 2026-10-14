@@ -3564,7 +3564,15 @@
         "SUBMIT": "Bestätigen",
         "OAUTH_ONLY": "Dein Konto meldet sich nur über einen verknüpften Anbieter an, und der kann diese Änderung hier nicht bestätigen. Lege zuerst ein Passwort fest und versuche es dann erneut.",
         "NONE_AVAILABLE": "Für diese Aktion ist gerade keine Bestätigungsmethode verfügbar.",
-        "EXPIRED": "Deine Bestätigung ist abgelaufen oder wurde bereits verwendet. Bitte bestätige erneut."
+        "EXPIRED": "Deine Bestätigung ist abgelaufen oder wurde bereits verwendet. Bitte bestätige erneut.",
+        "METHOD_OAUTH": "Verknüpftes Konto",
+        "OAUTH_HINT": "Melde dich erneut mit dem Konto an, das mit deinem Profil verknüpft ist. Ein neues Fenster öffnet sich und schließt sich von selbst, wenn du fertig bist.",
+        "OAUTH_BUTTON": "Weiter mit {provider}",
+        "OAUTH_WAITING": "Schließe die Anmeldung im geöffneten Fenster ab.",
+        "OAUTH_POPUP_BLOCKED": "Das Anmeldefenster wurde blockiert. Erlaube Pop-ups für diese Website und versuche es erneut.",
+        "OAUTH_FAILED": "Dein verknüpftes Konto konnte deine Identität nicht bestätigen.",
+        "OAUTH_DONE": "Bestätigung abgeschlossen",
+        "OAUTH_CLOSE_WINDOW": "Du kannst dieses Fenster schließen."
       },
       "DELETE_ACCOUNT": "Konto löschen",
       "DELETE_ACCOUNT_DESC": "Löschen Sie Ihr Konto und alle zugehörigen Daten dauerhaft. Diese Aktion kann nicht rückgängig gemacht werden.",

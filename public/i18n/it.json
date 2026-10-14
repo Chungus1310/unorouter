@@ -3564,7 +3564,15 @@
         "SUBMIT": "Verifica",
         "OAUTH_ONLY": "Il tuo account accede solo tramite un provider collegato, che non può confermare questa modifica qui. Imposta prima una password, poi riprova.",
         "NONE_AVAILABLE": "Al momento non è disponibile alcun metodo di verifica per questa azione.",
-        "EXPIRED": "La verifica è scaduta o è già stata usata. Verifica di nuovo."
+        "EXPIRED": "La verifica è scaduta o è già stata usata. Verifica di nuovo.",
+        "METHOD_OAUTH": "Account collegato",
+        "OAUTH_HINT": "Accedi di nuovo con l'account collegato al tuo profilo. Si apre una nuova finestra che si chiude da sola quando hai finito.",
+        "OAUTH_BUTTON": "Continua con {provider}",
+        "OAUTH_WAITING": "Completa l'accesso nella finestra che si è aperta.",
+        "OAUTH_POPUP_BLOCKED": "La finestra di accesso è stata bloccata. Consenti i pop-up per questo sito e riprova.",
+        "OAUTH_FAILED": "Il tuo account collegato non ha potuto confermare la tua identità.",
+        "OAUTH_DONE": "Verifica completata",
+        "OAUTH_CLOSE_WINDOW": "Puoi chiudere questa finestra."
       },
       "DELETE_ACCOUNT": "Elimina account",
       "DELETE_ACCOUNT_DESC": "Elimina permanentemente il tuo account e tutti i dati associati. Questa azione non può essere annullata.",

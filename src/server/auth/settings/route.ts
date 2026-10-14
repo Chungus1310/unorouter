@@ -4,6 +4,7 @@ import {
   emailBindQuery,
   passkeyRegisterFinishBody,
   passkeyVerifyBeginBody,
+  oauthVerifyStateQuery,
   passkeyVerifyFinishBody,
   securityVerifyBody,
   updateSelfBody,
@@ -34,6 +35,7 @@ import {
   get2FAStatus,
   getVerificationMethods,
   setup2FA,
+  startOAuthVerification,
   verifySecurity,
 } from "@/lib/api/gateway-gaps";
 import { Elysia, type Context } from "elysia";
@@ -149,6 +151,22 @@ export const settingsRoute = new Elysia({ prefix: "/settings" })
       return unwrap(res);
     },
     { body: securityVerifyBody },
+  )
+
+  .get(
+    "/verify/oauth",
+    async ({ query, upstream }) => {
+      const res = await startOAuthVerification(
+        {
+          provider: query.provider,
+          scope: query.scope,
+          redirect_uri: query.redirect,
+        },
+        upstream,
+      );
+      return unwrap(res);
+    },
+    { query: oauthVerifyStateQuery },
   )
 
   .post(
