@@ -13,7 +13,11 @@ import {
 } from "@/lib/ai/image/dispatch";
 import { API_ENDPOINTS } from "@/lib/ai/endpoints";
 import { digErrorMessage } from "@/lib/api/video-task";
-import { groupHeader, upstreamApiUrl } from "@/server/constants";
+import {
+  bffServiceHeader,
+  groupHeader,
+  upstreamApiUrl,
+} from "@/server/constants";
 import {
   postImageRequest,
   probeImageSize,
@@ -168,6 +172,7 @@ async function upstreamPost(
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
       ...groupHeader(group),
+      ...bffServiceHeader(),
     },
     body: JSON.stringify(payload),
   });

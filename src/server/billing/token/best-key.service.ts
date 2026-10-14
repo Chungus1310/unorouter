@@ -7,17 +7,16 @@ import {
 } from "@/lib/config/constants";
 import { verifyUserId } from "@/lib/utils/session-cookie";
 import { addToken, getTokenKey, searchTokens } from "@/openapi";
-import { cookieString, getApiKey } from "@/server/constants";
+import { bffServiceHeader, cookieString, getApiKey } from "@/server/constants";
 import { serverEnv } from "@/server/env";
 import { getModelByName } from "@/server/models/pricing/pricing.service";
 import type { Cookie } from "elysia";
 
-// Only the chat resolve path carries the service secret. The dashboard's own
-// reveal route (billing/token/route.ts) must keep producing an audit row, since
-// that one is a person choosing to see a key.
+// Of the key resolutions, only the chat path carries the service secret. The
+// dashboard's own reveal route (billing/token/route.ts) must keep producing an
+// audit row, since that one is a person choosing to see a key.
 function resolveHeaders(headers: Record<string, string>) {
-  const token = serverEnv.bffServiceToken;
-  return token ? { ...headers, "X-Bff-Service-Token": token } : headers;
+  return { ...headers, ...bffServiceHeader() };
 }
 
 export async function assertGuestFreeModel(userId: number, model?: string) {

@@ -8,7 +8,7 @@ import {
   type UpstreamSubmitResp,
 } from "@/lib/api/video-task";
 import { msg } from "@/lib/config/constants";
-import { groupHeader } from "@/server/constants";
+import { bffServiceHeader, groupHeader } from "@/server/constants";
 import { downloadGenerationBytes } from "@/lib/config/safe-fetch";
 import { base64ToDataUri } from "@/lib/utils/base";
 import { logger } from "@/lib/utils/logger";
@@ -69,6 +69,7 @@ export async function submitVideoTask(
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",
       ...groupHeader(group),
+      ...bffServiceHeader(),
     },
     body: JSON.stringify({ model, prompt, ...(image ? { image } : {}) }),
   });
@@ -106,7 +107,7 @@ export async function fetchVideoTaskStatus(
   taskId: string,
 ): Promise<TaskFetchResult> {
   const res = await getV1VideoGenerationsTaskId(taskId, {
-    headers: { Authorization: `Bearer ${apiKey}` },
+    headers: { Authorization: `Bearer ${apiKey}`, ...bffServiceHeader() },
   });
 
   const payload = unwrapTaskData<UpstreamFetchResp>(res.data);
