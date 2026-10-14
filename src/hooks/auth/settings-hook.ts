@@ -106,10 +106,16 @@ export function useUpdateSelfMutation() {
   });
 }
 
+// Plain useMutation like the 2FA ones: a refused proof keeps the dialog on
+// verification instead of only showing a toast.
 export function useDeleteSelfMutation() {
-  return useApiMutation({
-    mutationFn: async () =>
-      handleElysia(await rpc.api.auth.settings.self.delete()),
+  return useMutation({
+    mutationFn: async (args: { proof: string }) =>
+      handleElysia(
+        await rpc.api.auth.settings.self.delete(undefined, {
+          headers: { [SECURITY_PROOF_HEADER]: args.proof },
+        }),
+      ),
   });
 }
 

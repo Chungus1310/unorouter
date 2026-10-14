@@ -21,10 +21,15 @@ import {
 import { typeboxResolver } from "@hookform/resolvers/typebox";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { formDefaults } from "@/lib/validation/helpers";
+import { handleError } from "@/lib/utils/client";
+import {
+  needsReverification,
+  SecurityVerification,
+} from "./security-verification";
 
 export function DeleteAccountDialog(props: {
   open: boolean;
@@ -34,6 +39,7 @@ export function DeleteAccountDialog(props: {
   const authQuery = useAuthQuery();
   const deleteSelfMutation = useDeleteSelfMutation();
   const router = useRouter();
+  const [confirmed, setConfirmed] = useState(false);
 
   const username = authQuery.data?.username || "";
 
@@ -48,6 +54,11 @@ export function DeleteAccountDialog(props: {
     }
   }, [props.open, form]);
 
+  function handleOpenChange(open: boolean) {
+    if (!open) setConfirmed(false);
+    props.onOpenChange(open);
+  }
+
   function onSubmit(data: DeleteAccountSchema) {
     if (data.username !== username) {
       form.setError("username", {
@@ -55,20 +66,33 @@ export function DeleteAccountDialog(props: {
       });
       return;
     }
-    deleteSelfMutation.mutate(undefined, {
-      onSuccess: () => {
-        analytics.settings.accountDeleted();
-        toast.success(t("SETTINGS.SECURITY.ACCOUNT_DELETED"));
-        router.push("/");
+    setConfirmed(true);
+  }
+
+  // The dialog keeps showing verification, so a refused proof leaves the user
+  // one step from trying again.
+  function handleVerified(proof: string) {
+    deleteSelfMutation.mutate(
+      { proof },
+      {
+        onSuccess: () => {
+          analytics.settings.accountDeleted();
+          toast.success(t("SETTINGS.SECURITY.ACCOUNT_DELETED"));
+          router.push("/");
+        },
+        onError: (error) => {
+          if (needsReverification(error)) {
+            toast.error(t("SETTINGS.SECURITY.VERIFY.EXPIRED"));
+            return;
+          }
+          handleError(error, t);
+        },
       },
-      onError: (error) => {
-        toast.error(error.message);
-      },
-    });
+    );
   }
 
   return (
-    <Dialog open={props.open} onOpenChange={props.onOpenChange}>
+    <Dialog open={props.open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-destructive">
@@ -78,37 +102,52 @@ export function DeleteAccountDialog(props: {
             {t("SETTINGS.SECURITY.DELETE_ACCOUNT_DESC")}
           </DialogDescription>
         </DialogHeader>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)}>
-            <div className="space-y-3 py-4">
-              <MyFormInput
-                control={form.control}
-                name="username"
-                schema={deleteAccountSchema}
-                label={t("SETTINGS.SECURITY.DELETE_ACCOUNT_CONFIRM", {
-                  username,
-                })}
-                placeholder={username}
-              />
-            </div>
+        {confirmed ? (
+          <>
+            <SecurityVerification
+              scope="account.delete"
+              onVerified={handleVerified}
+              busy={deleteSelfMutation.isPending}
+            />
             <DialogFooter>
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => props.onOpenChange(false)}
+                onClick={() => handleOpenChange(false)}
               >
                 {t("COMMON.CANCEL")}
               </Button>
-              <Button
-                type="submit"
-                variant="destructive"
-                disabled={deleteSelfMutation.isPending}
-              >
-                {t("SETTINGS.SECURITY.DELETE_ACCOUNT_BUTTON")}
-              </Button>
             </DialogFooter>
-          </form>
-        </Form>
+          </>
+        ) : (
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
+              <div className="space-y-3 py-4">
+                <MyFormInput
+                  control={form.control}
+                  name="username"
+                  schema={deleteAccountSchema}
+                  label={t("SETTINGS.SECURITY.DELETE_ACCOUNT_CONFIRM", {
+                    username,
+                  })}
+                  placeholder={username}
+                />
+              </div>
+              <DialogFooter>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => handleOpenChange(false)}
+                >
+                  {t("COMMON.CANCEL")}
+                </Button>
+                <Button type="submit" variant="destructive">
+                  {t("SETTINGS.SECURITY.DELETE_ACCOUNT_BUTTON")}
+                </Button>
+              </DialogFooter>
+            </form>
+          </Form>
+        )}
       </DialogContent>
     </Dialog>
   );

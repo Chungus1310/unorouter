@@ -60,6 +60,7 @@ export const securityScope = t.Union([
   t.Literal("2fa.disable"),
   t.Literal("passkey.register"),
   t.Literal("passkey.delete"),
+  t.Literal("account.delete"),
 ]);
 export type SecurityScope = typeof securityScope.static;
 
