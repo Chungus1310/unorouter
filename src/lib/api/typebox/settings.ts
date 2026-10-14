@@ -1,3 +1,4 @@
+import { customerTypeSchema } from "@/lib/validation/auth";
 import { t } from "elysia";
 
 export const updateSelfBody = t.Object({
@@ -6,6 +7,7 @@ export const updateSelfBody = t.Object({
   email: t.Optional(t.String()),
   verification_code: t.Optional(t.String()),
   display_name: t.Optional(t.String()),
+  customer_type: t.Optional(customerTypeSchema),
 });
 
 export const passkeyCredentialBody = t.Object({

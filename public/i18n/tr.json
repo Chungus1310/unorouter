@@ -2688,6 +2688,14 @@
       "GO_TO_LOGIN": "Girişe git",
       "INVALID_LINK": "Bu bağlantı geçersiz veya süresi dolmuş.",
       "REQUEST_NEW_LINK": "Yeni bağlantı iste"
+    },
+    "CUSTOMER_TYPE": {
+      "LABEL": "Bu hesabı nasıl kullanacaksınız?",
+      "CONSUMER": "Bireysel kullanım",
+      "CONSUMER_HINT": "Kendiniz için, herhangi bir ticari, mesleki veya iş faaliyeti dışında",
+      "BUSINESS": "Kurumsal veya mesleki kullanım",
+      "BUSINESS_HINT": "Bir şirket, serbest çalışma veya başka bir mesleki amaç için",
+      "HELP": "Bu bilgiye veri koruma için ihtiyacımız var, çünkü kişisel ve ticari kullanım için kurallar farklıdır. Daha sonra ayarlardan değiştirebilirsiniz."
     }
   },
   "SIDEBAR": {
@@ -3559,6 +3567,13 @@
       "PERSISTENT": "Korumalı depolama",
       "PERSISTENT_YES": "Verildi. Tarayıcı yer azaldığında verilerini kendiliğinden silmez.",
       "PERSISTENT_NO": "Verilmedi. Tarayıcı yer azaldığında verilerini silebilir. Uygulamayı yüklemek ya da siteyi yer imlerine eklemek genellikle bunu çözer."
+    },
+    "CUSTOMER_TYPE": {
+      "TITLE": "Hesap türü",
+      "PROMPT": "Bu hesabı kişisel mi yoksa ticari amaçla mı kullandığınızı bir kez belirtin. Bu bilgiye veri koruma için ihtiyacımız var.",
+      "SAVE": "Kaydet",
+      "SAVED": "Hesap türü kaydedildi",
+      "DECLARED_ON": "Beyan tarihi: {date}"
     }
   },
   "SEARCH": {

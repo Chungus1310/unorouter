@@ -2688,6 +2688,14 @@
       "GO_TO_LOGIN": "Ir al inicio de sesión",
       "INVALID_LINK": "Este enlace no es válido o ha caducado.",
       "REQUEST_NEW_LINK": "Solicitar un enlace nuevo"
+    },
+    "CUSTOMER_TYPE": {
+      "LABEL": "¿Cómo vas a usar esta cuenta?",
+      "CONSUMER": "Uso privado",
+      "CONSUMER_HINT": "Para ti, fuera de cualquier actividad comercial, empresarial o profesional",
+      "BUSINESS": "Uso empresarial o profesional",
+      "BUSINESS_HINT": "Para una empresa, trabajo autónomo u otro fin profesional",
+      "HELP": "Necesitamos este dato por motivos de protección de datos, ya que las normas para el uso privado y el profesional son distintas. Puedes cambiarlo más tarde en los ajustes."
     }
   },
   "SIDEBAR": {
@@ -3559,6 +3567,13 @@
       "PERSISTENT": "Almacenamiento protegido",
       "PERSISTENT_YES": "Concedido. El navegador no borrará tus datos por su cuenta cuando falte espacio.",
       "PERSISTENT_NO": "No concedido. El navegador puede borrar tus datos cuando falte espacio. Instalar la app o guardar este sitio en marcadores suele solucionarlo."
+    },
+    "CUSTOMER_TYPE": {
+      "TITLE": "Tipo de cuenta",
+      "PROMPT": "Indícanos una vez si usas esta cuenta de forma privada o profesional. Necesitamos este dato por motivos de protección de datos.",
+      "SAVE": "Guardar",
+      "SAVED": "Tipo de cuenta guardado",
+      "DECLARED_ON": "Declarado el {date}"
     }
   },
   "SEARCH": {

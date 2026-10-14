@@ -20,6 +20,7 @@ import {
   OAUTH_ERROR_QUERY,
 } from "@/lib/config/constants";
 import { unwrap } from "@/lib/utils/base";
+import type { CustomerType } from "@/lib/validation/auth";
 import { sanitizeRedirectPath } from "@/lib/utils/server";
 import {
   exchangeOAuthCode,
@@ -33,6 +34,7 @@ import {
   sendEmailVerification,
   sendPasswordResetEmail,
   verify2FALogin,
+  type GenerateOAuthCodeParams,
 } from "@/openapi";
 import { resolveSelf } from "@/server/auth/account/self.service";
 import { deriveUpstream } from "@/server/constants";
@@ -122,16 +124,18 @@ export const authRoute = new Elysia({ prefix: "/account" })
   .get(
     "/oauth/state",
     async ({ query, upstream }) => {
-      const res = await generateOAuthCode(
+      // customer_type is newer than src/openapi.ts; the generated client
+      // forwards every key of params as a query parameter.
+      const params: GenerateOAuthCodeParams & { customer_type?: CustomerType } =
         {
           provider: query.provider,
           aff: query.aff,
           redirect_uri: query.redirect,
           action: query.action,
+          customer_type: query.customer_type,
           turnstile: query.turnstile,
-        },
-        upstream,
-      );
+        };
+      const res = await generateOAuthCode(params, upstream);
       return unwrap(res);
     },
     { query: oauthStateQuery },

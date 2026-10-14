@@ -2688,6 +2688,14 @@
       "GO_TO_LOGIN": "Przejdź do logowania",
       "INVALID_LINK": "Ten link jest nieprawidłowy lub wygasł.",
       "REQUEST_NEW_LINK": "Poproś o nowy link"
+    },
+    "CUSTOMER_TYPE": {
+      "LABEL": "Jak będziesz korzystać z tego konta?",
+      "CONSUMER": "Użytek prywatny",
+      "CONSUMER_HINT": "Dla siebie, poza jakąkolwiek działalnością handlową, gospodarczą lub zawodową",
+      "BUSINESS": "Użytek firmowy lub zawodowy",
+      "BUSINESS_HINT": "Dla firmy, pracy na własny rachunek lub innego celu zawodowego",
+      "HELP": "Potrzebujemy tej informacji ze względu na ochronę danych, ponieważ zasady dla użytku prywatnego i służbowego są różne. Możesz ją później zmienić w ustawieniach."
     }
   },
   "SIDEBAR": {
@@ -3559,6 +3567,13 @@
       "PERSISTENT": "Chroniona pamięć",
       "PERSISTENT_YES": "Przyznana. Przeglądarka sama nie usunie twoich danych, gdy zabraknie miejsca.",
       "PERSISTENT_NO": "Nie przyznana. Przeglądarka może usunąć twoje dane, gdy zabraknie miejsca. Zainstalowanie aplikacji lub dodanie strony do zakładek zwykle to naprawia."
+    },
+    "CUSTOMER_TYPE": {
+      "TITLE": "Typ konta",
+      "PROMPT": "Podaj nam jednorazowo, czy korzystasz z tego konta prywatnie, czy służbowo. Potrzebujemy tej informacji ze względu na ochronę danych.",
+      "SAVE": "Zapisz",
+      "SAVED": "Typ konta zapisany",
+      "DECLARED_ON": "Zadeklarowano {date}"
     }
   },
   "SEARCH": {

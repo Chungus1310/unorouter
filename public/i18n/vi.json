@@ -2688,6 +2688,14 @@
       "GO_TO_LOGIN": "Đến trang đăng nhập",
       "INVALID_LINK": "Liên kết này không hợp lệ hoặc đã hết hạn.",
       "REQUEST_NEW_LINK": "Yêu cầu liên kết mới"
+    },
+    "CUSTOMER_TYPE": {
+      "LABEL": "Bạn sẽ sử dụng tài khoản này như thế nào?",
+      "CONSUMER": "Sử dụng cá nhân",
+      "CONSUMER_HINT": "Cho bản thân, ngoài mọi hoạt động thương mại, kinh doanh hoặc nghề nghiệp",
+      "BUSINESS": "Sử dụng cho doanh nghiệp hoặc công việc chuyên môn",
+      "BUSINESS_HINT": "Cho một công ty, công việc tự do hoặc mục đích chuyên môn khác",
+      "HELP": "Chúng tôi cần thông tin này vì mục đích bảo vệ dữ liệu, do quy định cho mục đích cá nhân và kinh doanh khác nhau. Bạn có thể thay đổi sau trong phần cài đặt."
     }
   },
   "SIDEBAR": {
@@ -3559,6 +3567,13 @@
       "PERSISTENT": "Bộ nhớ được bảo vệ",
       "PERSISTENT_YES": "Đã cấp. Trình duyệt sẽ không tự xóa dữ liệu của bạn khi sắp hết dung lượng.",
       "PERSISTENT_NO": "Chưa cấp. Trình duyệt có thể xóa dữ liệu của bạn khi sắp hết dung lượng. Cài đặt ứng dụng hoặc đánh dấu trang này thường khắc phục được."
+    },
+    "CUSTOMER_TYPE": {
+      "TITLE": "Loại tài khoản",
+      "PROMPT": "Vui lòng cho chúng tôi biết một lần rằng bạn dùng tài khoản này cho mục đích cá nhân hay kinh doanh. Chúng tôi cần thông tin này vì mục đích bảo vệ dữ liệu.",
+      "SAVE": "Lưu",
+      "SAVED": "Đã lưu loại tài khoản",
+      "DECLARED_ON": "Đã khai báo ngày {date}"
     }
   },
   "SEARCH": {
