@@ -5,6 +5,8 @@ import {
   getGet2FAStatusUrl,
   getGetVerificationMethodsUrl,
   getLoginUrl,
+  getPasskeyDeleteUrl,
+  getPasskeyRegisterFinishUrl,
   getPasskeyVerifyBeginUrl,
   getPasskeyVerifyFinishUrl,
   getSetup2FAUrl,
@@ -65,7 +67,7 @@ export type PasskeyVerifyOptions = {
   expires_at: number;
 };
 
-// controller.authRotationData: enabling or disabling 2FA re-issues the session
+// controller.authRotationData: changing 2FA or the passkey re-issues the session
 // token. Empty when the caller authenticated with an access token.
 export type AuthRotationData = {
   access_token?: string;
@@ -120,6 +122,22 @@ export const disable2FAWithProof = (options?: GapOptions) =>
   customFetch<Envelope<AuthRotationData>>(getDisable2FAUrl(), {
     ...options,
     method: "POST",
+  });
+
+// Passkey register finish and delete are annotated as MessageResponse.
+export const finishPasskeyRegistration = (
+  body: unknown,
+  options?: GapOptions,
+) =>
+  customFetch<Envelope<AuthRotationData>>(
+    getPasskeyRegisterFinishUrl(),
+    postJson(body, options),
+  );
+
+export const deletePasskeyWithProof = (options?: GapOptions) =>
+  customFetch<Envelope<AuthRotationData>>(getPasskeyDeleteUrl(), {
+    ...options,
+    method: "DELETE",
   });
 
 export const get2FAStatus = (options?: RequestInit) =>

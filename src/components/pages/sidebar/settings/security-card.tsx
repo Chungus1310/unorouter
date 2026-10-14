@@ -1,14 +1,9 @@
 "use client";
 
-import { analytics } from "@/lib/analytics";
-import type { TwoFAMode } from "@/lib/types";
+import type { PasskeyMode, TwoFAMode } from "@/lib/types";
 import { Icon } from "@/components/ui/icon";
-import { arrayBufferToBase64 } from "@/lib/utils/base";
 import {
   use2FAStatusQuery,
-  usePasskeyDeleteMutation,
-  usePasskeyRegisterBeginMutation,
-  usePasskeyRegisterFinishMutation,
   usePasskeyStatusQuery,
 } from "@/hooks/auth/settings-hook";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
@@ -18,9 +13,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { toast } from "sonner";
 import { ChangePasswordDialog } from "./change-password-dialog";
 import { Setup2FADialog } from "./setup-2fa-dialog";
+import { PasskeyDialog } from "./passkey-dialog";
 import { DeleteAccountDialog } from "./delete-account-dialog";
 import { ApiAccessTabs } from "./api-access-tabs";
 
@@ -28,62 +23,18 @@ export function SecurityCard() {
   const t = useTranslations();
   const twoFAStatusQuery = use2FAStatusQuery();
   const passkeyStatusQuery = usePasskeyStatusQuery();
-  const passkeyRegisterBeginMutation = usePasskeyRegisterBeginMutation();
-  const passkeyRegisterFinishMutation = usePasskeyRegisterFinishMutation();
-  const passkeyDeleteMutation = usePasskeyDeleteMutation();
 
   const [showPasswordDialog, setShowPasswordDialog] = useState(false);
   const [show2FADialog, setShow2FADialog] = useState(false);
   const [twoFAMode, setTwoFAMode] = useState<TwoFAMode>("setup");
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+  const [showPasskeyDialog, setShowPasskeyDialog] = useState(false);
+  const [passkeyMode, setPasskeyMode] = useState<PasskeyMode>("register");
 
   const authQuery = useAuthQuery();
   const twoFAEnabled = twoFAStatusQuery.data?.enabled === true;
   const passkeyRegistered = passkeyStatusQuery.data?.enabled === true;
   const hasPassword = authQuery.data?.has_password ?? true;
-
-  async function handleRegisterPasskey() {
-    try {
-      const beginData = await passkeyRegisterBeginMutation.mutateAsync();
-      const credential = await navigator.credentials.create({
-        publicKey: beginData.options as PublicKeyCredentialCreationOptions,
-      });
-      if (!(credential instanceof PublicKeyCredential)) return;
-
-      const response = credential.response;
-      if (!(response instanceof AuthenticatorAttestationResponse)) return;
-
-      const credentialData = {
-        id: credential.id,
-        rawId: arrayBufferToBase64(credential.rawId),
-        type: "public-key" as const,
-        response: {
-          attestationObject: arrayBufferToBase64(response.attestationObject),
-          clientDataJSON: arrayBufferToBase64(response.clientDataJSON),
-        },
-      };
-
-      await passkeyRegisterFinishMutation.mutateAsync({ body: credentialData });
-      analytics.settings.passkeyRegistered();
-      toast.success(t("SETTINGS.SECURITY.PASSKEY_REGISTERED_SUCCESS"));
-    } catch (error) {
-      if (error instanceof Error && error.name !== "NotAllowedError") {
-        toast.error(error.message);
-      }
-    }
-  }
-
-  function handleDeletePasskey() {
-    passkeyDeleteMutation.mutate(undefined, {
-      onSuccess: () => {
-        analytics.settings.passkeyDeleted();
-        toast.success(t("SETTINGS.SECURITY.PASSKEY_DELETED"));
-      },
-      onError: (error) => {
-        toast.error(error.message);
-      },
-    });
-  }
 
   return (
     <>
@@ -141,8 +92,10 @@ export function SecurityCard() {
                   <Button
                     variant="destructive"
                     size="sm"
-                    disabled={passkeyDeleteMutation.isPending}
-                    onClick={handleDeletePasskey}
+                    onClick={() => {
+                      setPasskeyMode("delete");
+                      setShowPasskeyDialog(true);
+                    }}
                   >
                     <Icon name="trash-2" className="mr-1 h-3 w-3" />
                     {t("SETTINGS.SECURITY.DELETE_PASSKEY")}
@@ -151,8 +104,10 @@ export function SecurityCard() {
                   <Button
                     variant="outline"
                     size="sm"
-                    disabled={passkeyRegisterBeginMutation.isPending}
-                    onClick={handleRegisterPasskey}
+                    onClick={() => {
+                      setPasskeyMode("register");
+                      setShowPasskeyDialog(true);
+                    }}
                   >
                     {t("SETTINGS.SECURITY.REGISTER_PASSKEY")}
                   </Button>
@@ -240,6 +195,11 @@ export function SecurityCard() {
         open={show2FADialog}
         onOpenChange={setShow2FADialog}
         mode={twoFAMode}
+      />
+      <PasskeyDialog
+        open={showPasskeyDialog}
+        onOpenChange={setShowPasskeyDialog}
+        mode={passkeyMode}
       />
       <DeleteAccountDialog
         open={showDeleteDialog}
