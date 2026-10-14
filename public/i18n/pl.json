@@ -481,7 +481,19 @@
       "AT_CAPACITY_NOTE": "Wszyscy dostawcy tych modeli osiągnęli limit żądań. Wrócą automatycznie, gdy limity zostaną zresetowane.",
       "AT_CAPACITY_BADGE": "Zajęte"
     },
-    "DISCORD": "Poproś o model na Discordzie"
+    "DISCORD": "Poproś o model na Discordzie",
+    "DATA_POLICY": {
+      "SEAT": "Siedziba dostawcy: {country}",
+      "UNSAFE_COUNTRY": "Państwo trzecie bez unijnych zabezpieczeń ochrony danych ({country}). Nie wysyłaj danych osobowych.",
+      "UNSAFE": "Brak unijnych zabezpieczeń ochrony danych dla tego dostawcy. Nie wysyłaj danych osobowych.",
+      "TRAINS": "Ten dostawca może używać promptów do trenowania modeli",
+      "RETAINS": "Ten dostawca może przechowywać prompty",
+      "SAFEGUARDS": "Unijne zabezpieczenia ochrony danych: {basis}",
+      "BASIS_ADEQUACY": "Decyzja UE stwierdzająca odpowiedni stopień ochrony",
+      "BASIS_DPF": "Ramy ochrony danych UE-USA",
+      "BASIS_SCC": "Standardowe klauzule umowne",
+      "UNKNOWN": "Brak informacji o ochronie danych dla tego dostawcy"
+    }
   },
   "RANKINGS": {
     "META": {

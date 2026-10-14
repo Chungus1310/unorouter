@@ -14,6 +14,7 @@ import {
   updateToken,
 } from "@/openapi";
 import { Elysia } from "elysia";
+import type { UserGroup } from "@/lib/validation/data-policy";
 import { deriveUpstream } from "@/server/constants";
 import { resolveBestKey } from "./best-key.service";
 
@@ -99,7 +100,7 @@ export const tokenRoute = new Elysia({ prefix: "/token" })
     return { key };
   })
 
-  .get("/groups", async ({ upstream }) => {
+  .get("/groups", async ({ upstream }): Promise<Record<string, UserGroup>> => {
     const res = await getUserGroups({ headers: upstream.headers });
     const body = unwrap(res);
     return body.data ?? {};

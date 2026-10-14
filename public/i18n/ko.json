@@ -481,7 +481,19 @@
       "AT_CAPACITY_NOTE": "이 모델의 모든 제공자가 요청 한도에 도달했습니다. 한도가 해제되면 자동으로 다시 사용할 수 있습니다.",
       "AT_CAPACITY_BADGE": "혼잡"
     },
-    "DISCORD": "Discord에서 모델을 요청하세요"
+    "DISCORD": "Discord에서 모델을 요청하세요",
+    "DATA_POLICY": {
+      "SEAT": "제공업체 소재지: {country}",
+      "UNSAFE_COUNTRY": "EU 데이터 보호 조치가 없는 제3국입니다({country}). 개인정보를 보내지 마세요.",
+      "UNSAFE": "이 제공업체에는 EU 데이터 보호 조치가 없습니다. 개인정보를 보내지 마세요.",
+      "TRAINS": "이 제공업체는 프롬프트를 모델 학습에 사용할 수 있습니다",
+      "RETAINS": "이 제공업체는 프롬프트를 저장할 수 있습니다",
+      "SAFEGUARDS": "EU 데이터 보호 조치: {basis}",
+      "BASIS_ADEQUACY": "EU 적정성 결정",
+      "BASIS_DPF": "EU 미국 데이터 프라이버시 프레임워크",
+      "BASIS_SCC": "표준계약조항",
+      "UNKNOWN": "이 제공업체의 데이터 보호 정보가 없습니다"
+    }
   },
   "RANKINGS": {
     "META": {

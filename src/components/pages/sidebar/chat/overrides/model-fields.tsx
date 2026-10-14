@@ -9,6 +9,7 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { GroupDataPolicyBadges } from "@/components/elements/model/group-data-policy";
 import { FormField, FormItem, FormLabel } from "@/components/ui/form";
 import { Icon } from "@/components/ui/icon";
 import {
@@ -264,6 +265,9 @@ function GroupRow(props: {
               {groupDisplayLabel(entry.group, props.model)}
             </span>
             <span className="flex shrink-0 items-center gap-1.5">
+              <GroupDataPolicyBadges
+                policy={groupsQuery.data?.group_providers?.[entry.group]}
+              />
               <span className="text-muted-foreground">
                 {rowPrice(entry.ratio) ?? `${entry.ratio}x`}
               </span>

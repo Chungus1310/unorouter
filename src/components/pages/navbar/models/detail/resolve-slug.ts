@@ -1,6 +1,7 @@
 import type { PricingCatalogDetail } from "@/openapi";
 import type { PricingCatalogModel } from "@/openapi";
 import { cache } from "react";
+import type { ModelDetailData } from "@/lib/validation/data-policy";
 import { rpc } from "@/lib/rpc";
 import {
   getCatalog,
@@ -9,7 +10,7 @@ import {
 import { modelMatchesSlug, modelSlug, vendorSlug } from "@/lib/utils/base";
 
 export type ResolvedModel = {
-  model: PricingCatalogDetail;
+  model: ModelDetailData;
   atCapacity: boolean;
   models: PricingCatalogModel[];
 };

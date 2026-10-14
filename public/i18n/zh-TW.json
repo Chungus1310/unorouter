@@ -481,7 +481,19 @@
       "AT_CAPACITY_NOTE": "這些模型的所有供應商都已達到請求上限。限制解除後會自動恢復。",
       "AT_CAPACITY_BADGE": "繁忙"
     },
-    "DISCORD": "在 Discord 上請求模型"
+    "DISCORD": "在 Discord 上請求模型",
+    "DATA_POLICY": {
+      "SEAT": "供應商所在地：{country}",
+      "UNSAFE_COUNTRY": "缺乏歐盟資料保護保障的第三國（{country}）。請勿傳送個人資料。",
+      "UNSAFE": "此供應商沒有歐盟資料保護保障。請勿傳送個人資料。",
+      "TRAINS": "此供應商可能使用提示詞訓練模型",
+      "RETAINS": "此供應商可能儲存提示詞",
+      "SAFEGUARDS": "歐盟資料保護保障：{basis}",
+      "BASIS_ADEQUACY": "歐盟適足性認定",
+      "BASIS_DPF": "歐盟美國資料隱私框架",
+      "BASIS_SCC": "標準契約條款",
+      "UNKNOWN": "目前沒有此供應商的資料保護資訊"
+    }
   },
   "RANKINGS": {
     "META": {

@@ -3,6 +3,7 @@
 import type { GroupResult, PricingCatalogDetail } from "@/openapi";
 
 import { CopyButton } from "@/components/elements/code/copy-button";
+import { GroupDataPolicyBadges } from "@/components/elements/model/group-data-policy";
 import { Icon } from "@/components/ui/icon";
 import {
   buildGroupEntries,
@@ -13,6 +14,7 @@ import {
 } from "@/lib/api/pricing";
 import { usePerfMetricsQuery } from "@/hooks/models/perf-metrics-hook";
 import { getVendorTheme } from "@/lib/config/vendor-registry";
+import type { GroupProviders } from "@/lib/validation/data-policy";
 import { cn } from "@/lib/utils";
 import {
   formatLatency,
@@ -35,6 +37,7 @@ type Theme = ReturnType<typeof getVendorTheme>;
 export function GroupPricingSection(props: {
   model: PricingCatalogDetail;
   groupRatioMap: Record<string, number>;
+  groupProviders: GroupProviders;
   autoGroups?: string[];
   theme: Theme;
 }) {
@@ -87,6 +90,7 @@ export function GroupPricingSection(props: {
               entries={entries}
               gridPricing={model.grid_pricing!}
               health={health}
+              providers={props.groupProviders}
               theme={props.theme}
             />
           ) : model.is_fixed_price ? (
@@ -95,6 +99,7 @@ export function GroupPricingSection(props: {
               fixedPrice={model.original_fixed_price ?? model.fixed_price}
               model={model}
               health={health}
+              providers={props.groupProviders}
               theme={props.theme}
             />
           ) : (
@@ -103,6 +108,7 @@ export function GroupPricingSection(props: {
               modelRatio={model.model_ratio}
               completionRatio={model.completion_ratio}
               health={health}
+              providers={props.groupProviders}
               theme={props.theme}
             />
           )}
@@ -186,10 +192,11 @@ function HealthHeaders() {
 }
 
 // The group name IS the X-Group header value for pinning a request to it.
-function GroupNameCell(props: { group: string }) {
+function GroupNameCell(props: { group: string; providers: GroupProviders }) {
   return (
     <span className="group/gn inline-flex items-center gap-1.5">
       {props.group}
+      <GroupDataPolicyBadges policy={props.providers[props.group]} />
       <span className="opacity-0 transition-opacity group-hover/gn:opacity-100">
         <CopyButton text={props.group} iconSize="h-3 w-3" />
       </span>
@@ -202,6 +209,7 @@ function GroupTokens(props: {
   modelRatio: number;
   completionRatio: number;
   health: Map<string, GroupHealth>;
+  providers: GroupProviders;
   theme: Theme;
 }) {
   const t = useTranslations();
@@ -229,7 +237,7 @@ function GroupTokens(props: {
             return (
               <tr key={ge.group} className={MINI_TABLE_BODY_ROW}>
                 <td className="text-muted-foreground py-1.5">
-                  <GroupNameCell group={ge.group} />
+                  <GroupNameCell group={ge.group} providers={props.providers} />
                 </td>
                 <td className={cn("py-1.5 pl-4 text-right", props.theme.text)}>
                   {formatPrice(inputPrice)}
@@ -252,6 +260,7 @@ function GroupFixed(props: {
   fixedPrice: number;
   model: PricingCatalogDetail;
   health: Map<string, GroupHealth>;
+  providers: GroupProviders;
   theme: Theme;
 }) {
   const t = useTranslations();
@@ -273,7 +282,7 @@ function GroupFixed(props: {
           {props.entries.map((ge) => (
             <tr key={ge.group} className={MINI_TABLE_BODY_ROW}>
               <td className="text-muted-foreground py-1.5">
-                <GroupNameCell group={ge.group} />
+                <GroupNameCell group={ge.group} providers={props.providers} />
               </td>
               <td className={cn("py-1.5 pl-4 text-right", props.theme.text)}>
                 {formatPrice(props.fixedPrice * ge.ratio)}
@@ -294,6 +303,7 @@ function GroupGrid(props: {
   entries: GroupEntry[];
   gridPricing: GridPricingRow[];
   health: Map<string, GroupHealth>;
+  providers: GroupProviders;
   theme: Theme;
 }) {
   const t = useTranslations();
@@ -306,6 +316,7 @@ function GroupGrid(props: {
             <span className={cn("font-mono text-[11px]", props.theme.text)}>
               {ge.group}
             </span>
+            <GroupDataPolicyBadges policy={props.providers[ge.group]} />
             <CopyButton text={ge.group} iconSize="h-3 w-3" />
             <span className="text-muted-foreground font-mono text-[10px]">
               {ge.ratio}x

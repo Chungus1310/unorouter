@@ -18,7 +18,9 @@ import {
 import { VendorIcon } from "@/components/elements/brand/vendor-icon";
 import { groupDisplayLabel } from "@/lib/api/pricing";
 import { cn } from "@/lib/utils";
-import type { PricingVendorModel, UserGroupInfo } from "@/openapi";
+import type { PricingVendorModel } from "@/openapi";
+import type { GroupDataPolicy, UserGroup } from "@/lib/validation/data-policy";
+import { GroupDataPolicyBadges } from "@/components/elements/model/group-data-policy";
 import { CheckIcon } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useLayoutEffect, useRef, useState } from "react";
@@ -138,7 +140,7 @@ function entryOverrides(entry: TokenPinEntry): boolean {
 type TokenGroupMappingProps = {
   control: Control<TokenFormSchema>;
   mapping: GroupMapping;
-  groups: Record<string, UserGroupInfo>;
+  groups: Record<string, UserGroup>;
   models: PricingVendorModel[];
   /**
    * Catalogue price per model, which already includes the cheapest enabled
@@ -153,6 +155,7 @@ type GroupOption = {
   ratio: number | null;
   /** False when every channel behind the group is currently disabled. */
   online: boolean;
+  policy?: GroupDataPolicy;
   /**
    * Pinned by this key but absent from the catalogue: the provider left, or is
    * between syncs. Rendered anyway so the owner can untick it -- options come
@@ -175,7 +178,7 @@ function modelKey(model: string): string {
 }
 
 export function buildModelGroupOptions(
-  groups: Record<string, UserGroupInfo>,
+  groups: Record<string, UserGroup>,
   mapping: GroupMapping = {},
 ): Map<string, GroupOption[]> {
   const byModel = new Map<string, GroupOption[]>();
@@ -189,6 +192,7 @@ export function buildModelGroupOptions(
       provider: match[2],
       ratio: typeof info.ratio === "number" ? info.ratio : null,
       online: info.online !== false,
+      policy: info,
     };
     const key = modelKey(match[1]);
     const list = byModel.get(key);
@@ -585,6 +589,12 @@ function ModelGroupPanel(props: {
                     props.model.replace(/:/g, "-"),
                   )}
                 </span>
+                {!option.missing && (
+                  <GroupDataPolicyBadges
+                    policy={option.policy}
+                    className="ml-1.5"
+                  />
+                )}
                 <span className="text-muted-foreground ml-auto shrink-0 pl-2 text-right font-mono text-[11px] leading-tight">
                   <span className="block">
                     {option.missing

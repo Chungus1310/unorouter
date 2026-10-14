@@ -190,6 +190,7 @@ export function ModelDetailSheet(props: ModelDetailSheetProps) {
               model={model}
               groupRatioMap={groupsQuery.data?.group_ratio ?? {}}
               autoGroups={groupsQuery.data?.auto_chain ?? []}
+              groupProviders={groupsQuery.data?.group_providers ?? {}}
               theme={theme}
             />
           )}

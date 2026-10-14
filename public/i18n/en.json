@@ -481,7 +481,19 @@
       "AT_CAPACITY_NOTE": "Every provider for these models has hit its rate limit. They come back automatically once the limits lift.",
       "AT_CAPACITY_BADGE": "Busy"
     },
-    "DISCORD": "Request a model on Discord"
+    "DISCORD": "Request a model on Discord",
+    "DATA_POLICY": {
+      "SEAT": "Provider seat: {country}",
+      "UNSAFE_COUNTRY": "Third country without EU data protection safeguards ({country}). Do not send personal data.",
+      "UNSAFE": "No EU data protection safeguards for this provider. Do not send personal data.",
+      "TRAINS": "This provider may use prompts to train models",
+      "RETAINS": "This provider may store prompts",
+      "SAFEGUARDS": "EU data protection safeguards: {basis}",
+      "BASIS_ADEQUACY": "EU adequacy decision",
+      "BASIS_DPF": "EU-US Data Privacy Framework",
+      "BASIS_SCC": "Standard contractual clauses",
+      "UNKNOWN": "No data protection information for this provider"
+    }
   },
   "RANKINGS": {
     "META": {

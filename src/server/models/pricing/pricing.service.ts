@@ -5,6 +5,7 @@ import {
   getSubscriptionPlans,
 } from "@/openapi";
 import { cache } from "react";
+import type { ModelDetailData } from "@/lib/validation/data-policy";
 
 // includeOffline keeps models whose every lane is down, flagged online=false.
 // Only the sitemap wants them: their pages answer 200 the whole time, so leaving
@@ -35,14 +36,16 @@ export const getTaskImageModels = cache(async () => {
   return unwrap(res).models;
 });
 
-export const getModelByName = cache(async (model: string) => {
-  try {
-    const res = await getPricingCatalogModel({ model });
-    return unwrap(res);
-  } catch {
-    return null;
-  }
-});
+export const getModelByName = cache(
+  async (model: string): Promise<ModelDetailData | null> => {
+    try {
+      const res = await getPricingCatalogModel({ model });
+      return unwrap(res);
+    } catch {
+      return null;
+    }
+  },
+);
 
 export async function getSubscriptionPlansSummary() {
   return unwrap(await getSubscriptionPlans()).data;

@@ -42,6 +42,8 @@ import {
   useModelStatusMap,
 } from "@/hooks/models/model-status-hook";
 import { UptimeDot } from "@/components/elements/model/uptime-dot";
+import { GroupDataPolicyBadges } from "@/components/elements/model/group-data-policy";
+import type { GroupProviders } from "@/lib/validation/data-policy";
 import { useLoginRedirect } from "@/hooks/auth/use-login-redirect";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -229,6 +231,7 @@ function GroupSubmenu(props: {
   onGroupChange: (group: string | null) => void;
   groupEntries: GroupEntry[];
   enableGroups: string[];
+  groupProviders: GroupProviders;
 }) {
   const t = useTranslations();
   const [groupOpen, setGroupOpen] = useState(false);
@@ -310,6 +313,9 @@ function GroupSubmenu(props: {
                 {groupDisplayLabel(entry.group, props.value)}
               </span>
               <span className="flex shrink-0 items-center gap-1.5">
+                <GroupDataPolicyBadges
+                  policy={props.groupProviders[entry.group]}
+                />
                 <span className="text-muted-foreground">{entry.ratio}x</span>
                 {entry.group === props.group && (
                   <Icon name="check" className="h-3.5 w-3.5" />
@@ -482,6 +488,7 @@ export function ModelSelector(props: ModelSelectorProps) {
               onGroupChange={props.onGroupChange}
               groupEntries={groupEntries}
               enableGroups={enableGroups}
+              groupProviders={modelGroupsQuery.data?.group_providers ?? {}}
             />
           )}
         </Command>
