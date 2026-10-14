@@ -49,3 +49,37 @@ export const updateTimeoutBody = t.Object({
   max_first_token_seconds: t.Integer({ minimum: 0, maximum: 600 }),
   max_chain_first_token_seconds: t.Integer({ minimum: 0, maximum: 600 }),
 });
+
+// Step-up scopes this site asks the gateway to verify (service/security_verification.go).
+export const securityScope = t.Union([
+  t.Literal("2fa.setup"),
+  t.Literal("2fa.disable"),
+]);
+export type SecurityScope = typeof securityScope.static;
+
+export const verificationMethodsQuery = t.Object({ scope: securityScope });
+
+// Passkey and OAuth have their own ceremonies, so only these two post here.
+export const securityVerifyBody = t.Object({
+  method: t.Union([t.Literal("2fa"), t.Literal("password")]),
+  scope: securityScope,
+  code: t.Optional(t.String()),
+  password: t.Optional(t.String()),
+});
+
+export const passkeyVerifyBeginBody = t.Object({ scope: securityScope });
+
+export const passkeyVerifyFinishBody = t.Object({
+  flow_token: t.String(),
+  credential: t.Object({
+    id: t.String(),
+    rawId: t.String(),
+    type: t.Literal("public-key"),
+    response: t.Object({
+      authenticatorData: t.String(),
+      clientDataJSON: t.String(),
+      signature: t.String(),
+      userHandle: t.Optional(t.String()),
+    }),
+  }),
+});

@@ -1,5 +1,6 @@
 import type { rpc } from "@/lib/rpc";
 import type { EdenQuery } from "@/lib/types/eden";
+import type { SecurityScope } from "@/lib/api/typebox/settings";
 
 export const queryKeys = {
   auth: () => ["auth"] as const,
@@ -7,6 +8,8 @@ export const queryKeys = {
   status: () => ["status"] as const,
   twoFAStatus: () => ["2fa-status"] as const,
   passkeyStatus: () => ["passkey-status"] as const,
+  verificationMethods: (scope: SecurityScope) =>
+    ["verification-methods", scope] as const,
 
   dashboardQuota: (
     params?: EdenQuery<typeof rpc.api.billing.dashboard.quota>,

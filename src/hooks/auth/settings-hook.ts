@@ -8,7 +8,10 @@ import type { EdenArgs } from "@/lib/types/eden";
 import { handleElysia } from "@/lib/utils/base";
 import type { TwoFAStatusData } from "@/lib/api/gateway-gaps";
 import type { PasskeyStatusData, UserSelfData } from "@/openapi";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { msg, SECURITY_PROOF_HEADER } from "@/lib/config/constants";
+import type { SecurityScope } from "@/lib/api/typebox/settings";
+import { getPasskeyAssertion } from "@/lib/utils/webauthn";
 import { dayjs } from "@/lib/utils/format/date";
 
 type TwoFA = (typeof rpc.api.auth.settings)["2fa"];
@@ -131,18 +134,64 @@ export function useSendSettingsVerificationMutation() {
   });
 }
 
-export function useSetup2FAMutation() {
+// staleTime 0: the offered methods change as soon as a factor is added or removed.
+export function useVerificationMethodsQuery(scope: SecurityScope) {
+  return useElysiaQuery(
+    queryKeys.verificationMethods(scope),
+    () => rpc.api.auth.settings.verify.methods.get({ query: { scope } }),
+    { staleTime: 0 },
+  );
+}
+
+export function useSecurityVerifyMutation() {
   return useApiMutation({
-    mutationFn: async () =>
-      handleElysia(await rpc.api.auth.settings["2fa"].setup.post()),
+    mutationFn: async (
+      args: EdenArgs<typeof rpc.api.auth.settings.verify, "post">,
+    ) => handleElysia(await rpc.api.auth.settings.verify.post(args.body)),
+  });
+}
+
+// Plain useMutation: a dismissed passkey prompt is not an error worth a toast,
+// so the caller decides what to show.
+export function usePasskeyVerifyMutation() {
+  return useMutation({
+    mutationFn: async (args: { scope: SecurityScope }) => {
+      const begin = handleElysia(
+        await rpc.api.auth.settings.passkey.verify.begin.post({
+          scope: args.scope,
+        }),
+      );
+      const credential = await getPasskeyAssertion(begin.options);
+      if (!credential) throw new Error(msg("ERRORS.UNEXPECTED_RESPONSE"));
+      return handleElysia(
+        await rpc.api.auth.settings.passkey.verify.finish.post({
+          flow_token: begin.flow_token,
+          credential,
+        }),
+      );
+    },
+  });
+}
+
+// The three below use plain useMutation so a refused proof can send the user
+// back to verification instead of only showing a toast.
+export function useSetup2FAMutation() {
+  return useMutation({
+    mutationFn: async (args: { proof: string }) =>
+      handleElysia(
+        await rpc.api.auth.settings["2fa"].setup.post(undefined, {
+          headers: { [SECURITY_PROOF_HEADER]: args.proof },
+        }),
+      ),
   });
 }
 
 export function useEnable2FAMutation() {
-  return useApiMutation({
+  const qc = useQueryClient();
+  return useMutation({
     mutationFn: async (args: EdenArgs<TwoFA["enable"], "post">) =>
       handleElysia(await rpc.api.auth.settings["2fa"].enable.post(args.body)),
-    onSuccess: (_data, _args, qc) => {
+    onSuccess: () => {
       qc.setQueryData<TwoFAStatusData>(queryKeys.twoFAStatus(), (old) =>
         old ? { ...old, enabled: true } : old,
       );
@@ -151,10 +200,15 @@ export function useEnable2FAMutation() {
 }
 
 export function useDisable2FAMutation() {
-  return useApiMutation({
-    mutationFn: async (args: EdenArgs<TwoFA["disable"], "post">) =>
-      handleElysia(await rpc.api.auth.settings["2fa"].disable.post(args.body)),
-    onSuccess: (_data, _args, qc) => {
+  const qc = useQueryClient();
+  return useMutation({
+    mutationFn: async (args: { proof: string }) =>
+      handleElysia(
+        await rpc.api.auth.settings["2fa"].disable.post(undefined, {
+          headers: { [SECURITY_PROOF_HEADER]: args.proof },
+        }),
+      ),
+    onSuccess: () => {
       qc.setQueryData<TwoFAStatusData>(queryKeys.twoFAStatus(), (old) =>
         old ? { ...old, enabled: false } : old,
       );

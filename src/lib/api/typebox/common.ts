@@ -10,8 +10,10 @@ export const verificationQuery = t.Object({
   turnstile: t.Optional(t.String()),
 });
 
-export const twoFACodeBody = t.Object({
+// flow_token comes from the setup response and ties the code to that enrollment.
+export const twoFAEnableBody = t.Object({
   code: t.String(),
+  flow_token: t.String(),
 });
 
 // Login-time 2FA verify carries the AuthFlow token from the password step

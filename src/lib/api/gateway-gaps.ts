@@ -1,8 +1,14 @@
 import { customFetch } from "@/lib/custom-fetch";
 import {
+  getDisable2FAUrl,
+  getEnable2FAUrl,
   getGet2FAStatusUrl,
+  getGetVerificationMethodsUrl,
   getLoginUrl,
+  getPasskeyVerifyBeginUrl,
+  getPasskeyVerifyFinishUrl,
   getSetup2FAUrl,
+  getUniversalVerifyUrl,
   type LoginParams,
   type LoginRequest,
   type loginResponse,
@@ -32,6 +38,89 @@ export type TwoFASetupData = {
   flow_token: string;
   expires_at: number;
 };
+
+// service.VerificationRequirements; annotated as the bare ApiResponse and
+// without its `scope` query.
+export type VerificationRequirements = {
+  scope: string;
+  methods: { method: string; available: boolean; reason?: string }[];
+  oauth_providers: { slug: string; name: string }[];
+  password_encryption_enabled: boolean;
+};
+
+// service.SecurityProof. POST /api/verify is annotated as
+// VerificationStatusResponse, the passkey finish as MessageResponse.
+export type SecurityProof = {
+  proof_token: string;
+  expires_at: number;
+  method: string;
+  scope: string;
+};
+
+// `options` is the go-webauthn CredentialAssertion, binary fields base64url.
+export type PasskeyVerifyOptions = {
+  options: unknown;
+  rp_ids: string[];
+  flow_token: string;
+  expires_at: number;
+};
+
+// controller.authRotationData: enabling or disabling 2FA re-issues the session
+// token. Empty when the caller authenticated with an access token.
+export type AuthRotationData = {
+  access_token?: string;
+  token_type?: string;
+  access_expires_at?: number;
+};
+
+// A record, not HeadersInit: spreading a Headers instance drops every header.
+type GapOptions = { headers?: Record<string, string> };
+
+const postJson = (body: unknown, options?: GapOptions): RequestInit => ({
+  ...options,
+  method: "POST",
+  headers: { "Content-Type": "application/json", ...options?.headers },
+  body: JSON.stringify(body),
+});
+
+export const getVerificationMethods = (scope: string, options?: GapOptions) =>
+  customFetch<Envelope<VerificationRequirements>>(
+    `${getGetVerificationMethodsUrl()}?${new URLSearchParams({ scope })}`,
+    { ...options, method: "GET" },
+  );
+
+export const verifySecurity = (body: unknown, options?: GapOptions) =>
+  customFetch<Envelope<SecurityProof>>(
+    getUniversalVerifyUrl(),
+    postJson(body, options),
+  );
+
+export const beginPasskeyVerification = (body: unknown, options?: GapOptions) =>
+  customFetch<Envelope<PasskeyVerifyOptions>>(
+    getPasskeyVerifyBeginUrl(),
+    postJson(body, options),
+  );
+
+export const finishPasskeyVerification = (
+  body: unknown,
+  options?: GapOptions,
+) =>
+  customFetch<Envelope<SecurityProof>>(
+    getPasskeyVerifyFinishUrl(),
+    postJson(body, options),
+  );
+
+export const enable2FAEnrollment = (body: unknown, options?: GapOptions) =>
+  customFetch<Envelope<AuthRotationData>>(
+    getEnable2FAUrl(),
+    postJson(body, options),
+  );
+
+export const disable2FAWithProof = (options?: GapOptions) =>
+  customFetch<Envelope<AuthRotationData>>(getDisable2FAUrl(), {
+    ...options,
+    method: "POST",
+  });
 
 export const get2FAStatus = (options?: RequestInit) =>
   customFetch<Envelope<TwoFAStatusData>>(getGet2FAStatusUrl(), {
