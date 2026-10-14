@@ -22,25 +22,20 @@ export const transferBasisSchema = t.Union([
 ]);
 export type TransferBasis = Static<typeof transferBasisSchema>;
 
-// Most conservative profile across the channels behind a group.
+// Most conservative profile across the channels behind a group. Loose on
+// purpose: the generated gateway types carry prompts and transfer as strings.
 export type GroupDataPolicy = {
   seat_country?: string;
-  prompts?: PromptsPolicy;
-  transfer?: TransferBasis;
+  prompts?: string;
+  transfer?: string;
   unsafe_third_country?: boolean;
 };
 
 // A group without any recorded policy is absent from the map.
 export type GroupProviders = Record<string, GroupDataPolicy>;
 
-// The gateway sends these before src/openapi.ts does; once `bun openapi` runs
-// against a gateway that has them, the generated types alone cover this.
-export type ModelDetailData = PricingCatalogDetail & {
-  group_providers?: GroupProviders;
-};
+export type ModelDetailData = PricingCatalogDetail;
 
-export type ModelGroupsData = PricingModelGroupsData & {
-  group_providers?: GroupProviders;
-};
+export type ModelGroupsData = PricingModelGroupsData;
 
-export type UserGroup = UserGroupInfo & GroupDataPolicy;
+export type UserGroup = UserGroupInfo;

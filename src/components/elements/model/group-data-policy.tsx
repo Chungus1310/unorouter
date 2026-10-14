@@ -44,7 +44,7 @@ const SAFE_BASIS_KEY = {
 } as const satisfies Partial<Record<TransferBasis, string>>;
 
 function isSafeBasis(
-  transfer: TransferBasis | undefined,
+  transfer: string | undefined,
 ): transfer is keyof typeof SAFE_BASIS_KEY {
   return transfer !== undefined && transfer in SAFE_BASIS_KEY;
 }
