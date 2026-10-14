@@ -2,7 +2,7 @@ import type { PricingCatalogDetail } from "@/openapi";
 import { getModelByName } from "@/server/models/pricing/pricing.service";
 import { msg } from "@/lib/config/constants";
 import { downloadGenerationBytes } from "@/lib/config/safe-fetch";
-import { base64ToDataUri, parseDataUri, uid } from "@/lib/utils/base";
+import { base64ToDataUri, uid } from "@/lib/utils/base";
 import { logger } from "@/lib/utils/logger";
 import {
   buildBody,
@@ -325,16 +325,9 @@ export async function handleImageStream(apiKey: string, body: MediaStreamBody) {
       await Promise.all(
         result.uris.map(async (img: string) => {
           try {
-            const parsed = img.startsWith("data:")
-              ? parseDataUri(img)
-              : await (async () => {
-                  const { buffer, mime } = await downloadGenerationBytes(img);
-                  return { base64: buffer.toString("base64"), mime };
-                })();
-            if (!parsed) return null;
-            const size = await probeImageSize(
-              Buffer.from(parsed.base64, "base64"),
-            );
+            const { buffer, mime } = await downloadGenerationBytes(img);
+            const parsed = { base64: buffer.toString("base64"), mime };
+            const size = await probeImageSize(buffer);
             return {
               id: uid(16),
               dataBase64: parsed.base64,

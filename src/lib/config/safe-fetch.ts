@@ -1,3 +1,4 @@
+import { markAiGenerated } from "@/lib/ai/image/ai-mark";
 import { msg } from "@/lib/config/constants";
 import { env } from "@/lib/config/env";
 import { fileTypeFromBuffer } from "file-type";
@@ -356,13 +357,15 @@ export async function downloadGenerationBytes(
 ): Promise<{ buffer: Buffer; mime: string; sizeBytes: number }> {
   if (url.startsWith("data:")) {
     const base64 = url.split(",")[1] ?? "";
-    const buffer = Buffer.from(base64, "base64");
+    const buffer = markAiGenerated(Buffer.from(base64, "base64"));
     const mime = await verifyMagicBytes(buffer);
     return { buffer, mime, sizeBytes: buffer.length };
   }
   const { res, deadline } = await safeFetch(url);
   if (!res.ok) throw new Error(msg("ERRORS.UPSTREAM_FETCH_FAILED"));
-  const buffer = await readBodyWithLimit(res, MAX_DOWNLOAD_BYTES, deadline);
+  const buffer = markAiGenerated(
+    await readBodyWithLimit(res, MAX_DOWNLOAD_BYTES, deadline),
+  );
   const mime = await verifyMagicBytes(buffer);
   return { buffer, mime, sizeBytes: buffer.length };
 }
