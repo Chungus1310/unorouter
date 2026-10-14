@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "玩 Token 打砖块",
     "BADGE_FEATURED_ON": "已在 {name} 推荐",
     "BADGE_VERIFIED_ON": "已在 {name} 验证",
-    "AUP": "使用政策"
+    "AUP": "使用政策",
+    "IMPRESSUM": "法律声明"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "我们可能会不时更新本使用政策。变更生效后继续使用本服务，即表示接受修订后的政策。",
     "CONTACT_TITLE": "联系我们",
     "CONTACT_CONTENT": "如对本使用政策有任何疑问，请通过 {supportEmail} 与我们联系。"
+  },
+  "IMPRESSUM": {
+    "TITLE": "法律声明",
+    "LAST_UPDATED": "最后更新：2026 年 10 月 14 日",
+    "META": {
+      "TITLE": "法律声明 - {appName}",
+      "DESCRIPTION": "{appName} 的法律声明：根据 § 5 DDG 列明服务提供者、地址、联系方式和增值税识别号。",
+      "KEYWORDS": "法律声明，impressum，{appName} 服务提供者，联系方式，增值税识别号"
+    },
+    "INTRO": "本法律声明列明 {appDomain} 的服务提供者。服务提供者为个体经营者，未在商业登记簿中登记。",
+    "PROVIDER_TITLE": "根据 § 5 DDG 的信息",
+    "PROVIDER_CONTENT": "[redacted]，以 {appName} 名义经营（个体经营）\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "联系方式",
+    "CONTACT_CONTENT": "电子邮件：{supportEmail}\nDiscord：{discordUrl}",
+    "VAT_TITLE": "增值税识别号",
+    "VAT_CONTENT": "根据德国《增值税法》（UStG）§ 27a 的增值税识别号：[redacted]",
+    "RESPONSIBLE_TITLE": "根据 § 18 第 2 款 MStV 的内容负责人",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "消费者争议解决",
+    "DISPUTE_CONTENT": "我们既不愿意也没有义务参加消费者调解机构的争议解决程序。"
   },
   "MAIN": {
     "ENUM": {

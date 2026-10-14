@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "שחקו ב-Token Breakout",
     "BADGE_FEATURED_ON": "מופיע ב{name}",
     "BADGE_VERIFIED_ON": "מאומת ב{name}",
-    "AUP": "מדיניות שימוש מקובל"
+    "AUP": "מדיניות שימוש מקובל",
+    "IMPRESSUM": "הודעה משפטית"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "אנו עשויים לעדכן מדיניות שימוש מקובל זו מעת לעת. המשך השימוש בשירותים לאחר כניסת השינויים לתוקף מהווה הסכמה למדיניות המעודכנת.",
     "CONTACT_TITLE": "יצירת קשר",
     "CONTACT_CONTENT": "אם יש לכם שאלות לגבי מדיניות שימוש מקובל זו, אנא צרו איתנו קשר בכתובת {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "הודעה משפטית",
+    "LAST_UPDATED": "עודכן לאחרונה: 14 באוקטובר, 2026",
+    "META": {
+      "TITLE": "הודעה משפטית - {appName}",
+      "DESCRIPTION": "הודעה משפטית של {appName}: ספק השירות, כתובת, פרטי קשר ומספר עוסק לצורכי מע״מ בהתאם ל־§ 5 DDG.",
+      "KEYWORDS": "הודעה משפטית, impressum, ספק {appName}, יצירת קשר, מספר מע״מ"
+    },
+    "INTRO": "הודעה משפטית זו מזהה את ספק השירות של {appDomain}. הספק הוא עוסק יחיד ואינו רשום במרשם מסחרי.",
+    "PROVIDER_TITLE": "פרטים בהתאם ל־§ 5 DDG",
+    "PROVIDER_CONTENT": "[redacted], הפועל תחת השם {appName} (עוסק יחיד)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "יצירת קשר",
+    "CONTACT_CONTENT": "דוא״ל: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "מספר מע״מ",
+    "VAT_CONTENT": "מספר זיהוי לצורכי מע״מ בהתאם ל־§ 27a לחוק מס ערך מוסף הגרמני (UStG): [redacted]",
+    "RESPONSIBLE_TITLE": "האחראי לתוכן בהתאם ל־§ 18 סעיף 2 MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "יישוב סכסוכי צרכנים",
+    "DISPUTE_CONTENT": "איננו מוכנים ואיננו מחויבים להשתתף בהליכי יישוב סכסוכים בפני גוף ליישוב סכסוכי צרכנים."
   },
   "MAIN": {
     "ENUM": {

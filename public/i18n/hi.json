@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Token Breakout खेलें",
     "BADGE_FEATURED_ON": "{name} पर फ़ीचर्ड",
     "BADGE_VERIFIED_ON": "{name} पर सत्यापित",
-    "AUP": "स्वीकार्य उपयोग नीति"
+    "AUP": "स्वीकार्य उपयोग नीति",
+    "IMPRESSUM": "कानूनी सूचना"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "हम समय-समय पर इस स्वीकार्य उपयोग नीति को अपडेट कर सकते हैं। परिवर्तन प्रभावी होने के बाद सेवाओं का निरंतर उपयोग संशोधित नीति की स्वीकृति का गठन करता है।",
     "CONTACT_TITLE": "संपर्क",
     "CONTACT_CONTENT": "यदि इस स्वीकार्य उपयोग नीति के बारे में आपके कोई प्रश्न हैं, तो कृपया {supportEmail} पर हमसे संपर्क करें।"
+  },
+  "IMPRESSUM": {
+    "TITLE": "कानूनी सूचना",
+    "LAST_UPDATED": "अंतिम अपडेट: 14 अक्टूबर, 2026",
+    "META": {
+      "TITLE": "कानूनी सूचना - {appName}",
+      "DESCRIPTION": "{appName} की कानूनी सूचना: § 5 DDG के अनुसार प्रदाता, पता, संपर्क विवरण और वैट पहचान संख्या।",
+      "KEYWORDS": "कानूनी सूचना, impressum, {appName} प्रदाता, संपर्क, वैट पहचान संख्या"
+    },
+    "INTRO": "यह कानूनी सूचना {appDomain} के प्रदाता की पहचान करती है। प्रदाता एकल स्वामित्व वाला व्यवसाय है और किसी वाणिज्यिक रजिस्टर में पंजीकृत नहीं है।",
+    "PROVIDER_TITLE": "§ 5 DDG के अनुसार जानकारी",
+    "PROVIDER_CONTENT": "[redacted], {appName} नाम से व्यवसाय करते हुए (एकल स्वामित्व)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "संपर्क",
+    "CONTACT_CONTENT": "ईमेल: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "वैट पहचान संख्या",
+    "VAT_CONTENT": "जर्मन मूल्य वर्धित कर अधिनियम (UStG) की § 27a के अनुसार वैट पहचान संख्या: [redacted]",
+    "RESPONSIBLE_TITLE": "§ 18 उपधारा 2 MStV के अनुसार सामग्री के लिए उत्तरदायी",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "उपभोक्ता विवाद समाधान",
+    "DISPUTE_CONTENT": "हम किसी उपभोक्ता मध्यस्थता निकाय के समक्ष विवाद समाधान प्रक्रिया में भाग लेने के लिए न तो इच्छुक हैं और न ही बाध्य हैं।"
   },
   "MAIN": {
     "ENUM": {

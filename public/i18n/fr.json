@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Jouer à Token Breakout",
     "BADGE_FEATURED_ON": "En vedette sur {name}",
     "BADGE_VERIFIED_ON": "Verifie sur {name}",
-    "AUP": "Politique d'utilisation acceptable"
+    "AUP": "Politique d'utilisation acceptable",
+    "IMPRESSUM": "Mentions légales"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "Nous pouvons mettre à jour cette Politique d'utilisation acceptable de temps à autre. La poursuite de l'utilisation des Services après l'entrée en vigueur des modifications vaut acceptation de la Politique révisée.",
     "CONTACT_TITLE": "Contact",
     "CONTACT_CONTENT": "Si vous avez des questions concernant cette Politique d'utilisation acceptable, veuillez nous contacter à l'adresse {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "Mentions légales",
+    "LAST_UPDATED": "Dernière mise à jour : 14 octobre 2026",
+    "META": {
+      "TITLE": "Mentions légales - {appName}",
+      "DESCRIPTION": "Mentions légales de {appName} : prestataire, adresse, coordonnées et numéro de TVA conformément au § 5 DDG.",
+      "KEYWORDS": "mentions légales, impressum, éditeur {appName}, contact, numéro de TVA"
+    },
+    "INTRO": "Les présentes mentions légales identifient le prestataire de {appDomain}. Le prestataire est une entreprise individuelle et n'est inscrit à aucun registre du commerce.",
+    "PROVIDER_TITLE": "Informations conformément au § 5 DDG",
+    "PROVIDER_CONTENT": "[redacted], exerçant sous le nom {appName} (entreprise individuelle)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "Contact",
+    "CONTACT_CONTENT": "E-mail : {supportEmail}\nDiscord : {discordUrl}",
+    "VAT_TITLE": "Numéro de TVA",
+    "VAT_CONTENT": "Numéro d'identification à la TVA conformément au § 27a de la loi allemande relative à la TVA (UStG) : [redacted]",
+    "RESPONSIBLE_TITLE": "Responsable du contenu conformément au § 18, al. 2 MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "Règlement des litiges de consommation",
+    "DISPUTE_CONTENT": "Nous ne sommes ni disposés ni tenus à participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation."
   },
   "MAIN": {
     "ENUM": {

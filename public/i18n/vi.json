@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Chơi Token Breakout",
     "BADGE_FEATURED_ON": "Được giới thiệu trên {name}",
     "BADGE_VERIFIED_ON": "Đã xác minh trên {name}",
-    "AUP": "Chính sách sử dụng được chấp nhận"
+    "AUP": "Chính sách sử dụng được chấp nhận",
+    "IMPRESSUM": "Thông tin pháp lý"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "Chúng tôi có thể cập nhật Chính sách sử dụng được chấp nhận này theo thời gian. Việc tiếp tục sử dụng Dịch vụ sau khi các thay đổi có hiệu lực đồng nghĩa với việc chấp nhận Chính sách đã sửa đổi.",
     "CONTACT_TITLE": "Liên hệ",
     "CONTACT_CONTENT": "Nếu bạn có thắc mắc về Chính sách sử dụng được chấp nhận này, vui lòng liên hệ với chúng tôi tại {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "Thông tin pháp lý",
+    "LAST_UPDATED": "Cập nhật gần nhất: 14 tháng 10, 2026",
+    "META": {
+      "TITLE": "Thông tin pháp lý - {appName}",
+      "DESCRIPTION": "Thông tin pháp lý của {appName}: nhà cung cấp, địa chỉ, thông tin liên hệ và mã số thuế VAT theo § 5 DDG.",
+      "KEYWORDS": "thông tin pháp lý, impressum, nhà cung cấp {appName}, liên hệ, mã số thuế VAT"
+    },
+    "INTRO": "Thông tin pháp lý này xác định nhà cung cấp của {appDomain}. Nhà cung cấp là doanh nghiệp tư nhân và không đăng ký trong sổ đăng ký thương mại.",
+    "PROVIDER_TITLE": "Thông tin theo § 5 DDG",
+    "PROVIDER_CONTENT": "[redacted], kinh doanh dưới tên {appName} (doanh nghiệp tư nhân)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "Liên hệ",
+    "CONTACT_CONTENT": "Email: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "Mã số thuế VAT",
+    "VAT_CONTENT": "Mã số thuế giá trị gia tăng theo § 27a Luật Thuế giá trị gia tăng của Đức (UStG): [redacted]",
+    "RESPONSIBLE_TITLE": "Người chịu trách nhiệm về nội dung theo § 18 khoản 2 MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "Giải quyết tranh chấp người tiêu dùng",
+    "DISPUTE_CONTENT": "Chúng tôi không sẵn sàng và không có nghĩa vụ tham gia thủ tục giải quyết tranh chấp trước cơ quan hòa giải người tiêu dùng."
   },
   "MAIN": {
     "ENUM": {

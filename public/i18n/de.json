@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Token Breakout spielen",
     "BADGE_FEATURED_ON": "Vorgestellt auf {name}",
     "BADGE_VERIFIED_ON": "Verifiziert auf {name}",
-    "AUP": "Nutzungsrichtlinie"
+    "AUP": "Nutzungsrichtlinie",
+    "IMPRESSUM": "Impressum"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "Wir können diese Nutzungsrichtlinie von Zeit zu Zeit aktualisieren. Die fortgesetzte Nutzung der Dienste nach Inkrafttreten der Änderungen gilt als Annahme der überarbeiteten Richtlinie.",
     "CONTACT_TITLE": "Kontakt",
     "CONTACT_CONTENT": "Wenn Sie Fragen zu dieser Nutzungsrichtlinie haben, kontaktieren Sie uns bitte unter {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "Impressum",
+    "LAST_UPDATED": "Zuletzt aktualisiert: 14. Oktober 2026",
+    "META": {
+      "TITLE": "Impressum - {appName}",
+      "DESCRIPTION": "Impressum von {appName}: Anbieter, Anschrift, Kontaktdaten und Umsatzsteuer-ID gemäß § 5 DDG.",
+      "KEYWORDS": "Impressum, Anbieterkennzeichnung, {appName} Anbieter, Kontakt, Umsatzsteuer-ID"
+    },
+    "INTRO": "Dieses Impressum nennt den Anbieter von {appDomain}. Der Anbieter ist ein Einzelunternehmen und nicht im Handelsregister eingetragen.",
+    "PROVIDER_TITLE": "Angaben gemäß § 5 DDG",
+    "PROVIDER_CONTENT": "[redacted], handelnd unter {appName} (Einzelunternehmen)\nc/o [redacted]\n[redacted]\n[redacted]\nDeutschland",
+    "CONTACT_TITLE": "Kontakt",
+    "CONTACT_CONTENT": "E-Mail: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "Umsatzsteuer-ID",
+    "VAT_CONTENT": "Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz: [redacted]",
+    "RESPONSIBLE_TITLE": "Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nDeutschland",
+    "DISPUTE_TITLE": "Verbraucherstreitbeilegung",
+    "DISPUTE_CONTENT": "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen."
   },
   "MAIN": {
     "ENUM": {

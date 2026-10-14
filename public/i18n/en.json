@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Play Token Breakout",
     "BADGE_FEATURED_ON": "Featured on {name}",
     "BADGE_VERIFIED_ON": "Verified on {name}",
-    "AUP": "Acceptable Use Policy"
+    "AUP": "Acceptable Use Policy",
+    "IMPRESSUM": "Legal Notice"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "We may update this Acceptable Use Policy from time to time. Continued use of the Services after changes take effect constitutes acceptance of the revised Policy.",
     "CONTACT_TITLE": "Contact",
     "CONTACT_CONTENT": "If you have questions about this Acceptable Use Policy, please contact us at {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "Legal Notice",
+    "LAST_UPDATED": "Last Updated: October 14, 2026",
+    "META": {
+      "TITLE": "Legal Notice - {appName}",
+      "DESCRIPTION": "Legal notice (Impressum) for {appName}: provider, address, contact details and VAT ID as required by § 5 DDG.",
+      "KEYWORDS": "legal notice, impressum, {appName} provider, imprint, contact, VAT ID"
+    },
+    "INTRO": "This legal notice identifies the provider of {appDomain}. The provider is a sole proprietorship and is not entered in a commercial register.",
+    "PROVIDER_TITLE": "Information pursuant to § 5 DDG",
+    "PROVIDER_CONTENT": "[redacted], trading as {appName} (sole proprietorship)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "Contact",
+    "CONTACT_CONTENT": "Email: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "VAT ID",
+    "VAT_CONTENT": "VAT identification number pursuant to § 27a of the German VAT Act (UStG): [redacted]",
+    "RESPONSIBLE_TITLE": "Responsible for content pursuant to § 18(2) MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "Consumer dispute resolution",
+    "DISPUTE_CONTENT": "We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board."
   },
   "MAIN": {
     "ENUM": {

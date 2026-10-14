@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Token Breakout で遊ぶ",
     "BADGE_FEATURED_ON": "{name}に掲載",
     "BADGE_VERIFIED_ON": "{name}で認証済み",
-    "AUP": "利用ポリシー"
+    "AUP": "利用ポリシー",
+    "IMPRESSUM": "運営者情報"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "当社は本利用ポリシーを随時更新する場合があります。変更の発効後も本サービスの利用を継続することは、改訂後のポリシーに同意したものとみなされます。",
     "CONTACT_TITLE": "お問い合わせ",
     "CONTACT_CONTENT": "本利用ポリシーについてご質問がある場合は、{supportEmail} までお問い合わせください。"
+  },
+  "IMPRESSUM": {
+    "TITLE": "運営者情報",
+    "LAST_UPDATED": "最終更新日：2026年10月14日",
+    "META": {
+      "TITLE": "運営者情報 - {appName}",
+      "DESCRIPTION": "{appName} の運営者情報。§ 5 DDG に基づく提供者、所在地、連絡先および付加価値税識別番号を記載しています。",
+      "KEYWORDS": "運営者情報、impressum、{appName} 提供者、連絡先、付加価値税識別番号"
+    },
+    "INTRO": "この運営者情報は {appDomain} の提供者を示すものです。提供者は個人事業主であり、商業登記簿には登記されていません。",
+    "PROVIDER_TITLE": "§ 5 DDG に基づく表示",
+    "PROVIDER_CONTENT": "[redacted]（{appName} の名称で営業する個人事業主）\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "連絡先",
+    "CONTACT_CONTENT": "メール：{supportEmail}\nDiscord：{discordUrl}",
+    "VAT_TITLE": "付加価値税識別番号",
+    "VAT_CONTENT": "ドイツ付加価値税法（UStG）§ 27a に基づく付加価値税識別番号：[redacted]",
+    "RESPONSIBLE_TITLE": "§ 18 第 2 項 MStV に基づくコンテンツ責任者",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "消費者紛争の解決",
+    "DISPUTE_CONTENT": "当社は、消費者調停機関における紛争解決手続に参加する意思も義務もありません。"
   },
   "MAIN": {
     "ENUM": {

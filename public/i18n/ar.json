@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "العب Token Breakout",
     "BADGE_FEATURED_ON": "مميز على {name}",
     "BADGE_VERIFIED_ON": "موثق على {name}",
-    "AUP": "سياسة الاستخدام المقبول"
+    "AUP": "سياسة الاستخدام المقبول",
+    "IMPRESSUM": "إشعار قانوني"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "قد نحدّث سياسة الاستخدام المقبول هذه من وقت لآخر. ويُعدّ استمرارك في استخدام الخدمات بعد سريان التغييرات قبولًا للسياسة المُعدَّلة.",
     "CONTACT_TITLE": "التواصل",
     "CONTACT_CONTENT": "إذا كانت لديك أسئلة حول سياسة الاستخدام المقبول هذه، فيُرجى التواصل معنا عبر {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "إشعار قانوني",
+    "LAST_UPDATED": "آخر تحديث: 14 أكتوبر 2026",
+    "META": {
+      "TITLE": "إشعار قانوني - {appName}",
+      "DESCRIPTION": "الإشعار القانوني لـ {appName}: مقدم الخدمة والعنوان وبيانات الاتصال ورقم تعريف ضريبة القيمة المضافة وفقًا للمادة § 5 DDG.",
+      "KEYWORDS": "إشعار قانوني, impressum, مقدم خدمة {appName}, اتصال, رقم ضريبة القيمة المضافة"
+    },
+    "INTRO": "يحدد هذا الإشعار القانوني مقدم خدمة {appDomain}. مقدم الخدمة منشأة فردية وغير مقيد في أي سجل تجاري.",
+    "PROVIDER_TITLE": "معلومات وفقًا للمادة § 5 DDG",
+    "PROVIDER_CONTENT": "[redacted]، يمارس النشاط باسم {appName} (منشأة فردية)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "الاتصال",
+    "CONTACT_CONTENT": "البريد الإلكتروني: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "رقم ضريبة القيمة المضافة",
+    "VAT_CONTENT": "رقم تعريف ضريبة القيمة المضافة وفقًا للمادة § 27a من قانون ضريبة القيمة المضافة الألماني (UStG): [redacted]",
+    "RESPONSIBLE_TITLE": "المسؤول عن المحتوى وفقًا للمادة § 18 الفقرة 2 MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "تسوية نزاعات المستهلكين",
+    "DISPUTE_CONTENT": "لسنا مستعدين ولا ملزمين بالمشاركة في إجراءات تسوية النزاعات أمام هيئة تحكيم المستهلكين."
   },
   "MAIN": {
     "ENUM": {

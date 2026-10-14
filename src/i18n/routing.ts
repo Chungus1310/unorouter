@@ -1154,6 +1154,25 @@ export const pathnames = {
     id: "/kebijakan-penggunaan",
     pl: "/zasady-korzystania",
   },
+  "/impressum": {
+    de: "/impressum",
+    fr: "/mentions-legales",
+    ja: "/uneisha-jouhou",
+    ru: "/правовая-информация",
+    vi: "/thong-tin-phap-ly",
+    "zh-CN": "/falv-shengming",
+    "zh-TW": "/falv-shengming",
+    it: "/note-legali",
+    es: "/aviso-legal",
+    "pt-BR": "/aviso-legal",
+    ko: "/beopjeok-goji",
+    tr: "/kunye",
+    ar: "/إشعار-قانوني",
+    he: "/הודעה-משפטית",
+    hi: "/kanooni-soochna",
+    id: "/informasi-hukum",
+    pl: "/nota-prawna",
+  },
 } as const;
 
 export const routing = defineRouting({

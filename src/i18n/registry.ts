@@ -130,6 +130,7 @@ export const LEGAL_REGISTRY = [
   { slug: "legal/terms", date: "2026-03-07" },
   { slug: "legal/refund", date: "2026-06-17" },
   { slug: "legal/aup", date: "2026-06-30" },
+  { slug: "legal/impressum", date: "2026-10-14" },
 ] as const satisfies readonly {
   slug: `legal/${string}`;
   date: string;

@@ -31,6 +31,7 @@ const LEGAL_LINKS = [
   { href: "/privacy", key: msg("FOOTER.PRIVACY") },
   { href: "/aup", key: msg("FOOTER.AUP") },
   { href: "/refund", key: msg("FOOTER.REFUND") },
+  { href: "/impressum", key: msg("FOOTER.IMPRESSUM") },
 ] as const;
 
 const FOOTER_BADGES: {

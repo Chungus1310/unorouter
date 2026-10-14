@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Mainkan Token Breakout",
     "BADGE_FEATURED_ON": "Ditampilkan di {name}",
     "BADGE_VERIFIED_ON": "Terverifikasi di {name}",
-    "AUP": "Kebijakan Penggunaan yang Dapat Diterima"
+    "AUP": "Kebijakan Penggunaan yang Dapat Diterima",
+    "IMPRESSUM": "Informasi Hukum"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "Kami dapat memperbarui Kebijakan Penggunaan yang Dapat Diterima ini dari waktu ke waktu. Penggunaan Layanan yang berkelanjutan setelah perubahan berlaku merupakan penerimaan atas Kebijakan yang direvisi.",
     "CONTACT_TITLE": "Kontak",
     "CONTACT_CONTENT": "Jika Anda memiliki pertanyaan tentang Kebijakan Penggunaan yang Dapat Diterima ini, silakan hubungi kami di {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "Informasi Hukum",
+    "LAST_UPDATED": "Terakhir Diperbarui: 14 Oktober 2026",
+    "META": {
+      "TITLE": "Informasi Hukum - {appName}",
+      "DESCRIPTION": "Informasi hukum {appName}: penyedia, alamat, kontak, dan nomor identifikasi PPN sesuai § 5 DDG.",
+      "KEYWORDS": "informasi hukum, impressum, penyedia {appName}, kontak, nomor PPN"
+    },
+    "INTRO": "Informasi hukum ini mengidentifikasi penyedia {appDomain}. Penyedia adalah usaha perseorangan dan tidak terdaftar dalam daftar perusahaan.",
+    "PROVIDER_TITLE": "Informasi sesuai § 5 DDG",
+    "PROVIDER_CONTENT": "[redacted], beroperasi sebagai {appName} (usaha perseorangan)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "Kontak",
+    "CONTACT_CONTENT": "Email: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "Nomor PPN",
+    "VAT_CONTENT": "Nomor identifikasi PPN sesuai § 27a Undang-Undang PPN Jerman (UStG): [redacted]",
+    "RESPONSIBLE_TITLE": "Penanggung jawab konten sesuai § 18 ayat 2 MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "Penyelesaian sengketa konsumen",
+    "DISPUTE_CONTENT": "Kami tidak bersedia dan tidak berkewajiban untuk berpartisipasi dalam prosedur penyelesaian sengketa di hadapan badan arbitrase konsumen."
   },
   "MAIN": {
     "ENUM": {

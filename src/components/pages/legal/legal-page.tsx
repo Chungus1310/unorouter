@@ -11,7 +11,7 @@ import { serverLocale } from "@/lib/utils/server";
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 
-type LegalSlug = "aup" | "privacy" | "refund" | "terms";
+type LegalSlug = "aup" | "impressum" | "privacy" | "refund" | "terms";
 
 const nsOf = (slug: LegalSlug) => slug.toUpperCase();
 const key = (slug: LegalSlug, leaf: string) =>

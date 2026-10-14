@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Jogar Token Breakout",
     "BADGE_FEATURED_ON": "Destaque em {name}",
     "BADGE_VERIFIED_ON": "Verificado em {name}",
-    "AUP": "Política de uso aceitável"
+    "AUP": "Política de uso aceitável",
+    "IMPRESSUM": "Aviso legal"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "Podemos atualizar esta Política de uso aceitável de tempos em tempos. O uso continuado dos Serviços após as alterações entrarem em vigor constitui aceitação da Política revisada.",
     "CONTACT_TITLE": "Contato",
     "CONTACT_CONTENT": "Se você tiver dúvidas sobre esta Política de uso aceitável, entre em contato conosco pelo {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "Aviso legal",
+    "LAST_UPDATED": "Última atualização: 14 de outubro de 2026",
+    "META": {
+      "TITLE": "Aviso legal - {appName}",
+      "DESCRIPTION": "Aviso legal da {appName}: fornecedor, endereço, dados de contato e número de IVA conforme o § 5 DDG.",
+      "KEYWORDS": "aviso legal, impressum, fornecedor {appName}, contato, número de IVA"
+    },
+    "INTRO": "Este aviso legal identifica o fornecedor de {appDomain}. O fornecedor é um empresário individual e não está inscrito em nenhum registro comercial.",
+    "PROVIDER_TITLE": "Informações conforme o § 5 DDG",
+    "PROVIDER_CONTENT": "[redacted], atuando como {appName} (empresário individual)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "Contato",
+    "CONTACT_CONTENT": "E-mail: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "Número de IVA",
+    "VAT_CONTENT": "Número de identificação para fins de IVA conforme o § 27a da lei alemã do IVA (UStG): [redacted]",
+    "RESPONSIBLE_TITLE": "Responsável pelo conteúdo conforme o § 18, parágrafo 2 MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "Resolução de litígios de consumo",
+    "DISPUTE_CONTENT": "Não estamos dispostos nem obrigados a participar de procedimentos de resolução de litígios perante um órgão de arbitragem de consumo."
   },
   "MAIN": {
     "ENUM": {

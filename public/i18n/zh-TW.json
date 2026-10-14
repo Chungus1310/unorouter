@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "玩一場 Token Breakout",
     "BADGE_FEATURED_ON": "已在 {name} 推薦",
     "BADGE_VERIFIED_ON": "已在 {name} 驗證",
-    "AUP": "使用政策"
+    "AUP": "使用政策",
+    "IMPRESSUM": "法律聲明"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "我們可能會不時更新本使用政策。變更生效後繼續使用本服務，即表示接受修訂後的政策。",
     "CONTACT_TITLE": "聯絡我們",
     "CONTACT_CONTENT": "如對本使用政策有任何疑問，請透過 {supportEmail} 與我們聯絡。"
+  },
+  "IMPRESSUM": {
+    "TITLE": "法律聲明",
+    "LAST_UPDATED": "最後更新：2026 年 10 月 14 日",
+    "META": {
+      "TITLE": "法律聲明 - {appName}",
+      "DESCRIPTION": "{appName} 的法律聲明：依據 § 5 DDG 載明服務提供者、地址、聯絡方式及增值稅識別號。",
+      "KEYWORDS": "法律聲明，impressum，{appName} 服務提供者，聯絡方式，增值稅識別號"
+    },
+    "INTRO": "本法律聲明載明 {appDomain} 的服務提供者。服務提供者為獨資經營，未於商業登記簿登記。",
+    "PROVIDER_TITLE": "依據 § 5 DDG 之資訊",
+    "PROVIDER_CONTENT": "[redacted]，以 {appName} 名義經營（獨資經營）\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "聯絡方式",
+    "CONTACT_CONTENT": "電子郵件：{supportEmail}\nDiscord：{discordUrl}",
+    "VAT_TITLE": "增值稅識別號",
+    "VAT_CONTENT": "依據德國《增值稅法》（UStG）§ 27a 之增值稅識別號：[redacted]",
+    "RESPONSIBLE_TITLE": "依據 § 18 第 2 項 MStV 之內容負責人",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "消費爭議處理",
+    "DISPUTE_CONTENT": "我們既不願意也無義務參與消費者調解機構的爭議處理程序。"
   },
   "MAIN": {
     "ENUM": {

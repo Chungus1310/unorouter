@@ -7,6 +7,7 @@ const CLIENT_STRIPPED_NAMESPACES = [
   "PRIVACY",
   "REFUND",
   "AUP",
+  "IMPRESSUM",
   "WELL_KNOWN",
 ] as const;
 

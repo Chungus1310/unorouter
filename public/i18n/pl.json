@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Zagraj w Token Breakout",
     "BADGE_FEATURED_ON": "Wyróżniony w {name}",
     "BADGE_VERIFIED_ON": "Zweryfikowany w {name}",
-    "AUP": "Zasady dopuszczalnego użytkowania"
+    "AUP": "Zasady dopuszczalnego użytkowania",
+    "IMPRESSUM": "Nota prawna"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "Możemy od czasu do czasu aktualizować niniejsze Zasady dopuszczalnego użytkowania. Dalsze korzystanie z Usług po wejściu zmian w życie oznacza akceptację zmienionych Zasad.",
     "CONTACT_TITLE": "Kontakt",
     "CONTACT_CONTENT": "Jeśli masz pytania dotyczące niniejszych Zasad dopuszczalnego użytkowania, skontaktuj się z nami pod adresem {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "Nota prawna",
+    "LAST_UPDATED": "Ostatnia aktualizacja: 14 października 2026",
+    "META": {
+      "TITLE": "Nota prawna - {appName}",
+      "DESCRIPTION": "Nota prawna {appName}: usługodawca, adres, dane kontaktowe i numer VAT zgodnie z § 5 DDG.",
+      "KEYWORDS": "nota prawna, impressum, usługodawca {appName}, kontakt, numer VAT"
+    },
+    "INTRO": "Niniejsza nota prawna wskazuje usługodawcę {appDomain}. Usługodawca prowadzi jednoosobową działalność gospodarczą i nie jest wpisany do rejestru handlowego.",
+    "PROVIDER_TITLE": "Informacje zgodnie z § 5 DDG",
+    "PROVIDER_CONTENT": "[redacted], działający pod nazwą {appName} (jednoosobowa działalność gospodarcza)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "Kontakt",
+    "CONTACT_CONTENT": "E-mail: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "Numer VAT",
+    "VAT_CONTENT": "Numer identyfikacyjny VAT zgodnie z § 27a niemieckiej ustawy o podatku VAT (UStG): [redacted]",
+    "RESPONSIBLE_TITLE": "Odpowiedzialny za treść zgodnie z § 18 ust. 2 MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "Rozwiązywanie sporów konsumenckich",
+    "DISPUTE_CONTENT": "Nie jesteśmy gotowi ani zobowiązani do udziału w postępowaniu w sprawie rozwiązywania sporów przed podmiotem polubownego rozwiązywania sporów konsumenckich."
   },
   "MAIN": {
     "ENUM": {

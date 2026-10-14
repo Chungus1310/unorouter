@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Token Breakout Oyna",
     "BADGE_FEATURED_ON": "{name} üzerinde öne çıkan",
     "BADGE_VERIFIED_ON": "{name} üzerinde doğrulandı",
-    "AUP": "Kabul Edilebilir Kullanım Politikası"
+    "AUP": "Kabul Edilebilir Kullanım Politikası",
+    "IMPRESSUM": "Künye"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "Bu Kabul Edilebilir Kullanım Politikasını zaman zaman güncelleyebiliriz. Değişiklikler yürürlüğe girdikten sonra Hizmetleri kullanmaya devam etmeniz, revize edilen Politikayı kabul ettiğiniz anlamına gelir.",
     "CONTACT_TITLE": "İletişim",
     "CONTACT_CONTENT": "Bu Kabul Edilebilir Kullanım Politikası hakkında sorularınız varsa lütfen {supportEmail} adresinden bizimle iletişime geçin."
+  },
+  "IMPRESSUM": {
+    "TITLE": "Künye",
+    "LAST_UPDATED": "Son Güncelleme: 14 Ekim 2026",
+    "META": {
+      "TITLE": "Künye - {appName}",
+      "DESCRIPTION": "{appName} künyesi: § 5 DDG uyarınca hizmet sağlayıcı, adres, iletişim bilgileri ve KDV numarası.",
+      "KEYWORDS": "künye, impressum, {appName} hizmet sağlayıcı, iletişim, KDV numarası"
+    },
+    "INTRO": "Bu künye, {appDomain} hizmet sağlayıcısını tanımlar. Hizmet sağlayıcı bir şahıs işletmesidir ve ticaret siciline kayıtlı değildir.",
+    "PROVIDER_TITLE": "§ 5 DDG uyarınca bilgiler",
+    "PROVIDER_CONTENT": "[redacted], {appName} adı altında faaliyet gösteren şahıs işletmesi\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "İletişim",
+    "CONTACT_CONTENT": "E-posta: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "KDV numarası",
+    "VAT_CONTENT": "Alman Katma Değer Vergisi Kanunu (UStG) § 27a uyarınca KDV kimlik numarası: [redacted]",
+    "RESPONSIBLE_TITLE": "§ 18 fıkra 2 MStV uyarınca içerikten sorumlu kişi",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "Tüketici uyuşmazlıklarının çözümü",
+    "DISPUTE_CONTENT": "Bir tüketici hakem kurulu önündeki uyuşmazlık çözüm süreçlerine katılmaya istekli veya yükümlü değiliz."
   },
   "MAIN": {
     "ENUM": {

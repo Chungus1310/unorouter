@@ -2319,7 +2319,8 @@
     "EASTER_EGG_LABEL": "Gioca Token Breakout",
     "BADGE_FEATURED_ON": "In evidenza su {name}",
     "BADGE_VERIFIED_ON": "Verificato su {name}",
-    "AUP": "Politica di utilizzo accettabile"
+    "AUP": "Politica di utilizzo accettabile",
+    "IMPRESSUM": "Note legali"
   },
   "PRIVACY": {
     "META": {
@@ -2459,6 +2460,26 @@
     "CHANGES_CONTENT": "Possiamo aggiornare di tanto in tanto questa Politica di utilizzo accettabile. L'uso continuato dei Servizi dopo l'entrata in vigore delle modifiche costituisce accettazione della Politica rivista.",
     "CONTACT_TITLE": "Contatti",
     "CONTACT_CONTENT": "Se hai domande su questa Politica di utilizzo accettabile, contattaci all'indirizzo {supportEmail}."
+  },
+  "IMPRESSUM": {
+    "TITLE": "Note legali",
+    "LAST_UPDATED": "Ultimo aggiornamento: 14 ottobre 2026",
+    "META": {
+      "TITLE": "Note legali - {appName}",
+      "DESCRIPTION": "Note legali di {appName}: fornitore, indirizzo, recapiti e partita IVA ai sensi del § 5 DDG.",
+      "KEYWORDS": "note legali, impressum, fornitore {appName}, contatti, partita IVA"
+    },
+    "INTRO": "Le presenti note legali identificano il fornitore di {appDomain}. Il fornitore è un'impresa individuale e non è iscritto in alcun registro delle imprese.",
+    "PROVIDER_TITLE": "Informazioni ai sensi del § 5 DDG",
+    "PROVIDER_CONTENT": "[redacted], operante come {appName} (impresa individuale)\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "CONTACT_TITLE": "Contatti",
+    "CONTACT_CONTENT": "E-mail: {supportEmail}\nDiscord: {discordUrl}",
+    "VAT_TITLE": "Partita IVA",
+    "VAT_CONTENT": "Numero di identificazione IVA ai sensi del § 27a della legge tedesca sull'IVA (UStG): [redacted]",
+    "RESPONSIBLE_TITLE": "Responsabile dei contenuti ai sensi del § 18, comma 2 MStV",
+    "RESPONSIBLE_CONTENT": "[redacted]\nc/o [redacted]\n[redacted]\n[redacted]\nGermany",
+    "DISPUTE_TITLE": "Risoluzione delle controversie dei consumatori",
+    "DISPUTE_CONTENT": "Non siamo disposti né obbligati a partecipare a procedure di risoluzione delle controversie dinanzi a un organismo di conciliazione per i consumatori."
   },
   "MAIN": {
     "ENUM": {

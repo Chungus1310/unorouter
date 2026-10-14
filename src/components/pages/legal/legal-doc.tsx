@@ -1,5 +1,6 @@
 import { Link } from "@/i18n/navigation";
 import { APP_VALUES } from "@/lib/config/constants";
+import { env } from "@/lib/config/env";
 import type { TranslationKey } from "@/lib/types";
 import { getTranslations } from "next-intl/server";
 import { Fragment } from "react";
@@ -16,13 +17,14 @@ export type LegalDocSection = {
 };
 
 export async function LegalDoc(props: {
-  ns: "AUP" | "PRIVACY" | "REFUND" | "TERMS";
+  ns: "AUP" | "IMPRESSUM" | "PRIVACY" | "REFUND" | "TERMS";
   sections: LegalDocSection[];
 }) {
   const t = await getTranslations();
   const key = (leaf: string) => `${props.ns}.${leaf}` as TranslationKey;
+  const values = { ...APP_VALUES, discordUrl: env.discordUrl ?? "" };
   const para = (p: LegalPara) =>
-    p.values ? t(key(p.key), APP_VALUES) : t(key(p.key));
+    p.values ? t(key(p.key), values) : t(key(p.key));
 
   return (
     <main className="mx-auto max-w-3xl px-6 py-16">
@@ -54,7 +56,7 @@ export async function LegalDoc(props: {
             </Fragment>
           ))}
           {s.para && (
-            <p className="text-muted-foreground leading-relaxed">
+            <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
               {para(s.para)}
             </p>
           )}
