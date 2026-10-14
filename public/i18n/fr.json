@@ -2695,7 +2695,7 @@
       "CONSUMER_HINT": "Pour vous-même, en dehors de toute activité commerciale, industrielle ou professionnelle",
       "BUSINESS": "Usage professionnel",
       "BUSINESS_HINT": "Pour une entreprise, une activité indépendante ou un autre objectif professionnel",
-      "HELP": "Les clients professionnels sont liés par notre accord de traitement des données et ne sont servis que par des fournisseurs qui respectent les normes européennes de protection des données. Vous pourrez modifier ce choix plus tard dans vos paramètres."
+      "HELP": "Nous avons besoin de cette information pour la protection des données, car les règles diffèrent entre usage privé et usage professionnel. Vous pourrez la modifier plus tard dans vos paramètres."
     }
   },
   "SIDEBAR": {
@@ -3570,7 +3570,7 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Type de compte",
-      "PROMPT": "Indiquez-nous une seule fois si vous utilisez ce compte à titre privé ou professionnel, afin que les bonnes conditions de protection des données s'appliquent.",
+      "PROMPT": "Indiquez-nous une fois si vous utilisez ce compte à titre privé ou professionnel. Nous avons besoin de cette information pour la protection des données.",
       "SAVE": "Enregistrer",
       "SAVED": "Type de compte enregistré",
       "DECLARED_ON": "Déclaré le {date}"

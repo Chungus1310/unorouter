@@ -2695,7 +2695,7 @@
       "CONSUMER_HINT": "Untuk diri sendiri, di luar kegiatan dagang, usaha, atau profesi apa pun",
       "BUSINESS": "Penggunaan bisnis atau profesional",
       "BUSINESS_HINT": "Untuk perusahaan, pekerjaan lepas, atau tujuan profesional lainnya",
-      "HELP": "Pelanggan bisnis terikat pada perjanjian pemrosesan data kami dan hanya dilayani oleh penyedia yang memenuhi standar perlindungan data UE. Anda dapat mengubahnya nanti di pengaturan."
+      "HELP": "Kami memerlukan informasi ini untuk perlindungan data, karena aturan untuk penggunaan pribadi dan bisnis berbeda. Anda dapat mengubahnya nanti di pengaturan."
     }
   },
   "SIDEBAR": {
@@ -3570,7 +3570,7 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Jenis akun",
-      "PROMPT": "Beri tahu kami sekali saja apakah Anda menggunakan akun ini untuk keperluan pribadi atau bisnis, agar ketentuan perlindungan data yang tepat berlaku.",
+      "PROMPT": "Beri tahu kami sekali apakah Anda menggunakan akun ini untuk keperluan pribadi atau bisnis. Kami memerlukan informasi ini untuk perlindungan data.",
       "SAVE": "Simpan",
       "SAVED": "Jenis akun disimpan",
       "DECLARED_ON": "Dinyatakan pada {date}"

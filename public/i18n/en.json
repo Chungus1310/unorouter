@@ -2695,7 +2695,7 @@
       "CONSUMER_HINT": "For yourself, outside any trade, business or profession",
       "BUSINESS": "Business or professional use",
       "BUSINESS_HINT": "For a company, freelance work or another professional purpose",
-      "HELP": "Business customers are bound by our data processing agreement and are served only by providers that meet EU data protection standards. You can change this later in your settings."
+      "HELP": "We need this information for data protection, because the rules for private and business use differ. You can change it later in your settings."
     }
   },
   "SIDEBAR": {
@@ -3570,7 +3570,7 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Account type",
-      "PROMPT": "Please tell us once whether you use this account privately or for business, so the right data protection terms apply.",
+      "PROMPT": "Please tell us once whether you use this account privately or for business. We need this information for data protection.",
       "SAVE": "Save",
       "SAVED": "Account type saved",
       "DECLARED_ON": "Declared on {date}"

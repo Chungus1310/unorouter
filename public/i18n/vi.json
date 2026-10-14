@@ -2695,7 +2695,7 @@
       "CONSUMER_HINT": "Cho bản thân, ngoài mọi hoạt động thương mại, kinh doanh hoặc nghề nghiệp",
       "BUSINESS": "Sử dụng cho doanh nghiệp hoặc công việc chuyên môn",
       "BUSINESS_HINT": "Cho một công ty, công việc tự do hoặc mục đích chuyên môn khác",
-      "HELP": "Khách hàng doanh nghiệp chịu ràng buộc bởi thỏa thuận xử lý dữ liệu của chúng tôi và chỉ được phục vụ bởi các nhà cung cấp đáp ứng tiêu chuẩn bảo vệ dữ liệu của EU. Bạn có thể thay đổi điều này sau trong phần cài đặt."
+      "HELP": "Chúng tôi cần thông tin này vì mục đích bảo vệ dữ liệu, do quy định cho mục đích cá nhân và kinh doanh khác nhau. Bạn có thể thay đổi sau trong phần cài đặt."
     }
   },
   "SIDEBAR": {
@@ -3570,7 +3570,7 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Loại tài khoản",
-      "PROMPT": "Vui lòng cho chúng tôi biết một lần rằng bạn dùng tài khoản này cho mục đích cá nhân hay doanh nghiệp, để áp dụng đúng điều khoản bảo vệ dữ liệu.",
+      "PROMPT": "Vui lòng cho chúng tôi biết một lần rằng bạn dùng tài khoản này cho mục đích cá nhân hay kinh doanh. Chúng tôi cần thông tin này vì mục đích bảo vệ dữ liệu.",
       "SAVE": "Lưu",
       "SAVED": "Đã lưu loại tài khoản",
       "DECLARED_ON": "Đã khai báo ngày {date}"

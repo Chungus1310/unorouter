@@ -2695,7 +2695,7 @@
       "CONSUMER_HINT": "Kendiniz için, herhangi bir ticari, mesleki veya iş faaliyeti dışında",
       "BUSINESS": "Kurumsal veya mesleki kullanım",
       "BUSINESS_HINT": "Bir şirket, serbest çalışma veya başka bir mesleki amaç için",
-      "HELP": "Kurumsal müşteriler veri işleme sözleşmemize tabidir ve yalnızca AB veri koruma standartlarını karşılayan sağlayıcılar tarafından hizmet alır. Bunu daha sonra ayarlarınızdan değiştirebilirsiniz."
+      "HELP": "Bu bilgiye veri koruma için ihtiyacımız var, çünkü kişisel ve ticari kullanım için kurallar farklıdır. Daha sonra ayarlardan değiştirebilirsiniz."
     }
   },
   "SIDEBAR": {
@@ -3570,7 +3570,7 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Hesap türü",
-      "PROMPT": "Doğru veri koruma koşullarının uygulanması için bu hesabı bireysel mi yoksa kurumsal olarak mı kullandığınızı bir kez belirtin.",
+      "PROMPT": "Bu hesabı kişisel mi yoksa ticari amaçla mı kullandığınızı bir kez belirtin. Bu bilgiye veri koruma için ihtiyacımız var.",
       "SAVE": "Kaydet",
       "SAVED": "Hesap türü kaydedildi",
       "DECLARED_ON": "Beyan tarihi: {date}"

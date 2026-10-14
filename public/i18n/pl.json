@@ -2695,7 +2695,7 @@
       "CONSUMER_HINT": "Dla siebie, poza jakąkolwiek działalnością handlową, gospodarczą lub zawodową",
       "BUSINESS": "Użytek firmowy lub zawodowy",
       "BUSINESS_HINT": "Dla firmy, pracy na własny rachunek lub innego celu zawodowego",
-      "HELP": "Klienci biznesowi są związani naszą umową powierzenia przetwarzania danych i obsługują ich wyłącznie dostawcy spełniający unijne standardy ochrony danych. Możesz to później zmienić w ustawieniach."
+      "HELP": "Potrzebujemy tej informacji ze względu na ochronę danych, ponieważ zasady dla użytku prywatnego i służbowego są różne. Możesz ją później zmienić w ustawieniach."
     }
   },
   "SIDEBAR": {
@@ -3570,7 +3570,7 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Typ konta",
-      "PROMPT": "Podaj nam jednorazowo, czy korzystasz z tego konta prywatnie czy firmowo, aby obowiązywały właściwe warunki ochrony danych.",
+      "PROMPT": "Podaj nam jednorazowo, czy korzystasz z tego konta prywatnie, czy służbowo. Potrzebujemy tej informacji ze względu na ochronę danych.",
       "SAVE": "Zapisz",
       "SAVED": "Typ konta zapisany",
       "DECLARED_ON": "Zadeklarowano {date}"

@@ -2695,7 +2695,7 @@
       "CONSUMER_HINT": "Per te stesso, al di fuori di qualsiasi attività commerciale, imprenditoriale o professionale",
       "BUSINESS": "Uso aziendale o professionale",
       "BUSINESS_HINT": "Per un'azienda, un lavoro da freelance o un altro scopo professionale",
-      "HELP": "I clienti aziendali sono vincolati dal nostro accordo sul trattamento dei dati e vengono serviti solo da fornitori conformi agli standard UE sulla protezione dei dati. Potrai cambiarlo in seguito nelle impostazioni."
+      "HELP": "Ci serve questa informazione per la protezione dei dati, perché le regole per l’uso privato e quello professionale sono diverse. Potrai modificarla in seguito nelle impostazioni."
     }
   },
   "SIDEBAR": {
@@ -3570,7 +3570,7 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Tipo di account",
-      "PROMPT": "Indicaci una sola volta se usi questo account per scopi privati o aziendali, così si applicano le condizioni corrette sulla protezione dei dati.",
+      "PROMPT": "Indicaci una volta se usi questo account per scopi privati o professionali. Ci serve questa informazione per la protezione dei dati.",
       "SAVE": "Salva",
       "SAVED": "Tipo di account salvato",
       "DECLARED_ON": "Dichiarato il {date}"
