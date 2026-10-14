@@ -2723,12 +2723,12 @@
       "REQUEST_NEW_LINK": "Neuen Link anfordern"
     },
     "CUSTOMER_TYPE": {
-      "LABEL": "Wie wirst du dieses Konto nutzen?",
-      "CONSUMER": "Private Nutzung",
-      "CONSUMER_HINT": "Für dich selbst, außerhalb jeder gewerblichen oder beruflichen Tätigkeit",
-      "BUSINESS": "Geschäftliche oder berufliche Nutzung",
-      "BUSINESS_HINT": "Für ein Unternehmen, freiberufliche Arbeit oder einen anderen beruflichen Zweck",
-      "HELP": "Wir brauchen diese Angabe für den Datenschutz, weil für private und geschäftliche Nutzung unterschiedliche Regeln gelten. Sie können sie später in den Einstellungen ändern."
+      "BUSINESS_CHECKBOX": "Ich registriere mich für ein Unternehmen oder für berufliche Zwecke",
+      "CHANGE_LATER": "Du kannst das später in den Einstellungen ändern."
+    },
+    "TERMS_NOTICE": {
+      "REGISTER": "Mit dem Erstellen eines Kontos akzeptierst du unsere <terms>Nutzungsbedingungen</terms>. Informationen dazu, wie wir mit deinen Daten umgehen, findest du in unserer <privacy>Datenschutzrichtlinie</privacy>.",
+      "OAUTH": "Wenn du über einen dieser Dienste ein neues Konto erstellst, akzeptierst du unsere <terms>Nutzungsbedingungen</terms>. Informationen dazu, wie wir mit deinen Daten umgehen, findest du in unserer <privacy>Datenschutzrichtlinie</privacy>."
     }
   },
   "SIDEBAR": {
@@ -3629,7 +3629,8 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Kontotyp",
-      "PROMPT": "Bitte teilen Sie uns einmalig mit, ob Sie dieses Konto privat oder geschäftlich nutzen. Wir brauchen diese Angabe für den Datenschutz.",
+      "PROMPT": "Bitte bestätige deinen Kontotyp einmal und speichere ihn.",
+      "BUSINESS_CHECKBOX": "Ich nutze dieses Konto für ein Unternehmen oder für berufliche Zwecke",
       "SAVE": "Speichern",
       "SAVED": "Kontotyp gespeichert",
       "DECLARED_ON": "Angegeben am {date}"

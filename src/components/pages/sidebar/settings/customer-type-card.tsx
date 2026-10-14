@@ -1,6 +1,6 @@
 "use client";
 
-import { CustomerTypeChoice } from "@/components/pages/auth/customer-type-choice";
+import { CustomerTypeCheckbox } from "@/components/pages/auth/customer-type-checkbox";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
@@ -24,10 +24,9 @@ export function CustomerTypeCard() {
   const declared = customerTypeChecker.Check(user.customer_type)
     ? user.customer_type
     : undefined;
-  const selected = draft ?? declared;
+  const selected = draft ?? declared ?? "consumer";
 
   function save() {
-    if (!selected) return;
     updateSelfMutation.mutate(
       { body: { customer_type: selected } },
       {
@@ -45,35 +44,35 @@ export function CustomerTypeCard() {
       <CardHeader>
         <CardTitle>{t("SETTINGS.CUSTOMER_TYPE.TITLE")}</CardTitle>
       </CardHeader>
-      <CardContent className="space-y-4">
+      <CardContent className="space-y-3">
         {!declared && (
           <p className="text-foreground text-sm">
             {t("SETTINGS.CUSTOMER_TYPE.PROMPT")}
           </p>
         )}
-        <CustomerTypeChoice
-          value={selected}
-          onChange={setDraft}
-          disabled={updateSelfMutation.isPending}
-        />
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3">
+          <CustomerTypeCheckbox
+            value={selected}
+            onChange={setDraft}
+            label={t("SETTINGS.CUSTOMER_TYPE.BUSINESS_CHECKBOX")}
+            disabled={updateSelfMutation.isPending}
+          />
           <Button
             type="button"
+            size="sm"
             onClick={save}
-            disabled={
-              !selected || selected === declared || updateSelfMutation.isPending
-            }
+            disabled={selected === declared || updateSelfMutation.isPending}
           >
             {t("SETTINGS.CUSTOMER_TYPE.SAVE")}
           </Button>
-          {declared && user.customer_type_at ? (
-            <span className="text-muted-foreground text-xs">
-              {t("SETTINGS.CUSTOMER_TYPE.DECLARED_ON", {
-                date: formatLongDate(user.customer_type_at),
-              })}
-            </span>
-          ) : null}
         </div>
+        {declared && user.customer_type_at ? (
+          <p className="text-muted-foreground text-xs">
+            {t("SETTINGS.CUSTOMER_TYPE.DECLARED_ON", {
+              date: formatLongDate(user.customer_type_at),
+            })}
+          </p>
+        ) : null}
       </CardContent>
     </Card>
   );
