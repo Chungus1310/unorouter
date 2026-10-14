@@ -58,6 +58,17 @@ jobs:
       - name: Create public build environment
         run: cp .env.public .env
 
+      # An empty Impressum is a legal defect, so a missing secret stops the build.
+      - name: Check Impressum secrets
+        env:
+          LEGAL_NAME: ${{ secrets.LEGAL_NAME }}
+          LEGAL_ADDRESS: ${{ secrets.LEGAL_ADDRESS }}
+          LEGAL_VAT_ID: ${{ secrets.LEGAL_VAT_ID }}
+        run: |
+          for v in LEGAL_NAME LEGAL_ADDRESS LEGAL_VAT_ID; do
+            [ -n "${!v}" ] || { echo "missing secret $v"; exit 1; }
+          done
+
       - uses: docker/setup-buildx-action@8d2750c68a42422c14e847fe6c8ac0403b4cbd6f # v3.12.0
 
       - uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3.7.0
@@ -77,6 +88,9 @@ jobs:
           platforms: ${{ matrix.platform }}
           build-args: |
             GIT_SHA=${{ github.sha }}
+            NEXT_PUBLIC_LEGAL_NAME=${{ secrets.LEGAL_NAME }}
+            NEXT_PUBLIC_LEGAL_ADDRESS=${{ secrets.LEGAL_ADDRESS }}
+            NEXT_PUBLIC_LEGAL_VAT_ID=${{ secrets.LEGAL_VAT_ID }}
           outputs: type=image,name=ghcr.io/unorouter/unorouter,push-by-digest=true,name-canonical=true,push=true
           # Per-arch cache scope so the amd64 and arm64 GHA caches never overwrite.
           cache-from: type=gha,scope=unorouter-${{ matrix.arch }}

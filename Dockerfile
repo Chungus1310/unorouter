@@ -16,6 +16,13 @@ ENV NBC_BINARY=server
 ARG TARGETARCH
 ARG GIT_SHA=dev
 ENV NEXT_PUBLIC_RELEASE_VERSION=$GIT_SHA
+# Impressum identity: public on the site, but kept out of the public repo.
+ARG NEXT_PUBLIC_LEGAL_NAME
+ARG NEXT_PUBLIC_LEGAL_ADDRESS
+ARG NEXT_PUBLIC_LEGAL_VAT_ID
+ENV NEXT_PUBLIC_LEGAL_NAME=$NEXT_PUBLIC_LEGAL_NAME \
+    NEXT_PUBLIC_LEGAL_ADDRESS=$NEXT_PUBLIC_LEGAL_ADDRESS \
+    NEXT_PUBLIC_LEGAL_VAT_ID=$NEXT_PUBLIC_LEGAL_VAT_ID
 ENV NEXT_DEPLOYMENT_ID=$GIT_SHA
 # Optional upload credential exists only for this RUN and is never copied.
 RUN --mount=type=secret,id=posthog_upload_key \

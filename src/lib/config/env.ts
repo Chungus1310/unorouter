@@ -45,4 +45,11 @@ export const env = {
   posthogKey: process.env.NEXT_PUBLIC_POSTHOG_KEY,
   posthogHost: process.env.NEXT_PUBLIC_POSTHOG_HOST,
   googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION,
+  // Impressum identity comes from build secrets so it stays out of this public repo.
+  legalName: process.env.NEXT_PUBLIC_LEGAL_NAME ?? "",
+  legalAddress: (process.env.NEXT_PUBLIC_LEGAL_ADDRESS ?? "").replaceAll(
+    "\\n",
+    "\n",
+  ),
+  legalVatId: process.env.NEXT_PUBLIC_LEGAL_VAT_ID ?? "",
 } as const;

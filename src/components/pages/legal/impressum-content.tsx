@@ -9,8 +9,11 @@ const SECTIONS: LegalDocSection[] = [
     para: { key: "PROVIDER_CONTENT", values: true },
   },
   { title: "CONTACT_TITLE", para: { key: "CONTACT_CONTENT", values: true } },
-  { title: "VAT_TITLE", para: { key: "VAT_CONTENT" } },
-  { title: "RESPONSIBLE_TITLE", para: { key: "RESPONSIBLE_CONTENT" } },
+  { title: "VAT_TITLE", para: { key: "VAT_CONTENT", values: true } },
+  {
+    title: "RESPONSIBLE_TITLE",
+    para: { key: "RESPONSIBLE_CONTENT", values: true },
+  },
   { title: "DISPUTE_TITLE", para: { key: "DISPUTE_CONTENT" } },
 ];
 

@@ -22,7 +22,13 @@ export async function LegalDoc(props: {
 }) {
   const t = await getTranslations();
   const key = (leaf: string) => `${props.ns}.${leaf}` as TranslationKey;
-  const values = { ...APP_VALUES, discordUrl: env.discordUrl ?? "" };
+  const values = {
+    ...APP_VALUES,
+    discordUrl: env.discordUrl ?? "",
+    legalName: env.legalName,
+    legalAddress: env.legalAddress,
+    vatId: env.legalVatId,
+  };
   const para = (p: LegalPara) =>
     p.values ? t(key(p.key), values) : t(key(p.key));
 
