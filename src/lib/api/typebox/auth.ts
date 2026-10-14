@@ -1,3 +1,4 @@
+import { customerTypeSchema } from "@/lib/validation/auth";
 import { t } from "elysia";
 
 export const loginBody = t.Object({
@@ -12,6 +13,7 @@ export const registerBody = t.Object({
   email: t.Optional(t.String()),
   verification_code: t.Optional(t.String()),
   aff_code: t.Optional(t.String()),
+  customer_type: customerTypeSchema,
   turnstile: t.Optional(t.String()),
 });
 
@@ -20,6 +22,7 @@ export const oauthStateQuery = t.Object({
   redirect: t.Optional(t.String()),
   aff: t.Optional(t.String()),
   action: t.Optional(t.String()),
+  customer_type: t.Optional(customerTypeSchema),
   turnstile: t.Optional(t.String()),
 });
 

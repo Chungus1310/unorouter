@@ -1,6 +1,22 @@
 import { TypeCompiler } from "@sinclair/typebox/compiler";
 import { Type as t, type Static } from "@sinclair/typebox/type";
 import { msg } from "../config/constants";
+import type { UserSelfData } from "@/openapi";
+
+// Consumer: we are the controller of the prompt data. Business: we process it on
+// the customer's behalf under the data processing agreement.
+export const customerTypeSchema = t.Union([
+  t.Literal("consumer"),
+  t.Literal("business"),
+]);
+export type CustomerType = Static<typeof customerTypeSchema>;
+
+// The gateway's /self carries these before src/openapi.ts does; once `bun openapi`
+// runs against a gateway that has them, UserSelfData alone covers this.
+export type SelfUser = UserSelfData & {
+  customer_type?: CustomerType | "";
+  customer_type_at?: number;
+};
 
 export const loginSchema = t.Object({
   username: t.String({

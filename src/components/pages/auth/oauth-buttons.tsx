@@ -8,6 +8,7 @@ import { rpc } from "@/lib/rpc";
 import { handleElysia } from "@/lib/utils/base";
 import { logChatDebug } from "@/lib/utils/chat-debug-log";
 import { extractErrorDetail } from "@/lib/utils/client";
+import type { CustomerType } from "@/lib/validation/auth";
 import type { StatusData } from "@/openapi";
 import { getCookie } from "cookies-next/client";
 import { useTranslations } from "next-intl";
@@ -19,6 +20,8 @@ type OAuthButtonsProps = {
   turnstileToken?: string;
   /** Called when a start failed after spending the token, so the parent can reissue it. */
   onTurnstileSpent?: () => void;
+  /** Set on the signup page: the buttons wait for the customer type, which the gateway stores on an account this login creates. */
+  signup?: { customerType: CustomerType | undefined };
 };
 
 type OAuthProvider = {
@@ -117,6 +120,7 @@ export function OAuthButtons(props: OAuthButtonsProps) {
 
   const awaitingTurnstile =
     props.status.turnstile_check === true && !props.turnstileToken;
+  const awaitingCustomerType = !!props.signup && !props.signup.customerType;
 
   async function handleOAuth(provider: OAuthProvider) {
     setLoading(provider.key);
@@ -131,6 +135,7 @@ export function OAuthButtons(props: OAuthButtonsProps) {
             provider: provider.key,
             redirect: callbackUrl,
             aff: typeof affCode === "string" ? affCode : undefined,
+            customer_type: props.signup?.customerType,
             turnstile: props.turnstileToken,
           },
         }),
@@ -173,7 +178,9 @@ export function OAuthButtons(props: OAuthButtonsProps) {
           <button
             key={provider.key}
             onClick={() => handleOAuth(provider)}
-            disabled={loading !== null || awaitingTurnstile}
+            disabled={
+              loading !== null || awaitingTurnstile || awaitingCustomerType
+            }
             className="border-border/60 bg-background/60 hover:bg-accent text-foreground flex h-11 w-full items-center justify-center gap-2 rounded-2xl border text-sm font-medium transition-colors disabled:opacity-50"
           >
             {loading === provider.key ? (

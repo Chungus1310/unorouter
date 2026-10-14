@@ -2688,6 +2688,14 @@
       "GO_TO_LOGIN": "Aller à la connexion",
       "INVALID_LINK": "Ce lien est invalide ou a expiré.",
       "REQUEST_NEW_LINK": "Demander un nouveau lien"
+    },
+    "CUSTOMER_TYPE": {
+      "LABEL": "Comment allez-vous utiliser ce compte ?",
+      "CONSUMER": "Usage privé",
+      "CONSUMER_HINT": "Pour vous-même, en dehors de toute activité commerciale, industrielle ou professionnelle",
+      "BUSINESS": "Usage professionnel",
+      "BUSINESS_HINT": "Pour une entreprise, une activité indépendante ou un autre objectif professionnel",
+      "HELP": "Les clients professionnels sont liés par notre accord de traitement des données et ne sont servis que par des fournisseurs qui respectent les normes européennes de protection des données. Vous pourrez modifier ce choix plus tard dans vos paramètres."
     }
   },
   "SIDEBAR": {
@@ -3559,6 +3567,13 @@
       "PERSISTENT": "Stockage protégé",
       "PERSISTENT_YES": "Accordé. Le navigateur n'effacera pas vos données de lui-même en cas de manque de place.",
       "PERSISTENT_NO": "Non accordé. Le navigateur peut effacer vos données en cas de manque de place. Installer l'application ou ajouter ce site aux favoris règle généralement cela."
+    },
+    "CUSTOMER_TYPE": {
+      "TITLE": "Type de compte",
+      "PROMPT": "Indiquez-nous une seule fois si vous utilisez ce compte à titre privé ou professionnel, afin que les bonnes conditions de protection des données s'appliquent.",
+      "SAVE": "Enregistrer",
+      "SAVED": "Type de compte enregistré",
+      "DECLARED_ON": "Déclaré le {date}"
     }
   },
   "SEARCH": {

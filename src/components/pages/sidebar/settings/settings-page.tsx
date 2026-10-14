@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { AccountCard } from "./account-card";
 import { AccountHeader } from "./account-header";
 import { BackupCard } from "./backup-card";
+import { CustomerTypeCard } from "./customer-type-card";
 import { NotificationCard } from "./notification-card";
 import { SecurityCard } from "./security-card";
 import { TimeoutCard } from "./timeout-card";
@@ -35,6 +36,10 @@ export function SettingsPage() {
           </span>
         </div>
         <AccountHeader />
+      </div>
+
+      <div className="mb-6">
+        <CustomerTypeCard />
       </div>
 
       <div className="mb-6">

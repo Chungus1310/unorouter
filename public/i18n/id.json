@@ -2688,6 +2688,14 @@
       "GO_TO_LOGIN": "Ke halaman masuk",
       "INVALID_LINK": "Tautan ini tidak valid atau sudah kedaluwarsa.",
       "REQUEST_NEW_LINK": "Minta tautan baru"
+    },
+    "CUSTOMER_TYPE": {
+      "LABEL": "Bagaimana Anda akan menggunakan akun ini?",
+      "CONSUMER": "Penggunaan pribadi",
+      "CONSUMER_HINT": "Untuk diri sendiri, di luar kegiatan dagang, usaha, atau profesi apa pun",
+      "BUSINESS": "Penggunaan bisnis atau profesional",
+      "BUSINESS_HINT": "Untuk perusahaan, pekerjaan lepas, atau tujuan profesional lainnya",
+      "HELP": "Pelanggan bisnis terikat pada perjanjian pemrosesan data kami dan hanya dilayani oleh penyedia yang memenuhi standar perlindungan data UE. Anda dapat mengubahnya nanti di pengaturan."
     }
   },
   "SIDEBAR": {
@@ -3559,6 +3567,13 @@
       "PERSISTENT": "Penyimpanan terlindungi",
       "PERSISTENT_YES": "Diberikan. Browser tidak akan menghapus datamu sendiri saat ruang hampir habis.",
       "PERSISTENT_NO": "Tidak diberikan. Browser bisa menghapus datamu saat ruang hampir habis. Memasang aplikasi atau menandai situs ini biasanya mengatasinya."
+    },
+    "CUSTOMER_TYPE": {
+      "TITLE": "Jenis akun",
+      "PROMPT": "Beri tahu kami sekali saja apakah Anda menggunakan akun ini untuk keperluan pribadi atau bisnis, agar ketentuan perlindungan data yang tepat berlaku.",
+      "SAVE": "Simpan",
+      "SAVED": "Jenis akun disimpan",
+      "DECLARED_ON": "Dinyatakan pada {date}"
     }
   },
   "SEARCH": {

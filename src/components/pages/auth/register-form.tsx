@@ -1,6 +1,7 @@
 "use client";
 
 import { MyFormInput } from "@/components/elements/form/my-form-input";
+import { CustomerTypeChoice } from "@/components/pages/auth/customer-type-choice";
 import { OAuthButtons } from "@/components/pages/auth/oauth-buttons";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -21,6 +22,7 @@ import {
 import {
   registerChecker,
   registerSchema,
+  type CustomerType,
   type RegisterSchema,
 } from "@/lib/validation/auth";
 import { formDefaults, safeParse } from "@/lib/validation/helpers";
@@ -48,6 +50,9 @@ export function RegisterForm() {
   const [turnstileToken, setTurnstileToken] = useState<string | undefined>();
   const turnstileRef = useRef<TurnstileInstance>(null);
   const [resendSeconds, setResendSeconds] = useState(0);
+  // Outside the form: the OAuth buttons need it too, and they render when the
+  // password form is switched off.
+  const [customerType, setCustomerType] = useState<CustomerType>();
 
   useEffect(() => {
     if (resendSeconds <= 0) return;
@@ -78,6 +83,7 @@ export function RegisterForm() {
   }
 
   async function onSubmit(data: RegisterSchema) {
+    if (!customerType) return;
     try {
       const affCodeRaw = data.aff_code?.trim() || getCookie(AFF_CODE_KEY);
       const affCode = typeof affCodeRaw === "string" ? affCodeRaw : undefined;
@@ -92,6 +98,7 @@ export function RegisterForm() {
           email,
           verification_code: data.verification_code?.trim() || undefined,
           aff_code: affCode,
+          customer_type: customerType,
           turnstile: turnstileToken,
         },
       });
@@ -131,6 +138,7 @@ export function RegisterForm() {
 
   const submitDisabled =
     !isValid ||
+    !customerType ||
     registerMutation.isPending ||
     (turnstileRequired && !turnstileToken) ||
     (emailAsUsername && !trimmedCode);
@@ -141,6 +149,8 @@ export function RegisterForm() {
       description={t("AUTH.REGISTER.DESCRIPTION", APP_VALUES)}
     >
       <div className="space-y-6">
+        <CustomerTypeChoice value={customerType} onChange={setCustomerType} />
+
         {showPasswordForm && (
           <Form {...form}>
             <form
@@ -292,6 +302,7 @@ export function RegisterForm() {
         {status && (
           <OAuthButtons
             status={status}
+            signup={{ customerType }}
             turnstileToken={turnstileToken}
             onTurnstileSpent={() => {
               turnstileRef.current?.reset();

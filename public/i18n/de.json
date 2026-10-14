@@ -2688,6 +2688,14 @@
       "GO_TO_LOGIN": "Zur Anmeldung",
       "INVALID_LINK": "Dieser Link ist ungültig oder abgelaufen.",
       "REQUEST_NEW_LINK": "Neuen Link anfordern"
+    },
+    "CUSTOMER_TYPE": {
+      "LABEL": "Wie wirst du dieses Konto nutzen?",
+      "CONSUMER": "Private Nutzung",
+      "CONSUMER_HINT": "Für dich selbst, außerhalb jeder gewerblichen oder beruflichen Tätigkeit",
+      "BUSINESS": "Geschäftliche oder berufliche Nutzung",
+      "BUSINESS_HINT": "Für ein Unternehmen, freiberufliche Arbeit oder einen anderen beruflichen Zweck",
+      "HELP": "Geschäftskunden sind an unseren Auftragsverarbeitungsvertrag gebunden und werden nur über Anbieter bedient, die die EU-Datenschutzstandards erfüllen. Du kannst das später in deinen Einstellungen ändern."
     }
   },
   "SIDEBAR": {
@@ -3559,6 +3567,13 @@
       "PERSISTENT": "Geschützter Speicher",
       "PERSISTENT_YES": "Erteilt. Der Browser löscht deine Daten nicht von selbst, wenn der Platz knapp wird.",
       "PERSISTENT_NO": "Nicht erteilt. Der Browser kann deine Daten löschen, wenn der Platz knapp wird. Die App zu installieren oder die Seite als Lesezeichen zu speichern behebt das meistens."
+    },
+    "CUSTOMER_TYPE": {
+      "TITLE": "Kontotyp",
+      "PROMPT": "Bitte teile uns einmalig mit, ob du dieses Konto privat oder geschäftlich nutzt, damit die richtigen Datenschutzbedingungen gelten.",
+      "SAVE": "Speichern",
+      "SAVED": "Kontotyp gespeichert",
+      "DECLARED_ON": "Angegeben am {date}"
     }
   },
   "SEARCH": {

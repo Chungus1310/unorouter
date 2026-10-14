@@ -12,6 +12,8 @@ import type {
   UserSelfData,
 } from "@/openapi";
 import { useMutation } from "@tanstack/react-query";
+import { dayjs } from "@/lib/utils/format/date";
+import type { SelfUser } from "@/lib/validation/auth";
 
 type TwoFA = (typeof rpc.api.auth.settings)["2fa"];
 
@@ -83,7 +85,7 @@ export function useUpdateSelfMutation() {
       args: EdenArgs<typeof rpc.api.auth.settings.self, "put">,
     ) => handleElysia(await rpc.api.auth.settings.self.put(args.body)),
     onSuccess: (_, args, qc) => {
-      qc.setQueryData<UserSelfData>(queryKeys.auth(), (old) =>
+      qc.setQueryData<SelfUser>(queryKeys.auth(), (old) =>
         old
           ? {
               ...old,
@@ -91,6 +93,10 @@ export function useUpdateSelfMutation() {
                 display_name: args.body.display_name,
               }),
               ...(args.body.email && { email: args.body.email }),
+              ...(args.body.customer_type && {
+                customer_type: args.body.customer_type,
+                customer_type_at: dayjs().unix(),
+              }),
             }
           : old,
       );

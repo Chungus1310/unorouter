@@ -2688,6 +2688,14 @@
       "GO_TO_LOGIN": "Go to sign in",
       "INVALID_LINK": "This reset link is invalid or has expired.",
       "REQUEST_NEW_LINK": "Request a new link"
+    },
+    "CUSTOMER_TYPE": {
+      "LABEL": "How will you use this account?",
+      "CONSUMER": "Private use",
+      "CONSUMER_HINT": "For yourself, outside any trade, business or profession",
+      "BUSINESS": "Business or professional use",
+      "BUSINESS_HINT": "For a company, freelance work or another professional purpose",
+      "HELP": "Business customers are bound by our data processing agreement and are served only by providers that meet EU data protection standards. You can change this later in your settings."
     }
   },
   "SIDEBAR": {
@@ -3559,6 +3567,13 @@
       "PERSISTENT": "Protected storage",
       "PERSISTENT_YES": "Granted. The browser will not clear your data on its own when space runs low.",
       "PERSISTENT_NO": "Not granted. The browser may clear your data when space runs low. Installing the app or bookmarking this site usually fixes that."
+    },
+    "CUSTOMER_TYPE": {
+      "TITLE": "Account type",
+      "PROMPT": "Please tell us once whether you use this account privately or for business, so the right data protection terms apply.",
+      "SAVE": "Save",
+      "SAVED": "Account type saved",
+      "DECLARED_ON": "Declared on {date}"
     }
   },
   "SEARCH": {
