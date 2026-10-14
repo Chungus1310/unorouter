@@ -7,7 +7,7 @@ import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useUpdateSelfMutation } from "@/hooks/auth/settings-hook";
 import { cn } from "@/lib/utils";
 import { formatLongDate } from "@/lib/utils/format/date";
-import type { CustomerType } from "@/lib/validation/auth";
+import { customerTypeChecker, type CustomerType } from "@/lib/validation/auth";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -21,7 +21,9 @@ export function CustomerTypeCard() {
 
   if (!user) return null;
 
-  const declared = user.customer_type || undefined;
+  const declared = customerTypeChecker.Check(user.customer_type)
+    ? user.customer_type
+    : undefined;
   const selected = draft ?? declared;
 
   function save() {

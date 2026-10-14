@@ -6,14 +6,10 @@ import { queryKeys } from "@/lib/react-query/keys";
 import { rpc } from "@/lib/rpc";
 import type { EdenArgs } from "@/lib/types/eden";
 import { handleElysia } from "@/lib/utils/base";
-import type {
-  PasskeyStatusData,
-  TwoFAStatusData,
-  UserSelfData,
-} from "@/openapi";
+import type { TwoFAStatusData } from "@/lib/api/gateway-gaps";
+import type { PasskeyStatusData, UserSelfData } from "@/openapi";
 import { useMutation } from "@tanstack/react-query";
 import { dayjs } from "@/lib/utils/format/date";
-import type { SelfUser } from "@/lib/validation/auth";
 
 type TwoFA = (typeof rpc.api.auth.settings)["2fa"];
 
@@ -85,7 +81,7 @@ export function useUpdateSelfMutation() {
       args: EdenArgs<typeof rpc.api.auth.settings.self, "put">,
     ) => handleElysia(await rpc.api.auth.settings.self.put(args.body)),
     onSuccess: (_, args, qc) => {
-      qc.setQueryData<SelfUser>(queryKeys.auth(), (old) =>
+      qc.setQueryData<UserSelfData>(queryKeys.auth(), (old) =>
         old
           ? {
               ...old,

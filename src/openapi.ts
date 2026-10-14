@@ -44,38 +44,56 @@ export interface ChannelInfo {
 }
 
 export interface Channel {
+  /** @nullable */
   auto_ban: number | null;
   balance: number;
   balance_updated_time: number;
+  /** @nullable */
   base_url: string | null;
   channel_info: ChannelInfo;
   created_time: number;
   group: string;
+  /** @nullable */
   header_override: string | null;
   id: number;
   key: string;
+  /** @nullable */
   model_mapping: string | null;
   models: string;
   name: string;
+  /** @nullable */
   openai_organization: string | null;
   other: string;
   other_info: string;
+  /** @nullable */
   param_override: string | null;
+  /** @nullable */
   priority: number | null;
-  /** @maxLength 1024 */
+  /**
+   * @maxLength 1024
+   * @nullable
+   */
   remark: string | null;
   response_time: number;
+  /** @nullable */
   setting: string | null;
   settings: string;
   status: number;
+  /** @nullable */
   status_code_mapping: string | null;
+  /** @nullable */
   tag: string | null;
+  /** @nullable */
   test_model: string | null;
   test_time: number;
   type: number;
   used_quota: number;
-  /** @minimum 0 */
+  /**
+   * @minimum 0
+   * @nullable
+   */
   weight: number | null;
+  /** @nullable */
   workflow_templates: string | null;
 }
 
@@ -115,6 +133,7 @@ export interface AdminCreateUserSubscriptionRequest {
  * AdminResetSubscriptionRequest schema
  */
 export interface AdminResetSubscriptionRequest {
+  /** @nullable */
   advance_reset_time: boolean | null;
   plan_id: number;
 }
@@ -123,11 +142,14 @@ export interface AdminResetSubscriptionRequest {
  * AdminUpdateSubscriptionPlanStatusRequest schema
  */
 export interface AdminUpdateSubscriptionPlanStatusRequest {
+  /** @nullable */
   enabled: boolean | null;
 }
 
 export interface SubscriptionPlan {
+  /** @nullable */
   allow_balance_pay: boolean | null;
+  /** @nullable */
   allow_wallet_overflow: boolean | null;
   created_at: number;
   creem_product_id: string;
@@ -177,6 +199,23 @@ export interface AnnouncementEntry {
   extra?: string;
   publishDate: string;
   type?: string;
+}
+
+export type AnonymousSchema0DataAnyOf = { [key: string]: unknown };
+
+/**
+ * @nullable
+ */
+export type AnonymousSchema0Data = AnonymousSchema0DataAnyOf | null;
+
+/**
+ * Response_map-string-interface {} schema
+ */
+export interface AnonymousSchema0 {
+  /** @nullable */
+  data: AnonymousSchema0Data;
+  message: string;
+  success: boolean;
 }
 
 export interface ApiInfoEntry {
@@ -235,30 +274,28 @@ export interface BillingPreferenceRequest {
   billing_preference: string;
 }
 
-export interface GeminiPromptTokensDetails {
-  modality: string;
-  tokenCount: number;
+export interface ClaudeCacheCreationUsage {
+  ephemeral_1h_input_tokens?: number;
+  ephemeral_5m_input_tokens?: number;
+}
+
+export interface ClaudeServerToolUse {
+  code_execution_requests?: number;
+  tool_search_requests?: number;
+  web_fetch_requests?: number;
+  web_search_requests?: number;
 }
 
 export interface BillingUsage {
   billing_usage?: BillingUsage;
-  cachedContentTokenCount: number;
-  candidatesTokenCount: number;
-  /** @nullable */
-  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
-  promptTokenCount: number;
-  /** @nullable */
-  promptTokensDetails: GeminiPromptTokensDetails[] | null;
-  thoughtsTokenCount: number;
-  toolUsePromptTokenCount: number;
-  /** @nullable */
-  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
-  totalTokenCount: number;
-}
-
-export interface BoundChannel {
-  name: string;
-  type: number;
+  cache_creation?: ClaudeCacheCreationUsage;
+  cache_creation_input_tokens: number;
+  cache_read_input_tokens: number;
+  claude_cache_creation_1_h_tokens: number;
+  claude_cache_creation_5_m_tokens: number;
+  input_tokens: number;
+  output_tokens: number;
+  server_tool_use?: ClaudeServerToolUse;
 }
 
 export interface BucketPoint {
@@ -267,6 +304,15 @@ export interface BucketPoint {
   avg_ttft_ms: number;
   success_rate: number;
   ts: number;
+}
+
+export interface CachedTokenDetails {
+  /** @nullable */
+  audio_tokens?: number | null;
+  /** @nullable */
+  image_tokens?: number | null;
+  /** @nullable */
+  text_tokens?: number | null;
 }
 
 export interface CardItemDTO {
@@ -326,6 +372,7 @@ export interface ChannelBalanceResponse {
 export interface ChannelBatch {
   /** @nullable */
   ids: number[] | null;
+  /** @nullable */
   tag: string | null;
 }
 
@@ -370,15 +417,25 @@ export interface ChannelKeyData {
  * ChannelTag schema
  */
 export interface ChannelTag {
+  /** @nullable */
   groups: string | null;
+  /** @nullable */
   header_override: string | null;
+  /** @nullable */
   model_mapping: string | null;
+  /** @nullable */
   models: string | null;
+  /** @nullable */
   new_tag: string | null;
+  /** @nullable */
   param_override: string | null;
+  /** @nullable */
   priority: number | null;
   tag: string;
-  /** @minimum 0 */
+  /**
+   * @minimum 0
+   * @nullable
+   */
   weight: number | null;
 }
 
@@ -438,11 +495,6 @@ export interface CheckinStatusData {
   stats: CheckinStats;
 }
 
-export interface ClaudeCacheCreationUsage {
-  ephemeral_1h_input_tokens?: number;
-  ephemeral_5m_input_tokens?: number;
-}
-
 /**
  * ClaudeMessageResponse schema
  */
@@ -453,13 +505,10 @@ export interface ClaudeMessageResponse {
   model: string;
   role: string;
   stop_reason: string;
+  /** @nullable */
   stop_sequence: string | null;
   type: string;
   usage: unknown;
-}
-
-export interface ClaudeServerToolUse {
-  web_search_requests: number;
 }
 
 export interface ClaudeUsage {
@@ -525,9 +574,11 @@ export type CompactPageDTOBars = CompactPageDTOBarsAnyOf | null;
 
 export interface ComponentDTO {
   description: string;
+  /** @nullable */
   group_id?: number | null;
   id: number;
   name: string;
+  /** @nullable */
   open_incident_id?: number | null;
   probe_latency_ms: number;
   sampled_at: number;
@@ -543,6 +594,7 @@ export interface EventDTO {
   id: number;
   is_aggregated?: boolean;
   name: string;
+  /** @nullable */
   to: string | null;
   type: string;
 }
@@ -570,18 +622,6 @@ export interface CompletionResponse {
   model: string;
   object: string;
   usage: CompletionUsage;
-}
-
-export interface ConflictField {
-  field: string;
-  local: unknown;
-  upstream: unknown;
-}
-
-export interface ConflictItem {
-  /** @nullable */
-  fields: ConflictField[] | null;
-  model_name: string;
 }
 
 export type ContainerConfigEnvVariablesAnyOf = { [key: string]: string };
@@ -691,12 +731,16 @@ export interface CreateDeploymentResponse {
  * CreateTokenRequest schema
  */
 export interface CreateTokenRequest {
+  /** @nullable */
   allow_ips: string | null;
+  /** @nullable */
   auto_groups: string[] | null;
-  cross_group_retry: boolean;
+  /** @nullable */
+  cross_group_retry: boolean | null;
   expired_time: number;
   group: string;
-  group_mapping: string;
+  /** @nullable */
+  group_mapping: string | null;
   model_limits: string;
   model_limits_enabled: boolean;
   name: string;
@@ -747,6 +791,30 @@ export interface CustomOAuthProviderResponse {
   user_info_endpoint: string;
   username_field: string;
   well_known: string;
+}
+
+export type DecisionsResponseAnswersAnyOf = { [key: string]: unknown };
+
+/**
+ * @nullable
+ */
+export type DecisionsResponseAnswers = DecisionsResponseAnswersAnyOf | null;
+
+export interface DecisionsUsage {
+  /** @nullable */
+  input_tokens: number | null;
+  /** @nullable */
+  output_tokens: number | null;
+}
+
+/**
+ * DecisionsResponse schema
+ */
+export interface DecisionsResponse {
+  /** @nullable */
+  answers: DecisionsResponseAnswers;
+  model: string;
+  usage: DecisionsUsage;
 }
 
 export interface DeleteDeploymentResponse {
@@ -989,6 +1057,7 @@ export interface InputTokenDetails {
   cache_write_tokens?: number;
   cached_creation_tokens?: number;
   cached_tokens: number;
+  cached_tokens_details?: CachedTokenDetails;
   image_tokens: number;
   text_tokens: number;
 }
@@ -1003,6 +1072,7 @@ export interface Usage {
   input_tokens: number;
   input_tokens_details: InputTokenDetails;
   output_tokens: number;
+  output_tokens_details?: OutputTokenDetails;
   prompt_cache_hit_tokens?: number;
   prompt_tokens: number;
   prompt_tokens_details: InputTokenDetails;
@@ -1038,56 +1108,6 @@ export interface EpayPayResponse {
 export interface EpayRequest {
   amount: number;
   payment_method: string;
-}
-
-export type ExposedRatioDataCacheRatioAnyOf = { [key: string]: number };
-
-/**
- * @nullable
- */
-export type ExposedRatioDataCacheRatio = ExposedRatioDataCacheRatioAnyOf | null;
-
-export type ExposedRatioDataCompletionRatioAnyOf = { [key: string]: number };
-
-/**
- * @nullable
- */
-export type ExposedRatioDataCompletionRatio =
-  ExposedRatioDataCompletionRatioAnyOf | null;
-
-export type ExposedRatioDataCreateCacheRatioAnyOf = { [key: string]: number };
-
-/**
- * @nullable
- */
-export type ExposedRatioDataCreateCacheRatio =
-  ExposedRatioDataCreateCacheRatioAnyOf | null;
-
-export type ExposedRatioDataModelPriceAnyOf = { [key: string]: number };
-
-/**
- * @nullable
- */
-export type ExposedRatioDataModelPrice = ExposedRatioDataModelPriceAnyOf | null;
-
-export type ExposedRatioDataModelRatioAnyOf = { [key: string]: number };
-
-/**
- * @nullable
- */
-export type ExposedRatioDataModelRatio = ExposedRatioDataModelRatioAnyOf | null;
-
-export interface ExposedRatioData {
-  /** @nullable */
-  cache_ratio: ExposedRatioDataCacheRatio;
-  /** @nullable */
-  completion_ratio: ExposedRatioDataCompletionRatio;
-  /** @nullable */
-  create_cache_ratio: ExposedRatioDataCreateCacheRatio;
-  /** @nullable */
-  model_price: ExposedRatioDataModelPrice;
-  /** @nullable */
-  model_ratio: ExposedRatioDataModelRatio;
 }
 
 /**
@@ -1143,6 +1163,7 @@ export interface TestResult {
 export interface FetchUpstreamRatiosResult {
   /** @nullable */
   differences: FetchUpstreamRatiosResultDifferences;
+  prices: unknown;
   /** @nullable */
   test_results: TestResult[] | null;
 }
@@ -1173,6 +1194,11 @@ export interface FlowQuotaData {
 export interface GeminiModelList {
   models: unknown;
   nextPageToken: unknown;
+}
+
+export interface GeminiPromptTokensDetails {
+  modality: string;
+  tokenCount: number;
 }
 
 export interface GeminiUsageMetadata {
@@ -1221,7 +1247,17 @@ export interface GrantDiscordQuotaData {
 export interface GrantDiscordQuotaRequest {
   check_ip_unique?: boolean;
   discord_id: string;
+  granted_by?: string;
   quota: number;
+  reason?: string;
+  source?: string;
+}
+
+export interface GroupDataPolicy {
+  prompts: string;
+  seat_country?: string;
+  transfer: string;
+  unsafe_third_country: boolean;
 }
 
 export interface GroupResult {
@@ -1232,7 +1268,18 @@ export interface GroupResult {
   /** @nullable */
   series: BucketPoint[] | null;
   success_rate: number;
+  /** @nullable */
   uptime_percent?: number | null;
+}
+
+/**
+ * GuestTokenLimitsRequest schema
+ */
+export interface GuestTokenLimitsRequest {
+  /** Full guest token key, with or without the sk- prefix */
+  key: string;
+  /** Comma-separated model names the guest token may call */
+  model_limits: string;
 }
 
 export interface HardwareType {
@@ -1275,8 +1322,11 @@ export interface ImageGenerationResponse {
 }
 
 export interface ImageParamRange {
+  /** @nullable */
   default?: number | null;
+  /** @nullable */
   max?: number | null;
+  /** @nullable */
   min?: number | null;
 }
 
@@ -1284,6 +1334,7 @@ export interface ImageParams {
   /** @nullable */
   backgroundChoices?: string[] | null;
   cfg?: ImageParamRange;
+  /** @nullable */
   defaultCfg?: number | null;
   defaultHeight: number;
   defaultSampler: string;
@@ -1327,6 +1378,14 @@ export interface KeyStatus {
   index: number;
   key_preview: string;
   reason?: string;
+  status: number;
+}
+
+export interface LanePromptCapacityRow {
+  channel_id: number;
+  channel_name: string;
+  proven_tokens: number;
+  rejects_from: number;
   status: number;
 }
 
@@ -1401,7 +1460,9 @@ export interface LogFilesResponse {
   /** @nullable */
   files: LogFileInfo[] | null;
   log_dir: string;
+  /** @nullable */
   newest_time?: string | null;
+  /** @nullable */
   oldest_time?: string | null;
   total_size: number;
 }
@@ -1426,7 +1487,9 @@ export interface LoginData {
  * LoginRequest schema
  */
 export interface LoginRequest {
+  encryption_key_id: string;
   password: string;
+  password_encrypted: string;
   username: string;
 }
 
@@ -1471,9 +1534,6 @@ export interface MemoryStats {
   total_alloc: number;
 }
 
-/**
- * MessageResponse schema
- */
 export interface MessageResponse {
   message: string;
   success: boolean;
@@ -1512,31 +1572,6 @@ export interface MidjourneyResponse {
   description: string;
   properties: unknown;
   result: string;
-}
-
-export interface Model {
-  /** @nullable */
-  bound_channels?: BoundChannel[] | null;
-  created_time: number;
-  description?: string;
-  /** @nullable */
-  enable_groups?: string[] | null;
-  endpoints?: string;
-  icon?: string;
-  id: number;
-  matched_count?: number;
-  /** @nullable */
-  matched_models?: string[] | null;
-  metadata: string;
-  model_name: string;
-  name_rule: number;
-  /** @nullable */
-  quota_types?: number[] | null;
-  status: number;
-  sync_official: number;
-  tags?: string;
-  updated_time: number;
-  vendor_id?: number;
 }
 
 export interface ModelHistoryModel {
@@ -1638,6 +1673,11 @@ export interface ModelRankingResponse {
   total_tokens: number;
 }
 
+export interface SuccessRatePoint {
+  success_rate: number;
+  ts: number;
+}
+
 export interface ModelSummary {
   avg_latency_ms: number;
   avg_tps: number;
@@ -1645,26 +1685,10 @@ export interface ModelSummary {
   model_name: string;
   /** @nullable */
   recent_success_rates?: number[] | null;
+  /** @nullable */
+  recent_success_series?: SuccessRatePoint[] | null;
   request_count: number;
   success_rate: number;
-}
-
-export type ModelsMetaListDataVendorCountsAnyOf = { [key: string]: number };
-
-/**
- * @nullable
- */
-export type ModelsMetaListDataVendorCounts =
-  ModelsMetaListDataVendorCountsAnyOf | null;
-
-export interface ModelsMetaListData {
-  /** @nullable */
-  items: Model[] | null;
-  page: number;
-  page_size: number;
-  total: number;
-  /** @nullable */
-  vendor_counts: ModelsMetaListDataVendorCounts;
 }
 
 /**
@@ -1690,9 +1714,11 @@ export interface Monitor {
 export interface MultiKeyManageRequest {
   action: string;
   channel_id: number;
+  /** @nullable */
   key_index?: number | null;
   page?: number;
   page_size?: number;
+  /** @nullable */
   status?: number | null;
 }
 
@@ -1710,10 +1736,13 @@ export interface MultiKeyStatusResponse {
 
 export interface NotifyEventData {
   cheapest_group?: string;
+  /** @nullable */
   cheapest_ratio?: number | null;
   free: boolean;
   model: string;
+  /** @nullable */
   online?: boolean | null;
+  /** @nullable */
   prev_cheapest_ratio?: number | null;
 }
 
@@ -1900,12 +1929,6 @@ export interface OptionUpdateRequest {
   value: unknown;
 }
 
-export interface OverwriteField {
-  /** @nullable */
-  fields: string[] | null;
-  model_name: string;
-}
-
 export interface PartnerGrantData {
   balance_after: number;
   granted: number;
@@ -1957,40 +1980,60 @@ export interface PasswordResetRequest {
 }
 
 export interface PatchChannel {
+  /** @nullable */
   auto_ban: number | null;
   balance: number;
   balance_updated_time: number;
+  /** @nullable */
   base_url: string | null;
   channel_info: ChannelInfo;
   created_time: number;
   group: string;
+  /** @nullable */
   header_override: string | null;
   id: number;
   key: string;
+  /** @nullable */
   key_mode: string | null;
+  /** @nullable */
   model_mapping: string | null;
   models: string;
+  /** @nullable */
   multi_key_mode: string | null;
   name: string;
+  /** @nullable */
   openai_organization: string | null;
   other: string;
   other_info: string;
+  /** @nullable */
   param_override: string | null;
+  /** @nullable */
   priority: number | null;
-  /** @maxLength 1024 */
+  /**
+   * @maxLength 1024
+   * @nullable
+   */
   remark: string | null;
   response_time: number;
+  /** @nullable */
   setting: string | null;
   settings: string;
   status: number;
+  /** @nullable */
   status_code_mapping: string | null;
+  /** @nullable */
   tag: string | null;
+  /** @nullable */
   test_model: string | null;
   test_time: number;
   type: number;
   used_quota: number;
-  /** @minimum 0 */
+  /**
+   * @minimum 0
+   * @nullable
+   */
   weight: number | null;
+  /** @nullable */
   workflow_templates: string | null;
 }
 
@@ -2081,6 +2124,7 @@ export type PricingCatalogDataSupportedEndpoint =
   PricingCatalogDataSupportedEndpointAnyOf | null;
 
 export interface PricingCatalogModel {
+  /** @nullable */
   avg_latency_ms?: number | null;
   chat: boolean;
   description?: string;
@@ -2092,15 +2136,20 @@ export interface PricingCatalogModel {
   metadata?: ModelMetadata;
   model_name: string;
   online: boolean;
+  /** @nullable */
   original_fixed_price?: number | null;
+  /** @nullable */
   original_input_price?: number | null;
+  /** @nullable */
   original_output_price?: number | null;
   output_price: number;
   release_ts: number;
+  /** @nullable */
   success_rate?: number | null;
   supported_endpoint_types: string[];
   tags: string[];
   type: string;
+  /** @nullable */
   uptime_24h?: number | null;
   vendor: string;
   vendor_id: number;
@@ -2127,6 +2176,10 @@ export interface PricingCatalogData {
 
 export type PricingCatalogDetailGridPricingItem = { [key: string]: unknown };
 
+export type PricingCatalogDetailGroupProviders = {
+  [key: string]: GroupDataPolicy;
+};
+
 export type PricingCatalogDetailGroupRatio = { [key: string]: number };
 
 /**
@@ -2134,11 +2187,14 @@ export type PricingCatalogDetailGroupRatio = { [key: string]: number };
  */
 export interface PricingCatalogDetail {
   auto_chain: string[];
+  /** @nullable */
   avg_latency_ms?: number | null;
   billing_expr?: string;
+  /** @nullable */
   cache_ratio?: number | null;
   chat: boolean;
   completion_ratio: number;
+  /** @nullable */
   create_cache_ratio?: number | null;
   created_time?: number;
   description?: string;
@@ -2147,6 +2203,7 @@ export interface PricingCatalogDetail {
   grid_min_ratio: number;
   /** @nullable */
   grid_pricing?: PricingCatalogDetailGridPricingItem[] | null;
+  group_providers: PricingCatalogDetailGroupProviders;
   group_ratio: PricingCatalogDetailGroupRatio;
   icon?: string;
   input_price: number;
@@ -2157,15 +2214,20 @@ export interface PricingCatalogDetail {
   model_name: string;
   model_ratio: number;
   online: boolean;
+  /** @nullable */
   original_fixed_price?: number | null;
+  /** @nullable */
   original_input_price?: number | null;
+  /** @nullable */
   original_output_price?: number | null;
   output_price: number;
   release_ts: number;
+  /** @nullable */
   success_rate?: number | null;
   supported_endpoint_types: string[];
   tags: string[];
   type: string;
+  /** @nullable */
   uptime_24h?: number | null;
   vendor: string;
   vendor_id: number;
@@ -2194,18 +2256,23 @@ export type PricingDataUsableGroupAnyOf = { [key: string]: string };
 export type PricingDataUsableGroup = PricingDataUsableGroupAnyOf | null;
 
 export interface PricingModel {
+  /** @nullable */
   audio_completion_ratio?: number | null;
+  /** @nullable */
   audio_ratio?: number | null;
   billing_expr?: string;
   billing_mode?: string;
+  /** @nullable */
   cache_ratio?: number | null;
   completion_ratio: number;
+  /** @nullable */
   create_cache_ratio?: number | null;
   created_time?: number;
   description?: string;
   enable_groups: string[];
   grid_pricing?: unknown;
   icon?: string;
+  /** @nullable */
   image_ratio?: number | null;
   is_free: boolean;
   metadata: string;
@@ -2239,6 +2306,10 @@ export interface PricingData {
   vendors: PricingVendor[];
 }
 
+export type PricingModelGroupsDataGroupProviders = {
+  [key: string]: GroupDataPolicy;
+};
+
 export type PricingModelGroupsDataGroupRatio = { [key: string]: number };
 
 /**
@@ -2247,6 +2318,7 @@ export type PricingModelGroupsDataGroupRatio = { [key: string]: number };
 export interface PricingModelGroupsData {
   auto_chain: string[];
   enable_groups: string[];
+  group_providers: PricingModelGroupsDataGroupProviders;
   group_ratio: PricingModelGroupsDataGroupRatio;
 }
 
@@ -2267,11 +2339,22 @@ export interface PricingVendorsData {
   vendor_names: string[];
 }
 
+export interface Summary {
+  avg_latency_ms: number;
+  avg_tps: number;
+  success_rate: number;
+}
+
 export interface QueryResult {
   /** @nullable */
   groups: GroupResult[] | null;
   model_name: string;
+  /** @nullable */
+  series: BucketPoint[] | null;
   series_schema: string;
+  summary: Summary;
+  window_end: number;
+  window_start: number;
 }
 
 export interface QuotaData {
@@ -2301,6 +2384,7 @@ export interface RankedModel {
   category: string;
   growth_pct: number;
   model_name: string;
+  /** @nullable */
   previous_rank?: number | null;
   rank: number;
   share: number;
@@ -2395,11 +2479,20 @@ export interface RefreshCodexData {
   last_refresh: string;
 }
 
+export type RegisterRequestCustomerType =
+  (typeof RegisterRequestCustomerType)[keyof typeof RegisterRequestCustomerType];
+
+export const RegisterRequestCustomerType = {
+  consumer: "consumer",
+  business: "business",
+} as const;
+
 /**
  * RegisterRequest schema
  */
 export interface RegisterRequest {
   aff_code?: string;
+  customer_type?: RegisterRequestCustomerType;
   /** @maxLength 50 */
   email?: string;
   /**
@@ -2455,6 +2548,16 @@ export interface ResponseArrayControllerComponentDTO {
 export interface ResponseArrayControllerEventDTO {
   /** @nullable */
   data: EventDTO[] | null;
+  message: string;
+  success: boolean;
+}
+
+/**
+ * Response_Array-controller.LanePromptCapacityRow schema
+ */
+export interface ResponseArrayControllerLanePromptCapacityRow {
+  /** @nullable */
+  data: LanePromptCapacityRow[] | null;
   message: string;
   success: boolean;
 }
@@ -2688,15 +2791,6 @@ export interface ResponseControllerGetAllChannelsData {
 }
 
 /**
- * Response_controller.ModelsMetaListData schema
- */
-export interface ResponseControllerModelsMetaListData {
-  data: ModelsMetaListData;
-  message: string;
-  success: boolean;
-}
-
-/**
  * Response_controller.PatchChannel schema
  */
 export interface ResponseControllerPatchChannel {
@@ -2747,6 +2841,7 @@ export interface ResponseControllerSubscriptionSelfData {
 
 export interface TokenResponse {
   accessed_time: number;
+  /** @nullable */
   allow_ips: string | null;
   /** @nullable */
   auto_groups: string[] | null;
@@ -3119,6 +3214,15 @@ export interface ResponseDtoManageUserData {
 }
 
 /**
+ * Response_dto.MessageResponse schema
+ */
+export interface ResponseDtoMessageResponse {
+  data: MessageResponse;
+  message: string;
+  success: boolean;
+}
+
+/**
  * Response_dto.MultiKeyStatusResponse schema
  */
 export interface ResponseDtoMultiKeyStatusResponse {
@@ -3171,8 +3275,44 @@ export interface ResponseDtoPageDataControllerTokenResponse {
   success: boolean;
 }
 
+export interface TaskPluginAuthorInfo {
+  name: string;
+  url?: string;
+}
+
+export interface TaskPluginInfo {
+  author?: TaskPluginAuthorInfo;
+  key: string;
+  name: string;
+  version?: string;
+}
+
+export interface TaskAdminInfo {
+  request_id?: string;
+  request_path?: string;
+  task_plugin?: TaskPluginInfo;
+}
+
+export interface TaskPluginRuntimeInfo {
+  api_version: number;
+  /**
+   * @minimum 0
+   * @maximum 18446744073709552000
+   */
+  generation: number;
+  key: string;
+  version: string;
+}
+
+export interface TaskRootInfo {
+  node_name?: string;
+  task_plugin?: TaskPluginRuntimeInfo;
+  upstream_task_id?: string;
+}
+
 export interface TaskDto {
   action: string;
+  admin_info?: TaskAdminInfo;
   channel_id: number;
   created_at: number;
   /** @nullable */
@@ -3181,13 +3321,16 @@ export interface TaskDto {
   finish_time: number;
   group: string;
   id: number;
+  legacy_video_available?: boolean;
   platform: string;
   progress: string;
   properties: unknown;
   quota: number;
+  result_discarded?: boolean;
   result_url?: string;
   /** @nullable */
   result_urls?: string[] | null;
+  root_info?: TaskRootInfo;
   start_time: number;
   status: string;
   submit_time: number;
@@ -3399,13 +3542,15 @@ export interface User {
   aff_quota: number;
   created_at: number;
   creem_customer: string;
+  customer_type: string;
+  customer_type_at: number;
   discord_id: string;
-  google_id: string;
   /** @maxLength 20 */
   display_name: string;
   /** @maxLength 50 */
   email: string;
   github_id: string;
+  google_id: string;
   group: string;
   id: number;
   inviter_id: number;
@@ -3415,10 +3560,11 @@ export interface User {
   original_password: string;
   /**
    * @minLength 8
-   * @maxLength 20
+   * @maxLength 128
    */
   password: string;
   quota: number;
+  /** @nullable */
   referral_commission_percent: number | null;
   register_ip?: string;
   /** @maxLength 255 */
@@ -3429,6 +3575,7 @@ export interface User {
   status: number;
   stripe_customer: string;
   telegram_id: string;
+  /** @nullable */
   topup_bonus_percent: number | null;
   used_quota: number;
   /** @maxLength 20 */
@@ -3450,33 +3597,6 @@ export type ResponseDtoPageDataModelUserData = {
  */
 export interface ResponseDtoPageDataModelUser {
   data: ResponseDtoPageDataModelUserData;
-  message: string;
-  success: boolean;
-}
-
-export interface Vendor {
-  created_time: number;
-  description?: string;
-  icon?: string;
-  id: number;
-  name: string;
-  status: number;
-  updated_time: number;
-}
-
-export type ResponseDtoPageDataModelVendorData = {
-  /** @nullable */
-  items: Vendor[] | null;
-  page: number;
-  page_size: number;
-  total: number;
-};
-
-/**
- * Response_dto.PageData-model.Vendor schema
- */
-export interface ResponseDtoPageDataModelVendor {
-  data: ResponseDtoPageDataModelVendorData;
   message: string;
   success: boolean;
 }
@@ -3544,22 +3664,6 @@ export interface ResponseDtoRefreshCodexData {
   success: boolean;
 }
 
-export interface Setup2FAResponse {
-  /** @nullable */
-  backup_codes: string[] | null;
-  qr_code_data: string;
-  secret: string;
-}
-
-/**
- * Response_dto.Setup2FAResponse schema
- */
-export interface ResponseDtoSetup2FAResponse {
-  data: Setup2FAResponse;
-  message: string;
-  success: boolean;
-}
-
 export interface SetupData {
   database_type: string;
   root_init: boolean;
@@ -3601,8 +3705,6 @@ export interface StatusData {
   demo_site_enabled: boolean;
   discord_client_id: string;
   discord_oauth: boolean;
-  google_client_id: string;
-  google_oauth: boolean;
   display_in_currency: boolean;
   docs_link: string;
   email_verification: boolean;
@@ -3616,6 +3718,8 @@ export interface StatusData {
   footer_html: string;
   github_client_id: string;
   github_oauth: boolean;
+  google_client_id: string;
+  google_oauth: boolean;
   linuxdo_client_id: string;
   linuxdo_minimum_trust_level: number;
   linuxdo_oauth: boolean;
@@ -3629,10 +3733,12 @@ export interface StatusData {
   passkey_attachment: string;
   passkey_display_name: string;
   passkey_login: boolean;
-  passkey_origins: string;
   passkey_rp_id: string;
+  /** @nullable */
+  passkey_rp_ids: string[] | null;
   passkey_user_verification: string;
   password_login_enabled: boolean;
+  password_login_encryption_enabled: boolean;
   password_register_enabled: boolean;
   price: number;
   privacy_policy_enabled: boolean;
@@ -3648,6 +3754,7 @@ export interface StatusData {
   system_name: string;
   telegram_bot_name: string;
   telegram_oauth: boolean;
+  telegram_oauth_configured: boolean;
   theme: string;
   top_up_link: string;
   turnstile_check: boolean;
@@ -3692,51 +3799,6 @@ export interface SubscriptionActionData {
  */
 export interface ResponseDtoSubscriptionActionData {
   data: SubscriptionActionData;
-  message: string;
-  success: boolean;
-}
-
-export interface SyncSource {
-  locale: string;
-  models_url: string;
-  vendors_url: string;
-}
-
-export interface SyncPreviewResult {
-  /** @nullable */
-  conflicts: ConflictItem[] | null;
-  /** @nullable */
-  missing: string[] | null;
-  source: SyncSource;
-}
-
-/**
- * Response_dto.SyncPreviewResult schema
- */
-export interface ResponseDtoSyncPreviewResult {
-  data: SyncPreviewResult;
-  message: string;
-  success: boolean;
-}
-
-export interface SyncUpstreamResult {
-  /** @nullable */
-  created_list: string[] | null;
-  created_models: number;
-  created_vendors: number;
-  /** @nullable */
-  skipped_models: string[] | null;
-  source: SyncSource;
-  /** @nullable */
-  updated_list: string[] | null;
-  updated_models: number;
-}
-
-/**
- * Response_dto.SyncUpstreamResult schema
- */
-export interface ResponseDtoSyncUpstreamResult {
-  data: SyncUpstreamResult;
   message: string;
   success: boolean;
 }
@@ -3895,21 +3957,6 @@ export interface ResponseDtoTransferDiscordQuotaData {
   success: boolean;
 }
 
-export interface TwoFAStatusData {
-  backup_codes_remaining?: number;
-  enabled: boolean;
-  locked: boolean;
-}
-
-/**
- * Response_dto.TwoFAStatusData schema
- */
-export interface ResponseDtoTwoFAStatusData {
-  data: TwoFAStatusData;
-  message: string;
-  success: boolean;
-}
-
 export interface UpdateNameResponse {
   id: string;
   message: string;
@@ -3929,6 +3976,7 @@ export interface ResponseDtoUpdateNameResponse {
 export interface UserBotViewData {
   quota: number;
   setting: string;
+  username: string;
 }
 
 /**
@@ -3949,11 +3997,13 @@ export interface UserSelfData {
   aff_count: number;
   aff_history_quota: number;
   aff_quota: number;
+  customer_type: string;
+  customer_type_at: number;
   discord_id: string;
-  google_id: string;
   display_name: string;
   email: string;
   github_id: string;
+  google_id: string;
   group: string;
   has_password: boolean;
   id: number;
@@ -4054,8 +4104,12 @@ export interface ResponseMapIntArrayString {
 
 export interface UserGroupInfo {
   desc: string;
-  online?: boolean;
+  online: boolean;
+  prompts?: string;
   ratio: unknown;
+  seat_country?: string;
+  transfer?: string;
+  unsafe_third_country: boolean;
 }
 
 export type ResponseMapStringDtoUserGroupInfoDataAnyOf = {
@@ -4101,15 +4155,6 @@ export interface ResponseMapStringString {
  */
 export interface ResponseModelChannel {
   data: Channel;
-  message: string;
-  success: boolean;
-}
-
-/**
- * Response_model.Model schema
- */
-export interface ResponseModelModel {
-  data: Model;
   message: string;
   success: boolean;
 }
@@ -4167,35 +4212,11 @@ export interface ResponseModelSubscriptionResetResult {
   success: boolean;
 }
 
-export interface TwoFAStats {
-  enabled_rate: string;
-  enabled_users: number;
-  total_users: number;
-}
-
-/**
- * Response_model.TwoFAStats schema
- */
-export interface ResponseModelTwoFAStats {
-  data: TwoFAStats;
-  message: string;
-  success: boolean;
-}
-
 /**
  * Response_model.User schema
  */
 export interface ResponseModelUser {
   data: User;
-  message: string;
-  success: boolean;
-}
-
-/**
- * Response_model.Vendor schema
- */
-export interface ResponseModelVendor {
-  data: Vendor;
   message: string;
   success: boolean;
 }
@@ -4209,9 +4230,24 @@ export interface ResponsePerfMetricsQueryResult {
   success: boolean;
 }
 
+export type SummaryAllResultRecentSuccessSeriesAnyOf = {
+  [key: string]: SuccessRatePoint[];
+};
+
+/**
+ * @nullable
+ */
+export type SummaryAllResultRecentSuccessSeries =
+  SummaryAllResultRecentSuccessSeriesAnyOf | null;
+
 export interface SummaryAllResult {
   /** @nullable */
   models: ModelSummary[] | null;
+  /** @nullable */
+  recent_success_series?: SummaryAllResultRecentSuccessSeries;
+  summary: Summary;
+  window_end: number;
+  window_start: number;
 }
 
 /**
@@ -4219,15 +4255,6 @@ export interface SummaryAllResult {
  */
 export interface ResponsePerfMetricsSummaryAllResult {
   data: SummaryAllResult;
-  message: string;
-  success: boolean;
-}
-
-/**
- * Response_ratio_setting.ExposedRatioData schema
- */
-export interface ResponseRatioSettingExposedRatioData {
-  data: ExposedRatioData;
   message: string;
   success: boolean;
 }
@@ -4292,13 +4319,6 @@ export interface ResponsesAPIResponse {
 }
 
 /**
- * Setup2FARequest schema
- */
-export interface Setup2FARequest {
-  code: string;
-}
-
-/**
  * SetupRequest schema
  */
 export interface SetupRequest {
@@ -4360,15 +4380,6 @@ export interface SubscriptionNowPaymentsPayRequest {
  */
 export interface SubscriptionStripePayRequest {
   plan_id: number;
-}
-
-/**
- * SyncRequest schema
- */
-export interface SyncRequest {
-  locale: string;
-  /** @nullable */
-  overwrite: OverwriteField[] | null;
 }
 
 /**
@@ -4440,15 +4451,20 @@ export interface TransferDiscordQuotaRequest {
  * UpdateCustomOAuthProviderRequest schema
  */
 export interface UpdateCustomOAuthProviderRequest {
+  /** @nullable */
   access_denied_message: string | null;
+  /** @nullable */
   access_policy: string | null;
+  /** @nullable */
   auth_style: number | null;
   authorization_endpoint: string;
   client_id: string;
   client_secret: string;
   display_name_field: string;
   email_field: string;
+  /** @nullable */
   enabled: boolean | null;
+  /** @nullable */
   icon: string | null;
   name: string;
   scopes: string;
@@ -4457,6 +4473,7 @@ export interface UpdateCustomOAuthProviderRequest {
   user_id_field: string;
   user_info_endpoint: string;
   username_field: string;
+  /** @nullable */
   well_known: string | null;
 }
 
@@ -4503,6 +4520,7 @@ export interface UpdateDeploymentRequest {
   registry_username?: string;
   /** @nullable */
   secret_env_variables?: UpdateDeploymentRequestSecretEnvVariables;
+  /** @nullable */
   traffic_port?: number | null;
 }
 
@@ -4510,12 +4528,16 @@ export interface UpdateDeploymentRequest {
  * UpdateTokenRequest schema
  */
 export interface UpdateTokenRequest {
+  /** @nullable */
   allow_ips: string | null;
+  /** @nullable */
   auto_groups: string[] | null;
-  cross_group_retry: boolean;
+  /** @nullable */
+  cross_group_retry: boolean | null;
   expired_time: number;
   group: string;
-  group_mapping: string;
+  /** @nullable */
+  group_mapping: string | null;
   id: number;
   model_limits: string;
   model_limits_enabled: boolean;
@@ -4539,6 +4561,7 @@ export interface UpdateUserSettingRequest {
   quota_warning_enabled: boolean;
   quota_warning_threshold: number;
   record_ip_log: boolean;
+  /** @nullable */
   upstream_model_update_notify_enabled?: boolean | null;
   webhook_secret?: string;
   webhook_url?: string;
@@ -4581,11 +4604,15 @@ export interface CodexOAuthCompleteRequest {
  * fetchModelsRequest schema
  */
 export interface FetchModelsRequest {
+  /** @nullable */
   advanced_custom: string | null;
+  /** @nullable */
   base_url: string | null;
   channel_id: number;
+  /** @nullable */
   header_override: string | null;
   key: string;
+  /** @nullable */
   proxy: string | null;
   type: number;
 }
@@ -4687,6 +4714,13 @@ export type GetChannelDiagnosticsParams = {
    * Sort direction: asc|desc (default desc)
    */
   sort_order?: string;
+};
+
+export type GetLanePromptCapacityParams = {
+  /**
+   * Model whose lanes to report (required)
+   */
+  model_name?: string;
 };
 
 export type GetChannelDiagnosticStatsParams = {
@@ -5121,13 +5155,6 @@ export type GetModelStatusPageCompactParams = {
   compact?: number;
 };
 
-export type UpdateModelMetaParams = {
-  /**
-   * Only update status
-   */
-  status_only?: string;
-};
-
 export type GetAllModelsMetaParams = {
   /**
    * Page number (1-based)
@@ -5148,29 +5175,6 @@ export type SearchModelsMetaParams = {
    * Items per page
    */
   page_size?: number;
-  /**
-   * Search keyword
-   */
-  keyword?: string;
-  /**
-   * Filter by vendor
-   */
-  vendor?: string;
-  /**
-   * Filter by status
-   */
-  status?: string;
-  /**
-   * Filter by sync official flag
-   */
-  sync_official?: string;
-};
-
-export type SyncUpstreamPreviewParams = {
-  /**
-   * Locale for model descriptions
-   */
-  locale?: string;
 };
 
 export type GetNotifyEventsParams = {
@@ -5184,6 +5188,13 @@ export type GetNotifyEventsParams = {
   topics?: string;
 };
 
+export type GetRoomHistoryParams = {
+  /**
+   * Room id from the invite link
+   */
+  room?: string;
+};
+
 export type EmailBindParams = {
   /**
    * Email address
@@ -5195,7 +5206,11 @@ export type EmailBindParams = {
   code?: string;
 };
 
-export type GenerateOAuthCodeParams = {
+export type GenerateOAuthCodeQueryParams = {
+  /**
+   * Cloudflare Turnstile verification token
+   */
+  turnstile?: string;
   /**
    * OAuth provider name
    */
@@ -5217,19 +5232,19 @@ export type GenerateOAuthCodeParams = {
    */
   action?: string;
   /**
-   * Cloudflare Turnstile token, required for anonymous callers when Turnstile is enabled
+   * Declared customer type for an account created by this login: consumer or business
+   */
+  customer_type?: string;
+};
+
+export type GenerateOAuthCodeParams = {
+  /**
+   * Cloudflare Turnstile verification token
    */
   turnstile?: string;
 };
 
 export type WeChatAuthParams = {
-  /**
-   * WeChat auth code
-   */
-  code?: string;
-};
-
-export type WeChatBindParams = {
   /**
    * WeChat auth code
    */
@@ -5293,10 +5308,6 @@ export type GetPricingCatalogParams = {
    */
   full?: boolean;
   /**
-   * Also return models whose every lane is currently down, flagged online=false (the sitemap needs them; the picker does not)
-   */
-  include_offline?: boolean;
-  /**
    * Only models served by this vendor, newest first (the vendor page)
    */
   vendor?: string;
@@ -5308,6 +5319,10 @@ export type GetPricingCatalogParams = {
    * Only models of this modality (text, image, video, audio, embedding), newest first
    */
   type?: string;
+  /**
+   * Also return models whose every lane is currently down, flagged online=false (the sitemap needs them; the picker does not)
+   */
+  include_offline?: boolean;
 };
 
 export type GetPricingCatalogModelParams = {
@@ -5597,6 +5612,10 @@ export type SearchUsersParams = {
    */
   group?: string;
   /**
+   * Only users whose balance is below zero
+   */
+  negative_quota?: boolean;
+  /**
    * Field to sort by
    */
   sort_by?: string;
@@ -5656,10 +5675,6 @@ export type SearchVendorsParams = {
    * Items per page
    */
   page_size?: number;
-  /**
-   * Search keyword
-   */
-  keyword?: string;
 };
 
 export type SendEmailVerificationParams = {
@@ -5824,8 +5839,21 @@ export const addChannel = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<addChannelResponse>(getAddChannelUrl(), {
     ...options,
@@ -5872,8 +5900,21 @@ export const updateChannel = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateChannelResponse>(getUpdateChannelUrl(), {
     ...options,
@@ -5920,8 +5961,21 @@ export const deleteChannelBatch = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<deleteChannelBatchResponse>(getDeleteChannelBatchUrl(), {
     ...options,
@@ -5968,8 +6022,21 @@ export const batchSetChannelTag = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<batchSetChannelTagResponse>(getBatchSetChannelTagUrl(), {
     ...options,
@@ -6016,8 +6083,21 @@ export const completeCodexOAuth = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<completeCodexOAuthResponse>(getCompleteCodexOAuthUrl(), {
     ...options,
@@ -6217,6 +6297,59 @@ export const getChannelDiagnostics = async (
   );
 };
 
+export type getLanePromptCapacityResponse200ApplicationJson = {
+  data: ResponseArrayControllerLanePromptCapacityRow;
+  status: 200;
+};
+
+export type getLanePromptCapacityResponse200ApplicationXml = {
+  data: ResponseArrayControllerLanePromptCapacityRow;
+  status: 200;
+};
+
+export type getLanePromptCapacityResponseSuccess = (
+  | getLanePromptCapacityResponse200ApplicationJson
+  | getLanePromptCapacityResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getLanePromptCapacityResponse =
+  getLanePromptCapacityResponseSuccess;
+
+export const getGetLanePromptCapacityUrl = (
+  params?: GetLanePromptCapacityParams,
+) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : String(value));
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/channel/diagnostics/prompt_capacity?${stringifiedParams}`
+    : `/api/channel/diagnostics/prompt_capacity`;
+};
+
+/**
+ * @summary Get Lane Prompt Capacity
+ */
+export const getLanePromptCapacity = async (
+  params?: GetLanePromptCapacityParams,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getLanePromptCapacityResponse> => {
+  return customFetch<getLanePromptCapacityResponse>(
+    getGetLanePromptCapacityUrl(params),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
 export type getChannelDiagnosticStatsResponse200ApplicationJson = {
   data: ResponseArrayModelChannelDiagnosticStatRow;
   status: 200;
@@ -6341,8 +6474,21 @@ export const fetchModels = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<fetchModelsResponse>(getFetchModelsUrl(), {
     ...options,
@@ -6532,8 +6678,21 @@ export const manageMultiKeys = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<manageMultiKeysResponse>(getManageMultiKeysUrl(), {
     ...options,
@@ -6580,8 +6739,21 @@ export const ollamaDeleteModel = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<ollamaDeleteModelResponse>(getOllamaDeleteModelUrl(), {
     ...options,
@@ -6628,8 +6800,21 @@ export const ollamaPullModel = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<ollamaPullModelResponse>(getOllamaPullModelUrl(), {
     ...options,
@@ -6868,8 +7053,21 @@ export const editTagChannels = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<editTagChannelsResponse>(getEditTagChannelsUrl(), {
     ...options,
@@ -6916,8 +7114,21 @@ export const disableTagChannels = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<disableTagChannelsResponse>(getDisableTagChannelsUrl(), {
     ...options,
@@ -6964,8 +7175,21 @@ export const enableTagChannels = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<enableTagChannelsResponse>(getEnableTagChannelsUrl(), {
     ...options,
@@ -7438,8 +7662,21 @@ export const completeCodexOAuthForChannel = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<completeCodexOAuthForChannelResponse>(
     getCompleteCodexOAuthForChannelUrl(id),
@@ -7564,6 +7801,84 @@ export const getCodexChannelUsage = async (
 ): Promise<getCodexChannelUsageResponse> => {
   return customFetch<getCodexChannelUsageResponse>(
     getGetCodexChannelUsageUrl(id),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export type resetCodexChannelUsageResponse200ApplicationJson = {
+  data: CodexUsageData;
+  status: 200;
+};
+
+export type resetCodexChannelUsageResponse200ApplicationXml = {
+  data: CodexUsageData;
+  status: 200;
+};
+
+export type resetCodexChannelUsageResponseSuccess = (
+  | resetCodexChannelUsageResponse200ApplicationJson
+  | resetCodexChannelUsageResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type resetCodexChannelUsageResponse =
+  resetCodexChannelUsageResponseSuccess;
+
+export const getResetCodexChannelUsageUrl = (id: string) => {
+  return `/api/channel/${id}/codex/usage/reset`;
+};
+
+/**
+ * @summary Reset Codex Channel Usage
+ */
+export const resetCodexChannelUsage = async (
+  id: string,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<resetCodexChannelUsageResponse> => {
+  return customFetch<resetCodexChannelUsageResponse>(
+    getResetCodexChannelUsageUrl(id),
+    {
+      ...options,
+      method: "POST",
+    },
+  );
+};
+
+export type getCodexChannelRateLimitResetCreditsResponse200ApplicationJson = {
+  data: CodexUsageData;
+  status: 200;
+};
+
+export type getCodexChannelRateLimitResetCreditsResponse200ApplicationXml = {
+  data: CodexUsageData;
+  status: 200;
+};
+
+export type getCodexChannelRateLimitResetCreditsResponseSuccess = (
+  | getCodexChannelRateLimitResetCreditsResponse200ApplicationJson
+  | getCodexChannelRateLimitResetCreditsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getCodexChannelRateLimitResetCreditsResponse =
+  getCodexChannelRateLimitResetCreditsResponseSuccess;
+
+export const getGetCodexChannelRateLimitResetCreditsUrl = (id: string) => {
+  return `/api/channel/${id}/codex/usage/reset-credits`;
+};
+
+/**
+ * @summary Get Codex Channel Rate Limit Reset Credits
+ */
+export const getCodexChannelRateLimitResetCredits = async (
+  id: string,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getCodexChannelRateLimitResetCreditsResponse> => {
+  return customFetch<getCodexChannelRateLimitResetCreditsResponse>(
+    getGetCodexChannelRateLimitResetCreditsUrl(id),
     {
       ...options,
       method: "GET",
@@ -7712,8 +8027,21 @@ export const createCustomOAuthProvider = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<createCustomOAuthProviderResponse>(
     getCreateCustomOAuthProviderUrl(),
@@ -7764,8 +8092,21 @@ export const fetchCustomOAuthDiscovery = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<fetchCustomOAuthDiscoveryResponse>(
     getFetchCustomOAuthDiscoveryUrl(),
@@ -7895,8 +8236,21 @@ export const updateCustomOAuthProvider = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateCustomOAuthProviderResponse>(
     getUpdateCustomOAuthProviderUrl(id),
@@ -8282,8 +8636,21 @@ export const createDeployment = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<createDeploymentResponse>(getCreateDeploymentUrl(), {
     ...options,
@@ -8502,8 +8869,21 @@ export const getPriceEstimation = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<getPriceEstimationResponse>(getGetPriceEstimationUrl(), {
     ...options,
@@ -8638,8 +9018,21 @@ export const testIoNetConnection = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<testIoNetConnectionResponse>(getTestIoNetConnectionUrl(), {
     ...options,
@@ -8687,8 +9080,21 @@ export const postApiDeploymentsTestConnection = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<postApiDeploymentsTestConnectionResponse>(
     getPostApiDeploymentsTestConnectionUrl(),
@@ -8809,8 +9215,21 @@ export const updateDeployment = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateDeploymentResponse>(getUpdateDeploymentUrl(id), {
     ...options,
@@ -8936,8 +9355,21 @@ export const extendDeployment = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<extendDeploymentResponse>(getExtendDeploymentUrl(id), {
     ...options,
@@ -9039,8 +9471,21 @@ export const updateDeploymentName = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateDeploymentNameResponse>(
     getUpdateDeploymentNameUrl(id),
@@ -9922,12 +10367,12 @@ export const dashboardListModels = async (
 };
 
 export type createModelMetaResponse200ApplicationJson = {
-  data: ResponseModelModel;
+  data: ApiResponse;
   status: 200;
 };
 
 export type createModelMetaResponse200ApplicationXml = {
-  data: ResponseModelModel;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -9947,35 +10392,21 @@ export const getCreateModelMetaUrl = () => {
  * @summary Create Model Meta
  */
 export const createModelMeta = async (
-  model: Model,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<createModelMetaResponse> => {
-  const getHeaders = (
-    h?: NonNullable<RequestInit["headers"]>,
-  ): Record<string, string | readonly string[]> => {
-    if (!h) return {};
-    if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
-  };
   return customFetch<createModelMetaResponse>(getCreateModelMetaUrl(), {
     ...options,
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...getHeaders(options?.headers),
-    },
-    body: JSON.stringify(model),
   });
 };
 
 export type updateModelMetaResponse200ApplicationJson = {
-  data: ResponseModelModel;
+  data: ApiResponse;
   status: 200;
 };
 
 export type updateModelMetaResponse200ApplicationXml = {
-  data: ResponseModelModel;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -9987,56 +10418,66 @@ export type updateModelMetaResponseSuccess = (
 };
 export type updateModelMetaResponse = updateModelMetaResponseSuccess;
 
-export const getUpdateModelMetaUrl = (params?: UpdateModelMetaParams) => {
-  const normalizedParams = new URLSearchParams();
-
-  Object.entries(params || {}).forEach(([key, value]) => {
-    if (value !== undefined) {
-      normalizedParams.append(key, value === null ? "null" : String(value));
-    }
-  });
-
-  const stringifiedParams = normalizedParams.toString();
-
-  return stringifiedParams.length > 0
-    ? `/api/models/?${stringifiedParams}`
-    : `/api/models/`;
+export const getUpdateModelMetaUrl = () => {
+  return `/api/models/`;
 };
 
 /**
  * @summary Update Model Meta
  */
 export const updateModelMeta = async (
-  model: Model,
-  params?: UpdateModelMetaParams,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<updateModelMetaResponse> => {
-  const getHeaders = (
-    h?: NonNullable<RequestInit["headers"]>,
-  ): Record<string, string | readonly string[]> => {
-    if (!h) return {};
-    if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
-  };
-  return customFetch<updateModelMetaResponse>(getUpdateModelMetaUrl(params), {
+  return customFetch<updateModelMetaResponse>(getUpdateModelMetaUrl(), {
     ...options,
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      ...getHeaders(options?.headers),
-    },
-    body: JSON.stringify(model),
   });
 };
 
+export type batchDeleteModelMetaResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type batchDeleteModelMetaResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type batchDeleteModelMetaResponseSuccess = (
+  | batchDeleteModelMetaResponse200ApplicationJson
+  | batchDeleteModelMetaResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type batchDeleteModelMetaResponse = batchDeleteModelMetaResponseSuccess;
+
+export const getBatchDeleteModelMetaUrl = () => {
+  return `/api/models/delete`;
+};
+
+/**
+ * @summary Batch Delete Model Meta
+ */
+export const batchDeleteModelMeta = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<batchDeleteModelMetaResponse> => {
+  return customFetch<batchDeleteModelMetaResponse>(
+    getBatchDeleteModelMetaUrl(),
+    {
+      ...options,
+      method: "POST",
+    },
+  );
+};
+
 export type getAllModelsMetaResponse200ApplicationJson = {
-  data: ResponseControllerModelsMetaListData;
+  data: ApiResponse;
   status: 200;
 };
 
 export type getAllModelsMetaResponse200ApplicationXml = {
-  data: ResponseControllerModelsMetaListData;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -10112,12 +10553,12 @@ export const getMissingModels = async (
 };
 
 export type deleteOrphanedModelsResponse200ApplicationJson = {
-  data: ResponseDtoDeletedCountData;
+  data: ApiResponse;
   status: 200;
 };
 
 export type deleteOrphanedModelsResponse200ApplicationXml = {
-  data: ResponseDtoDeletedCountData;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -10149,12 +10590,12 @@ export const deleteOrphanedModels = async (
 };
 
 export type searchModelsMetaResponse200ApplicationJson = {
-  data: ResponseControllerModelsMetaListData;
+  data: ApiResponse;
   status: 200;
 };
 
 export type searchModelsMetaResponse200ApplicationXml = {
-  data: ResponseControllerModelsMetaListData;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -10196,12 +10637,12 @@ export const searchModelsMeta = async (
 };
 
 export type syncUpstreamModelsResponse200ApplicationJson = {
-  data: ResponseDtoSyncUpstreamResult;
+  data: ApiResponse;
   status: 200;
 };
 
 export type syncUpstreamModelsResponse200ApplicationXml = {
-  data: ResponseDtoSyncUpstreamResult;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -10221,35 +10662,21 @@ export const getSyncUpstreamModelsUrl = () => {
  * @summary Sync Upstream Models
  */
 export const syncUpstreamModels = async (
-  syncRequest: SyncRequest,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<syncUpstreamModelsResponse> => {
-  const getHeaders = (
-    h?: NonNullable<RequestInit["headers"]>,
-  ): Record<string, string | readonly string[]> => {
-    if (!h) return {};
-    if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
-  };
   return customFetch<syncUpstreamModelsResponse>(getSyncUpstreamModelsUrl(), {
     ...options,
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...getHeaders(options?.headers),
-    },
-    body: JSON.stringify(syncRequest),
   });
 };
 
 export type syncUpstreamPreviewResponse200ApplicationJson = {
-  data: ResponseDtoSyncPreviewResult;
+  data: ApiResponse;
   status: 200;
 };
 
 export type syncUpstreamPreviewResponse200ApplicationXml = {
-  data: ResponseDtoSyncPreviewResult;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -10261,47 +10688,29 @@ export type syncUpstreamPreviewResponseSuccess = (
 };
 export type syncUpstreamPreviewResponse = syncUpstreamPreviewResponseSuccess;
 
-export const getSyncUpstreamPreviewUrl = (
-  params?: SyncUpstreamPreviewParams,
-) => {
-  const normalizedParams = new URLSearchParams();
-
-  Object.entries(params || {}).forEach(([key, value]) => {
-    if (value !== undefined) {
-      normalizedParams.append(key, value === null ? "null" : String(value));
-    }
-  });
-
-  const stringifiedParams = normalizedParams.toString();
-
-  return stringifiedParams.length > 0
-    ? `/api/models/sync_upstream/preview?${stringifiedParams}`
-    : `/api/models/sync_upstream/preview`;
+export const getSyncUpstreamPreviewUrl = () => {
+  return `/api/models/sync_upstream/preview`;
 };
 
 /**
  * @summary Sync Upstream Preview
  */
 export const syncUpstreamPreview = async (
-  params?: SyncUpstreamPreviewParams,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<syncUpstreamPreviewResponse> => {
-  return customFetch<syncUpstreamPreviewResponse>(
-    getSyncUpstreamPreviewUrl(params),
-    {
-      ...options,
-      method: "GET",
-    },
-  );
+  return customFetch<syncUpstreamPreviewResponse>(getSyncUpstreamPreviewUrl(), {
+    ...options,
+    method: "GET",
+  });
 };
 
 export type deleteModelMetaResponse200ApplicationJson = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
 export type deleteModelMetaResponse200ApplicationXml = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -10331,12 +10740,12 @@ export const deleteModelMeta = async (
 };
 
 export type getModelMetaResponse200ApplicationJson = {
-  data: ResponseModelModel;
+  data: ApiResponse;
   status: 200;
 };
 
 export type getModelMetaResponse200ApplicationXml = {
-  data: ResponseModelModel;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -10444,6 +10853,53 @@ export const getNotifyEvents = async (
   });
 };
 
+export type getRoomHistoryResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getRoomHistoryResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getRoomHistoryResponseSuccess = (
+  | getRoomHistoryResponse200ApplicationJson
+  | getRoomHistoryResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getRoomHistoryResponse = getRoomHistoryResponseSuccess;
+
+export const getGetRoomHistoryUrl = (params?: GetRoomHistoryParams) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : String(value));
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/notify/room?${stringifiedParams}`
+    : `/api/notify/room`;
+};
+
+/**
+ * @summary Get Room History
+ */
+export const getRoomHistory = async (
+  params?: GetRoomHistoryParams,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getRoomHistoryResponse> => {
+  return customFetch<getRoomHistoryResponse>(getGetRoomHistoryUrl(params), {
+    ...options,
+    method: "GET",
+  });
+};
+
 export type unsubscribeNotifyPushResponse200ApplicationJson = {
   data: NotifyUnsubscribeResponse;
   status: 200;
@@ -10479,8 +10935,21 @@ export const unsubscribeNotifyPush = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<unsubscribeNotifyPushResponse>(
     getUnsubscribeNotifyPushUrl(),
@@ -10530,8 +10999,21 @@ export const subscribeNotifyPush = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<subscribeNotifyPushResponse>(getSubscribeNotifyPushUrl(), {
     ...options,
@@ -10658,6 +11140,108 @@ export const emailBind = async (
   });
 };
 
+export type emailBindVerifiedResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type emailBindVerifiedResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type emailBindVerifiedResponseSuccess = (
+  | emailBindVerifiedResponse200ApplicationJson
+  | emailBindVerifiedResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type emailBindVerifiedResponse = emailBindVerifiedResponseSuccess;
+
+export const getEmailBindVerifiedUrl = () => {
+  return `/api/oauth/email/bind`;
+};
+
+/**
+ * @summary Email Bind Verified
+ */
+export const emailBindVerified = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<emailBindVerifiedResponse> => {
+  return customFetch<emailBindVerifiedResponse>(getEmailBindVerifiedUrl(), {
+    ...options,
+    method: "POST",
+  });
+};
+
+export type emailBindResendResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type emailBindResendResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type emailBindResendResponseSuccess = (
+  | emailBindResendResponse200ApplicationJson
+  | emailBindResendResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type emailBindResendResponse = emailBindResendResponseSuccess;
+
+export const getEmailBindResendUrl = () => {
+  return `/api/oauth/email/bind/resend`;
+};
+
+/**
+ * @summary Email Bind Resend
+ */
+export const emailBindResend = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<emailBindResendResponse> => {
+  return customFetch<emailBindResendResponse>(getEmailBindResendUrl(), {
+    ...options,
+    method: "POST",
+  });
+};
+
+export type emailBindStartResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type emailBindStartResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type emailBindStartResponseSuccess = (
+  | emailBindStartResponse200ApplicationJson
+  | emailBindStartResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type emailBindStartResponse = emailBindStartResponseSuccess;
+
+export const getEmailBindStartUrl = () => {
+  return `/api/oauth/email/bind/start`;
+};
+
+/**
+ * @summary Email Bind Start
+ */
+export const emailBindStart = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<emailBindStartResponse> => {
+  return customFetch<emailBindStartResponse>(getEmailBindStartUrl(), {
+    ...options,
+    method: "POST",
+  });
+};
+
 export type exchangeOAuthCodeResponse200ApplicationJson = {
   data: ResponseDtoOAuthExchangeData;
   status: 200;
@@ -10692,8 +11276,21 @@ export const exchangeOAuthCode = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<exchangeOAuthCodeResponse>(getExchangeOAuthCodeUrl(), {
     ...options,
@@ -10706,13 +11303,66 @@ export const exchangeOAuthCode = async (
   });
 };
 
-export type generateOAuthCodeResponse200ApplicationJson = {
+export type generateOAuthCodeQueryResponse200ApplicationJson = {
   data: ResponseString;
   status: 200;
 };
 
-export type generateOAuthCodeResponse200ApplicationXml = {
+export type generateOAuthCodeQueryResponse200ApplicationXml = {
   data: ResponseString;
+  status: 200;
+};
+
+export type generateOAuthCodeQueryResponseSuccess = (
+  | generateOAuthCodeQueryResponse200ApplicationJson
+  | generateOAuthCodeQueryResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type generateOAuthCodeQueryResponse =
+  generateOAuthCodeQueryResponseSuccess;
+
+export const getGenerateOAuthCodeQueryUrl = (
+  params?: GenerateOAuthCodeQueryParams,
+) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : String(value));
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/oauth/state?${stringifiedParams}`
+    : `/api/oauth/state`;
+};
+
+/**
+ * @summary Generate O Auth Code Query
+ */
+export const generateOAuthCodeQuery = async (
+  params?: GenerateOAuthCodeQueryParams,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<generateOAuthCodeQueryResponse> => {
+  return customFetch<generateOAuthCodeQueryResponse>(
+    getGenerateOAuthCodeQueryUrl(params),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export type generateOAuthCodeResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type generateOAuthCodeResponse200ApplicationXml = {
+  data: ApiResponse;
   status: 200;
 };
 
@@ -10751,108 +11401,117 @@ export const generateOAuthCode = async (
     getGenerateOAuthCodeUrl(params),
     {
       ...options,
+      method: "POST",
+    },
+  );
+};
+
+export type postApiOauthTelegramBindStartResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type postApiOauthTelegramBindStartResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type postApiOauthTelegramBindStartResponseSuccess = (
+  | postApiOauthTelegramBindStartResponse200ApplicationJson
+  | postApiOauthTelegramBindStartResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type postApiOauthTelegramBindStartResponse =
+  postApiOauthTelegramBindStartResponseSuccess;
+
+export const getPostApiOauthTelegramBindStartUrl = () => {
+  return `/api/oauth/telegram/bind/start`;
+};
+
+/**
+ * @summary Post Api Oauth Telegram Bind Start
+ */
+export const postApiOauthTelegramBindStart = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<postApiOauthTelegramBindStartResponse> => {
+  return customFetch<postApiOauthTelegramBindStartResponse>(
+    getPostApiOauthTelegramBindStartUrl(),
+    {
+      ...options,
+      method: "POST",
+    },
+  );
+};
+
+export type getApiOauthTelegramBindFlowTokenResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getApiOauthTelegramBindFlowTokenResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getApiOauthTelegramBindFlowTokenResponseSuccess = (
+  | getApiOauthTelegramBindFlowTokenResponse200ApplicationJson
+  | getApiOauthTelegramBindFlowTokenResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getApiOauthTelegramBindFlowTokenResponse =
+  getApiOauthTelegramBindFlowTokenResponseSuccess;
+
+export const getGetApiOauthTelegramBindFlowTokenUrl = (flowToken: string) => {
+  return `/api/oauth/telegram/bind/${flowToken}`;
+};
+
+/**
+ * @summary Get Api Oauth Telegram Bind Flow_token
+ */
+export const getApiOauthTelegramBindFlowToken = async (
+  flowToken: string,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getApiOauthTelegramBindFlowTokenResponse> => {
+  return customFetch<getApiOauthTelegramBindFlowTokenResponse>(
+    getGetApiOauthTelegramBindFlowTokenUrl(flowToken),
+    {
+      ...options,
       method: "GET",
     },
   );
 };
 
-export type telegramBindStartResponse200ApplicationJson = {
+export type telegramLegacyAuthResponse200ApplicationJson = {
   data: ApiResponse;
   status: 200;
 };
 
-export type telegramBindStartResponse200ApplicationXml = {
+export type telegramLegacyAuthResponse200ApplicationXml = {
   data: ApiResponse;
   status: 200;
 };
 
-export type telegramBindStartResponseSuccess = (
-  | telegramBindStartResponse200ApplicationJson
-  | telegramBindStartResponse200ApplicationXml
+export type telegramLegacyAuthResponseSuccess = (
+  | telegramLegacyAuthResponse200ApplicationJson
+  | telegramLegacyAuthResponse200ApplicationXml
 ) & {
   headers: Headers;
 };
-export type telegramBindStartResponse = telegramBindStartResponseSuccess;
+export type telegramLegacyAuthResponse = telegramLegacyAuthResponseSuccess;
 
-export const getTelegramBindStartUrl = () => {
-  return `/api/oauth/telegram/bind/start`;
-};
-
-/**
- * @summary Telegram Bind Start
- */
-export const telegramBindStart = async (
-  options?: Parameters<typeof customFetch>[1],
-): Promise<telegramBindStartResponse> => {
-  return customFetch<telegramBindStartResponse>(getTelegramBindStartUrl(), {
-    ...options,
-    method: "POST",
-  });
-};
-
-export type telegramBindResponse200ApplicationJson = {
-  data: ApiResponse;
-  status: 200;
-};
-
-export type telegramBindResponse200ApplicationXml = {
-  data: ApiResponse;
-  status: 200;
-};
-
-export type telegramBindResponseSuccess = (
-  telegramBindResponse200ApplicationJson | telegramBindResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type telegramBindResponse = telegramBindResponseSuccess;
-
-export const getTelegramBindUrl = (flowToken: string) => {
-  return `/api/oauth/telegram/bind/${flowToken}`;
-};
-
-/**
- * @summary Telegram Bind
- */
-export const telegramBind = async (
-  flowToken: string,
-  options?: Parameters<typeof customFetch>[1],
-): Promise<telegramBindResponse> => {
-  return customFetch<telegramBindResponse>(getTelegramBindUrl(flowToken), {
-    ...options,
-    method: "GET",
-  });
-};
-
-export type telegramLoginResponse200ApplicationJson = {
-  data: ApiResponse;
-  status: 200;
-};
-
-export type telegramLoginResponse200ApplicationXml = {
-  data: ApiResponse;
-  status: 200;
-};
-
-export type telegramLoginResponseSuccess = (
-  | telegramLoginResponse200ApplicationJson
-  | telegramLoginResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type telegramLoginResponse = telegramLoginResponseSuccess;
-
-export const getTelegramLoginUrl = () => {
+export const getTelegramLegacyAuthUrl = () => {
   return `/api/oauth/telegram/login`;
 };
 
 /**
- * @summary Telegram Login
+ * @summary Telegram Legacy Auth
  */
-export const telegramLogin = async (
+export const telegramLegacyAuth = async (
   options?: Parameters<typeof customFetch>[1],
-): Promise<telegramLoginResponse> => {
-  return customFetch<telegramLoginResponse>(getTelegramLoginUrl(), {
+): Promise<telegramLegacyAuthResponse> => {
+  return customFetch<telegramLegacyAuthResponse>(getTelegramLegacyAuthUrl(), {
     ...options,
     method: "GET",
   });
@@ -10905,12 +11564,12 @@ export const weChatAuth = async (
 };
 
 export type weChatBindResponse200ApplicationJson = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
 export type weChatBindResponse200ApplicationXml = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -10921,32 +11580,19 @@ export type weChatBindResponseSuccess = (
 };
 export type weChatBindResponse = weChatBindResponseSuccess;
 
-export const getWeChatBindUrl = (params?: WeChatBindParams) => {
-  const normalizedParams = new URLSearchParams();
-
-  Object.entries(params || {}).forEach(([key, value]) => {
-    if (value !== undefined) {
-      normalizedParams.append(key, value === null ? "null" : String(value));
-    }
-  });
-
-  const stringifiedParams = normalizedParams.toString();
-
-  return stringifiedParams.length > 0
-    ? `/api/oauth/wechat/bind?${stringifiedParams}`
-    : `/api/oauth/wechat/bind`;
+export const getWeChatBindUrl = () => {
+  return `/api/oauth/wechat/bind`;
 };
 
 /**
  * @summary We Chat Bind
  */
 export const weChatBind = async (
-  params?: WeChatBindParams,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<weChatBindResponse> => {
-  return customFetch<weChatBindResponse>(getWeChatBindUrl(params), {
+  return customFetch<weChatBindResponse>(getWeChatBindUrl(), {
     ...options,
-    method: "GET",
+    method: "POST",
   });
 };
 
@@ -11066,8 +11712,21 @@ export const updateOption = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateOptionResponse>(getUpdateOptionUrl(), {
     ...options,
@@ -11244,8 +11903,21 @@ export const confirmPaymentCompliance = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<confirmPaymentComplianceResponse>(
     getConfirmPaymentComplianceUrl(),
@@ -11870,8 +12542,21 @@ export const createPrefillGroup = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<createPrefillGroupResponse>(getCreatePrefillGroupUrl(), {
     ...options,
@@ -11918,8 +12603,21 @@ export const updatePrefillGroup = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updatePrefillGroupResponse>(getUpdatePrefillGroupUrl(), {
     ...options,
@@ -12352,12 +13050,12 @@ export const getModelRanking = async (
 };
 
 export type getRatioConfigResponse200ApplicationJson = {
-  data: ResponseRatioSettingExposedRatioData;
+  data: AnonymousSchema0;
   status: 200;
 };
 
 export type getRatioConfigResponse200ApplicationXml = {
-  data: ResponseRatioSettingExposedRatioData;
+  data: AnonymousSchema0;
   status: 200;
 };
 
@@ -12453,8 +13151,21 @@ export const fetchUpstreamRatios = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<fetchUpstreamRatiosResponse>(getFetchUpstreamRatiosUrl(), {
     ...options,
@@ -12551,8 +13262,21 @@ export const addRedemption = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<addRedemptionResponse>(getAddRedemptionUrl(), {
     ...options,
@@ -12612,8 +13336,21 @@ export const updateRedemption = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateRedemptionResponse>(getUpdateRedemptionUrl(params), {
     ...options,
@@ -12624,6 +13361,44 @@ export const updateRedemption = async (
     },
     body: JSON.stringify(redemption),
   });
+};
+
+export type deleteRedemptionBatchResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type deleteRedemptionBatchResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type deleteRedemptionBatchResponseSuccess = (
+  | deleteRedemptionBatchResponse200ApplicationJson
+  | deleteRedemptionBatchResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type deleteRedemptionBatchResponse =
+  deleteRedemptionBatchResponseSuccess;
+
+export const getDeleteRedemptionBatchUrl = () => {
+  return `/api/redemption/batch`;
+};
+
+/**
+ * @summary Delete Redemption Batch
+ */
+export const deleteRedemptionBatch = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<deleteRedemptionBatchResponse> => {
+  return customFetch<deleteRedemptionBatchResponse>(
+    getDeleteRedemptionBatchUrl(),
+    {
+      ...options,
+      method: "POST",
+    },
+  );
 };
 
 export type deleteInvalidRedemptionResponse200ApplicationJson = {
@@ -12903,8 +13678,21 @@ export const postSetup = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<postSetupResponse>(getPostSetupUrl(), {
     ...options,
@@ -13052,8 +13840,21 @@ export const adminBindSubscription = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<adminBindSubscriptionResponse>(
     getAdminBindSubscriptionUrl(),
@@ -13142,8 +13943,21 @@ export const adminCreateSubscriptionPlan = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<adminCreateSubscriptionPlanResponse>(
     getAdminCreateSubscriptionPlanUrl(),
@@ -13195,8 +14009,21 @@ export const adminUpdateSubscriptionPlanStatus = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<adminUpdateSubscriptionPlanStatusResponse>(
     getAdminUpdateSubscriptionPlanStatusUrl(id),
@@ -13248,8 +14075,21 @@ export const adminUpdateSubscriptionPlan = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<adminUpdateSubscriptionPlanResponse>(
     getAdminUpdateSubscriptionPlanUrl(id),
@@ -13301,8 +14141,21 @@ export const adminResetPlanSubscriptions = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<adminResetPlanSubscriptionsResponse>(
     getAdminResetPlanSubscriptionsUrl(id),
@@ -13471,8 +14324,21 @@ export const adminCreateUserSubscription = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<adminCreateUserSubscriptionResponse>(
     getAdminCreateUserSubscriptionUrl(id),
@@ -13524,8 +14390,21 @@ export const adminResetUserSubscriptionsByPlan = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<adminResetUserSubscriptionsByPlanResponse>(
     getAdminResetUserSubscriptionsByPlanUrl(id),
@@ -13576,8 +14455,21 @@ export const subscriptionRequestBalancePay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<subscriptionRequestBalancePayResponse>(
     getSubscriptionRequestBalancePayUrl(),
@@ -13628,8 +14520,21 @@ export const subscriptionRequestCreemPay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<subscriptionRequestCreemPayResponse>(
     getSubscriptionRequestCreemPayUrl(),
@@ -13680,8 +14585,21 @@ export const subscriptionRequestDeloPayPay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<subscriptionRequestDeloPayPayResponse>(
     getSubscriptionRequestDeloPayPayUrl(),
@@ -13808,8 +14726,21 @@ export const subscriptionRequestEpay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<subscriptionRequestEpayResponse>(
     getSubscriptionRequestEpayUrl(),
@@ -13936,8 +14867,21 @@ export const subscriptionRequestNowPaymentsPay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<subscriptionRequestNowPaymentsPayResponse>(
     getSubscriptionRequestNowPaymentsPayUrl(),
@@ -14112,8 +15056,21 @@ export const updateSubscriptionPreference = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateSubscriptionPreferenceResponse>(
     getUpdateSubscriptionPreferenceUrl(),
@@ -14164,8 +15121,21 @@ export const subscriptionRequestStripePay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<subscriptionRequestStripePayResponse>(
     getSubscriptionRequestStripePayUrl(),
@@ -14390,8 +15360,21 @@ export const addToken = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<addTokenResponse>(getAddTokenUrl(), {
     ...options,
@@ -14450,8 +15433,21 @@ export const updateToken = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateTokenResponse>(getUpdateTokenUrl(params), {
     ...options,
@@ -14532,8 +15528,21 @@ export const deleteTokenBatch = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<deleteTokenBatchResponse>(getDeleteTokenBatchUrl(), {
     ...options,
@@ -14578,6 +15587,71 @@ export const getTokenKeysBatch = async (
     ...options,
     method: "POST",
   });
+};
+
+export type updateGuestTokenModelLimitsResponse200ApplicationJson = {
+  data: ResponseDtoMessageResponse;
+  status: 200;
+};
+
+export type updateGuestTokenModelLimitsResponse200ApplicationXml = {
+  data: ResponseDtoMessageResponse;
+  status: 200;
+};
+
+export type updateGuestTokenModelLimitsResponseSuccess = (
+  | updateGuestTokenModelLimitsResponse200ApplicationJson
+  | updateGuestTokenModelLimitsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type updateGuestTokenModelLimitsResponse =
+  updateGuestTokenModelLimitsResponseSuccess;
+
+export const getUpdateGuestTokenModelLimitsUrl = () => {
+  return `/api/token/guest-model-limits`;
+};
+
+/**
+ * @summary Update Guest Token Model Limits
+ */
+export const updateGuestTokenModelLimits = async (
+  guestTokenLimitsRequest: GuestTokenLimitsRequest,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<updateGuestTokenModelLimitsResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+  return customFetch<updateGuestTokenModelLimitsResponse>(
+    getUpdateGuestTokenModelLimitsUrl(),
+    {
+      ...options,
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        ...getHeaders(options?.headers),
+      },
+      body: JSON.stringify(guestTokenLimitsRequest),
+    },
+  );
 };
 
 export type searchTokensResponse200ApplicationJson = {
@@ -14909,8 +15983,21 @@ export const createUser = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<createUserResponse>(getCreateUserUrl(), {
     ...options,
@@ -14956,8 +16043,21 @@ export const updateUser = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateUserResponse>(getUpdateUserUrl(), {
     ...options,
@@ -14997,27 +16097,13 @@ export const getRegenerateBackupCodesUrl = () => {
  * @summary Regenerate Backup Codes
  */
 export const regenerateBackupCodes = async (
-  verify2FARequest: Verify2FARequest,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<regenerateBackupCodesResponse> => {
-  const getHeaders = (
-    h?: NonNullable<RequestInit["headers"]>,
-  ): Record<string, string | readonly string[]> => {
-    if (!h) return {};
-    if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
-  };
   return customFetch<regenerateBackupCodesResponse>(
     getRegenerateBackupCodesUrl(),
     {
       ...options,
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...getHeaders(options?.headers),
-      },
-      body: JSON.stringify(verify2FARequest),
     },
   );
 };
@@ -15047,25 +16133,11 @@ export const getDisable2FAUrl = () => {
  * @summary Disable2 F A
  */
 export const disable2FA = async (
-  verify2FARequest: Verify2FARequest,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<disable2FAResponse> => {
-  const getHeaders = (
-    h?: NonNullable<RequestInit["headers"]>,
-  ): Record<string, string | readonly string[]> => {
-    if (!h) return {};
-    if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
-  };
   return customFetch<disable2FAResponse>(getDisable2FAUrl(), {
     ...options,
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...getHeaders(options?.headers),
-    },
-    body: JSON.stringify(verify2FARequest),
   });
 };
 
@@ -15094,35 +16166,21 @@ export const getEnable2FAUrl = () => {
  * @summary Enable2 F A
  */
 export const enable2FA = async (
-  setup2FARequest: Setup2FARequest,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<enable2FAResponse> => {
-  const getHeaders = (
-    h?: NonNullable<RequestInit["headers"]>,
-  ): Record<string, string | readonly string[]> => {
-    if (!h) return {};
-    if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
-  };
   return customFetch<enable2FAResponse>(getEnable2FAUrl(), {
     ...options,
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...getHeaders(options?.headers),
-    },
-    body: JSON.stringify(setup2FARequest),
   });
 };
 
 export type setup2FAResponse200ApplicationJson = {
-  data: ResponseDtoSetup2FAResponse;
+  data: ApiResponse;
   status: 200;
 };
 
 export type setup2FAResponse200ApplicationXml = {
-  data: ResponseDtoSetup2FAResponse;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -15150,12 +16208,12 @@ export const setup2FA = async (
 };
 
 export type admin2FAStatsResponse200ApplicationJson = {
-  data: ResponseModelTwoFAStats;
+  data: ApiResponse;
   status: 200;
 };
 
 export type admin2FAStatsResponse200ApplicationXml = {
-  data: ResponseModelTwoFAStats;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -15184,12 +16242,12 @@ export const admin2FAStats = async (
 };
 
 export type get2FAStatusResponse200ApplicationJson = {
-  data: ResponseDtoTwoFAStatusData;
+  data: ApiResponse;
   status: 200;
 };
 
 export type get2FAStatusResponse200ApplicationXml = {
-  data: ResponseDtoTwoFAStatusData;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -15213,6 +16271,257 @@ export const get2FAStatus = async (
   return customFetch<get2FAStatusResponse>(getGet2FAStatusUrl(), {
     ...options,
     method: "GET",
+  });
+};
+
+export type listAccessTokensResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type listAccessTokensResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type listAccessTokensResponseSuccess = (
+  | listAccessTokensResponse200ApplicationJson
+  | listAccessTokensResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type listAccessTokensResponse = listAccessTokensResponseSuccess;
+
+export const getListAccessTokensUrl = () => {
+  return `/api/user/access_tokens`;
+};
+
+/**
+ * @summary List Access Tokens
+ */
+export const listAccessTokens = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<listAccessTokensResponse> => {
+  return customFetch<listAccessTokensResponse>(getListAccessTokensUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export type createAccessTokenResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type createAccessTokenResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type createAccessTokenResponseSuccess = (
+  | createAccessTokenResponse200ApplicationJson
+  | createAccessTokenResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type createAccessTokenResponse = createAccessTokenResponseSuccess;
+
+export const getCreateAccessTokenUrl = () => {
+  return `/api/user/access_tokens`;
+};
+
+/**
+ * @summary Create Access Token
+ */
+export const createAccessToken = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<createAccessTokenResponse> => {
+  return customFetch<createAccessTokenResponse>(getCreateAccessTokenUrl(), {
+    ...options,
+    method: "POST",
+  });
+};
+
+export type getAccessTokenCatalogResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getAccessTokenCatalogResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getAccessTokenCatalogResponseSuccess = (
+  | getAccessTokenCatalogResponse200ApplicationJson
+  | getAccessTokenCatalogResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getAccessTokenCatalogResponse =
+  getAccessTokenCatalogResponseSuccess;
+
+export const getGetAccessTokenCatalogUrl = () => {
+  return `/api/user/access_tokens/catalog`;
+};
+
+/**
+ * @summary Get Access Token Catalog
+ */
+export const getAccessTokenCatalog = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getAccessTokenCatalogResponse> => {
+  return customFetch<getAccessTokenCatalogResponse>(
+    getGetAccessTokenCatalogUrl(),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export type revokeLegacyAccessTokenResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type revokeLegacyAccessTokenResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type revokeLegacyAccessTokenResponseSuccess = (
+  | revokeLegacyAccessTokenResponse200ApplicationJson
+  | revokeLegacyAccessTokenResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type revokeLegacyAccessTokenResponse =
+  revokeLegacyAccessTokenResponseSuccess;
+
+export const getRevokeLegacyAccessTokenUrl = () => {
+  return `/api/user/access_tokens/legacy`;
+};
+
+/**
+ * @summary Revoke Legacy Access Token
+ */
+export const revokeLegacyAccessToken = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<revokeLegacyAccessTokenResponse> => {
+  return customFetch<revokeLegacyAccessTokenResponse>(
+    getRevokeLegacyAccessTokenUrl(),
+    {
+      ...options,
+      method: "DELETE",
+    },
+  );
+};
+
+export type getAccessTokenScopesResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getAccessTokenScopesResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getAccessTokenScopesResponseSuccess = (
+  | getAccessTokenScopesResponse200ApplicationJson
+  | getAccessTokenScopesResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getAccessTokenScopesResponse = getAccessTokenScopesResponseSuccess;
+
+export const getGetAccessTokenScopesUrl = () => {
+  return `/api/user/access_tokens/scopes`;
+};
+
+/**
+ * @summary Get Access Token Scopes
+ */
+export const getAccessTokenScopes = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getAccessTokenScopesResponse> => {
+  return customFetch<getAccessTokenScopesResponse>(
+    getGetAccessTokenScopesUrl(),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export type deleteAccessTokenResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type deleteAccessTokenResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type deleteAccessTokenResponseSuccess = (
+  | deleteAccessTokenResponse200ApplicationJson
+  | deleteAccessTokenResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type deleteAccessTokenResponse = deleteAccessTokenResponseSuccess;
+
+export const getDeleteAccessTokenUrl = (id: string) => {
+  return `/api/user/access_tokens/${id}`;
+};
+
+/**
+ * @summary Delete Access Token
+ */
+export const deleteAccessToken = async (
+  id: string,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<deleteAccessTokenResponse> => {
+  return customFetch<deleteAccessTokenResponse>(getDeleteAccessTokenUrl(id), {
+    ...options,
+    method: "DELETE",
+  });
+};
+
+export type updateAccessTokenResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type updateAccessTokenResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type updateAccessTokenResponseSuccess = (
+  | updateAccessTokenResponse200ApplicationJson
+  | updateAccessTokenResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type updateAccessTokenResponse = updateAccessTokenResponseSuccess;
+
+export const getUpdateAccessTokenUrl = (id: string) => {
+  return `/api/user/access_tokens/${id}`;
+};
+
+/**
+ * @summary Update Access Token
+ */
+export const updateAccessToken = async (
+  id: string,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<updateAccessTokenResponse> => {
+  return customFetch<updateAccessTokenResponse>(getUpdateAccessTokenUrl(id), {
+    ...options,
+    method: "PATCH",
   });
 };
 
@@ -15383,8 +16692,21 @@ export const transferAffQuota = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<transferAffQuotaResponse>(getTransferAffQuotaUrl(), {
     ...options,
@@ -15431,8 +16753,21 @@ export const requestAmount = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<requestAmountResponse>(getRequestAmountUrl(), {
     ...options,
@@ -15657,8 +16992,21 @@ export const requestCreemPay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<requestCreemPayResponse>(getRequestCreemPayUrl(), {
     ...options,
@@ -15705,8 +17053,21 @@ export const requestDeloPayAmount = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<requestDeloPayAmountResponse>(
     getRequestDeloPayAmountUrl(),
@@ -15756,8 +17117,21 @@ export const requestDeloPayPay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<requestDeloPayPayResponse>(getRequestDeloPayPayUrl(), {
     ...options,
@@ -15804,8 +17178,21 @@ export const grantDiscordQuota = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<grantDiscordQuotaResponse>(getGrantDiscordQuotaUrl(), {
     ...options,
@@ -15852,8 +17239,21 @@ export const transferDiscordQuota = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<transferDiscordQuotaResponse>(
     getTransferDiscordQuotaUrl(),
@@ -16019,8 +17419,21 @@ export const login = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<loginResponse>(getLoginUrl(params), {
     ...options,
@@ -16067,8 +17480,21 @@ export const verify2FALogin = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<verify2FALoginResponse>(getVerify2FALoginUrl(), {
     ...options,
@@ -16078,6 +17504,107 @@ export const verify2FALogin = async (
       ...getHeaders(options?.headers),
     },
     body: JSON.stringify(verify2FARequest),
+  });
+};
+
+export type loginPasskeyBeginResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type loginPasskeyBeginResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type loginPasskeyBeginResponseSuccess = (
+  | loginPasskeyBeginResponse200ApplicationJson
+  | loginPasskeyBeginResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type loginPasskeyBeginResponse = loginPasskeyBeginResponseSuccess;
+
+export const getLoginPasskeyBeginUrl = () => {
+  return `/api/user/login/passkey/begin`;
+};
+
+/**
+ * @summary Login Passkey Begin
+ */
+export const loginPasskeyBegin = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<loginPasskeyBeginResponse> => {
+  return customFetch<loginPasskeyBeginResponse>(getLoginPasskeyBeginUrl(), {
+    ...options,
+    method: "POST",
+  });
+};
+
+export type loginPasskeyFinishResponse200ApplicationJson = {
+  data: ResponseDtoLoginData;
+  status: 200;
+};
+
+export type loginPasskeyFinishResponse200ApplicationXml = {
+  data: ResponseDtoLoginData;
+  status: 200;
+};
+
+export type loginPasskeyFinishResponseSuccess = (
+  | loginPasskeyFinishResponse200ApplicationJson
+  | loginPasskeyFinishResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type loginPasskeyFinishResponse = loginPasskeyFinishResponseSuccess;
+
+export const getLoginPasskeyFinishUrl = () => {
+  return `/api/user/login/passkey/finish`;
+};
+
+/**
+ * @summary Login Passkey Finish
+ */
+export const loginPasskeyFinish = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<loginPasskeyFinishResponse> => {
+  return customFetch<loginPasskeyFinishResponse>(getLoginPasskeyFinishUrl(), {
+    ...options,
+    method: "POST",
+  });
+};
+
+export type verifyLoginResponse200ApplicationJson = {
+  data: ResponseDtoLoginData;
+  status: 200;
+};
+
+export type verifyLoginResponse200ApplicationXml = {
+  data: ResponseDtoLoginData;
+  status: 200;
+};
+
+export type verifyLoginResponseSuccess = (
+  verifyLoginResponse200ApplicationJson | verifyLoginResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type verifyLoginResponse = verifyLoginResponseSuccess;
+
+export const getVerifyLoginUrl = () => {
+  return `/api/user/login/verify`;
+};
+
+/**
+ * @summary Verify Login
+ */
+export const verifyLogin = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<verifyLoginResponse> => {
+  return customFetch<verifyLoginResponse>(getVerifyLoginUrl(), {
+    ...options,
+    method: "POST",
   });
 };
 
@@ -16147,8 +17674,21 @@ export const manageUser = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<manageUserResponse>(getManageUserUrl(), {
     ...options,
@@ -16230,8 +17770,21 @@ export const requestNowPaymentsAmount = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<requestNowPaymentsAmountResponse>(
     getRequestNowPaymentsAmountUrl(),
@@ -16282,8 +17835,21 @@ export const requestNowPaymentsPay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<requestNowPaymentsPayResponse>(
     getRequestNowPaymentsPayUrl(),
@@ -16337,12 +17903,12 @@ export const getUserOAuthBindings = async (
 };
 
 export type unbindCustomOAuthResponse200ApplicationJson = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
 export type unbindCustomOAuthResponse200ApplicationXml = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -16408,8 +17974,21 @@ export const partnerGrantQuota = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<partnerGrantQuotaResponse>(getPartnerGrantQuotaUrl(), {
     ...options,
@@ -16510,8 +18089,21 @@ export const partnerCreateRedemption = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<partnerCreateRedemptionResponse>(
     getPartnerCreateRedemptionUrl(),
@@ -16878,8 +18470,21 @@ export const requestEpay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<requestEpayResponse>(getRequestEpayUrl(), {
     ...options,
@@ -16938,8 +18543,21 @@ export const register = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<registerResponse>(getRegisterUrl(params), {
     ...options,
@@ -16986,8 +18604,21 @@ export const resetPassword = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<resetPasswordResponse>(getResetPasswordUrl(), {
     ...options,
@@ -17217,8 +18848,21 @@ export const updateTimeoutPreference = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateTimeoutPreferenceResponse>(
     getUpdateTimeoutPreferenceUrl(),
@@ -17378,12 +19022,86 @@ export const updateUserSetting = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<updateUserSettingResponse>(getUpdateUserSettingUrl(), {
     ...options,
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getHeaders(options?.headers),
+    },
+    body: JSON.stringify(updateUserSettingRequest),
+  });
+};
+
+export type putApiUserSettingResponse200ApplicationJson = {
+  data: MessageResponse;
+  status: 200;
+};
+
+export type putApiUserSettingResponse200ApplicationXml = {
+  data: MessageResponse;
+  status: 200;
+};
+
+export type putApiUserSettingResponseSuccess = (
+  | putApiUserSettingResponse200ApplicationJson
+  | putApiUserSettingResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type putApiUserSettingResponse = putApiUserSettingResponseSuccess;
+
+export const getPutApiUserSettingUrl = () => {
+  return `/api/user/setting`;
+};
+
+/**
+ * @summary Put Api User Setting
+ */
+export const putApiUserSetting = async (
+  updateUserSettingRequest: UpdateUserSettingRequest,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<putApiUserSettingResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+  return customFetch<putApiUserSettingResponse>(getPutApiUserSettingUrl(), {
+    ...options,
+    method: "PUT",
     headers: {
       "Content-Type": "application/json",
       ...getHeaders(options?.headers),
@@ -17426,8 +19144,21 @@ export const requestStripeAmount = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<requestStripeAmountResponse>(getRequestStripeAmountUrl(), {
     ...options,
@@ -17474,8 +19205,21 @@ export const requestStripePay = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<requestStripePayResponse>(getRequestStripePayUrl(), {
     ...options,
@@ -17601,8 +19345,21 @@ export const topUp = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<topUpResponse>(getTopUpUrl(), {
     ...options,
@@ -17649,8 +19406,21 @@ export const adminCompleteTopUp = async (
   ): Record<string, string | readonly string[]> => {
     if (!h) return {};
     if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
   };
   return customFetch<adminCompleteTopUpResponse>(getAdminCompleteTopUpUrl(), {
     ...options,
@@ -17956,12 +19726,12 @@ export const getUser = async (
 };
 
 export type adminDisable2FAResponse200ApplicationJson = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
 export type adminDisable2FAResponse200ApplicationXml = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -18151,12 +19921,12 @@ export const unbindCustomOAuthByAdmin = async (
 };
 
 export type adminResetPasskeyResponse200ApplicationJson = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
 export type adminResetPasskeyResponse200ApplicationXml = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -18186,12 +19956,12 @@ export const adminResetPasskey = async (
 };
 
 export type getAllVendorsResponse200ApplicationJson = {
-  data: ResponseDtoPageDataModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
 export type getAllVendorsResponse200ApplicationXml = {
-  data: ResponseDtoPageDataModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -18233,12 +20003,12 @@ export const getAllVendors = async (
 };
 
 export type createVendorMetaResponse200ApplicationJson = {
-  data: ResponseModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
 export type createVendorMetaResponse200ApplicationXml = {
-  data: ResponseModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -18258,35 +20028,21 @@ export const getCreateVendorMetaUrl = () => {
  * @summary Create Vendor Meta
  */
 export const createVendorMeta = async (
-  vendor: Vendor,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<createVendorMetaResponse> => {
-  const getHeaders = (
-    h?: NonNullable<RequestInit["headers"]>,
-  ): Record<string, string | readonly string[]> => {
-    if (!h) return {};
-    if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
-  };
   return customFetch<createVendorMetaResponse>(getCreateVendorMetaUrl(), {
     ...options,
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      ...getHeaders(options?.headers),
-    },
-    body: JSON.stringify(vendor),
   });
 };
 
 export type updateVendorMetaResponse200ApplicationJson = {
-  data: ResponseModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
 export type updateVendorMetaResponse200ApplicationXml = {
-  data: ResponseModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -18306,35 +20062,96 @@ export const getUpdateVendorMetaUrl = () => {
  * @summary Update Vendor Meta
  */
 export const updateVendorMeta = async (
-  vendor: Vendor,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<updateVendorMetaResponse> => {
-  const getHeaders = (
-    h?: NonNullable<RequestInit["headers"]>,
-  ): Record<string, string | readonly string[]> => {
-    if (!h) return {};
-    if (h instanceof Headers) return Object.fromEntries(h.entries());
-    if (Array.isArray(h)) return Object.fromEntries(h);
-    return h;
-  };
   return customFetch<updateVendorMetaResponse>(getUpdateVendorMetaUrl(), {
     ...options,
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      ...getHeaders(options?.headers),
-    },
-    body: JSON.stringify(vendor),
   });
 };
 
+export type applyVendorOperationResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type applyVendorOperationResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type applyVendorOperationResponseSuccess = (
+  | applyVendorOperationResponse200ApplicationJson
+  | applyVendorOperationResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type applyVendorOperationResponse = applyVendorOperationResponseSuccess;
+
+export const getApplyVendorOperationUrl = () => {
+  return `/api/vendors/operations`;
+};
+
+/**
+ * @summary Apply Vendor Operation
+ */
+export const applyVendorOperation = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<applyVendorOperationResponse> => {
+  return customFetch<applyVendorOperationResponse>(
+    getApplyVendorOperationUrl(),
+    {
+      ...options,
+      method: "POST",
+    },
+  );
+};
+
+export type previewVendorOperationResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type previewVendorOperationResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type previewVendorOperationResponseSuccess = (
+  | previewVendorOperationResponse200ApplicationJson
+  | previewVendorOperationResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type previewVendorOperationResponse =
+  previewVendorOperationResponseSuccess;
+
+export const getPreviewVendorOperationUrl = () => {
+  return `/api/vendors/operations/preview`;
+};
+
+/**
+ * @summary Preview Vendor Operation
+ */
+export const previewVendorOperation = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<previewVendorOperationResponse> => {
+  return customFetch<previewVendorOperationResponse>(
+    getPreviewVendorOperationUrl(),
+    {
+      ...options,
+      method: "POST",
+    },
+  );
+};
+
 export type searchVendorsResponse200ApplicationJson = {
-  data: ResponseDtoPageDataModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
 export type searchVendorsResponse200ApplicationXml = {
-  data: ResponseDtoPageDataModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -18376,12 +20193,12 @@ export const searchVendors = async (
 };
 
 export type deleteVendorMetaResponse200ApplicationJson = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
 export type deleteVendorMetaResponse200ApplicationXml = {
-  data: MessageResponse;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -18411,12 +20228,12 @@ export const deleteVendorMeta = async (
 };
 
 export type getVendorMetaResponse200ApplicationJson = {
-  data: ResponseModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
 export type getVendorMetaResponse200ApplicationXml = {
-  data: ResponseModelVendor;
+  data: ApiResponse;
   status: 200;
 };
 
@@ -18530,6 +20347,44 @@ export const universalVerify = async (
     ...options,
     method: "POST",
   });
+};
+
+export type getVerificationMethodsResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getVerificationMethodsResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type getVerificationMethodsResponseSuccess = (
+  | getVerificationMethodsResponse200ApplicationJson
+  | getVerificationMethodsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getVerificationMethodsResponse =
+  getVerificationMethodsResponseSuccess;
+
+export const getGetVerificationMethodsUrl = () => {
+  return `/api/verify/methods`;
+};
+
+/**
+ * @summary Get Verification Methods
+ */
+export const getVerificationMethods = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getVerificationMethodsResponse> => {
+  return customFetch<getVerificationMethodsResponse>(
+    getGetVerificationMethodsUrl(),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
 };
 
 export type waffoPancakeWebhookResponse200ApplicationJson = {
@@ -18668,193 +20523,6 @@ export const getUsage = async (
     ...options,
     method: "GET",
   });
-};
-
-export type postJimengResponse200ApplicationJson = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postJimengResponse200ApplicationXml = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postJimengResponseSuccess = (
-  postJimengResponse200ApplicationJson | postJimengResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type postJimengResponse = postJimengResponseSuccess;
-
-export const getPostJimengUrl = () => {
-  return `/jimeng/`;
-};
-
-/**
- * @summary Post Jimeng
- */
-export const postJimeng = async (
-  options?: Parameters<typeof customFetch>[1],
-): Promise<postJimengResponse> => {
-  return customFetch<postJimengResponse>(getPostJimengUrl(), {
-    ...options,
-    method: "POST",
-  });
-};
-
-export type postKlingV1VideosImage2videoResponse200ApplicationJson = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postKlingV1VideosImage2videoResponse200ApplicationXml = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postKlingV1VideosImage2videoResponseSuccess = (
-  | postKlingV1VideosImage2videoResponse200ApplicationJson
-  | postKlingV1VideosImage2videoResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type postKlingV1VideosImage2videoResponse =
-  postKlingV1VideosImage2videoResponseSuccess;
-
-export const getPostKlingV1VideosImage2videoUrl = () => {
-  return `/kling/v1/videos/image2video`;
-};
-
-/**
- * @summary Post Kling V1 Videos Image2video
- */
-export const postKlingV1VideosImage2video = async (
-  options?: Parameters<typeof customFetch>[1],
-): Promise<postKlingV1VideosImage2videoResponse> => {
-  return customFetch<postKlingV1VideosImage2videoResponse>(
-    getPostKlingV1VideosImage2videoUrl(),
-    {
-      ...options,
-      method: "POST",
-    },
-  );
-};
-
-export type getKlingV1VideosImage2videoTaskIdResponse200ApplicationJson = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type getKlingV1VideosImage2videoTaskIdResponse200ApplicationXml = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type getKlingV1VideosImage2videoTaskIdResponseSuccess = (
-  | getKlingV1VideosImage2videoTaskIdResponse200ApplicationJson
-  | getKlingV1VideosImage2videoTaskIdResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type getKlingV1VideosImage2videoTaskIdResponse =
-  getKlingV1VideosImage2videoTaskIdResponseSuccess;
-
-export const getGetKlingV1VideosImage2videoTaskIdUrl = (taskId: string) => {
-  return `/kling/v1/videos/image2video/${taskId}`;
-};
-
-/**
- * @summary Get Kling V1 Videos Image2video Task_id
- */
-export const getKlingV1VideosImage2videoTaskId = async (
-  taskId: string,
-  options?: Parameters<typeof customFetch>[1],
-): Promise<getKlingV1VideosImage2videoTaskIdResponse> => {
-  return customFetch<getKlingV1VideosImage2videoTaskIdResponse>(
-    getGetKlingV1VideosImage2videoTaskIdUrl(taskId),
-    {
-      ...options,
-      method: "GET",
-    },
-  );
-};
-
-export type postKlingV1VideosText2videoResponse200ApplicationJson = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postKlingV1VideosText2videoResponse200ApplicationXml = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postKlingV1VideosText2videoResponseSuccess = (
-  | postKlingV1VideosText2videoResponse200ApplicationJson
-  | postKlingV1VideosText2videoResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type postKlingV1VideosText2videoResponse =
-  postKlingV1VideosText2videoResponseSuccess;
-
-export const getPostKlingV1VideosText2videoUrl = () => {
-  return `/kling/v1/videos/text2video`;
-};
-
-/**
- * @summary Post Kling V1 Videos Text2video
- */
-export const postKlingV1VideosText2video = async (
-  options?: Parameters<typeof customFetch>[1],
-): Promise<postKlingV1VideosText2videoResponse> => {
-  return customFetch<postKlingV1VideosText2videoResponse>(
-    getPostKlingV1VideosText2videoUrl(),
-    {
-      ...options,
-      method: "POST",
-    },
-  );
-};
-
-export type getKlingV1VideosText2videoTaskIdResponse200ApplicationJson = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type getKlingV1VideosText2videoTaskIdResponse200ApplicationXml = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type getKlingV1VideosText2videoTaskIdResponseSuccess = (
-  | getKlingV1VideosText2videoTaskIdResponse200ApplicationJson
-  | getKlingV1VideosText2videoTaskIdResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type getKlingV1VideosText2videoTaskIdResponse =
-  getKlingV1VideosText2videoTaskIdResponseSuccess;
-
-export const getGetKlingV1VideosText2videoTaskIdUrl = (taskId: string) => {
-  return `/kling/v1/videos/text2video/${taskId}`;
-};
-
-/**
- * @summary Get Kling V1 Videos Text2video Task_id
- */
-export const getKlingV1VideosText2videoTaskId = async (
-  taskId: string,
-  options?: Parameters<typeof customFetch>[1],
-): Promise<getKlingV1VideosText2videoTaskIdResponse> => {
-  return customFetch<getKlingV1VideosText2videoTaskIdResponse>(
-    getGetKlingV1VideosText2videoTaskIdUrl(taskId),
-    {
-      ...options,
-      method: "GET",
-    },
-  );
 };
 
 export type postMjInsightFaceSwapResponse200ApplicationJson = {
@@ -19851,6 +21519,40 @@ export const getV1DashboardBillingUsage = async (
   );
 };
 
+export type relayDecisionsResponse200ApplicationJson = {
+  data: DecisionsResponse;
+  status: 200;
+};
+
+export type relayDecisionsResponse200ApplicationXml = {
+  data: DecisionsResponse;
+  status: 200;
+};
+
+export type relayDecisionsResponseSuccess = (
+  | relayDecisionsResponse200ApplicationJson
+  | relayDecisionsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type relayDecisionsResponse = relayDecisionsResponseSuccess;
+
+export const getRelayDecisionsUrl = () => {
+  return `/v1/decisions`;
+};
+
+/**
+ * @summary Relay Decisions
+ */
+export const relayDecisions = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<relayDecisionsResponse> => {
+  return customFetch<relayDecisionsResponse>(getRelayDecisionsUrl(), {
+    ...options,
+    method: "POST",
+  });
+};
+
 export type relayEditsResponse200ApplicationJson = {
   data: ImageGenerationResponse;
   status: 200;
@@ -20311,78 +22013,6 @@ export const getV1FineTunesIdEvents = async (
   );
 };
 
-export type relayImageEditsResponse200ApplicationJson = {
-  data: ImageGenerationResponse;
-  status: 200;
-};
-
-export type relayImageEditsResponse200ApplicationXml = {
-  data: ImageGenerationResponse;
-  status: 200;
-};
-
-export type relayImageEditsResponseSuccess = (
-  | relayImageEditsResponse200ApplicationJson
-  | relayImageEditsResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type relayImageEditsResponse = relayImageEditsResponseSuccess;
-
-export const getRelayImageEditsUrl = () => {
-  return `/v1/images/edits`;
-};
-
-/**
- * @summary Relay Image Edits
- */
-export const relayImageEdits = async (
-  options?: Parameters<typeof customFetch>[1],
-): Promise<relayImageEditsResponse> => {
-  return customFetch<relayImageEditsResponse>(getRelayImageEditsUrl(), {
-    ...options,
-    method: "POST",
-  });
-};
-
-export type relayImageGenerationsResponse200ApplicationJson = {
-  data: ImageGenerationResponse;
-  status: 200;
-};
-
-export type relayImageGenerationsResponse200ApplicationXml = {
-  data: ImageGenerationResponse;
-  status: 200;
-};
-
-export type relayImageGenerationsResponseSuccess = (
-  | relayImageGenerationsResponse200ApplicationJson
-  | relayImageGenerationsResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type relayImageGenerationsResponse =
-  relayImageGenerationsResponseSuccess;
-
-export const getRelayImageGenerationsUrl = () => {
-  return `/v1/images/generations`;
-};
-
-/**
- * @summary Relay Image Generations
- */
-export const relayImageGenerations = async (
-  options?: Parameters<typeof customFetch>[1],
-): Promise<relayImageGenerationsResponse> => {
-  return customFetch<relayImageGenerationsResponse>(
-    getRelayImageGenerationsUrl(),
-    {
-      ...options,
-      method: "POST",
-    },
-  );
-};
-
 export type relayNotImplementedResponse200ApplicationJson = {
   data: RelayNotImplementedError;
   status: 200;
@@ -20446,6 +22076,40 @@ export const relayMessages = async (
   options?: Parameters<typeof customFetch>[1],
 ): Promise<relayMessagesResponse> => {
   return customFetch<relayMessagesResponse>(getRelayMessagesUrl(), {
+    ...options,
+    method: "POST",
+  });
+};
+
+export type countClaudeTokensResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type countClaudeTokensResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type countClaudeTokensResponseSuccess = (
+  | countClaudeTokensResponse200ApplicationJson
+  | countClaudeTokensResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type countClaudeTokensResponse = countClaudeTokensResponseSuccess;
+
+export const getCountClaudeTokensUrl = () => {
+  return `/v1/messages/count_tokens`;
+};
+
+/**
+ * @summary Count Claude Tokens
+ */
+export const countClaudeTokens = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<countClaudeTokensResponse> => {
+  return customFetch<countClaudeTokensResponse>(getCountClaudeTokensUrl(), {
     ...options,
     method: "POST",
   });
@@ -20662,40 +22326,6 @@ export const relayRerank = async (
   });
 };
 
-export type relayResponsesResponse200ApplicationJson = {
-  data: ResponsesAPIResponse;
-  status: 200;
-};
-
-export type relayResponsesResponse200ApplicationXml = {
-  data: ResponsesAPIResponse;
-  status: 200;
-};
-
-export type relayResponsesResponseSuccess = (
-  | relayResponsesResponse200ApplicationJson
-  | relayResponsesResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type relayResponsesResponse = relayResponsesResponseSuccess;
-
-export const getRelayResponsesUrl = () => {
-  return `/v1/responses`;
-};
-
-/**
- * @summary Relay Responses
- */
-export const relayResponses = async (
-  options?: Parameters<typeof customFetch>[1],
-): Promise<relayResponsesResponse> => {
-  return customFetch<relayResponsesResponse>(getRelayResponsesUrl(), {
-    ...options,
-    method: "POST",
-  });
-};
-
 export type relayResponsesCompactResponse200ApplicationJson = {
   data: ResponsesAPIResponse;
   status: 200;
@@ -20727,44 +22357,6 @@ export const relayResponsesCompact = async (
 ): Promise<relayResponsesCompactResponse> => {
   return customFetch<relayResponsesCompactResponse>(
     getRelayResponsesCompactUrl(),
-    {
-      ...options,
-      method: "POST",
-    },
-  );
-};
-
-export type postV1VideoGenerationsResponse200ApplicationJson = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postV1VideoGenerationsResponse200ApplicationXml = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postV1VideoGenerationsResponseSuccess = (
-  | postV1VideoGenerationsResponse200ApplicationJson
-  | postV1VideoGenerationsResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type postV1VideoGenerationsResponse =
-  postV1VideoGenerationsResponseSuccess;
-
-export const getPostV1VideoGenerationsUrl = () => {
-  return `/v1/video/generations`;
-};
-
-/**
- * @summary Post V1 Video Generations
- */
-export const postV1VideoGenerations = async (
-  options?: Parameters<typeof customFetch>[1],
-): Promise<postV1VideoGenerationsResponse> => {
-  return customFetch<postV1VideoGenerationsResponse>(
-    getPostV1VideoGenerationsUrl(),
     {
       ...options,
       method: "POST",
@@ -20809,111 +22401,6 @@ export const getV1VideoGenerationsTaskId = async (
       method: "GET",
     },
   );
-};
-
-export type postV1VideosResponse200ApplicationJson = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postV1VideosResponse200ApplicationXml = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type postV1VideosResponseSuccess = (
-  postV1VideosResponse200ApplicationJson | postV1VideosResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type postV1VideosResponse = postV1VideosResponseSuccess;
-
-export const getPostV1VideosUrl = () => {
-  return `/v1/videos`;
-};
-
-/**
- * @summary Post V1 Videos
- */
-export const postV1Videos = async (
-  options?: Parameters<typeof customFetch>[1],
-): Promise<postV1VideosResponse> => {
-  return customFetch<postV1VideosResponse>(getPostV1VideosUrl(), {
-    ...options,
-    method: "POST",
-  });
-};
-
-export type getV1VideosTaskIdResponse200ApplicationJson = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type getV1VideosTaskIdResponse200ApplicationXml = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type getV1VideosTaskIdResponseSuccess = (
-  | getV1VideosTaskIdResponse200ApplicationJson
-  | getV1VideosTaskIdResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type getV1VideosTaskIdResponse = getV1VideosTaskIdResponseSuccess;
-
-export const getGetV1VideosTaskIdUrl = (taskId: string) => {
-  return `/v1/videos/${taskId}`;
-};
-
-/**
- * @summary Get V1 Videos Task_id
- */
-export const getV1VideosTaskId = async (
-  taskId: string,
-  options?: Parameters<typeof customFetch>[1],
-): Promise<getV1VideosTaskIdResponse> => {
-  return customFetch<getV1VideosTaskIdResponse>(
-    getGetV1VideosTaskIdUrl(taskId),
-    {
-      ...options,
-      method: "GET",
-    },
-  );
-};
-
-export type videoProxyResponse200ApplicationJson = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type videoProxyResponse200ApplicationXml = {
-  data: TaskResponseDoc;
-  status: 200;
-};
-
-export type videoProxyResponseSuccess = (
-  videoProxyResponse200ApplicationJson | videoProxyResponse200ApplicationXml
-) & {
-  headers: Headers;
-};
-export type videoProxyResponse = videoProxyResponseSuccess;
-
-export const getVideoProxyUrl = (taskId: string) => {
-  return `/v1/videos/${taskId}/content`;
-};
-
-/**
- * @summary Video Proxy
- */
-export const videoProxy = async (
-  taskId: string,
-  options?: Parameters<typeof customFetch>[1],
-): Promise<videoProxyResponse> => {
-  return customFetch<videoProxyResponse>(getVideoProxyUrl(taskId), {
-    ...options,
-    method: "GET",
-  });
 };
 
 export type postV1VideosVideoIdRemixResponse200ApplicationJson = {
