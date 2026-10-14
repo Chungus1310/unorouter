@@ -23,7 +23,11 @@ const SECTIONS: LegalDocSection[] = [
   { title: "THIRD_PARTY_TITLE", para: { key: "THIRD_PARTY_CONTENT" } },
   { title: "RETENTION_TITLE", para: { key: "RETENTION_CONTENT" } },
   { title: "CHILDREN_TITLE", para: { key: "CHILDREN_CONTENT", values: true } },
-  { title: "TRANSFERS_TITLE", para: { key: "TRANSFERS_CONTENT" } },
+  {
+    title: "TRANSFERS_TITLE",
+    para: { key: "TRANSFERS_CONTENT" },
+    outro: { key: "TRANSFERS_EMAIL" },
+  },
   { title: "CHANGES_TITLE", para: { key: "CHANGES_CONTENT" } },
   { title: "CONTACT_TITLE", para: { key: "CONTACT_CONTENT", values: true } },
 ];
