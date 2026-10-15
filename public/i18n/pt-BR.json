@@ -597,9 +597,29 @@
       "engineering": "engenharia",
       "update": "atualização",
       "community": "comunidade",
-      "comparison": "comparativo"
+      "comparison": "comparativo",
+      "privacy": "privacidade"
     },
     "POSTS": {
+      "WHERE_YOUR_REQUESTS_GO": {
+        "TITLE": "Para onde vão suas requisições: rótulos de provedores, marcação de imagens e novidades de privacidade",
+        "DESCRIPTION": "Cada página de modelo agora mostra onde cada provedor está sediado e sinaliza países sem salvaguardas de proteção de dados da UE. Veja o que os rótulos significam, como escolher sua rota e o que mais mudou.",
+        "AUTHOR": "Equipe {appName}",
+        "INTRO": "Uma pergunta do nosso Discord: por que tantos provedores em uma página de modelo têm um sinal de alerta vermelho? Pergunta justa. Este post explica os novos rótulos, o que eles significam para os seus dados e como escolher a rota com a qual você se sente confortável.",
+        "H_LABELS": "O que os rótulos significam",
+        "P_LABELS": "A maioria dos modelos no {appName} é atendida por vários grupos de provedores. Cada grupo agora mostra a <s>bandeira do país onde o provedor está sediado</s>. Um <s>sinal de alerta vermelho</s> significa que esse país não tem nenhuma salvaguarda de proteção de dados reconhecida pela União Europeia: nem decisão de adequação, nem cláusulas contratuais-padrão. Hoje isso envolve principalmente provedores na China e em Hong Kong. O alerta não diz que um provedor faz mau uso dos dados. Diz que não podemos dar a você, nessa rota, a garantia legal que a legislação da UE exige.",
+        "H_TRAINING": "Armazenamento e treinamento",
+        "P_TRAINING": "Para cada provedor, também registramos se ele armazena prompts ou treina com eles. Quando um provedor publica uma política clara, o rótulo mostra isso. Em muitos gateways simplesmente não conseguimos verificar o que acontece do lado deles, então o rótulo diz <s>desconhecido</s> em vez de chutar. Preferimos dizer que não sabemos a prometer algo que não conseguimos checar.",
+        "H_CHOOSE": "Como escolher sua rota",
+        "P_CHOOSE": "Primeiro, a resposta honesta: hoje a maioria dos modelos de texto só está disponível por rotas com o alerta, porque elas são bem mais baratas. Onde existe uma rota sem alerta, por exemplo o Gemini 3.5 Flash direto do Google ou os modelos de imagem servidos pela Runware, você pode fixá-la. Abra as configurações da sua chave de API, escolha o modelo e selecione os grupos que quiser; uma chave com grupos fixados usa só esses grupos. Os rótulos aparecem em todos os modelos do <models>catálogo de modelos</models>, e vamos adicionar mais rotas sem alerta com o tempo.",
+        "H_ADVICE": "Nosso conselho",
+        "P_ADVICE": "Não envie dados pessoais de outras pessoas por uma rota com sinal de alerta, e pense duas vezes antes de enviar os seus. Para código, escrita criativa e roleplay sem nomes reais, isso geralmente não é um problema. Se você usa o {appName} para uma empresa, avise a gente no cadastro: o uso empresarial vem com regras mais rígidas, e estamos montando um conjunto de rotas que as atende.",
+        "H_MARKING": "Imagens e vídeos de IA agora são identificados",
+        "P_MARKING": "A partir de dezembro de 2026, o Regulamento de IA da UE exige que imagens e vídeos gerados sejam marcados como gerados por IA de forma legível por máquina. O {appName} agora adiciona essa marcação a toda imagem e todo vídeo que entrega, como metadados padrão dentro do arquivo. Nada muda visualmente e a imagem não é recodificada, então a qualidade continua exatamente a mesma. Marcações que um provedor já incorporou são mantidas intactas.",
+        "H_ALSO": "Outras novidades",
+        "P_ALSO": "Nossa política de privacidade agora informa os países para onde suas requisições podem ser encaminhadas e a base legal de cada um. O site tem uma página de informações legais. A configuração da autenticação de dois fatores voltou a funcionar depois de um bug que a bloqueava, e alterações sensíveis na conta agora pedem que você confirme que é você mesmo.",
+        "CTA": "Dúvidas sobre um provedor específico? Pergunte no nosso Discord ou confira os rótulos nas <models>páginas dos modelos</models>."
+      },
       "LOREBARY_AND_YOUR_DATA": {
         "TITLE": "O que aconteceu com o LoreBary e o que o {appName} guarda sobre você",
         "DESCRIPTION": "Durante quatro dias oferecemos o modelo próprio do LoreBary sem permissão. Veja o que aconteceu, o que mudamos e exatamente o que o {appName} guarda sobre você.",

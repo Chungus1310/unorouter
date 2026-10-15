@@ -597,9 +597,29 @@
       "engineering": "mühendislik",
       "update": "güncelleme",
       "community": "topluluk",
-      "comparison": "karşılaştırma"
+      "comparison": "karşılaştırma",
+      "privacy": "gizlilik"
     },
     "POSTS": {
+      "WHERE_YOUR_REQUESTS_GO": {
+        "TITLE": "İsteklerin nereye gidiyor: sağlayıcı etiketleri, görsel işaretleme ve gizlilik güncellemeleri",
+        "DESCRIPTION": "Her model sayfası artık her sağlayıcının nerede bulunduğunu gösteriyor ve AB veri koruma güvencesi olmayan ülkeleri işaretliyor. Etiketlerin ne anlama geldiğini, rotanı nasıl seçeceğini ve başka nelerin değiştiğini burada bulabilirsin.",
+        "AUTHOR": "{appName} ekibi",
+        "INTRO": "Discord'umuzdan bir soru: Bir model sayfasındaki bu kadar çok sağlayıcıda neden kırmızı bir uyarı işareti var? Haklı bir soru. Bu yazı yeni etiketleri, verilerin için ne anlama geldiklerini ve içinin rahat edeceği rotayı nasıl seçeceğini anlatıyor.",
+        "H_LABELS": "Etiketler ne anlama geliyor",
+        "P_LABELS": "{appName} üzerindeki modellerin çoğu birden fazla sağlayıcı grubu tarafından sunuluyor. Her grup artık <s>sağlayıcının merkezinin bulunduğu ülkenin bayrağını</s> gösteriyor. <s>Kırmızı uyarı işareti</s>, o ülkenin Avrupa Birliği tarafından tanınan bir veri koruma güvencesi olmadığı anlamına geliyor: ne yeterlilik kararı ne de standart sözleşme maddeleri var. Bugün bu çoğunlukla Çin ve Hong Kong'daki sağlayıcılar demek. Uyarı, bir sağlayıcının verileri kötüye kullandığını söylemiyor. O rota için AB hukukunun beklediği yasal güvenceyi sana veremeyeceğimizi söylüyor.",
+        "H_TRAINING": "Saklama ve eğitim",
+        "P_TRAINING": "Her sağlayıcı için promptları saklayıp saklamadığını veya onlarla model eğitip eğitmediğini de kaydediyoruz. Bir sağlayıcı net bir politika yayımlıyorsa etiket bunu gösteriyor. Birçok ağ geçidinde onların tarafında ne olduğunu doğrulayamıyoruz, bu yüzden etiket tahmin yürütmek yerine <s>bilinmiyor</s> diyor. Kontrol edemediğimiz bir şeyi vaat etmektense bilmediğimizi söylemeyi tercih ediyoruz.",
+        "H_CHOOSE": "Rotanı nasıl seçersin",
+        "P_CHOOSE": "Önce dürüst cevap: Bugün metin modellerinin çoğu yalnızca uyarı taşıyan rotalar üzerinden sunuluyor, çünkü bu rotalar çok daha ucuz. Uyarısız bir rota varsa, örneğin doğrudan Google üzerinden Gemini 3.5 Flash ya da Runware'in sunduğu görsel modelleri, onu sabitleyebilirsin. API anahtarı ayarlarını aç, modeli seç ve istediğin grupları işaretle; sabitlenmiş bir anahtar yalnızca o grupları kullanır. Etiketler <models>model kataloğundaki</models> her modelde görünür ve zamanla daha fazla uyarısız rota ekleyeceğiz.",
+        "H_ADVICE": "Tavsiyemiz",
+        "P_ADVICE": "Başkalarının kişisel verilerini uyarı işaretli bir rotadan gönderme, kendi verilerini göndermeden önce de iki kez düşün. Gerçek isim içermeyen kod, yaratıcı yazarlık ve rol yapma için bu genellikle sorun değil. {appName}'ı bir şirket için kullanıyorsan kayıt olurken bize söyle: Ticari kullanım daha sıkı kurallarla geliyor ve bu kurallara uyan bir rota seti hazırlıyoruz.",
+        "H_MARKING": "Yapay zekâ görselleri ve videoları artık etiketleniyor",
+        "P_MARKING": "Aralık 2026'dan itibaren AB Yapay Zekâ Yasası, üretilen görsel ve videoların makine tarafından okunabilir şekilde yapay zekâ ürünü olarak işaretlenmesini zorunlu kılıyor. {appName} artık teslim ettiği her görsel ve videoya bu işareti dosyanın içinde standart meta veri olarak ekliyor. Görünürde hiçbir şey değişmiyor ve görsel yeniden kodlanmıyor, yani kalite birebir aynı kalıyor. Bir sağlayıcının zaten yerleştirdiği işaretlere dokunulmuyor.",
+        "H_ALSO": "Diğer yenilikler",
+        "P_ALSO": "Gizlilik politikamız artık isteklerinin yönlendirilebileceği ülkeleri ve her biri için hukuki dayanağı belirtiyor. Sitede artık bir künye sayfası var. İki faktörlü kimlik doğrulamayı kurmak, onu engelleyen bir hata giderildikten sonra yeniden çalışıyor ve hassas hesap değişikliklerinde artık gerçekten sen olduğunu doğrulaman isteniyor.",
+        "CTA": "Belirli bir sağlayıcı hakkında sorun mu var? Discord'umuzda sor ya da <models>model sayfalarındaki</models> etiketlere göz at."
+      },
       "LOREBARY_AND_YOUR_DATA": {
         "TITLE": "LoreBary ile ne oldu ve {appName} senin hakkında ne saklıyor",
         "DESCRIPTION": "Dört gün boyunca LoreBary'nin kendi modelini izinsiz sunduk. Ne olduğunu, neyi değiştirdiğimizi ve {appName}'ın senin hakkında tam olarak ne sakladığını anlatıyoruz.",

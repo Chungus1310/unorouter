@@ -597,9 +597,29 @@
       "engineering": "engineering",
       "update": "pembaruan",
       "community": "komunitas",
-      "comparison": "perbandingan"
+      "comparison": "perbandingan",
+      "privacy": "privasi"
     },
     "POSTS": {
+      "WHERE_YOUR_REQUESTS_GO": {
+        "TITLE": "Ke mana permintaanmu pergi: label penyedia, penandaan gambar, dan pembaruan privasi",
+        "DESCRIPTION": "Setiap halaman model kini menunjukkan di mana setiap penyedia berbasis dan menandai negara tanpa perlindungan data UE. Berikut arti label tersebut, cara memilih rutemu, dan apa lagi yang berubah.",
+        "AUTHOR": "Tim {appName}",
+        "INTRO": "Sebuah pertanyaan dari Discord kami: kenapa begitu banyak penyedia di halaman model memakai tanda peringatan merah? Pertanyaan yang wajar. Tulisan ini menjelaskan label baru, artinya bagi datamu, dan cara memilih rute yang membuatmu nyaman.",
+        "H_LABELS": "Arti label",
+        "P_LABELS": "Sebagian besar model di {appName} dilayani oleh beberapa grup penyedia. Setiap grup kini menampilkan <s>bendera negara tempat penyedia berbasis</s>. <s>Tanda peringatan merah</s> berarti negara itu tidak punya perlindungan data yang diakui Uni Eropa: tidak ada keputusan kecukupan dan tidak ada klausul kontrak standar. Saat ini sebagian besar menyangkut penyedia di Tiongkok dan Hong Kong. Peringatan itu tidak berarti penyedia menyalahgunakan data. Artinya, untuk rute itu kami tidak bisa memberimu jaminan hukum yang diharapkan hukum UE.",
+        "H_TRAINING": "Penyimpanan dan pelatihan",
+        "P_TRAINING": "Untuk setiap penyedia, kami juga mencatat apakah mereka menyimpan prompt atau melatih model dengannya. Jika penyedia menerbitkan kebijakan yang jelas, label menampilkannya. Untuk banyak gateway, kami memang tidak bisa memverifikasi apa yang terjadi di pihak mereka, jadi label menyebut <s>tidak diketahui</s> alih-alih menebak. Kami lebih suka bilang bahwa kami tidak tahu daripada menjanjikan sesuatu yang tidak bisa kami periksa.",
+        "H_CHOOSE": "Cara memilih rutemu",
+        "P_CHOOSE": "Jawaban jujurnya dulu: saat ini sebagian besar model teks hanya tersedia lewat rute yang bertanda peringatan, karena jauh lebih murah. Jika ada rute tanpa peringatan, misalnya Gemini 3.5 Flash langsung dari Google atau model gambar yang dilayani Runware, kamu bisa menyematkannya. Buka pengaturan kunci API-mu, pilih modelnya, lalu pilih grup yang kamu mau; kunci yang disematkan hanya memakai grup tersebut. Label terlihat di setiap model dalam <models>katalog model</models>, dan seiring waktu kami akan menambah rute tanpa peringatan.",
+        "H_ADVICE": "Saran kami",
+        "P_ADVICE": "Jangan kirim data pribadi orang lain lewat rute bertanda peringatan, dan pikirkan dua kali sebelum mengirim datamu sendiri. Untuk kode, penulisan kreatif, dan roleplay tanpa nama asli, ini biasanya bukan masalah. Kalau kamu memakai {appName} untuk perusahaan, beri tahu kami saat mendaftar: penggunaan bisnis punya aturan yang lebih ketat, dan kami sedang menyiapkan sekumpulan rute yang memenuhinya.",
+        "H_MARKING": "Gambar dan video AI kini diberi label",
+        "P_MARKING": "Mulai Desember 2026, Undang-Undang AI Uni Eropa (EU AI Act) mewajibkan gambar dan video hasil generasi ditandai sebagai buatan AI dalam format yang dapat dibaca mesin. {appName} kini menambahkan tanda ini ke setiap gambar dan video yang dikirimkannya, sebagai metadata standar di dalam file. Tidak ada yang berubah secara visual dan gambar tidak dienkode ulang, jadi kualitasnya tetap sama persis. Tanda yang sudah disematkan penyedia dibiarkan utuh.",
+        "H_ALSO": "Hal baru lainnya",
+        "P_ALSO": "Kebijakan privasi kami kini menyebutkan negara tujuan yang bisa menerima permintaanmu beserta dasar hukum masing-masing. Situs ini kini punya halaman informasi hukum. Penyiapan autentikasi dua faktor kembali berfungsi setelah bug yang memblokirnya diperbaiki, dan perubahan akun yang sensitif kini memintamu memastikan bahwa itu memang kamu.",
+        "CTA": "Ada pertanyaan tentang penyedia tertentu? Tanyakan di Discord kami atau lihat label di <models>halaman model</models>."
+      },
       "LOREBARY_AND_YOUR_DATA": {
         "TITLE": "Apa yang terjadi dengan LoreBary, dan apa yang disimpan {appName} tentang kamu",
         "DESCRIPTION": "Selama empat hari kami menyediakan model internal LoreBary tanpa izin. Inilah yang terjadi, apa yang kami ubah, dan apa saja yang disimpan {appName} tentang kamu.",

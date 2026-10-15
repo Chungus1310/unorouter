@@ -139,6 +139,24 @@ export const LEGAL_REGISTRY = [
 
 export const BLOG_REGISTRY = [
   {
+    slug: "where-your-requests-go",
+    date: "2026-10-15",
+    tags: ["announcement", "privacy"],
+    i18nKey: "BLOG.POSTS.WHERE_YOUR_REQUESTS_GO",
+    priority: 0.7,
+    changeFrequency: "monthly",
+    category: "update",
+    wordCount: 477,
+    headings: [
+      { id: "what-the-labels-mean", i18nLeaf: "H_LABELS", level: 2 },
+      { id: "storage-and-training", i18nLeaf: "H_TRAINING", level: 2 },
+      { id: "how-to-choose", i18nLeaf: "H_CHOOSE", level: 2 },
+      { id: "our-advice", i18nLeaf: "H_ADVICE", level: 2 },
+      { id: "ai-images-and-videos", i18nLeaf: "H_MARKING", level: 2 },
+      { id: "also-new", i18nLeaf: "H_ALSO", level: 2 },
+    ],
+  },
+  {
     slug: "lorebary-and-your-data",
     date: "2026-10-08",
     tags: ["announcement", "community"],

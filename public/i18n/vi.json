@@ -597,9 +597,29 @@
       "engineering": "kỹ thuật",
       "update": "cập nhật",
       "community": "cộng đồng",
-      "comparison": "so sánh"
+      "comparison": "so sánh",
+      "privacy": "quyền riêng tư"
     },
     "POSTS": {
+      "WHERE_YOUR_REQUESTS_GO": {
+        "TITLE": "Yêu cầu của bạn đi đâu: nhãn nhà cung cấp, đánh dấu hình ảnh và cập nhật về quyền riêng tư",
+        "DESCRIPTION": "Mỗi trang mô hình giờ đây cho biết từng nhà cung cấp đặt trụ sở ở đâu và đánh dấu các quốc gia không có biện pháp bảo vệ dữ liệu của EU. Dưới đây là ý nghĩa của các nhãn, cách chọn tuyến của bạn và những thay đổi khác.",
+        "AUTHOR": "Đội ngũ {appName}",
+        "INTRO": "Một câu hỏi từ Discord của chúng tôi: vì sao nhiều nhà cung cấp trên trang mô hình lại có biểu tượng cảnh báo màu đỏ? Câu hỏi rất hợp lý. Bài viết này giải thích các nhãn mới, ý nghĩa của chúng đối với dữ liệu của bạn và cách chọn tuyến mà bạn thấy yên tâm.",
+        "H_LABELS": "Ý nghĩa của các nhãn",
+        "P_LABELS": "Phần lớn mô hình trên {appName} được phục vụ bởi nhiều nhóm nhà cung cấp. Mỗi nhóm giờ hiển thị <s>cờ của quốc gia nơi nhà cung cấp đặt trụ sở</s>. <s>Biểu tượng cảnh báo màu đỏ</s> nghĩa là quốc gia đó không có biện pháp bảo vệ dữ liệu nào được Liên minh châu Âu công nhận: không có quyết định về mức độ bảo vệ tương xứng, cũng không có điều khoản hợp đồng tiêu chuẩn. Hiện nay điều này chủ yếu liên quan đến các nhà cung cấp ở Trung Quốc và Hồng Kông. Cảnh báo không có nghĩa là nhà cung cấp lạm dụng dữ liệu. Nó cho biết chúng tôi không thể đưa ra cho bạn sự bảo đảm pháp lý mà luật EU yêu cầu đối với tuyến đó.",
+        "H_TRAINING": "Lưu trữ và huấn luyện",
+        "P_TRAINING": "Với mỗi nhà cung cấp, chúng tôi cũng ghi lại việc họ có lưu prompt hay dùng prompt để huấn luyện hay không. Khi nhà cung cấp công bố chính sách rõ ràng, nhãn sẽ hiển thị chính sách đó. Với nhiều gateway, chúng tôi đơn giản là không thể xác minh điều gì diễn ra ở phía họ, nên nhãn ghi <s>không rõ</s> thay vì đoán. Chúng tôi thà nói rằng mình không biết còn hơn hứa một điều mà mình không thể kiểm chứng.",
+        "H_CHOOSE": "Cách chọn tuyến của bạn",
+        "P_CHOOSE": "Trước hết là câu trả lời thẳng thắn: hiện nay phần lớn mô hình văn bản chỉ có qua các tuyến mang cảnh báo, vì chúng rẻ hơn rất nhiều. Ở đâu có tuyến không cảnh báo, chẳng hạn Gemini 3.5 Flash trực tiếp từ Google hoặc các mô hình hình ảnh do Runware cung cấp, bạn có thể ghim tuyến đó. Hãy mở phần cài đặt khóa API, chọn mô hình và chọn các nhóm bạn muốn; khóa đã ghim chỉ dùng những nhóm đó. Các nhãn hiển thị trên mọi mô hình trong <models>danh mục mô hình</models>, và theo thời gian chúng tôi sẽ bổ sung thêm các tuyến không có cảnh báo.",
+        "H_ADVICE": "Lời khuyên của chúng tôi",
+        "P_ADVICE": "Đừng gửi dữ liệu cá nhân của người khác qua tuyến có biểu tượng cảnh báo, và hãy cân nhắc kỹ trước khi gửi dữ liệu của chính bạn. Với code, viết sáng tạo và nhập vai không dùng tên thật, điều này thường không đáng lo. Nếu bạn dùng {appName} cho doanh nghiệp, hãy cho chúng tôi biết khi đăng ký: sử dụng cho mục đích kinh doanh đi kèm quy định chặt chẽ hơn, và chúng tôi đang xây dựng một nhóm tuyến đáp ứng các quy định đó.",
+        "H_MARKING": "Hình ảnh và video AI giờ đã được gắn nhãn",
+        "P_MARKING": "Từ tháng 12 năm 2026, Đạo luật AI của EU yêu cầu hình ảnh và video được tạo ra phải được đánh dấu là do AI tạo theo cách máy có thể đọc được. {appName} giờ thêm dấu này vào mọi hình ảnh và video mà nó trả về, dưới dạng siêu dữ liệu tiêu chuẩn bên trong tệp. Không có gì thay đổi về mặt hiển thị và hình ảnh không bị mã hóa lại, nên chất lượng giữ nguyên hoàn toàn. Các dấu mà nhà cung cấp đã nhúng sẵn được giữ nguyên.",
+        "H_ALSO": "Những điểm mới khác",
+        "P_ALSO": "Chính sách quyền riêng tư của chúng tôi giờ nêu rõ các quốc gia mà yêu cầu của bạn có thể được định tuyến đến và cơ sở pháp lý cho từng quốc gia. Trang web đã có trang thông tin pháp lý (Impressum). Việc thiết lập xác thực hai yếu tố đã hoạt động trở lại sau khi sửa một lỗi từng chặn nó, và các thay đổi nhạy cảm trên tài khoản giờ sẽ yêu cầu bạn xác nhận rằng đó thực sự là bạn.",
+        "CTA": "Có câu hỏi về một nhà cung cấp cụ thể? Hãy hỏi trên Discord của chúng tôi hoặc xem các nhãn trên <models>trang mô hình</models>."
+      },
       "LOREBARY_AND_YOUR_DATA": {
         "TITLE": "Chuyện gì đã xảy ra với LoreBary, và {appName} lưu gì về bạn",
         "DESCRIPTION": "Trong bốn ngày, chúng tôi đã cung cấp mô hình riêng của LoreBary mà không xin phép. Đây là những gì đã xảy ra, những gì chúng tôi đã thay đổi, và chính xác {appName} lưu gì về bạn.",

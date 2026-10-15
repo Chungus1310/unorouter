@@ -597,9 +597,29 @@
       "engineering": "ingegneria",
       "update": "aggiornamento",
       "community": "comunità",
-      "comparison": "confronto"
+      "comparison": "confronto",
+      "privacy": "privacy"
     },
     "POSTS": {
+      "WHERE_YOUR_REQUESTS_GO": {
+        "TITLE": "Dove vanno le tue richieste: etichette dei provider, marcatura delle immagini e novità sulla privacy",
+        "DESCRIPTION": "Ogni pagina modello ora mostra dove ha sede ciascun provider e segnala i paesi senza garanzie UE sulla protezione dei dati. Ecco cosa significano le etichette, come scegliere il tuo percorso e cos'altro è cambiato.",
+        "AUTHOR": "Il team di {appName}",
+        "INTRO": "Una domanda dal nostro Discord: perché così tanti provider in una pagina modello hanno un segnale di avvertimento rosso? Domanda legittima. Questo articolo spiega le nuove etichette, cosa significano per i tuoi dati e come scegliere il percorso con cui ti senti a tuo agio.",
+        "H_LABELS": "Cosa significano le etichette",
+        "P_LABELS": "La maggior parte dei modelli su {appName} è servita da più gruppi di provider. Ogni gruppo ora mostra la <s>bandiera del paese in cui ha sede il provider</s>. Un <s>segnale di avvertimento rosso</s> significa che quel paese non ha alcuna garanzia di protezione dei dati riconosciuta dall'Unione europea: né una decisione di adeguatezza né clausole contrattuali tipo. Oggi si tratta soprattutto di provider in Cina e a Hong Kong. L'avviso non dice che un provider usa male i dati. Dice che per quel percorso non possiamo darti la garanzia legale che il diritto dell'UE richiede.",
+        "H_TRAINING": "Conservazione e addestramento",
+        "P_TRAINING": "Per ogni provider registriamo anche se conserva i prompt o li usa per l'addestramento. Quando un provider pubblica una policy chiara, l'etichetta la riporta. Per molti gateway semplicemente non possiamo verificare cosa succede dalla loro parte, quindi l'etichetta dice <s>sconosciuto</s> invece di tirare a indovinare. Preferiamo dirti che non lo sappiamo piuttosto che promettere qualcosa che non possiamo verificare.",
+        "H_CHOOSE": "Come scegliere il tuo percorso",
+        "P_CHOOSE": "Prima la risposta onesta: oggi la maggior parte dei modelli di testo è disponibile solo tramite percorsi con l'avviso, perché costano molto meno. Dove esiste un percorso senza avviso, per esempio Gemini 3.5 Flash direttamente da Google o i modelli di immagini serviti da Runware, puoi bloccarlo. Apri le impostazioni della tua chiave API, scegli il modello e seleziona i gruppi che vuoi; una chiave con gruppi bloccati usa solo quei gruppi. Le etichette sono visibili su ogni modello nel <models>catalogo dei modelli</models>, e col tempo aggiungeremo altri percorsi senza avviso.",
+        "H_ADVICE": "Il nostro consiglio",
+        "P_ADVICE": "Non inviare dati personali di altre persone attraverso un percorso con il segnale di avvertimento, e pensaci due volte prima di inviare i tuoi. Per codice, scrittura creativa e roleplay senza nomi reali di solito non è un problema. Se usi {appName} per un'azienda, diccelo al momento della registrazione: l'uso aziendale comporta regole più severe, e stiamo costruendo un insieme di percorsi che le rispetta.",
+        "H_MARKING": "Immagini e video IA ora sono etichettati",
+        "P_MARKING": "Da dicembre 2026 il regolamento UE sull'intelligenza artificiale (AI Act) richiede che immagini e video generati siano contrassegnati come generati dall'IA in modo leggibile dalle macchine. {appName} ora aggiunge questo contrassegno a ogni immagine e video che fornisce, come metadati standard all'interno del file. Non cambia nulla di visibile e l'immagine non viene ricodificata, quindi la qualità resta esattamente la stessa. I contrassegni già incorporati da un provider restano intatti.",
+        "H_ALSO": "Altre novità",
+        "P_ALSO": "La nostra informativa sulla privacy ora indica i paesi verso cui possono essere instradate le tue richieste e la base giuridica di ciascuno. Il sito ha una pagina di note legali. La configurazione dell'autenticazione a due fattori funziona di nuovo dopo un bug che la bloccava, e le modifiche sensibili all'account ora ti chiedono di confermare che sei davvero tu.",
+        "CTA": "Domande su un provider specifico? Chiedi nel nostro Discord o controlla le etichette nelle <models>pagine dei modelli</models>."
+      },
       "LOREBARY_AND_YOUR_DATA": {
         "TITLE": "Cosa è successo con LoreBary e cosa {appName} conserva su di te",
         "DESCRIPTION": "Per quattro giorni abbiamo offerto il modello interno di LoreBary senza permesso. Ecco cosa è successo, cosa abbiamo cambiato ed esattamente cosa {appName} conserva su di te.",

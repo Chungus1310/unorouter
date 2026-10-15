@@ -10,6 +10,7 @@ type Chunks = Record<string, (chunks: ReactNode) => ReactNode>;
 const BODY_CHUNKS: Chunks = {
   c: (chunks) => <code>{chunks}</code>,
   s: (chunks) => <strong>{chunks}</strong>,
+  models: (chunks) => <Link href="/models">{chunks}</Link>,
 };
 
 const CTA_CHUNKS: Chunks = {

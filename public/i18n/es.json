@@ -597,9 +597,29 @@
       "engineering": "ingeniería",
       "update": "actualización",
       "community": "comunidad",
-      "comparison": "comparativa"
+      "comparison": "comparativa",
+      "privacy": "privacidad"
     },
     "POSTS": {
+      "WHERE_YOUR_REQUESTS_GO": {
+        "TITLE": "A dónde van tus solicitudes: etiquetas de proveedores, marcado de imágenes y novedades de privacidad",
+        "DESCRIPTION": "Cada página de modelo muestra ahora dónde tiene su sede cada proveedor y señala los países sin garantías de protección de datos de la UE. Aquí te explicamos qué significan las etiquetas, cómo elegir tu ruta y qué más ha cambiado.",
+        "AUTHOR": "Equipo de {appName}",
+        "INTRO": "Una pregunta de nuestro Discord: ¿por qué tantos proveedores en una página de modelo llevan una señal de advertencia roja? Buena pregunta. Este artículo explica las nuevas etiquetas, qué significan para tus datos y cómo elegir la ruta con la que te sientas cómodo.",
+        "H_LABELS": "Qué significan las etiquetas",
+        "P_LABELS": "La mayoría de los modelos en {appName} los sirven varios grupos de proveedores. Cada grupo muestra ahora una <s>bandera del país donde tiene su sede el proveedor</s>. Una <s>señal de advertencia roja</s> significa que ese país no cuenta con ninguna garantía de protección de datos reconocida por la Unión Europea: ni decisión de adecuación ni cláusulas contractuales tipo. Hoy eso afecta sobre todo a proveedores de China y Hong Kong. La advertencia no dice que un proveedor haga mal uso de los datos. Dice que, para esa ruta, no podemos darte la garantía legal que exige el derecho de la UE.",
+        "H_TRAINING": "Almacenamiento y entrenamiento",
+        "P_TRAINING": "Para cada proveedor registramos también si almacena los prompts o entrena con ellos. Cuando un proveedor publica una política clara, la etiqueta la muestra. En muchas pasarelas sencillamente no podemos verificar qué ocurre de su lado, así que la etiqueta dice <s>desconocido</s> en lugar de adivinar. Preferimos decirte que no lo sabemos antes que prometer algo que no podemos comprobar.",
+        "H_CHOOSE": "Cómo elegir tu ruta",
+        "P_CHOOSE": "Primero, la respuesta honesta: hoy la mayoría de los modelos de texto solo están disponibles a través de rutas con advertencia, porque son mucho más baratas. Donde existe una ruta sin advertencia, por ejemplo Gemini 3.5 Flash directamente de Google o los modelos de imagen servidos por Runware, puedes fijarla. Abre la configuración de tu clave API, elige el modelo y selecciona los grupos que quieras; una clave con grupos fijados solo usa esos grupos. Las etiquetas aparecen en cada modelo del <models>catálogo de modelos</models>, y con el tiempo añadiremos más rutas sin advertencia.",
+        "H_ADVICE": "Nuestro consejo",
+        "P_ADVICE": "No envíes datos personales de otras personas por una ruta con señal de advertencia, y piénsalo dos veces antes de enviar los tuyos. Para código, escritura creativa y rol sin nombres reales, normalmente no es un problema. Si usas {appName} para una empresa, avísanos al registrarte: el uso profesional conlleva reglas más estrictas y estamos preparando un conjunto de rutas que las cumple.",
+        "H_MARKING": "Las imágenes y los vídeos de IA ahora se etiquetan",
+        "P_MARKING": "A partir de diciembre de 2026, el Reglamento de IA de la UE exige que las imágenes y los vídeos generados se marquen como generados por IA de forma legible por máquina. {appName} añade ahora esta marca a cada imagen y vídeo que entrega, como metadatos estándar dentro del archivo. No cambia nada visible y la imagen no se vuelve a codificar, así que la calidad sigue siendo exactamente la misma. Las marcas que un proveedor ya haya incrustado se conservan intactas.",
+        "H_ALSO": "Otras novedades",
+        "P_ALSO": "Nuestra política de privacidad indica ahora los países a los que pueden enviarse tus solicitudes y la base jurídica de cada uno. El sitio tiene aviso legal. La configuración de la autenticación en dos pasos vuelve a funcionar tras un error que la bloqueaba, y los cambios sensibles en la cuenta ahora te piden confirmar que de verdad eres tú.",
+        "CTA": "¿Preguntas sobre un proveedor concreto? Pregunta en nuestro Discord o consulta las etiquetas en las <models>páginas de modelos</models>."
+      },
       "LOREBARY_AND_YOUR_DATA": {
         "TITLE": "Qué pasó con LoreBary y qué guarda {appName} sobre ti",
         "DESCRIPTION": "Durante cuatro días ofrecimos el modelo propio de LoreBary sin permiso. Esto es lo que pasó, lo que cambiamos y exactamente lo que {appName} guarda sobre ti.",

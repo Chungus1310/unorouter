@@ -597,9 +597,29 @@
       "engineering": "ingénierie",
       "update": "mise à jour",
       "community": "communauté",
-      "comparison": "comparatif"
+      "comparison": "comparatif",
+      "privacy": "confidentialité"
     },
     "POSTS": {
+      "WHERE_YOUR_REQUESTS_GO": {
+        "TITLE": "Où vont vos requêtes : étiquettes des fournisseurs, marquage des images et nouveautés sur la confidentialité",
+        "DESCRIPTION": "Chaque page de modèle indique désormais où chaque fournisseur est établi et signale les pays sans garanties de protection des données de l'UE. Voici ce que signifient les étiquettes, comment choisir votre route et ce qui a changé par ailleurs.",
+        "AUTHOR": "L'équipe {appName}",
+        "INTRO": "Une question venue de notre Discord : pourquoi tant de fournisseurs sur une page de modèle portent-ils un panneau d'avertissement rouge ? Bonne question. Cet article explique les nouvelles étiquettes, ce qu'elles signifient pour vos données et comment choisir la route qui vous convient.",
+        "H_LABELS": "Ce que signifient les étiquettes",
+        "P_LABELS": "La plupart des modèles sur {appName} sont servis par plusieurs groupes de fournisseurs. Chaque groupe affiche désormais un <s>drapeau du pays où le fournisseur est établi</s>. Un <s>panneau d'avertissement rouge</s> signifie que ce pays ne dispose d'aucune garantie de protection des données reconnue par l'Union européenne : ni décision d'adéquation, ni clauses contractuelles types. Aujourd'hui, cela concerne surtout des fournisseurs en Chine et à Hong Kong. L'avertissement ne dit pas qu'un fournisseur fait un mauvais usage des données. Il dit que nous ne pouvons pas vous donner, pour cette route, la garantie juridique qu'exige le droit de l'UE.",
+        "H_TRAINING": "Conservation et entraînement",
+        "P_TRAINING": "Pour chaque fournisseur, nous indiquons aussi s'il conserve les prompts ou s'en sert pour l'entraînement. Lorsqu'un fournisseur publie une politique claire, l'étiquette l'affiche. Pour beaucoup de passerelles, nous ne pouvons tout simplement pas vérifier ce qui se passe de leur côté, alors l'étiquette indique <s>inconnu</s> plutôt que de deviner. Nous préférons vous dire que nous ne savons pas plutôt que de promettre quelque chose que nous ne pouvons pas vérifier.",
+        "H_CHOOSE": "Comment choisir votre route",
+        "P_CHOOSE": "D'abord la réponse honnête : aujourd'hui, la plupart des modèles de texte ne sont disponibles que via des routes portant l'avertissement, car elles sont beaucoup moins chères. Lorsqu'une route sans avertissement existe, par exemple Gemini 3.5 Flash directement chez Google ou les modèles d'image servis par Runware, vous pouvez l'épingler. Ouvrez les paramètres de votre clé API, choisissez le modèle et sélectionnez les groupes souhaités ; une clé épinglée n'utilise que ces groupes. Les étiquettes sont visibles sur chaque modèle du <models>catalogue de modèles</models>, et nous ajouterons progressivement d'autres routes sans avertissement.",
+        "H_ADVICE": "Notre conseil",
+        "P_ADVICE": "N'envoyez pas de données personnelles d'autres personnes par une route marquée d'un avertissement, et réfléchissez à deux fois avant d'envoyer les vôtres. Pour du code, de l'écriture créative ou du jeu de rôle sans vrais noms, ce n'est généralement pas un problème. Si vous utilisez {appName} pour une entreprise, dites-le-nous à l'inscription : l'usage professionnel s'accompagne de règles plus strictes, et nous mettons en place un ensemble de routes qui les respecte.",
+        "H_MARKING": "Les images et vidéos IA sont désormais marquées",
+        "P_MARKING": "À partir de décembre 2026, le règlement européen sur l'IA impose que les images et vidéos générées soient marquées comme générées par IA de manière lisible par machine. {appName} ajoute désormais ce marquage à chaque image et vidéo qu'il fournit, sous forme de métadonnées standard intégrées au fichier. Rien ne change visuellement et l'image n'est pas réencodée, la qualité reste donc strictement identique. Les marquages déjà intégrés par un fournisseur sont conservés tels quels.",
+        "H_ALSO": "Autres nouveautés",
+        "P_ALSO": "Notre politique de confidentialité indique désormais les pays vers lesquels vos requêtes peuvent être acheminées et la base juridique de chacun. Le site dispose de mentions légales. La configuration de l'authentification à deux facteurs fonctionne à nouveau après un bug qui la bloquait, et les modifications sensibles du compte vous demandent désormais de confirmer que c'est bien vous.",
+        "CTA": "Des questions sur un fournisseur en particulier ? Posez-les sur notre Discord ou consultez les étiquettes sur les <models>pages des modèles</models>."
+      },
       "LOREBARY_AND_YOUR_DATA": {
         "TITLE": "Ce qui s'est passé avec LoreBary, et ce que {appName} conserve sur vous",
         "DESCRIPTION": "Pendant quatre jours, nous avons proposé le modèle maison de LoreBary sans autorisation. Voici ce qui s'est passé, ce que nous avons changé et exactement ce que {appName} conserve sur vous.",

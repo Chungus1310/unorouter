@@ -597,9 +597,29 @@
       "engineering": "Engineering",
       "update": "Update",
       "community": "Community",
-      "comparison": "Vergleich"
+      "comparison": "Vergleich",
+      "privacy": "Datenschutz"
     },
     "POSTS": {
+      "WHERE_YOUR_REQUESTS_GO": {
+        "TITLE": "Wohin deine Anfragen gehen: Anbieter-Kennzeichnungen, Markierung von KI-Bildern und Neues zum Datenschutz",
+        "DESCRIPTION": "Jede Modellseite zeigt jetzt, wo jeder Anbieter seinen Sitz hat, und markiert Länder ohne EU-Datenschutzgarantien. Hier erfährst du, was die Kennzeichnungen bedeuten, wie du deine Route wählst und was sich sonst geändert hat.",
+        "AUTHOR": "{appName}-Team",
+        "INTRO": "Eine Frage aus unserem Discord: Warum tragen so viele Anbieter auf einer Modellseite ein rotes Warnzeichen? Berechtigte Frage. Dieser Beitrag erklärt die neuen Kennzeichnungen, was sie für deine Daten bedeuten und wie du die Route wählst, mit der du dich wohlfühlst.",
+        "H_LABELS": "Was die Kennzeichnungen bedeuten",
+        "P_LABELS": "Die meisten Modelle auf {appName} werden von mehreren Anbietergruppen bereitgestellt. Jede Gruppe zeigt jetzt eine <s>Flagge des Landes, in dem der Anbieter seinen Sitz hat</s>. Ein <s>rotes Warnzeichen</s> bedeutet, dass es für dieses Land keine von der Europäischen Union anerkannte Datenschutzgarantie gibt: keinen Angemessenheitsbeschluss und keine Standardvertragsklauseln. Derzeit betrifft das vor allem Anbieter in China und Hongkong. Die Warnung sagt nicht, dass ein Anbieter Daten missbraucht. Sie sagt, dass wir dir für diese Route nicht die rechtliche Garantie geben können, die das EU-Recht erwartet.",
+        "H_TRAINING": "Speicherung und Training",
+        "P_TRAINING": "Für jeden Anbieter halten wir außerdem fest, ob er Prompts speichert oder damit trainiert. Wo ein Anbieter eine klare Richtlinie veröffentlicht, zeigt die Kennzeichnung sie an. Bei vielen Gateways können wir schlicht nicht prüfen, was auf ihrer Seite passiert, deshalb steht dort <s>unbekannt</s>, statt zu raten. Wir sagen dir lieber, dass wir es nicht wissen, als etwas zu versprechen, das wir nicht prüfen können.",
+        "H_CHOOSE": "So wählst du deine Route",
+        "P_CHOOSE": "Zuerst die ehrliche Antwort: Die meisten Textmodelle gibt es derzeit nur über Routen mit Warnung, weil diese deutlich günstiger sind. Wo es eine Route ohne Warnung gibt, zum Beispiel Gemini 3.5 Flash direkt von Google oder die Bildmodelle über Runware, kannst du sie festlegen. Öffne die Einstellungen deines API-Schlüssels, wähle das Modell und die gewünschten Gruppen aus; ein festgelegter Schlüssel nutzt nur diese Gruppen. Die Kennzeichnungen siehst du bei jedem Modell im <models>Modellkatalog</models>, und mit der Zeit kommen weitere Routen ohne Warnung hinzu.",
+        "H_ADVICE": "Unser Rat",
+        "P_ADVICE": "Schicke keine personenbezogenen Daten anderer Menschen über eine Route mit Warnzeichen, und überlege dir zweimal, ob du deine eigenen schickst. Bei Code, kreativem Schreiben und Rollenspiel ohne echte Namen ist das meist kein Thema. Wenn du {appName} für ein Unternehmen nutzt, sag uns das bei der Registrierung: Geschäftliche Nutzung unterliegt strengeren Regeln, und wir bauen gerade eine Auswahl an Routen auf, die sie erfüllt.",
+        "H_MARKING": "KI-Bilder und KI-Videos werden jetzt gekennzeichnet",
+        "P_MARKING": "Ab Dezember 2026 verlangt die KI-Verordnung der EU, dass erzeugte Bilder und Videos maschinenlesbar als KI-generiert gekennzeichnet werden. {appName} fügt diese Kennzeichnung jetzt jedem Bild und Video hinzu, das es ausliefert, als Standard-Metadaten in der Datei. Sichtbar ändert sich nichts, und das Bild wird nicht neu kodiert, die Qualität bleibt also exakt gleich. Kennzeichnungen, die ein Anbieter bereits eingebettet hat, bleiben unangetastet.",
+        "H_ALSO": "Außerdem neu",
+        "P_ALSO": "Unsere Datenschutzerklärung nennt jetzt die Länder, in die deine Anfragen geleitet werden können, und die jeweilige Rechtsgrundlage. Die Website hat jetzt ein Impressum. Die Einrichtung der Zwei-Faktor-Authentifizierung funktioniert wieder, nachdem ein Fehler sie blockiert hatte, und bei sensiblen Kontoänderungen wirst du jetzt gebeten zu bestätigen, dass du es wirklich bist.",
+        "CTA": "Fragen zu einem bestimmten Anbieter? Frag in unserem Discord oder sieh dir die Kennzeichnungen auf den <models>Modellseiten</models> an."
+      },
       "LOREBARY_AND_YOUR_DATA": {
         "TITLE": "Was mit LoreBary passiert ist und was {appName} über dich speichert",
         "DESCRIPTION": "Vier Tage lang haben wir LoreBarys hauseigenes Modell ohne Erlaubnis angeboten. Hier steht, was passiert ist, was wir geändert haben und was {appName} genau über dich speichert.",

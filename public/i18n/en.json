@@ -597,9 +597,29 @@
       "engineering": "engineering",
       "update": "update",
       "community": "community",
-      "comparison": "comparison"
+      "comparison": "comparison",
+      "privacy": "privacy"
     },
     "POSTS": {
+      "WHERE_YOUR_REQUESTS_GO": {
+        "TITLE": "Where your requests go: provider labels, image marking and privacy updates",
+        "DESCRIPTION": "Every model page now shows where each provider is based and flags countries without EU data protection safeguards. Here is what the labels mean, how to choose your route, and what else changed.",
+        "AUTHOR": "{appName} team",
+        "INTRO": "A question from our Discord: why do so many providers on a model page carry a red warning sign? Fair question. This post explains the new labels, what they mean for your data, and how to pick the route you are comfortable with.",
+        "H_LABELS": "What the labels mean",
+        "P_LABELS": "Most models on {appName} are served by several provider groups. Each group now shows a <s>flag for the country where the provider is based</s>. A <s>red warning sign</s> means that country has no data protection safeguard recognised by the European Union: no adequacy decision and no standard contractual clauses. Today that mostly means providers in China and Hong Kong. The warning does not say a provider misuses data. It says we cannot give you the legal guarantee EU law expects for that route.",
+        "H_TRAINING": "Storage and training",
+        "P_TRAINING": "For every provider we also record whether it stores prompts or trains on them. Where a provider publishes a clear policy, the label shows it. For many gateways we simply cannot verify what happens on their side, so the label says <s>unknown</s> instead of guessing. We would rather tell you that we do not know than promise something we cannot check.",
+        "H_CHOOSE": "How to choose your route",
+        "P_CHOOSE": "Honest answer first: today most text models are only available through routes that carry the warning, because they are a lot cheaper. Where a route without the warning exists, for example Gemini 3.5 Flash directly from Google or the image models served by Runware, you can pin it. Open your API key settings, pick the model and select the groups you want; a pinned key only uses those groups. The labels are visible on every model in the <models>model catalog</models>, and we will add more routes without a warning over time.",
+        "H_ADVICE": "Our advice",
+        "P_ADVICE": "Do not send personal data of other people through a route with a warning sign, and think twice before sending your own. For code, creative writing and roleplay without real names this is usually not a concern. If you use {appName} for a company, tell us when you sign up: business use comes with stricter rules, and we are building a set of routes that meets them.",
+        "H_MARKING": "AI images and videos are now labeled",
+        "P_MARKING": "From December 2026 the EU AI Act requires generated images and videos to be marked as AI generated in a machine readable way. {appName} now adds this mark to every image and video it delivers, as standard metadata inside the file. Nothing visible changes and the image is not re-encoded, so quality stays exactly the same. Marks that a provider already embedded are kept untouched.",
+        "H_ALSO": "Also new",
+        "P_ALSO": "Our privacy policy now names the countries your requests can be routed to and the legal basis for each. The site has an imprint. Setting up two factor authentication works again after a bug that blocked it, and sensitive account changes now ask you to confirm it is really you.",
+        "CTA": "Questions about a specific provider? Ask in our Discord or check the labels on the <models>model pages</models>."
+      },
       "LOREBARY_AND_YOUR_DATA": {
         "TITLE": "What happened with LoreBary, and what {appName} stores about you",
         "DESCRIPTION": "For four days we served LoreBary's in-house model without permission. Here is what happened, what we changed, and exactly what {appName} keeps about you.",
