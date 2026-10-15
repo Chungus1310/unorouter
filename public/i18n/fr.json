@@ -3646,7 +3646,7 @@
       "LAST_BACKUP": "Dernière sauvegarde",
       "PERSISTENT": "Stockage protégé",
       "PERSISTENT_YES": "Accordé. Le navigateur n'effacera pas vos données de lui-même en cas de manque de place.",
-      "PERSISTENT_NO": "Non accordé. Le navigateur peut effacer vos données en cas de manque de place. Installer l'application ou ajouter ce site aux favoris règle généralement cela."
+      "PERSISTENT_NO": "Non accordé. Le navigateur peut effacer vos données en cas de manque de place. Ajouter ce site à l'écran d'accueil ou aux favoris règle généralement cela."
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Type de compte",
@@ -4101,7 +4101,7 @@
     "THOUGHT_TOKENS": "{count} jetons",
     "DELETE_CHAT_TITLE": "Supprimer cette discussion ?",
     "DELETE_CHAT_DESC": "La discussion et tous ses messages seront supprimés définitivement. Cette action est irréversible.",
-    "BACKUP_NOTICE_NOT_PERSISTED": "Votre navigateur peut supprimer vos personnages, lorebooks, presets et discussions quand il manque de place ou qu'une application de nettoyage passe. Installer l'application ou ajouter ce site aux favoris rend cela moins probable, et une sauvegarde les protège.",
+    "BACKUP_NOTICE_NOT_PERSISTED": "Votre navigateur peut supprimer vos personnages, lorebooks, presets et discussions quand il manque de place ou qu'une application de nettoyage passe. Ajouter ce site à l'écran d'accueil ou aux favoris rend cela moins probable, et une sauvegarde les protège.",
     "BACKUP_NOTICE_LOCAL_ONLY": "Vos personnages, lorebooks, presets et discussions n'existent que dans ce navigateur. Une application de nettoyage, l'effacement des données du site ou la perte de l'appareil les supprime définitivement.",
     "BACKUP_NOTICE_NEVER": "Aucune sauvegarde pour l'instant.",
     "BACKUP_NOTICE_LAST": "Dernière sauvegarde {days, plural, =0 {aujourd'hui} one {il y a # jour} other {il y a # jours}}.",

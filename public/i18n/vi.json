@@ -3646,7 +3646,7 @@
       "LAST_BACKUP": "Lần sao lưu gần nhất",
       "PERSISTENT": "Bộ nhớ được bảo vệ",
       "PERSISTENT_YES": "Đã cấp. Trình duyệt sẽ không tự xóa dữ liệu của bạn khi sắp hết dung lượng.",
-      "PERSISTENT_NO": "Chưa cấp. Trình duyệt có thể xóa dữ liệu của bạn khi sắp hết dung lượng. Cài đặt ứng dụng hoặc đánh dấu trang này thường khắc phục được."
+      "PERSISTENT_NO": "Chưa cấp. Trình duyệt có thể xóa dữ liệu của bạn khi sắp hết dung lượng. Thêm trang này vào màn hình chính hoặc đánh dấu trang thường khắc phục được."
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Loại tài khoản",
@@ -4101,7 +4101,7 @@
     "THOUGHT_TOKENS": "{count} token",
     "DELETE_CHAT_TITLE": "Xóa cuộc trò chuyện này?",
     "DELETE_CHAT_DESC": "Cuộc trò chuyện và toàn bộ tin nhắn sẽ bị xóa vĩnh viễn. Không thể hoàn tác.",
-    "BACKUP_NOTICE_NOT_PERSISTED": "Trình duyệt có thể xóa nhân vật, lorebook, preset và cuộc trò chuyện của bạn khi cần dung lượng hoặc khi một ứng dụng dọn dẹp chạy. Cài đặt ứng dụng hoặc đánh dấu trang này giúp giảm khả năng đó, và bản sao lưu giữ chúng an toàn.",
+    "BACKUP_NOTICE_NOT_PERSISTED": "Trình duyệt có thể xóa nhân vật, lorebook, preset và cuộc trò chuyện của bạn khi cần dung lượng hoặc khi một ứng dụng dọn dẹp chạy. Thêm trang này vào màn hình chính hoặc đánh dấu trang giúp giảm khả năng đó, và bản sao lưu giữ chúng an toàn.",
     "BACKUP_NOTICE_LOCAL_ONLY": "Nhân vật, lorebook, preset và cuộc trò chuyện của bạn chỉ tồn tại trong trình duyệt này. Ứng dụng dọn dẹp, xóa dữ liệu trang hoặc mất thiết bị sẽ xóa chúng vĩnh viễn.",
     "BACKUP_NOTICE_NEVER": "Chưa có bản sao lưu.",
     "BACKUP_NOTICE_LAST": "Lần sao lưu gần nhất {days, plural, =0 {hôm nay} other {# ngày trước}}.",

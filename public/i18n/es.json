@@ -3646,7 +3646,7 @@
       "LAST_BACKUP": "Última copia",
       "PERSISTENT": "Almacenamiento protegido",
       "PERSISTENT_YES": "Concedido. El navegador no borrará tus datos por su cuenta cuando falte espacio.",
-      "PERSISTENT_NO": "No concedido. El navegador puede borrar tus datos cuando falte espacio. Instalar la app o guardar este sitio en marcadores suele solucionarlo."
+      "PERSISTENT_NO": "No concedido. El navegador puede borrar tus datos cuando falte espacio. Añadir este sitio a la pantalla de inicio o guardarlo en marcadores suele solucionarlo."
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Tipo de cuenta",
@@ -4101,7 +4101,7 @@
     "THOUGHT_TOKENS": "{count} tokens",
     "DELETE_CHAT_TITLE": "¿Eliminar este chat?",
     "DELETE_CHAT_DESC": "Esto elimina permanentemente el chat y todos sus mensajes. No se puede deshacer.",
-    "BACKUP_NOTICE_NOT_PERSISTED": "Tu navegador puede borrar tus personajes, lorebooks, presets y chats cuando necesita espacio o se ejecuta una app de limpieza. Instalar la app o guardar este sitio en marcadores lo hace menos probable, y una copia de seguridad los mantiene a salvo.",
+    "BACKUP_NOTICE_NOT_PERSISTED": "Tu navegador puede borrar tus personajes, lorebooks, presets y chats cuando necesita espacio o se ejecuta una app de limpieza. Añadir este sitio a la pantalla de inicio o guardarlo en marcadores lo hace menos probable, y una copia de seguridad los mantiene a salvo.",
     "BACKUP_NOTICE_LOCAL_ONLY": "Tus personajes, lorebooks, presets y chats solo existen en este navegador. Una app de limpieza, borrar los datos del sitio o perder el dispositivo los elimina para siempre.",
     "BACKUP_NOTICE_NEVER": "Todavía no hay copia de seguridad.",
     "BACKUP_NOTICE_LAST": "Última copia {days, plural, =0 {hoy} one {hace # día} other {hace # días}}.",

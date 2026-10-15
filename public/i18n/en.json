@@ -3646,7 +3646,7 @@
       "LAST_BACKUP": "Last backup",
       "PERSISTENT": "Protected storage",
       "PERSISTENT_YES": "Granted. The browser will not clear your data on its own when space runs low.",
-      "PERSISTENT_NO": "Not granted. The browser may clear your data when space runs low. Installing the app or bookmarking this site usually fixes that."
+      "PERSISTENT_NO": "Not granted. The browser may clear your data when space runs low. Adding this site to your home screen or bookmarking it usually fixes that."
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Account type",
@@ -4101,7 +4101,7 @@
     "THOUGHT_TOKENS": "{count} tokens",
     "DELETE_CHAT_TITLE": "Delete this chat?",
     "DELETE_CHAT_DESC": "This permanently deletes the chat and all of its messages. It cannot be undone.",
-    "BACKUP_NOTICE_NOT_PERSISTED": "Your browser may delete your characters, lorebooks, presets and chats when it needs space or a cleaner app runs. Installing the app or bookmarking this site makes that less likely, and a backup keeps them safe.",
+    "BACKUP_NOTICE_NOT_PERSISTED": "Your browser may delete your characters, lorebooks, presets and chats when it needs space or a cleaner app runs. Adding this site to your home screen or bookmarking it makes that less likely, and a backup keeps them safe.",
     "BACKUP_NOTICE_LOCAL_ONLY": "Your characters, lorebooks, presets and chats exist only in this browser. A cleaner app, clearing site data or losing the device deletes them for good.",
     "BACKUP_NOTICE_NEVER": "No backup yet.",
     "BACKUP_NOTICE_LAST": "Last backup {days, plural, =0 {today} one {# day ago} other {# days ago}}.",

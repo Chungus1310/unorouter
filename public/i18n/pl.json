@@ -3646,7 +3646,7 @@
       "LAST_BACKUP": "Ostatnia kopia",
       "PERSISTENT": "Chroniona pamięć",
       "PERSISTENT_YES": "Przyznana. Przeglądarka sama nie usunie twoich danych, gdy zabraknie miejsca.",
-      "PERSISTENT_NO": "Nie przyznana. Przeglądarka może usunąć twoje dane, gdy zabraknie miejsca. Zainstalowanie aplikacji lub dodanie strony do zakładek zwykle to naprawia."
+      "PERSISTENT_NO": "Nie przyznana. Przeglądarka może usunąć twoje dane, gdy zabraknie miejsca. Dodanie strony do ekranu głównego lub do zakładek zwykle to naprawia."
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Typ konta",
@@ -4101,7 +4101,7 @@
     "THOUGHT_TOKENS": "{count} tokenów",
     "DELETE_CHAT_TITLE": "Usunąć ten czat?",
     "DELETE_CHAT_DESC": "Czat i wszystkie jego wiadomości zostaną trwale usunięte. Tej operacji nie można cofnąć.",
-    "BACKUP_NOTICE_NOT_PERSISTED": "Przeglądarka może usunąć twoje postacie, lorebooki, presety i czaty, gdy brakuje miejsca albo działa aplikacja czyszcząca. Zainstalowanie aplikacji lub dodanie strony do zakładek zmniejsza to ryzyko, a kopia zapasowa je chroni.",
+    "BACKUP_NOTICE_NOT_PERSISTED": "Przeglądarka może usunąć twoje postacie, lorebooki, presety i czaty, gdy brakuje miejsca albo działa aplikacja czyszcząca. Dodanie strony do ekranu głównego lub do zakładek zmniejsza to ryzyko, a kopia zapasowa je chroni.",
     "BACKUP_NOTICE_LOCAL_ONLY": "Twoje postacie, lorebooki, presety i czaty istnieją tylko w tej przeglądarce. Aplikacja czyszcząca, usunięcie danych strony albo utrata urządzenia kasuje je na zawsze.",
     "BACKUP_NOTICE_NEVER": "Brak kopii zapasowej.",
     "BACKUP_NOTICE_LAST": "Ostatnia kopia {days, plural, =0 {dzisiaj} one {# dzień temu} few {# dni temu} many {# dni temu} other {# dnia temu}}.",

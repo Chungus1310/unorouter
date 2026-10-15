@@ -3646,7 +3646,7 @@
       "LAST_BACKUP": "Cadangan terakhir",
       "PERSISTENT": "Penyimpanan terlindungi",
       "PERSISTENT_YES": "Diberikan. Browser tidak akan menghapus datamu sendiri saat ruang hampir habis.",
-      "PERSISTENT_NO": "Tidak diberikan. Browser bisa menghapus datamu saat ruang hampir habis. Memasang aplikasi atau menandai situs ini biasanya mengatasinya."
+      "PERSISTENT_NO": "Tidak diberikan. Browser bisa menghapus datamu saat ruang hampir habis. Menambahkan situs ini ke layar utama atau menandainya biasanya mengatasinya."
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Jenis akun",
@@ -4101,7 +4101,7 @@
     "THOUGHT_TOKENS": "{count} token",
     "DELETE_CHAT_TITLE": "Hapus obrolan ini?",
     "DELETE_CHAT_DESC": "Obrolan dan semua pesannya akan dihapus secara permanen. Tindakan ini tidak dapat dibatalkan.",
-    "BACKUP_NOTICE_NOT_PERSISTED": "Browser bisa menghapus karakter, lorebook, preset, dan chat kamu saat butuh ruang atau saat aplikasi pembersih berjalan. Memasang aplikasi atau menandai situs ini membuat hal itu lebih kecil kemungkinannya, dan cadangan menjaganya tetap aman.",
+    "BACKUP_NOTICE_NOT_PERSISTED": "Browser bisa menghapus karakter, lorebook, preset, dan chat kamu saat butuh ruang atau saat aplikasi pembersih berjalan. Menambahkan situs ini ke layar utama atau menandainya membuat hal itu lebih kecil kemungkinannya, dan cadangan menjaganya tetap aman.",
     "BACKUP_NOTICE_LOCAL_ONLY": "Karakter, lorebook, preset, dan chat kamu hanya ada di browser ini. Aplikasi pembersih, menghapus data situs, atau kehilangan perangkat akan menghapusnya selamanya.",
     "BACKUP_NOTICE_NEVER": "Belum ada cadangan.",
     "BACKUP_NOTICE_LAST": "Cadangan terakhir {days, plural, =0 {hari ini} other {# hari lalu}}.",

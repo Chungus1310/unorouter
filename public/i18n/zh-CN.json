@@ -3646,7 +3646,7 @@
       "LAST_BACKUP": "上次备份",
       "PERSISTENT": "受保护的存储",
       "PERSISTENT_YES": "已授予。空间不足时浏览器不会自行清除你的数据。",
-      "PERSISTENT_NO": "未授予。空间不足时浏览器可能会清除你的数据。安装应用或将本站加入书签通常可以解决。"
+      "PERSISTENT_NO": "未授予。空间不足时浏览器可能会清除你的数据。将本站添加到主屏幕或加入书签通常可以解决。"
     },
     "CUSTOMER_TYPE": {
       "TITLE": "账户类型",
@@ -4101,7 +4101,7 @@
     "THOUGHT_TOKENS": "{count} 个 token",
     "DELETE_CHAT_TITLE": "删除此聊天？",
     "DELETE_CHAT_DESC": "这将永久删除该聊天及其所有消息，且无法撤销。",
-    "BACKUP_NOTICE_NOT_PERSISTED": "当空间不足或清理应用运行时，浏览器可能会删除你的角色、世界书、预设和聊天。安装应用或将本站加入书签可以降低这种可能，备份则能保证它们安全。",
+    "BACKUP_NOTICE_NOT_PERSISTED": "当空间不足或清理应用运行时，浏览器可能会删除你的角色、世界书、预设和聊天。将本站添加到主屏幕或加入书签可以降低这种可能，备份则能保证它们安全。",
     "BACKUP_NOTICE_LOCAL_ONLY": "你的角色、世界书、预设和聊天只保存在这个浏览器里。清理应用、清除网站数据或丢失设备都会让它们永久消失。",
     "BACKUP_NOTICE_NEVER": "还没有备份。",
     "BACKUP_NOTICE_LAST": "上次备份：{days, plural, =0 {今天} other {# 天前}}。",

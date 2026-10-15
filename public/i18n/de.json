@@ -3646,7 +3646,7 @@
       "LAST_BACKUP": "Letztes Backup",
       "PERSISTENT": "Geschützter Speicher",
       "PERSISTENT_YES": "Erteilt. Der Browser löscht deine Daten nicht von selbst, wenn der Platz knapp wird.",
-      "PERSISTENT_NO": "Nicht erteilt. Der Browser kann deine Daten löschen, wenn der Platz knapp wird. Die App zu installieren oder die Seite als Lesezeichen zu speichern behebt das meistens."
+      "PERSISTENT_NO": "Nicht erteilt. Der Browser kann deine Daten löschen, wenn der Platz knapp wird. Die Seite zum Startbildschirm hinzuzufügen oder als Lesezeichen zu speichern behebt das meistens."
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Kontotyp",
@@ -4101,7 +4101,7 @@
     "THOUGHT_TOKENS": "{count} Tokens",
     "DELETE_CHAT_TITLE": "Diesen Chat löschen?",
     "DELETE_CHAT_DESC": "Der Chat und alle seine Nachrichten werden dauerhaft gelöscht. Das lässt sich nicht rückgängig machen.",
-    "BACKUP_NOTICE_NOT_PERSISTED": "Dein Browser kann deine Charaktere, Lorebooks, Presets und Chats löschen, wenn er Platz braucht oder eine Aufräum-App läuft. Die App zu installieren oder die Seite als Lesezeichen zu speichern macht das unwahrscheinlicher, und ein Backup hält sie sicher.",
+    "BACKUP_NOTICE_NOT_PERSISTED": "Dein Browser kann deine Charaktere, Lorebooks, Presets und Chats löschen, wenn er Platz braucht oder eine Aufräum-App läuft. Die Seite zum Startbildschirm hinzuzufügen oder als Lesezeichen zu speichern macht das unwahrscheinlicher, und ein Backup hält sie sicher.",
     "BACKUP_NOTICE_LOCAL_ONLY": "Deine Charaktere, Lorebooks, Presets und Chats gibt es nur in diesem Browser. Eine Aufräum-App, gelöschte Websitedaten oder ein verlorenes Gerät löschen sie endgültig.",
     "BACKUP_NOTICE_NEVER": "Noch kein Backup.",
     "BACKUP_NOTICE_LAST": "Letztes Backup {days, plural, =0 {heute} one {vor # Tag} other {vor # Tagen}}.",

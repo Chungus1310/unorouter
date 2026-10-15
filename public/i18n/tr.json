@@ -3646,7 +3646,7 @@
       "LAST_BACKUP": "Son yedek",
       "PERSISTENT": "Korumalı depolama",
       "PERSISTENT_YES": "Verildi. Tarayıcı yer azaldığında verilerini kendiliğinden silmez.",
-      "PERSISTENT_NO": "Verilmedi. Tarayıcı yer azaldığında verilerini silebilir. Uygulamayı yüklemek ya da siteyi yer imlerine eklemek genellikle bunu çözer."
+      "PERSISTENT_NO": "Verilmedi. Tarayıcı yer azaldığında verilerini silebilir. Siteyi ana ekrana ya da yer imlerine eklemek genellikle bunu çözer."
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Hesap türü",
@@ -4101,7 +4101,7 @@
     "THOUGHT_TOKENS": "{count} jeton",
     "DELETE_CHAT_TITLE": "Bu sohbet silinsin mi?",
     "DELETE_CHAT_DESC": "Sohbet ve tüm mesajları kalıcı olarak silinir. Bu işlem geri alınamaz.",
-    "BACKUP_NOTICE_NOT_PERSISTED": "Tarayıcın yer gerektiğinde ya da bir temizleme uygulaması çalıştığında karakterlerini, lorebook'larını, ön ayarlarını ve sohbetlerini silebilir. Uygulamayı yüklemek ya da siteyi yer imlerine eklemek bunu daha az olası kılar, yedek ise onları güvende tutar.",
+    "BACKUP_NOTICE_NOT_PERSISTED": "Tarayıcın yer gerektiğinde ya da bir temizleme uygulaması çalıştığında karakterlerini, lorebook'larını, ön ayarlarını ve sohbetlerini silebilir. Siteyi ana ekrana ya da yer imlerine eklemek bunu daha az olası kılar, yedek ise onları güvende tutar.",
     "BACKUP_NOTICE_LOCAL_ONLY": "Karakterlerin, lorebook'ların, ön ayarların ve sohbetlerin yalnızca bu tarayıcıda var. Bir temizleme uygulaması, site verilerinin silinmesi ya da cihazın kaybolması onları kalıcı olarak siler.",
     "BACKUP_NOTICE_NEVER": "Henüz yedek yok.",
     "BACKUP_NOTICE_LAST": "Son yedek {days, plural, =0 {bugün} other {# gün önce}}.",
