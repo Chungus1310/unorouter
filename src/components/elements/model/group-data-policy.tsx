@@ -68,6 +68,7 @@ function Hint(props: { label: string; children: React.ReactNode }) {
   );
 }
 
+// Colour is important-flagged: command lists recolour every svg in the highlighted row.
 function PolicyIcon(props: { name: IconName; className: string }) {
   return (
     <Icon
@@ -157,17 +158,17 @@ export function GroupDataPolicyBadges(props: {
               : t("MODELS.DATA_POLICY.UNSAFE")
           }
         >
-          <PolicyIcon name="triangle-alert" className="text-destructive" />
+          <PolicyIcon name="triangle-alert" className="text-destructive!" />
         </Hint>
       )}
       {prompts === "trains" && (
         <Hint label={t("MODELS.DATA_POLICY.TRAINS")}>
-          <PolicyIcon name="brain" className="text-warning" />
+          <PolicyIcon name="brain" className="text-warning!" />
         </Hint>
       )}
       {prompts === "retains" && (
         <Hint label={t("MODELS.DATA_POLICY.RETAINS")}>
-          <PolicyIcon name="database" className="text-warning" />
+          <PolicyIcon name="database" className="text-warning!" />
         </Hint>
       )}
       {safe && (
@@ -176,12 +177,15 @@ export function GroupDataPolicyBadges(props: {
             basis: t(SAFE_BASIS_KEY[transfer]),
           })}
         >
-          <PolicyIcon name="shield-check" className="text-success" />
+          <PolicyIcon name="shield-check" className="text-success!" />
         </Hint>
       )}
       {!known && (
         <Hint label={t("MODELS.DATA_POLICY.UNKNOWN")}>
-          <PolicyIcon name="circle-help" className="text-muted-foreground/50" />
+          <PolicyIcon
+            name="circle-help"
+            className="text-muted-foreground/50!"
+          />
         </Hint>
       )}
     </span>

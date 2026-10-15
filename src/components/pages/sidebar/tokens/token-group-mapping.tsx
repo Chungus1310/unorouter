@@ -572,29 +572,30 @@ function ModelGroupPanel(props: {
                         )
                   }
                 />
-                <span
-                  className="truncate font-mono text-xs"
-                  title={
-                    option.online
-                      ? option.group
-                      : `${option.group} - ${t(
-                          option.missing
-                            ? "TOKEN.FORM.GROUP_MISSING"
-                            : "TOKEN.FORM.GROUP_OFFLINE",
-                        )}`
-                  }
-                >
-                  {groupDisplayLabel(
-                    option.group,
-                    props.model.replace(/:/g, "-"),
+                {/* Badges sit under the name: beside it they ate the width
+                      on phones and cut every name to its first two letters. */}
+                <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+                  <span
+                    className="truncate font-mono text-xs"
+                    title={
+                      option.online
+                        ? option.group
+                        : `${option.group} - ${t(
+                            option.missing
+                              ? "TOKEN.FORM.GROUP_MISSING"
+                              : "TOKEN.FORM.GROUP_OFFLINE",
+                          )}`
+                    }
+                  >
+                    {groupDisplayLabel(
+                      option.group,
+                      props.model.replace(/:/g, "-"),
+                    )}
+                  </span>
+                  {!option.missing && (
+                    <GroupDataPolicyBadges policy={option.policy} />
                   )}
                 </span>
-                {!option.missing && (
-                  <GroupDataPolicyBadges
-                    policy={option.policy}
-                    className="ml-1.5"
-                  />
-                )}
                 <span className="text-muted-foreground ml-auto shrink-0 pl-2 text-right font-mono text-[11px] leading-tight">
                   <span className="block">
                     {option.missing
