@@ -1,7 +1,6 @@
 "use client";
 
 import { Icon } from "@/components/ui/icon";
-import { analytics } from "@/lib/analytics";
 import { AFF_CODE_KEY } from "@/lib/config/constants";
 import { env } from "@/lib/config/env";
 import { rpc } from "@/lib/rpc";
@@ -125,7 +124,6 @@ export function OAuthButtons(props: OAuthButtonsProps) {
 
   async function handleOAuth(provider: OAuthProvider) {
     setLoading(provider.key);
-    analytics.auth.oauthInitiated(provider.key);
     logChatDebug("auth.oauth.start", { provider: provider.key });
     try {
       const callbackUrl = `${window.location.origin}/api/auth/account/oauth/callback`;

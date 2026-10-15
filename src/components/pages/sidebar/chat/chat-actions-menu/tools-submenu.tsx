@@ -13,7 +13,6 @@ import {
   useClearConversationMutation,
   useDuplicateConversationMutation,
 } from "@/hooks/ai/chat-hook";
-import { analytics } from "@/lib/analytics";
 import { copyToClipboardAsync } from "@/lib/utils/base";
 import { useAui } from "@assistant-ui/react";
 import { useTranslations } from "next-intl";
@@ -37,7 +36,6 @@ export function ToolsSubmenu(props: Props) {
   const handleDuplicate = async () => {
     if (!props.convId) return;
     const data = await duplicateMut.mutateAsync({ id: props.convId });
-    analytics.chat.conversationDuplicated();
     aui.threads().switchToThread(data.id);
     toast.success(t("CHAT.MORE.DUPLICATE_SUCCESS"));
   };
@@ -58,7 +56,6 @@ export function ToolsSubmenu(props: Props) {
 
   const handleClear = async () => {
     if (!props.convId) return;
-    analytics.chat.clearConfirmOpened();
     const ok = await confirm({
       title: t("COMMON.CONFIRM.CLEAR_CHAT_TITLE"),
       description: t("CHAT.MORE.CLEAR_CONFIRM_DESC"),
@@ -68,7 +65,6 @@ export function ToolsSubmenu(props: Props) {
     });
     if (!ok) return;
     await clearMut.mutateAsync({ id: props.convId });
-    analytics.chat.conversationCleared();
     toast.success(t("CHAT.MORE.CLEAR_SUCCESS"));
   };
 

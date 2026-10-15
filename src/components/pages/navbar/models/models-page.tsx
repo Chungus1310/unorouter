@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/sidebar";
 import { useModelsFilter } from "@/hooks/ui/use-models-hook";
 import { ModelsUrlSync } from "./models-url-sync";
-import { analytics } from "@/lib/analytics";
 import { DataTableId } from "@/lib/types/enums";
 import { createTableAtoms } from "@/store/data-table-store";
 import {
@@ -49,7 +48,6 @@ export function ModelsPage() {
   const showReset = isDirty || columnSorting.length > 0;
 
   const openDetail = (name: string) => {
-    analytics.models.detailOpened({ model: name });
     m.setSelectedModelName(name);
   };
 

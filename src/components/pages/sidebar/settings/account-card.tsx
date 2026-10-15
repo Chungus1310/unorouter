@@ -21,7 +21,6 @@ import {
   useUnbindOAuthMutation,
 } from "@/hooks/auth/settings-hook";
 import { useStatusQuery } from "@/hooks/ops/status-hook";
-import { analytics } from "@/lib/analytics";
 import { rpc } from "@/lib/rpc";
 import { copyToClipboard, handleElysia } from "@/lib/utils/base";
 import {
@@ -107,7 +106,6 @@ export function AccountCard() {
       },
       {
         onSuccess: () => {
-          analytics.settings.emailBound();
           toast.success(t("SETTINGS.ACCOUNT.EMAIL_BOUND"));
           setShowEmailForm(false);
           form.reset(formDefaults(emailBindSchema));
@@ -124,7 +122,6 @@ export function AccountCard() {
   async function handleOAuthBind(provider: string) {
     const status = statusQuery.data;
     if (!status) return;
-    analytics.settings.oauthBound(provider);
     setBindLoading(provider);
     try {
       const callbackUrl = `${window.location.origin}/api/auth/account/oauth/callback`;
@@ -159,7 +156,6 @@ export function AccountCard() {
       { bindingType: provider },
       {
         onSuccess: () => {
-          analytics.settings.oauthUnbound(provider);
           toast.success(t("SETTINGS.ACCOUNT.UNBOUND", { provider: label }));
         },
       },

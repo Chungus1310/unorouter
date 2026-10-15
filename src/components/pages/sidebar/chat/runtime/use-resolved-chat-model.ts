@@ -4,7 +4,6 @@ import { useConversationQuery } from "@/hooks/ai/chat-hook";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
 import { useHydrated } from "@/hooks/ui/use-hydrated";
-import { analytics } from "@/lib/analytics";
 import {
   readLocalConversation,
   updateLocalConversationSettings,
@@ -44,7 +43,6 @@ export function useResolvedChatModel(remoteId: string | null | undefined) {
     if (current) return;
 
     if (!pricingReady || !authSettled || !firstFreeModel) return;
-    analytics.chat.modelAutoPicked({ to: firstFreeModel });
     setChatModel(firstFreeModel);
   }, [
     hydrated,

@@ -14,8 +14,7 @@ import {
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import type { ChatUIMessage } from "@/lib/types";
 import { uid } from "@/lib/utils/base";
-import { classifyStreamError, extractErrorDetail } from "@/lib/utils/client";
-import { analytics } from "@/lib/analytics";
+import { extractErrorDetail } from "@/lib/utils/client";
 import { coalesceReasoningMiddleware } from "@/lib/ai/chat/coalesce-reasoning-middleware";
 import { prefillThinkMiddleware } from "@/lib/ai/chat/prefill-think-middleware";
 import {
@@ -320,19 +319,8 @@ async function runClientStream(args: {
       const isEmptyStream = detail.message
         .toLowerCase()
         .includes("no output generated");
-      analytics.chat.streamFailed({
-        error_type: isEmptyStream
-          ? "empty_stream"
-          : classifyStreamError(detail),
-        status: detail.status ?? null,
-        code: detail.code ?? null,
-        model: args.model,
-        request_id: collector.requestId,
-        message: detail.message.slice(0, 300),
-      });
-      // analytics does not reach the diagnostics export, and a cut-off is
-      // reported by the user rather than caught here, so the counts have to be
-      // in the log they send back.
+      // A cut-off is reported by the user rather than caught here, so the
+      // counts have to be in the log they send back.
       logChatDebug("stream.failed", {
         model: args.model,
         group: group ?? null,

@@ -8,7 +8,6 @@ import {
   useImportPersonaMutation,
   usePersonasQuery,
 } from "@/hooks/ai/rp/personas";
-import { analytics } from "@/lib/analytics";
 import type { EntityEditId } from "@/lib/types";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -50,7 +49,6 @@ export function PersonaList(props: Props) {
     );
     if (!ok) return;
     await deleteMut.mutateAsync(id);
-    analytics.rp.entityAction({ entity: "personas", action: "deleted" });
     if (editingId === id) setEditingId(null);
   };
 
@@ -68,7 +66,6 @@ export function PersonaList(props: Props) {
       actions={
         <>
           <RpImportControl
-            entity="personas"
             accept=".json,application/json"
             labelKey="RP.PERSONAS_IMPORT"
             isPending={importMut.isPending}
@@ -76,10 +73,6 @@ export function PersonaList(props: Props) {
           />
           <Button
             onClick={() => {
-              analytics.rp.entityAction({
-                entity: "personas",
-                action: "create_started",
-              });
               setEditingId("new");
             }}
             className={RP_ACTION_BUTTON}
@@ -113,10 +106,6 @@ export function PersonaList(props: Props) {
               favoriteMut.mutate({ id: p.id, isFavorite: !p.isFavorite }),
           }}
           onOpen={() => {
-            analytics.rp.entityAction({
-              entity: "personas",
-              action: "edit_started",
-            });
             setEditingId(p.id);
           }}
           leading={<RpAvatar mediaId={p.avatarMediaId} name={p.name} />}

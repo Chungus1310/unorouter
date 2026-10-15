@@ -1,7 +1,6 @@
 "use client";
 
 import { Icon } from "@/components/ui/icon";
-import { analytics } from "@/lib/analytics";
 import { useEffect, useRef, useState } from "react";
 
 export function ConversationItemEditor(props: {
@@ -17,7 +16,6 @@ export function ConversationItemEditor(props: {
   }, []);
 
   const cancel = () => {
-    analytics.chat.conversationRenameCancelled();
     props.onCancel();
   };
 

@@ -38,8 +38,6 @@ export const ENTITY_KINDS = [
 
 export type EntityKindName = (typeof ENTITY_KINDS)[number];
 
-export type RpEntityKind = Exclude<EntityKindName, "theme">;
-
 export type PendingSyncOp = "patch" | "delete";
 
 export type PendingTaskType = "logEnrich";

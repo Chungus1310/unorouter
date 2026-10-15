@@ -3,7 +3,6 @@ import { TriggerAlertProvider } from "@/components/ui/trigger-alert";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ReactNode } from "react";
 import { LanguageProvider } from "./app/language-provider";
-import { PostHogProvider } from "./app/posthog-provider";
 import { ThemeProvider } from "./app/theme-provider";
 import { UserThemeProvider } from "@/components/provider/app/user-theme-provider";
 import type { UserTheme } from "@/lib/theme/theme-types";
@@ -24,13 +23,11 @@ export function Providers(props: {
           <LanguageProvider>
             <ThemeProvider>
               <UserThemeProvider>
-                <PostHogProvider>
-                  <WebMcpProvider />
-                  <ConfirmProvider />
-                  <DbTransferDialogLoader />
-                  <TriggerAlertProvider />
-                  <TooltipProvider>{props.children}</TooltipProvider>
-                </PostHogProvider>
+                <WebMcpProvider />
+                <ConfirmProvider />
+                <DbTransferDialogLoader />
+                <TriggerAlertProvider />
+                <TooltipProvider>{props.children}</TooltipProvider>
               </UserThemeProvider>
             </ThemeProvider>
           </LanguageProvider>

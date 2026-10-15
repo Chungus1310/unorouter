@@ -217,7 +217,6 @@ print(res.choices[0].message.content)`;
                 <span className="break-all">{m.model_name}</span>
                 <CopyButton
                   text={m.model_name}
-                  analyticsLabel="model_name"
                   className="text-muted-foreground hover:text-foreground flex size-5 shrink-0 items-center justify-center transition-colors"
                   iconSize="h-3 w-3"
                 />

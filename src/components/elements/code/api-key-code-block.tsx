@@ -16,7 +16,6 @@ type Props = {
   placeholder: string;
   label?: string;
   className?: string;
-  analyticsLabel?: string;
 };
 
 export function ApiKeyCodeBlock(props: Props) {
@@ -63,11 +62,7 @@ export function ApiKeyCodeBlock(props: Props) {
           dangerouslySetInnerHTML={{ __html: displayHtml }}
         />
         <div className="absolute top-16 right-6 flex items-center gap-1">
-          <ApiKeyActions
-            copyText={copyText}
-            showReveal={!!apiKey}
-            analyticsLabel={props.analyticsLabel ?? "code_snippet"}
-          />
+          <ApiKeyActions copyText={copyText} showReveal={!!apiKey} />
         </div>
       </div>
 

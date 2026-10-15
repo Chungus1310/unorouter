@@ -23,7 +23,6 @@ import {
 import { usePresetsQuery } from "@/hooks/ai/rp/presets";
 import { useModelDetailQuery } from "@/hooks/models/pricing-hook";
 import { useIsMobile } from "@/hooks/ui/use-mobile";
-import { analytics } from "@/lib/analytics";
 import { NONE_VALUE } from "@/lib/config/constants";
 import { logChatDebug } from "@/lib/utils/chat-debug-log";
 import { handleError } from "@/lib/utils/client";
@@ -167,23 +166,6 @@ export function ConversationOverridesDrawer(props: DrawerProps) {
       samplerMemoryByModel,
       setSamplerMemoryByModel,
     );
-    analytics.chat.overridesSaved({
-      mode: isDefaultsMode ? "defaults" : "conversation",
-      changed_fields: Object.keys(form.formState.dirtyFields),
-      has_persona: data.personaId !== NONE_VALUE,
-      has_preset: data.presetId !== NONE_VALUE,
-      character_count: data.characterIds.length,
-      lorebook_count: data.lorebookIds.length,
-      has_system_prompt: !!data.systemPromptOverride,
-      has_author_note: !!data.authorNote,
-      reasoning_effort:
-        data.reasoningEffort === NONE_VALUE ? null : data.reasoningEffort,
-      web_search_enabled: data.webSearchEnabled,
-      web_search_engine: data.webSearchEnabled ? data.webSearchEngine : null,
-      sampling_customized_fields: SAMPLING_FIELDS.filter(
-        (f) => data[f] !== null && data[f] !== undefined,
-      ),
-    });
 
     if (isDefaultsMode) {
       setChatDefaults(buildDefaultsOverrides(data));
@@ -217,11 +199,6 @@ export function ConversationOverridesDrawer(props: DrawerProps) {
     <Sheet open={props.open} onOpenChange={props.onOpenChange}>
       {!controlled && (
         <SheetTrigger
-          onClick={() =>
-            analytics.chat.overridesDrawerOpened({
-              mode: isDefaultsMode ? "defaults" : "conversation",
-            })
-          }
           render={
             props.trigger ?? (
               <Button

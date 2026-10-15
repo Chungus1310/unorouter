@@ -17,7 +17,6 @@ import {
   useReorderLorebookEntriesMutation,
   useSetLorebookEntriesRoleMutation,
 } from "@/hooks/ai/rp/lorebooks";
-import { analytics } from "@/lib/analytics";
 import type { EntityEditId, TranslationKey } from "@/lib/types";
 import {
   LOREBOOK_INJECTION_ROLES,
@@ -57,10 +56,6 @@ export function LorebookEntries(props: { lorebookId: string }) {
     });
     if (!ok) return;
     await deleteMut.mutateAsync(id);
-    analytics.rp.entityAction({
-      entity: "lorebook_entries",
-      action: "deleted",
-    });
     if (editingId === id) setEditingId(null);
   };
 
@@ -94,10 +89,6 @@ export function LorebookEntries(props: { lorebookId: string }) {
           )}
           <Button
             onClick={() => {
-              analytics.rp.entityAction({
-                entity: "lorebook_entries",
-                action: "create_started",
-              });
               setEditingId("new");
             }}
             size="sm"
@@ -127,10 +118,6 @@ export function LorebookEntries(props: { lorebookId: string }) {
             <Card
               className="hover:bg-accent flex cursor-pointer flex-row items-start gap-2 p-3 transition-colors"
               onClick={() => {
-                analytics.rp.entityAction({
-                  entity: "lorebook_entries",
-                  action: "edit_started",
-                });
                 setEditingId(e.id);
               }}
             >

@@ -26,7 +26,7 @@ function DetailItem(props: { label: string; value: React.ReactNode }) {
   );
 }
 
-function CopyableCode(props: { value: string; analyticsLabel: string }) {
+function CopyableCode(props: { value: string }) {
   const t = useTranslations();
   return (
     <span className="flex items-center gap-1.5">
@@ -37,7 +37,6 @@ function CopyableCode(props: { value: string; analyticsLabel: string }) {
         text={props.value}
         iconSize="h-3 w-3"
         toastMessage={t("COMMON.COPIED_CLIPBOARD")}
-        analyticsLabel={props.analyticsLabel}
       />
     </span>
   );
@@ -67,21 +66,14 @@ export function LogExpandedRow(props: { row: Row<TableFeats, LogRow> }) {
   if (log.request_id) {
     items.push({
       label: t("LOGS.DETAIL.REQUEST_ID"),
-      value: (
-        <CopyableCode value={log.request_id} analyticsLabel="logs_request_id" />
-      ),
+      value: <CopyableCode value={log.request_id} />,
     });
   }
 
   if (log.upstream_request_id) {
     items.push({
       label: t("LOGS.DETAIL.UPSTREAM_REQUEST_ID"),
-      value: (
-        <CopyableCode
-          value={log.upstream_request_id}
-          analyticsLabel="logs_upstream_request_id"
-        />
-      ),
+      value: <CopyableCode value={log.upstream_request_id} />,
     });
   }
 

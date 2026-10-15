@@ -1,7 +1,6 @@
 "use client";
 
 import { confirm } from "@/components/ui/confirm";
-import { analytics } from "@/lib/analytics";
 import {
   isIOS,
   isStandalone,
@@ -49,7 +48,6 @@ function useWatchTopic(topic: string) {
     setPushEnabled(true);
     await syncPushTopics(nextTopics, locale);
     refreshNotifyPresence();
-    analytics.models.notifyPushEnabled({ topics: nextTopics.length });
   };
 
   const toggle = () => {
@@ -57,7 +55,6 @@ function useWatchTopic(topic: string) {
       ? topics.filter((item) => item !== topic)
       : [...topics, topic];
     setTopics(next);
-    analytics.models.notifyWatchToggled({ topic, watched: !watched });
     if (!watched) void offerPush(next);
   };
 

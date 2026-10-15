@@ -9,7 +9,6 @@ import { usePersonaQuery } from "@/hooks/ai/rp/personas";
 import { IMG_TOKEN_RE } from "@/lib/db/client/data/media/img-render";
 import { resolveGreetingSource } from "@/lib/ai/chat/greeting-source";
 import { expandMacros } from "@/lib/ai/chat/macros";
-import { analytics } from "@/lib/analytics";
 import { chatLoadoutAtom, greetingIndexAtom } from "@/store/chat-store";
 import { useAtom, useAtomValue } from "jotai";
 
@@ -51,7 +50,6 @@ export function GreetingPreview() {
             size="icon-xs"
             disabled={safeIndex === 0}
             onClick={() => {
-              analytics.chat.greetingPicked({ index: safeIndex - 1 });
               setIndex(safeIndex - 1);
             }}
           >
@@ -65,7 +63,6 @@ export function GreetingPreview() {
             size="icon-xs"
             disabled={safeIndex === greetings.length - 1}
             onClick={() => {
-              analytics.chat.greetingPicked({ index: safeIndex + 1 });
               setIndex(safeIndex + 1);
             }}
           >

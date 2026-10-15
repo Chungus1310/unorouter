@@ -8,7 +8,6 @@ import {
   useImportPresetMutation,
   usePresetsQuery,
 } from "@/hooks/ai/rp/presets";
-import { analytics } from "@/lib/analytics";
 import type { EntityEditId } from "@/lib/types";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -46,7 +45,6 @@ export function PresetsPage() {
     );
     if (!ok) return;
     await deleteMut.mutateAsync(id);
-    analytics.rp.entityAction({ entity: "presets", action: "deleted" });
     if (editingId === id) setEditingId(null);
   };
 
@@ -60,16 +58,11 @@ export function PresetsPage() {
       backLabelKey="RP.PRESETS_BACK"
       isEditing={editingId !== null}
       onNew={() => {
-        analytics.rp.entityAction({
-          entity: "presets",
-          action: "create_started",
-        });
         setEditingId("new");
       }}
       onBack={() => setEditingId(null)}
       headerActions={
         <RpImportControl
-          entity="presets"
           accept=".json,application/json"
           labelKey="RP.PRESETS_IMPORT"
           isPending={importMut.isPending}
@@ -103,10 +96,6 @@ export function PresetsPage() {
                   favoriteMut.mutate({ id: p.id, isFavorite: !p.isFavorite }),
               }}
               onOpen={() => {
-                analytics.rp.entityAction({
-                  entity: "presets",
-                  action: "edit_started",
-                });
                 setEditingId(p.id);
               }}
               name={

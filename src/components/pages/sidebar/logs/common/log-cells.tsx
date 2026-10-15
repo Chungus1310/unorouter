@@ -11,7 +11,6 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { usePricingVendorsQuery } from "@/hooks/models/pricing-hook";
-import { analytics } from "@/lib/analytics";
 import { renderQuota } from "@/lib/config/constants";
 import type { TableFeats } from "@/lib/config/table-features";
 import { copyToClipboard } from "@/lib/utils/base";
@@ -137,7 +136,6 @@ export function LogModelCell(props: CellContext<TableFeats, LogRow>) {
               onClick={(e) => {
                 e.stopPropagation();
                 copyToClipboard(log.model_name);
-                analytics.logs.modelNameCopied();
                 toast.success(t("COMMON.COPIED_CLIPBOARD"));
               }}
             />
@@ -202,7 +200,6 @@ export function LogTokenNameCell(props: CellContext<TableFeats, LogRow>) {
               onClick={(e) => {
                 e.stopPropagation();
                 copyToClipboard(log.token_name);
-                analytics.logs.tokenNameCopied();
                 toast.success(t("COMMON.COPIED_CLIPBOARD"));
               }}
             />

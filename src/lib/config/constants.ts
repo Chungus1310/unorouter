@@ -32,8 +32,6 @@ export {
 } from "../utils/format/number";
 
 export const IS_DEV = process.env.NODE_ENV === "development";
-export const POSTHOG_DISABLED =
-  process.env.NEXT_PUBLIC_POSTHOG_DISABLED === "true";
 
 export const THIRTY_DAY_CACHE = {
   next: { revalidate: 60 * 60 * 24 * 30 },

@@ -8,7 +8,6 @@ import { Icon } from "@/components/ui/icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useAffiliateInviteesQuery } from "@/hooks/billing/affiliate-hook";
-import { analytics } from "@/lib/analytics";
 import { renderQuota } from "@/lib/config/constants";
 import { env } from "@/lib/config/env";
 import { copyToClipboard } from "@/lib/utils/base";
@@ -41,14 +40,12 @@ export function Affiliate() {
   function handleCopyLink() {
     if (!inviteLink) return;
     copyToClipboard(inviteLink);
-    analytics.affiliate.linkCopied();
     toast.success(t("AFFILIATE.LINK_COPIED"));
   }
 
   function handleCopyCode() {
     if (!affCode) return;
     copyToClipboard(affCode);
-    analytics.affiliate.codeCopied();
     toast.success(t("AFFILIATE.CODE_COPIED"));
   }
 
@@ -250,7 +247,6 @@ export function Affiliate() {
                 size="sm"
                 className="mt-3"
                 onClick={() => {
-                  analytics.affiliate.transferDialogOpened();
                   setTransferOpen(true);
                 }}
                 disabled={pendingQuota <= 0}
@@ -269,10 +265,7 @@ export function Affiliate() {
         <BadgeGenerator defaultType="referral" refCode={affCode} />
       </div>
 
-      <Tabs
-        defaultValue="invitees"
-        onValueChange={(tab) => analytics.affiliate.tabChanged({ tab })}
-      >
+      <Tabs defaultValue="invitees">
         <TabsList variant="line">
           <TabsTrigger value="invitees">
             <Icon name="users" className="h-3.5 w-3.5" />

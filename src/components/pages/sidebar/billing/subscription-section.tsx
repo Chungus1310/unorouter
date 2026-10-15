@@ -19,7 +19,6 @@ import {
   useUpdateBillingPreferenceMutation,
 } from "@/hooks/billing/billing-hook";
 import { useBillingActions } from "@/hooks/ui/use-billing-actions";
-import { analytics } from "@/lib/analytics";
 import {
   BILLING_PREFERENCE_OPTIONS,
   RESET_PERIOD_LABEL_KEYS,
@@ -61,7 +60,6 @@ export function SubscriptionSection() {
 
   function handlePreferenceChange(value: string | null) {
     if (value) {
-      analytics.billing.preferenceUpdated(value);
       preferenceMutation.mutate({ body: { billing_preference: value } });
     }
   }
@@ -74,7 +72,6 @@ export function SubscriptionSection() {
   }
 
   function handleManageBilling() {
-    analytics.billing.portalOpened();
     portalMutation.mutate(undefined, {
       onSuccess: (data) => {
         const url = data?.portal_url;
@@ -151,7 +148,6 @@ export function SubscriptionSection() {
             variant="ghost"
             size="icon"
             onClick={() => {
-              analytics.billing.refreshed();
               selfQuery.refetch();
               plansQuery.refetch();
               topUpInfoQuery.refetch();

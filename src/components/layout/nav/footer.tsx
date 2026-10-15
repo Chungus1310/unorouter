@@ -4,7 +4,6 @@ import { CompanyName, LogoImage } from "@/components/elements/brand/brand";
 import { BreakoutDialog } from "@/components/ui/breakout/breakout-dialog";
 import { Icon } from "@/components/ui/icon";
 import { Link } from "@/i18n/navigation";
-import { analytics } from "@/lib/analytics";
 import { APP_VALUES, msg } from "@/lib/config/constants";
 import { env } from "@/lib/config/env";
 import { cn } from "@/lib/utils";
@@ -319,12 +318,6 @@ function FooterLinks(props: {
               isActiveLink(props.pathname, item.href) &&
                 "text-primary font-medium",
             )}
-            onClick={() =>
-              analytics.navigation.footerLinkClicked({
-                key: item.key,
-                external: false,
-              })
-            }
           >
             {t(item.key)}
           </Link>
@@ -429,9 +422,6 @@ export function Footer() {
                       rel="noopener noreferrer"
                       className="bg-background hover:bg-muted rounded-full p-2 transition-colors"
                       aria-label={social.label}
-                      onClick={() =>
-                        analytics.navigation.socialClicked(social.id)
-                      }
                     >
                       <Icon name={social.icon} className="h-5 w-5" />
                     </NextLink>
@@ -452,12 +442,6 @@ export function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-foreground/70 hover:text-foreground inline-flex items-center justify-center gap-2 transition-colors md:justify-start"
-                      onClick={() =>
-                        analytics.navigation.footerLinkClicked({
-                          key: item.key,
-                          external: true,
-                        })
-                      }
                     >
                       <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-green-500" />
                       {t(item.key)}
@@ -482,7 +466,6 @@ export function Footer() {
               <NextLink
                 href={`mailto:${env.supportEmail}`}
                 className="text-primary hover:underline"
-                onClick={() => analytics.navigation.supportEmailClicked()}
               >
                 {env.supportEmail}
               </NextLink>

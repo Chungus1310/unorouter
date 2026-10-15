@@ -12,7 +12,6 @@ import {
   useLorebookQuery,
   useUpdateLorebookMutation,
 } from "@/hooks/ai/rp/lorebooks";
-import { analytics } from "@/lib/analytics";
 import {
   lorebookFormSchema,
   type LorebookForm,
@@ -81,7 +80,6 @@ export function LorebookEditor(props: Props) {
     });
     if (!ok) return;
     await deleteLb.mutateAsync(props.lorebookId);
-    analytics.rp.entityAction({ entity: "lorebooks", action: "deleted" });
     props.onDeleted();
   };
 

@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { env } from "@/lib/config/env";
 import { useTranslations } from "next-intl";
-import { posthog } from "@/lib/posthog-lazy";
 import { cn } from "@/lib/utils";
 import {
   clearAllClientStorage,
@@ -52,7 +51,6 @@ export function ErrorFallback(props: ErrorFallbackProps) {
 
   useEffect(() => {
     console.error(props.error);
-    posthog.captureException(props.error);
     // The sessionStorage guard stops an infinite reload loop when the chunk is truly gone.
     if (isChunkLoadError(props.error)) {
       const KEY = "chunk-reload-once";

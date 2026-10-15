@@ -27,7 +27,6 @@ import {
   useToggleChatGroupFoldedMutation,
 } from "@/hooks/ai/chat-hook";
 import { confirm } from "@/components/ui/confirm";
-import { analytics } from "@/lib/analytics";
 import { useAui, useAuiState } from "@assistant-ui/react";
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState, type ReactNode } from "react";
@@ -69,16 +68,6 @@ export function ConversationList() {
   const grouped = !debouncedSearch && groups.length > 0;
 
   useEffect(() => {
-    if (!debouncedSearch) return;
-    if (conversationsQuery.isLoading || conversationsQuery.isFetching) return;
-    analytics.chat.conversationListSearched({
-      query_length: debouncedSearch.length,
-      has_results: conversations.length > 0,
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedSearch, conversationsQuery.isLoading]);
-
-  useEffect(() => {
     const el = sentinelRef.current;
     if (!el) return;
     const observer = new IntersectionObserver(
@@ -88,7 +77,6 @@ export function ConversationList() {
           conversationsQuery.hasNextPage &&
           !conversationsQuery.isFetchingNextPage
         ) {
-          analytics.chat.conversationListPaginated();
           conversationsQuery.fetchNextPage();
         }
       },
@@ -104,9 +92,6 @@ export function ConversationList() {
   ]);
 
   const handleSelect = (id: string) => {
-    analytics.chat.conversationSelected({
-      from: popoverOpen ? "popover" : "list",
-    });
     aui.threads().switchToThread(id);
     setPopoverOpen(false);
     if (sidebar.isMobile) sidebar.setOpenMobile(false);

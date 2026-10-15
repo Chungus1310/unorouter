@@ -10,7 +10,6 @@ import {
   isCustomModelId,
   parseCustomModelId,
 } from "@/lib/ai/chat/custom-provider-id";
-import { analytics } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -60,7 +59,6 @@ export function ConversationItem(props: ConversationItemProps) {
     : customLabel;
 
   function startEditing() {
-    analytics.chat.conversationRenameStarted();
     setIsEditing(true);
     setMenuOpen(false);
   }

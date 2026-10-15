@@ -11,7 +11,6 @@ import {
 import { Icon } from "@/components/ui/icon";
 import { useModelWatch } from "@/hooks/models/notify-hook";
 import { Link } from "@/i18n/navigation";
-import { analytics } from "@/lib/analytics";
 import type { PricingCatalogModel } from "@/openapi";
 import { copyToClipboard, modelHref } from "@/lib/utils/base";
 import { cn } from "@/lib/utils";
@@ -56,7 +55,6 @@ export function ModelRowActions(props: { model: PricingCatalogModel }) {
             <DropdownMenuItem
               onClick={(e) => {
                 e.stopPropagation();
-                analytics.models.openInChat({ model: model.model_name });
                 setChatModel(model.model_name);
               }}
               render={<Link href="/chat" />}
@@ -87,7 +85,6 @@ export function ModelRowActions(props: { model: PricingCatalogModel }) {
           <DropdownMenuItem
             onClick={(e) => {
               e.stopPropagation();
-              analytics.content.copied({ label: "model_name" });
               void copyToClipboard(model.model_name);
             }}
           >

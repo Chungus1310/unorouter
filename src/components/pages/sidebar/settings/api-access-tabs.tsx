@@ -5,7 +5,6 @@ import { Icon } from "@/components/ui/icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useGenerateAccessTokenMutation } from "@/hooks/auth/settings-hook";
-import { analytics } from "@/lib/analytics";
 import { env } from "@/lib/config/env";
 import { copyToClipboard } from "@/lib/utils/base";
 import { useTranslations } from "next-intl";
@@ -45,7 +44,6 @@ export function ApiAccessTabs() {
     generateTokenMutation.mutate(undefined, {
       onSuccess: (data) => {
         setAccessToken(data);
-        analytics.settings.accessTokenGenerated();
         toast.success(t("SETTINGS.SECURITY.TOKEN_GENERATED"));
       },
       onError: (error) => toast.error(error.message),
@@ -228,7 +226,6 @@ export function ApiAccessTabs() {
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary inline-flex items-center gap-1 text-xs hover:underline"
-          onClick={() => analytics.settings.apiReferenceOpened()}
         >
           <Icon name="book-open" className="h-3 w-3" />
           {t("SETTINGS.SECURITY.API_REFERENCE")}

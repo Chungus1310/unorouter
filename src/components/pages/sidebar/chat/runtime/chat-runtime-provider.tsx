@@ -20,19 +20,13 @@ import {
 import { useResolvedChatModel } from "@/components/pages/sidebar/chat/runtime/use-resolved-chat-model";
 import { useJsPluginLoader } from "@/hooks/ai/use-js-plugin-loader";
 import { usePendingDrainScheduler } from "@/hooks/ai/use-pending-drain-scheduler";
-import { analytics } from "@/lib/analytics";
 import { useRoomBroadcast } from "@/lib/ai/chat/room/use-room-broadcast";
 import { acquireLock, releaseLock } from "@/lib/db/client/outbox/resource-lock";
 import type { ChatUIMessage } from "@/lib/types";
 import { captureFailedRequest, logChatDebug } from "@/lib/utils/chat-debug-log";
-import {
-  classifyStreamError,
-  extractErrorDetail,
-  handleError,
-} from "@/lib/utils/client";
+import { extractErrorDetail, handleError } from "@/lib/utils/client";
 import {
   assistantRuntimeAtom,
-  chatLoadoutAtom,
   chatModelAtom,
   chatStore,
   convIdAtom,
@@ -57,17 +51,6 @@ import { toast } from "sonner";
 
 // One notice per model and parameter set per page load; the gateway repeats the header on every reply.
 const announcedDroppedParams = new Set<string>();
-
-const FIRST_CHAT_KEY = "uno_first_chat_done";
-function markFirstChatDone(): boolean {
-  try {
-    if (localStorage.getItem(FIRST_CHAT_KEY)) return false;
-    localStorage.setItem(FIRST_CHAT_KEY, "1");
-    return true;
-  } catch {
-    return false;
-  }
-}
 
 function useHistoryAdapter(getConvId: () => string | null) {
   const queryClient = useQueryClient();
@@ -195,11 +178,6 @@ function ChatRuntimeHook() {
         requestId: detail.requestId,
         message: detail.message,
       });
-      analytics.chat.streamFailed({
-        error_type: classifyStreamError(detail),
-        status: detail.status ?? null,
-        code: detail.code ?? null,
-      });
       chatStore.set(lastStreamErrorAtom, {
         message: detail.message,
         at: Date.now(),
@@ -240,21 +218,6 @@ function ChatRuntimeHook() {
           chars: partText(p).length,
         })),
       });
-      const loadout = chatStore.get(chatLoadoutAtom);
-      const characterCount = loadout.characterIds.length;
-      const hasLorebook = loadout.lorebookIds.length > 0;
-      analytics.chat.streamCompleted({
-        model: chatStore.get(chatModelAtom) ?? "unknown",
-        is_first_message: markFirstChatDone(),
-        is_rp: characterCount > 0,
-        character_count: characterCount,
-        has_persona: loadout.personaId != null,
-        has_lorebook: hasLorebook,
-        has_preset: loadout.presetId != null,
-      });
-      if (message.metadata?.summary) {
-        analytics.chat.memoryFolded();
-      }
       if (message.metadata?.droppedParams) {
         const key = `${chatStore.get(chatModelAtom) ?? ""}|${message.metadata.droppedParams}`;
         if (!announcedDroppedParams.has(key)) {
@@ -308,7 +271,6 @@ function ChatRuntimeHook() {
       if (hasText && convId) {
         const order = await computeSpeakingOrder(convId, args[0]);
         if (order.length > 1) {
-          analytics.chat.groupTurn({ character_count: order.length });
           rotatingRef.current = true;
           chatStore.set(rotatingGroupTurnAtom, true);
           try {

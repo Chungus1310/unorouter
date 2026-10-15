@@ -27,17 +27,9 @@ import {
   hideFreeAtom,
   viewModeAtom,
 } from "@/store/models-store";
-import { analytics } from "@/lib/analytics";
 import { useAtom, useAtomValue } from "jotai";
-import { useEffect, useRef } from "react";
 
 export const NEW_MODEL_MS = 30 * 24 * 60 * 60 * 1000;
-
-// One event per search, not per pause and not per component: the toolbar and
-// the page both call useModelsFilter, so a ref gave each its own copy and both
-// billed the same keystroke. Refining a query is the same search, so it is
-// reported once the typist moves on; the 3s wait still reports an abandoned one.
-let lastReportedQuery = "";
 
 function effectivePrice(model: PricingCatalogModel): number {
   return model.is_fixed_price ? model.fixed_price : model.input_price;
@@ -226,31 +218,6 @@ export function useModelsFilter() {
     // Name last so the order is total; input order shifts between renders.
     return a.model_name.localeCompare(b.model_name);
   });
-
-  const trimmedQuery = search.trim();
-  const resultCount = filtered.length;
-  // The count is mirrored into a ref instead of being a dependency: as a
-  // dependency it restarted the debounce and re-fired the event for a single
-  // query every time the filtered list changed size.
-  const resultCountRef = useRef(0);
-  useEffect(() => {
-    resultCountRef.current = resultCount;
-  }, [resultCount]);
-  useEffect(() => {
-    if (trimmedQuery.length < 2) return;
-    if (lastReportedQuery && trimmedQuery.startsWith(lastReportedQuery)) {
-      lastReportedQuery = trimmedQuery;
-      return;
-    }
-    const id = setTimeout(() => {
-      lastReportedQuery = trimmedQuery;
-      analytics.models.searched({
-        query_length: trimmedQuery.length,
-        has_results: resultCountRef.current > 0,
-      });
-    }, 3000);
-    return () => clearTimeout(id);
-  }, [trimmedQuery]);
 
   return {
     search,

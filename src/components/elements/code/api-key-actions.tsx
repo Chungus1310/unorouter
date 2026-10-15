@@ -17,7 +17,6 @@ import { CopyButton } from "./copy-button";
 export function ApiKeyActions(props: {
   copyText: string;
   showReveal?: boolean;
-  analyticsLabel?: string;
 }) {
   const t = useTranslations();
   const [revealed, setRevealed] = useAtom(apiKeyRevealedAtom);
@@ -49,7 +48,6 @@ export function ApiKeyActions(props: {
       )}
       <CopyButton
         text={props.copyText}
-        analyticsLabel={props.analyticsLabel}
         className="text-muted-foreground hover:text-foreground hover:bg-muted rounded-sm p-1.5 transition-colors"
       />
     </>

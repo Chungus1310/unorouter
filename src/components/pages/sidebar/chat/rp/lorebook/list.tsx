@@ -17,7 +17,6 @@ import {
   useImportLorebookMutation,
   useLorebooksQuery,
 } from "@/hooks/ai/rp/lorebooks";
-import { analytics } from "@/lib/analytics";
 import type { LorebookExportFormat } from "@/lib/validation/rp";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
@@ -61,10 +60,6 @@ export function LorebookList(props: Props) {
   }, [props.open]);
 
   const handleCreate = async () => {
-    analytics.rp.entityAction({
-      entity: "lorebooks",
-      action: "create_started",
-    });
     await createMut.mutateAsync({
       body: { name: t("RP.LOREBOOK_UNTITLED") },
     });
@@ -78,7 +73,6 @@ export function LorebookList(props: Props) {
     );
     if (!ok) return;
     await deleteMut.mutateAsync(id);
-    analytics.rp.entityAction({ entity: "lorebooks", action: "deleted" });
   };
 
   const handleExport = (id: string, format: LorebookExportFormat) =>
@@ -116,7 +110,6 @@ export function LorebookList(props: Props) {
             <div className="flex min-h-0 flex-1 flex-col gap-3">
               <div className="flex flex-wrap items-center gap-2 sm:justify-end">
                 <RpImportControl
-                  entity="lorebooks"
                   accept=".json,application/json"
                   labelKey="RP.LOREBOOKS_IMPORT"
                   isPending={importMut.isPending || importUrlMut.isPending}
@@ -187,10 +180,6 @@ export function LorebookList(props: Props) {
                         }),
                     }}
                     onOpen={() => {
-                      analytics.rp.entityAction({
-                        entity: "lorebooks",
-                        action: "edit_started",
-                      });
                       setOpenLbId(l.id);
                     }}
                     leading={

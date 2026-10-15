@@ -16,7 +16,6 @@ import {
   useImportCharacterCardMutation,
   useImportCharacterFromUrlMutation,
 } from "@/hooks/ai/rp/characters";
-import { analytics } from "@/lib/analytics";
 import type { EditorState } from "@/lib/types";
 import type { CharacterExportFormat } from "@/lib/validation/rp";
 import { useTranslations } from "next-intl";
@@ -87,7 +86,6 @@ export function CharacterList(props: Props) {
           <div className="flex min-h-0 flex-1 flex-col gap-3">
             <div className="flex flex-wrap items-center gap-2 sm:justify-end">
               <RpImportControl
-                entity="characters"
                 accept="image/png,image/webp,application/json"
                 labelKey="RP.CHARACTERS_IMPORT"
                 isPending={importMut.isPending || importUrlMut.isPending}
@@ -100,10 +98,6 @@ export function CharacterList(props: Props) {
               />
               <Button
                 onClick={() => {
-                  analytics.rp.entityAction({
-                    entity: "characters",
-                    action: "create_started",
-                  });
                   setView({ mode: "edit" });
                 }}
                 className={RP_ACTION_BUTTON}
@@ -145,10 +139,6 @@ export function CharacterList(props: Props) {
                       }),
                   }}
                   onOpen={() => {
-                    analytics.rp.entityAction({
-                      entity: "characters",
-                      action: "edit_started",
-                    });
                     setView({ mode: "edit", id: c.id });
                   }}
                   leading={<RpAvatar mediaId={c.avatarMediaId} name={c.name} />}
@@ -182,10 +172,6 @@ export function CharacterList(props: Props) {
                     );
                     if (!ok) return;
                     await deleteMut.mutateAsync(c.id);
-                    analytics.rp.entityAction({
-                      entity: "characters",
-                      action: "deleted",
-                    });
                   }}
                 />
               ))}

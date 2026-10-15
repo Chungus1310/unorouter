@@ -15,7 +15,6 @@ import { Icon } from "@/components/ui/icon";
 import { Label } from "@/components/ui/label";
 import { useTransferAffQuotaMutation } from "@/hooks/billing/affiliate-hook";
 import { useRouter } from "@/i18n/navigation";
-import { analytics } from "@/lib/analytics";
 import {
   dollarsToQuota,
   quotaToDollars,
@@ -57,7 +56,6 @@ export function TransferDialog(props: TransferDialogProps) {
       { body: { quota: quotaUnits } },
       {
         onSuccess: () => {
-          analytics.affiliate.quotaTransferred(data.amount);
           toast.success(t("AFFILIATE.SUCCESS.TRANSFER"));
           props.onOpenChange(false);
           form.reset();

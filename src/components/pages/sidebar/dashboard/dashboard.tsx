@@ -4,7 +4,6 @@ import { PageContent } from "@/components/layout/sidebar/sidebar-layout";
 import { Icon } from "@/components/ui/icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useUserDisplay } from "@/hooks/ui/user-display-hook";
-import { analytics } from "@/lib/analytics";
 import type { TimeRange } from "@/store/dashboard-store";
 import { dashboardStoreAtom } from "@/store/dashboard-store";
 import { dayjs } from "@/lib/utils/format/date";
@@ -45,7 +44,6 @@ export function Dashboard(props: DashboardProps) {
   function setSection(next: string) {
     const section =
       SECTION_VALUES.find((value) => value === next) ?? "analytics";
-    analytics.dashboard.sectionChanged({ section });
     setActiveSection(section);
   }
 

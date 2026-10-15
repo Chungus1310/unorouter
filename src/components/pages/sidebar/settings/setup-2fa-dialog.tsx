@@ -1,6 +1,5 @@
 "use client";
 
-import { analytics } from "@/lib/analytics";
 import type { TwoFAMode } from "@/lib/types";
 import { Icon } from "@/components/ui/icon";
 import { copyToClipboard } from "@/lib/utils/base";
@@ -90,7 +89,6 @@ export function Setup2FADialog(props: {
       { body: { code: data.code, flow_token: setupData.flow_token } },
       {
         onSuccess: () => {
-          analytics.settings.twoFAEnabled();
           toast.success(t("SETTINGS.SECURITY.TWO_FACTOR_ENABLED"));
           props.onOpenChange(false);
           resetState();
@@ -105,7 +103,6 @@ export function Setup2FADialog(props: {
       { proof },
       {
         onSuccess: () => {
-          analytics.settings.twoFADisabled();
           toast.success(t("SETTINGS.SECURITY.TWO_FACTOR_DISABLED"));
           props.onOpenChange(false);
           resetState();

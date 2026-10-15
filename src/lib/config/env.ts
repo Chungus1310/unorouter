@@ -42,8 +42,6 @@ export const env = {
   youtubeUrl: process.env.NEXT_PUBLIC_YOUTUBE_URL,
   telegramUrl: process.env.NEXT_PUBLIC_TELEGRAM_URL,
   instagramUrl: process.env.NEXT_PUBLIC_INSTAGRAM_URL,
-  posthogKey: process.env.NEXT_PUBLIC_POSTHOG_KEY,
-  posthogHost: process.env.NEXT_PUBLIC_POSTHOG_HOST,
   googleSiteVerification: process.env.GOOGLE_SITE_VERIFICATION,
   // Impressum identity comes from build secrets so it stays out of this public repo.
   legalName: process.env.NEXT_PUBLIC_LEGAL_NAME ?? "",

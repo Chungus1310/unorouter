@@ -14,7 +14,6 @@ import { Icon } from "@/components/ui/icon";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useDashboardData } from "@/hooks/ui/use-dashboard-data";
-import { analytics } from "@/lib/analytics";
 import { formatPrice, quotaToDollars } from "@/lib/utils/format/number";
 import { modelColor } from "@/lib/utils/format/color";
 import {
@@ -138,9 +137,6 @@ function ChartToolbar(props: {
         <DateTimeRangePicker
           value={dashboard.dateRange}
           onChange={(range) => {
-            analytics.dashboard.dateRangeChanged({
-              period_minutes: dashboard.periodMinutes,
-            });
             dashboard.setDateRange(range);
           }}
         />
@@ -148,7 +144,6 @@ function ChartToolbar(props: {
           variant="ghost"
           size="icon-sm"
           onClick={() => {
-            analytics.dashboard.refreshed();
             dashboard.refetchAll();
           }}
           disabled={dashboard.isFetching}
@@ -163,7 +158,6 @@ function ChartToolbar(props: {
             variant="ghost"
             size="icon-sm"
             onClick={() => {
-              analytics.dashboard.dateRangeReset();
               dashboard.resetDateRange();
             }}
             title={t("DASHBOARD.CHART.RESET_DATE_RANGE")}
@@ -283,11 +277,7 @@ export function ConsumptionChart() {
           </span>
         </div>
       ) : (
-        <Tabs
-          defaultValue="distribution"
-          className="flex-1"
-          onValueChange={(tab) => analytics.dashboard.chartTabChanged({ tab })}
-        >
+        <Tabs defaultValue="distribution" className="flex-1">
           <div className="border-border no-scrollbar overflow-x-auto border-b px-5 pt-2">
             <TabsList variant="line" className="h-8 w-max min-w-full">
               <TabsTrigger

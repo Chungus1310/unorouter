@@ -12,7 +12,7 @@ Chat and tester state live in ONE SQLocal/OPFS database per device in the browse
 
 ## Stack
 
-Next.js 16, React 19 compiler, Tailwind v4, shadcn/ui, Jotai, React Query 5, nuqs, next-intl (18 locales). Elysia, TypeBox, Eden Treaty, Orval-generated upstream client. Drizzle over SQLocal (opfs-sahpool) and libSQL. Vercel AI SDK, assistant-ui, wasmoon, Runware, Tavily. Serwist service worker. PostHog, Pino.
+Next.js 16, React 19 compiler, Tailwind v4, shadcn/ui, Jotai, React Query 5, nuqs, next-intl (18 locales). Elysia, TypeBox, Eden Treaty, Orval-generated upstream client. Drizzle over SQLocal (opfs-sahpool) and libSQL. Vercel AI SDK, assistant-ui, wasmoon, Runware, Tavily. Serwist service worker. Pino.
 
 ## Layout
 

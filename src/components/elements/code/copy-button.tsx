@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
-import { analytics } from "@/lib/analytics";
 import { copyToClipboard } from "@/lib/utils/base";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -14,7 +13,6 @@ type Props = {
   className?: string;
   iconSize?: string;
   toastMessage?: string;
-  analyticsLabel?: string;
 };
 
 export function CopyButton(props: Props) {
@@ -25,9 +23,6 @@ export function CopyButton(props: Props) {
   function handleCopy(e: React.MouseEvent) {
     e.stopPropagation();
     copyToClipboard(props.text);
-    if (props.analyticsLabel) {
-      analytics.content.copied({ label: props.analyticsLabel });
-    }
     setCopied(true);
     if (!props.label) {
       toast.success(props.toastMessage ?? t("DASHBOARD.COPIED"));

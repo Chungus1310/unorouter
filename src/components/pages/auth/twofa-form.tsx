@@ -8,7 +8,6 @@ import {
   VERIFICATION_METHOD_TWOFA,
   type VerificationMethod,
 } from "@/lib/validation/auth";
-import { analytics } from "@/lib/analytics";
 import { logChatDebug } from "@/lib/utils/chat-debug-log";
 import { useTranslations } from "next-intl";
 import { useRef, useState } from "react";
@@ -54,7 +53,6 @@ export function TwoFAForm(props: TwoFAFormProps) {
         },
       });
       logChatDebug("auth.2fa_verified", {});
-      analytics.auth.twoFAVerified();
       props.onSuccess();
     } catch (e) {
       logChatDebug("auth.2fa_failed", {

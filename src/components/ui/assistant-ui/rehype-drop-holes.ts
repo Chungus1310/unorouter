@@ -84,8 +84,6 @@ export const rehypeDropHoles: Plugin<[], Root> = () => {
     prune(tree);
     // Once per session, not per render: this runs on every message and the
     // point is to learn that the repair fires at all, not to count renders.
-    // Not analytics: this runs during SSR too, and the posthog shim touches
-    // document at import time.
     if (droppedHoles > 0 && !reported) {
       reported = true;
       logChatDebug("markdown.holes_dropped", { holes: droppedHoles });

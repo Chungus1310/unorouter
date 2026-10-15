@@ -1,7 +1,6 @@
 "use client";
 
 import { useApiMutation } from "@/lib/react-query/hooks";
-import { analytics } from "@/lib/analytics";
 import {
   exportLocalCard,
   exportLocalCharacter,
@@ -29,11 +28,6 @@ export function useRpExportMutation() {
     mutationFn: async (args: ExportArgs) => {
       const result = await runExport(args);
       downloadBlob(result.blob, result.filename);
-      analytics.rp.entityAction({
-        entity: args.kind,
-        action: "exported",
-        format: "format" in args ? args.format : undefined,
-      });
     },
   });
 }

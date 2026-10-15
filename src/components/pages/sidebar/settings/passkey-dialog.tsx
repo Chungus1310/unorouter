@@ -13,7 +13,6 @@ import {
   usePasskeyDeleteMutation,
   usePasskeyRegisterMutation,
 } from "@/hooks/auth/settings-hook";
-import { analytics } from "@/lib/analytics";
 import type { PasskeyMode } from "@/lib/types";
 import { handleError } from "@/lib/utils/client";
 import { useTranslations } from "next-intl";
@@ -50,7 +49,6 @@ export function PasskeyDialog(props: {
         { proof },
         {
           onSuccess: () => {
-            analytics.settings.passkeyRegistered();
             toast.success(t("SETTINGS.SECURITY.PASSKEY_REGISTERED_SUCCESS"));
             props.onOpenChange(false);
           },
@@ -63,7 +61,6 @@ export function PasskeyDialog(props: {
       { proof },
       {
         onSuccess: () => {
-          analytics.settings.passkeyDeleted();
           toast.success(t("SETTINGS.SECURITY.PASSKEY_DELETED"));
           props.onOpenChange(false);
         },

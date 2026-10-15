@@ -13,7 +13,6 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { Link } from "@/i18n/navigation";
-import { analytics } from "@/lib/analytics";
 import { modelHref } from "@/lib/utils/base";
 import { chatModelAtom } from "@/store/chat-store";
 import { useSetAtom } from "jotai";
@@ -100,10 +99,7 @@ export function ModelDetailSheet(props: ModelDetailSheetProps) {
             <div className="min-w-0 flex-1">
               <SheetTitle className="flex items-center gap-2 font-mono text-base tracking-wide">
                 <span className="truncate">{model.model_name}</span>
-                <CopyButton
-                  text={model.model_name}
-                  analyticsLabel="model_name"
-                />
+                <CopyButton text={model.model_name} />
               </SheetTitle>
               <SheetDescription
                 className={`font-mono text-[10px] tracking-wider uppercase ${theme.text}`}
@@ -129,7 +125,6 @@ export function ModelDetailSheet(props: ModelDetailSheetProps) {
                 className="flex-1"
                 nativeButton={false}
                 onClick={() => {
-                  analytics.models.openInChat({ model: model.model_name });
                   setChatModel(model.model_name);
                 }}
                 render={<Link href="/chat" />}

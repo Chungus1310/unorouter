@@ -2,7 +2,6 @@
 
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
-import { analytics } from "@/lib/analytics";
 import {
   attachCrashLoadout,
   captureCaughtError,
@@ -74,11 +73,6 @@ export class SectionBoundary extends Component<
         .catch(() => {});
     }
     logChatDebug("section.error", {
-      source,
-      name: error.name,
-      message: String(error.message).slice(0, 300),
-    });
-    analytics.chat.sectionFailed({
       source,
       name: error.name,
       message: String(error.message).slice(0, 300),

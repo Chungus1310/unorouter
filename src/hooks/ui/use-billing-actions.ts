@@ -11,7 +11,6 @@ import {
   useStripeTopUpMutation,
   useTopUpInfoQuery,
 } from "@/hooks/billing/billing-hook";
-import { analytics } from "@/lib/analytics";
 import type { SubscriptionPlanDTO } from "@/openapi";
 import { paymentMethodAtom, type PaymentMethod } from "@/store/client-store";
 import { useAtom } from "jotai";
@@ -140,11 +139,6 @@ export function useBillingActions() {
     }
 
     if (paymentMethod === "paypal" && enableDeloPay) {
-      analytics.billing.subscriptionInitiated({
-        planId: String(plan.plan.id),
-        provider: "delopay",
-        provider_was_only_option: !enableCard && !enableCrypto,
-      });
       deloPaySubMutation.mutate(
         { body: { plan_id: plan.plan.id } },
         {
@@ -156,11 +150,6 @@ export function useBillingActions() {
     }
 
     if (paymentMethod === "crypto" && enableNowPayments) {
-      analytics.billing.subscriptionInitiated({
-        planId: String(plan.plan.id),
-        provider: "nowpayments",
-        provider_was_only_option: !enableCard,
-      });
       nowPaymentsSubMutation.mutate(
         { body: { plan_id: plan.plan.id } },
         {
@@ -171,14 +160,7 @@ export function useBillingActions() {
       return;
     }
 
-    const onlyStripe = enableStripe && !enableCreem;
-    const onlyCreem = enableCreem && !enableStripe;
     if (enableStripe) {
-      analytics.billing.subscriptionInitiated({
-        planId: String(plan.plan.id),
-        provider: "stripe",
-        provider_was_only_option: onlyStripe,
-      });
       stripeSubMutation.mutate(
         { body: { plan_id: plan.plan.id } },
         {
@@ -189,11 +171,6 @@ export function useBillingActions() {
       return;
     }
     if (enableCreem) {
-      analytics.billing.subscriptionInitiated({
-        planId: String(plan.plan.id),
-        provider: "creem",
-        provider_was_only_option: onlyCreem,
-      });
       creemSubMutation.mutate(
         { body: { plan_id: plan.plan.id } },
         {
@@ -204,11 +181,6 @@ export function useBillingActions() {
       return;
     }
     if (enableNowPayments) {
-      analytics.billing.subscriptionInitiated({
-        planId: String(plan.plan.id),
-        provider: "nowpayments",
-        provider_was_only_option: true,
-      });
       nowPaymentsSubMutation.mutate(
         { body: { plan_id: plan.plan.id } },
         {
@@ -222,13 +194,6 @@ export function useBillingActions() {
   }
 
   function payStripe(amount: number) {
-    const factor = discountFactor(amount);
-    analytics.billing.topUpInitiated({
-      provider: "stripe",
-      amount,
-      has_discount: !!factor,
-      discount_pct: factor ? Math.round((1 - factor) * 100) : undefined,
-    });
     const returnUrl = new URL(window.location.href);
     returnUrl.hash = "";
     const cancelUrl = returnUrl.toString();
@@ -251,7 +216,6 @@ export function useBillingActions() {
   }
 
   function payCreem(productId: string, amount?: number, custom?: boolean) {
-    analytics.billing.topUpInitiated({ provider: "creem", amount });
     creemTopUpMutation.mutate(
       {
         body: {
@@ -268,13 +232,6 @@ export function useBillingActions() {
   }
 
   function payNowPayments(amount: number) {
-    const factor = discountFactor(amount);
-    analytics.billing.topUpInitiated({
-      provider: "nowpayments",
-      amount,
-      has_discount: !!factor,
-      discount_pct: factor ? Math.round((1 - factor) * 100) : undefined,
-    });
     nowPaymentsTopUpMutation.mutate(
       { body: { amount, payment_method: "nowpayments" } },
       {
@@ -285,13 +242,6 @@ export function useBillingActions() {
   }
 
   function payDeloPay(amount: number) {
-    const factor = discountFactor(amount);
-    analytics.billing.topUpInitiated({
-      provider: "delopay",
-      amount,
-      has_discount: !!factor,
-      discount_pct: factor ? Math.round((1 - factor) * 100) : undefined,
-    });
     deloPayTopUpMutation.mutate(
       { body: { amount, payment_method: "delopay" } },
       {

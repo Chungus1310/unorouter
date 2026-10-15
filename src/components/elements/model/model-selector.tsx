@@ -20,7 +20,6 @@ import {
 } from "@/components/ui/popover";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useCustomProvidersQuery } from "@/hooks/ai/custom-providers-hook";
-import { analytics } from "@/lib/analytics";
 import { AUTO_GROUP } from "@/lib/config/constants";
 import { logChatDebug } from "@/lib/utils/chat-debug-log";
 import {
@@ -393,7 +392,6 @@ export function ModelSelector(props: ModelSelectorProps) {
   }, [props.value, candidateGroupsKey, groupsSettled]);
 
   function pickModel(id: string) {
-    analytics.chat.modelChanged({ from: props.value, to: id });
     props.onChange(id);
     setOpen(false);
   }

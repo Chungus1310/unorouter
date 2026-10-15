@@ -83,7 +83,6 @@ export function JsPluginList(props: Props) {
       actions={
         <>
           <RpImportControl
-            entity="js_plugins"
             accept=".js,.ts,text/javascript,text/plain"
             labelKey="CHAT.JS_PLUGIN.IMPORT"
             isPending={createMut.isPending || importUrlMut.isPending}

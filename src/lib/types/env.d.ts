@@ -8,9 +8,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_DISCORD_URL?: string;
     NEXT_PUBLIC_TWITTER_HANDLE?: string;
     NEXT_PUBLIC_TRUSTPILOT_URL?: string;
-    NEXT_PUBLIC_POSTHOG_KEY?: string;
-    NEXT_PUBLIC_POSTHOG_HOST?: string;
-    NEXT_PUBLIC_POSTHOG_DISABLED?: string;
 
     SESSION_SECRET: string;
     INTERNAL_API_URL?: string;

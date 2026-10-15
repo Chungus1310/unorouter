@@ -18,7 +18,6 @@ import { GuideIcon } from "@/components/pages/docs/guide-icon";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useHydrated } from "@/hooks/ui/use-hydrated";
 import { Link, usePathname } from "@/i18n/navigation";
-import { analytics } from "@/lib/analytics";
 import { APP_VALUES, type TranslationKey } from "@/lib/config/constants";
 import { env } from "@/lib/config/env";
 import { cn } from "@/lib/utils";
@@ -67,13 +66,21 @@ export function Navbar(props: { authSlot?: React.ReactNode }) {
       >
         <div className="flex items-center gap-2 lg:hidden">
           <MobileNav />
-          <Link href="/" prefetch={false} className="group flex items-center gap-2">
+          <Link
+            href="/"
+            prefetch={false}
+            className="group flex items-center gap-2"
+          >
             <LogoImage alt="" />
             <CompanyName className="text-foreground group-hover:text-muted-foreground text-lg transition-colors" />
           </Link>
         </div>
 
-        <Link href="/" prefetch={false} className="group hidden items-center gap-2 lg:flex">
+        <Link
+          href="/"
+          prefetch={false}
+          className="group hidden items-center gap-2 lg:flex"
+        >
           <LogoImage alt="" />
           <CompanyName className="text-foreground group-hover:text-muted-foreground text-lg transition-colors" />
         </Link>
@@ -89,12 +96,6 @@ export function Navbar(props: { authSlot?: React.ReactNode }) {
                   ? "text-foreground"
                   : "text-muted-foreground hover:text-foreground",
               )}
-              onClick={() =>
-                analytics.navigation.topLinkClicked({
-                  name: link.name,
-                  from_route: pathname,
-                })
-              }
             >
               {t(link.name)}
             </PrefetchLink>
@@ -118,12 +119,6 @@ export function Navbar(props: { authSlot?: React.ReactNode }) {
                               <PrefetchLink
                                 href={sub.href}
                                 className="hover:bg-muted/50 focus:bg-muted/50 grid grid-cols-[auto_1fr] items-center gap-x-2.5 rounded-md px-2.5 py-1.5 transition-colors"
-                                onClick={() =>
-                                  analytics.navigation.topLinkClicked({
-                                    name: sub.name,
-                                    from_route: pathname,
-                                  })
-                                }
                               >
                                 {sub.iconName ? (
                                   <Icon
@@ -179,13 +174,6 @@ export function Navbar(props: { authSlot?: React.ReactNode }) {
                                 <PrefetchLink
                                   href={link.href}
                                   className="border-border/60 bg-card/40 hover:border-primary/40 hover:bg-muted/50 grid grid-cols-[auto_1fr] items-center gap-x-2.5 gap-y-0.5 rounded-md border px-3 py-2 transition-colors"
-                                  onClick={() =>
-                                    analytics.navigation.docsSubmenuLinkClicked(
-                                      {
-                                        name: link.name,
-                                      },
-                                    )
-                                  }
                                 >
                                   <span className="row-span-2 flex size-5 shrink-0 items-center justify-center self-center">
                                     {link.guideIcon ? (

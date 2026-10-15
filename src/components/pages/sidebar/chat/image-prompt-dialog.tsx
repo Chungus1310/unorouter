@@ -1,6 +1,5 @@
 "use client";
 
-import { analytics } from "@/lib/analytics";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -84,10 +83,6 @@ function ImagePromptEditor(props: { request: ImagePromptRequest }) {
         refUrls,
       });
       if (!img) throw new Error("ERRORS.UNEXPECTED_ERROR");
-      analytics.chat.imageGenerated({
-        source: "regenerate",
-        model: settings?.imageModel ?? "auto",
-      });
       await upsertLocalMedia({
         id: request.mediaId,
         convId,

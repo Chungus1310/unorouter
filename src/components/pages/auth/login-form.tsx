@@ -11,7 +11,6 @@ import { useLoginMutation } from "@/hooks/auth/auth-hook";
 import { useStatusQuery } from "@/hooks/ops/status-hook";
 import { Link, useRouter } from "@/i18n/navigation";
 import { RouterPush } from "@/i18n/routing";
-import { analytics } from "@/lib/analytics";
 import {
   APP_VALUES,
   AUTH_REDIRECT_COOKIE,
@@ -113,7 +112,6 @@ export function LoginForm() {
         return;
       }
 
-      analytics.auth.loginCompleted("email");
       const to = getRedirectPath();
       logChatDebug("auth.login_done", { via: "password", to: String(to) });
       router.push(to);

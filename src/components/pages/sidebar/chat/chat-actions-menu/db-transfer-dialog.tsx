@@ -11,7 +11,6 @@ import {
 } from "@/components/ui/dialog";
 import { Icon } from "@/components/ui/icon";
 import { Input } from "@/components/ui/input";
-import { analytics } from "@/lib/analytics";
 import type { DbExportOptions } from "@/lib/db/client/data/diagnostics/db-export";
 import {
   parseTransferCode,
@@ -52,14 +51,13 @@ function isTranslationKey(value: string): value is TranslationKey {
 
 function useFail() {
   const t = useTranslations();
-  return (err: unknown, stage: string, host?: string) => {
+  return (err: unknown, stage: string) => {
     const text = String(err instanceof Error ? err.message : err);
     logger.error("DB transfer failed", {
       context: "local-db.transfer",
       stage,
       error: text,
     });
-    analytics.chat.dbTransferFailed({ stage, host });
     toast.error(isTranslationKey(text) ? t(text) : text);
   };
 }
@@ -94,13 +92,7 @@ function SendBody(props: {
     started.current = true;
     props.onBusy(true);
     sendDatabase(props.opts, setStage)
-      .then((result) => {
-        setSent(result);
-        analytics.chat.dbTransferSent({
-          host: result.hostName,
-          bytes: result.bytes,
-        });
-      })
+      .then((result) => setSent(result))
       .catch((err) => {
         fail(err, "send");
         props.onClose();
@@ -183,7 +175,6 @@ function ReceiveBody(props: {
         return choice ? (merged ? "merge" : "replace") : null;
       });
       if (!result) return;
-      analytics.chat.dbTransferReceived({ host: parsed.host.name });
       toast.success(
         t(
           merged
@@ -199,7 +190,7 @@ function ReceiveBody(props: {
       );
       setTimeout(() => location.reload(), 1200);
     } catch (err) {
-      fail(err, stage ?? "receive", parsed.host.name);
+      fail(err, stage ?? "receive");
     } finally {
       setStage(null);
       props.onBusy(false);

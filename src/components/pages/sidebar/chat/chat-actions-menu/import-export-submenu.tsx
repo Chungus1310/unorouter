@@ -11,7 +11,6 @@ import {
   useExportConversation,
   useImportConversationMutation,
 } from "@/hooks/ai/rp/conversations";
-import { analytics } from "@/lib/analytics";
 import { env } from "@/lib/config/env";
 import { exportLocalConversationSillyTavern } from "@/lib/db/client/data/transfer/sillytavern";
 import { downloadBlob, downloadJson } from "@/lib/utils/client";
@@ -39,22 +38,18 @@ export function ImportExportSubmenu(props: Props) {
         const result = await exportLocalConversationSillyTavern(props.convId);
         const blob = new Blob([result.data], { type: "application/jsonl" });
         downloadBlob(blob, result.filename);
-        analytics.chat.conversationExported({ format });
       } catch {
-        analytics.chat.conversationExportFailed({ format });
         toast.error(t("CHAT.MORE.EXPORT_FAILED"));
       }
       return;
     }
     const data = await exportMut.mutateAsync({ convId: props.convId, format });
     downloadJson(data, `${env.appName.toLowerCase()}-chat-${format}.json`);
-    analytics.chat.conversationExported({ format });
   };
 
   const handleFile = async (file: File) => {
     const result = await importMut.mutateAsync(file);
     if (result?.id) {
-      analytics.chat.conversationImported();
       aui.threads().switchToThread(result.id);
       toast.success(t("CHAT.MORE.IMPORT_SUCCESS"));
     }
@@ -65,7 +60,6 @@ export function ImportExportSubmenu(props: Props) {
   // the time the handler runs and .click() silently no-ops. The picker has to
   // outlive the menu, so it lives on document.body.
   const handleImportClick = () => {
-    analytics.chat.importPickerOpened();
     const input = document.createElement("input");
     input.type = "file";
     input.accept = "application/json,application/jsonl,.json,.jsonl";

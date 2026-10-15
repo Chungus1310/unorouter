@@ -1,4 +1,3 @@
-import { withPostHogConfig } from "@posthog/nextjs-config";
 import { withSerwist } from "@serwist/turbopack";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
@@ -205,24 +204,4 @@ const withNextIntl = createNextIntlPlugin({
   },
 });
 
-const configWithNextIntl = withNextIntl(withSerwist(nextConfig));
-
-// The upload credential is supplied only to this build process by BuildKit.
-// It is independent of the application's runtime secret record.
-export default process.env.STANDALONE &&
-process.env.POSTHOG_UPLOAD_KEY &&
-process.env.NEXT_PUBLIC_POSTHOG_DISABLED !== "true"
-  ? withPostHogConfig(configWithNextIntl, {
-      personalApiKey: process.env.POSTHOG_UPLOAD_KEY,
-      envId: "156413",
-      host: "https://eu.i.posthog.com",
-      sourcemaps: {
-        enabled: true,
-        releaseName: process.env.NEXT_PUBLIC_APP_NAME,
-        releaseVersion:
-          process.env.NEXT_PUBLIC_RELEASE_VERSION ||
-          new Date().toISOString().slice(0, 10),
-        deleteAfterUpload: true,
-      },
-    })
-  : configWithNextIntl;
+export default withNextIntl(withSerwist(nextConfig));

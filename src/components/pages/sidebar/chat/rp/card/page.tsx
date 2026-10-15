@@ -120,7 +120,6 @@ export function CardsPage() {
         onBack={() => setEditingId(null)}
         headerActions={
           <RpImportControl
-            entity="cards"
             accept=".json,application/json"
             labelKey="RP.CARDS_IMPORT"
             isPending={importMut.isPending}

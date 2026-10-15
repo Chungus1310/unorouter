@@ -13,7 +13,6 @@ import {
   getRandomAnimation,
 } from "@/components/ui/theme-animations";
 import { ThemeCustomizerSheet } from "@/components/elements/theme/customizer-sheet";
-import { analytics } from "@/lib/analytics";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useState } from "react";
@@ -40,7 +39,6 @@ export function ThemeToggle() {
   };
 
   const handleThemeChange = (theme: string) => {
-    analytics.settings.themeChanged(theme);
     const anim = getRandomAnimation();
     const animation = createAnimation(anim.variant, anim.start);
     updateStyles(animation.css);

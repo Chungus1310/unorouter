@@ -231,10 +231,7 @@ export function NotifyBell() {
                         </span>
                       </button>
                       <span className="mt-0.5 flex shrink-0 items-center gap-1.5">
-                        <CopyButton
-                          text={n.data.model}
-                          analyticsLabel="model_name"
-                        />
+                        <CopyButton text={n.data.model} />
                         <span className="text-muted-foreground/70 text-[10px]">
                           {dayjs.unix(n.ts).fromNow(true)}
                         </span>

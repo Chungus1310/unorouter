@@ -11,7 +11,6 @@ import {
   useTopUpHistoryQuery,
 } from "@/hooks/billing/billing-hook";
 import { useCopyToClipboard } from "@/hooks/ui/use-copy-to-clipboard";
-import { analytics } from "@/lib/analytics";
 import { DataTableId } from "@/lib/types/enums";
 import { formatTimestamp } from "@/lib/utils/format/date";
 import { createTableAtoms } from "@/store/data-table-store";
@@ -57,7 +56,6 @@ function useTransactionColumns(): ColumnDef<TableFeats, TransactionRow>[] {
   const copy = useCopyToClipboard();
 
   function handleGetInvoice(row: TransactionRow) {
-    analytics.billing.portalOpened();
     portalMutation.mutate(
       { provider: row.payment_method as "stripe" | "creem" },
       {

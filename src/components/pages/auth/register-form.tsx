@@ -13,8 +13,7 @@ import {
 } from "@/hooks/auth/auth-hook";
 import { useStatusQuery } from "@/hooks/ops/status-hook";
 import { Link, useRouter } from "@/i18n/navigation";
-import { analytics } from "@/lib/analytics";
-import { classifyStreamError, extractErrorDetail } from "@/lib/utils/client";
+import { extractErrorDetail } from "@/lib/utils/client";
 import {
   AFF_CODE_KEY,
   APP_VALUES,
@@ -77,7 +76,6 @@ export function RegisterForm() {
         turnstile: turnstileToken,
       },
     });
-    analytics.auth.verificationSent();
     turnstileRef.current?.reset();
     setTurnstileToken(undefined);
     setResendSeconds(RESEND_COOLDOWN_SECONDS);
@@ -102,15 +100,11 @@ export function RegisterForm() {
           turnstile: turnstileToken,
         },
       });
-      analytics.auth.registerCompleted();
       deleteCookie(AFF_CODE_KEY);
       router.push("/login");
     } catch (e) {
       const detail = extractErrorDetail(e);
       logChatDebug("auth.register_error", { error: detail });
-      analytics.auth.registerFailed({
-        reason: classifyStreamError(detail),
-      });
       turnstileRef.current?.reset();
       setTurnstileToken(undefined);
     }

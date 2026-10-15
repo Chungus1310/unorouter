@@ -41,7 +41,6 @@ import {
   useUpdateTokenMutation,
   useUserGroupsQuery,
 } from "@/hooks/billing/token-hook";
-import { analytics } from "@/lib/analytics";
 import { dollarsToQuota, quotaToDollars } from "@/lib/config/constants";
 import { copyToClipboard, copyToClipboardAsync } from "@/lib/utils/base";
 import { tokenFormSchema, type TokenFormSchema } from "@/lib/validation/token";
@@ -143,7 +142,6 @@ export function TokenDialog(props: TokenDialogProps) {
       {
         onSuccess: (data) => {
           setRevealedKey(data.key);
-          analytics.tokens.keyRevealed();
         },
         onError: () => toast.error(t("TOKEN.ERROR.FETCH_KEY")),
       },
@@ -152,7 +150,6 @@ export function TokenDialog(props: TokenDialogProps) {
 
   function handleCopyKey() {
     if (!props.token) return;
-    analytics.tokens.keyCopied();
     if (revealedKey) {
       copyToClipboard(`sk-${revealedKey}`);
       toast.success(t("TOKEN.SUCCESS.KEY_COPIED"));
@@ -175,7 +172,6 @@ export function TokenDialog(props: TokenDialogProps) {
       { body: { ...props.token, status: isEnabled ? 2 : 1 } },
       {
         onSuccess: () => {
-          analytics.tokens.statusToggled(!isEnabled);
           toast.success(t("TOKEN.SUCCESS.STATUS_CHANGED"));
           props.onOpenChange(false);
         },
@@ -190,7 +186,6 @@ export function TokenDialog(props: TokenDialogProps) {
       { id: props.token.id },
       {
         onSuccess: () => {
-          analytics.tokens.deleted();
           toast.success(t("TOKEN.SUCCESS.DELETED"));
           props.onOpenChange(false);
         },
@@ -233,18 +228,6 @@ export function TokenDialog(props: TokenDialogProps) {
           : "",
     };
 
-    const trackProps = {
-      has_ip_whitelist: !!payload.allow_ips,
-      unlimited_quota: payload.unlimited_quota,
-      model_limits_enabled: payload.model_limits_enabled,
-      model_count: data.model_limits_enabled ? data.model_limits.length : 0,
-      group_pinned: Object.keys(data.group_mapping).length > 0,
-      group_count: Object.values(data.group_mapping).reduce(
-        (total, entry) => total + entry.groups.length,
-        0,
-      ),
-    };
-
     if (isEdit) {
       updateMutation.mutate(
         {
@@ -256,7 +239,6 @@ export function TokenDialog(props: TokenDialogProps) {
         },
         {
           onSuccess: () => {
-            analytics.tokens.updated(trackProps);
             toast.success(t("TOKEN.SUCCESS.UPDATED"));
             props.onOpenChange(false);
           },
@@ -273,7 +255,6 @@ export function TokenDialog(props: TokenDialogProps) {
         { body: payload },
         {
           onSuccess: () => {
-            analytics.tokens.created(trackProps);
             toast.success(t("TOKEN.SUCCESS.CREATED"));
             props.onOpenChange(false);
           },
@@ -489,9 +470,6 @@ export function TokenDialog(props: TokenDialogProps) {
                               }
                               size="xs"
                               onClick={() => {
-                                analytics.tokens.quotaPresetClicked({
-                                  amount: preset.value,
-                                });
                                 form.setValue("remain_quota", preset.value);
                               }}
                             >

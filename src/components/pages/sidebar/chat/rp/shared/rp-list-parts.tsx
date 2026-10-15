@@ -24,17 +24,12 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { useMediaFocal, useMediaSrc } from "@/hooks/ai/use-media-src";
-import { analytics } from "@/lib/analytics";
 import { cn } from "@/lib/utils";
 import { dayjs, formatRelativeUnix } from "@/lib/utils/format/date";
 import type { TranslationKey } from "@/lib/config/constants";
 import type { EntityEditId } from "@/lib/types";
 import { useLocale, useTranslations } from "next-intl";
 import { type ReactNode, useEffect, useRef, useState } from "react";
-
-type RpAnalyticsEntity = Parameters<
-  typeof analytics.rp.entityAction
->[0]["entity"];
 
 export const RP_ACTION_BUTTON = "max-sm:h-8 max-sm:px-2 max-sm:text-xs";
 
@@ -205,7 +200,6 @@ export function RpEntityRow(props: {
 }
 
 export function RpImportControl(props: {
-  entity: RpAnalyticsEntity;
   accept?: string;
   labelKey: TranslationKey;
   isPending: boolean;
@@ -228,18 +222,7 @@ export function RpImportControl(props: {
           const file = e.target.files?.[0];
           if (!file || !props.onFile) return;
           e.target.value = "";
-          try {
-            await props.onFile(file);
-            analytics.rp.entityAction({
-              entity: props.entity,
-              action: "imported",
-            });
-          } catch {
-            analytics.rp.entityAction({
-              entity: props.entity,
-              action: "import_failed",
-            });
-          }
+          await props.onFile(file).catch(() => {});
         }}
         className="hidden"
       />
@@ -247,10 +230,6 @@ export function RpImportControl(props: {
         <Button
           variant="outline"
           onClick={() => {
-            analytics.rp.entityAction({
-              entity: props.entity,
-              action: "import_picker_opened",
-            });
             fileInputRef.current?.click();
           }}
           disabled={props.isPending}
@@ -287,26 +266,14 @@ export function RpImportControl(props: {
             <Button
               disabled={props.isPending || url.trim() === ""}
               onClick={async () => {
-                analytics.rp.entityAction({
-                  entity: props.entity,
-                  action: "import_picker_opened",
-                });
                 try {
                   await props.onUrl!(url.trim());
                   setUrl("");
                   setLinkOpen(false);
-                  analytics.rp.entityAction({
-                    entity: props.entity,
-                    action: "imported",
-                  });
                 } catch {
                   // Leave the URL in the box: a failure the user can retry
                   // should not make them paste the link again.
                   setLinkOpen(true);
-                  analytics.rp.entityAction({
-                    entity: props.entity,
-                    action: "import_failed",
-                  });
                 }
               }}
             >

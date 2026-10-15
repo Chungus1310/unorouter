@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Icon } from "@/components/ui/icon";
 import { matchPathname, useRouter } from "@/i18n/navigation";
-import { analytics } from "@/lib/analytics";
 import { LANGUAGES } from "@/lib/config/constants";
 import {
   pullToRefreshAtom,
@@ -38,7 +37,6 @@ export function AppearanceSubmenu(props: { onOpenCustomizer: () => void }) {
   const { setTheme } = useTheme();
 
   const switchLocale = (next: Locale) => {
-    analytics.settings.localeChanged(next);
     const matched = matchPathname(pathname, locale);
     if (matched) router.replace(matched, { locale: next });
     else router.replace("/", { locale: next });

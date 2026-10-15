@@ -26,7 +26,7 @@ git worktree remove --force /tmp/uno-build
 - ONE local database per device: `getLocalDb()` takes no argument. Only the model-tester tables carry `userId`, from `useAuthUserId()`/`authUserId()`. No client user-id atom, no per-user OPFS path.
 - Pass upstream shapes through; when the shape is wrong, fix it in new-api (ours), never remap, filter, sort, count or cache in the BFF. Target route body: `async () => getSomething()`. BFF keeps auth, cookies, composing several upstream calls and unorouter-only view state. `handleElysia` unwraps `{success, data}` and DROPS siblings, so our own DTOs never use that envelope. Pass-through routes `return unwrap(res)`; local-logic routes (`ai/chat`, `ops/health`) `return { success, data }`; never mix in one route. No try/catch in handlers.
 - Dependency direction one way: `route.ts` -> `*.service.ts` -> data. `src/lib/ai/chat/` is PURE of secrets and data sources; everything injected through `AssemblerDeps` (`pipeline/deps.ts`). `providers/` and `agents/` are leaf modules.
-- Any remote fetch goes through `src/lib/config/safe-fetch.ts` (SSRF policy). Analytics events only via `src/lib/analytics.ts`; posthog-js is never statically imported.
+- Any remote fetch goes through `src/lib/config/safe-fetch.ts` (SSRF policy).
 - nuqs owns URL filter state; never `useSearchParams` + `router.replace`. `/models` bridges nuqs to jotai at the store level (cookie hydration lands after first-commit subscribers).
 - jotai: `chatStore.set(atom, fn)` runs fn as an updater. `set(atom, () => fn)`.
 

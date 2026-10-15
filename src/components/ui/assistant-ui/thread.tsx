@@ -46,7 +46,6 @@ import {
   parseCustomModelId,
 } from "@/lib/ai/chat/custom-provider-id";
 import { partsToItems } from "@/lib/ai/chat/messages";
-import { analytics } from "@/lib/analytics";
 import { env } from "@/lib/config/env";
 import { cn } from "@/lib/utils";
 import { copyToClipboard } from "@/lib/utils/base";
@@ -686,7 +685,6 @@ const ComposerWebSearchToggle: FC = () => {
       variant={webSearch ? "default" : "ghost"}
       className="aui-composer-web-search size-8 rounded-full transition-colors"
       onClick={() => {
-        analytics.chat.webSearchToggled(!webSearch);
         setWebSearch(!webSearch);
       }}
     >
@@ -1239,7 +1237,6 @@ const AssistantEditInPlace: FC<{ onClose: () => void }> = (props) => {
     } catch {
       return;
     }
-    analytics.chat.messageEdited({ role: "assistant", is_rp: isRpActive() });
 
     // Instant visual update, then the DB-derived rebuild as the authority: the
     // transport sends the live array as the model's history, so a lost patch
@@ -1429,8 +1426,6 @@ const DeleteMessageButton: FC = () => {
 
 const MEDIA_OUTPUT_RE = /^!\[(?:audio|image|video)\]\(/;
 
-const isRpActive = () => chatStore.get(chatLoadoutAtom).characterIds.length > 0;
-
 const BranchButton: FC = () => {
   const t = useTranslations();
   const messageId = useAuiState((s) => s.message.id);
@@ -1442,7 +1437,6 @@ const BranchButton: FC = () => {
     if (!convId || forkMut.isPending) return;
     try {
       const res = await forkMut.mutateAsync({ convId, messageId });
-      analytics.chat.conversationBranched({ is_rp: isRpActive() });
       aui.threads().switchToThread(res.id);
       toast.success(t("CHAT.SUCCESS.BRANCHED"));
     } catch {
@@ -1493,12 +1487,7 @@ const AssistantActionBar: FC = () => {
         </ActionBarPrimitive.Copy>
       )}
       <ActionBarPrimitive.Reload asChild>
-        <TooltipIconButton
-          tooltip={t("CHAT.ACTION.REFRESH")}
-          onClick={() =>
-            analytics.chat.messageRegenerated({ is_rp: isRpActive() })
-          }
-        >
+        <TooltipIconButton tooltip={t("CHAT.ACTION.REFRESH")}>
           <Icon name="refresh-cw" />
         </TooltipIconButton>
       </ActionBarPrimitive.Reload>
@@ -1664,15 +1653,7 @@ const BranchPicker: FC<BranchPickerPrimitive.Root.Props> = (props) => {
       {...props}
     >
       <BranchPickerPrimitive.Previous asChild>
-        <TooltipIconButton
-          tooltip={t("CHAT.ACTION.PREVIOUS")}
-          onClick={() =>
-            analytics.chat.messageSwiped({
-              direction: "prev",
-              is_rp: isRpActive(),
-            })
-          }
-        >
+        <TooltipIconButton tooltip={t("CHAT.ACTION.PREVIOUS")}>
           <Icon name="chevron-left" />
         </TooltipIconButton>
       </BranchPickerPrimitive.Previous>
@@ -1680,15 +1661,7 @@ const BranchPicker: FC<BranchPickerPrimitive.Root.Props> = (props) => {
         <BranchPickerPrimitive.Number /> / <BranchPickerPrimitive.Count />
       </span>
       <BranchPickerPrimitive.Next asChild>
-        <TooltipIconButton
-          tooltip={t("CHAT.ACTION.NEXT")}
-          onClick={() =>
-            analytics.chat.messageSwiped({
-              direction: "next",
-              is_rp: isRpActive(),
-            })
-          }
-        >
+        <TooltipIconButton tooltip={t("CHAT.ACTION.NEXT")}>
           <Icon name="chevron-right" />
         </TooltipIconButton>
       </BranchPickerPrimitive.Next>

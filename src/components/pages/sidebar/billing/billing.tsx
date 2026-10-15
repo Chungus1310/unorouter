@@ -6,7 +6,6 @@ import { PageContent } from "@/components/layout/sidebar/sidebar-layout";
 import { Icon } from "@/components/ui/icon";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { env } from "@/lib/config/env";
-import { analytics } from "@/lib/analytics";
 import { useTranslations } from "next-intl";
 import { AccountStats } from "./account-stats";
 import { RedeemSection } from "./redeem-section";
@@ -131,7 +130,6 @@ export function Billing() {
         <a
           href={`mailto:${env.supportEmail}`}
           className="text-foreground hover:text-muted-foreground mt-1 inline-block text-sm font-medium underline underline-offset-4"
-          onClick={() => analytics.navigation.supportEmailClicked()}
         >
           {env.supportEmail}
         </a>
