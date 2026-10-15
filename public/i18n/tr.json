@@ -2744,12 +2744,12 @@
       "REQUEST_NEW_LINK": "Yeni bağlantı iste"
     },
     "CUSTOMER_TYPE": {
-      "LABEL": "Bu hesabı nasıl kullanacaksınız?",
-      "CONSUMER": "Bireysel kullanım",
-      "CONSUMER_HINT": "Kendiniz için, herhangi bir ticari, mesleki veya iş faaliyeti dışında",
-      "BUSINESS": "Kurumsal veya mesleki kullanım",
-      "BUSINESS_HINT": "Bir şirket, serbest çalışma veya başka bir mesleki amaç için",
-      "HELP": "Bu bilgiye veri koruma için ihtiyacımız var, çünkü kişisel ve ticari kullanım için kurallar farklıdır. Daha sonra ayarlardan değiştirebilirsiniz."
+      "BUSINESS_CHECKBOX": "Bir işletme adına veya mesleki amaçlarla kaydoluyorum",
+      "CHANGE_LATER": "Bunu daha sonra ayarlardan değiştirebilirsiniz."
+    },
+    "TERMS_NOTICE": {
+      "REGISTER": "Hesap oluşturarak <terms>Hizmet Şartlarımızı</terms> kabul etmiş olursunuz. Verilerinizi nasıl işlediğimize ilişkin bilgileri <privacy>Gizlilik Politikamızda</privacy> bulabilirsiniz.",
+      "OAUTH": "Bu hizmetlerden biriyle yeni bir hesap oluşturursanız <terms>Hizmet Şartlarımızı</terms> kabul etmiş olursunuz. Verilerinizi nasıl işlediğimize ilişkin bilgileri <privacy>Gizlilik Politikamızda</privacy> bulabilirsiniz."
     }
   },
   "SIDEBAR": {
@@ -3650,7 +3650,8 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Hesap türü",
-      "PROMPT": "Bu hesabı kişisel mi yoksa ticari amaçla mı kullandığınızı bir kez belirtin. Bu bilgiye veri koruma için ihtiyacımız var.",
+      "PROMPT": "Lütfen hesap türünüzü bir kez onaylayıp kaydedin.",
+      "BUSINESS_CHECKBOX": "Bu hesabı bir işletme adına veya mesleki amaçlarla kullanıyorum",
       "SAVE": "Kaydet",
       "SAVED": "Hesap türü kaydedildi",
       "DECLARED_ON": "Beyan tarihi: {date}"

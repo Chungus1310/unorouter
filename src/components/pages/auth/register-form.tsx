@@ -1,8 +1,9 @@
 "use client";
 
 import { MyFormInput } from "@/components/elements/form/my-form-input";
-import { CustomerTypeChoice } from "@/components/pages/auth/customer-type-choice";
+import { CustomerTypeCheckbox } from "@/components/pages/auth/customer-type-checkbox";
 import { OAuthButtons } from "@/components/pages/auth/oauth-buttons";
+import { TermsNotice } from "@/components/pages/auth/terms-notice";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { GlassAuthCard } from "@/components/ui/glass-auth-card";
@@ -52,7 +53,7 @@ export function RegisterForm() {
   const [resendSeconds, setResendSeconds] = useState(0);
   // Outside the form: the OAuth buttons need it too, and they render when the
   // password form is switched off.
-  const [customerType, setCustomerType] = useState<CustomerType>();
+  const [customerType, setCustomerType] = useState<CustomerType>("consumer");
 
   useEffect(() => {
     if (resendSeconds <= 0) return;
@@ -83,7 +84,6 @@ export function RegisterForm() {
   }
 
   async function onSubmit(data: RegisterSchema) {
-    if (!customerType) return;
     try {
       const affCodeRaw = data.aff_code?.trim() || getCookie(AFF_CODE_KEY);
       const affCode = typeof affCodeRaw === "string" ? affCodeRaw : undefined;
@@ -138,7 +138,6 @@ export function RegisterForm() {
 
   const submitDisabled =
     !isValid ||
-    !customerType ||
     registerMutation.isPending ||
     (turnstileRequired && !turnstileToken) ||
     (emailAsUsername && !trimmedCode);
@@ -149,7 +148,16 @@ export function RegisterForm() {
       description={t("AUTH.REGISTER.DESCRIPTION", APP_VALUES)}
     >
       <div className="space-y-6">
-        <CustomerTypeChoice value={customerType} onChange={setCustomerType} />
+        <div className="space-y-1.5">
+          <CustomerTypeCheckbox
+            value={customerType}
+            onChange={setCustomerType}
+            label={t("AUTH.CUSTOMER_TYPE.BUSINESS_CHECKBOX")}
+          />
+          <p className="text-muted-foreground pl-6.5 text-xs">
+            {t("AUTH.CUSTOMER_TYPE.CHANGE_LATER")}
+          </p>
+        </div>
 
         {showPasswordForm && (
           <Form {...form}>
@@ -274,6 +282,8 @@ export function RegisterForm() {
                 </p>
               )}
 
+              <TermsNotice variant="register" />
+
               <Button
                 type="submit"
                 disabled={submitDisabled}
@@ -303,6 +313,9 @@ export function RegisterForm() {
           <OAuthButtons
             status={status}
             signup={{ customerType }}
+            notice={
+              showPasswordForm ? undefined : <TermsNotice variant="register" />
+            }
             turnstileToken={turnstileToken}
             onTurnstileSpent={() => {
               turnstileRef.current?.reset();

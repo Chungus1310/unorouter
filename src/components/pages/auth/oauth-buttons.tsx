@@ -20,8 +20,10 @@ type OAuthButtonsProps = {
   turnstileToken?: string;
   /** Called when a start failed after spending the token, so the parent can reissue it. */
   onTurnstileSpent?: () => void;
-  /** Set on the signup page: the buttons wait for the customer type, which the gateway stores on an account this login creates. */
-  signup?: { customerType: CustomerType | undefined };
+  /** Set on the signup page: the gateway stores the customer type on an account this login creates. */
+  signup?: { customerType: CustomerType };
+  /** Rendered above the buttons, so it is read before an account gets created. */
+  notice?: React.ReactNode;
 };
 
 type OAuthProvider = {
@@ -120,7 +122,6 @@ export function OAuthButtons(props: OAuthButtonsProps) {
 
   const awaitingTurnstile =
     props.status.turnstile_check === true && !props.turnstileToken;
-  const awaitingCustomerType = !!props.signup && !props.signup.customerType;
 
   async function handleOAuth(provider: OAuthProvider) {
     setLoading(provider.key);
@@ -173,14 +174,14 @@ export function OAuthButtons(props: OAuthButtonsProps) {
         <div className="bg-border/60 h-px flex-1" />
       </div>
 
+      {props.notice}
+
       <div className="flex flex-col gap-2">
         {providers.map((provider) => (
           <button
             key={provider.key}
             onClick={() => handleOAuth(provider)}
-            disabled={
-              loading !== null || awaitingTurnstile || awaitingCustomerType
-            }
+            disabled={loading !== null || awaitingTurnstile}
             className="border-border/60 bg-background/60 hover:bg-accent text-foreground flex h-11 w-full items-center justify-center gap-2 rounded-2xl border text-sm font-medium transition-colors disabled:opacity-50"
           >
             {loading === provider.key ? (

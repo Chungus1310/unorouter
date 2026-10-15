@@ -2744,12 +2744,12 @@
       "REQUEST_NEW_LINK": "重新申请链接"
     },
     "CUSTOMER_TYPE": {
-      "LABEL": "你将如何使用此账户？",
-      "CONSUMER": "个人使用",
-      "CONSUMER_HINT": "供你自己使用，与任何商业、经营或职业活动无关",
-      "BUSINESS": "商业或职业使用",
-      "BUSINESS_HINT": "用于公司、自由职业或其他职业用途",
-      "HELP": "由于个人使用和商业使用适用的规则不同，我们需要此信息用于数据保护。您之后可以在设置中更改。"
+      "BUSINESS_CHECKBOX": "我是为企业或出于职业目的注册",
+      "CHANGE_LATER": "你之后可以在设置中更改。"
+    },
+    "TERMS_NOTICE": {
+      "REGISTER": "创建账户即表示你接受我们的<terms>服务条款</terms>。关于我们如何处理你的数据，请参阅我们的<privacy>隐私政策</privacy>。",
+      "OAUTH": "如果你通过以下任一服务创建新账户，即表示你接受我们的<terms>服务条款</terms>。关于我们如何处理你的数据，请参阅我们的<privacy>隐私政策</privacy>。"
     }
   },
   "SIDEBAR": {
@@ -3650,7 +3650,8 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "账户类型",
-      "PROMPT": "请告诉我们一次，您是以个人还是商业用途使用此账户。我们需要此信息用于数据保护。",
+      "PROMPT": "请确认一次账户类型并保存。",
+      "BUSINESS_CHECKBOX": "我将此账户用于企业或职业目的",
       "SAVE": "保存",
       "SAVED": "账户类型已保存",
       "DECLARED_ON": "声明于 {date}"

@@ -2,6 +2,7 @@
 
 import { MyFormInput } from "@/components/elements/form/my-form-input";
 import { OAuthButtons } from "@/components/pages/auth/oauth-buttons";
+import { TermsNotice } from "@/components/pages/auth/terms-notice";
 import { TwoFAForm } from "@/components/pages/auth/twofa-form";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
@@ -244,6 +245,7 @@ export function LoginForm() {
         {statusQuery.data && (
           <OAuthButtons
             status={statusQuery.data}
+            notice={<TermsNotice variant="oauth" />}
             turnstileToken={turnstileToken}
             onTurnstileSpent={() => {
               turnstileRef.current?.reset();

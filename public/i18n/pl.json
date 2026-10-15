@@ -2744,12 +2744,12 @@
       "REQUEST_NEW_LINK": "Poproś o nowy link"
     },
     "CUSTOMER_TYPE": {
-      "LABEL": "Jak będziesz korzystać z tego konta?",
-      "CONSUMER": "Użytek prywatny",
-      "CONSUMER_HINT": "Dla siebie, poza jakąkolwiek działalnością handlową, gospodarczą lub zawodową",
-      "BUSINESS": "Użytek firmowy lub zawodowy",
-      "BUSINESS_HINT": "Dla firmy, pracy na własny rachunek lub innego celu zawodowego",
-      "HELP": "Potrzebujemy tej informacji ze względu na ochronę danych, ponieważ zasady dla użytku prywatnego i służbowego są różne. Możesz ją później zmienić w ustawieniach."
+      "BUSINESS_CHECKBOX": "Rejestruję się w imieniu firmy lub w celach zawodowych",
+      "CHANGE_LATER": "Możesz to później zmienić w ustawieniach."
+    },
+    "TERMS_NOTICE": {
+      "REGISTER": "Tworząc konto, akceptujesz nasze <terms>Warunki usługi</terms>. Informacje o tym, jak przetwarzamy Twoje dane, znajdziesz w naszej <privacy>Polityce prywatności</privacy>.",
+      "OAUTH": "Jeśli utworzysz nowe konto za pomocą jednej z tych usług, akceptujesz nasze <terms>Warunki usługi</terms>. Informacje o tym, jak przetwarzamy Twoje dane, znajdziesz w naszej <privacy>Polityce prywatności</privacy>."
     }
   },
   "SIDEBAR": {
@@ -3650,7 +3650,8 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Typ konta",
-      "PROMPT": "Podaj nam jednorazowo, czy korzystasz z tego konta prywatnie, czy służbowo. Potrzebujemy tej informacji ze względu na ochronę danych.",
+      "PROMPT": "Potwierdź jednorazowo typ konta i zapisz go.",
+      "BUSINESS_CHECKBOX": "Korzystam z tego konta w imieniu firmy lub w celach zawodowych",
       "SAVE": "Zapisz",
       "SAVED": "Typ konta zapisany",
       "DECLARED_ON": "Zadeklarowano {date}"

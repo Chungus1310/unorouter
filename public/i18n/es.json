@@ -2744,12 +2744,12 @@
       "REQUEST_NEW_LINK": "Solicitar un enlace nuevo"
     },
     "CUSTOMER_TYPE": {
-      "LABEL": "¿Cómo vas a usar esta cuenta?",
-      "CONSUMER": "Uso privado",
-      "CONSUMER_HINT": "Para ti, fuera de cualquier actividad comercial, empresarial o profesional",
-      "BUSINESS": "Uso empresarial o profesional",
-      "BUSINESS_HINT": "Para una empresa, trabajo autónomo u otro fin profesional",
-      "HELP": "Necesitamos este dato por motivos de protección de datos, ya que las normas para el uso privado y el profesional son distintas. Puedes cambiarlo más tarde en los ajustes."
+      "BUSINESS_CHECKBOX": "Me registro para una empresa o con fines profesionales",
+      "CHANGE_LATER": "Puedes cambiarlo más tarde en los ajustes."
+    },
+    "TERMS_NOTICE": {
+      "REGISTER": "Al crear una cuenta, aceptas nuestros <terms>Términos de servicio</terms>. Encontrarás información sobre cómo tratamos tus datos en nuestra <privacy>Política de privacidad</privacy>.",
+      "OAUTH": "Si creas una cuenta nueva con uno de estos servicios, aceptas nuestros <terms>Términos de servicio</terms>. Encontrarás información sobre cómo tratamos tus datos en nuestra <privacy>Política de privacidad</privacy>."
     }
   },
   "SIDEBAR": {
@@ -3650,7 +3650,8 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Tipo de cuenta",
-      "PROMPT": "Indícanos una vez si usas esta cuenta de forma privada o profesional. Necesitamos este dato por motivos de protección de datos.",
+      "PROMPT": "Confirma una vez el tipo de cuenta y guárdalo.",
+      "BUSINESS_CHECKBOX": "Uso esta cuenta para una empresa o con fines profesionales",
       "SAVE": "Guardar",
       "SAVED": "Tipo de cuenta guardado",
       "DECLARED_ON": "Declarado el {date}"

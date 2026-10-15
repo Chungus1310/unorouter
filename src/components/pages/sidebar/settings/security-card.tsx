@@ -7,6 +7,7 @@ import {
   usePasskeyStatusQuery,
 } from "@/hooks/auth/settings-hook";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
+import { useStatusQuery } from "@/hooks/ops/status-hook";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,6 +24,7 @@ export function SecurityCard() {
   const t = useTranslations();
   const twoFAStatusQuery = use2FAStatusQuery();
   const passkeyStatusQuery = usePasskeyStatusQuery();
+  const statusQuery = useStatusQuery();
 
   const [showPasswordDialog, setShowPasswordDialog] = useState(false);
   const [show2FADialog, setShow2FADialog] = useState(false);
@@ -34,6 +36,9 @@ export function SecurityCard() {
   const authQuery = useAuthQuery();
   const twoFAEnabled = twoFAStatusQuery.data?.enabled === true;
   const passkeyRegistered = passkeyStatusQuery.data?.enabled === true;
+  // Switched off globally the register dialog is a dead end; an existing passkey stays removable.
+  const showPasskey =
+    passkeyRegistered || statusQuery.data?.passkey_login === true;
   const hasPassword = authQuery.data?.has_password ?? true;
 
   return (
@@ -65,59 +70,63 @@ export function SecurityCard() {
             </Button>
           </div>
 
-          <Separator />
+          {showPasskey && (
+            <>
+              <Separator />
 
-          <div className="space-y-2">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <Icon
-                  name="fingerprint"
-                  className="text-muted-foreground h-4 w-4"
-                />
-                <span className="font-medium">
-                  {t("SETTINGS.SECURITY.PASSKEY")}
-                </span>
-                {passkeyRegistered ? (
-                  <Badge variant="default">
-                    {t("SETTINGS.SECURITY.PASSKEY_REGISTERED")}
-                  </Badge>
-                ) : (
-                  <Badge variant="secondary">
-                    {t("SETTINGS.SECURITY.PASSKEY_NOT_REGISTERED")}
-                  </Badge>
-                )}
+              <div className="space-y-2">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <Icon
+                      name="fingerprint"
+                      className="text-muted-foreground h-4 w-4"
+                    />
+                    <span className="font-medium">
+                      {t("SETTINGS.SECURITY.PASSKEY")}
+                    </span>
+                    {passkeyRegistered ? (
+                      <Badge variant="default">
+                        {t("SETTINGS.SECURITY.PASSKEY_REGISTERED")}
+                      </Badge>
+                    ) : (
+                      <Badge variant="secondary">
+                        {t("SETTINGS.SECURITY.PASSKEY_NOT_REGISTERED")}
+                      </Badge>
+                    )}
+                  </div>
+                  <div className="flex gap-2">
+                    {passkeyRegistered ? (
+                      <Button
+                        variant="destructive"
+                        size="sm"
+                        onClick={() => {
+                          setPasskeyMode("delete");
+                          setShowPasskeyDialog(true);
+                        }}
+                      >
+                        <Icon name="trash-2" className="mr-1 h-3 w-3" />
+                        {t("SETTINGS.SECURITY.DELETE_PASSKEY")}
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => {
+                          setPasskeyMode("register");
+                          setShowPasskeyDialog(true);
+                        }}
+                      >
+                        {t("SETTINGS.SECURITY.REGISTER_PASSKEY")}
+                      </Button>
+                    )}
+                  </div>
+                </div>
+                <p className="text-muted-foreground text-xs">
+                  {t("SETTINGS.SECURITY.PASSKEY_DESC")}
+                </p>
               </div>
-              <div className="flex gap-2">
-                {passkeyRegistered ? (
-                  <Button
-                    variant="destructive"
-                    size="sm"
-                    onClick={() => {
-                      setPasskeyMode("delete");
-                      setShowPasskeyDialog(true);
-                    }}
-                  >
-                    <Icon name="trash-2" className="mr-1 h-3 w-3" />
-                    {t("SETTINGS.SECURITY.DELETE_PASSKEY")}
-                  </Button>
-                ) : (
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => {
-                      setPasskeyMode("register");
-                      setShowPasskeyDialog(true);
-                    }}
-                  >
-                    {t("SETTINGS.SECURITY.REGISTER_PASSKEY")}
-                  </Button>
-                )}
-              </div>
-            </div>
-            <p className="text-muted-foreground text-xs">
-              {t("SETTINGS.SECURITY.PASSKEY_DESC")}
-            </p>
-          </div>
+            </>
+          )}
 
           <Separator />
 

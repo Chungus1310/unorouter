@@ -2744,12 +2744,12 @@
       "REQUEST_NEW_LINK": "Yêu cầu liên kết mới"
     },
     "CUSTOMER_TYPE": {
-      "LABEL": "Bạn sẽ sử dụng tài khoản này như thế nào?",
-      "CONSUMER": "Sử dụng cá nhân",
-      "CONSUMER_HINT": "Cho bản thân, ngoài mọi hoạt động thương mại, kinh doanh hoặc nghề nghiệp",
-      "BUSINESS": "Sử dụng cho doanh nghiệp hoặc công việc chuyên môn",
-      "BUSINESS_HINT": "Cho một công ty, công việc tự do hoặc mục đích chuyên môn khác",
-      "HELP": "Chúng tôi cần thông tin này vì mục đích bảo vệ dữ liệu, do quy định cho mục đích cá nhân và kinh doanh khác nhau. Bạn có thể thay đổi sau trong phần cài đặt."
+      "BUSINESS_CHECKBOX": "Tôi đăng ký cho doanh nghiệp hoặc vì mục đích nghề nghiệp",
+      "CHANGE_LATER": "Bạn có thể thay đổi sau trong phần cài đặt."
+    },
+    "TERMS_NOTICE": {
+      "REGISTER": "Khi tạo tài khoản, bạn chấp nhận <terms>Điều khoản dịch vụ</terms> của chúng tôi. Bạn có thể tìm hiểu cách chúng tôi xử lý dữ liệu của bạn trong <privacy>Chính sách bảo mật</privacy>.",
+      "OAUTH": "Nếu bạn tạo tài khoản mới bằng một trong các dịch vụ này, bạn chấp nhận <terms>Điều khoản dịch vụ</terms> của chúng tôi. Bạn có thể tìm hiểu cách chúng tôi xử lý dữ liệu của bạn trong <privacy>Chính sách bảo mật</privacy>."
     }
   },
   "SIDEBAR": {
@@ -3650,7 +3650,8 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Loại tài khoản",
-      "PROMPT": "Vui lòng cho chúng tôi biết một lần rằng bạn dùng tài khoản này cho mục đích cá nhân hay kinh doanh. Chúng tôi cần thông tin này vì mục đích bảo vệ dữ liệu.",
+      "PROMPT": "Vui lòng xác nhận loại tài khoản một lần và lưu lại.",
+      "BUSINESS_CHECKBOX": "Tôi dùng tài khoản này cho doanh nghiệp hoặc vì mục đích nghề nghiệp",
       "SAVE": "Lưu",
       "SAVED": "Đã lưu loại tài khoản",
       "DECLARED_ON": "Đã khai báo ngày {date}"
