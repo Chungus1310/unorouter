@@ -34,6 +34,8 @@ const privateSet = new Set<string>([
 
 // next.config.ts redirects this permanently, so it is not a canonical URL.
 const REDIRECTED_ROUTES = new Set<string>(["/docs"]);
+// noindex pages stay crawlable (no robots.txt block) so Google can read the noindex.
+const NOINDEX_ROUTES = new Set<string>(["/impressum"]);
 
 const docUrlSet = new Set<string>(
   DOCS_REGISTRY.map((doc) =>
@@ -79,6 +81,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     (route) =>
       !privateSet.has(route) &&
       !REDIRECTED_ROUTES.has(route) &&
+      !NOINDEX_ROUTES.has(route) &&
       !docUrlSet.has(
         getPathname({ locale: routing.defaultLocale, href: route }),
       ),
@@ -108,9 +111,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
   const sitemapVendorSlugs = [
     ...new Set(
-      (pricing?.models ?? [])
-        .map((m) => vendorSlug(m.vendor))
-        .filter(Boolean),
+      (pricing?.models ?? []).map((m) => vendorSlug(m.vendor)).filter(Boolean),
     ),
   ];
 

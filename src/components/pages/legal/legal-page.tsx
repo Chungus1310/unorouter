@@ -30,6 +30,8 @@ export async function legalMetadata(
     description: t(key(slug, "META.DESCRIPTION"), APP_VALUES),
     keywords: t(key(slug, "META.KEYWORDS"), APP_VALUES),
     ogImage: ogBadge("providers", locale),
+    // Reachable from every footer as the law requires, but not a search result for the owner's name.
+    robots: slug !== "impressum",
   });
 }
 
