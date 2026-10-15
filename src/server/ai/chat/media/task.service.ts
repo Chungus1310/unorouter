@@ -1,5 +1,4 @@
-import { getV1VideoGenerationsTaskId } from "@/openapi";
-import { postVideoGeneration } from "@/lib/api/gateway-gaps";
+import { getV1VideoGenerationsTaskId, postV1VideoGenerations } from "@/openapi";
 import {
   digErrorMessage,
   normalizeTaskStatus,
@@ -64,7 +63,7 @@ export async function submitVideoTask(
   group?: string | null,
   image?: string,
 ): Promise<TaskSubmitResult> {
-  const res = await postVideoGeneration({
+  const res = await postV1VideoGenerations({
     headers: {
       Authorization: `Bearer ${apiKey}`,
       "Content-Type": "application/json",

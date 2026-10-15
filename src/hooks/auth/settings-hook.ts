@@ -6,8 +6,11 @@ import { queryKeys } from "@/lib/react-query/keys";
 import { rpc } from "@/lib/rpc";
 import type { EdenArgs } from "@/lib/types/eden";
 import { handleElysia } from "@/lib/utils/base";
-import type { TwoFAStatusData } from "@/lib/api/gateway-gaps";
-import type { PasskeyStatusData, UserSelfData } from "@/openapi";
+import type {
+  PasskeyStatusData,
+  TwoFAStatusData,
+  UserSelfData,
+} from "@/openapi";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { msg, SECURITY_PROOF_HEADER } from "@/lib/config/constants";
 import type { SecurityScope } from "@/lib/api/typebox/settings";

@@ -1,4 +1,3 @@
-import { exchangeOAuthVerification } from "@/lib/api/gateway-gaps";
 import {
   LOCALE_COOKIE,
   LOCALES,
@@ -8,6 +7,7 @@ import { cookieString, getUserId } from "@/server/constants";
 import type { Cookie } from "elysia";
 import { hasLocale } from "next-intl";
 import { getTranslations } from "next-intl/server";
+import { exchangeOAuthCode } from "@/openapi";
 
 type OAuthVerifyResult = { proof?: string; scope?: string; error?: string };
 
@@ -16,7 +16,7 @@ async function readOAuthProof(
   cookie: Record<string, Cookie<unknown>>,
 ): Promise<OAuthVerifyResult> {
   if (!code) return {};
-  const res = await exchangeOAuthVerification(code).catch(() => null);
+  const res = await exchangeOAuthCode({ code }).catch(() => null);
   const data = res?.data.success ? res.data.data : null;
   // The proof only works with the session that started the flow, so a code
   // that lands in another account's browser is refused here as well.

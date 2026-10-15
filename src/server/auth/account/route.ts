@@ -25,6 +25,7 @@ import {
   exchangeOAuthCode,
   generateOAuthCodeQuery,
   getStatus,
+  login,
   logout,
   register,
   resetPassword,
@@ -33,7 +34,6 @@ import {
   sendPasswordResetEmail,
   verify2FALogin,
 } from "@/openapi";
-import { loginWithPassword } from "@/lib/api/gateway-gaps";
 import { oauthVerifyResultPage } from "@/server/auth/account/oauth-verify.service";
 import { resolveSelf } from "@/server/auth/account/self.service";
 import { deriveUpstream } from "@/server/constants";
@@ -46,10 +46,10 @@ export const authRoute = new Elysia({ prefix: "/account" })
     "/login",
     async ({ body, cookie, upstream }) => {
       const { turnstile, ...loginRequest } = body;
-      const res = await loginWithPassword(
+      const res = await login(
         loginRequest,
         { turnstile },
-        upstream.headers,
+        { headers: upstream.headers },
       );
       return await handleAuthResponse(res, cookie);
     },

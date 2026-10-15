@@ -239,6 +239,24 @@ export interface AudioTranscriptionResponse {
   text: string;
 }
 
+export interface LoginSessionView {
+  created_at: number;
+  current: boolean;
+  expires_at: number;
+  ip: string;
+  last_active_at: number;
+  login_method: string;
+  sid: string;
+  user_agent: string;
+}
+
+export interface AuthRotationData {
+  access_expires_at?: number;
+  access_token?: string;
+  session?: LoginSessionView;
+  token_type?: string;
+}
+
 export interface AvailableReplica {
   available_count: number;
   hardware_id: number;
@@ -251,6 +269,15 @@ export interface AvailableReplica {
 export interface AvailableReplicasResponse {
   /** @nullable */
   replicas: AvailableReplica[] | null;
+}
+
+export interface BackupCodesData {
+  access_expires_at?: number;
+  access_token?: string;
+  /** @nullable */
+  backup_codes: string[] | null;
+  session?: LoginSessionView;
+  token_type?: string;
 }
 
 export interface BarSegmentDTO {
@@ -1487,9 +1514,9 @@ export interface LoginData {
  * LoginRequest schema
  */
 export interface LoginRequest {
-  encryption_key_id: string;
+  encryption_key_id?: string;
   password: string;
-  password_encrypted: string;
+  password_encrypted?: string;
   username: string;
 }
 
@@ -1852,7 +1879,10 @@ export interface OAuthExchangeData {
   access_token: string;
   action?: string;
   display_name: string;
+  proof_expires_at?: number;
+  proof_token?: string;
   role: number;
+  scope?: string;
   user_id: number;
   username: string;
 }
@@ -1960,15 +1990,35 @@ export interface PartnerVoidData {
   refunded: number;
 }
 
+/**
+ * PasskeyFinishRequest schema
+ */
+export interface PasskeyFinishRequest {
+  /** WebAuthn credential response, binary fields base64url */
+  credential: unknown;
+  flow_token: string;
+}
+
 export interface PasskeyOptionsData {
-  expires_at?: number;
-  flow_token?: string;
+  expires_at: number;
+  flow_token: string;
   options: unknown;
+  /** @nullable */
+  rp_ids?: string[] | null;
 }
 
 export interface PasskeyStatusData {
   enabled: boolean;
   last_used_at?: unknown;
+}
+
+/**
+ * PasskeyVerifyBeginRequest schema
+ */
+export interface PasskeyVerifyBeginRequest {
+  context?: unknown;
+  rp_id?: string;
+  scope: string;
 }
 
 /**
@@ -2890,6 +2940,24 @@ export interface ResponseDtoApiResponse {
 }
 
 /**
+ * Response_dto.AuthRotationData schema
+ */
+export interface ResponseDtoAuthRotationData {
+  data: AuthRotationData;
+  message: string;
+  success: boolean;
+}
+
+/**
+ * Response_dto.BackupCodesData schema
+ */
+export interface ResponseDtoBackupCodesData {
+  data: BackupCodesData;
+  message: string;
+  success: boolean;
+}
+
+/**
  * Response_dto.BillingPortalData schema
  */
 export interface ResponseDtoBillingPortalData {
@@ -3664,6 +3732,40 @@ export interface ResponseDtoRefreshCodexData {
   success: boolean;
 }
 
+export interface SecurityProof {
+  expires_at: number;
+  method: string;
+  proof_token: string;
+  scope: string;
+}
+
+/**
+ * Response_dto.SecurityProof schema
+ */
+export interface ResponseDtoSecurityProof {
+  data: SecurityProof;
+  message: string;
+  success: boolean;
+}
+
+export interface Setup2FAResponse {
+  /** @nullable */
+  backup_codes: string[] | null;
+  expires_at: number;
+  flow_token: string;
+  qr_code_data: string;
+  secret: string;
+}
+
+/**
+ * Response_dto.Setup2FAResponse schema
+ */
+export interface ResponseDtoSetup2FAResponse {
+  data: Setup2FAResponse;
+  message: string;
+  success: boolean;
+}
+
 export interface SetupData {
   database_type: string;
   root_init: boolean;
@@ -3957,6 +4059,21 @@ export interface ResponseDtoTransferDiscordQuotaData {
   success: boolean;
 }
 
+export interface TwoFAStatusData {
+  backup_codes_remaining?: number;
+  enabled: boolean;
+  locked: boolean;
+}
+
+/**
+ * Response_dto.TwoFAStatusData schema
+ */
+export interface ResponseDtoTwoFAStatusData {
+  data: TwoFAStatusData;
+  message: string;
+  success: boolean;
+}
+
 export interface UpdateNameResponse {
   id: string;
   message: string;
@@ -4034,16 +4151,31 @@ export interface ResponseDtoUserSelfData {
   success: boolean;
 }
 
-export interface VerificationStatusResponse {
-  expires_at?: number;
-  verified: boolean;
+export interface VerificationMethodOption {
+  available: boolean;
+  method: string;
+  reason?: string;
+}
+
+export interface VerificationOAuthProvider {
+  name: string;
+  slug: string;
+}
+
+export interface VerificationRequirements {
+  /** @nullable */
+  methods: VerificationMethodOption[] | null;
+  /** @nullable */
+  oauth_providers: VerificationOAuthProvider[] | null;
+  password_encryption_enabled: boolean;
+  scope: string;
 }
 
 /**
- * Response_dto.VerificationStatusResponse schema
+ * Response_dto.VerificationRequirements schema
  */
-export interface ResponseDtoVerificationStatusResponse {
-  data: VerificationStatusResponse;
+export interface ResponseDtoVerificationRequirements {
+  data: VerificationRequirements;
   message: string;
   success: boolean;
 }
@@ -4445,6 +4577,19 @@ export interface TransferDiscordQuotaRequest {
   from_discord_id: string;
   quota: number;
   to_discord_id: string;
+}
+
+/**
+ * UniversalVerifyRequest schema
+ */
+export interface UniversalVerifyRequest {
+  code?: string;
+  context?: unknown;
+  encryption_key_id?: string;
+  method: string;
+  password?: string;
+  password_encrypted?: string;
+  scope: string;
 }
 
 /**
@@ -5216,7 +5361,7 @@ export type GenerateOAuthCodeQueryParams = {
    */
   provider?: string;
   /**
-   * OAuth flow intent: login or bind
+   * OAuth flow intent: login, bind or verify
    */
   intent?: string;
   /**
@@ -5235,6 +5380,14 @@ export type GenerateOAuthCodeQueryParams = {
    * Declared customer type for an account created by this login: consumer or business
    */
   customer_type?: string;
+  /**
+   * Step-up scope a verify intent proves (requires Authorization header)
+   */
+  scope?: string;
+  /**
+   * JSON object with the step-up context, for scopes that bind one
+   */
+  context?: string;
 };
 
 export type GenerateOAuthCodeParams = {
@@ -5686,6 +5839,13 @@ export type SendEmailVerificationParams = {
    * Email address
    */
   email?: string;
+};
+
+export type GetVerificationMethodsParams = {
+  /**
+   * Step-up scope to list the verification methods for
+   */
+  scope: string;
 };
 
 export type getOAuthProtectedResourceMetadataResponse200ApplicationJson = {
@@ -16071,12 +16231,12 @@ export const updateUser = async (
 };
 
 export type regenerateBackupCodesResponse200ApplicationJson = {
-  data: ApiResponse;
+  data: ResponseDtoBackupCodesData;
   status: 200;
 };
 
 export type regenerateBackupCodesResponse200ApplicationXml = {
-  data: ApiResponse;
+  data: ResponseDtoBackupCodesData;
   status: 200;
 };
 
@@ -16109,12 +16269,12 @@ export const regenerateBackupCodes = async (
 };
 
 export type disable2FAResponse200ApplicationJson = {
-  data: ApiResponse;
+  data: ResponseDtoAuthRotationData;
   status: 200;
 };
 
 export type disable2FAResponse200ApplicationXml = {
-  data: ApiResponse;
+  data: ResponseDtoAuthRotationData;
   status: 200;
 };
 
@@ -16142,12 +16302,12 @@ export const disable2FA = async (
 };
 
 export type enable2FAResponse200ApplicationJson = {
-  data: ApiResponse;
+  data: ResponseDtoAuthRotationData;
   status: 200;
 };
 
 export type enable2FAResponse200ApplicationXml = {
-  data: ApiResponse;
+  data: ResponseDtoAuthRotationData;
   status: 200;
 };
 
@@ -16166,21 +16326,48 @@ export const getEnable2FAUrl = () => {
  * @summary Enable2 F A
  */
 export const enable2FA = async (
+  verify2FARequest: Verify2FARequest,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<enable2FAResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
   return customFetch<enable2FAResponse>(getEnable2FAUrl(), {
     ...options,
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getHeaders(options?.headers),
+    },
+    body: JSON.stringify(verify2FARequest),
   });
 };
 
 export type setup2FAResponse200ApplicationJson = {
-  data: ApiResponse;
+  data: ResponseDtoSetup2FAResponse;
   status: 200;
 };
 
 export type setup2FAResponse200ApplicationXml = {
-  data: ApiResponse;
+  data: ResponseDtoSetup2FAResponse;
   status: 200;
 };
 
@@ -16242,12 +16429,12 @@ export const admin2FAStats = async (
 };
 
 export type get2FAStatusResponse200ApplicationJson = {
-  data: ApiResponse;
+  data: ResponseDtoTwoFAStatusData;
   status: 200;
 };
 
 export type get2FAStatusResponse200ApplicationXml = {
-  data: ApiResponse;
+  data: ResponseDtoTwoFAStatusData;
   status: 200;
 };
 
@@ -18159,12 +18346,12 @@ export const partnerVoidRedemption = async (
 };
 
 export type passkeyDeleteResponse200ApplicationJson = {
-  data: MessageResponse;
+  data: ResponseDtoAuthRotationData;
   status: 200;
 };
 
 export type passkeyDeleteResponse200ApplicationXml = {
-  data: MessageResponse;
+  data: ResponseDtoAuthRotationData;
   status: 200;
 };
 
@@ -18332,12 +18519,12 @@ export const passkeyRegisterBegin = async (
 };
 
 export type passkeyRegisterFinishResponse200ApplicationJson = {
-  data: MessageResponse;
+  data: ResponseDtoAuthRotationData;
   status: 200;
 };
 
 export type passkeyRegisterFinishResponse200ApplicationXml = {
-  data: MessageResponse;
+  data: ResponseDtoAuthRotationData;
   status: 200;
 };
 
@@ -18358,13 +18545,40 @@ export const getPasskeyRegisterFinishUrl = () => {
  * @summary Passkey Register Finish
  */
 export const passkeyRegisterFinish = async (
+  passkeyFinishRequest: PasskeyFinishRequest,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<passkeyRegisterFinishResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
   return customFetch<passkeyRegisterFinishResponse>(
     getPasskeyRegisterFinishUrl(),
     {
       ...options,
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...getHeaders(options?.headers),
+      },
+      body: JSON.stringify(passkeyFinishRequest),
     },
   );
 };
@@ -18395,21 +18609,48 @@ export const getPasskeyVerifyBeginUrl = () => {
  * @summary Passkey Verify Begin
  */
 export const passkeyVerifyBegin = async (
+  passkeyVerifyBeginRequest: PasskeyVerifyBeginRequest,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<passkeyVerifyBeginResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
   return customFetch<passkeyVerifyBeginResponse>(getPasskeyVerifyBeginUrl(), {
     ...options,
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getHeaders(options?.headers),
+    },
+    body: JSON.stringify(passkeyVerifyBeginRequest),
   });
 };
 
 export type passkeyVerifyFinishResponse200ApplicationJson = {
-  data: MessageResponse;
+  data: ResponseDtoSecurityProof;
   status: 200;
 };
 
 export type passkeyVerifyFinishResponse200ApplicationXml = {
-  data: MessageResponse;
+  data: ResponseDtoSecurityProof;
   status: 200;
 };
 
@@ -18429,11 +18670,38 @@ export const getPasskeyVerifyFinishUrl = () => {
  * @summary Passkey Verify Finish
  */
 export const passkeyVerifyFinish = async (
+  passkeyFinishRequest: PasskeyFinishRequest,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<passkeyVerifyFinishResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
   return customFetch<passkeyVerifyFinishResponse>(getPasskeyVerifyFinishUrl(), {
     ...options,
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getHeaders(options?.headers),
+    },
+    body: JSON.stringify(passkeyFinishRequest),
   });
 };
 
@@ -20316,12 +20584,12 @@ export const sendEmailVerification = async (
 };
 
 export type universalVerifyResponse200ApplicationJson = {
-  data: ResponseDtoVerificationStatusResponse;
+  data: ResponseDtoSecurityProof;
   status: 200;
 };
 
 export type universalVerifyResponse200ApplicationXml = {
-  data: ResponseDtoVerificationStatusResponse;
+  data: ResponseDtoSecurityProof;
   status: 200;
 };
 
@@ -20341,21 +20609,48 @@ export const getUniversalVerifyUrl = () => {
  * @summary Universal Verify
  */
 export const universalVerify = async (
+  universalVerifyRequest: UniversalVerifyRequest,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<universalVerifyResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
   return customFetch<universalVerifyResponse>(getUniversalVerifyUrl(), {
     ...options,
     method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getHeaders(options?.headers),
+    },
+    body: JSON.stringify(universalVerifyRequest),
   });
 };
 
 export type getVerificationMethodsResponse200ApplicationJson = {
-  data: ApiResponse;
+  data: ResponseDtoVerificationRequirements;
   status: 200;
 };
 
 export type getVerificationMethodsResponse200ApplicationXml = {
-  data: ApiResponse;
+  data: ResponseDtoVerificationRequirements;
   status: 200;
 };
 
@@ -20368,18 +20663,33 @@ export type getVerificationMethodsResponseSuccess = (
 export type getVerificationMethodsResponse =
   getVerificationMethodsResponseSuccess;
 
-export const getGetVerificationMethodsUrl = () => {
-  return `/api/verify/methods`;
+export const getGetVerificationMethodsUrl = (
+  params: GetVerificationMethodsParams,
+) => {
+  const normalizedParams = new URLSearchParams();
+
+  Object.entries(params || {}).forEach(([key, value]) => {
+    if (value !== undefined) {
+      normalizedParams.append(key, value === null ? "null" : String(value));
+    }
+  });
+
+  const stringifiedParams = normalizedParams.toString();
+
+  return stringifiedParams.length > 0
+    ? `/api/verify/methods?${stringifiedParams}`
+    : `/api/verify/methods`;
 };
 
 /**
  * @summary Get Verification Methods
  */
 export const getVerificationMethods = async (
+  params: GetVerificationMethodsParams,
   options?: Parameters<typeof customFetch>[1],
 ): Promise<getVerificationMethodsResponse> => {
   return customFetch<getVerificationMethodsResponse>(
-    getGetVerificationMethodsUrl(),
+    getGetVerificationMethodsUrl(params),
     {
       ...options,
       method: "GET",
@@ -22357,6 +22667,44 @@ export const relayResponsesCompact = async (
 ): Promise<relayResponsesCompactResponse> => {
   return customFetch<relayResponsesCompactResponse>(
     getRelayResponsesCompactUrl(),
+    {
+      ...options,
+      method: "POST",
+    },
+  );
+};
+
+export type postV1VideoGenerationsResponse200ApplicationJson = {
+  data: TaskResponseDoc;
+  status: 200;
+};
+
+export type postV1VideoGenerationsResponse200ApplicationXml = {
+  data: TaskResponseDoc;
+  status: 200;
+};
+
+export type postV1VideoGenerationsResponseSuccess = (
+  | postV1VideoGenerationsResponse200ApplicationJson
+  | postV1VideoGenerationsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type postV1VideoGenerationsResponse =
+  postV1VideoGenerationsResponseSuccess;
+
+export const getPostV1VideoGenerationsUrl = () => {
+  return `/v1/video/generations`;
+};
+
+/**
+ * @summary Post V1 Video Generations
+ */
+export const postV1VideoGenerations = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<postV1VideoGenerationsResponse> => {
+  return customFetch<postV1VideoGenerationsResponse>(
+    getPostV1VideoGenerationsUrl(),
     {
       ...options,
       method: "POST",
