@@ -214,11 +214,9 @@ function mapChat(
 
   const convId = chat.chat_id ? jaiId("conv", chat.chat_id) : uid();
   const charName = character.character_name?.trim() || "JanitorAI";
-  // Several chats with the same character are common, so the summary is what
-  // tells them apart in the list; it is JanitorAI's own label for the chat.
-  const title = chat.summary?.trim()
-    ? `${charName}: ${chat.summary.trim()}`
-    : charName;
+  // `summary` is JanitorAI's Chat Memory, sent with every generation there, so
+  // it lands in the author's note, which is sent with every request here.
+  const memory = chat.summary?.trim() || null;
 
   const messages: LocalAnyRow[] = [];
   const messageItems: Array<LocalAnyRow & { messageId: string }> = [];
@@ -262,8 +260,8 @@ function mapChat(
   return {
     convId,
     bundle: {
-      conversation: { id: convId, title },
-      settings: { convId, defaultModel: "" },
+      conversation: { id: convId, title: charName },
+      settings: { convId, defaultModel: "", authorNote: memory },
       conversationCharacters: [],
       conversationLorebooks: [],
       messages,
