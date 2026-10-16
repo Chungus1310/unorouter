@@ -30,7 +30,8 @@ function useSeatCountries(model: string): string[] | null {
         : t("FREE_CONSENT.UNKNOWN_COUNTRY"),
     );
   }
-  return labels.size > 0 ? [...labels] : null;
+  if (labels.size === 0) labels.add(t("FREE_CONSENT.UNKNOWN_COUNTRY"));
+  return [...labels];
 }
 
 export function FreeConsentPanel(props: {
