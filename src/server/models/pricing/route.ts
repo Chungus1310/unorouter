@@ -24,6 +24,13 @@ export const pricingRoute = new Elysia({ prefix: "/pricing" })
 
   .get("/catalog", async () => getCatalog())
 
+  // Offline ones included: a consent can be given before the model is back.
+  .get("/free-models", async () =>
+    (await getCatalog(false, true)).models
+      .filter((m) => m.is_free)
+      .map((m) => ({ model_name: m.model_name, online: m.online })),
+  )
+
   .get("/image-models", async () => getImageModels())
 
   .get("/task-image-models", async () => getTaskImageModels())

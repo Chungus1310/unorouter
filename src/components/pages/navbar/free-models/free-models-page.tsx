@@ -9,7 +9,7 @@ import {
   useFreeConsentsQuery,
   useRevokeFreeConsentMutation,
 } from "@/hooks/auth/free-consent-hook";
-import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
+import { useFreeModelsQuery } from "@/hooks/models/pricing-hook";
 import { formatLongDate } from "@/lib/utils/format/date";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -19,7 +19,7 @@ import { toast } from "sonner";
 // users can enable a model before their first request.
 export function FreeModelsPage() {
   const t = useTranslations();
-  const catalogQuery = usePricingCatalogQuery();
+  const freeModelsQuery = useFreeModelsQuery();
   const consentsQuery = useFreeConsentsQuery();
   const revokeMutation = useRevokeFreeConsentMutation();
   const [search, setSearch] = useState("");
@@ -29,8 +29,7 @@ export function FreeModelsPage() {
     (consentsQuery.data?.consents ?? []).map((c) => [c.model, c.created_at]),
   );
   const needle = search.trim().toLowerCase();
-  const models = (catalogQuery.data?.models ?? [])
-    .filter((m) => m.is_free)
+  const models = (freeModelsQuery.data ?? [])
     .filter((m) => !needle || m.model_name.toLowerCase().includes(needle))
     .sort((a, b) => a.model_name.localeCompare(b.model_name));
 

@@ -79,3 +79,9 @@ export function useModelGroupsQuery(name: string | null) {
     { staleTime: "static", enabled: !!name },
   );
 }
+
+export function useFreeModelsQuery() {
+  return useElysiaQuery(queryKeys.freeModels(), () =>
+    rpc.api.models.pricing["free-models"].get(),
+  );
+}
