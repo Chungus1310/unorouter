@@ -5,9 +5,9 @@ import type { TranslationKey } from "@/lib/types";
 import { getTranslations } from "next-intl/server";
 import { Fragment, type ComponentType, type ReactNode } from "react";
 
-type Chunks = Record<string, (chunks: ReactNode) => ReactNode>;
+export type Chunks = Record<string, (chunks: ReactNode) => ReactNode>;
 
-const PAGE_CHUNKS: Chunks = {
+export const PAGE_CHUNKS: Chunks = {
   register: (chunks) => <Link href="/register">{chunks}</Link>,
   models: (chunks) => <Link href="/models">{chunks}</Link>,
   chat: (chunks) => <Link href="/chat">{chunks}</Link>,
@@ -21,7 +21,7 @@ const PAGE_CHUNKS: Chunks = {
 };
 
 // One tag per post, <post_where_your_requests_go>, so posts can link each other.
-const POST_CHUNKS: Chunks = Object.fromEntries(
+export const POST_CHUNKS: Chunks = Object.fromEntries(
   BLOG_REGISTRY.map((entry) => [
     `post_${entry.slug.replaceAll("-", "_")}`,
     (chunks: ReactNode) => (
@@ -40,6 +40,9 @@ const BODY_CHUNKS: Chunks = {
 };
 
 const CTA_CHUNKS: Chunks = { ...PAGE_CHUNKS, ...POST_CHUNKS };
+
+// For custom post components, so they link the same way standard posts do.
+export const LINK_CHUNKS: Chunks = CTA_CHUNKS;
 
 export async function PostSections(props: { slug: BlogSlug; chunks?: Chunks }) {
   const entry = BLOG_REGISTRY.find((e) => e.slug === props.slug);
