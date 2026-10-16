@@ -1,3 +1,4 @@
+import { LINK_CHUNKS } from "@/components/pages/blog/post-sections";
 import { Link } from "@/i18n/navigation";
 import { APP_VALUES } from "@/lib/config/constants";
 import { getTranslations } from "next-intl/server";
@@ -62,6 +63,7 @@ export async function HowToConnectUnorouterToNevikaContent() {
           "BLOG.POSTS.HOW_TO_CONNECT_UNOROUTER_TO_NEVIKA.P_PICKING_A_MODEL",
           {
             ...APP_VALUES,
+            ...LINK_CHUNKS,
             c: (chunks) => <code>{chunks}</code>,
           },
         )}
@@ -71,7 +73,13 @@ export async function HowToConnectUnorouterToNevikaContent() {
         {t("BLOG.POSTS.HOW_TO_CONNECT_UNOROUTER_TO_NEVIKA.H_TROUBLESHOOTING")}
       </h2>
       <p>
-        {t("BLOG.POSTS.HOW_TO_CONNECT_UNOROUTER_TO_NEVIKA.P_TROUBLESHOOTING")}
+        {t.rich(
+          "BLOG.POSTS.HOW_TO_CONNECT_UNOROUTER_TO_NEVIKA.P_TROUBLESHOOTING",
+          {
+            ...APP_VALUES,
+            ...LINK_CHUNKS,
+          },
+        )}
       </p>
 
       <p>

@@ -1,3 +1,4 @@
+import { LINK_CHUNKS } from "@/components/pages/blog/post-sections";
 import { Link } from "@/i18n/navigation";
 import { APP_VALUES } from "@/lib/config/constants";
 import { getTranslations } from "next-intl/server";
@@ -7,10 +8,20 @@ export async function FreeModelsAggregatedContent() {
 
   return (
     <>
-      <p>{t("BLOG.POSTS.FREE_MODELS_AGGREGATED.INTRO", APP_VALUES)}</p>
+      <p>
+        {t.rich("BLOG.POSTS.FREE_MODELS_AGGREGATED.INTRO", {
+          ...APP_VALUES,
+          ...LINK_CHUNKS,
+        })}
+      </p>
 
       <h2 id="what">{t("BLOG.POSTS.FREE_MODELS_AGGREGATED.H_WHAT")}</h2>
-      <p>{t("BLOG.POSTS.FREE_MODELS_AGGREGATED.P_WHAT", APP_VALUES)}</p>
+      <p>
+        {t.rich("BLOG.POSTS.FREE_MODELS_AGGREGATED.P_WHAT", {
+          ...APP_VALUES,
+          ...LINK_CHUNKS,
+        })}
+      </p>
 
       <h2 id="caveat">{t("BLOG.POSTS.FREE_MODELS_AGGREGATED.H_CAVEAT")}</h2>
       <p>
@@ -33,7 +44,12 @@ export async function FreeModelsAggregatedContent() {
       <h2 id="aggregate">
         {t("BLOG.POSTS.FREE_MODELS_AGGREGATED.H_AGGREGATE")}
       </h2>
-      <p>{t("BLOG.POSTS.FREE_MODELS_AGGREGATED.P_AGGREGATE", APP_VALUES)}</p>
+      <p>
+        {t.rich("BLOG.POSTS.FREE_MODELS_AGGREGATED.P_AGGREGATE", {
+          ...APP_VALUES,
+          ...LINK_CHUNKS,
+        })}
+      </p>
 
       <h2 id="failover">{t("BLOG.POSTS.FREE_MODELS_AGGREGATED.H_FAILOVER")}</h2>
       <p>
@@ -44,7 +60,12 @@ export async function FreeModelsAggregatedContent() {
       </p>
 
       <h2 id="honest">{t("BLOG.POSTS.FREE_MODELS_AGGREGATED.H_HONEST")}</h2>
-      <p>{t("BLOG.POSTS.FREE_MODELS_AGGREGATED.P_HONEST", APP_VALUES)}</p>
+      <p>
+        {t.rich("BLOG.POSTS.FREE_MODELS_AGGREGATED.P_HONEST", {
+          ...APP_VALUES,
+          ...LINK_CHUNKS,
+        })}
+      </p>
 
       <h2 id="try">{t("BLOG.POSTS.FREE_MODELS_AGGREGATED.H_TRY")}</h2>
       <p>

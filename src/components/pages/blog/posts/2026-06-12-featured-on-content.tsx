@@ -1,3 +1,4 @@
+import { LINK_CHUNKS } from "@/components/pages/blog/post-sections";
 import { Link } from "@/i18n/navigation";
 import { APP_VALUES } from "@/lib/config/constants";
 import { getTranslations } from "next-intl/server";
@@ -63,10 +64,11 @@ const BADGES = [
 
 export async function FeaturedOnContent() {
   const t = await getTranslations();
+  const values = { ...LINK_CHUNKS, ...APP_VALUES };
 
   return (
     <>
-      <p>{t("BLOG.POSTS.FEATURED_ON.INTRO", APP_VALUES)}</p>
+      <p>{t.rich("BLOG.POSTS.FEATURED_ON.INTRO", values)}</p>
 
       <h2 id="directories">{t("BLOG.POSTS.FEATURED_ON.H_DIRECTORIES")}</h2>
       <p>{t("BLOG.POSTS.FEATURED_ON.P_DIRECTORIES", APP_VALUES)}</p>
@@ -96,15 +98,15 @@ export async function FeaturedOnContent() {
       </div>
 
       <h2 id="why">{t("BLOG.POSTS.FEATURED_ON.H_WHY")}</h2>
-      <p>{t("BLOG.POSTS.FEATURED_ON.P_WHY", APP_VALUES)}</p>
+      <p>{t.rich("BLOG.POSTS.FEATURED_ON.P_WHY", values)}</p>
 
       <h2 id="verify">{t("BLOG.POSTS.FEATURED_ON.H_VERIFY")}</h2>
-      <p>{t("BLOG.POSTS.FEATURED_ON.P_VERIFY", APP_VALUES)}</p>
+      <p>{t.rich("BLOG.POSTS.FEATURED_ON.P_VERIFY", values)}</p>
 
       <h2 id="try">{t("BLOG.POSTS.FEATURED_ON.H_TRY")}</h2>
       <p>
         {t.rich("BLOG.POSTS.FEATURED_ON.CTA", {
-          ...APP_VALUES,
+          ...values,
           register: (chunks) => <Link href="/register">{chunks}</Link>,
           models: (chunks) => <Link href="/models">{chunks}</Link>,
         })}

@@ -1,4 +1,5 @@
 import { CodeBlock } from "@/components/elements/code/code-block";
+import { LINK_CHUNKS } from "@/components/pages/blog/post-sections";
 import { Link } from "@/i18n/navigation";
 import { APP_VALUES } from "@/lib/config/constants";
 import { getTranslations } from "next-intl/server";
@@ -35,6 +36,7 @@ const external = (href: string) =>
 export async function AiModelVerifierContent() {
   const t = await getTranslations();
   const marks = {
+    ...LINK_CHUNKS,
     ...APP_VALUES,
     c: (chunks: React.ReactNode) => <code>{chunks}</code>,
     s: (chunks: React.ReactNode) => <strong>{chunks}</strong>,

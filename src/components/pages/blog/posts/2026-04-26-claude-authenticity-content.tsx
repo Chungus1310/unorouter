@@ -1,4 +1,5 @@
 import { CodeBlock } from "@/components/elements/code/code-block";
+import { LINK_CHUNKS } from "@/components/pages/blog/post-sections";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 
@@ -13,6 +14,7 @@ const external = (href: string) => (chunks: React.ReactNode) => (
 );
 
 const marks = {
+  ...LINK_CHUNKS,
   s: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
   link: (chunks: React.ReactNode) => (
     <Link href="/ai-api-model-tester">{chunks}</Link>
@@ -29,7 +31,7 @@ export async function ClaudeAuthenticityContent() {
 
   return (
     <>
-      <p>{t(`${P}.INTRO_P1`)}</p>
+      <p>{t.rich(`${P}.INTRO_P1`, marks)}</p>
       <p>{t(`${P}.INTRO_P2`)}</p>
 
       <h2 id="asking">{t(`${P}.H_ASKING`)}</h2>
@@ -61,7 +63,7 @@ export async function ClaudeAuthenticityContent() {
       <p>{t(`${P}.NOT_FAKE_P`)}</p>
 
       <h2 id="limits">{t(`${P}.H_LIMITS`)}</h2>
-      <p>{t(`${P}.LIMITS_P`)}</p>
+      <p>{t.rich(`${P}.LIMITS_P`, marks)}</p>
 
       <h2 id="history">{t(`${P}.H_HISTORY`)}</h2>
       <p>{t.rich(`${P}.HISTORY_P`, marks)}</p>

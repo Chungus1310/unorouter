@@ -1,3 +1,4 @@
+import { LINK_CHUNKS } from "@/components/pages/blog/post-sections";
 import { Link } from "@/i18n/navigation";
 import { APP_VALUES } from "@/lib/config/constants";
 import { getTranslations } from "next-intl/server";
@@ -12,7 +13,12 @@ export async function AgentReadyContent() {
 
   return (
     <>
-      <p>{t("BLOG.POSTS.AGENT_READY.INTRO", APP_VALUES)}</p>
+      <p>
+        {t.rich("BLOG.POSTS.AGENT_READY.INTRO", {
+          ...LINK_CHUNKS,
+          ...APP_VALUES,
+        })}
+      </p>
 
       <h2 id="score">{t("BLOG.POSTS.AGENT_READY.H_SCORE")}</h2>
       <p>{t("BLOG.POSTS.AGENT_READY.P_SCORE", APP_VALUES)}</p>
@@ -44,16 +50,27 @@ export async function AgentReadyContent() {
       <p>{t("BLOG.POSTS.AGENT_READY.P_WHAT", APP_VALUES)}</p>
 
       <h2 id="categories">{t("BLOG.POSTS.AGENT_READY.H_CATEGORIES")}</h2>
-      <p>{t("BLOG.POSTS.AGENT_READY.P_CATEGORIES", APP_VALUES)}</p>
+      <p>
+        {t.rich("BLOG.POSTS.AGENT_READY.P_CATEGORIES", {
+          ...LINK_CHUNKS,
+          ...APP_VALUES,
+        })}
+      </p>
 
       <h2 id="stubs">{t("BLOG.POSTS.AGENT_READY.H_STUBS")}</h2>
-      <p>{t("BLOG.POSTS.AGENT_READY.P_STUBS", APP_VALUES)}</p>
+      <p>
+        {t.rich("BLOG.POSTS.AGENT_READY.P_STUBS", {
+          ...LINK_CHUNKS,
+          ...APP_VALUES,
+        })}
+      </p>
 
       <h2 id="try">{t("BLOG.POSTS.AGENT_READY.H_TRY")}</h2>
       <p>{t("BLOG.POSTS.AGENT_READY.P_TRY", APP_VALUES)}</p>
 
       <p>
         {t.rich("BLOG.POSTS.AGENT_READY.CTA", {
+          ...LINK_CHUNKS,
           ...APP_VALUES,
           scanner: (chunks) => (
             <a href={SCANNER_URL} target="_blank" rel="noopener noreferrer">

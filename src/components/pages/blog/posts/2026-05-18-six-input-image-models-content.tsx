@@ -7,6 +7,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { LINK_CHUNKS } from "@/components/pages/blog/post-sections";
 import { Link } from "@/i18n/navigation";
 import { getTranslations } from "next-intl/server";
 
@@ -41,6 +42,7 @@ const TOP_ROWS = [
 ] as const;
 
 const richMarks = {
+  ...LINK_CHUNKS,
   s: (chunks: React.ReactNode) => <strong>{chunks}</strong>,
   c: (chunks: React.ReactNode) => <code>{chunks}</code>,
   em: (chunks: React.ReactNode) => <em>{chunks}</em>,
@@ -156,7 +158,7 @@ export async function SixInputImageModelsContent() {
       </p>
 
       <h2 id="try">{t("BLOG.POSTS.SIX_INPUT_IMAGE_MODELS.H_TRY")}</h2>
-      <p>{t("BLOG.POSTS.SIX_INPUT_IMAGE_MODELS.TRY_P")}</p>
+      <p>{t.rich("BLOG.POSTS.SIX_INPUT_IMAGE_MODELS.TRY_P", richMarks)}</p>
       <p>
         {t.rich("BLOG.POSTS.SIX_INPUT_IMAGE_MODELS.CTA", {
           ...richMarks,
