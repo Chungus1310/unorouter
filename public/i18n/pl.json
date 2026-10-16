@@ -4865,11 +4865,23 @@
         "WHY": "Prawdziwy model zużywa ukryte tokeny myślenia nawet przy „odpowiedz ok”; backend klasy flash sprzedawany pod nazwą pro odpowiada jednym tokenem. Nadal zwraca nazwę pro, więc zdradza go tylko liczba tokenów.",
         "EXCEPTION": "Oceniane są tylko modele, o których wiadomo, że zawsze rozumują; pusta lub ucięta odpowiedź nie jest dowodem i nie jest oznaczana."
       },
+      "THINKING-HONORED": {
+        "TITLE": "Zignorowana prośba o rozumowanie",
+        "MEANS": "Zapytany o małą zagadkę logiczną z wysokim poziomem rozumowania model, który myśli tylko na żądanie (Gemini 4), odpowiedział prawie bez tokenów myślenia.",
+        "WHY": "Własna ścieżka Google zużywa na to pytanie 300 lub więcej tokenów myślenia. Pośrednik, który po drodze odrzuca ustawienie wysiłku, podaje ten sam model bez rozumowania, co wygląda na wyraźnie gorszy model.",
+        "EXCEPTION": "Oceniane są tylko modele myślące na żądanie; odpowiedź bez danych o zużyciu lub błąd nie jest dowodem i nie jest oznaczana."
+      },
       "TOKENIZER-FINGERPRINT": {
         "TITLE": "Odcisk tokenizera",
         "MEANS": "Tokeny wejściowe naliczone za stały tekst odpowiadają na tym endpoincie sygnaturze tańszego poziomu.",
         "WHY": "O tym, ile tokenów kosztuje stały tekst, decyduje tokenizer backendu i żaden prompt systemowy tego nie zmieni. Delta zgodna ze skalibrowanym tańszym poziomem oznacza, że odpowiedział ten poziom.",
         "EXCEPTION": "Bez kalibracji dla tego endpointu delta jest tylko zapisywana; modele dzielące jeden tokenizer naliczają tę samą deltę i nigdy nie da się ich nią rozróżnić."
+      },
+      "TOKENIZER-FAMILY": {
+        "TITLE": "Tokenizer innego producenta",
+        "MEANS": "Cztery stałe teksty (cyfry, chiński, spacje, kod) zostały rozliczone według wzorca tokenów należącego do rodziny modeli innego producenta.",
+        "WHY": "Ukryty prompt systemowy może sprawić, że każdy model będzie twierdził, że jest Claude, ale nie zmieni sposobu, w jaki backend dzieli tekst na tokeny. Darmowy „Claude Fable 5.1” przeszedł pytania o tożsamość, a mimo to rozliczał według wzorca rodziny Llama 4 firmy Meta.",
+        "EXCEPTION": "Oceniane tylko wtedy, gdy znane są własne wzorce deklarowanego producenta. Wzorce OpenAI nigdy nie są oznaczane, bo pośrednicy szacują nimi zużycie, a wzorzec niepasujący do żadnej znanej rodziny nie jest oznaczany."
       },
       "MASKED-IDENTITY": {
         "TITLE": "Ukryta tożsamość",

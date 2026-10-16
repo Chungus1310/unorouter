@@ -4865,11 +4865,23 @@
         "WHY": "The real model spends hidden thought tokens even on \"reply with ok\"; a flash-class backend sold under the pro name answers with one token. It still echoes the pro name, so only the token count gives it away.",
         "EXCEPTION": "Only models known to always think are judged; an empty or truncated reply carries no evidence and is not flagged."
       },
+      "THINKING-HONORED": {
+        "TITLE": "Reasoning request ignored",
+        "MEANS": "Asked for high reasoning effort on a small logic question, a model that thinks only when asked (Gemini 4) answered with almost no thought tokens.",
+        "WHY": "Google's own route spends 300 or more thought tokens on this question. A reseller that drops the effort setting on the way serves the same model without its reasoning, which reads as a noticeably worse model.",
+        "EXCEPTION": "Only models that think on request are judged; a reply with no usage or an error carries no evidence and is not flagged."
+      },
       "TOKENIZER-FINGERPRINT": {
         "TITLE": "Tokenizer fingerprint",
         "MEANS": "The input tokens billed for a fixed text match a cheaper tier's signature on this endpoint.",
         "WHY": "How many tokens a fixed text costs is decided by the backend's tokenizer, and no system prompt can coach it. A delta that matches a calibrated cheaper tier means that tier answered.",
         "EXCEPTION": "Without a calibration for this endpoint the delta is only recorded; models sharing one tokenizer bill the same delta and are never told apart by it."
+      },
+      "TOKENIZER-FAMILY": {
+        "TITLE": "Another maker's tokenizer",
+        "MEANS": "Four fixed texts (digits, Chinese, spaces, code) were billed in a token pattern that belongs to another maker's model family.",
+        "WHY": "A hidden system prompt can make any model claim to be Claude, but it cannot change how the backend splits text into tokens. One free \"Claude Fable 5.1\" passed the identity questions yet billed the pattern of Meta's Llama 4 family.",
+        "EXCEPTION": "Only judged when the claimed maker's own patterns are known. OpenAI patterns are never flagged because relays use them to estimate usage, and a pattern that matches no known family is not flagged."
       },
       "MASKED-IDENTITY": {
         "TITLE": "Masked identity",

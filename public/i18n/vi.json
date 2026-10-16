@@ -4865,11 +4865,23 @@
         "WHY": "Mô hình thật vẫn tiêu tốn token suy nghĩ ẩn ngay cả với \"trả lời ok\"; một backend lớp flash bán dưới tên pro trả lời chỉ bằng một token. Nó vẫn trả về tên pro, nên chỉ số token mới lộ ra.",
         "EXCEPTION": "Chỉ những mô hình được biết là luôn suy nghĩ mới bị đánh giá; câu trả lời trống hoặc bị cắt không phải bằng chứng và không bị gắn cờ."
       },
+      "THINKING-HONORED": {
+        "TITLE": "Yêu cầu suy luận bị bỏ qua",
+        "MEANS": "Khi được yêu cầu mức suy luận cao cho một câu hỏi logic nhỏ, một mô hình chỉ suy nghĩ khi được yêu cầu (Gemini 4) đã trả lời gần như không có token suy nghĩ.",
+        "WHY": "Tuyến của chính Google tiêu tốn 300 token suy nghĩ trở lên cho câu hỏi này. Một bên bán lại bỏ cài đặt mức nỗ lực trên đường đi sẽ phục vụ cùng mô hình nhưng không có suy luận, trông như một mô hình kém hơn hẳn.",
+        "EXCEPTION": "Chỉ đánh giá các mô hình suy nghĩ theo yêu cầu; phản hồi không có dữ liệu sử dụng hoặc lỗi không phải bằng chứng và không bị gắn cờ."
+      },
       "TOKENIZER-FINGERPRINT": {
         "TITLE": "Dấu vân tay tokenizer",
         "MEANS": "Số token đầu vào bị tính cho một đoạn văn bản cố định trùng với chữ ký của một bậc rẻ hơn trên endpoint này.",
         "WHY": "Một đoạn văn bản cố định tốn bao nhiêu token là do tokenizer của backend quyết định, và không system prompt nào thay đổi được. Một delta trùng với bậc rẻ hơn đã được hiệu chuẩn nghĩa là bậc đó đã trả lời.",
         "EXCEPTION": "Không có hiệu chuẩn cho endpoint này thì delta chỉ được ghi lại; các mô hình dùng chung một tokenizer tính cùng một delta và không bao giờ phân biệt được bằng nó."
+      },
+      "TOKENIZER-FAMILY": {
+        "TITLE": "Bộ tách token của hãng khác",
+        "MEANS": "Bốn văn bản cố định (chữ số, tiếng Trung, khoảng trắng, mã) bị tính phí theo một mẫu token thuộc họ mô hình của hãng khác.",
+        "WHY": "Một system prompt ẩn có thể khiến bất kỳ mô hình nào tự nhận là Claude, nhưng không thể thay đổi cách backend tách văn bản thành token. Một \"Claude Fable 5.1\" miễn phí đã vượt qua các câu hỏi danh tính nhưng vẫn tính phí theo mẫu của họ Llama 4 của Meta.",
+        "EXCEPTION": "Chỉ đánh giá khi đã biết các mẫu của chính hãng được khai báo. Mẫu của OpenAI không bao giờ bị gắn cờ vì các relay dùng chúng để ước tính mức sử dụng, và mẫu không khớp họ nào đã biết thì không bị gắn cờ."
       },
       "MASKED-IDENTITY": {
         "TITLE": "Danh tính bị che giấu",

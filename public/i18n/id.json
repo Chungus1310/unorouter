@@ -4865,11 +4865,23 @@
         "WHY": "Model asli menghabiskan token berpikir tersembunyi bahkan untuk \"jawab ok\"; backend kelas flash yang dijual dengan nama pro menjawab dengan satu token. Ia tetap mengembalikan nama pro, jadi hanya jumlah token yang membongkarnya.",
         "EXCEPTION": "Hanya model yang diketahui selalu berpikir yang dinilai; balasan kosong atau terpotong bukan bukti dan tidak ditandai."
       },
+      "THINKING-HONORED": {
+        "TITLE": "Permintaan penalaran diabaikan",
+        "MEANS": "Saat diminta upaya penalaran tinggi pada soal logika kecil, model yang hanya berpikir bila diminta (Gemini 4) menjawab hampir tanpa token pemikiran.",
+        "WHY": "Rute milik Google sendiri menghabiskan 300 token pemikiran atau lebih untuk soal ini. Penjual ulang yang membuang pengaturan upaya di tengah jalan menyajikan model yang sama tanpa penalarannya, sehingga terasa seperti model yang jauh lebih buruk.",
+        "EXCEPTION": "Hanya model yang berpikir atas permintaan yang dinilai; balasan tanpa data penggunaan atau galat bukan bukti dan tidak ditandai."
+      },
       "TOKENIZER-FINGERPRINT": {
         "TITLE": "Sidik jari tokenizer",
         "MEANS": "Token masukan yang ditagih untuk teks tetap cocok dengan tanda tangan tingkat yang lebih murah pada endpoint ini.",
         "WHY": "Berapa token yang dibutuhkan teks tetap ditentukan oleh tokenizer backend, dan tidak ada system prompt yang bisa mengubahnya. Delta yang cocok dengan tingkat lebih murah yang sudah dikalibrasi berarti tingkat itulah yang menjawab.",
         "EXCEPTION": "Tanpa kalibrasi untuk endpoint ini delta hanya dicatat; model yang berbagi satu tokenizer menagih delta yang sama dan tidak pernah bisa dibedakan olehnya."
+      },
+      "TOKENIZER-FAMILY": {
+        "TITLE": "Tokenizer milik pembuat lain",
+        "MEANS": "Empat teks tetap (angka, Mandarin, spasi, kode) ditagih dengan pola token yang milik keluarga model pembuat lain.",
+        "WHY": "Prompt sistem tersembunyi bisa membuat model apa pun mengaku sebagai Claude, tetapi tidak bisa mengubah cara backend memecah teks menjadi token. Sebuah \"Claude Fable 5.1\" gratis lolos pertanyaan identitas namun menagih dengan pola keluarga Llama 4 milik Meta.",
+        "EXCEPTION": "Hanya dinilai bila pola milik pembuat yang diklaim sudah diketahui. Pola OpenAI tidak pernah ditandai karena relay memakainya untuk memperkirakan penggunaan, dan pola yang tidak cocok dengan keluarga mana pun tidak ditandai."
       },
       "MASKED-IDENTITY": {
         "TITLE": "Identitas tersamar",

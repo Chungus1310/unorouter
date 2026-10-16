@@ -14,7 +14,9 @@ import type { TranslationKey } from "@/lib/types";
 
 const RULE_TITLE: Record<VerdictRuleId, TranslationKey> = {
   "thinking-floor": "MODEL_TESTER.RULES.THINKING-FLOOR.TITLE",
+  "thinking-honored": "MODEL_TESTER.RULES.THINKING-HONORED.TITLE",
   "tokenizer-fingerprint": "MODEL_TESTER.RULES.TOKENIZER-FINGERPRINT.TITLE",
+  "tokenizer-family": "MODEL_TESTER.RULES.TOKENIZER-FAMILY.TITLE",
   "masked-identity": "MODEL_TESTER.RULES.MASKED-IDENTITY.TITLE",
   "fake-200": "MODEL_TESTER.RULES.FAKE-200.TITLE",
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.TITLE",
@@ -28,7 +30,9 @@ const RULE_TITLE: Record<VerdictRuleId, TranslationKey> = {
 };
 const RULE_MEANS: Record<VerdictRuleId, TranslationKey> = {
   "thinking-floor": "MODEL_TESTER.RULES.THINKING-FLOOR.MEANS",
+  "thinking-honored": "MODEL_TESTER.RULES.THINKING-HONORED.MEANS",
   "tokenizer-fingerprint": "MODEL_TESTER.RULES.TOKENIZER-FINGERPRINT.MEANS",
+  "tokenizer-family": "MODEL_TESTER.RULES.TOKENIZER-FAMILY.MEANS",
   "masked-identity": "MODEL_TESTER.RULES.MASKED-IDENTITY.MEANS",
   "fake-200": "MODEL_TESTER.RULES.FAKE-200.MEANS",
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.MEANS",
@@ -42,7 +46,9 @@ const RULE_MEANS: Record<VerdictRuleId, TranslationKey> = {
 };
 const RULE_WHY: Record<VerdictRuleId, TranslationKey> = {
   "thinking-floor": "MODEL_TESTER.RULES.THINKING-FLOOR.WHY",
+  "thinking-honored": "MODEL_TESTER.RULES.THINKING-HONORED.WHY",
   "tokenizer-fingerprint": "MODEL_TESTER.RULES.TOKENIZER-FINGERPRINT.WHY",
+  "tokenizer-family": "MODEL_TESTER.RULES.TOKENIZER-FAMILY.WHY",
   "masked-identity": "MODEL_TESTER.RULES.MASKED-IDENTITY.WHY",
   "fake-200": "MODEL_TESTER.RULES.FAKE-200.WHY",
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.WHY",
@@ -56,7 +62,9 @@ const RULE_WHY: Record<VerdictRuleId, TranslationKey> = {
 };
 const RULE_EXCEPTION: Record<VerdictRuleId, TranslationKey> = {
   "thinking-floor": "MODEL_TESTER.RULES.THINKING-FLOOR.EXCEPTION",
+  "thinking-honored": "MODEL_TESTER.RULES.THINKING-HONORED.EXCEPTION",
   "tokenizer-fingerprint": "MODEL_TESTER.RULES.TOKENIZER-FINGERPRINT.EXCEPTION",
+  "tokenizer-family": "MODEL_TESTER.RULES.TOKENIZER-FAMILY.EXCEPTION",
   "masked-identity": "MODEL_TESTER.RULES.MASKED-IDENTITY.EXCEPTION",
   "fake-200": "MODEL_TESTER.RULES.FAKE-200.EXCEPTION",
   "coding-tool": "MODEL_TESTER.RULES.CODING-TOOL.EXCEPTION",

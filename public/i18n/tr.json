@@ -4865,11 +4865,23 @@
         "WHY": "Gerçek model \"ok diye yanıtla\" için bile gizli düşünme token'ları harcar; pro adıyla satılan flash sınıfı bir arka uç tek token'la yanıt verir. Yine de pro adını döndürür, onu yalnızca token sayısı ele verir.",
         "EXCEPTION": "Yalnızca her zaman düşündüğü bilinen modeller değerlendirilir; boş veya kesilmiş bir yanıt kanıt değildir ve işaretlenmez."
       },
+      "THINKING-HONORED": {
+        "TITLE": "Akıl yürütme isteği yok sayıldı",
+        "MEANS": "Küçük bir mantık sorusunda yüksek akıl yürütme çabası istendiğinde, yalnızca istenince düşünen bir model (Gemini 4) neredeyse hiç düşünme tokeni olmadan yanıt verdi.",
+        "WHY": "Google'ın kendi yolu bu soruda 300 veya daha fazla düşünme tokeni harcar. Çaba ayarını yolda düşüren bir bayi aynı modeli akıl yürütmesi olmadan sunar ve bu belirgin şekilde daha kötü bir model gibi görünür.",
+        "EXCEPTION": "Yalnızca istek üzerine düşünen modeller değerlendirilir; kullanım verisi olmayan bir yanıt veya hata kanıt sayılmaz ve işaretlenmez."
+      },
       "TOKENIZER-FINGERPRINT": {
         "TITLE": "Tokenizer parmak izi",
         "MEANS": "Sabit bir metin için faturalanan girdi token'ları bu uç noktada daha ucuz bir katmanın imzasıyla eşleşiyor.",
         "WHY": "Sabit bir metnin kaç token'a mal olacağını arka ucun tokenizer'ı belirler ve hiçbir sistem istemi bunu değiştiremez. Kalibre edilmiş daha ucuz bir katmanla eşleşen bir delta, o katmanın yanıt verdiği anlamına gelir.",
         "EXCEPTION": "Bu uç nokta için kalibrasyon yoksa delta yalnızca kaydedilir; aynı tokenizer'ı paylaşan modeller aynı deltayı faturalar ve bununla asla ayırt edilemez."
+      },
+      "TOKENIZER-FAMILY": {
+        "TITLE": "Başka bir üreticinin tokenizer'ı",
+        "MEANS": "Dört sabit metin (rakamlar, Çince, boşluklar, kod), başka bir üreticinin model ailesine ait bir token deseniyle faturalandırıldı.",
+        "WHY": "Gizli bir sistem istemi herhangi bir modelin Claude olduğunu söylemesini sağlayabilir, ancak arka ucun metni tokenlere nasıl böldüğünü değiştiremez. Ücretsiz bir \"Claude Fable 5.1\" kimlik sorularını geçti, yine de Meta'nın Llama 4 ailesinin deseniyle faturalandırdı.",
+        "EXCEPTION": "Yalnızca beyan edilen üreticinin kendi desenleri biliniyorsa değerlendirilir. OpenAI desenleri asla işaretlenmez çünkü aracılar kullanımı bunlarla tahmin eder, ve bilinen hiçbir aileyle eşleşmeyen bir desen işaretlenmez."
       },
       "MASKED-IDENTITY": {
         "TITLE": "Maskelenmiş kimlik",

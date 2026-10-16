@@ -4865,11 +4865,23 @@
         "WHY": "Le vrai modèle dépense des jetons de réflexion cachés même pour « réponds ok » ; un backend de classe flash vendu sous le nom pro répond avec un seul jeton. Il renvoie toujours le nom pro, seul le nombre de jetons le trahit.",
         "EXCEPTION": "Seuls les modèles connus pour toujours raisonner sont jugés ; une réponse vide ou tronquée n'est pas une preuve et n'est pas signalée."
       },
+      "THINKING-HONORED": {
+        "TITLE": "Demande de raisonnement ignorée",
+        "MEANS": "Sollicité avec un effort de raisonnement élevé sur une petite question de logique, un modèle qui ne réfléchit que sur demande (Gemini 4) a répondu presque sans jetons de réflexion.",
+        "WHY": "La route de Google elle-même consomme 300 jetons de réflexion ou plus sur cette question. Un revendeur qui abandonne le réglage d'effort en chemin sert le même modèle sans son raisonnement, ce qui ressemble à un modèle nettement moins bon.",
+        "EXCEPTION": "Seuls les modèles qui réfléchissent sur demande sont jugés ; une réponse sans données d'utilisation ou une erreur ne constitue pas une preuve et n'est pas signalée."
+      },
       "TOKENIZER-FINGERPRINT": {
         "TITLE": "Empreinte du tokenizer",
         "MEANS": "Les jetons d'entrée facturés pour un texte fixe correspondent à la signature d'un palier moins cher sur cet endpoint.",
         "WHY": "Le nombre de jetons que coûte un texte fixe dépend du tokenizer du backend, et aucun prompt système ne peut l'influencer. Un delta qui correspond à un palier moins cher calibré signifie que ce palier a répondu.",
         "EXCEPTION": "Sans calibration pour cet endpoint, le delta est seulement enregistré ; les modèles partageant un tokenizer facturent le même delta et ne sont jamais distingués par lui."
+      },
+      "TOKENIZER-FAMILY": {
+        "TITLE": "Tokeniseur d'un autre fabricant",
+        "MEANS": "Quatre textes fixes (chiffres, chinois, espaces, code) ont été facturés selon un motif de jetons qui appartient à la famille de modèles d'un autre fabricant.",
+        "WHY": "Un prompt système caché peut faire dire à n'importe quel modèle qu'il est Claude, mais il ne peut pas changer la façon dont le backend découpe le texte en jetons. Un « Claude Fable 5.1 » gratuit a réussi les questions d'identité tout en facturant selon le motif de la famille Llama 4 de Meta.",
+        "EXCEPTION": "Jugé uniquement quand les motifs propres au fabricant annoncé sont connus. Les motifs d'OpenAI ne sont jamais signalés car les relais s'en servent pour estimer l'utilisation, et un motif qui ne correspond à aucune famille connue n'est pas signalé."
       },
       "MASKED-IDENTITY": {
         "TITLE": "Identité masquée",

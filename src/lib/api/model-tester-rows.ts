@@ -17,6 +17,7 @@ export const TESTER_CHECKS = {
   tokenTruth: true,
   survey: true,
   thinkingFloor: true,
+  tokenizerFamily: true,
 } satisfies Checks;
 
 /** A probe's columns, the same in the browser's history and the leaderboard. */
@@ -73,9 +74,11 @@ export function storedReports(r: VerifyResult): StoredReports {
     ...(r.signature ? { signature: r.signature } : {}),
     ...(r.tokenTruth ? { tokenTruth: r.tokenTruth } : {}),
     ...(r.thinkingFloor ? { thinkingFloor: r.thinkingFloor } : {}),
+    ...(r.thinkingHonored ? { thinkingHonored: r.thinkingHonored } : {}),
     ...(r.tokenizerFingerprint
       ? { tokenizerFingerprint: r.tokenizerFingerprint }
       : {}),
+    ...(r.tokenizerFamily ? { tokenizerFamily: r.tokenizerFamily } : {}),
     ...(r.responseMetadata ? { responseMetadata: r.responseMetadata } : {}),
     ...(r.throughput ? { throughput: r.throughput } : {}),
     ...(r.survey ? { survey: r.survey } : {}),

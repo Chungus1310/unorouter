@@ -4865,11 +4865,23 @@
         "WHY": "O modelo real gasta tokens de pensamento ocultos até em “responda ok”; um backend de classe flash vendido com o nome pro responde com um único token. Ele ainda devolve o nome pro, então só a contagem de tokens o entrega.",
         "EXCEPTION": "Só são julgados modelos que sabidamente sempre raciocinam; uma resposta vazia ou truncada não é prova e não é marcada."
       },
+      "THINKING-HONORED": {
+        "TITLE": "Pedido de raciocínio ignorado",
+        "MEANS": "Solicitado com esforço de raciocínio alto em uma pequena pergunta de lógica, um modelo que só pensa quando pedido (Gemini 4) respondeu quase sem tokens de pensamento.",
+        "WHY": "A rota do próprio Google gasta 300 ou mais tokens de pensamento nessa pergunta. Um revendedor que descarta a configuração de esforço no caminho entrega o mesmo modelo sem o raciocínio, o que parece um modelo bem pior.",
+        "EXCEPTION": "Só são avaliados modelos que pensam sob pedido; uma resposta sem dados de uso ou um erro não é evidência e não é sinalizada."
+      },
       "TOKENIZER-FINGERPRINT": {
         "TITLE": "Impressão digital do tokenizador",
         "MEANS": "Os tokens de entrada cobrados por um texto fixo coincidem com a assinatura de um nível mais barato neste endpoint.",
         "WHY": "Quantos tokens um texto fixo custa é decidido pelo tokenizador do backend, e nenhum system prompt consegue alterar isso. Um delta que coincide com um nível mais barato calibrado significa que esse nível respondeu.",
         "EXCEPTION": "Sem calibração para este endpoint o delta é apenas registrado; modelos que compartilham um tokenizador cobram o mesmo delta e nunca são distinguidos por ele."
+      },
+      "TOKENIZER-FAMILY": {
+        "TITLE": "Tokenizador de outro fabricante",
+        "MEANS": "Quatro textos fixos (dígitos, chinês, espaços, código) foram cobrados em um padrão de tokens que pertence à família de modelos de outro fabricante.",
+        "WHY": "Um prompt de sistema oculto pode fazer qualquer modelo dizer que é o Claude, mas não muda como o backend divide o texto em tokens. Um \"Claude Fable 5.1\" gratuito passou nas perguntas de identidade e mesmo assim cobrou no padrão da família Llama 4 da Meta.",
+        "EXCEPTION": "Só é avaliado quando os padrões do fabricante declarado são conhecidos. Padrões da OpenAI nunca são sinalizados porque os relays os usam para estimar o uso, e um padrão que não corresponde a nenhuma família conhecida não é sinalizado."
       },
       "MASKED-IDENTITY": {
         "TITLE": "Identidade mascarada",

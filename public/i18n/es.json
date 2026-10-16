@@ -4865,11 +4865,23 @@
         "WHY": "El modelo real gasta tokens de pensamiento ocultos incluso ante «responde ok»; un backend de clase flash vendido con el nombre pro responde con un solo token. Sigue devolviendo el nombre pro, así que solo el recuento de tokens lo delata.",
         "EXCEPTION": "Solo se juzgan los modelos que siempre razonan; una respuesta vacía o truncada no es prueba y no se marca."
       },
+      "THINKING-HONORED": {
+        "TITLE": "Solicitud de razonamiento ignorada",
+        "MEANS": "Ante una pequeña pregunta de lógica con esfuerzo de razonamiento alto, un modelo que solo piensa cuando se le pide (Gemini 4) respondió casi sin tokens de pensamiento.",
+        "WHY": "La ruta propia de Google gasta 300 o más tokens de pensamiento en esta pregunta. Un revendedor que descarta el ajuste de esfuerzo por el camino sirve el mismo modelo sin su razonamiento, y se percibe como un modelo claramente peor.",
+        "EXCEPTION": "Solo se evalúan los modelos que piensan bajo petición; una respuesta sin datos de uso o un error no aporta pruebas y no se marca."
+      },
       "TOKENIZER-FINGERPRINT": {
         "TITLE": "Huella del tokenizador",
         "MEANS": "Los tokens de entrada facturados por un texto fijo coinciden con la firma de un nivel más barato en este endpoint.",
         "WHY": "Cuántos tokens cuesta un texto fijo lo decide el tokenizador del backend, y ningún system prompt puede alterarlo. Un delta que coincide con un nivel más barato calibrado significa que respondió ese nivel.",
         "EXCEPTION": "Sin calibración para este endpoint el delta solo se registra; los modelos que comparten tokenizador facturan el mismo delta y nunca se distinguen por él."
+      },
+      "TOKENIZER-FAMILY": {
+        "TITLE": "Tokenizador de otro fabricante",
+        "MEANS": "Cuatro textos fijos (dígitos, chino, espacios, código) se facturaron con un patrón de tokens que pertenece a la familia de modelos de otro fabricante.",
+        "WHY": "Un prompt de sistema oculto puede hacer que cualquier modelo diga ser Claude, pero no puede cambiar cómo el backend divide el texto en tokens. Un «Claude Fable 5.1» gratuito superó las preguntas de identidad y aun así facturó con el patrón de la familia Llama 4 de Meta.",
+        "EXCEPTION": "Solo se evalúa cuando se conocen los patrones propios del fabricante declarado. Los patrones de OpenAI nunca se marcan porque los relés los usan para estimar el uso, y un patrón que no coincide con ninguna familia conocida no se marca."
       },
       "MASKED-IDENTITY": {
         "TITLE": "Identidad enmascarada",
