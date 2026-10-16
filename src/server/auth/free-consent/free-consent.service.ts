@@ -4,7 +4,7 @@ import {
   GUEST_USER_ID,
   msg,
 } from "@/lib/config/constants";
-import { getGuestFreeConsents } from "@/openapi";
+import { getGuestFreeConsents, getStatus } from "@/openapi";
 import { bffServiceHeader, cookieString } from "@/server/constants";
 import { getModelByName } from "@/server/models/pricing/pricing.service";
 import type { Cookie } from "elysia";
@@ -69,6 +69,18 @@ async function guestConsentedModels(
   return models;
 }
 
+const ENFORCEMENT_TTL_MS = 30_000;
+let enforcement: { on: boolean; expires: number } | undefined;
+
+// Follows the gateway's switch, so turning enforcement off frees guests too.
+async function consentEnforced(): Promise<boolean> {
+  if (enforcement && enforcement.expires > Date.now()) return enforcement.on;
+  const res = await getStatus();
+  const on = res.data?.data?.free_consent_enforced === true;
+  enforcement = { on, expires: Date.now() + ENFORCEMENT_TTL_MS };
+  return on;
+}
+
 // The gateway delegates guest consent to this check, since every guest shares
 // one key; it has to run wherever a guest request reaches a free model.
 export async function assertGuestFreeConsent(
@@ -78,6 +90,7 @@ export async function assertGuestFreeConsent(
 ) {
   if (userId !== GUEST_USER_ID || !model) return;
   if (!(await getModelByName(model))?.is_free) return;
+  if (!(await consentEnforced())) return;
   const guestId = readGuestId(cookie);
   if (guestId && (await guestConsentedModels(guestId, model)).has(model))
     return;

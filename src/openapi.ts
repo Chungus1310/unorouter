@@ -1083,29 +1083,40 @@ export interface EmbeddingResponseItem {
   object: string;
 }
 
-export interface GeminiUsageMetadata {
-  billing_usage?: BillingUsage;
-  cachedContentTokenCount: number;
-  candidatesTokenCount: number;
-  /** @nullable */
-  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
-  promptTokenCount: number;
-  /** @nullable */
-  promptTokensDetails: GeminiPromptTokensDetails[] | null;
-  thoughtsTokenCount: number;
-  toolUsePromptTokenCount: number;
-  /** @nullable */
-  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
-  totalTokenCount: number;
+export interface OutputTokenDetails {
+  audio_tokens: number;
+  image_tokens: number;
+  reasoning_tokens: number;
+  text_tokens: number;
+}
+
+export interface InputTokenDetails {
+  audio_tokens: number;
+  cache_write_tokens?: number;
+  cached_creation_tokens?: number;
+  cached_tokens: number;
+  cached_tokens_details?: CachedTokenDetails;
+  image_tokens: number;
+  text_tokens: number;
 }
 
 export interface Usage {
-  claude_usage?: ClaudeUsage;
-  estimated?: boolean;
-  gemini_usage_metadata?: GeminiUsageMetadata;
-  openai_usage?: Usage;
-  semantic?: string;
-  source?: string;
+  billing_usage?: BillingUsage;
+  claude_cache_creation_1_h_tokens: number;
+  claude_cache_creation_5_m_tokens: number;
+  completion_tokens: number;
+  completion_tokens_details: OutputTokenDetails;
+  cost?: unknown;
+  input_tokens: number;
+  input_tokens_details: InputTokenDetails;
+  output_tokens: number;
+  output_tokens_details?: OutputTokenDetails;
+  prompt_cache_hit_tokens?: number;
+  prompt_tokens: number;
+  prompt_tokens_details: InputTokenDetails;
+  total_tokens: number;
+  usage_semantic?: string;
+  usage_source?: string;
 }
 
 /**
@@ -1254,6 +1265,22 @@ export interface GeminiModelList {
   nextPageToken: unknown;
 }
 
+export interface GeminiUsageMetadata {
+  billing_usage?: BillingUsage;
+  cachedContentTokenCount: number;
+  candidatesTokenCount: number;
+  /** @nullable */
+  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
+  promptTokenCount: number;
+  /** @nullable */
+  promptTokensDetails: GeminiPromptTokensDetails[] | null;
+  thoughtsTokenCount: number;
+  toolUsePromptTokenCount: number;
+  /** @nullable */
+  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
+  totalTokenCount: number;
+}
+
 export type GetAllChannelsDataTypeCountsAnyOf = { [key: string]: number };
 
 /**
@@ -1400,16 +1427,6 @@ export interface ImageParams {
   supportsSize: boolean;
   supportsSteps: boolean;
   supportsStrength: boolean;
-}
-
-export interface InputTokenDetails {
-  audio_tokens: number;
-  cache_write_tokens?: number;
-  cached_creation_tokens?: number;
-  cached_tokens: number;
-  cached_tokens_details?: CachedTokenDetails;
-  image_tokens: number;
-  text_tokens: number;
 }
 
 export interface InvitedUser {
@@ -1978,13 +1995,6 @@ export interface Option {
 export interface OptionUpdateRequest {
   key: string;
   value: unknown;
-}
-
-export interface OutputTokenDetails {
-  audio_tokens: number;
-  image_tokens: number;
-  reasoning_tokens: number;
-  text_tokens: number;
 }
 
 export interface PartnerGrantData {
@@ -3856,6 +3866,7 @@ export interface StatusData {
   faq?: FAQEntry[] | null;
   faq_enabled: boolean;
   footer_html: string;
+  free_consent_enforced: boolean;
   github_client_id: string;
   github_oauth: boolean;
   google_client_id: string;
