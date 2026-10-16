@@ -139,6 +139,27 @@ export const LEGAL_REGISTRY = [
 
 export const BLOG_REGISTRY = [
   {
+    slug: "consent-for-free-models",
+    date: "2026-10-16",
+    tags: ["announcement", "privacy"],
+    i18nKey: "BLOG.POSTS.CONSENT_FOR_FREE_MODELS",
+    priority: 0.7,
+    changeFrequency: "monthly",
+    category: "update",
+    wordCount: 335,
+    headings: [
+      { id: "why-we-ask", i18nLeaf: "H_WHY", level: 2 },
+      { id: "how-to-give-consent", i18nLeaf: "H_HOW", level: 2 },
+      { id: "if-you-use-the-api", i18nLeaf: "H_API", level: 2 },
+      { id: "without-an-account", i18nLeaf: "H_GUESTS", level: 2 },
+      {
+        id: "withdrawing-and-business-accounts",
+        i18nLeaf: "H_BUSINESS",
+        level: 2,
+      },
+    ],
+  },
+  {
     slug: "where-your-requests-go",
     date: "2026-10-15",
     tags: ["announcement", "privacy"],

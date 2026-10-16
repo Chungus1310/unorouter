@@ -1274,6 +1274,23 @@
         "P_NOT_DO_1": "Nó rút ngắn thời gian chờ của bạn. Nó không nâng giới hạn của nhà cung cấp. Khi một mô hình miễn phí bận vì thượng nguồn quá tải hoặc suy giảm, cửa sổ ngắn hơn ở phía chúng tôi không tạo ra năng lực vốn không tồn tại, và yêu cầu vẫn có thể treo hoặc thất bại.",
         "P_NOT_DO_2": "Các mô hình trả phí hoàn toàn không có giới hạn mỗi phút. Vậy nên nếu bạn cần một mô hình trả lời mọi lúc chứ không phải hầu hết thời gian, đó là lời khuyên thành thật. <pricing>Bảng giá</pricing> bắt đầu từ vài phần trăm xu cho mỗi triệu token.",
         "CTA": "<discord>Tham gia Discord</discord> để lấy thẻ, hoặc <models>xem các mô hình miễn phí</models> trước đã."
+      },
+      "CONSENT_FOR_FREE_MODELS": {
+        "TITLE": "Mô hình miễn phí giờ yêu cầu sự đồng ý của bạn",
+        "DESCRIPTION": "Mô hình miễn phí được cung cấp qua các nhà cung cấp có thể dùng dữ liệu bạn nhập cho mục đích riêng. Giờ bạn xác nhận điều này một lần cho mỗi mô hình. Đây là lý do và cách làm.",
+        "AUTHOR": "Đội ngũ {appName}",
+        "INTRO": "Mô hình miễn phí trên {appName} miễn phí là có lý do: các nhà cung cấp phía sau có thể dùng những gì bạn gửi cho mục đích riêng, chẳng hạn để huấn luyện mô hình của họ. Luật bảo vệ dữ liệu của EU yêu cầu sự đồng ý có hiểu biết của bạn cho việc này, vì vậy mỗi mô hình miễn phí giờ sẽ hỏi một lần trước khi bạn dùng.",
+        "H_WHY": "Vì sao chúng tôi hỏi",
+        "P_WHY": "Mô hình trả phí là một phần dịch vụ bạn mua từ chúng tôi. Mô hình miễn phí thì khác: nhà cung cấp không ràng buộc hợp đồng với chúng tôi và có thể lưu hoặc dùng dữ liệu bạn nhập theo điều khoản riêng, và chúng tôi không thể lấy lại hay yêu cầu xóa. Một lần đồng ý cho mỗi mô hình đảm bảo bạn biết điều đó trước khi gửi bất cứ thứ gì. Đừng nhập dữ liệu cá nhân của người khác, và chúng tôi khuyên bạn không nhập dữ liệu của chính mình.",
+        "H_HOW": "Cách đồng ý",
+        "P_HOW": "Mở <free>trang mô hình miễn phí</free>, tìm mô hình và nhấn <s>Đồng ý</s>. Hộp thoại nêu các quốc gia nơi nhà cung cấp của mô hình đặt trụ sở. Bạn cũng có thể đồng ý trong chat: chọn một mô hình miễn phí và hộp thoại tương tự sẽ hiện ra. Trang cũng liệt kê các mô hình đang ngoại tuyến để bạn có thể đồng ý trước khi chúng hoạt động lại.",
+        "H_API": "Nếu bạn dùng API",
+        "P_API": "Hãy đồng ý ngay bây giờ. Sắp tới, yêu cầu tới mô hình miễn phí mà chưa có sự đồng ý sẽ bị từ chối với lỗi <c>free_consent_required</c>. Thông báo lỗi dẫn thẳng tới chat với mô hình đó đã được chọn sẵn, chỉ cần một cú nhấp.",
+        "H_GUESTS": "Không có tài khoản",
+        "P_GUESTS": "Khách vẫn có thể thử mô hình miễn phí. Khi đó sự đồng ý của bạn được gắn với trình duyệt qua một ID khách ngẫu nhiên, và bạn có thể xem và rút lại trong <s>Quản lý đồng ý</s> ở menu chat.",
+        "H_BUSINESS": "Rút lại và tài khoản doanh nghiệp",
+        "P_BUSINESS": "Bạn có thể rút lại sự đồng ý bất cứ lúc nào trên trang mô hình miễn phí, trong cài đặt tài khoản hoặc trong chat; sau đó mô hình bị chặn cho đến khi bạn đồng ý lại. Mô hình miễn phí không khả dụng cho tài khoản doanh nghiệp, vì prompt của họ có thể chứa dữ liệu cá nhân của người khác.",
+        "CTA": "Sẵn sàng chưa? Mở <free>trang mô hình miễn phí</free> và bật các mô hình bạn dùng."
       }
     }
   },
@@ -6274,8 +6291,8 @@
   },
   "FREE_CONSENT": {
     "TITLE": "Đồng ý sử dụng mô hình miễn phí",
-    "PROVIDED_BY": "{many, select, true {Dịch vụ này ({model}) do các nhà cung cấp sau cung cấp: {providers}.} other {Dịch vụ này ({model}) do {providers} cung cấp.}}",
-    "MAY_USE": "{many, select, true {Mỗi nhà cung cấp này có thể sử dụng dữ liệu bạn nhập cho mục đích riêng, theo trách nhiệm bảo vệ dữ liệu của chính họ, đặc biệt là để huấn luyện mô hình AI.} other {Nhà cung cấp có thể sử dụng dữ liệu bạn nhập cho mục đích riêng, theo trách nhiệm bảo vệ dữ liệu của chính họ, đặc biệt là để huấn luyện mô hình AI.}}",
+    "PROVIDED_BY": "Dịch vụ này ({model}) do một hoặc nhiều nhà cung cấp có trụ sở tại các nước sau cung cấp: {countries}.",
+    "MAY_USE": "Mỗi nhà cung cấp của dịch vụ này có thể sử dụng dữ liệu bạn nhập cho mục đích riêng, theo trách nhiệm bảo vệ dữ liệu của chính họ, đặc biệt là để huấn luyện mô hình AI.",
     "NO_INFLUENCE": "{appName} không có ảnh hưởng đến việc xử lý này và không thể lấy lại hoặc yêu cầu xóa dữ liệu đã gửi.",
     "THIRD_PARTY": "Nghiêm cấm nhập dữ liệu cá nhân của bên thứ ba, và chúng tôi khuyên bạn không nhập dữ liệu cá nhân của chính mình.",
     "CONSENT": "Khi xác nhận, bạn đồng ý cho việc gửi dữ liệu bạn nhập, bao gồm cả dữ liệu cá nhân trong đó.",
@@ -6286,7 +6303,6 @@
     "CONFIRM": "Xác nhận",
     "DECLINE": "Từ chối",
     "DECLINED": "Nếu không có sự đồng ý của bạn, bạn không thể dùng mô hình này. Hãy chọn mô hình khác ở trên.",
-    "UNKNOWN_PROVIDER": "Nhà cung cấp không rõ",
     "UNKNOWN_COUNTRY": "trụ sở không rõ",
     "BUSINESS": "Mô hình miễn phí không khả dụng cho tài khoản doanh nghiệp.",
     "SETTINGS_TITLE": "Mô hình miễn phí",

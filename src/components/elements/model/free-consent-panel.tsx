@@ -11,9 +11,10 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 
-// Names every provider behind the model with its seat. A group without a
-// recorded name is still listed, so the list never claims fewer recipients.
-function useProviderList(model: string): string[] | null {
+// The seat countries of every group behind the model. Operators stay unnamed
+// (which upstreams serve us is a business secret); a group without a recorded
+// seat still counts, so the list never claims fewer destinations.
+function useSeatCountries(model: string): string[] | null {
   const t = useTranslations();
   const locale = useLocale();
   const groups = useModelGroupsQuery(model).data;
@@ -23,11 +24,11 @@ function useProviderList(model: string): string[] | null {
     const policy = Object.hasOwn(groups.group_providers, group)
       ? groups.group_providers[group]
       : undefined;
-    const name = policy?.provider || t("FREE_CONSENT.UNKNOWN_PROVIDER");
-    const seat = policy?.seat_country
-      ? countryName(policy.seat_country, locale)
-      : t("FREE_CONSENT.UNKNOWN_COUNTRY");
-    labels.add(`${name} (${seat})`);
+    labels.add(
+      policy?.seat_country
+        ? countryName(policy.seat_country, locale)
+        : t("FREE_CONSENT.UNKNOWN_COUNTRY"),
+    );
   }
   return labels.size > 0 ? [...labels] : null;
 }
@@ -40,10 +41,10 @@ export function FreeConsentPanel(props: {
   const locale = useLocale();
   const token = useApiKey();
   const grantMutation = useGrantFreeConsentMutation();
-  const providers = useProviderList(props.model);
+  const countries = useSeatCountries(props.model);
   const [declined, setDeclined] = useState(false);
 
-  if (!providers)
+  if (!countries)
     return (
       <div className="flex flex-1 items-center justify-center p-8">
         <Icon
@@ -53,17 +54,15 @@ export function FreeConsentPanel(props: {
       </div>
     );
 
-  const many = providers.length > 1 ? "true" : "false";
   const where = token.isLoggedIn
     ? t("FREE_CONSENT.WHERE_ACCOUNT")
     : t("FREE_CONSENT.WHERE_GUEST");
   const paragraphs = [
     t("FREE_CONSENT.PROVIDED_BY", {
-      many,
       model: props.model,
-      providers: providers.join("; "),
+      countries: countries.join(", "),
     }),
-    t("FREE_CONSENT.MAY_USE", { many }),
+    t("FREE_CONSENT.MAY_USE"),
     t("FREE_CONSENT.NO_INFLUENCE", APP_VALUES),
     t("FREE_CONSENT.THIRD_PARTY"),
     t("FREE_CONSENT.CONSENT"),

@@ -1274,6 +1274,23 @@
         "P_NOT_DO_1": "Ini memangkas waktu tunggumu. Ini tidak menaikkan batas dari penyedia. Ketika model gratis sibuk karena upstream jenuh atau bermasalah, jendela yang lebih pendek di sisi kami tidak menciptakan kapasitas yang memang tidak ada, dan permintaan tetap bisa macet atau gagal.",
         "P_NOT_DO_2": "Model berbayar sama sekali tidak punya batas per menit. Jadi kalau kamu butuh model yang menjawab setiap saat, bukan sekadar sering, itulah rekomendasi jujurnya. <pricing>Harga</pricing> mulai dari pecahan sen per juta token.",
         "CTA": "<discord>Gabung ke Discord</discord> untuk mengambil tag, atau <models>lihat dulu model gratisnya</models>."
+      },
+      "CONSENT_FOR_FREE_MODELS": {
+        "TITLE": "Model gratis kini meminta persetujuanmu",
+        "DESCRIPTION": "Model gratis disediakan oleh penyedia yang dapat menggunakan masukanmu untuk tujuan mereka sendiri. Sekarang kamu mengonfirmasinya sekali per model. Ini alasan dan caranya.",
+        "AUTHOR": "Tim {appName}",
+        "INTRO": "Model gratis di {appName} gratis karena suatu alasan: penyedia di baliknya dapat menggunakan apa yang kamu kirim untuk tujuan mereka sendiri, misalnya untuk melatih model mereka. Hukum perlindungan data UE mensyaratkan persetujuanmu yang terinformasi untuk itu, jadi setiap model gratis kini memintanya sekali sebelum digunakan.",
+        "H_WHY": "Mengapa kami bertanya",
+        "P_WHY": "Model berbayar adalah bagian dari layanan yang kamu beli dari kami. Model gratis berbeda: penyedianya tidak terikat kontrak dengan kami dan dapat menyimpan atau menggunakan masukanmu sesuai ketentuan mereka, dan kami tidak dapat mengambilnya kembali atau meminta penghapusannya. Persetujuan sekali per model memastikan kamu mengetahuinya sebelum apa pun dikirim. Jangan memasukkan data pribadi orang lain, dan kami menyarankan agar kamu tidak memasukkan datamu sendiri.",
+        "H_HOW": "Cara memberikan persetujuan",
+        "P_HOW": "Buka <free>halaman model gratis</free>, temukan modelnya, lalu klik <s>Setujui</s>. Dialog menyebutkan negara tempat penyedia model berkedudukan. Kamu juga bisa menyetujui di chat: pilih model gratis dan dialog yang sama akan muncul. Halaman ini juga menampilkan model yang sedang offline, jadi kamu bisa menyetujui sebelum model itu kembali.",
+        "H_API": "Jika kamu memakai API",
+        "P_API": "Berikan persetujuanmu sekarang. Sebentar lagi permintaan ke model gratis tanpa persetujuan akan ditolak dengan galat <c>free_consent_required</c>. Pesan galat langsung membuka chat dengan model itu sudah terpilih, jadi cukup satu klik.",
+        "H_GUESTS": "Tanpa akun",
+        "P_GUESTS": "Tamu tetap bisa mencoba model gratis. Persetujuanmu lalu ditautkan ke browsermu lewat ID tamu acak, dan kamu bisa melihat serta menariknya di <s>Kelola persetujuan</s> pada menu chat.",
+        "H_BUSINESS": "Penarikan dan akun bisnis",
+        "P_BUSINESS": "Kamu dapat menarik persetujuan kapan saja di halaman model gratis, di pengaturan akun, atau di chat; model lalu diblokir untukmu sampai kamu menyetujuinya lagi. Model gratis tidak tersedia untuk akun bisnis, karena prompt mereka bisa memuat data pribadi orang lain.",
+        "CTA": "Siap? Buka <free>halaman model gratis</free> dan aktifkan model yang kamu pakai."
       }
     }
   },
@@ -6274,8 +6291,8 @@
   },
   "FREE_CONSENT": {
     "TITLE": "Persetujuan untuk model gratis",
-    "PROVIDED_BY": "{many, select, true {Penawaran ini ({model}) disediakan oleh penyedia berikut: {providers}.} other {Penawaran ini ({model}) disediakan oleh {providers}.}}",
-    "MAY_USE": "{many, select, true {Setiap penyedia ini dapat menggunakan masukanmu untuk tujuannya sendiri di bawah tanggung jawab perlindungan datanya sendiri, khususnya untuk melatih model AI.} other {Penyedia dapat menggunakan masukanmu untuk tujuannya sendiri di bawah tanggung jawab perlindungan datanya sendiri, khususnya untuk melatih model AI.}}",
+    "PROVIDED_BY": "Penawaran ini ({model}) disediakan oleh satu atau beberapa penyedia yang berkedudukan di: {countries}.",
+    "MAY_USE": "Setiap penyedia penawaran ini dapat menggunakan masukanmu untuk tujuannya sendiri di bawah tanggung jawab perlindungan datanya sendiri, khususnya untuk melatih model AI.",
     "NO_INFLUENCE": "{appName} tidak memiliki pengaruh atas pemrosesan ini dan tidak dapat mengambil kembali atau meminta penghapusan masukan yang sudah dikirim.",
     "THIRD_PARTY": "Memasukkan data pribadi pihak ketiga dilarang, dan kami menyarankan agar kamu tidak memasukkan data pribadimu sendiri.",
     "CONSENT": "Dengan mengonfirmasi, kamu menyetujui pengiriman masukanmu, termasuk data pribadi di dalamnya.",
@@ -6286,7 +6303,6 @@
     "CONFIRM": "Konfirmasi",
     "DECLINE": "Tolak",
     "DECLINED": "Tanpa persetujuanmu, kamu tidak dapat menggunakan model ini. Pilih model lain di atas.",
-    "UNKNOWN_PROVIDER": "Penyedia tidak diketahui",
     "UNKNOWN_COUNTRY": "kedudukan tidak diketahui",
     "BUSINESS": "Model gratis tidak tersedia untuk akun bisnis.",
     "SETTINGS_TITLE": "Model gratis",

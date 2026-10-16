@@ -11,12 +11,14 @@ const BODY_CHUNKS: Chunks = {
   c: (chunks) => <code>{chunks}</code>,
   s: (chunks) => <strong>{chunks}</strong>,
   models: (chunks) => <Link href="/models">{chunks}</Link>,
+  free: (chunks) => <Link href="/free-models">{chunks}</Link>,
 };
 
 const CTA_CHUNKS: Chunks = {
   register: (chunks) => <Link href="/register">{chunks}</Link>,
   models: (chunks) => <Link href="/models">{chunks}</Link>,
   chat: (chunks) => <Link href="/chat">{chunks}</Link>,
+  free: (chunks) => <Link href="/free-models">{chunks}</Link>,
 };
 
 export async function PostSections(props: { slug: BlogSlug; chunks?: Chunks }) {

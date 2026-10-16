@@ -1274,6 +1274,23 @@
         "P_NOT_DO_1": "Es verkürzt deine Wartezeit. Es hebt nicht die Limits des Anbieters an. Wenn ein Gratis-Modell ausgelastet ist, weil der Upstream überlastet oder gestört ist, zaubert ein kürzeres Fenster auf unserer Seite keine Kapazität herbei, die es nicht gibt, und die Anfrage kann weiterhin hängen bleiben oder fehlschlagen.",
         "P_NOT_DO_2": "Kostenpflichtige Modelle haben überhaupt kein Limit pro Minute. Wenn du also ein Modell brauchst, das jedes Mal antwortet statt meistens, ist das die ehrliche Empfehlung. Die <pricing>Preise</pricing> beginnen bei Bruchteilen eines Cents pro Million Tokens.",
         "CTA": "<discord>Komm auf den Discord</discord> und hol dir das Tag, oder sieh dir zuerst die <models>Gratis-Modelle</models> an."
+      },
+      "CONSENT_FOR_FREE_MODELS": {
+        "TITLE": "Kostenlose Modelle fragen jetzt nach deiner Einwilligung",
+        "DESCRIPTION": "Kostenlose Modelle laufen über Anbieter, die deine Eingaben für eigene Zwecke nutzen können. Das bestätigst du jetzt einmal pro Modell. Hier steht, warum und wie.",
+        "AUTHOR": "{appName}-Team",
+        "INTRO": "Kostenlose Modelle auf {appName} sind nicht ohne Grund kostenlos: Die Anbieter dahinter können das, was du sendest, für eigene Zwecke nutzen, zum Beispiel zum Training ihrer Modelle. Das EU-Datenschutzrecht verlangt dafür deine informierte Einwilligung, deshalb fragt jedes kostenlose Modell jetzt einmal danach, bevor du es nutzt.",
+        "H_WHY": "Warum wir fragen",
+        "P_WHY": "Bezahlte Modelle sind Teil der Leistung, die du bei uns kaufst. Bei kostenlosen Modellen ist das anders: Ihre Anbieter sind nicht vertraglich an uns gebunden und können deine Eingaben nach eigenen Regeln speichern oder nutzen, und wir können diese Eingaben weder zurückholen noch löschen lassen. Eine einmalige Einwilligung pro Modell stellt sicher, dass du das weißt, bevor etwas gesendet wird. Gib keine personenbezogenen Daten anderer Personen ein, und wir raten davon ab, deine eigenen einzugeben.",
+        "H_HOW": "So willigst du ein",
+        "P_HOW": "Öffne die Seite <free>Kostenlose Modelle</free>, such das Modell und klick auf <s>Einwilligen</s>. Der Dialog nennt die Länder, in denen die Anbieter des Modells sitzen. Du kannst auch im Chat einwilligen: Wähl ein kostenloses Modell, dann erscheint derselbe Dialog. Die Seite zeigt auch Modelle, die gerade offline sind, damit du schon vorher einwilligen kannst.",
+        "H_API": "Wenn du die API nutzt",
+        "P_API": "Bitte erteile deine Einwilligungen jetzt. Bald wird eine Anfrage an ein kostenloses Modell ohne Einwilligung mit dem Fehler <c>free_consent_required</c> abgelehnt. Die Fehlermeldung verlinkt direkt in den Chat mit dem vorausgewählten Modell, die Lösung ist also ein Klick.",
+        "H_GUESTS": "Ohne Konto",
+        "P_GUESTS": "Gäste können kostenlose Modelle weiter ausprobieren. Deine Einwilligung wird dann über eine zufällige Gast-ID mit deinem Browser verknüpft, und du kannst sie unter <s>Einwilligungen verwalten</s> im Chat-Menü einsehen und widerrufen.",
+        "H_BUSINESS": "Widerruf und Geschäftskonten",
+        "P_BUSINESS": "Du kannst eine Einwilligung jederzeit auf der Seite der kostenlosen Modelle, in den Kontoeinstellungen oder im Chat widerrufen; das Modell ist danach für dich gesperrt, bis du erneut einwilligst. Für Geschäftskonten sind kostenlose Modelle nicht verfügbar, weil deren Prompts personenbezogene Daten anderer Personen enthalten können.",
+        "CTA": "Bereit? Öffne die Seite <free>Kostenlose Modelle</free> und aktiviere die Modelle, die du nutzt."
       }
     }
   },
@@ -6274,8 +6291,8 @@
   },
   "FREE_CONSENT": {
     "TITLE": "Einwilligung für ein kostenloses Modell",
-    "PROVIDED_BY": "{many, select, true {Dieses Angebot ({model}) wird durch folgende Anbieter bereitgestellt: {providers}.} other {Dieses Angebot ({model}) wird durch {providers} bereitgestellt.}}",
-    "MAY_USE": "{many, select, true {Jeder dieser Anbieter kann deine Eingaben in eigener datenschutzrechtlicher Verantwortlichkeit für eigene Zwecke nutzen, insbesondere zum Training von KI-Modellen.} other {Der Anbieter kann deine Eingaben in eigener datenschutzrechtlicher Verantwortlichkeit für eigene Zwecke nutzen, insbesondere zum Training von KI-Modellen.}}",
+    "PROVIDED_BY": "Dieses Angebot ({model}) wird durch einen oder mehrere Anbieter mit Sitz in folgenden Ländern bereitgestellt: {countries}.",
+    "MAY_USE": "Jeder Anbieter dieses Angebots kann deine Eingaben in eigener datenschutzrechtlicher Verantwortlichkeit für eigene Zwecke nutzen, insbesondere zum Training von KI-Modellen.",
     "NO_INFLUENCE": "{appName} hat auf diese Datenverarbeitungen keinen Einfluss und kann übermittelte Eingaben nicht zurückholen oder löschen lassen.",
     "THIRD_PARTY": "Die Eingabe personenbezogener Daten Dritter ist untersagt, und wir raten davon ab, eigene personenbezogene Daten einzugeben.",
     "CONSENT": "Mit der Bestätigung willigst du ein, dass deine Eingaben einschließlich der darin enthaltenen personenbezogenen Daten übermittelt werden.",
@@ -6286,7 +6303,6 @@
     "CONFIRM": "Bestätigen",
     "DECLINE": "Ablehnen",
     "DECLINED": "Ohne Einwilligung kannst du dieses Modell nicht nutzen. Wähle oben ein anderes Modell.",
-    "UNKNOWN_PROVIDER": "Anbieter unbekannt",
     "UNKNOWN_COUNTRY": "Sitzland unbekannt",
     "BUSINESS": "Kostenlose Modelle sind für Geschäftskonten nicht verfügbar.",
     "SETTINGS_TITLE": "Kostenlose Modelle",

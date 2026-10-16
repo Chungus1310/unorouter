@@ -1274,6 +1274,23 @@
         "P_NOT_DO_1": "This shortens your wait. It does not raise the provider's limits. When a free model is busy because the upstream is saturated or degraded, a shorter window on our side does not conjure capacity that is not there, and the request can still stall or fail.",
         "P_NOT_DO_2": "Paid models have no per-minute limit at all, so if you need a model that answers every time rather than most of the time, that is the honest recommendation. <pricing>Pricing</pricing> starts at fractions of a cent per million tokens.",
         "CTA": "<discord>Join the Discord</discord> to pick up the tag, or <models>browse the free models</models> first."
+      },
+      "CONSENT_FOR_FREE_MODELS": {
+        "TITLE": "Free models now ask for your consent",
+        "DESCRIPTION": "Free models are served by providers that may use your inputs for their own purposes. You now confirm that once per model. Here is why and how.",
+        "AUTHOR": "{appName} team",
+        "INTRO": "Free models on {appName} are free for a reason: the providers behind them may use what you send for their own purposes, for example to train their models. EU data protection law requires your informed consent for that, so each free model now asks for it once before you use it.",
+        "H_WHY": "Why we ask",
+        "P_WHY": "Paid models are part of the service you buy from us. Free models are different: their providers are not bound to us by contract and can keep or use your inputs on their own terms, and we cannot get those inputs back or have them deleted. A one time consent per model makes sure you know that before anything is sent. Do not enter other people's personal data, and we advise against entering your own.",
+        "H_HOW": "How to give consent",
+        "P_HOW": "Open the <free>free models page</free>, find the model and click <s>Consent</s>. The dialog shows the countries the providers of that model are based in. You can also consent in the chat: pick a free model and the same dialog appears. The page lists offline models too, so you can consent before a model is back online.",
+        "H_API": "If you use the API",
+        "P_API": "Please give your consents now. Soon a request to a free model without consent will be refused with the error <c>free_consent_required</c>. The error message links straight to the chat with that model preselected, so fixing it takes one click.",
+        "H_GUESTS": "Without an account",
+        "P_GUESTS": "Guests can still try free models. Your consent is then linked to your browser through a random guest ID, and you can see and withdraw it under <s>Manage consents</s> in the chat menu.",
+        "H_BUSINESS": "Withdrawing, and business accounts",
+        "P_BUSINESS": "You can withdraw a consent at any time on the free models page, in your account settings or in the chat; the model is then blocked for you until you consent again. Free models are not available to business accounts, because their prompts may contain personal data of other people.",
+        "CTA": "Ready? Open the <free>free models page</free> and enable the models you use."
       }
     }
   },
@@ -6274,8 +6291,8 @@
   },
   "FREE_CONSENT": {
     "TITLE": "Consent for a free model",
-    "PROVIDED_BY": "{many, select, true {This offer ({model}) is provided by the following providers: {providers}.} other {This offer ({model}) is provided by {providers}.}}",
-    "MAY_USE": "{many, select, true {Each of these providers may use your inputs for its own purposes under its own data protection responsibility, in particular to train AI models.} other {The provider may use your inputs for its own purposes under its own data protection responsibility, in particular to train AI models.}}",
+    "PROVIDED_BY": "This offer ({model}) is provided by one or more providers based in: {countries}.",
+    "MAY_USE": "Each provider of this offer may use your inputs for its own purposes under its own data protection responsibility, in particular to train AI models.",
     "NO_INFLUENCE": "{appName} has no influence on this processing and cannot retrieve or have deleted any inputs already transmitted.",
     "THIRD_PARTY": "Entering personal data of third parties is prohibited, and we advise against entering your own personal data.",
     "CONSENT": "By confirming, you consent to your inputs, including any personal data they contain, being transmitted.",
@@ -6286,7 +6303,6 @@
     "CONFIRM": "Confirm",
     "DECLINE": "Decline",
     "DECLINED": "Without your consent you cannot use this model. Choose a different model above.",
-    "UNKNOWN_PROVIDER": "Unknown provider",
     "UNKNOWN_COUNTRY": "seat unknown",
     "BUSINESS": "Free models are not available for business accounts.",
     "SETTINGS_TITLE": "Free models",

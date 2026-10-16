@@ -1274,6 +1274,23 @@
         "P_NOT_DO_1": "Cela raccourcit votre attente. Cela n'augmente pas les limites du fournisseur. Quand un modèle gratuit est saturé parce que l'amont est surchargé ou dégradé, une fenêtre plus courte de notre côté ne crée pas une capacité qui n'existe pas, et la requête peut toujours bloquer ou échouer.",
         "P_NOT_DO_2": "Les modèles payants n'ont aucune limite par minute. Donc si vous avez besoin d'un modèle qui répond à chaque fois plutôt que la plupart du temps, c'est la recommandation honnête. Les <pricing>tarifs</pricing> commencent à des fractions de centime par million de tokens.",
         "CTA": "<discord>Rejoignez le Discord</discord> pour récupérer le tag, ou <models>parcourez les modèles gratuits</models> d'abord."
+      },
+      "CONSENT_FOR_FREE_MODELS": {
+        "TITLE": "Les modèles gratuits demandent désormais ton consentement",
+        "DESCRIPTION": "Les modèles gratuits passent par des fournisseurs qui peuvent utiliser tes saisies à leurs propres fins. Tu le confirmes désormais une fois par modèle. Voici pourquoi et comment.",
+        "AUTHOR": "L'équipe {appName}",
+        "INTRO": "Les modèles gratuits de {appName} sont gratuits pour une raison : les fournisseurs qui les font tourner peuvent utiliser ce que tu envoies à leurs propres fins, par exemple pour entraîner leurs modèles. Le droit européen de la protection des données exige pour cela ton consentement éclairé, c'est pourquoi chaque modèle gratuit te le demande désormais une fois avant utilisation.",
+        "H_WHY": "Pourquoi nous le demandons",
+        "P_WHY": "Les modèles payants font partie du service que tu nous achètes. Les modèles gratuits sont différents : leurs fournisseurs ne sont pas liés à nous par contrat et peuvent conserver ou utiliser tes saisies selon leurs propres conditions, et nous ne pouvons ni les récupérer ni les faire supprimer. Un consentement unique par modèle garantit que tu le sais avant tout envoi. Ne saisis pas de données personnelles d'autres personnes, et nous te déconseillons de saisir les tiennes.",
+        "H_HOW": "Comment donner ton consentement",
+        "P_HOW": "Ouvre la <free>page des modèles gratuits</free>, trouve le modèle et clique sur <s>Consentir</s>. La boîte de dialogue indique les pays où sont établis les fournisseurs du modèle. Tu peux aussi consentir dans le chat : choisis un modèle gratuit et la même boîte apparaît. La page affiche aussi les modèles hors ligne, pour que tu puisses consentir avant leur retour.",
+        "H_API": "Si tu utilises l'API",
+        "P_API": "Donne tes consentements dès maintenant. Bientôt, une requête vers un modèle gratuit sans consentement sera refusée avec l'erreur <c>free_consent_required</c>. Le message d'erreur renvoie directement au chat avec ce modèle présélectionné, un clic suffit donc.",
+        "H_GUESTS": "Sans compte",
+        "P_GUESTS": "Les invités peuvent toujours essayer les modèles gratuits. Ton consentement est alors lié à ton navigateur par un identifiant d'invité aléatoire, et tu peux le consulter et le retirer via <s>Gérer les consentements</s> dans le menu du chat.",
+        "H_BUSINESS": "Retrait et comptes professionnels",
+        "P_BUSINESS": "Tu peux retirer un consentement à tout moment sur la page des modèles gratuits, dans les paramètres de ton compte ou dans le chat ; le modèle est alors bloqué pour toi jusqu'à ce que tu consentes à nouveau. Les modèles gratuits ne sont pas disponibles pour les comptes professionnels, car leurs prompts peuvent contenir des données personnelles d'autres personnes.",
+        "CTA": "Prêt ? Ouvre la <free>page des modèles gratuits</free> et active les modèles que tu utilises."
       }
     }
   },
@@ -6274,8 +6291,8 @@
   },
   "FREE_CONSENT": {
     "TITLE": "Consentement pour un modèle gratuit",
-    "PROVIDED_BY": "{many, select, true {Cette offre ({model}) est fournie par les fournisseurs suivants : {providers}.} other {Cette offre ({model}) est fournie par {providers}.}}",
-    "MAY_USE": "{many, select, true {Chacun de ces fournisseurs peut utiliser tes saisies à ses propres fins, sous sa propre responsabilité en matière de protection des données, notamment pour entraîner des modèles d'IA.} other {Le fournisseur peut utiliser tes saisies à ses propres fins, sous sa propre responsabilité en matière de protection des données, notamment pour entraîner des modèles d'IA.}}",
+    "PROVIDED_BY": "Cette offre ({model}) est fournie par un ou plusieurs fournisseurs établis en/au : {countries}.",
+    "MAY_USE": "Chaque fournisseur de cette offre peut utiliser tes saisies à ses propres fins, sous sa propre responsabilité en matière de protection des données, notamment pour entraîner des modèles d'IA.",
     "NO_INFLUENCE": "{appName} n'a aucune influence sur ces traitements et ne peut ni récupérer ni faire supprimer les saisies déjà transmises.",
     "THIRD_PARTY": "Il est interdit de saisir des données personnelles de tiers, et nous te déconseillons de saisir tes propres données personnelles.",
     "CONSENT": "En confirmant, tu consens à ce que tes saisies, y compris les données personnelles qu'elles contiennent, soient transmises.",
@@ -6286,7 +6303,6 @@
     "CONFIRM": "Confirmer",
     "DECLINE": "Refuser",
     "DECLINED": "Sans ton consentement, tu ne peux pas utiliser ce modèle. Choisis un autre modèle ci-dessus.",
-    "UNKNOWN_PROVIDER": "Fournisseur inconnu",
     "UNKNOWN_COUNTRY": "siège inconnu",
     "BUSINESS": "Les modèles gratuits ne sont pas disponibles pour les comptes professionnels.",
     "SETTINGS_TITLE": "Modèles gratuits",

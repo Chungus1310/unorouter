@@ -1274,6 +1274,23 @@
         "P_NOT_DO_1": "Questo accorcia la tua attesa. Non alza i limiti del provider. Quando un modello gratuito è occupato perché l'upstream è saturo o degradato, una finestra più corta dalla nostra parte non crea capacità che non esiste, e la richiesta può comunque bloccarsi o fallire.",
         "P_NOT_DO_2": "I modelli a pagamento non hanno alcun limite al minuto. Quindi se ti serve un modello che risponda sempre e non quasi sempre, questo è il consiglio onesto. I <pricing>prezzi</pricing> partono da frazioni di centesimo per milione di token.",
         "CTA": "<discord>Entra nel Discord</discord> per prendere il tag, oppure <models>sfoglia prima i modelli gratuiti</models>."
+      },
+      "CONSENT_FOR_FREE_MODELS": {
+        "TITLE": "I modelli gratuiti ora chiedono il tuo consenso",
+        "DESCRIPTION": "I modelli gratuiti passano per fornitori che possono usare i tuoi input per scopi propri. Ora lo confermi una volta per modello. Ecco perché e come.",
+        "AUTHOR": "Il team di {appName}",
+        "INTRO": "I modelli gratuiti su {appName} sono gratuiti per un motivo: i fornitori che li gestiscono possono usare ciò che invii per scopi propri, ad esempio per addestrare i loro modelli. La normativa UE sulla protezione dei dati richiede per questo il tuo consenso informato, quindi ogni modello gratuito ora te lo chiede una volta prima dell'uso.",
+        "H_WHY": "Perché lo chiediamo",
+        "P_WHY": "I modelli a pagamento fanno parte del servizio che acquisti da noi. Quelli gratuiti sono diversi: i loro fornitori non sono vincolati a noi da un contratto e possono conservare o usare i tuoi input secondo le proprie condizioni, e noi non possiamo recuperarli né farli cancellare. Un consenso unico per modello garantisce che tu lo sappia prima che venga inviato qualcosa. Non inserire dati personali di altre persone, e ti sconsigliamo di inserire i tuoi.",
+        "H_HOW": "Come dare il consenso",
+        "P_HOW": "Apri la <free>pagina dei modelli gratuiti</free>, trova il modello e clicca su <s>Acconsenti</s>. La finestra indica i paesi in cui hanno sede i fornitori del modello. Puoi acconsentire anche nella chat: scegli un modello gratuito e comparirà la stessa finestra. La pagina mostra anche i modelli offline, così puoi acconsentire prima che tornino disponibili.",
+        "H_API": "Se usi l'API",
+        "P_API": "Dai i tuoi consensi adesso. Presto una richiesta a un modello gratuito senza consenso verrà rifiutata con l'errore <c>free_consent_required</c>. Il messaggio di errore porta direttamente alla chat con quel modello già selezionato, quindi basta un clic.",
+        "H_GUESTS": "Senza account",
+        "P_GUESTS": "Gli ospiti possono continuare a provare i modelli gratuiti. Il tuo consenso viene allora collegato al browser tramite un ID ospite casuale, e puoi vederlo e revocarlo in <s>Gestisci consensi</s> nel menu della chat.",
+        "H_BUSINESS": "Revoca e account aziendali",
+        "P_BUSINESS": "Puoi revocare un consenso in qualsiasi momento nella pagina dei modelli gratuiti, nelle impostazioni dell'account o nella chat; il modello resta poi bloccato finché non acconsenti di nuovo. I modelli gratuiti non sono disponibili per gli account aziendali, perché i loro prompt possono contenere dati personali di altre persone.",
+        "CTA": "Pronto? Apri la <free>pagina dei modelli gratuiti</free> e attiva i modelli che usi."
       }
     }
   },
@@ -6274,8 +6291,8 @@
   },
   "FREE_CONSENT": {
     "TITLE": "Consenso per un modello gratuito",
-    "PROVIDED_BY": "{many, select, true {Questa offerta ({model}) è fornita dai seguenti fornitori: {providers}.} other {Questa offerta ({model}) è fornita da {providers}.}}",
-    "MAY_USE": "{many, select, true {Ciascuno di questi fornitori può utilizzare i tuoi input per scopi propri, sotto la propria responsabilità in materia di protezione dei dati, in particolare per addestrare modelli di IA.} other {Il fornitore può utilizzare i tuoi input per scopi propri, sotto la propria responsabilità in materia di protezione dei dati, in particolare per addestrare modelli di IA.}}",
+    "PROVIDED_BY": "Questa offerta ({model}) è fornita da uno o più fornitori con sede in: {countries}.",
+    "MAY_USE": "Ciascun fornitore di questa offerta può utilizzare i tuoi input per scopi propri, sotto la propria responsabilità in materia di protezione dei dati, in particolare per addestrare modelli di IA.",
     "NO_INFLUENCE": "{appName} non ha alcuna influenza su questi trattamenti e non può recuperare né far cancellare gli input già trasmessi.",
     "THIRD_PARTY": "È vietato inserire dati personali di terzi e ti sconsigliamo di inserire i tuoi dati personali.",
     "CONSENT": "Confermando, acconsenti alla trasmissione dei tuoi input, compresi i dati personali in essi contenuti.",
@@ -6286,7 +6303,6 @@
     "CONFIRM": "Conferma",
     "DECLINE": "Rifiuta",
     "DECLINED": "Senza il tuo consenso non puoi usare questo modello. Scegli un altro modello qui sopra.",
-    "UNKNOWN_PROVIDER": "Fornitore sconosciuto",
     "UNKNOWN_COUNTRY": "sede sconosciuta",
     "BUSINESS": "I modelli gratuiti non sono disponibili per gli account aziendali.",
     "SETTINGS_TITLE": "Modelli gratuiti",

@@ -1274,6 +1274,23 @@
         "P_NOT_DO_1": "Bu senin bekleme süreni kısaltır. Sağlayıcının sınırlarını yükseltmez. Ücretsiz bir model, yukarı akış doygun ya da bozuk olduğu için meşgulse, bizim tarafımızdaki daha kısa pencere var olmayan kapasiteyi yaratmaz ve istek yine takılabilir veya başarısız olabilir.",
         "P_NOT_DO_2": "Ücretli modellerde dakika başına hiçbir sınır yoktur. Yani her seferinde değil de çoğu zaman değil, her seferinde yanıt veren bir modele ihtiyacın varsa dürüst tavsiye budur. <pricing>Fiyatlar</pricing> milyon token başına kuruşun kesirlerinden başlıyor.",
         "CTA": "Etiketi almak için <discord>Discord'a katıl</discord> ya da önce <models>ücretsiz modellere göz at</models>."
+      },
+      "CONSENT_FOR_FREE_MODELS": {
+        "TITLE": "Ücretsiz modeller artık onayını istiyor",
+        "DESCRIPTION": "Ücretsiz modeller, girdilerini kendi amaçları için kullanabilen sağlayıcılar üzerinden sunulur. Bunu artık her model için bir kez onaylıyorsun. Nedenini ve nasıl yapılacağını anlatıyoruz.",
+        "AUTHOR": "{appName} ekibi",
+        "INTRO": "{appName} üzerindeki ücretsiz modeller boşuna ücretsiz değil: arkalarındaki sağlayıcılar gönderdiklerini kendi amaçları için, örneğin modellerini eğitmek için kullanabilir. AB veri koruma hukuku bunun için bilgilendirilmiş onayını şart koşuyor, bu yüzden her ücretsiz model artık kullanmadan önce bir kez onay istiyor.",
+        "H_WHY": "Neden soruyoruz",
+        "P_WHY": "Ücretli modeller bizden satın aldığın hizmetin parçasıdır. Ücretsiz modeller farklıdır: sağlayıcıları bize sözleşmeyle bağlı değildir ve girdilerini kendi koşullarına göre saklayabilir veya kullanabilir; biz bu girdileri geri alamaz veya sildiremeyiz. Model başına tek seferlik onay, bir şey gönderilmeden önce bunu bilmeni sağlar. Başkalarının kişisel verilerini girme, kendi verilerini girmemeni de tavsiye ederiz.",
+        "H_HOW": "Nasıl onay verilir",
+        "P_HOW": "<free>Ücretsiz modeller sayfasını</free> aç, modeli bul ve <s>Onayla</s>'ya tıkla. Pencere, modelin sağlayıcılarının merkezlerinin bulunduğu ülkeleri gösterir. Sohbette de onay verebilirsin: ücretsiz bir model seç, aynı pencere açılır. Sayfa çevrimdışı modelleri de listeler, böylece geri gelmeden önce onay verebilirsin.",
+        "H_API": "API kullanıyorsan",
+        "P_API": "Lütfen onaylarını şimdi ver. Yakında onayı olmayan bir ücretsiz model isteği <c>free_consent_required</c> hatasıyla reddedilecek. Hata mesajı doğrudan o modelin seçili olduğu sohbete götürür, yani tek tıkla çözülür.",
+        "H_GUESTS": "Hesap olmadan",
+        "P_GUESTS": "Misafirler ücretsiz modelleri denemeye devam edebilir. Onayın bu durumda rastgele bir misafir kimliğiyle tarayıcına bağlanır; sohbet menüsündeki <s>Onayları yönet</s> bölümünden görebilir ve geri alabilirsin.",
+        "H_BUSINESS": "Geri alma ve kurumsal hesaplar",
+        "P_BUSINESS": "Bir onayı istediğin zaman ücretsiz modeller sayfasından, hesap ayarlarından veya sohbetten geri alabilirsin; model bundan sonra yeniden onay verene kadar senin için engellenir. Ücretsiz modeller kurumsal hesaplar için kullanılamaz, çünkü onların istemleri başkalarının kişisel verilerini içerebilir.",
+        "CTA": "Hazır mısın? <free>Ücretsiz modeller sayfasını</free> aç ve kullandığın modelleri etkinleştir."
       }
     }
   },
@@ -6274,8 +6291,8 @@
   },
   "FREE_CONSENT": {
     "TITLE": "Ücretsiz model için onay",
-    "PROVIDED_BY": "{many, select, true {Bu teklif ({model}) şu sağlayıcılar tarafından sunulmaktadır: {providers}.} other {Bu teklif ({model}) {providers} tarafından sunulmaktadır.}}",
-    "MAY_USE": "{many, select, true {Bu sağlayıcıların her biri girdilerini kendi veri koruma sorumluluğu altında kendi amaçları için, özellikle yapay zekâ modellerini eğitmek için kullanabilir.} other {Sağlayıcı girdilerini kendi veri koruma sorumluluğu altında kendi amaçları için, özellikle yapay zekâ modellerini eğitmek için kullanabilir.}}",
+    "PROVIDED_BY": "Bu teklif ({model}), merkezi şu ülkelerde bulunan bir veya daha fazla sağlayıcı tarafından sunulmaktadır: {countries}.",
+    "MAY_USE": "Bu teklifin her sağlayıcısı girdilerini kendi veri koruma sorumluluğu altında kendi amaçları için, özellikle yapay zekâ modellerini eğitmek için kullanabilir.",
     "NO_INFLUENCE": "{appName} bu işlemler üzerinde hiçbir etkiye sahip değildir ve iletilmiş girdileri geri alamaz veya sildiremez.",
     "THIRD_PARTY": "Üçüncü kişilere ait kişisel verilerin girilmesi yasaktır; kendi kişisel verilerini girmemeni de tavsiye ederiz.",
     "CONSENT": "Onaylayarak, girdilerinin içerdikleri kişisel veriler dahil iletilmesine onay vermiş olursun.",
@@ -6286,7 +6303,6 @@
     "CONFIRM": "Onayla",
     "DECLINE": "Reddet",
     "DECLINED": "Onayın olmadan bu modeli kullanamazsın. Yukarıdan başka bir model seç.",
-    "UNKNOWN_PROVIDER": "Bilinmeyen sağlayıcı",
     "UNKNOWN_COUNTRY": "merkezi bilinmiyor",
     "BUSINESS": "Ücretsiz modeller kurumsal hesaplar için kullanılamaz.",
     "SETTINGS_TITLE": "Ücretsiz modeller",

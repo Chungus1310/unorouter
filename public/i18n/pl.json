@@ -1274,6 +1274,23 @@
         "P_NOT_DO_1": "To skraca twoje oczekiwanie. Nie podnosi limitów dostawcy. Gdy darmowy model jest zajęty, bo warstwa nadrzędna jest przeciążona lub uszkodzona, krótsze okno po naszej stronie nie wyczaruje mocy, której nie ma, a żądanie nadal może się zawiesić lub nie powieść.",
         "P_NOT_DO_2": "Modele płatne nie mają żadnego limitu na minutę. Jeśli więc potrzebujesz modelu, który odpowiada za każdym razem, a nie przez większość czasu, to jest uczciwa rekomendacja. <pricing>Cennik</pricing> zaczyna się od ułamków centa za milion tokenów.",
         "CTA": "<discord>Dołącz na Discorda</discord> po tag albo najpierw <models>przejrzyj darmowe modele</models>."
+      },
+      "CONSENT_FOR_FREE_MODELS": {
+        "TITLE": "Darmowe modele pytają teraz o Twoją zgodę",
+        "DESCRIPTION": "Darmowe modele działają u dostawców, którzy mogą wykorzystywać Twoje dane wejściowe do własnych celów. Teraz potwierdzasz to raz dla każdego modelu. Wyjaśniamy dlaczego i jak.",
+        "AUTHOR": "Zespół {appName}",
+        "INTRO": "Darmowe modele w {appName} są darmowe nie bez powodu: ich dostawcy mogą wykorzystywać to, co wysyłasz, do własnych celów, na przykład do trenowania swoich modeli. Unijne prawo ochrony danych wymaga do tego Twojej świadomej zgody, dlatego każdy darmowy model pyta o nią raz przed użyciem.",
+        "H_WHY": "Dlaczego pytamy",
+        "P_WHY": "Płatne modele są częścią usługi, którą od nas kupujesz. Darmowe działają inaczej: ich dostawcy nie są z nami związani umową i mogą przechowywać lub wykorzystywać Twoje dane na własnych zasadach, a my nie możemy ich odzyskać ani zlecić ich usunięcia. Jednorazowa zgoda na każdy model sprawia, że wiesz o tym, zanim cokolwiek zostanie wysłane. Nie wprowadzaj danych osobowych innych osób, a wprowadzania własnych odradzamy.",
+        "H_HOW": "Jak wyrazić zgodę",
+        "P_HOW": "Otwórz <free>stronę darmowych modeli</free>, znajdź model i kliknij <s>Wyraź zgodę</s>. Okno pokazuje kraje, w których mają siedzibę dostawcy modelu. Możesz też wyrazić zgodę w czacie: wybierz darmowy model, a pojawi się to samo okno. Strona pokazuje też modele offline, więc możesz wyrazić zgodę, zanim wrócą.",
+        "H_API": "Jeśli korzystasz z API",
+        "P_API": "Wyraź swoje zgody już teraz. Wkrótce żądanie do darmowego modelu bez zgody będzie odrzucane z błędem <c>free_consent_required</c>. Komunikat błędu prowadzi prosto do czatu z wybranym już modelem, więc wystarczy jedno kliknięcie.",
+        "H_GUESTS": "Bez konta",
+        "P_GUESTS": "Goście nadal mogą wypróbować darmowe modele. Twoja zgoda jest wtedy powiązana z przeglądarką przez losowy identyfikator gościa, a możesz ją zobaczyć i wycofać w <s>Zarządzaj zgodami</s> w menu czatu.",
+        "H_BUSINESS": "Wycofanie zgody i konta firmowe",
+        "P_BUSINESS": "Zgodę możesz wycofać w każdej chwili na stronie darmowych modeli, w ustawieniach konta lub w czacie; model jest wtedy dla Ciebie zablokowany, dopóki ponownie jej nie wyrazisz. Darmowe modele nie są dostępne dla kont firmowych, ponieważ ich prompty mogą zawierać dane osobowe innych osób.",
+        "CTA": "Gotowe? Otwórz <free>stronę darmowych modeli</free> i włącz modele, z których korzystasz."
       }
     }
   },
@@ -6274,8 +6291,8 @@
   },
   "FREE_CONSENT": {
     "TITLE": "Zgoda na darmowy model",
-    "PROVIDED_BY": "{many, select, true {Ta oferta ({model}) jest świadczona przez następujących dostawców: {providers}.} other {Ta oferta ({model}) jest świadczona przez {providers}.}}",
-    "MAY_USE": "{many, select, true {Każdy z tych dostawców może wykorzystywać Twoje dane wejściowe do własnych celów na własną odpowiedzialność w zakresie ochrony danych, w szczególności do trenowania modeli AI.} other {Dostawca może wykorzystywać Twoje dane wejściowe do własnych celów na własną odpowiedzialność w zakresie ochrony danych, w szczególności do trenowania modeli AI.}}",
+    "PROVIDED_BY": "Ta oferta ({model}) jest świadczona przez jednego lub kilku dostawców z siedzibą w: {countries}.",
+    "MAY_USE": "Każdy dostawca tej oferty może wykorzystywać Twoje dane wejściowe do własnych celów na własną odpowiedzialność w zakresie ochrony danych, w szczególności do trenowania modeli AI.",
     "NO_INFLUENCE": "{appName} nie ma wpływu na to przetwarzanie i nie może odzyskać ani zlecić usunięcia już przesłanych danych wejściowych.",
     "THIRD_PARTY": "Wprowadzanie danych osobowych osób trzecich jest zabronione, a wprowadzania własnych danych osobowych odradzamy.",
     "CONSENT": "Potwierdzając, zgadzasz się na przesłanie Twoich danych wejściowych wraz z zawartymi w nich danymi osobowymi.",
@@ -6286,7 +6303,6 @@
     "CONFIRM": "Potwierdź",
     "DECLINE": "Odrzuć",
     "DECLINED": "Bez Twojej zgody nie możesz korzystać z tego modelu. Wybierz powyżej inny model.",
-    "UNKNOWN_PROVIDER": "Nieznany dostawca",
     "UNKNOWN_COUNTRY": "siedziba nieznana",
     "BUSINESS": "Darmowe modele nie są dostępne dla kont firmowych.",
     "SETTINGS_TITLE": "Darmowe modele",
