@@ -101,8 +101,12 @@ export const customFetch = async <T>(
   const hasExplicitAuth = !!getHeader(headers, "Authorization");
   const cookieHeader = hasExplicitAuth ? "" : await getServerCookieHeader();
   const hasCookie = !!getHeader(headers, "cookie");
+  // A service-token call speaks for the BFF; the gateway trusts that token only
+  // from the cluster, so a forwarded visitor IP would make it look external.
+  const isServiceCall = !!getHeader(headers, "X-Bff-Service-Token");
   const clientIp =
     hasExplicitAuth ||
+    isServiceCall ||
     upstreamIsProxied ||
     getHeader(headers, "CF-Connecting-IP")
       ? ""
