@@ -39,6 +39,8 @@ import {
 } from "@/lib/config/constants";
 import { parseExtraBody } from "@/lib/validation/chat";
 import type { ConversationOverridesForm } from "@/lib/validation/rp-forms";
+import { focusMemoryFieldAtom } from "@/store/chat-store";
+import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
 import { useFormContext, type Control } from "react-hook-form";
 import {
@@ -472,6 +474,7 @@ export function OverridesPromptFields(props: {
   control: Control<ConversationOverridesForm>;
 }) {
   const t = useTranslations();
+  const [focusMemory, setFocusMemory] = useAtom(focusMemoryFieldAtom);
 
   return (
     <>
@@ -532,6 +535,13 @@ export function OverridesPromptFields(props: {
               <FormControl>
                 <Textarea
                   {...field}
+                  ref={(el) => {
+                    field.ref(el);
+                    if (!el || !focusMemory) return;
+                    setFocusMemory(false);
+                    el.scrollIntoView({ block: "center" });
+                    el.focus({ preventScroll: true });
+                  }}
                   placeholder={t("CHAT.OVERRIDES.AUTHOR_NOTE_PLACEHOLDER")}
                   rows={3}
                 />

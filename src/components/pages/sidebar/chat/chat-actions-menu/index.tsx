@@ -9,8 +9,11 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Icon } from "@/components/ui/icon";
-import { conversationSettingsOpenAtom } from "@/store/chat-store";
-import { useAtom } from "jotai";
+import {
+  conversationSettingsOpenAtom,
+  focusMemoryFieldAtom,
+} from "@/store/chat-store";
+import { useAtom, useSetAtom } from "jotai";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { useState } from "react";
@@ -43,6 +46,7 @@ export function ChatActionsMenu(props: Props) {
   const [themeOpen, setThemeOpen] = useState(false);
   const [logsOpen, setLogsOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useAtom(conversationSettingsOpenAtom);
+  const setFocusMemory = useSetAtom(focusMemoryFieldAtom);
 
   return (
     <>
@@ -67,6 +71,17 @@ export function ChatActionsMenu(props: Props) {
             <Icon name="settings-2" className="size-4" />
             {t("CHAT.OVERRIDES.OPEN")}
           </DropdownMenuItem>
+          {props.convId && (
+            <DropdownMenuItem
+              onClick={() => {
+                setFocusMemory(true);
+                setSettingsOpen(true);
+              }}
+            >
+              <Icon name="scroll-text" className="size-4" />
+              {t("CHAT.MORE.MEMORY")}
+            </DropdownMenuItem>
+          )}
           <DropdownMenuSeparator />
           {/* Library: priority, flat + top-level. */}
           <RpNavItems />

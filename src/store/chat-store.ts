@@ -184,6 +184,8 @@ export const assistantRuntimeAtom = atom<AssistantRuntime | null>(null);
 
 export const messageEditingAtom = atom(false);
 
+export const focusMemoryFieldAtom = atom(false);
+
 export const chatStore = createStore();
 
 type LiveThreadOps = {
