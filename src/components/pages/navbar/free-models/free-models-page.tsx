@@ -11,6 +11,8 @@ import {
 } from "@/hooks/auth/free-consent-hook";
 import { useFreeModelsQuery } from "@/hooks/models/pricing-hook";
 import { formatLongDate } from "@/lib/utils/format/date";
+import { ModalityTabs } from "@/components/pages/navbar/models/filters/modality-tabs";
+import { matchesModality, type OutputModality } from "@/lib/api/model-modality";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -24,12 +26,15 @@ export function FreeModelsPage() {
   const revokeMutation = useRevokeFreeConsentMutation();
   const [search, setSearch] = useState("");
   const [open, setOpen] = useState<string | null>(null);
+  const [modality, setModality] = useState<OutputModality>("all");
 
   const consents = new Map(
     (consentsQuery.data?.consents ?? []).map((c) => [c.model, c.created_at]),
   );
   const needle = search.trim().toLowerCase();
-  const models = (freeModelsQuery.data ?? [])
+  const allModels = freeModelsQuery.data ?? [];
+  const models = allModels
+    .filter((m) => matchesModality(m, modality))
     .filter((m) => !needle || m.model_name.toLowerCase().includes(needle))
     .sort((a, b) => a.model_name.localeCompare(b.model_name));
 
@@ -53,6 +58,11 @@ export function FreeModelsPage() {
           {t("FREE_CONSENT.PAGE_INTRO")}
         </p>
       </div>
+      <ModalityTabs
+        models={allModels}
+        value={modality}
+        onChange={setModality}
+      />
       <Input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
