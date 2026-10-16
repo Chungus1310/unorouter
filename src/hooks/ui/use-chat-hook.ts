@@ -81,9 +81,12 @@ export function useSpeakingCharacter() {
   const bindingsQuery = useChatBindingsQuery(remoteId ?? undefined);
   const charactersQuery = useCharactersQuery();
 
-  const bound = bindingsQuery.data?.characters ?? [];
-  const charId =
-    meta?.characterId ?? (bound.length === 1 ? bound[0]?.characterId : null);
+  // Without a recorded speaker the reply came from the primary character, the
+  // first active binding, same as the prompt assembler picks.
+  const primary = (bindingsQuery.data?.characters ?? [])
+    .filter((b) => b.isActive !== false)
+    .sort((a, b) => (a.orderIndex ?? 0) - (b.orderIndex ?? 0))[0];
+  const charId = meta?.characterId ?? primary?.characterId;
   if (!charId) return null;
   return charactersQuery.data?.find((c) => c.id === charId) ?? null;
 }
@@ -112,7 +115,7 @@ export function useStreamFlag(
   return defaults[key] ?? true;
 }
 
-// A lorebook used as a character card carries the face: with no speaking
+// A lorebook used as a character card carries the face: in a chat with no
 // character, the first bound lorebook that has an avatar stands in.
 export function useLorebookSpeaker(): {
   name: string;
@@ -121,6 +124,7 @@ export function useLorebookSpeaker(): {
   const remoteId = useAuiState((s) => s.threadListItem?.remoteId);
   const bindingsQuery = useChatBindingsQuery(remoteId ?? undefined);
   const lorebooksQuery = useLorebooksQuery();
+  if ((bindingsQuery.data?.characters.length ?? 0) > 0) return null;
   const bound = [...(bindingsQuery.data?.lorebooks ?? [])].sort(
     (a, b) => (a.orderIndex ?? 0) - (b.orderIndex ?? 0),
   );
