@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Balance granted",
     "COPY": "Copy code",
     "COPIED": "Code copied"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Consent for a free model",
+    "PROVIDED_BY": "{many, select, true {This offer ({model}) is provided by the following providers: {providers}.} other {This offer ({model}) is provided by {providers}.}}",
+    "MAY_USE": "{many, select, true {Each of these providers may use your inputs for its own purposes under its own data protection responsibility, in particular to train AI models.} other {The provider may use your inputs for its own purposes under its own data protection responsibility, in particular to train AI models.}}",
+    "NO_INFLUENCE": "{appName} has no influence on this processing and cannot retrieve or have deleted any inputs already transmitted.",
+    "THIRD_PARTY": "Entering personal data of third parties is prohibited, and we advise against entering your own personal data.",
+    "CONSENT": "By confirming, you consent to your inputs, including any personal data they contain, being transmitted.",
+    "REVOKE": "You can withdraw this consent at any time {where} with effect for the future; inputs already transmitted are not affected.",
+    "MORE_INFO": "Further information, including on the risks of transferring data to third countries, is available in the terms of use, the privacy policy and the provider's own information.",
+    "WHERE_ACCOUNT": "in your account settings",
+    "WHERE_GUEST": "via \"Manage consents\" in the chat",
+    "CONFIRM": "Confirm",
+    "DECLINE": "Decline",
+    "DECLINED": "Without your consent you cannot use this model. Choose a different model above.",
+    "UNKNOWN_PROVIDER": "Unknown provider",
+    "UNKNOWN_COUNTRY": "seat unknown",
+    "BUSINESS": "Free models are not available for business accounts.",
+    "SETTINGS_TITLE": "Free models",
+    "SETTINGS_DESC": "Free models you have consented to. After a withdrawal the model stays blocked until you consent again.",
+    "SETTINGS_EMPTY": "You have not consented to any free model yet.",
+    "REVOKE_BUTTON": "Withdraw",
+    "REVOKED": "Consent withdrawn",
+    "GRANTED_ON": "Given on {date}",
+    "MANAGE": "Manage consents",
+    "SAVED": "Consent saved"
   }
 }

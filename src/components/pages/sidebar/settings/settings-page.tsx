@@ -6,6 +6,7 @@ import { AccountCard } from "./account-card";
 import { AccountHeader } from "./account-header";
 import { BackupCard } from "./backup-card";
 import { CustomerTypeCard } from "./customer-type-card";
+import { FreeConsentCard } from "./free-consent-card";
 import { NotificationCard } from "./notification-card";
 import { SecurityCard } from "./security-card";
 import { TimeoutCard } from "./timeout-card";
@@ -56,6 +57,10 @@ export function SettingsPage() {
 
       <div className="mb-6">
         <TimeoutCard />
+      </div>
+
+      <div className="mb-6">
+        <FreeConsentCard />
       </div>
 
       <div className="mb-6">

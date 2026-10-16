@@ -1,6 +1,7 @@
 "use client";
 
 import { SectionBoundary } from "@/components/elements/feedback/section-boundary";
+import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
 import { Thread } from "@/components/ui/assistant-ui/thread";
 import { useConversationQuery } from "@/hooks/ai/chat-hook";
 import { useChatGate } from "@/hooks/ui/use-chat-gate";
@@ -54,6 +55,22 @@ export function Chat(props: ChatProps) {
     return (
       <div className="chat-shell-reveal flex min-h-0 flex-1 flex-col">
         <NeedsTokenGate />
+      </div>
+    );
+
+  if (gate.business)
+    return (
+      <div className="chat-shell-reveal flex min-h-0 flex-1 flex-col items-center justify-center p-8">
+        <p className="text-muted-foreground text-center text-sm">
+          {t("FREE_CONSENT.BUSINESS")}
+        </p>
+      </div>
+    );
+
+  if (gate.needsConsent && gate.selectedModel)
+    return (
+      <div className="chat-shell-reveal flex min-h-0 flex-1 flex-col">
+        <FreeConsentPanel model={gate.selectedModel} />
       </div>
     );
 

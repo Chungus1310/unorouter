@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Đã chuyển số dư",
     "COPY": "Sao chép mã",
     "COPIED": "Đã sao chép mã"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Đồng ý sử dụng mô hình miễn phí",
+    "PROVIDED_BY": "{many, select, true {Dịch vụ này ({model}) do các nhà cung cấp sau cung cấp: {providers}.} other {Dịch vụ này ({model}) do {providers} cung cấp.}}",
+    "MAY_USE": "{many, select, true {Mỗi nhà cung cấp này có thể sử dụng dữ liệu bạn nhập cho mục đích riêng, theo trách nhiệm bảo vệ dữ liệu của chính họ, đặc biệt là để huấn luyện mô hình AI.} other {Nhà cung cấp có thể sử dụng dữ liệu bạn nhập cho mục đích riêng, theo trách nhiệm bảo vệ dữ liệu của chính họ, đặc biệt là để huấn luyện mô hình AI.}}",
+    "NO_INFLUENCE": "{appName} không có ảnh hưởng đến việc xử lý này và không thể lấy lại hoặc yêu cầu xóa dữ liệu đã gửi.",
+    "THIRD_PARTY": "Nghiêm cấm nhập dữ liệu cá nhân của bên thứ ba, và chúng tôi khuyên bạn không nhập dữ liệu cá nhân của chính mình.",
+    "CONSENT": "Khi xác nhận, bạn đồng ý cho việc gửi dữ liệu bạn nhập, bao gồm cả dữ liệu cá nhân trong đó.",
+    "REVOKE": "Bạn có thể rút lại sự đồng ý này bất cứ lúc nào {where} với hiệu lực cho tương lai; dữ liệu đã gửi không bị ảnh hưởng.",
+    "MORE_INFO": "Thông tin thêm, kể cả về rủi ro khi chuyển dữ liệu sang nước thứ ba, có trong điều khoản sử dụng, chính sách quyền riêng tư và thông tin của nhà cung cấp.",
+    "WHERE_ACCOUNT": "trong cài đặt tài khoản",
+    "WHERE_GUEST": "qua \"Quản lý đồng ý\" trong chat",
+    "CONFIRM": "Xác nhận",
+    "DECLINE": "Từ chối",
+    "DECLINED": "Nếu không có sự đồng ý của bạn, bạn không thể dùng mô hình này. Hãy chọn mô hình khác ở trên.",
+    "UNKNOWN_PROVIDER": "Nhà cung cấp không rõ",
+    "UNKNOWN_COUNTRY": "trụ sở không rõ",
+    "BUSINESS": "Mô hình miễn phí không khả dụng cho tài khoản doanh nghiệp.",
+    "SETTINGS_TITLE": "Mô hình miễn phí",
+    "SETTINGS_DESC": "Các mô hình miễn phí bạn đã đồng ý sử dụng. Sau khi rút lại, mô hình bị chặn cho đến khi bạn đồng ý lại.",
+    "SETTINGS_EMPTY": "Bạn chưa đồng ý sử dụng mô hình miễn phí nào.",
+    "REVOKE_BUTTON": "Rút lại",
+    "REVOKED": "Đã rút lại sự đồng ý",
+    "GRANTED_ON": "Đã cấp ngày {date}",
+    "MANAGE": "Quản lý đồng ý",
+    "SAVED": "Đã lưu sự đồng ý"
   }
 }

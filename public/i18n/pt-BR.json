@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Saldo transferido",
     "COPY": "Copiar código",
     "COPIED": "Código copiado"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Consentimento para um modelo gratuito",
+    "PROVIDED_BY": "{many, select, true {Esta oferta ({model}) é fornecida pelos seguintes provedores: {providers}.} other {Esta oferta ({model}) é fornecida por {providers}.}}",
+    "MAY_USE": "{many, select, true {Cada um desses provedores pode usar suas entradas para fins próprios, sob sua própria responsabilidade de proteção de dados, em especial para treinar modelos de IA.} other {O provedor pode usar suas entradas para fins próprios, sob sua própria responsabilidade de proteção de dados, em especial para treinar modelos de IA.}}",
+    "NO_INFLUENCE": "{appName} não tem influência sobre esses tratamentos e não pode recuperar nem mandar excluir entradas já transmitidas.",
+    "THIRD_PARTY": "É proibido inserir dados pessoais de terceiros, e não recomendamos inserir seus próprios dados pessoais.",
+    "CONSENT": "Ao confirmar, você consente que suas entradas, incluindo os dados pessoais nelas contidos, sejam transmitidas.",
+    "REVOKE": "Você pode revogar este consentimento a qualquer momento {where} com efeito para o futuro; as entradas já transmitidas não são afetadas.",
+    "MORE_INFO": "Mais informações, inclusive sobre os riscos da transferência de dados para países terceiros, estão nos termos de uso, na política de privacidade e nas informações do provedor.",
+    "WHERE_ACCOUNT": "nas configurações da sua conta",
+    "WHERE_GUEST": "em \"Gerenciar consentimentos\" no chat",
+    "CONFIRM": "Confirmar",
+    "DECLINE": "Recusar",
+    "DECLINED": "Sem o seu consentimento você não pode usar este modelo. Escolha outro modelo acima.",
+    "UNKNOWN_PROVIDER": "Provedor desconhecido",
+    "UNKNOWN_COUNTRY": "sede desconhecida",
+    "BUSINESS": "Modelos gratuitos não estão disponíveis para contas empresariais.",
+    "SETTINGS_TITLE": "Modelos gratuitos",
+    "SETTINGS_DESC": "Modelos gratuitos para cujo uso você deu consentimento. Após uma revogação, o modelo fica bloqueado até você consentir novamente.",
+    "SETTINGS_EMPTY": "Você ainda não deu consentimento para nenhum modelo gratuito.",
+    "REVOKE_BUTTON": "Revogar",
+    "REVOKED": "Consentimento revogado",
+    "GRANTED_ON": "Dado em {date}",
+    "MANAGE": "Gerenciar consentimentos",
+    "SAVED": "Consentimento salvo"
   }
 }

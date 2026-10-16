@@ -7,7 +7,7 @@ import { stripThinkForDisplay } from "@/lib/ai/chat/think-tags";
 import { logger } from "@/lib/utils/logger";
 import { serverFreeModelRaceDeps } from "@/server/ai/chat/free-model-race.service";
 
-function truncateToTitle(text: string): string {
+export function truncateToTitle(text: string): string {
   const collapsed = text.replace(/\s+/g, " ").trim();
   if (collapsed.length <= TITLE_FALLBACK_MAX_CHARS) return collapsed;
   const slice = collapsed.slice(0, TITLE_FALLBACK_MAX_CHARS);

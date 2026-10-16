@@ -8,6 +8,7 @@ export const queryKeys = {
   status: () => ["status"] as const,
   twoFAStatus: () => ["2fa-status"] as const,
   passkeyStatus: () => ["passkey-status"] as const,
+  freeConsents: () => ["free-consents"] as const,
   verificationMethods: (scope: SecurityScope) =>
     ["verification-methods", scope] as const,
 

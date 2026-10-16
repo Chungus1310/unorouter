@@ -1,4 +1,5 @@
 import { GUEST_USER_ID } from "@/lib/config/constants";
+import { assertGuestFreeConsent } from "@/server/auth/free-consent/free-consent.service";
 import {
   finalizeTaskBody,
   forwardBody,
@@ -24,7 +25,7 @@ import {
   finalizeVideoTask,
   submitVideoTask,
 } from "./media/task.service";
-import { generateChatTitle } from "./title.service";
+import { generateChatTitle, truncateToTitle } from "./title.service";
 import { runTriggerLLM, runTriggerSimilarity } from "./trigger-ops.service";
 import { streamMedia } from "./media/stream.service";
 import { forwardChatCompletions } from "./forward.service";
@@ -83,12 +84,20 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
 
   .post(
     "/title",
-    async ({ body, apiKey, userId }) => {
+    async ({ body, cookie, apiKey, userId }) => {
       await assertGuestFreeModel(userId, body.model);
       // The title model is billed separately, so it needs its own guest check.
       await assertGuestFreeModel(userId, body.titleModel);
+      await assertGuestFreeConsent(cookie, userId, body.model);
+      await assertGuestFreeConsent(cookie, userId, body.titleModel);
+      // A guest's text may only reach a model the guest consented to, so the
+      // free trio is off the table and the chat model titles its own chat.
+      const titleModel =
+        body.titleModel ?? (userId === GUEST_USER_ID ? body.model : undefined);
+      if (userId === GUEST_USER_ID && !titleModel)
+        return { success: true, data: { title: truncateToTitle(body.text) } };
       const data = await generateChatTitle(apiKey, body.text, {
-        titleModel: body.titleModel,
+        titleModel,
         titleGroup: body.titleGroup,
         titlePrompt: body.titlePrompt,
       });
@@ -99,8 +108,9 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
 
   .post(
     "/stream",
-    async ({ body, apiKey, userId }) => {
+    async ({ body, cookie, apiKey, userId }) => {
       await assertGuestFreeModel(userId, body.model);
+      await assertGuestFreeConsent(cookie, userId, body.model);
       return streamMedia(apiKey, body);
     },
     { body: streamBody },
@@ -108,7 +118,12 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
 
   .post(
     "/forward/chat/completions",
-    async ({ body, request, apiKey, userId }) => {
+    async ({ body, cookie, request, apiKey, userId }) => {
+      await assertGuestFreeConsent(
+        cookie,
+        userId,
+        typeof body.model === "string" ? body.model : undefined,
+      );
       return forwardChatCompletions({
         apiKey,
         userId,

@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Saldo diberikan",
     "COPY": "Salin kode",
     "COPIED": "Kode disalin"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Persetujuan untuk model gratis",
+    "PROVIDED_BY": "{many, select, true {Penawaran ini ({model}) disediakan oleh penyedia berikut: {providers}.} other {Penawaran ini ({model}) disediakan oleh {providers}.}}",
+    "MAY_USE": "{many, select, true {Setiap penyedia ini dapat menggunakan masukanmu untuk tujuannya sendiri di bawah tanggung jawab perlindungan datanya sendiri, khususnya untuk melatih model AI.} other {Penyedia dapat menggunakan masukanmu untuk tujuannya sendiri di bawah tanggung jawab perlindungan datanya sendiri, khususnya untuk melatih model AI.}}",
+    "NO_INFLUENCE": "{appName} tidak memiliki pengaruh atas pemrosesan ini dan tidak dapat mengambil kembali atau meminta penghapusan masukan yang sudah dikirim.",
+    "THIRD_PARTY": "Memasukkan data pribadi pihak ketiga dilarang, dan kami menyarankan agar kamu tidak memasukkan data pribadimu sendiri.",
+    "CONSENT": "Dengan mengonfirmasi, kamu menyetujui pengiriman masukanmu, termasuk data pribadi di dalamnya.",
+    "REVOKE": "Kamu dapat menarik persetujuan ini kapan saja {where} dengan efek ke depan; masukan yang sudah dikirim tidak terpengaruh.",
+    "MORE_INFO": "Informasi lebih lanjut, termasuk tentang risiko transfer data ke negara ketiga, tersedia di ketentuan penggunaan, kebijakan privasi, dan informasi penyedia.",
+    "WHERE_ACCOUNT": "di pengaturan akunmu",
+    "WHERE_GUEST": "melalui \"Kelola persetujuan\" di chat",
+    "CONFIRM": "Konfirmasi",
+    "DECLINE": "Tolak",
+    "DECLINED": "Tanpa persetujuanmu, kamu tidak dapat menggunakan model ini. Pilih model lain di atas.",
+    "UNKNOWN_PROVIDER": "Penyedia tidak diketahui",
+    "UNKNOWN_COUNTRY": "kedudukan tidak diketahui",
+    "BUSINESS": "Model gratis tidak tersedia untuk akun bisnis.",
+    "SETTINGS_TITLE": "Model gratis",
+    "SETTINGS_DESC": "Model gratis yang penggunaannya telah kamu setujui. Setelah ditarik, model tetap diblokir sampai kamu menyetujuinya lagi.",
+    "SETTINGS_EMPTY": "Kamu belum menyetujui model gratis apa pun.",
+    "REVOKE_BUTTON": "Tarik",
+    "REVOKED": "Persetujuan ditarik",
+    "GRANTED_ON": "Diberikan pada {date}",
+    "MANAGE": "Kelola persetujuan",
+    "SAVED": "Persetujuan disimpan"
   }
 }

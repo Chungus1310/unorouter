@@ -29,7 +29,7 @@ async function loadFlag(code: string): Promise<string | null> {
   return mod.default;
 }
 
-function countryName(code: string, locale: string): string {
+export function countryName(code: string, locale: string): string {
   try {
     return new Intl.DisplayNames([locale], { type: "region" }).of(code) ?? code;
   } catch {

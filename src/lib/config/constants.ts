@@ -48,6 +48,9 @@ export const EDGE_SESSION_COOKIE = "edge-session" as const;
 export const USER_THEME_COOKIE = "user-theme" as const;
 export const LOCALE_COOKIE = "NEXT_LOCALE" as const;
 export const AUTH_REDIRECT_COOKIE = "auth_redirect" as const;
+// Identifies a logged-out browser for its free model consents, nothing else.
+export const GUEST_ID_COOKIE = "guest-id" as const;
+export const GUEST_ID_MAX_AGE = 60 * 60 * 24 * 365;
 export const AUTH_REDIRECT_QUERY = "redirect" as const;
 export const OAUTH_ERROR_QUERY = "oauth_error" as const;
 // The OAuth step-up window reports back on this channel: a provider page with

@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "餘額已發放",
     "COPY": "複製兌換碼",
     "COPIED": "兌換碼已複製"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "免費模型使用同意",
+    "PROVIDED_BY": "{many, select, true {此服務（{model}）由以下供應商提供：{providers}。} other {此服務（{model}）由 {providers} 提供。}}",
+    "MAY_USE": "{many, select, true {這些供應商均可在其自身的資料保護責任範圍內，將你的輸入用於其自身目的，特別是用於訓練 AI 模型。} other {該供應商可在其自身的資料保護責任範圍內，將你的輸入用於其自身目的，特別是用於訓練 AI 模型。}}",
+    "NO_INFLUENCE": "{appName} 無法影響這些資料處理，也無法取回已傳輸的輸入或使其被刪除。",
+    "THIRD_PARTY": "禁止輸入第三方的個人資料，我們也建議你不要輸入自己的個人資料。",
+    "CONSENT": "確認即表示你同意傳輸你的輸入，包括其中所含的個人資料。",
+    "REVOKE": "你可以隨時{where}撤回此同意，撤回僅對日後生效，已傳輸的輸入不受影響。",
+    "MORE_INFO": "更多資訊（包括向第三國傳輸資料的風險）請參閱使用條款、隱私權政策以及供應商的相關資訊。",
+    "WHERE_ACCOUNT": "在帳戶設定中",
+    "WHERE_GUEST": "透過聊天中的「管理同意」",
+    "CONFIRM": "確認",
+    "DECLINE": "拒絕",
+    "DECLINED": "未經你同意，無法使用此模型。請在上方選擇其他模型。",
+    "UNKNOWN_PROVIDER": "未知供應商",
+    "UNKNOWN_COUNTRY": "所在地未知",
+    "BUSINESS": "企業帳戶無法使用免費模型。",
+    "SETTINGS_TITLE": "免費模型",
+    "SETTINGS_DESC": "你已同意使用的免費模型。撤回後，該模型將保持鎖定，直到你再次同意。",
+    "SETTINGS_EMPTY": "你尚未同意使用任何免費模型。",
+    "REVOKE_BUTTON": "撤回",
+    "REVOKED": "已撤回同意",
+    "GRANTED_ON": "同意於 {date}",
+    "MANAGE": "管理同意",
+    "SAVED": "已儲存同意"
   }
 }

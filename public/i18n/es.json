@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Saldo transferido",
     "COPY": "Copiar código",
     "COPIED": "Código copiado"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Consentimiento para un modelo gratuito",
+    "PROVIDED_BY": "{many, select, true {Esta oferta ({model}) la prestan los siguientes proveedores: {providers}.} other {Esta oferta ({model}) la presta {providers}.}}",
+    "MAY_USE": "{many, select, true {Cada uno de estos proveedores puede utilizar tus entradas para sus propios fines bajo su propia responsabilidad en materia de protección de datos, en particular para entrenar modelos de IA.} other {El proveedor puede utilizar tus entradas para sus propios fines bajo su propia responsabilidad en materia de protección de datos, en particular para entrenar modelos de IA.}}",
+    "NO_INFLUENCE": "{appName} no tiene ninguna influencia sobre estos tratamientos y no puede recuperar ni hacer eliminar las entradas ya transmitidas.",
+    "THIRD_PARTY": "Está prohibido introducir datos personales de terceros, y te desaconsejamos introducir tus propios datos personales.",
+    "CONSENT": "Al confirmar, consientes que se transmitan tus entradas, incluidos los datos personales que contengan.",
+    "REVOKE": "Puedes retirar este consentimiento en cualquier momento {where} con efectos para el futuro; las entradas ya transmitidas no se ven afectadas.",
+    "MORE_INFO": "Encontrarás más información, también sobre los riesgos de transferir datos a terceros países, en las condiciones de uso, la política de privacidad y la información del proveedor.",
+    "WHERE_ACCOUNT": "en la configuración de tu cuenta",
+    "WHERE_GUEST": "mediante «Gestionar consentimientos» en el chat",
+    "CONFIRM": "Confirmar",
+    "DECLINE": "Rechazar",
+    "DECLINED": "Sin tu consentimiento no puedes usar este modelo. Elige otro modelo arriba.",
+    "UNKNOWN_PROVIDER": "Proveedor desconocido",
+    "UNKNOWN_COUNTRY": "sede desconocida",
+    "BUSINESS": "Los modelos gratuitos no están disponibles para cuentas de empresa.",
+    "SETTINGS_TITLE": "Modelos gratuitos",
+    "SETTINGS_DESC": "Modelos gratuitos a cuyo uso has dado tu consentimiento. Tras retirarlo, el modelo queda bloqueado hasta que vuelvas a consentir.",
+    "SETTINGS_EMPTY": "Todavía no has dado tu consentimiento a ningún modelo gratuito.",
+    "REVOKE_BUTTON": "Retirar",
+    "REVOKED": "Consentimiento retirado",
+    "GRANTED_ON": "Otorgado el {date}",
+    "MANAGE": "Gestionar consentimientos",
+    "SAVED": "Consentimiento guardado"
   }
 }

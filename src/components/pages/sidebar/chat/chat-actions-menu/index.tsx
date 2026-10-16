@@ -1,6 +1,14 @@
 "use client";
 
+import { FreeConsentList } from "@/components/elements/model/free-consent-list";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -45,6 +53,7 @@ export function ChatActionsMenu(props: Props) {
   const t = useTranslations();
   const [themeOpen, setThemeOpen] = useState(false);
   const [logsOpen, setLogsOpen] = useState(false);
+  const [consentsOpen, setConsentsOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useAtom(conversationSettingsOpenAtom);
   const setFocusMemory = useSetAtom(focusMemoryFieldAtom);
 
@@ -92,6 +101,12 @@ export function ChatActionsMenu(props: Props) {
             convId={props.convId}
             onOpenRequestLogs={() => setLogsOpen(true)}
           />
+          <DropdownMenuSeparator />
+          {/* Guests have no settings page, so revoking lives here too. */}
+          <DropdownMenuItem onClick={() => setConsentsOpen(true)}>
+            <Icon name="shield-check" className="size-4" />
+            {t("FREE_CONSENT.MANAGE")}
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
       {settingsOpen && (
@@ -104,6 +119,17 @@ export function ChatActionsMenu(props: Props) {
       {themeOpen && (
         <ThemeCustomizerSheet open={themeOpen} onOpenChange={setThemeOpen} />
       )}
+      <Dialog open={consentsOpen} onOpenChange={setConsentsOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>{t("FREE_CONSENT.SETTINGS_TITLE")}</DialogTitle>
+            <DialogDescription>
+              {t("FREE_CONSENT.SETTINGS_DESC")}
+            </DialogDescription>
+          </DialogHeader>
+          <FreeConsentList />
+        </DialogContent>
+      </Dialog>
       {logsOpen && props.convId && (
         <RequestLogListSheet
           convId={props.convId}

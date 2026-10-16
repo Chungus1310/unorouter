@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Solde transféré",
     "COPY": "Copier le code",
     "COPIED": "Code copié"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Consentement pour un modèle gratuit",
+    "PROVIDED_BY": "{many, select, true {Cette offre ({model}) est fournie par les fournisseurs suivants : {providers}.} other {Cette offre ({model}) est fournie par {providers}.}}",
+    "MAY_USE": "{many, select, true {Chacun de ces fournisseurs peut utiliser tes saisies à ses propres fins, sous sa propre responsabilité en matière de protection des données, notamment pour entraîner des modèles d'IA.} other {Le fournisseur peut utiliser tes saisies à ses propres fins, sous sa propre responsabilité en matière de protection des données, notamment pour entraîner des modèles d'IA.}}",
+    "NO_INFLUENCE": "{appName} n'a aucune influence sur ces traitements et ne peut ni récupérer ni faire supprimer les saisies déjà transmises.",
+    "THIRD_PARTY": "Il est interdit de saisir des données personnelles de tiers, et nous te déconseillons de saisir tes propres données personnelles.",
+    "CONSENT": "En confirmant, tu consens à ce que tes saisies, y compris les données personnelles qu'elles contiennent, soient transmises.",
+    "REVOKE": "Tu peux retirer ce consentement à tout moment {where} avec effet pour l'avenir ; les saisies déjà transmises ne sont pas concernées.",
+    "MORE_INFO": "Tu trouveras d'autres informations, notamment sur les risques liés au transfert de données vers des pays tiers, dans les conditions d'utilisation, la politique de confidentialité et les informations du fournisseur.",
+    "WHERE_ACCOUNT": "dans les paramètres de ton compte",
+    "WHERE_GUEST": "via « Gérer les consentements » dans le chat",
+    "CONFIRM": "Confirmer",
+    "DECLINE": "Refuser",
+    "DECLINED": "Sans ton consentement, tu ne peux pas utiliser ce modèle. Choisis un autre modèle ci-dessus.",
+    "UNKNOWN_PROVIDER": "Fournisseur inconnu",
+    "UNKNOWN_COUNTRY": "siège inconnu",
+    "BUSINESS": "Les modèles gratuits ne sont pas disponibles pour les comptes professionnels.",
+    "SETTINGS_TITLE": "Modèles gratuits",
+    "SETTINGS_DESC": "Modèles gratuits à l'utilisation desquels tu as consenti. Après un retrait, le modèle reste bloqué jusqu'à ce que tu consentes à nouveau.",
+    "SETTINGS_EMPTY": "Tu n'as encore consenti à aucun modèle gratuit.",
+    "REVOKE_BUTTON": "Retirer",
+    "REVOKED": "Consentement retiré",
+    "GRANTED_ON": "Donné le {date}",
+    "MANAGE": "Gérer les consentements",
+    "SAVED": "Consentement enregistré"
   }
 }

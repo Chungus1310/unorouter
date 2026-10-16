@@ -1,5 +1,6 @@
 "use client";
 
+import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { estimateImageCost, willClamp } from "@/lib/ai/image/cost-estimate";
@@ -9,6 +10,8 @@ import type { ImageFormValues } from "@/lib/validation/image";
 import { dollarsToQuota, renderQuota } from "@/lib/config/constants";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
+import { useAuthQuery } from "@/hooks/auth/auth-hook";
+import { useFreeConsentsQuery } from "@/hooks/auth/free-consent-hook";
 import { useTranslations } from "next-intl";
 import { useFormContext, useWatch } from "react-hook-form";
 import { clampVariants } from "../../image-constants";
@@ -23,6 +26,8 @@ export function SubmitBar(props: Props) {
   const t = useTranslations();
   const nav = useImageNav();
   const form = useFormContext<ImageFormValues>();
+  const authQuery = useAuthQuery();
+  const consentsQuery = useFreeConsentsQuery(props.descriptor.is_free);
 
   const prompt = useWatch({ control: form.control, name: "prompt" }) ?? "";
   const inpaintPrompt = useWatch({
@@ -51,6 +56,24 @@ export function SubmitBar(props: Props) {
     ? t("IMAGE.FREE_BADGE")
     : `~${renderQuota(dollarsToQuota(cost.estimate), 2)}`;
   const clampWarning = willClamp(width, height, steps);
+  const business =
+    props.descriptor.is_free && authQuery.data?.customer_type === "business";
+  const needsConsent =
+    props.descriptor.is_free &&
+    !business &&
+    consentsQuery.data != null &&
+    !(consentsQuery.data.consents ?? []).some(
+      (c) => c.model === props.descriptor.model_name,
+    );
+
+  if (business)
+    return (
+      <p className="text-muted-foreground py-2 text-sm">
+        {t("FREE_CONSENT.BUSINESS")}
+      </p>
+    );
+  if (needsConsent)
+    return <FreeConsentPanel model={props.descriptor.model_name} />;
 
   return (
     <div className="bg-background sticky bottom-0 z-10 flex flex-col gap-2 py-2">

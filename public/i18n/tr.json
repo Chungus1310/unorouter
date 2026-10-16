@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Bakiye aktarıldı",
     "COPY": "Kodu kopyala",
     "COPIED": "Kod kopyalandı"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Ücretsiz model için onay",
+    "PROVIDED_BY": "{many, select, true {Bu teklif ({model}) şu sağlayıcılar tarafından sunulmaktadır: {providers}.} other {Bu teklif ({model}) {providers} tarafından sunulmaktadır.}}",
+    "MAY_USE": "{many, select, true {Bu sağlayıcıların her biri girdilerini kendi veri koruma sorumluluğu altında kendi amaçları için, özellikle yapay zekâ modellerini eğitmek için kullanabilir.} other {Sağlayıcı girdilerini kendi veri koruma sorumluluğu altında kendi amaçları için, özellikle yapay zekâ modellerini eğitmek için kullanabilir.}}",
+    "NO_INFLUENCE": "{appName} bu işlemler üzerinde hiçbir etkiye sahip değildir ve iletilmiş girdileri geri alamaz veya sildiremez.",
+    "THIRD_PARTY": "Üçüncü kişilere ait kişisel verilerin girilmesi yasaktır; kendi kişisel verilerini girmemeni de tavsiye ederiz.",
+    "CONSENT": "Onaylayarak, girdilerinin içerdikleri kişisel veriler dahil iletilmesine onay vermiş olursun.",
+    "REVOKE": "Bu onayı istediğin zaman {where} ileriye dönük olarak geri alabilirsin; daha önce iletilmiş girdiler bundan etkilenmez.",
+    "MORE_INFO": "Üçüncü ülkelere veri aktarımının riskleri dahil daha fazla bilgiyi kullanım koşullarında, gizlilik politikasında ve sağlayıcının kendi bilgilerinde bulabilirsin.",
+    "WHERE_ACCOUNT": "hesap ayarlarından",
+    "WHERE_GUEST": "sohbetteki \"Onayları yönet\" üzerinden",
+    "CONFIRM": "Onayla",
+    "DECLINE": "Reddet",
+    "DECLINED": "Onayın olmadan bu modeli kullanamazsın. Yukarıdan başka bir model seç.",
+    "UNKNOWN_PROVIDER": "Bilinmeyen sağlayıcı",
+    "UNKNOWN_COUNTRY": "merkezi bilinmiyor",
+    "BUSINESS": "Ücretsiz modeller kurumsal hesaplar için kullanılamaz.",
+    "SETTINGS_TITLE": "Ücretsiz modeller",
+    "SETTINGS_DESC": "Kullanımına onay verdiğin ücretsiz modeller. Onayı geri aldıktan sonra model, yeniden onay verene kadar engelli kalır.",
+    "SETTINGS_EMPTY": "Henüz hiçbir ücretsiz modele onay vermedin.",
+    "REVOKE_BUTTON": "Geri al",
+    "REVOKED": "Onay geri alındı",
+    "GRANTED_ON": "{date} tarihinde verildi",
+    "MANAGE": "Onayları yönet",
+    "SAVED": "Onay kaydedildi"
   }
 }

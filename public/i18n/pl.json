@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Saldo przekazane",
     "COPY": "Kopiuj kod",
     "COPIED": "Kod skopiowany"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Zgoda na darmowy model",
+    "PROVIDED_BY": "{many, select, true {Ta oferta ({model}) jest świadczona przez następujących dostawców: {providers}.} other {Ta oferta ({model}) jest świadczona przez {providers}.}}",
+    "MAY_USE": "{many, select, true {Każdy z tych dostawców może wykorzystywać Twoje dane wejściowe do własnych celów na własną odpowiedzialność w zakresie ochrony danych, w szczególności do trenowania modeli AI.} other {Dostawca może wykorzystywać Twoje dane wejściowe do własnych celów na własną odpowiedzialność w zakresie ochrony danych, w szczególności do trenowania modeli AI.}}",
+    "NO_INFLUENCE": "{appName} nie ma wpływu na to przetwarzanie i nie może odzyskać ani zlecić usunięcia już przesłanych danych wejściowych.",
+    "THIRD_PARTY": "Wprowadzanie danych osobowych osób trzecich jest zabronione, a wprowadzania własnych danych osobowych odradzamy.",
+    "CONSENT": "Potwierdzając, zgadzasz się na przesłanie Twoich danych wejściowych wraz z zawartymi w nich danymi osobowymi.",
+    "REVOKE": "Możesz w każdej chwili wycofać tę zgodę {where} ze skutkiem na przyszłość; nie dotyczy to już przesłanych danych wejściowych.",
+    "MORE_INFO": "Więcej informacji, także o ryzyku przekazywania danych do państw trzecich, znajdziesz w warunkach korzystania, polityce prywatności oraz w informacjach dostawcy.",
+    "WHERE_ACCOUNT": "w ustawieniach konta",
+    "WHERE_GUEST": "przez „Zarządzaj zgodami” w czacie",
+    "CONFIRM": "Potwierdź",
+    "DECLINE": "Odrzuć",
+    "DECLINED": "Bez Twojej zgody nie możesz korzystać z tego modelu. Wybierz powyżej inny model.",
+    "UNKNOWN_PROVIDER": "Nieznany dostawca",
+    "UNKNOWN_COUNTRY": "siedziba nieznana",
+    "BUSINESS": "Darmowe modele nie są dostępne dla kont firmowych.",
+    "SETTINGS_TITLE": "Darmowe modele",
+    "SETTINGS_DESC": "Darmowe modele, na których używanie wyraziłeś zgodę. Po wycofaniu zgody model pozostaje zablokowany, dopóki ponownie jej nie wyrazisz.",
+    "SETTINGS_EMPTY": "Nie wyraziłeś jeszcze zgody na żaden darmowy model.",
+    "REVOKE_BUTTON": "Wycofaj",
+    "REVOKED": "Zgoda wycofana",
+    "GRANTED_ON": "Udzielona {date}",
+    "MANAGE": "Zarządzaj zgodami",
+    "SAVED": "Zgoda zapisana"
   }
 }

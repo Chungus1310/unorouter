@@ -1,6 +1,7 @@
 import { getModelByName } from "@/server/models/pricing/pricing.service";
 import { GUEST_USER_ID, msg } from "@/lib/config/constants";
 import { catalogSearchQuery, imageSubmitBody } from "@/lib/validation/image";
+import { assertGuestFreeConsent } from "@/server/auth/free-consent/free-consent.service";
 import { getUserId } from "@/server/constants";
 import { resolveChatApiKey } from "@/server/billing/token/best-key.service";
 import { Elysia, t } from "elysia";
@@ -44,6 +45,7 @@ export const imageRoute = new Elysia({ prefix: "/image" })
       const userId = (await getUserId(cookie, true)) ?? GUEST_USER_ID;
       if (userId === GUEST_USER_ID) {
         await assertGuestAllowedModel(body.model);
+        await assertGuestFreeConsent(cookie, userId, body.model);
       }
       const apiKey = await resolveChatApiKey(cookie);
       return { success: true, data: await submitGeneration(apiKey, body) };

@@ -1,0 +1,119 @@
+"use client";
+
+import { countryName } from "@/components/elements/model/group-data-policy";
+import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
+import { useGrantFreeConsentMutation } from "@/hooks/auth/free-consent-hook";
+import { useModelGroupsQuery } from "@/hooks/models/pricing-hook";
+import { useApiKey } from "@/hooks/ui/use-api-key";
+import { APP_VALUES } from "@/lib/config/constants";
+import { useLocale, useTranslations } from "next-intl";
+import { useState } from "react";
+import { toast } from "sonner";
+
+// Names every provider behind the model with its seat. A group without a
+// recorded name is still listed, so the list never claims fewer recipients.
+function useProviderList(model: string): string[] | null {
+  const t = useTranslations();
+  const locale = useLocale();
+  const groups = useModelGroupsQuery(model).data;
+  if (!groups) return null;
+  const labels = new Set<string>();
+  for (const group of groups.enable_groups) {
+    const policy = Object.hasOwn(groups.group_providers, group)
+      ? groups.group_providers[group]
+      : undefined;
+    const name = policy?.provider || t("FREE_CONSENT.UNKNOWN_PROVIDER");
+    const seat = policy?.seat_country
+      ? countryName(policy.seat_country, locale)
+      : t("FREE_CONSENT.UNKNOWN_COUNTRY");
+    labels.add(`${name} (${seat})`);
+  }
+  return labels.size > 0 ? [...labels] : null;
+}
+
+export function FreeConsentPanel(props: { model: string }) {
+  const t = useTranslations();
+  const locale = useLocale();
+  const token = useApiKey();
+  const grantMutation = useGrantFreeConsentMutation();
+  const providers = useProviderList(props.model);
+  const [declined, setDeclined] = useState(false);
+
+  if (!providers)
+    return (
+      <div className="flex flex-1 items-center justify-center p-8">
+        <Icon
+          name="loader"
+          className="text-muted-foreground h-5 w-5 animate-spin"
+        />
+      </div>
+    );
+
+  const many = providers.length > 1 ? "true" : "false";
+  const where = token.isLoggedIn
+    ? t("FREE_CONSENT.WHERE_ACCOUNT")
+    : t("FREE_CONSENT.WHERE_GUEST");
+  const paragraphs = [
+    t("FREE_CONSENT.PROVIDED_BY", {
+      many,
+      model: props.model,
+      providers: providers.join("; "),
+    }),
+    t("FREE_CONSENT.MAY_USE", { many }),
+    t("FREE_CONSENT.NO_INFLUENCE", APP_VALUES),
+    t("FREE_CONSENT.THIRD_PARTY"),
+    t("FREE_CONSENT.CONSENT"),
+    t("FREE_CONSENT.REVOKE", { where }),
+    t("FREE_CONSENT.MORE_INFO"),
+  ];
+
+  function confirm() {
+    // Stored verbatim: the consent is only provable with the text it was given to.
+    const text = [t("FREE_CONSENT.TITLE"), ...paragraphs].join("\n\n");
+    grantMutation.mutate(
+      { body: { model: props.model, locale, text } },
+      {
+        onSuccess: () => toast.success(t("FREE_CONSENT.SAVED")),
+        onError: (error) => toast.error(error.message),
+      },
+    );
+  }
+
+  return (
+    <div className="flex flex-1 flex-col items-center justify-center overflow-y-auto p-4 sm:p-8">
+      <div className="bg-card w-full max-w-xl space-y-3 rounded-lg border p-5">
+        <h2 className="text-foreground text-base font-medium">
+          {t("FREE_CONSENT.TITLE")}
+        </h2>
+        {paragraphs.map((paragraph) => (
+          <p key={paragraph} className="text-muted-foreground text-sm">
+            {paragraph}
+          </p>
+        ))}
+        {declined && (
+          <p className="text-foreground text-sm font-medium">
+            {t("FREE_CONSENT.DECLINED")}
+          </p>
+        )}
+        <div className="flex justify-end gap-2 pt-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => setDeclined(true)}
+            disabled={grantMutation.isPending}
+          >
+            {t("FREE_CONSENT.DECLINE")}
+          </Button>
+          <Button
+            size="sm"
+            onClick={confirm}
+            disabled={grantMutation.isPending}
+          >
+            {t("FREE_CONSENT.CONFIRM")}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}

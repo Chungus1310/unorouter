@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Credito trasferito",
     "COPY": "Copia codice",
     "COPIED": "Codice copiato"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Consenso per un modello gratuito",
+    "PROVIDED_BY": "{many, select, true {Questa offerta ({model}) è fornita dai seguenti fornitori: {providers}.} other {Questa offerta ({model}) è fornita da {providers}.}}",
+    "MAY_USE": "{many, select, true {Ciascuno di questi fornitori può utilizzare i tuoi input per scopi propri, sotto la propria responsabilità in materia di protezione dei dati, in particolare per addestrare modelli di IA.} other {Il fornitore può utilizzare i tuoi input per scopi propri, sotto la propria responsabilità in materia di protezione dei dati, in particolare per addestrare modelli di IA.}}",
+    "NO_INFLUENCE": "{appName} non ha alcuna influenza su questi trattamenti e non può recuperare né far cancellare gli input già trasmessi.",
+    "THIRD_PARTY": "È vietato inserire dati personali di terzi e ti sconsigliamo di inserire i tuoi dati personali.",
+    "CONSENT": "Confermando, acconsenti alla trasmissione dei tuoi input, compresi i dati personali in essi contenuti.",
+    "REVOKE": "Puoi revocare questo consenso in qualsiasi momento {where} con effetto per il futuro; gli input già trasmessi non ne sono interessati.",
+    "MORE_INFO": "Ulteriori informazioni, anche sui rischi del trasferimento di dati verso paesi terzi, si trovano nelle condizioni d'uso, nell'informativa sulla privacy e nelle informazioni del fornitore.",
+    "WHERE_ACCOUNT": "nelle impostazioni del tuo account",
+    "WHERE_GUEST": "tramite «Gestisci consensi» nella chat",
+    "CONFIRM": "Conferma",
+    "DECLINE": "Rifiuta",
+    "DECLINED": "Senza il tuo consenso non puoi usare questo modello. Scegli un altro modello qui sopra.",
+    "UNKNOWN_PROVIDER": "Fornitore sconosciuto",
+    "UNKNOWN_COUNTRY": "sede sconosciuta",
+    "BUSINESS": "I modelli gratuiti non sono disponibili per gli account aziendali.",
+    "SETTINGS_TITLE": "Modelli gratuiti",
+    "SETTINGS_DESC": "Modelli gratuiti al cui utilizzo hai acconsentito. Dopo una revoca il modello resta bloccato finché non acconsenti di nuovo.",
+    "SETTINGS_EMPTY": "Non hai ancora acconsentito a nessun modello gratuito.",
+    "REVOKE_BUTTON": "Revoca",
+    "REVOKED": "Consenso revocato",
+    "GRANTED_ON": "Dato il {date}",
+    "MANAGE": "Gestisci consensi",
+    "SAVED": "Consenso salvato"
   }
 }

@@ -6271,5 +6271,31 @@
     "SUCCESS_GRANT": "Guthaben übertragen",
     "COPY": "Code kopieren",
     "COPIED": "Code kopiert"
+  },
+  "FREE_CONSENT": {
+    "TITLE": "Einwilligung für ein kostenloses Modell",
+    "PROVIDED_BY": "{many, select, true {Dieses Angebot ({model}) wird durch folgende Anbieter bereitgestellt: {providers}.} other {Dieses Angebot ({model}) wird durch {providers} bereitgestellt.}}",
+    "MAY_USE": "{many, select, true {Jeder dieser Anbieter kann deine Eingaben in eigener datenschutzrechtlicher Verantwortlichkeit für eigene Zwecke nutzen, insbesondere zum Training von KI-Modellen.} other {Der Anbieter kann deine Eingaben in eigener datenschutzrechtlicher Verantwortlichkeit für eigene Zwecke nutzen, insbesondere zum Training von KI-Modellen.}}",
+    "NO_INFLUENCE": "{appName} hat auf diese Datenverarbeitungen keinen Einfluss und kann übermittelte Eingaben nicht zurückholen oder löschen lassen.",
+    "THIRD_PARTY": "Die Eingabe personenbezogener Daten Dritter ist untersagt, und wir raten davon ab, eigene personenbezogene Daten einzugeben.",
+    "CONSENT": "Mit der Bestätigung willigst du ein, dass deine Eingaben einschließlich der darin enthaltenen personenbezogenen Daten übermittelt werden.",
+    "REVOKE": "Du kannst diese Einwilligung jederzeit {where} mit Wirkung für die Zukunft widerrufen; bereits übermittelte Eingaben bleiben davon unberührt.",
+    "MORE_INFO": "Weitere Informationen, darunter auch zu Risiken der Datenübermittlung in Drittländer, findest du in den Nutzungsbedingungen und der Datenschutzerklärung sowie in den Informationen des Anbieters.",
+    "WHERE_ACCOUNT": "in den Kontoeinstellungen",
+    "WHERE_GUEST": "über „Einwilligungen verwalten“ im Chat",
+    "CONFIRM": "Bestätigen",
+    "DECLINE": "Ablehnen",
+    "DECLINED": "Ohne Einwilligung kannst du dieses Modell nicht nutzen. Wähle oben ein anderes Modell.",
+    "UNKNOWN_PROVIDER": "Anbieter unbekannt",
+    "UNKNOWN_COUNTRY": "Sitzland unbekannt",
+    "BUSINESS": "Kostenlose Modelle sind für Geschäftskonten nicht verfügbar.",
+    "SETTINGS_TITLE": "Kostenlose Modelle",
+    "SETTINGS_DESC": "Kostenlose Modelle, in deren Nutzung du eingewilligt hast. Nach einem Widerruf bleibt das Modell gesperrt, bis du erneut einwilligst.",
+    "SETTINGS_EMPTY": "Du hast noch in kein kostenloses Modell eingewilligt.",
+    "REVOKE_BUTTON": "Widerrufen",
+    "REVOKED": "Einwilligung widerrufen",
+    "GRANTED_ON": "Erteilt am {date}",
+    "MANAGE": "Einwilligungen verwalten",
+    "SAVED": "Einwilligung gespeichert"
   }
 }
