@@ -4122,7 +4122,24 @@
     "BACKUP_NOTICE_LAST": "Dernière sauvegarde {days, plural, =0 {aujourd'hui} one {il y a # jour} other {il y a # jours}}.",
     "BACKUP_LATER": "Plus tard",
     "BACKUP_NOW": "Sauvegarder maintenant",
-    "BACKUP_SETTINGS": "Réglages du rappel"
+    "BACKUP_SETTINGS": "Réglages du rappel",
+    "BEST_DEAL": {
+      "TITLE": "Meilleure offre",
+      "MENU_HINT": "Le moins cher des modèles que vous choisissez",
+      "BADGE": "PROMO",
+      "DESC": "Chaque nouveau chat utilise le modèle le moins cher de votre liste aux prix actuels. Les chats déjà commencés gardent leur modèle, et choisir un modèle à la main désactive cette option.",
+      "ENABLE": "Utiliser la meilleure offre pour les nouveaux chats",
+      "POOL": "Vos modèles",
+      "POOL_EMPTY": "Ajoutez les modèles qui vous conviennent. Seuls ceux-ci seront choisis.",
+      "PRICE": "{input} en entrée, {output} en sortie par 1M jetons",
+      "NEXT": "Prochain chat",
+      "REMOVE": "Retirer"
+    },
+    "PRICE_ALARM": {
+      "TITLE": "{model} est devenu plus cher",
+      "DESC": "Il coûte maintenant environ {times} fois ce qu'il coûtait quand vous avez commencé à l'utiliser. Sa remise a probablement pris fin.",
+      "DESC_FREE": "Il était gratuit quand vous avez commencé à l'utiliser et consomme maintenant du crédit."
+    }
   },
   "ROOM": {
     "HOST_TITLE": "Salon multijoueur",

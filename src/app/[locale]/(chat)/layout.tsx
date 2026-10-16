@@ -1,6 +1,7 @@
 import { AuthRedirectCleanup } from "@/components/provider/app/auth-redirect-cleanup";
 import { PullToRefresh } from "@/components/pages/sidebar/chat/runtime/pull-to-refresh";
 import { BackupReminder } from "@/components/pages/sidebar/chat/runtime/backup-reminder";
+import { PriceWatch } from "@/components/pages/sidebar/chat/runtime/price-watch";
 import { SidebarLayout } from "@/components/layout/sidebar/sidebar-layout";
 import { RpDialogs } from "@/components/pages/sidebar/chat/rp/rp-dialogs";
 import { ChatRuntimeProvider } from "@/components/pages/sidebar/chat/runtime/chat-runtime-provider";
@@ -42,6 +43,7 @@ export default async function ChatLayout(props: Props) {
         <ChatRuntimeProvider>
           <ViewportDebugLogger />
           <BackupReminder />
+          <PriceWatch />
           <PullToRefresh />
           <SidebarLayout
             before={<AuthRedirectCleanup />}

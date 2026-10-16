@@ -4122,7 +4122,24 @@
     "BACKUP_NOTICE_LAST": "上次備份：{days, plural, =0 {今天} other {# 天前}}。",
     "BACKUP_LATER": "稍後",
     "BACKUP_NOW": "立即備份",
-    "BACKUP_SETTINGS": "提醒設定"
+    "BACKUP_SETTINGS": "提醒設定",
+    "BEST_DEAL": {
+      "TITLE": "最優價",
+      "MENU_HINT": "你所選模型中最便宜的",
+      "BADGE": "優惠",
+      "DESC": "每個新聊天都會依目前價格使用你清單中最便宜的模型。已開始的聊天保留原模型，手動選擇模型會關閉此功能。",
+      "ENABLE": "新聊天使用最優價",
+      "POOL": "你的模型",
+      "POOL_EMPTY": "新增你滿意的模型。只會從這些模型中選擇。",
+      "PRICE": "每百萬 tokens 輸入 {input}，輸出 {output}",
+      "NEXT": "下一個聊天",
+      "REMOVE": "移除"
+    },
+    "PRICE_ALARM": {
+      "TITLE": "{model} 漲價了",
+      "DESC": "現在的價格約為你開始使用時的 {times} 倍。其折扣可能已結束。",
+      "DESC_FREE": "你開始使用時它是免費的，現在會消耗額度。"
+    }
   },
   "ROOM": {
     "HOST_TITLE": "多人房間",

@@ -4122,7 +4122,24 @@
     "BACKUP_NOTICE_LAST": "Son yedek {days, plural, =0 {bugün} other {# gün önce}}.",
     "BACKUP_LATER": "Daha sonra",
     "BACKUP_NOW": "Şimdi yedekle",
-    "BACKUP_SETTINGS": "Hatırlatıcı ayarları"
+    "BACKUP_SETTINGS": "Hatırlatıcı ayarları",
+    "BEST_DEAL": {
+      "TITLE": "En iyi fırsat",
+      "MENU_HINT": "Seçtiğin modellerin en ucuzu",
+      "BADGE": "FIRSAT",
+      "DESC": "Her yeni sohbet, güncel fiyatlarla listendeki en ucuz modeli kullanır. Başlattığın sohbetler kendi modelini korur, elle model seçmek bu özelliği kapatır.",
+      "ENABLE": "Yeni sohbetlerde en iyi fırsatı kullan",
+      "POOL": "Modellerin",
+      "POOL_EMPTY": "Memnun olduğun modelleri ekle. Yalnızca bunlar seçilir.",
+      "PRICE": "1M token başına {input} girdi, {output} çıktı",
+      "NEXT": "Sonraki sohbet",
+      "REMOVE": "Kaldır"
+    },
+    "PRICE_ALARM": {
+      "TITLE": "{model} pahalandı",
+      "DESC": "Kullanmaya başladığın zamana göre şimdi yaklaşık {times} kat daha pahalı. İndirimi büyük ihtimalle sona erdi.",
+      "DESC_FREE": "Kullanmaya başladığında ücretsizdi, şimdi kredi harcıyor."
+    }
   },
   "ROOM": {
     "HOST_TITLE": "Çok oyunculu oda",

@@ -7,7 +7,7 @@ import { useHydrated } from "@/hooks/ui/use-hydrated";
 import { useRouter } from "@/i18n/navigation";
 import { AUTH_REDIRECT_COOKIE } from "@/lib/config/constants";
 import { cn } from "@/lib/utils";
-import { chatModelAtom } from "@/store/chat-store";
+import { chooseChatModelAtom } from "@/store/chat-store";
 import { useSetAtom } from "jotai";
 import { setCookie } from "cookies-next";
 
@@ -24,7 +24,7 @@ type Props = {
 export function TryInChatButton(props: Props) {
   const router = useRouter();
   const authQuery = useAuthQuery();
-  const setChatModel = useSetAtom(chatModelAtom);
+  const setChatModel = useSetAtom(chooseChatModelAtom);
   const hydrated = useHydrated();
   const isLoggedIn = hydrated && !!authQuery.data;
 

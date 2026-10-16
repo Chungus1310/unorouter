@@ -4122,7 +4122,24 @@
     "BACKUP_NOTICE_LAST": "Último backup {days, plural, =0 {hoje} one {há # dia} other {há # dias}}.",
     "BACKUP_LATER": "Depois",
     "BACKUP_NOW": "Fazer backup agora",
-    "BACKUP_SETTINGS": "Configurações do lembrete"
+    "BACKUP_SETTINGS": "Configurações do lembrete",
+    "BEST_DEAL": {
+      "TITLE": "Melhor oferta",
+      "MENU_HINT": "O mais barato dos modelos que você escolher",
+      "BADGE": "OFERTA",
+      "DESC": "Cada nova conversa usa o modelo mais barato da sua lista pelos preços atuais. Conversas já iniciadas mantêm o modelo, e escolher um modelo manualmente desativa esta opção.",
+      "ENABLE": "Usar a melhor oferta em novas conversas",
+      "POOL": "Seus modelos",
+      "POOL_EMPTY": "Adicione os modelos que te agradam. Só eles serão escolhidos.",
+      "PRICE": "{input} de entrada, {output} de saída por 1M tokens",
+      "NEXT": "Próxima conversa",
+      "REMOVE": "Remover"
+    },
+    "PRICE_ALARM": {
+      "TITLE": "{model} ficou mais caro",
+      "DESC": "Agora custa cerca de {times} vezes o que custava quando você começou a usá-lo. O desconto provavelmente acabou.",
+      "DESC_FREE": "Era gratuito quando você começou a usá-lo e agora consome créditos."
+    }
   },
   "ROOM": {
     "HOST_TITLE": "Sala multijogador",

@@ -10,9 +10,15 @@ import {
 } from "@/lib/db/client/data/chat/chat";
 import { queryKeys } from "@/lib/react-query/keys";
 import { dayjs } from "@/lib/utils/format/date";
-import { chatModelAtom, chatStore, convIdAtom } from "@/store/chat-store";
+import { pickBestDeal } from "@/lib/ai/chat/best-deal";
+import {
+  bestDealAtom,
+  chatModelAtom,
+  chatStore,
+  convIdAtom,
+} from "@/store/chat-store";
 import { useQueryClient } from "@tanstack/react-query";
-import { useSetAtom } from "jotai";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useEffect } from "react";
 
 // Single owner of chatModelAtom. Gated on hydration: writing before it clobbers the
@@ -30,6 +36,11 @@ export function useResolvedChatModel(remoteId: string | null | undefined) {
 
   const pricingReady = pricingQuery.isSuccess;
   const firstFreeModel = pricingQuery.data?.first_free_model ?? null;
+  const bestDeal = useAtomValue(bestDealAtom);
+  const dealPick = bestDeal.enabled
+    ? (pickBestDeal(pricingQuery.data?.models, bestDeal.pool)?.model_name ??
+      null)
+    : null;
 
   useEffect(() => {
     if (!hydrated) return;
@@ -37,6 +48,12 @@ export function useResolvedChatModel(remoteId: string | null | undefined) {
 
     if (remoteId && serverModel) {
       if (current !== serverModel) setChatModel(serverModel);
+      return;
+    }
+
+    // Only the new chat screen: an open chat keeps the model it started with.
+    if (!remoteId && dealPick) {
+      if (current !== dealPick) setChatModel(dealPick);
       return;
     }
 
@@ -51,6 +68,7 @@ export function useResolvedChatModel(remoteId: string | null | undefined) {
     pricingReady,
     firstFreeModel,
     authSettled,
+    dealPick,
     setChatModel,
   ]);
 

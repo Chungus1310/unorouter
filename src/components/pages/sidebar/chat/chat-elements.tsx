@@ -15,9 +15,13 @@ import { useApiKey } from "@/hooks/ui/use-api-key";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import { NONE_VALUE } from "@/lib/config/constants";
 import { formatPrice } from "@/lib/utils/format/number";
+import { BestDealDialog } from "@/components/pages/sidebar/chat/best-deal-dialog";
 import {
+  bestDealAtom,
+  bestDealDialogOpenAtom,
   chatGroupAtom,
   chatModelAtom,
+  chooseChatModelAtom,
   conversationSettingsOpenAtom,
   showStatsCostAtom,
   showStatsMessagesAtom,
@@ -31,7 +35,10 @@ import { ChatActionsMenu } from "./chat-actions-menu";
 
 export function ChatControls() {
   const t = useTranslations();
-  const [chatModel, setNewChatModel] = useAtom(chatModelAtom);
+  const chatModel = useAtomValue(chatModelAtom);
+  const chooseChatModel = useSetAtom(chooseChatModelAtom);
+  const bestDeal = useAtomValue(bestDealAtom);
+  const [dealOpen, setDealOpen] = useAtom(bestDealDialogOpenAtom);
   const [chatGroup, setChatGroup] = useAtom(chatGroupAtom);
   const aui = useAui();
   const router = useRouter();
@@ -42,20 +49,23 @@ export function ChatControls() {
     if (pathname !== "/chat") router.push("/chat");
   };
 
-  const handleModelChange = (nextModel: string) => {
-    setNewChatModel(nextModel);
-  };
-
   return (
     <div className="flex min-w-0 flex-1 items-center gap-1.5 sm:gap-2">
       <div className="min-w-0 flex-1 sm:w-48 sm:flex-none lg:w-52">
         <ModelSelector
           value={chatModel}
-          onChange={handleModelChange}
+          onChange={chooseChatModel}
           group={chatGroup}
           onGroupChange={setChatGroup}
+          bestDeal={{
+            active: bestDeal.enabled,
+            onOpen: () => setDealOpen(true),
+          }}
         />
       </div>
+      {dealOpen && (
+        <BestDealDialog open={dealOpen} onOpenChange={setDealOpen} />
+      )}
       <Button
         size="sm"
         className="h-8 shrink-0 lg:px-3"

@@ -4122,7 +4122,24 @@
     "BACKUP_NOTICE_LAST": "Lần sao lưu gần nhất {days, plural, =0 {hôm nay} other {# ngày trước}}.",
     "BACKUP_LATER": "Để sau",
     "BACKUP_NOW": "Sao lưu ngay",
-    "BACKUP_SETTINGS": "Cài đặt nhắc nhở"
+    "BACKUP_SETTINGS": "Cài đặt nhắc nhở",
+    "BEST_DEAL": {
+      "TITLE": "Giá tốt nhất",
+      "MENU_HINT": "Mô hình rẻ nhất trong số bạn chọn",
+      "BADGE": "RẺ",
+      "DESC": "Mỗi cuộc trò chuyện mới dùng mô hình rẻ nhất trong danh sách của bạn theo giá hiện tại. Các cuộc trò chuyện đã bắt đầu giữ nguyên mô hình, và tự chọn mô hình sẽ tắt chế độ này.",
+      "ENABLE": "Dùng giá tốt nhất cho cuộc trò chuyện mới",
+      "POOL": "Mô hình của bạn",
+      "POOL_EMPTY": "Thêm các mô hình bạn hài lòng. Chỉ những mô hình này mới được chọn.",
+      "PRICE": "{input} đầu vào, {output} đầu ra mỗi 1 triệu token",
+      "NEXT": "Trò chuyện tiếp theo",
+      "REMOVE": "Xóa"
+    },
+    "PRICE_ALARM": {
+      "TITLE": "{model} đã tăng giá",
+      "DESC": "Giờ nó đắt gấp khoảng {times} lần so với lúc bạn bắt đầu dùng. Có lẽ ưu đãi giảm giá đã kết thúc.",
+      "DESC_FREE": "Nó miễn phí khi bạn bắt đầu dùng và giờ đã tốn tín dụng."
+    }
   },
   "ROOM": {
     "HOST_TITLE": "Phòng nhiều người",

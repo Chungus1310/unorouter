@@ -4122,7 +4122,24 @@
     "BACKUP_NOTICE_LAST": "Ostatnia kopia {days, plural, =0 {dzisiaj} one {# dzień temu} few {# dni temu} many {# dni temu} other {# dnia temu}}.",
     "BACKUP_LATER": "Później",
     "BACKUP_NOW": "Utwórz kopię teraz",
-    "BACKUP_SETTINGS": "Ustawienia przypomnień"
+    "BACKUP_SETTINGS": "Ustawienia przypomnień",
+    "BEST_DEAL": {
+      "TITLE": "Najlepsza oferta",
+      "MENU_HINT": "Najtańszy z wybranych przez Ciebie modeli",
+      "BADGE": "OKAZJA",
+      "DESC": "Każdy nowy czat używa najtańszego modelu z Twojej listy według aktualnych cen. Rozpoczęte czaty zachowują swój model, a ręczny wybór modelu wyłącza tę opcję.",
+      "ENABLE": "Używaj najlepszej oferty w nowych czatach",
+      "POOL": "Twoje modele",
+      "POOL_EMPTY": "Dodaj modele, z których jesteś zadowolony. Wybierane będą tylko one.",
+      "PRICE": "{input} wejście, {output} wyjście za 1M tokenów",
+      "NEXT": "Następny czat",
+      "REMOVE": "Usuń"
+    },
+    "PRICE_ALARM": {
+      "TITLE": "{model} zdrożał",
+      "DESC": "Kosztuje teraz około {times} razy więcej niż wtedy, gdy zacząłeś go używać. Prawdopodobnie skończyła się zniżka.",
+      "DESC_FREE": "Był darmowy, gdy zacząłeś go używać, a teraz zużywa kredyty."
+    }
   },
   "ROOM": {
     "HOST_TITLE": "Pokój wieloosobowy",

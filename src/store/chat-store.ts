@@ -38,6 +38,8 @@ const EMPTY_LOADOUT: ChatLoadout = {
   lorebookIds: [],
 };
 
+export type BestDeal = { enabled: boolean; pool: string[] };
+
 export type ChatState = {
   model: string | null;
   groupByModel: Record<string, string>;
@@ -50,6 +52,8 @@ export type ChatState = {
   showStatsMessages: boolean;
   showThinkingTokens: boolean;
   pullToRefresh: boolean;
+  bestDeal: BestDeal;
+  priceSeen: Record<string, number>;
 };
 
 export const INITIAL_CHAT_STATE: ChatState = {
@@ -64,11 +68,15 @@ export const INITIAL_CHAT_STATE: ChatState = {
   showStatsMessages: false,
   showThinkingTokens: true,
   pullToRefresh: false,
+  bestDeal: { enabled: false, pool: [] },
+  priceSeen: {},
 };
 
 export const chatStoreStorage = splitCookieStorage<ChatState>([
   "defaults",
   "samplerMemoryByModel",
+  "bestDeal",
+  "priceSeen",
 ]);
 
 // getOnInit is a load-bearing PAIR with ChatStoreProvider; neither may be removed alone.
@@ -92,6 +100,16 @@ export const showStatsCostAtom = storeField("showStatsCost");
 export const showStatsMessagesAtom = storeField("showStatsMessages");
 export const pullToRefreshAtom = storeField("pullToRefresh");
 export const showThinkingTokensAtom = storeField("showThinkingTokens");
+export const bestDealAtom = storeField("bestDeal");
+export const priceSeenAtom = storeField("priceSeen");
+export const bestDealDialogOpenAtom = atom(false);
+
+// A model the user picks by hand ends best deal mode; only its own pick keeps it.
+export const chooseChatModelAtom = atom(null, (get, set, model: string) => {
+  set(chatModelAtom, model);
+  const bestDeal = get(bestDealAtom);
+  if (bestDeal.enabled) set(bestDealAtom, { ...bestDeal, enabled: false });
+});
 
 export const groupByModelAtom = atom(
   (get) => get(chatStoreAtom).groupByModel ?? {},

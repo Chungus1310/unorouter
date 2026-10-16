@@ -54,6 +54,7 @@ type ModelSelectorProps = {
   onChange: (model: string) => void;
   group: string | null;
   onGroupChange: (group: string | null) => void;
+  bestDeal?: { active: boolean; onOpen: () => void };
 };
 
 type CustomProvider = NonNullable<
@@ -426,6 +427,11 @@ export function ModelSelector(props: ModelSelectorProps) {
             />
           )}
           <span className="truncate font-mono">{triggerLabel}</span>
+          {props.bestDeal?.active && (
+            <span className="shrink-0 rounded bg-amber-500/15 px-1 py-0.5 text-[10px] leading-none font-medium text-amber-700 dark:text-amber-300">
+              {t("CHAT.BEST_DEAL.BADGE")}
+            </span>
+          )}
           {selected?.is_free && (
             <FreeBadge label={t("CHAT.MODEL.FREE_BADGE")} />
           )}
@@ -453,6 +459,32 @@ export function ModelSelector(props: ModelSelectorProps) {
           )}
           <CommandList>
             <CommandEmpty>{t("CHAT.MODEL.NO_RESULTS")}</CommandEmpty>
+            {props.bestDeal && typeFilter === null && (
+              <CommandGroup>
+                <CommandItem
+                  value="best-deal"
+                  keywords={["cheapest", "discount", "deal"]}
+                  onSelect={() => {
+                    setOpen(false);
+                    props.bestDeal?.onOpen();
+                  }}
+                  className="text-xs"
+                >
+                  <Icon name="trending-down" className="size-3.5" />
+                  <span className="min-w-0 flex-1">
+                    <span className="block font-medium">
+                      {t("CHAT.BEST_DEAL.TITLE")}
+                    </span>
+                    <span className="text-muted-foreground block">
+                      {t("CHAT.BEST_DEAL.MENU_HINT")}
+                    </span>
+                  </span>
+                  {props.bestDeal.active && (
+                    <Icon name="check" className="size-3.5" />
+                  )}
+                </CommandItem>
+              </CommandGroup>
+            )}
             {customProviders.length > 0 && typeFilter === null && (
               <CustomProviderItems
                 providers={customProviders}

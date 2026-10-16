@@ -22,12 +22,14 @@ import { recArr, uid } from "@/lib/utils/base";
 import type { ChatUIMessage } from "@/lib/types";
 import type { PricingCatalogData } from "@/openapi";
 import { queryKeys } from "@/lib/react-query/keys";
+import { pickBestDeal } from "@/lib/ai/chat/best-deal";
 import {
   CHAT_STORE_KEY,
   chatStoreStorage,
   chatDefaultsAtom,
   chatGroupAtom,
   chatLoadoutAtom,
+  bestDealAtom,
   chatModelAtom,
   chatStore,
   setLiveMessages,
@@ -61,13 +63,16 @@ async function seed(args: SeedArgs): Promise<void> {
   const id = args.convId;
   const queryClient = args.queryClient;
 
+  const pricing = queryClient.getQueryData<PricingCatalogData>(
+    queryKeys.pricingCatalog(),
+  );
+  const bestDeal = chatStore.get(bestDealAtom);
+  const dealPick = bestDeal.enabled
+    ? pickBestDeal(pricing?.models, bestDeal.pool)
+    : null;
+  if (dealPick) chatStore.set(chatModelAtom, dealPick.model_name);
   let model = chatStore.get(chatModelAtom);
-  if (!model) {
-    const pricing = queryClient.getQueryData<PricingCatalogData>(
-      queryKeys.pricingCatalog(),
-    );
-    model = pricing?.first_free_model ?? null;
-  }
+  if (!model) model = pricing?.first_free_model ?? null;
   if (!model) throw new Error(args.noModelsError);
 
   const now = dayjs().toDate();

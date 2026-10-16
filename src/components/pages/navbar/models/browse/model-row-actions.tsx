@@ -14,13 +14,13 @@ import { Link } from "@/i18n/navigation";
 import type { PricingCatalogModel } from "@/openapi";
 import { copyToClipboard, modelHref } from "@/lib/utils/base";
 import { cn } from "@/lib/utils";
-import { chatModelAtom } from "@/store/chat-store";
+import { chooseChatModelAtom } from "@/store/chat-store";
 import { useSetAtom } from "jotai";
 import { useTranslations } from "next-intl";
 
 export function ModelRowActions(props: { model: PricingCatalogModel }) {
   const t = useTranslations();
-  const setChatModel = useSetAtom(chatModelAtom);
+  const setChatModel = useSetAtom(chooseChatModelAtom);
   const watch = useModelWatch(props.model.model_name);
   const model = props.model;
 

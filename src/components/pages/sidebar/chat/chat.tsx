@@ -8,7 +8,7 @@ import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
 import { useChatGate } from "@/hooks/ui/use-chat-gate";
 import { APP_VALUES } from "@/lib/config/constants";
 import { logChatDebug } from "@/lib/utils/chat-debug-log";
-import { chatModelAtom } from "@/store/chat-store";
+import { chooseChatModelAtom } from "@/store/chat-store";
 import { useAuiState } from "@assistant-ui/react";
 import { useSetAtom } from "jotai";
 import { useLocale, useTranslations } from "next-intl";
@@ -26,7 +26,7 @@ type ChatProps = {
 // /chat?model=<id> preselects a model, so a shared link (or the gateway's
 // consent error) lands on the right one. Unknown ids are ignored.
 function useModelFromUrl() {
-  const setChatModel = useSetAtom(chatModelAtom);
+  const setChatModel = useSetAtom(chooseChatModelAtom);
   const catalog = usePricingCatalogQuery().data?.models;
   useEffect(() => {
     if (!catalog) return;

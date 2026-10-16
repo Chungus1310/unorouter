@@ -4122,7 +4122,24 @@
     "BACKUP_NOTICE_LAST": "Cadangan terakhir {days, plural, =0 {hari ini} other {# hari lalu}}.",
     "BACKUP_LATER": "Nanti",
     "BACKUP_NOW": "Cadangkan sekarang",
-    "BACKUP_SETTINGS": "Pengaturan pengingat"
+    "BACKUP_SETTINGS": "Pengaturan pengingat",
+    "BEST_DEAL": {
+      "TITLE": "Penawaran terbaik",
+      "MENU_HINT": "Yang termurah dari model pilihanmu",
+      "BADGE": "HEMAT",
+      "DESC": "Setiap obrolan baru memakai model termurah di daftarmu sesuai harga saat ini. Obrolan yang sudah dimulai tetap memakai modelnya, dan memilih model secara manual akan mematikan fitur ini.",
+      "ENABLE": "Pakai penawaran terbaik untuk obrolan baru",
+      "POOL": "Model kamu",
+      "POOL_EMPTY": "Tambahkan model yang kamu sukai. Hanya model ini yang akan dipilih.",
+      "PRICE": "{input} input, {output} output per 1M token",
+      "NEXT": "Obrolan berikutnya",
+      "REMOVE": "Hapus"
+    },
+    "PRICE_ALARM": {
+      "TITLE": "{model} jadi lebih mahal",
+      "DESC": "Sekarang harganya sekitar {times} kali lipat dibanding saat kamu mulai memakainya. Diskonnya mungkin sudah berakhir.",
+      "DESC_FREE": "Model ini gratis saat kamu mulai memakainya dan sekarang memakai kredit."
+    }
   },
   "ROOM": {
     "HOST_TITLE": "Ruang multipemain",

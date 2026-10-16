@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/sheet";
 import { Link } from "@/i18n/navigation";
 import { modelHref } from "@/lib/utils/base";
-import { chatModelAtom } from "@/store/chat-store";
+import { chooseChatModelAtom } from "@/store/chat-store";
 import { useSetAtom } from "jotai";
 import {
   gridPriceParts,
@@ -73,7 +73,7 @@ function WatchButton(props: { modelName: string }) {
 export function ModelDetailSheet(props: ModelDetailSheetProps) {
   const t = useTranslations();
   const locale = useLocale();
-  const setChatModel = useSetAtom(chatModelAtom);
+  const setChatModel = useSetAtom(chooseChatModelAtom);
   const detailQuery = useModelDetailQuery(props.model?.model_name ?? null);
   const detail = detailQuery.data;
   const model = detail && {

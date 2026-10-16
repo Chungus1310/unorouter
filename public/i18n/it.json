@@ -4122,7 +4122,24 @@
     "BACKUP_NOTICE_LAST": "Ultimo backup {days, plural, =0 {oggi} one {# giorno fa} other {# giorni fa}}.",
     "BACKUP_LATER": "Più tardi",
     "BACKUP_NOW": "Fai il backup ora",
-    "BACKUP_SETTINGS": "Impostazioni promemoria"
+    "BACKUP_SETTINGS": "Impostazioni promemoria",
+    "BEST_DEAL": {
+      "TITLE": "Miglior offerta",
+      "MENU_HINT": "Il più economico tra i modelli che scegli",
+      "BADGE": "OFFERTA",
+      "DESC": "Ogni nuova chat usa il modello più economico della tua lista ai prezzi attuali. Le chat già iniziate mantengono il loro modello, e scegliere un modello a mano disattiva questa opzione.",
+      "ENABLE": "Usa la miglior offerta per le nuove chat",
+      "POOL": "I tuoi modelli",
+      "POOL_EMPTY": "Aggiungi i modelli che ti soddisfano. Verranno scelti solo questi.",
+      "PRICE": "{input} in input, {output} in output per 1M token",
+      "NEXT": "Prossima chat",
+      "REMOVE": "Rimuovi"
+    },
+    "PRICE_ALARM": {
+      "TITLE": "{model} è diventato più caro",
+      "DESC": "Ora costa circa {times} volte quanto costava quando hai iniziato a usarlo. Probabilmente lo sconto è terminato.",
+      "DESC_FREE": "Era gratuito quando hai iniziato a usarlo e ora consuma credito."
+    }
   },
   "ROOM": {
     "HOST_TITLE": "Stanza multigiocatore",

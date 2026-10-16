@@ -4122,7 +4122,24 @@
     "BACKUP_NOTICE_LAST": "Letztes Backup {days, plural, =0 {heute} one {vor # Tag} other {vor # Tagen}}.",
     "BACKUP_LATER": "Später",
     "BACKUP_NOW": "Jetzt sichern",
-    "BACKUP_SETTINGS": "Erinnerungseinstellungen"
+    "BACKUP_SETTINGS": "Erinnerungseinstellungen",
+    "BEST_DEAL": {
+      "TITLE": "Bester Deal",
+      "MENU_HINT": "Das günstigste deiner ausgewählten Modelle",
+      "BADGE": "DEAL",
+      "DESC": "Jeder neue Chat nutzt das zu aktuellen Preisen günstigste Modell auf deiner Liste. Bereits begonnene Chats behalten ihr Modell, und wenn du ein Modell manuell wählst, wird das ausgeschaltet.",
+      "ENABLE": "Bester Deal für neue Chats",
+      "POOL": "Deine Modelle",
+      "POOL_EMPTY": "Füge die Modelle hinzu, mit denen du zufrieden bist. Nur diese werden je gewählt.",
+      "PRICE": "{input} Eingabe, {output} Ausgabe pro 1M Tokens",
+      "NEXT": "Nächster Chat",
+      "REMOVE": "Entfernen"
+    },
+    "PRICE_ALARM": {
+      "TITLE": "{model} ist teurer geworden",
+      "DESC": "Es kostet jetzt etwa das {times}-Fache von dem, was es kostete, als du es zu nutzen begonnen hast. Wahrscheinlich ist der Rabatt ausgelaufen.",
+      "DESC_FREE": "Es war kostenlos, als du es zu nutzen begonnen hast, und kostet jetzt Guthaben."
+    }
   },
   "ROOM": {
     "HOST_TITLE": "Mehrspieler-Raum",
