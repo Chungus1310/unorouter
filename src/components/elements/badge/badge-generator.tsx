@@ -161,18 +161,24 @@ export function BadgeGenerator(props: BadgeGeneratorProps) {
           <span className="text-muted-foreground text-xs">
             {t("AFFILIATE.BADGE_GENERATOR.LOCALE")}
           </span>
-          <div data-slot="button-group" className="flex">
-            {LOCALES.map((l) => (
-              <Button
-                key={l}
-                size="xs"
-                variant={l === locale ? "secondary" : "outline"}
-                onClick={() => setLocale(l)}
-              >
-                {l.toUpperCase()}
-              </Button>
-            ))}
-          </div>
+          <Select
+            value={locale}
+            onValueChange={(v) => {
+              const next = LOCALES.find((l) => l === v);
+              if (next) setLocale(next);
+            }}
+          >
+            <SelectTrigger size="sm" className="w-24">
+              <SelectValue>{locale.toUpperCase()}</SelectValue>
+            </SelectTrigger>
+            <SelectContent>
+              {LOCALES.map((l) => (
+                <SelectItem key={l} value={l}>
+                  {l.toUpperCase()}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
         <div className="flex items-center gap-2">

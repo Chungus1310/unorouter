@@ -22,7 +22,7 @@ export function StatItem(props: StatItemProps) {
         {props.icon}
       </div>
       <div className="min-w-0 flex-1">
-        <span className="text-muted-foreground block font-mono text-[10px] tracking-widest uppercase">
+        <span className="text-muted-foreground block font-mono text-[10px] tracking-widest break-words uppercase">
           {props.label}
         </span>
         {props.isLoading ? (
@@ -34,8 +34,8 @@ export function StatItem(props: StatItemProps) {
               : (props.value ?? "-")}
           </span>
         )}
+        {!props.isLoading && props.trend}
       </div>
-      {!props.isLoading && props.trend}
     </div>
   );
 }

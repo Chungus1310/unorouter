@@ -203,7 +203,8 @@ function CharacterGallery(props: {
       b.updatedAt.getTime() - a.updatedAt.getTime(),
   );
   return (
-    <div className="-mx-3 flex snap-x gap-2 overflow-x-auto px-3 pb-1">
+    // inline-size containment keeps the tiles from widening the whole thread.
+    <div className="-mx-3 flex snap-x gap-2 overflow-x-auto px-3 pb-1 [contain:inline-size]">
       {sorted.map((c) => {
         const selected = props.value.includes(c.id);
         return (

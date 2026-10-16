@@ -103,7 +103,7 @@ export function Affiliate() {
             accentColor="var(--chart-3)"
           />
         </div>
-        <div className="border-border bg-background flex flex-col p-5">
+        <div className="border-border bg-background col-span-2 flex flex-col p-5 md:col-span-1">
           <StatItem
             label={t("AFFILIATE.INVITE_COUNT")}
             value={inviteCount}

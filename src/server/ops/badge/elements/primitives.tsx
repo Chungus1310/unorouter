@@ -33,6 +33,7 @@ export function Card(props: {
       style={{
         width: "100%",
         height: "100%",
+        boxSizing: "border-box",
         borderRadius: props.radius ?? 12,
         backgroundColor: props.c.cardBg,
         border: `1px solid ${props.c.border}`,
