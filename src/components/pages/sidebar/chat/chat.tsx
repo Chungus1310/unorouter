@@ -4,10 +4,13 @@ import { SectionBoundary } from "@/components/elements/feedback/section-boundary
 import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
 import { Thread } from "@/components/ui/assistant-ui/thread";
 import { useConversationQuery } from "@/hooks/ai/chat-hook";
+import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
 import { useChatGate } from "@/hooks/ui/use-chat-gate";
 import { APP_VALUES } from "@/lib/config/constants";
 import { logChatDebug } from "@/lib/utils/chat-debug-log";
+import { chatModelAtom } from "@/store/chat-store";
 import { useAuiState } from "@assistant-ui/react";
+import { useSetAtom } from "jotai";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
 import {
@@ -20,10 +23,28 @@ type ChatProps = {
   convId?: string;
 };
 
+// /chat?model=<id> preselects a model, so a shared link (or the gateway's
+// consent error) lands on the right one. Unknown ids are ignored.
+function useModelFromUrl() {
+  const setChatModel = useSetAtom(chatModelAtom);
+  const catalog = usePricingCatalogQuery().data?.models;
+  useEffect(() => {
+    if (!catalog) return;
+    const url = new URL(window.location.href);
+    const requested = url.searchParams.get("model");
+    if (!requested) return;
+    if (catalog.some((m) => m.model_name === requested))
+      setChatModel(requested);
+    url.searchParams.delete("model");
+    window.history.replaceState(null, "", url.pathname + url.search);
+  }, [catalog, setChatModel]);
+}
+
 export function Chat(props: ChatProps) {
   const t = useTranslations();
   const locale = useLocale();
   const gate = useChatGate();
+  useModelFromUrl();
   const threadId = useAuiState((s) => s.threadListItem?.remoteId);
   const effectiveId = props.convId ?? threadId;
   const convQuery = useConversationQuery(effectiveId);
