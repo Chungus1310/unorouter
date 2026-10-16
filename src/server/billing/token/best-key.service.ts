@@ -81,6 +81,7 @@ async function createAutoToken(
       allow_ips: null,
       group_mapping: "",
       auto_groups: null,
+      allow_user_quota_query: null,
     },
     { headers },
   );

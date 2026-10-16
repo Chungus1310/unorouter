@@ -76,7 +76,15 @@ export function useUpdateTokenMutation() {
             ? {
                 ...old,
                 items: (old.items ?? []).map((item) =>
-                  item?.id === args.body.id ? { ...item, ...args.body } : item,
+                  item?.id === args.body.id
+                    ? {
+                        ...item,
+                        ...args.body,
+                        allow_user_quota_query:
+                          args.body.allow_user_quota_query ??
+                          item.allow_user_quota_query,
+                      }
+                    : item,
                 ),
               }
             : old,

@@ -301,28 +301,25 @@ export interface BillingPreferenceRequest {
   billing_preference: string;
 }
 
-export interface ClaudeCacheCreationUsage {
-  ephemeral_1h_input_tokens?: number;
-  ephemeral_5m_input_tokens?: number;
-}
-
-export interface ClaudeServerToolUse {
-  code_execution_requests?: number;
-  tool_search_requests?: number;
-  web_fetch_requests?: number;
-  web_search_requests?: number;
+export interface GeminiPromptTokensDetails {
+  modality: string;
+  tokenCount: number;
 }
 
 export interface BillingUsage {
   billing_usage?: BillingUsage;
-  cache_creation?: ClaudeCacheCreationUsage;
-  cache_creation_input_tokens: number;
-  cache_read_input_tokens: number;
-  claude_cache_creation_1_h_tokens: number;
-  claude_cache_creation_5_m_tokens: number;
-  input_tokens: number;
-  output_tokens: number;
-  server_tool_use?: ClaudeServerToolUse;
+  cachedContentTokenCount: number;
+  candidatesTokenCount: number;
+  /** @nullable */
+  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
+  promptTokenCount: number;
+  /** @nullable */
+  promptTokensDetails: GeminiPromptTokensDetails[] | null;
+  thoughtsTokenCount: number;
+  toolUsePromptTokenCount: number;
+  /** @nullable */
+  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
+  totalTokenCount: number;
 }
 
 export interface BucketPoint {
@@ -522,6 +519,11 @@ export interface CheckinStatusData {
   stats: CheckinStats;
 }
 
+export interface ClaudeCacheCreationUsage {
+  ephemeral_1h_input_tokens?: number;
+  ephemeral_5m_input_tokens?: number;
+}
+
 /**
  * ClaudeMessageResponse schema
  */
@@ -536,6 +538,13 @@ export interface ClaudeMessageResponse {
   stop_sequence: string | null;
   type: string;
   usage: unknown;
+}
+
+export interface ClaudeServerToolUse {
+  code_execution_requests?: number;
+  tool_search_requests?: number;
+  web_fetch_requests?: number;
+  web_search_requests?: number;
 }
 
 export interface ClaudeUsage {
@@ -760,6 +769,8 @@ export interface CreateDeploymentResponse {
 export interface CreateTokenRequest {
   /** @nullable */
   allow_ips: string | null;
+  /** @nullable */
+  allow_user_quota_query: boolean | null;
   /** @nullable */
   auto_groups: string[] | null;
   /** @nullable */
@@ -1072,40 +1083,29 @@ export interface EmbeddingResponseItem {
   object: string;
 }
 
-export interface OutputTokenDetails {
-  audio_tokens: number;
-  image_tokens: number;
-  reasoning_tokens: number;
-  text_tokens: number;
-}
-
-export interface InputTokenDetails {
-  audio_tokens: number;
-  cache_write_tokens?: number;
-  cached_creation_tokens?: number;
-  cached_tokens: number;
-  cached_tokens_details?: CachedTokenDetails;
-  image_tokens: number;
-  text_tokens: number;
+export interface GeminiUsageMetadata {
+  billing_usage?: BillingUsage;
+  cachedContentTokenCount: number;
+  candidatesTokenCount: number;
+  /** @nullable */
+  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
+  promptTokenCount: number;
+  /** @nullable */
+  promptTokensDetails: GeminiPromptTokensDetails[] | null;
+  thoughtsTokenCount: number;
+  toolUsePromptTokenCount: number;
+  /** @nullable */
+  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
+  totalTokenCount: number;
 }
 
 export interface Usage {
-  billing_usage?: BillingUsage;
-  claude_cache_creation_1_h_tokens: number;
-  claude_cache_creation_5_m_tokens: number;
-  completion_tokens: number;
-  completion_tokens_details: OutputTokenDetails;
-  cost?: unknown;
-  input_tokens: number;
-  input_tokens_details: InputTokenDetails;
-  output_tokens: number;
-  output_tokens_details?: OutputTokenDetails;
-  prompt_cache_hit_tokens?: number;
-  prompt_tokens: number;
-  prompt_tokens_details: InputTokenDetails;
-  total_tokens: number;
-  usage_semantic?: string;
-  usage_source?: string;
+  claude_usage?: ClaudeUsage;
+  estimated?: boolean;
+  gemini_usage_metadata?: GeminiUsageMetadata;
+  openai_usage?: Usage;
+  semantic?: string;
+  source?: string;
 }
 
 /**
@@ -1221,27 +1221,6 @@ export interface FlowQuotaData {
 export interface GeminiModelList {
   models: unknown;
   nextPageToken: unknown;
-}
-
-export interface GeminiPromptTokensDetails {
-  modality: string;
-  tokenCount: number;
-}
-
-export interface GeminiUsageMetadata {
-  billing_usage?: BillingUsage;
-  cachedContentTokenCount: number;
-  candidatesTokenCount: number;
-  /** @nullable */
-  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
-  promptTokenCount: number;
-  /** @nullable */
-  promptTokensDetails: GeminiPromptTokensDetails[] | null;
-  thoughtsTokenCount: number;
-  toolUsePromptTokenCount: number;
-  /** @nullable */
-  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
-  totalTokenCount: number;
 }
 
 export type GetAllChannelsDataTypeCountsAnyOf = { [key: string]: number };
@@ -1389,6 +1368,16 @@ export interface ImageParams {
   supportsSize: boolean;
   supportsSteps: boolean;
   supportsStrength: boolean;
+}
+
+export interface InputTokenDetails {
+  audio_tokens: number;
+  cache_write_tokens?: number;
+  cached_creation_tokens?: number;
+  cached_tokens: number;
+  cached_tokens_details?: CachedTokenDetails;
+  image_tokens: number;
+  text_tokens: number;
 }
 
 export interface InvitedUser {
@@ -1957,6 +1946,13 @@ export interface Option {
 export interface OptionUpdateRequest {
   key: string;
   value: unknown;
+}
+
+export interface OutputTokenDetails {
+  audio_tokens: number;
+  image_tokens: number;
+  reasoning_tokens: number;
+  text_tokens: number;
 }
 
 export interface PartnerGrantData {
@@ -2893,6 +2889,7 @@ export interface TokenResponse {
   accessed_time: number;
   /** @nullable */
   allow_ips: string | null;
+  allow_user_quota_query: boolean;
   /** @nullable */
   auto_groups: string[] | null;
   created_time: number;
@@ -3825,6 +3822,8 @@ export interface StatusData {
   linuxdo_client_id: string;
   linuxdo_minimum_trust_level: number;
   linuxdo_oauth: boolean;
+  log_export_enabled: boolean;
+  log_max_range_days: number;
   logo: string;
   mj_notify_enabled: boolean;
   oidc_authorization_endpoint: string;
@@ -3961,6 +3960,11 @@ export interface ResponseDtoTokenAutoGroupsData {
   success: boolean;
 }
 
+export interface TokenUserQuota {
+  total_available: number;
+  total_used: number;
+}
+
 export type TokenUsageDataModelLimitsAnyOf = { [key: string]: boolean };
 
 /**
@@ -3979,6 +3983,7 @@ export interface TokenUsageData {
   total_granted: number;
   total_used: number;
   unlimited_quota: boolean;
+  user_quota?: TokenUserQuota;
 }
 
 /**
@@ -4675,6 +4680,8 @@ export interface UpdateDeploymentRequest {
 export interface UpdateTokenRequest {
   /** @nullable */
   allow_ips: string | null;
+  /** @nullable */
+  allow_user_quota_query: boolean | null;
   /** @nullable */
   auto_groups: string[] | null;
   /** @nullable */
@@ -9924,6 +9931,40 @@ export const getChannelAffinityUsageCacheStats = async (
   );
 };
 
+export type exportAllLogsResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type exportAllLogsResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type exportAllLogsResponseSuccess = (
+  | exportAllLogsResponse200ApplicationJson
+  | exportAllLogsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type exportAllLogsResponse = exportAllLogsResponseSuccess;
+
+export const getExportAllLogsUrl = () => {
+  return `/api/log/export`;
+};
+
+/**
+ * @summary Export All Logs
+ */
+export const exportAllLogs = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<exportAllLogsResponse> => {
+  return customFetch<exportAllLogsResponse>(getExportAllLogsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
 export type searchAllLogsResponse200ApplicationJson = {
   data: MessageResponse;
   status: 200;
@@ -9999,6 +10040,40 @@ export const getUserLogs = async (
   options?: Parameters<typeof customFetch>[1],
 ): Promise<getUserLogsResponse> => {
   return customFetch<getUserLogsResponse>(getGetUserLogsUrl(params), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export type exportUserLogsResponse200ApplicationJson = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type exportUserLogsResponse200ApplicationXml = {
+  data: ApiResponse;
+  status: 200;
+};
+
+export type exportUserLogsResponseSuccess = (
+  | exportUserLogsResponse200ApplicationJson
+  | exportUserLogsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type exportUserLogsResponse = exportUserLogsResponseSuccess;
+
+export const getExportUserLogsUrl = () => {
+  return `/api/log/self/export`;
+};
+
+/**
+ * @summary Export User Logs
+ */
+export const exportUserLogs = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<exportUserLogsResponse> => {
+  return customFetch<exportUserLogsResponse>(getExportUserLogsUrl(), {
     ...options,
     method: "GET",
   });

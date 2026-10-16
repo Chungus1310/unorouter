@@ -38,6 +38,7 @@ export const tokenRoute = new Elysia({ prefix: "/token" })
           ...body,
           group_mapping: body.group_mapping ?? "",
           auto_groups: body.auto_groups ?? null,
+          allow_user_quota_query: body.allow_user_quota_query ?? null,
         },
         {
           headers: upstream.headers,
@@ -56,6 +57,7 @@ export const tokenRoute = new Elysia({ prefix: "/token" })
           ...body,
           group_mapping: body.group_mapping ?? "",
           auto_groups: body.auto_groups ?? null,
+          allow_user_quota_query: body.allow_user_quota_query ?? null,
         },
         undefined,
         {
@@ -75,6 +77,7 @@ export const tokenRoute = new Elysia({ prefix: "/token" })
           ...body,
           group_mapping: body.group_mapping ?? "",
           auto_groups: body.auto_groups ?? null,
+          allow_user_quota_query: body.allow_user_quota_query ?? null,
         },
         { status_only: "true" },
         {

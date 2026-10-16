@@ -19,6 +19,7 @@ export const createTokenBody = t.Object({
   cross_group_retry: t.Boolean(),
   group_mapping: t.Optional(t.String()),
   auto_groups: t.Optional(t.Nullable(t.Array(t.String()))),
+  allow_user_quota_query: t.Optional(t.Nullable(t.Boolean())),
 });
 
 export const updateTokenBody = t.Object({
@@ -35,6 +36,7 @@ export const updateTokenBody = t.Object({
   cross_group_retry: t.Boolean(),
   group_mapping: t.Optional(t.String()),
   auto_groups: t.Optional(t.Nullable(t.Array(t.String()))),
+  allow_user_quota_query: t.Optional(t.Nullable(t.Boolean())),
 });
 
 export const tokenIdParams = t.Object({
