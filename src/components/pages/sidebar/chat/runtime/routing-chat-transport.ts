@@ -29,6 +29,7 @@ import {
   type TotalUsage,
 } from "@/lib/ai/chat/pipeline/finish-meta";
 import { makeUpstreamFetch } from "@/lib/ai/chat/provider-mutations";
+import { resumableFetch } from "@/lib/ai/chat/resumable-fetch";
 import type { TokenizerRef } from "@/lib/ai/chat/tokenizer";
 import { CHAT_PROVIDER_NAME, msg } from "@/lib/config/constants";
 import {
@@ -291,7 +292,9 @@ async function runClientStream(args: {
           },
         }
       : {}),
-    fetch: timer.wrapFetch(makeUpstreamFetch(prepared.bodyMutations)),
+    fetch: timer.wrapFetch(
+      resumableFetch(makeUpstreamFetch(prepared.bodyMutations)),
+    ),
   });
 
   const result = streamText({

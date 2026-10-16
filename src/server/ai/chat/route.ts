@@ -30,6 +30,7 @@ import { runTriggerLLM, runTriggerSimilarity } from "./trigger-ops.service";
 import { streamMedia } from "./media/stream.service";
 import { forwardChatCompletions } from "./forward.service";
 import { forwardCustomProvider } from "./custom-forward.service";
+import { abortStream, peerUrl, tailStream } from "./stream-buffer";
 import { resolveWebSearch } from "./web-search.service";
 
 const customForwardLimit = rateLimit(120);
@@ -75,6 +76,55 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
     },
     { body: finalizeTaskBody, beforeHandle: rateLimit(30) },
   )
+
+  // The rest of a reply whose connection dropped, from byte `from` on. A tab
+  // can come back through the other replica, which forwards to the owner once.
+  .get("/resume/:id", async ({ params, query, cookie, request }) => {
+    const userId = (await getUserId(cookie, true)) ?? GUEST_USER_ID;
+    const from = Math.max(0, Number(query.from) || 0);
+    const local = tailStream(params.id, userId, from);
+    if (local)
+      return new Response(local, {
+        headers: { "content-type": "text/event-stream" },
+      });
+    const peer = request.headers.get("x-uno-hop")
+      ? null
+      : peerUrl(
+          query.pod ?? null,
+          `/api/ai/chat/resume/${encodeURIComponent(params.id)}?from=${from}`,
+        );
+    if (!peer) return new Response(null, { status: 404 });
+    const res = await fetch(peer, {
+      headers: {
+        cookie: request.headers.get("cookie") ?? "",
+        "x-uno-hop": "1",
+      },
+    }).catch(() => null);
+    if (!res?.ok || !res.body) return new Response(null, { status: 404 });
+    return new Response(res.body, {
+      headers: { "content-type": "text/event-stream" },
+    });
+  })
+
+  .delete("/resume/:id", async ({ params, query, cookie, request }) => {
+    const userId = (await getUserId(cookie, true)) ?? GUEST_USER_ID;
+    if (abortStream(params.id, userId)) return { success: true };
+    const peer = request.headers.get("x-uno-hop")
+      ? null
+      : peerUrl(
+          query.pod ?? null,
+          `/api/ai/chat/resume/${encodeURIComponent(params.id)}`,
+        );
+    if (peer)
+      await fetch(peer, {
+        method: "DELETE",
+        headers: {
+          cookie: request.headers.get("cookie") ?? "",
+          "x-uno-hop": "1",
+        },
+      }).catch(() => null);
+    return { success: true };
+  })
 
   // Ordering is load-bearing: routes above must NOT resolve a chat key.
   .resolve(async ({ cookie }) => ({

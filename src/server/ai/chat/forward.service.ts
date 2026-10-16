@@ -4,6 +4,13 @@ import { uid } from "@/lib/utils/base";
 import { API_ENDPOINTS } from "@/lib/ai/endpoints";
 import { groupHeader, upstreamApiUrl } from "@/server/constants";
 import { serverEnv } from "@/server/env";
+import {
+  bufferStream,
+  podAddress,
+  STREAM_ID_HEADER,
+  STREAM_POD_HEADER,
+  tailStream,
+} from "./stream-buffer";
 
 const FORWARD_RESPONSE_HEADERS = [
   "content-type",
@@ -70,7 +77,15 @@ export async function forwardChatCompletions(args: {
       const v = upstream.headers.get(h);
       if (v) headers.set(h, v);
     }
-    return new Response(upstream.body, { status: upstream.status, headers });
+    if (!upstream.ok || !upstream.body)
+      return new Response(upstream.body, { status: upstream.status, headers });
+    return resumable(
+      upstream.body,
+      args.userId,
+      abort,
+      upstream.status,
+      headers,
+    );
   }
 
   // Cloudflare kills a byte-less origin response at ~100s (524, whose raw HTML
@@ -148,10 +163,27 @@ export async function forwardChatCompletions(args: {
       abort.abort();
     },
   });
-  return new Response(stream, {
-    status: 200,
-    headers: { "content-type": "text/event-stream" },
-  });
+  return resumable(
+    stream,
+    args.userId,
+    abort,
+    200,
+    new Headers({ "content-type": "text/event-stream" }),
+  );
+}
+
+function resumable(
+  source: ReadableStream<Uint8Array>,
+  userId: number,
+  abort: AbortController,
+  status: number,
+  headers: Headers,
+): Response {
+  const id = bufferStream(source, userId, () => abort.abort());
+  const body = tailStream(id, userId, 0);
+  headers.set(STREAM_ID_HEADER, id);
+  if (podAddress) headers.set(STREAM_POD_HEADER, podAddress);
+  return new Response(body, { status, headers });
 }
 
 const EARLY_FLUSH_MS = 30_000;
