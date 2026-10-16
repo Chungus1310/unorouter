@@ -35,7 +35,7 @@ const privateSet = new Set<string>([
 // next.config.ts redirects this permanently, so it is not a canonical URL.
 const REDIRECTED_ROUTES = new Set<string>(["/docs"]);
 // noindex pages stay crawlable (no robots.txt block) so Google can read the noindex.
-const NOINDEX_ROUTES = new Set<string>(["/impressum"]);
+const NOINDEX_ROUTES = new Set<string>(["/impressum", "/free-models"]);
 
 const docUrlSet = new Set<string>(
   DOCS_REGISTRY.map((doc) =>

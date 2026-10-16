@@ -6296,6 +6296,17 @@
     "REVOKED": "Einwilligung widerrufen",
     "GRANTED_ON": "Erteilt am {date}",
     "MANAGE": "Einwilligungen verwalten",
-    "SAVED": "Einwilligung gespeichert"
+    "SAVED": "Einwilligung gespeichert",
+    "META": {
+      "TITLE": "Einwilligungen für kostenlose Modelle - {appName}",
+      "DESCRIPTION": "Erteile oder widerrufe deine Einwilligung für jedes kostenlose Modell auf {appName}.",
+      "KEYWORDS": "kostenlose Modelle, Einwilligung, Datenschutz"
+    },
+    "PAGE_TITLE": "Kostenlose Modelle",
+    "PAGE_INTRO": "Kostenlose Modelle werden über Anbieter bereitgestellt, die deine Eingaben für eigene Zwecke nutzen können. Hier kannst du für jedes Modell vor der Nutzung einwilligen, auch für die API, und die Einwilligung jederzeit widerrufen.",
+    "SEARCH": "Modelle suchen",
+    "GIVE": "Einwilligen",
+    "OFFLINE": "offline",
+    "ALL_MODELS": "Alle kostenlosen Modelle"
   }
 }

@@ -6296,6 +6296,17 @@
     "REVOKED": "Consentimento revogado",
     "GRANTED_ON": "Dado em {date}",
     "MANAGE": "Gerenciar consentimentos",
-    "SAVED": "Consentimento salvo"
+    "SAVED": "Consentimento salvo",
+    "META": {
+      "TITLE": "Consentimentos para modelos gratuitos - {appName}",
+      "DESCRIPTION": "Dê ou revogue seu consentimento para cada modelo gratuito no {appName}.",
+      "KEYWORDS": "modelos gratuitos, consentimento, privacidade"
+    },
+    "PAGE_TITLE": "Modelos gratuitos",
+    "PAGE_INTRO": "Os modelos gratuitos são oferecidos por provedores que podem usar suas entradas para fins próprios. Aqui você pode dar seu consentimento para cada modelo antes de usá-lo, inclusive pela API, e revogá-lo a qualquer momento.",
+    "SEARCH": "Buscar modelos",
+    "GIVE": "Consentir",
+    "OFFLINE": "offline",
+    "ALL_MODELS": "Todos os modelos gratuitos"
   }
 }

@@ -6296,6 +6296,17 @@
     "REVOKED": "Persetujuan ditarik",
     "GRANTED_ON": "Diberikan pada {date}",
     "MANAGE": "Kelola persetujuan",
-    "SAVED": "Persetujuan disimpan"
+    "SAVED": "Persetujuan disimpan",
+    "META": {
+      "TITLE": "Persetujuan model gratis - {appName}",
+      "DESCRIPTION": "Berikan atau tarik persetujuanmu untuk setiap model gratis di {appName}.",
+      "KEYWORDS": "model gratis, persetujuan, privasi"
+    },
+    "PAGE_TITLE": "Model gratis",
+    "PAGE_INTRO": "Model gratis disediakan melalui penyedia yang dapat menggunakan masukanmu untuk tujuan mereka sendiri. Di sini kamu dapat memberikan persetujuan untuk setiap model sebelum menggunakannya, termasuk untuk API, dan menariknya kapan saja.",
+    "SEARCH": "Cari model",
+    "GIVE": "Setujui",
+    "OFFLINE": "offline",
+    "ALL_MODELS": "Semua model gratis"
   }
 }

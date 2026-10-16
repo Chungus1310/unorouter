@@ -6296,6 +6296,17 @@
     "REVOKED": "Consentimiento retirado",
     "GRANTED_ON": "Otorgado el {date}",
     "MANAGE": "Gestionar consentimientos",
-    "SAVED": "Consentimiento guardado"
+    "SAVED": "Consentimiento guardado",
+    "META": {
+      "TITLE": "Consentimientos para modelos gratuitos - {appName}",
+      "DESCRIPTION": "Da o retira tu consentimiento para cada modelo gratuito en {appName}.",
+      "KEYWORDS": "modelos gratuitos, consentimiento, privacidad"
+    },
+    "PAGE_TITLE": "Modelos gratuitos",
+    "PAGE_INTRO": "Los modelos gratuitos se ofrecen a través de proveedores que pueden usar tus entradas para sus propios fines. Aquí puedes dar tu consentimiento para cada modelo antes de usarlo, también para la API, y retirarlo en cualquier momento.",
+    "SEARCH": "Buscar modelos",
+    "GIVE": "Consentir",
+    "OFFLINE": "sin conexión",
+    "ALL_MODELS": "Todos los modelos gratuitos"
   }
 }

@@ -6296,6 +6296,17 @@
     "REVOKED": "Consent withdrawn",
     "GRANTED_ON": "Given on {date}",
     "MANAGE": "Manage consents",
-    "SAVED": "Consent saved"
+    "SAVED": "Consent saved",
+    "META": {
+      "TITLE": "Free model consents - {appName}",
+      "DESCRIPTION": "Give or withdraw your consent for each free model on {appName}.",
+      "KEYWORDS": "free models, consent, privacy"
+    },
+    "PAGE_TITLE": "Free models",
+    "PAGE_INTRO": "Free models are offered through providers that may use your inputs for their own purposes. Here you can give your consent for each model before you use it, also for the API, and withdraw it at any time.",
+    "SEARCH": "Search models",
+    "GIVE": "Consent",
+    "OFFLINE": "offline",
+    "ALL_MODELS": "All free models"
   }
 }

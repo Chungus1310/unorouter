@@ -32,7 +32,10 @@ function useProviderList(model: string): string[] | null {
   return labels.size > 0 ? [...labels] : null;
 }
 
-export function FreeConsentPanel(props: { model: string }) {
+export function FreeConsentPanel(props: {
+  model: string;
+  onDone?: () => void;
+}) {
   const t = useTranslations();
   const locale = useLocale();
   const token = useApiKey();
@@ -74,7 +77,10 @@ export function FreeConsentPanel(props: { model: string }) {
     grantMutation.mutate(
       { body: { model: props.model, locale, text } },
       {
-        onSuccess: () => toast.success(t("FREE_CONSENT.SAVED")),
+        onSuccess: () => {
+          toast.success(t("FREE_CONSENT.SAVED"));
+          props.onDone?.();
+        },
         onError: (error) => toast.error(error.message),
       },
     );
@@ -100,7 +106,7 @@ export function FreeConsentPanel(props: { model: string }) {
           <Button
             variant="outline"
             size="sm"
-            onClick={() => setDeclined(true)}
+            onClick={() => (props.onDone ? props.onDone() : setDeclined(true))}
             disabled={grantMutation.isPending}
           >
             {t("FREE_CONSENT.DECLINE")}

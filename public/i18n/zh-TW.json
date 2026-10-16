@@ -6296,6 +6296,17 @@
     "REVOKED": "已撤回同意",
     "GRANTED_ON": "同意於 {date}",
     "MANAGE": "管理同意",
-    "SAVED": "已儲存同意"
+    "SAVED": "已儲存同意",
+    "META": {
+      "TITLE": "免費模型使用同意 - {appName}",
+      "DESCRIPTION": "為 {appName} 上的每個免費模型給予或撤回同意。",
+      "KEYWORDS": "免費模型, 同意, 隱私"
+    },
+    "PAGE_TITLE": "免費模型",
+    "PAGE_INTRO": "免費模型透過可能將你的輸入用於自身目的的供應商提供。你可以在這裡於使用前（包括透過 API 使用）為每個模型給予同意，並可隨時撤回。",
+    "SEARCH": "搜尋模型",
+    "GIVE": "同意",
+    "OFFLINE": "離線",
+    "ALL_MODELS": "全部免費模型"
   }
 }

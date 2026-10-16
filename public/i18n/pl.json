@@ -6296,6 +6296,17 @@
     "REVOKED": "Zgoda wycofana",
     "GRANTED_ON": "Udzielona {date}",
     "MANAGE": "Zarządzaj zgodami",
-    "SAVED": "Zgoda zapisana"
+    "SAVED": "Zgoda zapisana",
+    "META": {
+      "TITLE": "Zgody na darmowe modele - {appName}",
+      "DESCRIPTION": "Udziel lub wycofaj zgodę na każdy darmowy model w {appName}.",
+      "KEYWORDS": "darmowe modele, zgoda, prywatność"
+    },
+    "PAGE_TITLE": "Darmowe modele",
+    "PAGE_INTRO": "Darmowe modele są udostępniane przez dostawców, którzy mogą wykorzystywać Twoje dane wejściowe do własnych celów. Tutaj możesz wyrazić zgodę na każdy model przed jego użyciem, także przez API, i w każdej chwili ją wycofać.",
+    "SEARCH": "Szukaj modeli",
+    "GIVE": "Wyraź zgodę",
+    "OFFLINE": "offline",
+    "ALL_MODELS": "Wszystkie darmowe modele"
   }
 }

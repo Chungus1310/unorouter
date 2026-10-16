@@ -6296,6 +6296,17 @@
     "REVOKED": "Đã rút lại sự đồng ý",
     "GRANTED_ON": "Đã cấp ngày {date}",
     "MANAGE": "Quản lý đồng ý",
-    "SAVED": "Đã lưu sự đồng ý"
+    "SAVED": "Đã lưu sự đồng ý",
+    "META": {
+      "TITLE": "Đồng ý cho mô hình miễn phí - {appName}",
+      "DESCRIPTION": "Đồng ý hoặc rút lại sự đồng ý cho từng mô hình miễn phí trên {appName}.",
+      "KEYWORDS": "mô hình miễn phí, đồng ý, quyền riêng tư"
+    },
+    "PAGE_TITLE": "Mô hình miễn phí",
+    "PAGE_INTRO": "Mô hình miễn phí được cung cấp qua các nhà cung cấp có thể dùng dữ liệu bạn nhập cho mục đích riêng. Tại đây bạn có thể đồng ý cho từng mô hình trước khi dùng, kể cả qua API, và rút lại bất cứ lúc nào.",
+    "SEARCH": "Tìm mô hình",
+    "GIVE": "Đồng ý",
+    "OFFLINE": "ngoại tuyến",
+    "ALL_MODELS": "Tất cả mô hình miễn phí"
   }
 }
