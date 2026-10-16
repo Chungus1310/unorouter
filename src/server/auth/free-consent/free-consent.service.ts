@@ -48,9 +48,15 @@ export function forgetGuestConsents(guestId: string) {
   guestConsents.delete(guestId);
 }
 
-async function guestConsentedModels(guestId: string): Promise<Set<string>> {
+async function guestConsentedModels(
+  guestId: string,
+  model: string,
+): Promise<Set<string>> {
   const cached = guestConsents.get(guestId);
-  if (cached && cached.expires > Date.now()) return cached.models;
+  // Only a cached yes is trusted: a consent given through the other pod must
+  // count immediately.
+  if (cached && cached.expires > Date.now() && cached.models.has(model))
+    return cached.models;
   const res = await getGuestFreeConsents({
     headers: guestConsentHeaders(guestId),
   });
@@ -73,6 +79,7 @@ export async function assertGuestFreeConsent(
   if (userId !== GUEST_USER_ID || !model) return;
   if (!(await getModelByName(model))?.is_free) return;
   const guestId = readGuestId(cookie);
-  if (guestId && (await guestConsentedModels(guestId)).has(model)) return;
+  if (guestId && (await guestConsentedModels(guestId, model)).has(model))
+    return;
   throw new Error(msg("FREE_CONSENT.DECLINED"));
 }
