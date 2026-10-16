@@ -2743,10 +2743,6 @@
       "INVALID_LINK": "Liên kết này không hợp lệ hoặc đã hết hạn.",
       "REQUEST_NEW_LINK": "Yêu cầu liên kết mới"
     },
-    "CUSTOMER_TYPE": {
-      "BUSINESS_CHECKBOX": "Tôi đăng ký cho doanh nghiệp hoặc vì mục đích nghề nghiệp",
-      "CHANGE_LATER": "Bạn có thể thay đổi sau trong phần cài đặt."
-    },
     "TERMS_NOTICE": {
       "REGISTER": "Khi tạo tài khoản, bạn chấp nhận <terms>Điều khoản dịch vụ</terms> của chúng tôi. Bạn có thể tìm hiểu cách chúng tôi xử lý dữ liệu của bạn trong <privacy>Chính sách bảo mật</privacy>.",
       "OAUTH": "Nếu bạn tạo tài khoản mới bằng một trong các dịch vụ này, bạn chấp nhận <terms>Điều khoản dịch vụ</terms> của chúng tôi. Bạn có thể tìm hiểu cách chúng tôi xử lý dữ liệu của bạn trong <privacy>Chính sách bảo mật</privacy>."
@@ -3650,7 +3646,6 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Loại tài khoản",
-      "PROMPT": "Vui lòng xác nhận loại tài khoản một lần và lưu lại.",
       "BUSINESS_CHECKBOX": "Tôi dùng tài khoản này cho doanh nghiệp hoặc vì mục đích nghề nghiệp",
       "SAVE": "Lưu",
       "SAVED": "Đã lưu loại tài khoản",

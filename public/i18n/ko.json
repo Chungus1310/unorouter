@@ -2743,10 +2743,6 @@
       "INVALID_LINK": "이 링크는 유효하지 않거나 만료되었습니다.",
       "REQUEST_NEW_LINK": "새 링크 요청"
     },
-    "CUSTOMER_TYPE": {
-      "BUSINESS_CHECKBOX": "기업 또는 업무 목적으로 가입합니다",
-      "CHANGE_LATER": "나중에 설정에서 변경할 수 있습니다."
-    },
     "TERMS_NOTICE": {
       "REGISTER": "계정을 만들면 <terms>서비스 약관</terms>에 동의하는 것으로 간주됩니다. 데이터 처리 방식에 관한 정보는 <privacy>개인정보 처리방침</privacy>에서 확인하실 수 있습니다.",
       "OAUTH": "이 서비스 중 하나로 새 계정을 만들면 <terms>서비스 약관</terms>에 동의하는 것으로 간주됩니다. 데이터 처리 방식에 관한 정보는 <privacy>개인정보 처리방침</privacy>에서 확인하실 수 있습니다."
@@ -3650,7 +3646,6 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "계정 유형",
-      "PROMPT": "계정 유형을 한 번 확인하고 저장해 주세요.",
       "BUSINESS_CHECKBOX": "이 계정을 기업 또는 업무 목적으로 사용합니다",
       "SAVE": "저장",
       "SAVED": "계정 유형이 저장되었습니다",

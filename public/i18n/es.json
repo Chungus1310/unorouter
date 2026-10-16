@@ -2743,10 +2743,6 @@
       "INVALID_LINK": "Este enlace no es válido o ha caducado.",
       "REQUEST_NEW_LINK": "Solicitar un enlace nuevo"
     },
-    "CUSTOMER_TYPE": {
-      "BUSINESS_CHECKBOX": "Me registro para una empresa o con fines profesionales",
-      "CHANGE_LATER": "Puedes cambiarlo más tarde en los ajustes."
-    },
     "TERMS_NOTICE": {
       "REGISTER": "Al crear una cuenta, aceptas nuestros <terms>Términos de servicio</terms>. Encontrarás información sobre cómo tratamos tus datos en nuestra <privacy>Política de privacidad</privacy>.",
       "OAUTH": "Si creas una cuenta nueva con uno de estos servicios, aceptas nuestros <terms>Términos de servicio</terms>. Encontrarás información sobre cómo tratamos tus datos en nuestra <privacy>Política de privacidad</privacy>."
@@ -3650,7 +3646,6 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Tipo de cuenta",
-      "PROMPT": "Confirma una vez el tipo de cuenta y guárdalo.",
       "BUSINESS_CHECKBOX": "Uso esta cuenta para una empresa o con fines profesionales",
       "SAVE": "Guardar",
       "SAVED": "Tipo de cuenta guardado",

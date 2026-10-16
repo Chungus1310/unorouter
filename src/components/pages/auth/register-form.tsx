@@ -1,7 +1,6 @@
 "use client";
 
 import { MyFormInput } from "@/components/elements/form/my-form-input";
-import { CustomerTypeCheckbox } from "@/components/pages/auth/customer-type-checkbox";
 import { OAuthButtons } from "@/components/pages/auth/oauth-buttons";
 import { TermsNotice } from "@/components/pages/auth/terms-notice";
 import { Button } from "@/components/ui/button";
@@ -22,7 +21,6 @@ import {
 import {
   registerChecker,
   registerSchema,
-  type CustomerType,
   type RegisterSchema,
 } from "@/lib/validation/auth";
 import { formDefaults, safeParse } from "@/lib/validation/helpers";
@@ -50,9 +48,6 @@ export function RegisterForm() {
   const [turnstileToken, setTurnstileToken] = useState<string | undefined>();
   const turnstileRef = useRef<TurnstileInstance>(null);
   const [resendSeconds, setResendSeconds] = useState(0);
-  // Outside the form: the OAuth buttons need it too, and they render when the
-  // password form is switched off.
-  const [customerType, setCustomerType] = useState<CustomerType>("consumer");
 
   useEffect(() => {
     if (resendSeconds <= 0) return;
@@ -96,7 +91,7 @@ export function RegisterForm() {
           email,
           verification_code: data.verification_code?.trim() || undefined,
           aff_code: affCode,
-          customer_type: customerType,
+          customer_type: "consumer",
           turnstile: turnstileToken,
         },
       });
@@ -142,17 +137,6 @@ export function RegisterForm() {
       description={t("AUTH.REGISTER.DESCRIPTION", APP_VALUES)}
     >
       <div className="space-y-6">
-        <div className="space-y-1.5">
-          <CustomerTypeCheckbox
-            value={customerType}
-            onChange={setCustomerType}
-            label={t("AUTH.CUSTOMER_TYPE.BUSINESS_CHECKBOX")}
-          />
-          <p className="text-muted-foreground pl-6.5 text-xs">
-            {t("AUTH.CUSTOMER_TYPE.CHANGE_LATER")}
-          </p>
-        </div>
-
         {showPasswordForm && (
           <Form {...form}>
             <form
@@ -306,7 +290,7 @@ export function RegisterForm() {
         {status && (
           <OAuthButtons
             status={status}
-            signup={{ customerType }}
+            signup={{ customerType: "consumer" }}
             notice={
               showPasswordForm ? undefined : <TermsNotice variant="register" />
             }

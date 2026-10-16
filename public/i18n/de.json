@@ -2743,10 +2743,6 @@
       "INVALID_LINK": "Dieser Link ist ungültig oder abgelaufen.",
       "REQUEST_NEW_LINK": "Neuen Link anfordern"
     },
-    "CUSTOMER_TYPE": {
-      "BUSINESS_CHECKBOX": "Ich registriere mich für ein Unternehmen oder für berufliche Zwecke",
-      "CHANGE_LATER": "Du kannst das später in den Einstellungen ändern."
-    },
     "TERMS_NOTICE": {
       "REGISTER": "Mit dem Erstellen eines Kontos akzeptierst du unsere <terms>Nutzungsbedingungen</terms>. Informationen dazu, wie wir mit deinen Daten umgehen, findest du in unserer <privacy>Datenschutzrichtlinie</privacy>.",
       "OAUTH": "Wenn du über einen dieser Dienste ein neues Konto erstellst, akzeptierst du unsere <terms>Nutzungsbedingungen</terms>. Informationen dazu, wie wir mit deinen Daten umgehen, findest du in unserer <privacy>Datenschutzrichtlinie</privacy>."
@@ -3650,7 +3646,6 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Kontotyp",
-      "PROMPT": "Bitte bestätige deinen Kontotyp einmal und speichere ihn.",
       "BUSINESS_CHECKBOX": "Ich nutze dieses Konto für ein Unternehmen oder für berufliche Zwecke",
       "SAVE": "Speichern",
       "SAVED": "Kontotyp gespeichert",

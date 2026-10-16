@@ -2743,10 +2743,6 @@
       "INVALID_LINK": "Bu bağlantı geçersiz veya süresi dolmuş.",
       "REQUEST_NEW_LINK": "Yeni bağlantı iste"
     },
-    "CUSTOMER_TYPE": {
-      "BUSINESS_CHECKBOX": "Bir işletme adına veya mesleki amaçlarla kaydoluyorum",
-      "CHANGE_LATER": "Bunu daha sonra ayarlardan değiştirebilirsiniz."
-    },
     "TERMS_NOTICE": {
       "REGISTER": "Hesap oluşturarak <terms>Hizmet Şartlarımızı</terms> kabul etmiş olursunuz. Verilerinizi nasıl işlediğimize ilişkin bilgileri <privacy>Gizlilik Politikamızda</privacy> bulabilirsiniz.",
       "OAUTH": "Bu hizmetlerden biriyle yeni bir hesap oluşturursanız <terms>Hizmet Şartlarımızı</terms> kabul etmiş olursunuz. Verilerinizi nasıl işlediğimize ilişkin bilgileri <privacy>Gizlilik Politikamızda</privacy> bulabilirsiniz."
@@ -3650,7 +3646,6 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Hesap türü",
-      "PROMPT": "Lütfen hesap türünüzü bir kez onaylayıp kaydedin.",
       "BUSINESS_CHECKBOX": "Bu hesabı bir işletme adına veya mesleki amaçlarla kullanıyorum",
       "SAVE": "Kaydet",
       "SAVED": "Hesap türü kaydedildi",

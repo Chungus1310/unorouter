@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useUpdateSelfMutation } from "@/hooks/auth/settings-hook";
-import { cn } from "@/lib/utils";
 import { formatLongDate } from "@/lib/utils/format/date";
 import { customerTypeChecker, type CustomerType } from "@/lib/validation/auth";
 import { useTranslations } from "next-intl";
@@ -24,7 +23,9 @@ export function CustomerTypeCard() {
   const declared = customerTypeChecker.Check(user.customer_type)
     ? user.customer_type
     : undefined;
-  const selected = draft ?? declared ?? "consumer";
+  // Business sign-up is closed until business lanes exist; only accounts already declared business can switch back.
+  if (declared !== "business") return null;
+  const selected = draft ?? declared;
 
   function save() {
     updateSelfMutation.mutate(
@@ -40,16 +41,11 @@ export function CustomerTypeCard() {
   }
 
   return (
-    <Card className={cn(!declared && "border-amber-500/60")}>
+    <Card>
       <CardHeader>
         <CardTitle>{t("SETTINGS.CUSTOMER_TYPE.TITLE")}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-3">
-        {!declared && (
-          <p className="text-foreground text-sm">
-            {t("SETTINGS.CUSTOMER_TYPE.PROMPT")}
-          </p>
-        )}
         <div className="flex flex-wrap items-center justify-between gap-3">
           <CustomerTypeCheckbox
             value={selected}
@@ -66,7 +62,7 @@ export function CustomerTypeCard() {
             {t("SETTINGS.CUSTOMER_TYPE.SAVE")}
           </Button>
         </div>
-        {declared && user.customer_type_at ? (
+        {user.customer_type_at ? (
           <p className="text-muted-foreground text-xs">
             {t("SETTINGS.CUSTOMER_TYPE.DECLARED_ON", {
               date: formatLongDate(user.customer_type_at),

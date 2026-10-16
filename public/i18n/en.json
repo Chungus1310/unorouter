@@ -2743,10 +2743,6 @@
       "INVALID_LINK": "This reset link is invalid or has expired.",
       "REQUEST_NEW_LINK": "Request a new link"
     },
-    "CUSTOMER_TYPE": {
-      "BUSINESS_CHECKBOX": "I am signing up for a business or for professional purposes",
-      "CHANGE_LATER": "You can change this later in your settings."
-    },
     "TERMS_NOTICE": {
       "REGISTER": "By creating an account, you accept our <terms>Terms of Service</terms>. You can find information on how we handle your data in our <privacy>Privacy Policy</privacy>.",
       "OAUTH": "If you create a new account with one of these services, you accept our <terms>Terms of Service</terms>. You can find information on how we handle your data in our <privacy>Privacy Policy</privacy>."
@@ -3650,7 +3646,6 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Account type",
-      "PROMPT": "Please confirm your account type once and save it.",
       "BUSINESS_CHECKBOX": "I use this account for a business or for professional purposes",
       "SAVE": "Save",
       "SAVED": "Account type saved",

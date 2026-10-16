@@ -2743,10 +2743,6 @@
       "INVALID_LINK": "Ten link jest nieprawidłowy lub wygasł.",
       "REQUEST_NEW_LINK": "Poproś o nowy link"
     },
-    "CUSTOMER_TYPE": {
-      "BUSINESS_CHECKBOX": "Rejestruję się w imieniu firmy lub w celach zawodowych",
-      "CHANGE_LATER": "Możesz to później zmienić w ustawieniach."
-    },
     "TERMS_NOTICE": {
       "REGISTER": "Tworząc konto, akceptujesz nasze <terms>Warunki usługi</terms>. Informacje o tym, jak przetwarzamy Twoje dane, znajdziesz w naszej <privacy>Polityce prywatności</privacy>.",
       "OAUTH": "Jeśli utworzysz nowe konto za pomocą jednej z tych usług, akceptujesz nasze <terms>Warunki usługi</terms>. Informacje o tym, jak przetwarzamy Twoje dane, znajdziesz w naszej <privacy>Polityce prywatności</privacy>."
@@ -3650,7 +3646,6 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Typ konta",
-      "PROMPT": "Potwierdź jednorazowo typ konta i zapisz go.",
       "BUSINESS_CHECKBOX": "Korzystam z tego konta w imieniu firmy lub w celach zawodowych",
       "SAVE": "Zapisz",
       "SAVED": "Typ konta zapisany",

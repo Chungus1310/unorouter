@@ -2743,10 +2743,6 @@
       "INVALID_LINK": "Tautan ini tidak valid atau sudah kedaluwarsa.",
       "REQUEST_NEW_LINK": "Minta tautan baru"
     },
-    "CUSTOMER_TYPE": {
-      "BUSINESS_CHECKBOX": "Saya mendaftar untuk bisnis atau untuk keperluan profesional",
-      "CHANGE_LATER": "Anda dapat mengubahnya nanti di pengaturan."
-    },
     "TERMS_NOTICE": {
       "REGISTER": "Dengan membuat akun, Anda menyetujui <terms>Ketentuan Layanan</terms> kami. Informasi tentang cara kami menangani data Anda tersedia di <privacy>Kebijakan Privasi</privacy> kami.",
       "OAUTH": "Jika Anda membuat akun baru melalui salah satu layanan ini, Anda menyetujui <terms>Ketentuan Layanan</terms> kami. Informasi tentang cara kami menangani data Anda tersedia di <privacy>Kebijakan Privasi</privacy> kami."
@@ -3650,7 +3646,6 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "Jenis akun",
-      "PROMPT": "Konfirmasikan jenis akun Anda sekali, lalu simpan.",
       "BUSINESS_CHECKBOX": "Saya menggunakan akun ini untuk bisnis atau untuk keperluan profesional",
       "SAVE": "Simpan",
       "SAVED": "Jenis akun disimpan",

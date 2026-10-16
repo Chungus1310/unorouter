@@ -2743,10 +2743,6 @@
       "INVALID_LINK": "此連結無效或已過期。",
       "REQUEST_NEW_LINK": "重新申請連結"
     },
-    "CUSTOMER_TYPE": {
-      "BUSINESS_CHECKBOX": "我是為企業或出於職業目的註冊",
-      "CHANGE_LATER": "你之後可以在設定中變更。"
-    },
     "TERMS_NOTICE": {
       "REGISTER": "建立帳戶即表示你接受我們的<terms>服務條款</terms>。關於我們如何處理你的資料，請參閱我們的<privacy>隱私權政策</privacy>。",
       "OAUTH": "如果你透過以下任一服務建立新帳戶，即表示你接受我們的<terms>服務條款</terms>。關於我們如何處理你的資料，請參閱我們的<privacy>隱私權政策</privacy>。"
@@ -3650,7 +3646,6 @@
     },
     "CUSTOMER_TYPE": {
       "TITLE": "帳戶類型",
-      "PROMPT": "請確認一次帳戶類型並儲存。",
       "BUSINESS_CHECKBOX": "我將此帳戶用於企業或職業目的",
       "SAVE": "儲存",
       "SAVED": "帳戶類型已儲存",
