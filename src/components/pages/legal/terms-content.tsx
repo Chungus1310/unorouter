@@ -13,6 +13,10 @@ const SECTIONS: LegalDocSection[] = [
     items: ["PAYMENT_CREDITS", "PAYMENT_REFUNDS", "PAYMENT_EXPIRATION"],
   },
   { title: "USER_CONTENT_TITLE", para: { key: "USER_CONTENT_CONTENT" } },
+  {
+    title: "THIRD_COUNTRIES_TITLE",
+    para: { key: "THIRD_COUNTRIES_CONTENT", values: true },
+  },
   { title: "PROHIBITED_TITLE", para: { key: "PROHIBITED_CONTENT" } },
   { title: "TERMINATION_TITLE", para: { key: "TERMINATION_CONTENT" } },
   { title: "IP_TITLE", para: { key: "IP_CONTENT", values: true } },
