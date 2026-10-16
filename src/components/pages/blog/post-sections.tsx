@@ -7,19 +7,39 @@ import { Fragment, type ComponentType, type ReactNode } from "react";
 
 type Chunks = Record<string, (chunks: ReactNode) => ReactNode>;
 
-const BODY_CHUNKS: Chunks = {
-  c: (chunks) => <code>{chunks}</code>,
-  s: (chunks) => <strong>{chunks}</strong>,
-  models: (chunks) => <Link href="/models">{chunks}</Link>,
-  free: (chunks) => <Link href="/free-models">{chunks}</Link>,
-};
-
-const CTA_CHUNKS: Chunks = {
+const PAGE_CHUNKS: Chunks = {
   register: (chunks) => <Link href="/register">{chunks}</Link>,
   models: (chunks) => <Link href="/models">{chunks}</Link>,
   chat: (chunks) => <Link href="/chat">{chunks}</Link>,
   free: (chunks) => <Link href="/free-models">{chunks}</Link>,
+  settings: (chunks) => <Link href="/settings">{chunks}</Link>,
+  pricing: (chunks) => <Link href="/pricing">{chunks}</Link>,
+  docs: (chunks) => <Link href="/docs">{chunks}</Link>,
+  privacy: (chunks) => <Link href="/privacy">{chunks}</Link>,
+  rankings: (chunks) => <Link href="/rankings">{chunks}</Link>,
+  tester: (chunks) => <Link href="/ai-api-model-tester">{chunks}</Link>,
 };
+
+// One tag per post, <post_where_your_requests_go>, so posts can link each other.
+const POST_CHUNKS: Chunks = Object.fromEntries(
+  BLOG_REGISTRY.map((entry) => [
+    `post_${entry.slug.replaceAll("-", "_")}`,
+    (chunks: ReactNode) => (
+      <Link href={{ pathname: "/blog/[slug]", params: { slug: entry.slug } }}>
+        {chunks}
+      </Link>
+    ),
+  ]),
+);
+
+const BODY_CHUNKS: Chunks = {
+  c: (chunks) => <code>{chunks}</code>,
+  s: (chunks) => <strong>{chunks}</strong>,
+  ...PAGE_CHUNKS,
+  ...POST_CHUNKS,
+};
+
+const CTA_CHUNKS: Chunks = { ...PAGE_CHUNKS, ...POST_CHUNKS };
 
 export async function PostSections(props: { slug: BlogSlug; chunks?: Chunks }) {
   const entry = BLOG_REGISTRY.find((e) => e.slug === props.slug);

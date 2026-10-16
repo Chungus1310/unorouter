@@ -617,7 +617,7 @@
         "H_MARKING": "Yapay zekâ görselleri ve videoları artık etiketleniyor",
         "P_MARKING": "Aralık 2026'dan itibaren AB Yapay Zekâ Yasası, üretilen görsel ve videoların makine tarafından okunabilir şekilde yapay zekâ ürünü olarak işaretlenmesini zorunlu kılıyor. {appName} artık teslim ettiği her görsel ve videoya bu işareti dosyanın içinde standart meta veri olarak ekliyor. Görünürde hiçbir şey değişmiyor ve görsel yeniden kodlanmıyor, yani kalite birebir aynı kalıyor. Bir sağlayıcının zaten yerleştirdiği işaretlere dokunulmuyor.",
         "H_ALSO": "Diğer yenilikler",
-        "P_ALSO": "Gizlilik politikamız artık isteklerinin yönlendirilebileceği ülkeleri ve her biri için hukuki dayanağı belirtiyor. Sitede artık bir künye sayfası var. İki faktörlü kimlik doğrulamayı kurmak, onu engelleyen bir hata giderildikten sonra yeniden çalışıyor ve hassas hesap değişikliklerinde artık gerçekten sen olduğunu doğrulaman isteniyor.",
+        "P_ALSO": "Gizlilik politikamız artık isteklerinin yönlendirilebileceği ülkeleri ve her biri için hukuki dayanağı belirtiyor. Sitede artık bir künye sayfası var. İki faktörlü kimlik doğrulamayı kurmak, onu engelleyen bir hata giderildikten sonra yeniden çalışıyor ve hassas hesap değişikliklerinde artık gerçekten sen olduğunu doğrulaman isteniyor. Tam liste <privacy>gizlilik politikamızda</privacy> yer alıyor. Ücretsiz modeller artık ayrıca her model için bir kez onayını istiyor, <post_consent_for_free_models>nasıl çalıştığını buradan oku</post_consent_for_free_models>.",
         "CTA": "Belirli bir sağlayıcı hakkında sorun mu var? Discord'umuzda sor ya da <models>model sayfalarındaki</models> etiketlere göz at."
       },
       "LOREBARY_AND_YOUR_DATA": {
@@ -634,7 +634,7 @@
         "H_YOUR_DATA": "Senin hakkında ne saklıyoruz",
         "P_YOUR_DATA": "Sohbetlerin sunucularımızda değil, kendi tarayıcında duruyor: silersen giderler. Ağ geçidimiz gönderdiğin promptları da aldığın yanıtları da saklamıyor; yalnızca faturalandırmanın ihtiyaç duyduğu bilgileri tutuyor: model, token sayısı, maliyet, süre ve isteğin başarılı olup olmadığı. Bir istekle kaydedilen IP adresi 30 gün sonra siliniyor. Verilerinle model eğitmiyoruz; web sitesi hiçbir analiz aracı kullanmıyor. Web sitesi, ağ geçidi, senkronizasyon ve Discord botu açık kaynak, yani bu maddelerin her birini sözümüze güvenmek yerine GitHub'da kontrol edebilirsin.",
         "H_PROVIDERS": "Söz veremeyeceğimiz şeyler",
-        "P_PROVIDERS": "İsteğin yine de seçtiğin modele ulaşmak zorunda ve o sağlayıcı onu kendi şartlarına göre işliyor. Bazı sağlayıcılar, özellikle ücretsiz olanlar, aldıklarını saklıyor ya da onlarla model eğitiyor. Gizlilik politikamız bunu açıkça söylüyor ve en güvenli alışkanlık her yerde aynı: promptlarına kişisel veri koyma.",
+        "P_PROVIDERS": "İsteğin yine de seçtiğin modele ulaşmak zorunda ve o sağlayıcı onu kendi şartlarına göre işliyor. Bazı sağlayıcılar, özellikle ücretsiz olanlar, aldıklarını saklıyor ya da onlarla model eğitiyor. Gizlilik politikamız bunu açıkça söylüyor ve en güvenli alışkanlık her yerde aynı: promptlarına kişisel veri koyma. O zamandan beri her model, sağlayıcılarının merkezinin nerede olduğunu gösteriyor (<post_where_your_requests_go>etiketlerin anlamı</post_where_your_requests_go>) ve ücretsiz modeller önce onayını istiyor (<post_consent_for_free_models>nasıl çalışıyor</post_consent_for_free_models>). Tüm ayrıntılar <privacy>gizlilik politikamızda</privacy>.",
         "CTA": "Bununla ilgili soruların mı var? Discord'da sor ya da kodu kendin oku. Yoksa <chat>bir sohbet başlat</chat> veya <models>modellere göz at</models>."
       },
       "AI_MODEL_VERIFIER": {
@@ -1279,17 +1279,17 @@
         "TITLE": "Ücretsiz modeller artık onayını istiyor",
         "DESCRIPTION": "Ücretsiz modeller, girdilerini kendi amaçları için kullanabilen sağlayıcılar üzerinden sunulur. Bunu artık her model için bir kez onaylıyorsun. Nedenini ve nasıl yapılacağını anlatıyoruz.",
         "AUTHOR": "{appName} ekibi",
-        "INTRO": "{appName} üzerindeki ücretsiz modeller boşuna ücretsiz değil: arkalarındaki sağlayıcılar gönderdiklerini kendi amaçları için, örneğin modellerini eğitmek için kullanabilir. AB veri koruma hukuku bunun için bilgilendirilmiş onayını şart koşuyor, bu yüzden her ücretsiz model artık kullanmadan önce bir kez onay istiyor.",
+        "INTRO": "{appName} üzerindeki ücretsiz modeller boşuna ücretsiz değil: arkalarındaki sağlayıcılar gönderdiklerini kendi amaçları için, örneğin modellerini eğitmek için kullanabilir. AB veri koruma hukuku bunun için bilgilendirilmiş onayını şart koşuyor, bu yüzden her ücretsiz model artık kullanmadan önce bir kez onay istiyor. Bu, <post_where_your_requests_go>dün tanıttığımız sağlayıcı etiketlerinin</post_where_your_requests_go> devamıdır.",
         "H_WHY": "Neden soruyoruz",
-        "P_WHY": "Ücretli modeller bizden satın aldığın hizmetin parçasıdır. Ücretsiz modeller farklıdır: sağlayıcıları bize sözleşmeyle bağlı değildir ve girdilerini kendi koşullarına göre saklayabilir veya kullanabilir; biz bu girdileri geri alamaz veya sildiremeyiz. Model başına tek seferlik onay, bir şey gönderilmeden önce bunu bilmeni sağlar. Başkalarının kişisel verilerini girme, kendi verilerini girmemeni de tavsiye ederiz.",
+        "P_WHY": "Ücretli modeller bizden satın aldığın hizmetin parçasıdır. Ücretsiz modeller farklıdır: sağlayıcıları bize sözleşmeyle bağlı değildir ve girdilerini kendi koşullarına göre saklayabilir veya kullanabilir; biz bu girdileri geri alamaz veya sildiremeyiz. Model başına tek seferlik onay, bir şey gönderilmeden önce bunu bilmeni sağlar. Başkalarının kişisel verilerini girme, kendi verilerini girmemeni de tavsiye ederiz. Ayrıntılar <privacy>gizlilik politikamızda</privacy> yer alıyor.",
         "H_HOW": "Nasıl onay verilir",
-        "P_HOW": "<free>Ücretsiz modeller sayfasını</free> aç, modeli bul ve <s>Onayla</s>'ya tıkla. Pencere, modelin sağlayıcılarının merkezlerinin bulunduğu ülkeleri gösterir. Sohbette de onay verebilirsin: ücretsiz bir model seç, aynı pencere açılır. Sayfa çevrimdışı modelleri de listeler, böylece geri gelmeden önce onay verebilirsin.",
+        "P_HOW": "<free>Ücretsiz modeller sayfasını</free> aç, modeli bul ve <s>Onayla</s>'ya tıkla. Pencere, modelin sağlayıcılarının merkezlerinin bulunduğu ülkeleri gösterir. <chat>Sohbette</chat> de onay verebilirsin: ücretsiz bir model seç, aynı pencere açılır. Sayfa çevrimdışı modelleri de listeler, böylece geri gelmeden önce onay verebilirsin.",
         "H_API": "API kullanıyorsan",
         "P_API": "Lütfen onaylarını şimdi ver. Yakında onayı olmayan bir ücretsiz model isteği <c>free_consent_required</c> hatasıyla reddedilecek. Hata mesajı doğrudan o modelin seçili olduğu sohbete götürür, yani tek tıkla çözülür.",
         "H_GUESTS": "Hesap olmadan",
         "P_GUESTS": "Misafirler ücretsiz modelleri denemeye devam edebilir. Onayın bu durumda rastgele bir misafir kimliğiyle tarayıcına bağlanır; sohbet menüsündeki <s>Onayları yönet</s> bölümünden görebilir ve geri alabilirsin.",
         "H_BUSINESS": "Geri alma ve kurumsal hesaplar",
-        "P_BUSINESS": "Bir onayı istediğin zaman ücretsiz modeller sayfasından, hesap ayarlarından veya sohbetten geri alabilirsin; model bundan sonra yeniden onay verene kadar senin için engellenir. Ücretsiz modeller kurumsal hesaplar için kullanılamaz, çünkü onların istemleri başkalarının kişisel verilerini içerebilir.",
+        "P_BUSINESS": "Bir onayı istediğin zaman ücretsiz modeller sayfasından, <settings>hesap ayarlarından</settings> veya sohbetten geri alabilirsin; model bundan sonra yeniden onay verene kadar senin için engellenir. Ücretsiz modeller kurumsal hesaplar için kullanılamaz, çünkü onların istemleri başkalarının kişisel verilerini içerebilir.",
         "CTA": "Hazır mısın? <free>Ücretsiz modeller sayfasını</free> aç ve kullandığın modelleri etkinleştir."
       }
     }

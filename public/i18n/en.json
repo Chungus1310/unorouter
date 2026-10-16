@@ -617,7 +617,7 @@
         "H_MARKING": "AI images and videos are now labeled",
         "P_MARKING": "From December 2026 the EU AI Act requires generated images and videos to be marked as AI generated in a machine readable way. {appName} now adds this mark to every image and video it delivers, as standard metadata inside the file. Nothing visible changes and the image is not re-encoded, so quality stays exactly the same. Marks that a provider already embedded are kept untouched.",
         "H_ALSO": "Also new",
-        "P_ALSO": "Our privacy policy now names the countries your requests can be routed to and the legal basis for each. The site has an imprint. Setting up two factor authentication works again after a bug that blocked it, and sensitive account changes now ask you to confirm it is really you.",
+        "P_ALSO": "Our privacy policy now names the countries your requests can be routed to and the legal basis for each. The site has an imprint. Setting up two factor authentication works again after a bug that blocked it, and sensitive account changes now ask you to confirm it is really you. The full list is in our <privacy>privacy policy</privacy>. Free models now also ask for your consent once per model, <post_consent_for_free_models>here is how that works</post_consent_for_free_models>.",
         "CTA": "Questions about a specific provider? Ask in our Discord or check the labels on the <models>model pages</models>."
       },
       "LOREBARY_AND_YOUR_DATA": {
@@ -634,7 +634,7 @@
         "H_YOUR_DATA": "What we store about you",
         "P_YOUR_DATA": "Your chats live in your own browser, not on our servers: clear them and they are gone. Our gateway does not store the prompts you send or the replies you get, only what billing needs: the model, token counts, cost, timing and whether the request worked. The IP address recorded with a request is erased after 30 days. We do not train on your data, and the website uses no analytics. The website, the gateway, the sync and the Discord bot are open source, so you can check each of these points on GitHub instead of taking our word for it.",
         "H_PROVIDERS": "What we cannot promise",
-        "P_PROVIDERS": "Your request still has to reach the model you pick, and that provider handles it under its own terms. Some providers keep or train on what they receive, free ones especially. Our privacy policy says so plainly, and the safest habit is the same everywhere: keep personal data out of your prompts.",
+        "P_PROVIDERS": "Your request still has to reach the model you pick, and that provider handles it under its own terms. Some providers keep or train on what they receive, free ones especially. Our privacy policy says so plainly, and the safest habit is the same everywhere: keep personal data out of your prompts. Since then every model shows where its providers are based (<post_where_your_requests_go>what the labels mean</post_where_your_requests_go>), and free models ask for your consent first (<post_consent_for_free_models>how that works</post_consent_for_free_models>). The full picture is in our <privacy>privacy policy</privacy>.",
         "CTA": "Questions about any of this? Ask us in Discord, or read the code yourself. Otherwise, <chat>open a chat</chat> or <models>browse the models</models>."
       },
       "AI_MODEL_VERIFIER": {
@@ -1279,17 +1279,17 @@
         "TITLE": "Free models now ask for your consent",
         "DESCRIPTION": "Free models are served by providers that may use your inputs for their own purposes. You now confirm that once per model. Here is why and how.",
         "AUTHOR": "{appName} team",
-        "INTRO": "Free models on {appName} are free for a reason: the providers behind them may use what you send for their own purposes, for example to train their models. EU data protection law requires your informed consent for that, so each free model now asks for it once before you use it.",
+        "INTRO": "Free models on {appName} are free for a reason: the providers behind them may use what you send for their own purposes, for example to train their models. EU data protection law requires your informed consent for that, so each free model now asks for it once before you use it. It builds on the <post_where_your_requests_go>provider labels we introduced yesterday</post_where_your_requests_go>.",
         "H_WHY": "Why we ask",
-        "P_WHY": "Paid models are part of the service you buy from us. Free models are different: their providers are not bound to us by contract and can keep or use your inputs on their own terms, and we cannot get those inputs back or have them deleted. A one time consent per model makes sure you know that before anything is sent. Do not enter other people's personal data, and we advise against entering your own.",
+        "P_WHY": "Paid models are part of the service you buy from us. Free models are different: their providers are not bound to us by contract and can keep or use your inputs on their own terms, and we cannot get those inputs back or have them deleted. A one time consent per model makes sure you know that before anything is sent. Do not enter other people's personal data, and we advise against entering your own. The details are in our <privacy>privacy policy</privacy>.",
         "H_HOW": "How to give consent",
-        "P_HOW": "Open the <free>free models page</free>, find the model and click <s>Consent</s>. The dialog shows the countries the providers of that model are based in. You can also consent in the chat: pick a free model and the same dialog appears. The page lists offline models too, so you can consent before a model is back online.",
+        "P_HOW": "Open the <free>free models page</free>, find the model and click <s>Consent</s>. The dialog shows the countries the providers of that model are based in. You can also consent in the <chat>chat</chat>: pick a free model and the same dialog appears. The page lists offline models too, so you can consent before a model is back online.",
         "H_API": "If you use the API",
         "P_API": "Please give your consents now. Soon a request to a free model without consent will be refused with the error <c>free_consent_required</c>. The error message links straight to the chat with that model preselected, so fixing it takes one click.",
         "H_GUESTS": "Without an account",
         "P_GUESTS": "Guests can still try free models. Your consent is then linked to your browser through a random guest ID, and you can see and withdraw it under <s>Manage consents</s> in the chat menu.",
         "H_BUSINESS": "Withdrawing, and business accounts",
-        "P_BUSINESS": "You can withdraw a consent at any time on the free models page, in your account settings or in the chat; the model is then blocked for you until you consent again. Free models are not available to business accounts, because their prompts may contain personal data of other people.",
+        "P_BUSINESS": "You can withdraw a consent at any time on the free models page, in your <settings>account settings</settings> or in the chat; the model is then blocked for you until you consent again. Free models are not available to business accounts, because their prompts may contain personal data of other people.",
         "CTA": "Ready? Open the <free>free models page</free> and enable the models you use."
       }
     }

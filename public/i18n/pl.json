@@ -617,7 +617,7 @@
         "H_MARKING": "Obrazy i filmy AI są teraz oznaczane",
         "P_MARKING": "Od grudnia 2026 roku unijny akt w sprawie sztucznej inteligencji (AI Act) wymaga, aby generowane obrazy i filmy były oznaczane jako wygenerowane przez AI w formacie nadającym się do odczytu maszynowego. {appName} dodaje teraz to oznaczenie do każdego dostarczanego obrazu i filmu jako standardowe metadane w pliku. Wizualnie nic się nie zmienia, a obraz nie jest ponownie kodowany, więc jakość pozostaje dokładnie taka sama. Oznaczenia osadzone już przez dostawcę pozostają nienaruszone.",
         "H_ALSO": "Co jeszcze nowego",
-        "P_ALSO": "Nasza polityka prywatności wymienia teraz kraje, do których mogą być kierowane twoje zapytania, oraz podstawę prawną dla każdego z nich. Strona ma teraz notę prawną. Konfiguracja uwierzytelniania dwuskładnikowego znów działa po naprawie błędu, który ją blokował, a przy wrażliwych zmianach na koncie poprosimy cię teraz o potwierdzenie, że to naprawdę ty.",
+        "P_ALSO": "Nasza polityka prywatności wymienia teraz kraje, do których mogą być kierowane twoje zapytania, oraz podstawę prawną dla każdego z nich. Strona ma teraz notę prawną. Konfiguracja uwierzytelniania dwuskładnikowego znów działa po naprawie błędu, który ją blokował, a przy wrażliwych zmianach na koncie poprosimy cię teraz o potwierdzenie, że to naprawdę ty. Pełna lista znajduje się w naszej <privacy>polityce prywatności</privacy>. Darmowe modele pytają teraz także raz na model o Twoją zgodę, <post_consent_for_free_models>oto jak to działa</post_consent_for_free_models>.",
         "CTA": "Masz pytania o konkretnego dostawcę? Zapytaj na naszym Discordzie albo sprawdź oznaczenia na <models>stronach modeli</models>."
       },
       "LOREBARY_AND_YOUR_DATA": {
@@ -634,7 +634,7 @@
         "H_YOUR_DATA": "Co o tobie przechowujemy",
         "P_YOUR_DATA": "Twoje czaty są w twojej przeglądarce, nie na naszych serwerach: usuń je i znikną. Nasza bramka nie zapisuje promptów, które wysyłasz, ani odpowiedzi, które dostajesz, tylko to, czego potrzebuje rozliczenie: model, liczbę tokenów, koszt, czas i to, czy zapytanie się udało. Adres IP zapisany przy zapytaniu jest usuwany po 30 dniach. Nie trenujemy na twoich danych, a strona nie korzysta z żadnej analityki. Strona, bramka, synchronizacja i bot na Discordzie są open source, więc każdy z tych punktów możesz sprawdzić na GitHubie, zamiast wierzyć nam na słowo.",
         "H_PROVIDERS": "Czego nie możemy obiecać",
-        "P_PROVIDERS": "Twoje zapytanie i tak musi trafić do wybranego modelu, a ten dostawca traktuje je według własnych warunków. Niektórzy dostawcy przechowują to, co dostają, albo trenują na tym, zwłaszcza darmowi. Nasza polityka prywatności mówi o tym wprost, a najbezpieczniejszy nawyk jest wszędzie ten sam: nie wpisuj danych osobowych do promptów.",
+        "P_PROVIDERS": "Twoje zapytanie i tak musi trafić do wybranego modelu, a ten dostawca traktuje je według własnych warunków. Niektórzy dostawcy przechowują to, co dostają, albo trenują na tym, zwłaszcza darmowi. Nasza polityka prywatności mówi o tym wprost, a najbezpieczniejszy nawyk jest wszędzie ten sam: nie wpisuj danych osobowych do promptów. Od tego czasu każdy model pokazuje, gdzie mają siedzibę jego dostawcy (<post_where_your_requests_go>co oznaczają oznaczenia</post_where_your_requests_go>), a darmowe modele najpierw pytają o zgodę (<post_consent_for_free_models>jak to działa</post_consent_for_free_models>). Pełny obraz daje nasza <privacy>polityka prywatności</privacy>.",
         "CTA": "Masz pytania? Zadaj je na Discordzie albo sam przeczytaj kod. A jeśli nie, <chat>otwórz czat</chat> lub <models>przejrzyj modele</models>."
       },
       "AI_MODEL_VERIFIER": {
@@ -1279,17 +1279,17 @@
         "TITLE": "Darmowe modele pytają teraz o Twoją zgodę",
         "DESCRIPTION": "Darmowe modele działają u dostawców, którzy mogą wykorzystywać Twoje dane wejściowe do własnych celów. Teraz potwierdzasz to raz dla każdego modelu. Wyjaśniamy dlaczego i jak.",
         "AUTHOR": "Zespół {appName}",
-        "INTRO": "Darmowe modele w {appName} są darmowe nie bez powodu: ich dostawcy mogą wykorzystywać to, co wysyłasz, do własnych celów, na przykład do trenowania swoich modeli. Unijne prawo ochrony danych wymaga do tego Twojej świadomej zgody, dlatego każdy darmowy model pyta o nią raz przed użyciem.",
+        "INTRO": "Darmowe modele w {appName} są darmowe nie bez powodu: ich dostawcy mogą wykorzystywać to, co wysyłasz, do własnych celów, na przykład do trenowania swoich modeli. Unijne prawo ochrony danych wymaga do tego Twojej świadomej zgody, dlatego każdy darmowy model pyta o nią raz przed użyciem. To uzupełnia <post_where_your_requests_go>oznaczenia dostawców wprowadzone wczoraj</post_where_your_requests_go>.",
         "H_WHY": "Dlaczego pytamy",
-        "P_WHY": "Płatne modele są częścią usługi, którą od nas kupujesz. Darmowe działają inaczej: ich dostawcy nie są z nami związani umową i mogą przechowywać lub wykorzystywać Twoje dane na własnych zasadach, a my nie możemy ich odzyskać ani zlecić ich usunięcia. Jednorazowa zgoda na każdy model sprawia, że wiesz o tym, zanim cokolwiek zostanie wysłane. Nie wprowadzaj danych osobowych innych osób, a wprowadzania własnych odradzamy.",
+        "P_WHY": "Płatne modele są częścią usługi, którą od nas kupujesz. Darmowe działają inaczej: ich dostawcy nie są z nami związani umową i mogą przechowywać lub wykorzystywać Twoje dane na własnych zasadach, a my nie możemy ich odzyskać ani zlecić ich usunięcia. Jednorazowa zgoda na każdy model sprawia, że wiesz o tym, zanim cokolwiek zostanie wysłane. Nie wprowadzaj danych osobowych innych osób, a wprowadzania własnych odradzamy. Szczegóły znajdziesz w naszej <privacy>polityce prywatności</privacy>.",
         "H_HOW": "Jak wyrazić zgodę",
-        "P_HOW": "Otwórz <free>stronę darmowych modeli</free>, znajdź model i kliknij <s>Wyraź zgodę</s>. Okno pokazuje kraje, w których mają siedzibę dostawcy modelu. Możesz też wyrazić zgodę w czacie: wybierz darmowy model, a pojawi się to samo okno. Strona pokazuje też modele offline, więc możesz wyrazić zgodę, zanim wrócą.",
+        "P_HOW": "Otwórz <free>stronę darmowych modeli</free>, znajdź model i kliknij <s>Wyraź zgodę</s>. Okno pokazuje kraje, w których mają siedzibę dostawcy modelu. Możesz też wyrazić zgodę w <chat>czacie</chat>: wybierz darmowy model, a pojawi się to samo okno. Strona pokazuje też modele offline, więc możesz wyrazić zgodę, zanim wrócą.",
         "H_API": "Jeśli korzystasz z API",
         "P_API": "Wyraź swoje zgody już teraz. Wkrótce żądanie do darmowego modelu bez zgody będzie odrzucane z błędem <c>free_consent_required</c>. Komunikat błędu prowadzi prosto do czatu z wybranym już modelem, więc wystarczy jedno kliknięcie.",
         "H_GUESTS": "Bez konta",
         "P_GUESTS": "Goście nadal mogą wypróbować darmowe modele. Twoja zgoda jest wtedy powiązana z przeglądarką przez losowy identyfikator gościa, a możesz ją zobaczyć i wycofać w <s>Zarządzaj zgodami</s> w menu czatu.",
         "H_BUSINESS": "Wycofanie zgody i konta firmowe",
-        "P_BUSINESS": "Zgodę możesz wycofać w każdej chwili na stronie darmowych modeli, w ustawieniach konta lub w czacie; model jest wtedy dla Ciebie zablokowany, dopóki ponownie jej nie wyrazisz. Darmowe modele nie są dostępne dla kont firmowych, ponieważ ich prompty mogą zawierać dane osobowe innych osób.",
+        "P_BUSINESS": "Zgodę możesz wycofać w każdej chwili na stronie darmowych modeli, w <settings>ustawieniach konta</settings> lub w czacie; model jest wtedy dla Ciebie zablokowany, dopóki ponownie jej nie wyrazisz. Darmowe modele nie są dostępne dla kont firmowych, ponieważ ich prompty mogą zawierać dane osobowe innych osób.",
         "CTA": "Gotowe? Otwórz <free>stronę darmowych modeli</free> i włącz modele, z których korzystasz."
       }
     }
