@@ -77,7 +77,9 @@ export const settingsRoute = new Elysia({ prefix: "/settings" })
     return unwrap(res);
   })
 
-  .get("/token", async ({ upstream }) => {
+  // POST, not GET: Lax cookies ride a cross-site link, so a GET here rotated the
+  // victim's token from any page they clicked.
+  .post("/token", async ({ upstream }) => {
     const res = await generateAccessToken({ headers: upstream.headers });
     return unwrap(res);
   })
@@ -116,16 +118,18 @@ export const settingsRoute = new Elysia({ prefix: "/settings" })
     { query: verificationQuery },
   )
 
-  .get(
+  // POST, not GET: the code only proves control of the NEW address, so a link
+  // carrying the attacker's own address and code repointed the victim's reset email.
+  .post(
     "/email/bind",
-    async ({ query, upstream }) => {
+    async ({ body, upstream }) => {
       const res = await emailBind(
-        { email: query.email, code: query.code },
+        { email: body.email, code: body.code },
         { headers: upstream.headers },
       );
       return unwrap(res);
     },
-    { query: emailBindQuery },
+    { body: emailBindQuery },
   )
 
   .get("/2fa/status", async ({ upstream }) => {

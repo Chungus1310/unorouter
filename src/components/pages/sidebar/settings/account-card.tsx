@@ -102,7 +102,7 @@ export function AccountCard() {
   function onSubmitEmail(data: EmailBindSchema) {
     bindEmailMutation.mutate(
       {
-        query: { email: data.email, code: data.verification_code },
+        body: { email: data.email, code: data.verification_code },
       },
       {
         onSuccess: () => {

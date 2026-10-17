@@ -37,21 +37,18 @@ export function usePasskeyStatusQuery() {
 export function useGenerateAccessTokenMutation() {
   return useApiMutation({
     mutationFn: async () =>
-      handleElysia(await rpc.api.auth.settings.token.get()),
+      handleElysia(await rpc.api.auth.settings.token.post()),
   });
 }
 
 export function useBindEmailMutation() {
   return useApiMutation({
     mutationFn: async (
-      args: EdenArgs<typeof rpc.api.auth.settings.email.bind, "get">,
-    ) =>
-      handleElysia(
-        await rpc.api.auth.settings.email.bind.get({ query: args.query }),
-      ),
+      args: EdenArgs<typeof rpc.api.auth.settings.email.bind, "post">,
+    ) => handleElysia(await rpc.api.auth.settings.email.bind.post(args.body)),
     onSuccess: (_, args, qc) => {
       qc.setQueryData<UserSelfData>(queryKeys.auth(), (old) =>
-        old ? { ...old, email: args.query.email } : old,
+        old ? { ...old, email: args.body.email } : old,
       );
     },
   });
