@@ -26,7 +26,7 @@ import {
 } from "@/lib/validation/auth";
 import { formDefaults, safeParse } from "@/lib/validation/helpers";
 import { logChatDebug } from "@/lib/utils/chat-debug-log";
-import { extractErrorDetail } from "@/lib/utils/client";
+import { extractErrorDetail, sameOriginPath } from "@/lib/utils/client";
 import { typeboxResolver } from "@hookform/resolvers/typebox";
 import { Turnstile, type TurnstileInstance } from "@marsidev/react-turnstile";
 import { deleteCookie, getCookie } from "cookies-next/client";
@@ -87,8 +87,8 @@ export function LoginForm() {
   const isValid = safeParse(loginChecker, { username, password }).success;
 
   function getRedirectPath() {
-    const redirect = getCookie(AUTH_REDIRECT_COOKIE);
-    if (redirect) deleteCookie(AUTH_REDIRECT_COOKIE);
+    const redirect = sameOriginPath(getCookie(AUTH_REDIRECT_COOKIE));
+    deleteCookie(AUTH_REDIRECT_COOKIE);
     return (redirect as RouterPush) || "/dashboard";
   }
 

@@ -425,3 +425,12 @@ export function splitDataUrl(dataUrl: string): {
   if (!m) return null;
   return { mimeType: m[1], base64: m[2] };
 }
+
+// A post-login target from a query or cookie; "//evil.com" passes a startsWith("/") check.
+export function sameOriginPath(target: unknown): string | null {
+  if (typeof target !== "string" || !target.startsWith("/")) return null;
+  const url = new URL(target, window.location.origin);
+  return url.origin === window.location.origin
+    ? url.pathname + url.search + url.hash
+    : null;
+}

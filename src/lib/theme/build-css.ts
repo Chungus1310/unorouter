@@ -86,9 +86,16 @@ function fontFamilyFor(
   return opt ? `var(${opt.varName}), ${fallback}` : null;
 }
 
+// Values come from pasted theme JSON and the cookie and land in a server-rendered
+// <style>: a colour of `red}</style><script>` ran script on every page. Keys must
+// be token names; values may not leave the declaration or pull a resource.
+const SAFE_KEY_RE = /^[a-z0-9-]+$/;
+const UNSAFE_VALUE_RE = /[<>{};\\@]|url\(|expression\(/i;
+
 function emitBlock(selector: string, vars: TokenValues): string {
   const entries = Object.entries(vars)
     .filter(([, v]) => v !== "" && v !== undefined)
+    .filter(([k, v]) => SAFE_KEY_RE.test(k) && !UNSAFE_VALUE_RE.test(String(v)))
     .map(([k, v]) => `--${k}: ${v};`)
     .join("");
   return entries ? `${selector}{${entries}}` : "";
@@ -263,7 +270,7 @@ export function buildThemeCss(theme: UserTheme): string {
         continue;
       }
       const raw = values.all?.[def.id];
-      if (raw === undefined) continue;
+      if (raw === undefined || UNSAFE_VALUE_RE.test(String(raw))) continue;
       blocks.push(def.rule(tokenCss(def, raw), scopeSelector(scope)));
     }
   }
