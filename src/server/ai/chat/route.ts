@@ -41,7 +41,7 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
   // being a free open relay. No chat key is resolved, logged or stored here.
   .post(
     "/custom-forward/chat/completions",
-    async ({ request }) => {
+    async ({ request, cookie }) => {
       return forwardCustomProvider({
         targetBase: request.headers.get("x-proxy-target"),
         path: "/chat/completions",
@@ -49,6 +49,7 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
         authorization: request.headers.get("authorization"),
         body: await request.text(),
         signal: request.signal,
+        resumeFor: (await getUserId(cookie, true)) ?? GUEST_USER_ID,
       });
     },
     { beforeHandle: customForwardLimit },

@@ -1,5 +1,6 @@
 import { safeFetchStream } from "@/lib/config/safe-fetch";
 import { msg } from "@/lib/config/constants";
+import { resumableResponse } from "./stream-buffer";
 
 // Opt-in CORS-bypass proxy for custom providers, open to guests. The
 // caller-supplied Authorization is mandatory: it is the only thing keeping this
@@ -22,11 +23,13 @@ export async function forwardCustomProvider(args: {
   authorization: string | null;
   body?: string;
   signal?: AbortSignal;
+  resumeFor?: number;
 }): Promise<Response> {
   const base = (args.targetBase ?? "").trim().replace(/\/+$/, "");
   if (!base) return json(400, msg("ERRORS.INVALID_URL"));
   if (!args.authorization) return json(401, msg("ERRORS.NO_API_KEY"));
 
+  const own = args.resumeFor === undefined ? null : new AbortController();
   let upstream;
   try {
     upstream = await safeFetchStream(`${base}${args.path}`, {
@@ -39,7 +42,7 @@ export async function forwardCustomProvider(args: {
         accept: "*/*",
       },
       body: args.body,
-      signal: args.signal,
+      signal: own?.signal ?? args.signal,
     });
   } catch (err) {
     return json(502, err instanceof Error ? err.message : "upstream error");
@@ -50,6 +53,14 @@ export async function forwardCustomProvider(args: {
     const v = upstream.headers.get(h);
     if (v) headers.set(h, v);
   }
+  if (own && args.resumeFor !== undefined && upstream.ok && upstream.body)
+    return resumableResponse(
+      upstream.body,
+      args.resumeFor,
+      own,
+      upstream.status,
+      headers,
+    );
   return new Response(upstream.body, {
     status: upstream.status,
     headers,

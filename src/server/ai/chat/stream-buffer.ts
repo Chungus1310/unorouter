@@ -7,8 +7,11 @@ import { networkInterfaces } from "node:os";
 
 const KEEP_AFTER_DONE_MS = 10 * 60_000;
 const MAX_RUN_MS = 30 * 60_000;
-const MAX_BYTES = 8 * 1024 * 1024;
+const MAX_BYTES = 4 * 1024 * 1024;
 const MAX_ENTRIES = 500;
+// The custom provider relay is open to guests, so the whole buffer is capped
+// well inside the pod's 3Gi limit.
+const TOTAL_BUDGET = 256 * 1024 * 1024;
 
 type Entry = {
   userId: number;
@@ -21,6 +24,14 @@ type Entry = {
 };
 
 const entries = new Map<string, Entry>();
+let totalBytes = 0;
+
+function drop(id: string) {
+  const entry = entries.get(id);
+  if (!entry) return;
+  totalBytes -= entry.bytes;
+  entries.delete(id);
+}
 
 export const STREAM_ID_HEADER = "x-uno-stream";
 export const STREAM_POD_HEADER = "x-uno-pod";
@@ -38,13 +49,20 @@ function sweep() {
   const now = Date.now();
   for (const [id, entry] of entries) {
     if (entry.doneAt !== null && now - entry.doneAt > KEEP_AFTER_DONE_MS)
-      entries.delete(id);
+      drop(id);
   }
   while (entries.size >= MAX_ENTRIES) {
     const oldest = entries.keys().next().value;
     if (oldest === undefined) break;
     entries.get(oldest)?.abort();
-    entries.delete(oldest);
+    drop(oldest);
+  }
+}
+
+function freeFinished() {
+  for (const [id, entry] of entries) {
+    if (totalBytes <= TOTAL_BUDGET / 2) return;
+    if (entry.done) drop(id);
   }
 }
 
@@ -58,6 +76,7 @@ function finish(entry: Entry) {
 function append(entry: Entry, chunk: Uint8Array) {
   entry.chunks.push(chunk);
   entry.bytes += chunk.byteLength;
+  totalBytes += chunk.byteLength;
   entry.wake.forEach((fn) => fn());
   entry.wake.clear();
 }
@@ -88,7 +107,11 @@ export function bufferStream(
       for (;;) {
         const chunk = await reader.read();
         if (chunk.done) break;
-        if (entry.bytes + chunk.value.byteLength > MAX_BYTES) {
+        if (totalBytes + chunk.value.byteLength > TOTAL_BUDGET) freeFinished();
+        if (
+          entry.bytes + chunk.value.byteLength > MAX_BYTES ||
+          totalBytes + chunk.value.byteLength > TOTAL_BUDGET
+        ) {
           abort();
           break;
         }
@@ -144,6 +167,19 @@ export function tailStream(
       cancelled = true;
     },
   });
+}
+
+export function resumableResponse(
+  source: ReadableStream<Uint8Array>,
+  userId: number,
+  abort: AbortController,
+  status: number,
+  headers: Headers,
+): Response {
+  const id = bufferStream(source, userId, () => abort.abort());
+  headers.set(STREAM_ID_HEADER, id);
+  if (podAddress) headers.set(STREAM_POD_HEADER, podAddress);
+  return new Response(tailStream(id, userId, 0), { status, headers });
 }
 
 export function abortStream(id: string, userId: number): boolean {
