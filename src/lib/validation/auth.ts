@@ -130,3 +130,17 @@ export type VerificationMethod = {
   reason?: string;
 };
 export const VERIFICATION_METHOD_TWOFA = "2fa";
+
+const loginChallengeSchema = t.Object({
+  flow_token: t.String(),
+  methods: t.Optional(
+    t.Array(
+      t.Object({
+        method: t.String(),
+        available: t.Boolean(),
+        reason: t.Optional(t.String()),
+      }),
+    ),
+  ),
+});
+export const loginChallengeChecker = TypeCompiler.Compile(loginChallengeSchema);

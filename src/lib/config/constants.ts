@@ -50,6 +50,8 @@ export const LOCALE_COOKIE = "NEXT_LOCALE" as const;
 export const AUTH_REDIRECT_COOKIE = "auth_redirect" as const;
 // The OAuth state this browser started; a login code minted for any other flow is refused.
 export const OAUTH_FLOW_COOKIE = "oauth_flow" as const;
+// The 2FA challenge an OAuth login still owes, handed from the callback to the login form.
+export const LOGIN_CHALLENGE_COOKIE = "login_challenge" as const;
 // Identifies a logged-out browser for its free model consents, nothing else.
 export const GUEST_ID_COOKIE = "guest-id" as const;
 export const GUEST_ID_MAX_AGE = 60 * 60 * 24 * 365;

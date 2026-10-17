@@ -14,9 +14,11 @@ import { RouterPush } from "@/i18n/routing";
 import {
   APP_VALUES,
   AUTH_REDIRECT_COOKIE,
+  LOGIN_CHALLENGE_COOKIE,
   OAUTH_ERROR_QUERY,
 } from "@/lib/config/constants";
 import {
+  loginChallengeChecker,
   loginChecker,
   loginSchema,
   type LoginSchema,
@@ -61,6 +63,23 @@ export function LoginForm() {
     if (!url.searchParams.has(OAUTH_ERROR_QUERY)) return;
     url.searchParams.delete(OAUTH_ERROR_QUERY);
     window.history.replaceState(null, "", url);
+  }, []);
+
+  // An OAuth login whose account has 2FA lands here with the challenge it still owes.
+  useEffect(() => {
+    const raw = getCookie(LOGIN_CHALLENGE_COOKIE);
+    if (typeof raw !== "string") return;
+    deleteCookie(LOGIN_CHALLENGE_COOKIE, { path: "/" });
+    let challenge: unknown;
+    try {
+      challenge = JSON.parse(raw);
+    } catch {
+      return;
+    }
+    if (!loginChallengeChecker.Check(challenge)) return;
+    setTwoFAFlowToken(challenge.flow_token);
+    setChallengeMethods(challenge.methods);
+    setShow2FA(true);
   }, []);
 
   const username = useWatch({ control: form.control, name: "username" });

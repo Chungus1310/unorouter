@@ -19,6 +19,7 @@ import {
   NEW_API_USER,
   OAUTH_ERROR_QUERY,
   OAUTH_FLOW_COOKIE,
+  LOGIN_CHALLENGE_COOKIE,
 } from "@/lib/config/constants";
 import { unwrap } from "@/lib/utils/base";
 import { sanitizeRedirectPath } from "@/lib/utils/server";
@@ -197,6 +198,22 @@ export const authRoute = new Elysia({ prefix: "/account" })
         maxAge: 0,
       });
       if (!flow || !("state" in data) || data.state !== flow) return to("/login");
+
+      // The account has 2FA or a passkey: no session yet, the login form asks for it.
+      if (data.action === "login_verification") {
+        if (!("flow_token" in data) || typeof data.flow_token !== "string")
+          return to("/login");
+        cookie[LOGIN_CHALLENGE_COOKIE].set({
+          value: JSON.stringify({
+            flow_token: data.flow_token,
+            methods: "methods" in data ? data.methods : undefined,
+          }),
+          path: "/",
+          maxAge: 5 * 60,
+          sameSite: "lax",
+        });
+        return to("/login");
+      }
 
       await setSessionCookies(
         cookie,
