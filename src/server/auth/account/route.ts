@@ -18,6 +18,7 @@ import {
   LOCALES,
   NEW_API_USER,
   OAUTH_ERROR_QUERY,
+  OAUTH_FLOW_COOKIE,
 } from "@/lib/config/constants";
 import { unwrap } from "@/lib/utils/base";
 import { sanitizeRedirectPath } from "@/lib/utils/server";
@@ -122,7 +123,7 @@ export const authRoute = new Elysia({ prefix: "/account" })
 
   .get(
     "/oauth/state",
-    async ({ query, upstream }) => {
+    async ({ query, upstream, cookie }) => {
       const res = await generateOAuthCodeQuery(
         {
           provider: query.provider,
@@ -134,7 +135,16 @@ export const authRoute = new Elysia({ prefix: "/account" })
         },
         upstream,
       );
-      return unwrap(res);
+      const state = unwrap(res);
+      if (typeof state === "string")
+        cookie[OAUTH_FLOW_COOKIE].set({
+          value: state,
+          path: "/api/auth/account/oauth",
+          maxAge: 15 * 60,
+          httpOnly: true,
+          sameSite: "lax",
+        });
+      return state;
     },
     { query: oauthStateQuery },
   )
@@ -177,6 +187,16 @@ export const authRoute = new Elysia({ prefix: "/account" })
 
       const data = res.data.data;
       if (data.action === "bind") return to("/settings");
+
+      // A code is only good in the browser that started its flow: without this, a
+      // code captured from the attacker's own login signed any victim into that account.
+      const flow = String(cookie[OAUTH_FLOW_COOKIE]?.value || "");
+      cookie[OAUTH_FLOW_COOKIE].set({
+        value: "",
+        path: "/api/auth/account/oauth",
+        maxAge: 0,
+      });
+      if (!flow || !("state" in data) || data.state !== flow) return to("/login");
 
       await setSessionCookies(
         cookie,
