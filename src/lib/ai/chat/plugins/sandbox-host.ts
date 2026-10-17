@@ -386,8 +386,10 @@ export class SandboxHost {
   private apiFactory: Record<string, unknown>;
   private nonce = crypto.randomUUID();
   // 'unsafe-eval' is REQUIRED, not an oversight: without it every plugin fails
-  // CSP. `connect-src 'none'` is what denies network.
-  private csp = `connect-src 'none'; script-src 'nonce-${this.nonce}' 'unsafe-eval' 'wasm-unsafe-eval'; frame-src 'none'; object-src 'none'; style-src * 'unsafe-inline'; default-src 'none'; img-src * data: blob:; font-src * data: blob:; media-src * data: blob:; base-uri 'none';`;
+  // CSP. Network is denied everywhere, not only connect-src: remote img, font, media
+  // or style loads carried the whole chat out in a URL past the httpRequest limit.
+  // A plugin that needs a remote asset fetches it through httpRequest into a blob.
+  private csp = `connect-src 'none'; script-src 'nonce-${this.nonce}' 'unsafe-eval' 'wasm-unsafe-eval'; frame-src 'none'; object-src 'none'; style-src 'unsafe-inline'; default-src 'none'; img-src data: blob:; font-src data: blob:; media-src data: blob:; base-uri 'none'; form-action 'none';`;
 
   private instanceRegistry = new Map<string, any>();
   private abortControllers = new Map<string, AbortController>();
