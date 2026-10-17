@@ -31,7 +31,7 @@ export async function computeSpeakingOrder(
   const active = (bindings?.conversationCharacters ?? []).filter(
     (b) => b.isActive !== false,
   );
-  if (active.length <= 1) return active.map((b) => b.characterId);
+  if (active.length <= 1) return [];
 
   const members = await Promise.all(
     active.map(async (b) => {

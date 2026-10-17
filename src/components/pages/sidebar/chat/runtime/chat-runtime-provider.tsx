@@ -287,6 +287,14 @@ function ChatRuntimeHook() {
           }
           return;
         }
+        if (order.length === 1) {
+          chatStore.set(speakingCharacterIdAtom, order[0]);
+          try {
+            return await chat.sendMessage(...args);
+          } finally {
+            chatStore.set(speakingCharacterIdAtom, null);
+          }
+        }
       }
       chatStore.set(speakingCharacterIdAtom, null);
       return chat.sendMessage(...args);
