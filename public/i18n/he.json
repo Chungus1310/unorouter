@@ -4189,6 +4189,7 @@
     "CHARACTERS_IMPORT_LINK": "ייבוא מקישור",
     "CHARACTERS_IMPORT_LINK_PLACEHOLDER": "הדביקו קישור לדמות או לכרטיס",
     "CHARACTERS_IMPORT_NO_DEFINITION": "היוצר הסתיר את ההגדרה של {names}, ולכן הגיעו רק השם, הברכה והתמונה. כתבו את האישיות בעצמכם בעורך.",
+    "CHARACTERS_IMPORT_LOREBOOK_REUSED": "{count, plural, one {כבר היה לכם # מבין ה-lorebooks שלה, לכן הדמות משתמשת בו במקום בעותק.} two {כבר היו לכם # מבין ה-lorebooks שלה, לכן הדמות משתמשת בהם במקום בעותקים.} other {כבר היו לכם # מבין ה-lorebooks שלה, לכן הדמות משתמשת בהם במקום בעותקים.}}",
     "CHARACTERS_IMPORT_FROM_LINK": "ייבוא",
     "IMPORT_FETCHING": "מאחזר...",
     "IMPORT_FETCHING_HINT": "האחזור מתבצע דרך דפדפן, וזה עשוי לקחת רגע.",

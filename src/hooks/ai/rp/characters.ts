@@ -3,6 +3,7 @@
 import { upsertLocalMedia } from "@/lib/db/client/data/media/media";
 import {
   deleteLocalCharacter,
+  findLocalLorebookCopy,
   readLocalCharacter,
   readLocalCharacters,
   upsertLocalCardBundle,
@@ -101,6 +102,7 @@ async function persistCharacterSetupFromFile(
   });
 
   let lorebookId: string | null = null;
+  let reusedLorebooks = 0;
   try {
     const rawData = card.raw.data;
     const characterBook =
@@ -111,7 +113,14 @@ async function persistCharacterSetupFromFile(
       const parsed = await import("@/lib/ai/rp/lorebook-import").then((m) =>
         m.parseLorebookJson(characterBook, `${card.name} lorebook`),
       );
-      if (parsed && parsed.entries.length > 0) {
+      const copy =
+        parsed && parsed.entries.length > 0
+          ? await findLocalLorebookCopy(parsed.name, parsed.entries)
+          : null;
+      if (copy) {
+        lorebookId = copy;
+        reusedLorebooks++;
+      } else if (parsed && parsed.entries.length > 0) {
         lorebookId = uid();
         await upsertLocalLorebookBundle({
           lorebook: {
@@ -163,7 +172,7 @@ async function persistCharacterSetupFromFile(
     ),
   });
 
-  return { characterId, lorebookId, cardId };
+  return { characterId, lorebookId, cardId, reusedLorebooks };
 }
 
 const IMPORT_INVALIDATES = [
@@ -173,9 +182,18 @@ const IMPORT_INVALIDATES = [
 ];
 
 export function useImportCharacterCardMutation() {
+  const t = useTranslations();
   return useApiMutation({
     mutationFn: (file: File) => persistCharacterSetupFromFile(file),
     invalidates: IMPORT_INVALIDATES,
+    onSuccess: (res) => {
+      if (res.reusedLorebooks > 0)
+        toast.info(
+          t("RP.CHARACTERS_IMPORT_LOREBOOK_REUSED", {
+            count: res.reusedLorebooks,
+          }),
+        );
+    },
   });
 }
 
@@ -191,6 +209,13 @@ export function useImportCharacterFromUrlMutation() {
             names: res.withoutDefinition.join(", "),
           }),
           { duration: 15_000 },
+        );
+      }
+      if (res.reusedLorebooks > 0) {
+        toast.info(
+          t("RP.CHARACTERS_IMPORT_LOREBOOK_REUSED", {
+            count: res.reusedLorebooks,
+          }),
         );
       }
       if (res.privateBooks.length > 0) {
@@ -214,8 +239,9 @@ async function persistImportedCards(results: ImportedResult[]) {
   }
   const withoutDefinition: string[] = [];
   const privateBooks: string[] = [];
+  let reusedLorebooks = 0;
   for (const card of cards) {
-    await persistImportedCard(card);
+    reusedLorebooks += (await persistImportedCard(card)).reusedLorebooks;
     const data = card.card.data;
     // A hidden definition arrives as a name, a greeting and a picture.
     const blank = [
@@ -229,7 +255,7 @@ async function persistImportedCards(results: ImportedResult[]) {
       privateBooks.push(...card.skipped.map((sk) => sk.title));
     }
   }
-  return { withoutDefinition, privateBooks };
+  return { withoutDefinition, privateBooks, reusedLorebooks };
 }
 
 async function persistImportedCard(result: ImportedResult) {
@@ -242,8 +268,15 @@ async function persistImportedCard(result: ImportedResult) {
   // drizzle calls .getTime() on whatever it is given and a string throws.
   const now = dayjs().toDate();
   const lorebookIds: string[] = [];
+  let reusedLorebooks = 0;
   for (const book of result.lorebooks ?? []) {
     if (book.entries.length === 0) continue;
+    const copy = await findLocalLorebookCopy(book.name, book.entries);
+    if (copy) {
+      lorebookIds.push(copy);
+      reusedLorebooks++;
+      continue;
+    }
     const lorebookId = uid();
     lorebookIds.push(lorebookId);
     await upsertLocalLorebookBundle({
@@ -315,5 +348,8 @@ async function persistImportedCard(result: ImportedResult) {
       updatedAt: dayjs().toDate(),
     });
   }
-  return setup;
+  return {
+    ...setup,
+    reusedLorebooks: setup.reusedLorebooks + reusedLorebooks,
+  };
 }

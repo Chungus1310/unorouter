@@ -100,6 +100,25 @@ export async function readLocalLorebook(id: string) {
   return { ...lbRows[0], entries };
 }
 
+const entryKey = (e: { keys?: string[] | null; content: string }) =>
+  JSON.stringify([e.content.trim(), [...(e.keys ?? [])].sort()]);
+
+// Characters that share a lorebook link the copy already here instead of each
+// importing their own.
+export async function findLocalLorebookCopy(
+  name: string,
+  entries: { keys?: string[] | null; content: string }[],
+): Promise<string | null> {
+  const want = entries.map(entryKey).sort().join("\n");
+  for (const book of (await readLocalLorebooks()) ?? []) {
+    if (book.name !== name) continue;
+    const existing = await readLocalLorebook(book.id);
+    if (existing?.entries.map(entryKey).sort().join("\n") === want)
+      return book.id;
+  }
+  return null;
+}
+
 export async function readLocalLorebookBundle(id: string) {
   const lb = await readLocalLorebook(id);
   if (!lb) return null;

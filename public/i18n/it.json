@@ -4189,6 +4189,7 @@
     "CHARACTERS_IMPORT_LINK": "Importa da link",
     "CHARACTERS_IMPORT_LINK_PLACEHOLDER": "Incolla un link a un personaggio o a una card",
     "CHARACTERS_IMPORT_NO_DEFINITION": "L'autore ha nascosto la definizione di {names}, quindi sono arrivati solo nome, saluto e immagine. Scrivi tu la personalità nell'editor.",
+    "CHARACTERS_IMPORT_LOREBOOK_REUSED": "{count, plural, one {Avevi già # dei suoi lorebook, quindi il personaggio usa quello invece di una copia.} other {Avevi già # dei suoi lorebook, quindi il personaggio usa quelli invece di copie.}}",
     "CHARACTERS_IMPORT_FROM_LINK": "Importa",
     "IMPORT_FETCHING": "Recupero in corso...",
     "IMPORT_FETCHING_HINT": "Recupero tramite un browser, può richiedere un momento.",

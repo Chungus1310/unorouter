@@ -4189,6 +4189,7 @@
     "CHARACTERS_IMPORT_LINK": "Import from link",
     "CHARACTERS_IMPORT_LINK_PLACEHOLDER": "Paste a character link or a card link",
     "CHARACTERS_IMPORT_NO_DEFINITION": "The author hid the definition of {names}, so only the name, greeting and picture came through. Write the personality yourself in the editor.",
+    "CHARACTERS_IMPORT_LOREBOOK_REUSED": "{count, plural, one {You already had # of its lorebooks, so the character uses that one instead of a copy.} other {You already had # of its lorebooks, so the character uses those instead of copies.}}",
     "CHARACTERS_IMPORT_FROM_LINK": "Import",
     "IMPORT_FETCHING": "Fetching...",
     "IMPORT_FETCHING_HINT": "Fetching through a browser, this can take a moment.",

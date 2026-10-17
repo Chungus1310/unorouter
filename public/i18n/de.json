@@ -4189,6 +4189,7 @@
     "CHARACTERS_IMPORT_LINK": "Per Link importieren",
     "CHARACTERS_IMPORT_LINK_PLACEHOLDER": "Charakter-Link oder Karten-Link einfügen",
     "CHARACTERS_IMPORT_NO_DEFINITION": "Der Autor hat die Definition von {names} verborgen, deshalb kamen nur Name, Begrüßung und Bild mit. Die Persönlichkeit im Editor selbst ergänzen.",
+    "CHARACTERS_IMPORT_LOREBOOK_REUSED": "{count, plural, one {# seiner Lorebooks war bereits vorhanden, daher nutzt der Charakter dieses statt einer Kopie.} other {# seiner Lorebooks waren bereits vorhanden, daher nutzt der Charakter diese statt Kopien.}}",
     "CHARACTERS_IMPORT_FROM_LINK": "Importieren",
     "IMPORT_FETCHING": "Wird geladen...",
     "IMPORT_FETCHING_HINT": "Wird über einen Browser abgerufen, das kann einen Moment dauern.",

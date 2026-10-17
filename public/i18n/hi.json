@@ -4189,6 +4189,7 @@
     "CHARACTERS_IMPORT_LINK": "लिंक से इंपोर्ट करें",
     "CHARACTERS_IMPORT_LINK_PLACEHOLDER": "किरदार का लिंक या कार्ड का लिंक चिपकाएँ",
     "CHARACTERS_IMPORT_NO_DEFINITION": "लेखक ने {names} की परिभाषा छिपा रखी है, इसलिए सिर्फ़ नाम, अभिवादन और तस्वीर आई। व्यक्तित्व एडिटर में खुद लिखें।",
+    "CHARACTERS_IMPORT_LOREBOOK_REUSED": "{count, plural, one {आपके पास इसकी # lorebook पहले से थी, इसलिए किरदार कॉपी के बजाय उसी का इस्तेमाल करता है।} other {आपके पास इसकी # lorebooks पहले से थीं, इसलिए किरदार कॉपियों के बजाय उन्हीं का इस्तेमाल करता है।}}",
     "CHARACTERS_IMPORT_FROM_LINK": "इंपोर्ट",
     "IMPORT_FETCHING": "प्राप्त किया जा रहा है...",
     "IMPORT_FETCHING_HINT": "ब्राउज़र के माध्यम से प्राप्त किया जा रहा है, इसमें कुछ समय लग सकता है।",

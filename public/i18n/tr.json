@@ -4189,6 +4189,7 @@
     "CHARACTERS_IMPORT_LINK": "Bağlantıdan içe aktar",
     "CHARACTERS_IMPORT_LINK_PLACEHOLDER": "Karakter bağlantısı veya kart bağlantısı yapıştır",
     "CHARACTERS_IMPORT_NO_DEFINITION": "Yazar {names} için tanımı gizlemiş, bu yüzden yalnızca ad, karşılama ve resim geldi. Kişiliği düzenleyicide kendiniz yazın.",
+    "CHARACTERS_IMPORT_LOREBOOK_REUSED": "{count, plural, one {Bu karakterin lorebooklerinden # tanesi sizde zaten vardı, bu yüzden karakter kopya yerine mevcut olanı kullanıyor.} other {Bu karakterin lorebooklerinden # tanesi sizde zaten vardı, bu yüzden karakter kopya yerine mevcut olanları kullanıyor.}}",
     "CHARACTERS_IMPORT_FROM_LINK": "İçe aktar",
     "IMPORT_FETCHING": "Getiriliyor...",
     "IMPORT_FETCHING_HINT": "Bir tarayıcı üzerinden getiriliyor, bu biraz sürebilir.",

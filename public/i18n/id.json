@@ -4189,6 +4189,7 @@
     "CHARACTERS_IMPORT_LINK": "Impor dari tautan",
     "CHARACTERS_IMPORT_LINK_PLACEHOLDER": "Tempel tautan karakter atau tautan kartu",
     "CHARACTERS_IMPORT_NO_DEFINITION": "Pembuatnya menyembunyikan definisi {names}, jadi hanya nama, sapaan, dan gambar yang masuk. Tulis sendiri kepribadiannya di editor.",
+    "CHARACTERS_IMPORT_LOREBOOK_REUSED": "{count, plural, other {Anda sudah punya # lorebook milik karakter ini, jadi karakter memakai yang sudah ada alih-alih salinan.}}",
     "CHARACTERS_IMPORT_FROM_LINK": "Impor",
     "IMPORT_FETCHING": "Mengambil...",
     "IMPORT_FETCHING_HINT": "Diambil melalui peramban, ini mungkin memakan waktu sejenak.",

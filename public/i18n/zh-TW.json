@@ -4189,6 +4189,7 @@
     "CHARACTERS_IMPORT_LINK": "從連結匯入",
     "CHARACTERS_IMPORT_LINK_PLACEHOLDER": "貼上角色連結或角色卡連結",
     "CHARACTERS_IMPORT_NO_DEFINITION": "作者隱藏了 {names} 的設定，所以只匯入了名字、開場白與圖片。請在編輯器裡自己補寫個性。",
+    "CHARACTERS_IMPORT_LOREBOOK_REUSED": "{count, plural, other {你已擁有該角色的 # 個世界書，因此角色直接使用現有的世界書，不再建立副本。}}",
     "CHARACTERS_IMPORT_FROM_LINK": "匯入",
     "IMPORT_FETCHING": "正在取得……",
     "IMPORT_FETCHING_HINT": "正在透過瀏覽器取得，可能需要稍候片刻。",
