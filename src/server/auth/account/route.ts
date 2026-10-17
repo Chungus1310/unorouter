@@ -19,8 +19,10 @@ import {
   NEW_API_USER,
   OAUTH_ERROR_QUERY,
   OAUTH_FLOW_COOKIE,
+  OAUTH_BIND_FLOW_COOKIE,
   LOGIN_CHALLENGE_COOKIE,
 } from "@/lib/config/constants";
+import { env } from "@/lib/config/env";
 import { unwrap } from "@/lib/utils/base";
 import { sanitizeRedirectPath } from "@/lib/utils/server";
 import {
@@ -137,6 +139,22 @@ export const authRoute = new Elysia({ prefix: "/account" })
         upstream,
       );
       const body = unwrap(res);
+      const siteHost = new URL(env.siteOrigin).hostname;
+      if (
+        query.action === "bind" &&
+        "data" in body &&
+        typeof body.data === "string" &&
+        siteHost.includes(".")
+      )
+        cookie[OAUTH_BIND_FLOW_COOKIE].set({
+          value: body.data,
+          domain: siteHost,
+          path: "/api/oauth",
+          maxAge: 15 * 60,
+          httpOnly: true,
+          secure: true,
+          sameSite: "lax",
+        });
       if ("data" in body && typeof body.data === "string")
         cookie[OAUTH_FLOW_COOKIE].set({
           value: body.data,
