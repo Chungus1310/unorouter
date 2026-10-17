@@ -135,16 +135,16 @@ export const authRoute = new Elysia({ prefix: "/account" })
         },
         upstream,
       );
-      const state = unwrap(res);
-      if (typeof state === "string")
+      const body = unwrap(res);
+      if ("data" in body && typeof body.data === "string")
         cookie[OAUTH_FLOW_COOKIE].set({
-          value: state,
+          value: body.data,
           path: "/api/auth/account/oauth",
           maxAge: 15 * 60,
           httpOnly: true,
           sameSite: "lax",
         });
-      return state;
+      return body;
     },
     { query: oauthStateQuery },
   )
