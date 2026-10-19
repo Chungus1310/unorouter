@@ -87,8 +87,8 @@ export function FreeConsentPanel(props: {
   }
 
   return (
-    <div className="flex flex-1 flex-col items-center justify-center overflow-y-auto p-4 sm:p-8">
-      <div className="bg-card w-full max-w-xl space-y-3 rounded-lg border p-5">
+    <div className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto p-4 sm:p-8">
+      <div className="bg-card my-auto w-full max-w-xl space-y-3 rounded-lg border p-5">
         <h2 className="text-foreground text-base font-medium">
           {t("FREE_CONSENT.TITLE")}
         </h2>
