@@ -981,10 +981,10 @@ const ErrorCard: FC<{
   return (
     <div
       role="alert"
-      className="aui-message-error-root border-destructive bg-destructive/10 text-destructive dark:bg-destructive/5 mt-2 rounded-md border p-3 text-sm dark:text-red-200"
+      className="aui-message-error-root border-destructive bg-destructive/10 text-destructive dark:bg-destructive/5 mt-2 max-w-full min-w-0 rounded-md border p-3 text-sm [overflow-wrap:anywhere] dark:text-red-200"
     >
       <div className="flex items-start justify-between gap-2">
-        <span className="aui-message-error-message">
+        <span className="aui-message-error-message min-w-0">
           {displayModel ? `${displayModel}: ${props.message}` : props.message}
         </span>
         <TooltipIconButton
@@ -999,9 +999,11 @@ const ErrorCard: FC<{
         </TooltipIconButton>
       </div>
       {meta.length > 0 && (
-        <div className="mt-1.5 flex flex-wrap gap-x-2 gap-y-0.5 font-mono text-[11px] opacity-70">
+        <div className="mt-1.5 flex min-w-0 flex-wrap gap-x-2 gap-y-0.5 font-mono text-[11px] opacity-70">
           {meta.map((m) => (
-            <span key={m}>{m}</span>
+            <span key={m} className="min-w-0">
+              {m}
+            </span>
           ))}
         </div>
       )}
