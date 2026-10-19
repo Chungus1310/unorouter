@@ -6345,42 +6345,28 @@
     "NOTICE_CONFIRM": "Ho capito",
     "NOTICE_SAVED": "Avviso confermato",
     "UNKNOWN_COUNTRY": "sede sconosciuta",
-    "BUSINESS": "I modelli gratuiti non sono disponibili per gli account aziendali.",
+    "BUSINESS": "I modelli che richiedono un consenso non sono disponibili per gli account aziendali.",
     "REQUIRED_ERROR": "Questo modello richiede il tuo consenso prima dell'uso, ad esempio perché è stato aggiunto un fornitore. Confermalo nel riquadro mostrato nella chat.",
-    "SETTINGS_TITLE": "Modelli gratuiti",
-    "SETTINGS_DESC": "Modelli gratuiti al cui utilizzo hai acconsentito. Dopo una revoca il modello resta bloccato finché non acconsenti di nuovo.",
-    "SETTINGS_EMPTY": "Non hai ancora acconsentito a nessun modello gratuito.",
+    "SETTINGS_TITLE": "Modelli con uso per l'addestramento",
+    "SETTINGS_DESC": "Modelli i cui fornitori utilizzano i tuoi input per scopi propri e al cui trasferimento hai acconsentito. Dopo una revoca il modello resta bloccato finché non acconsenti di nuovo.",
+    "SETTINGS_EMPTY": "Non hai ancora dato alcun consenso.",
     "REVOKE_BUTTON": "Revoca",
     "REVOKED": "Consenso revocato",
     "GRANTED_ON": "Dato il {date}",
     "MANAGE": "Gestisci consensi",
     "SAVED": "Consenso salvato",
     "META": {
-      "TITLE": "Consensi per i modelli gratuiti - {appName}",
-      "DESCRIPTION": "Dai o revoca il tuo consenso per ogni modello gratuito su {appName}.",
-      "KEYWORDS": "modelli gratuiti, consenso, privacy"
+      "TITLE": "Modelli con uso per l'addestramento | {appName}",
+      "DESCRIPTION": "Dai o revoca il tuo consenso per ogni modello su {appName} i cui fornitori utilizzano i tuoi input per scopi propri.",
+      "KEYWORDS": "uso per l'addestramento, consenso, privacy, trasferimento verso paesi terzi"
     },
-    "PAGE_TITLE": "Modelli gratuiti",
-    "PAGE_INTRO": "I modelli gratuiti sono offerti tramite fornitori che possono usare i tuoi input per scopi propri. Qui puoi dare il consenso per ogni modello prima di usarlo, anche per l'API, e revocarlo in qualsiasi momento.",
+    "PAGE_TITLE": "Modelli con uso per l'addestramento",
+    "PAGE_INTRO": "I fornitori di questi modelli possono utilizzare i tuoi input per scopi propri, ad esempio per addestrare modelli di IA. Se hanno sede in un paese senza un livello adeguato di protezione dei dati, devi acconsentire prima del primo utilizzo, anche per l'API. Puoi revocare qualsiasi consenso in qualsiasi momento.",
     "SEARCH": "Cerca modelli",
     "GIVE": "Acconsenti",
     "NOT_NEEDED": "Nessun consenso necessario",
     "OFFLINE": "offline",
-    "ALL_MODELS": "Tutti i modelli gratuiti",
-    "TRAINING_USE": {
-      "SETTINGS_TITLE": "Modelli con uso per l'addestramento",
-      "SETTINGS_DESC": "Modelli i cui fornitori utilizzano i tuoi input per scopi propri e al cui trasferimento hai acconsentito. Dopo una revoca il modello resta bloccato finché non acconsenti di nuovo.",
-      "SETTINGS_EMPTY": "Non hai ancora dato alcun consenso.",
-      "BUSINESS": "I modelli che richiedono un consenso non sono disponibili per gli account aziendali.",
-      "META": {
-        "TITLE": "Modelli con uso per l'addestramento | {appName}",
-        "DESCRIPTION": "Dai o revoca il tuo consenso per ogni modello su {appName} i cui fornitori utilizzano i tuoi input per scopi propri.",
-        "KEYWORDS": "uso per l'addestramento, consenso, privacy, trasferimento verso paesi terzi"
-      },
-      "PAGE_TITLE": "Modelli con uso per l'addestramento",
-      "PAGE_INTRO": "I fornitori di questi modelli possono utilizzare i tuoi input per scopi propri, ad esempio per addestrare modelli di IA. Se hanno sede in un paese senza un livello adeguato di protezione dei dati, devi acconsentire prima del primo utilizzo, anche per l'API. Puoi revocare qualsiasi consenso in qualsiasi momento.",
-      "ALL_MODELS": "Tutti i modelli con uso per l'addestramento"
-    }
+    "ALL_MODELS": "Tutti i modelli con uso per l'addestramento"
   },
   "OWN_PURPOSE": {
     "TITLE": "Opposizione all'uso per scopi propri dei fornitori",

@@ -1,7 +1,6 @@
 "use client";
 
 import { PageContent } from "@/components/layout/sidebar/sidebar-layout";
-import { useOwnPurposeEnabled } from "@/hooks/ops/status-hook";
 import { useTranslations } from "next-intl";
 import { AccountCard } from "./account-card";
 import { AccountHeader } from "./account-header";
@@ -16,7 +15,6 @@ import { Icon } from "@/components/ui/icon";
 
 export function SettingsPage() {
   const t = useTranslations();
-  const ownPurposeEnabled = useOwnPurposeEnabled();
 
   return (
     <PageContent>
@@ -66,11 +64,9 @@ export function SettingsPage() {
         <FreeConsentCard />
       </div>
 
-      {ownPurposeEnabled && (
-        <div className="mb-6">
-          <OwnPurposeObjectionCard />
-        </div>
-      )}
+      <div className="mb-6">
+        <OwnPurposeObjectionCard />
+      </div>
 
       <div className="mb-6">
         <BackupCard />

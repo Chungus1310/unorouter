@@ -6345,42 +6345,28 @@
     "NOTICE_CONFIRM": "Saya mengerti",
     "NOTICE_SAVED": "Pemberitahuan dikonfirmasi",
     "UNKNOWN_COUNTRY": "kedudukan tidak diketahui",
-    "BUSINESS": "Model gratis tidak tersedia untuk akun bisnis.",
+    "BUSINESS": "Model yang memerlukan persetujuan tidak tersedia untuk akun bisnis.",
     "REQUIRED_ERROR": "Model ini memerlukan persetujuanmu sebelum digunakan, misalnya karena ada penyedia yang ditambahkan. Konfirmasikan di panel yang ditampilkan di chat.",
-    "SETTINGS_TITLE": "Model gratis",
-    "SETTINGS_DESC": "Model gratis yang penggunaannya telah kamu setujui. Setelah ditarik, model tetap diblokir sampai kamu menyetujuinya lagi.",
-    "SETTINGS_EMPTY": "Kamu belum menyetujui model gratis apa pun.",
+    "SETTINGS_TITLE": "Model dengan penggunaan untuk pelatihan",
+    "SETTINGS_DESC": "Model yang penyedianya menggunakan masukanmu untuk tujuan mereka sendiri dan yang pemindahannya telah kamu setujui. Setelah persetujuan ditarik, model tetap diblokir sampai kamu menyetujuinya lagi.",
+    "SETTINGS_EMPTY": "Kamu belum memberikan persetujuan apa pun.",
     "REVOKE_BUTTON": "Tarik",
     "REVOKED": "Persetujuan ditarik",
     "GRANTED_ON": "Diberikan pada {date}",
     "MANAGE": "Kelola persetujuan",
     "SAVED": "Persetujuan disimpan",
     "META": {
-      "TITLE": "Persetujuan model gratis - {appName}",
-      "DESCRIPTION": "Berikan atau tarik persetujuanmu untuk setiap model gratis di {appName}.",
-      "KEYWORDS": "model gratis, persetujuan, privasi"
+      "TITLE": "Model dengan penggunaan untuk pelatihan | {appName}",
+      "DESCRIPTION": "Berikan atau tarik persetujuanmu untuk setiap model di {appName} yang penyedianya menggunakan masukanmu untuk tujuan mereka sendiri.",
+      "KEYWORDS": "penggunaan untuk pelatihan, persetujuan, privasi, pemindahan ke negara ketiga"
     },
-    "PAGE_TITLE": "Model gratis",
-    "PAGE_INTRO": "Model gratis disediakan melalui penyedia yang dapat menggunakan masukanmu untuk tujuan mereka sendiri. Di sini kamu dapat memberikan persetujuan untuk setiap model sebelum menggunakannya, termasuk untuk API, dan menariknya kapan saja.",
+    "PAGE_TITLE": "Model dengan penggunaan untuk pelatihan",
+    "PAGE_INTRO": "Penyedia model ini dapat menggunakan masukanmu untuk tujuan mereka sendiri, misalnya untuk melatih model AI. Jika mereka berkedudukan di negara tanpa tingkat perlindungan data yang memadai, kamu perlu memberikan persetujuan sebelum penggunaan pertama, termasuk untuk API. Kamu dapat menarik persetujuan apa pun kapan saja.",
     "SEARCH": "Cari model",
     "GIVE": "Setujui",
     "NOT_NEEDED": "Tidak perlu persetujuan",
     "OFFLINE": "offline",
-    "ALL_MODELS": "Semua model gratis",
-    "TRAINING_USE": {
-      "SETTINGS_TITLE": "Model dengan penggunaan untuk pelatihan",
-      "SETTINGS_DESC": "Model yang penyedianya menggunakan masukanmu untuk tujuan mereka sendiri dan yang pemindahannya telah kamu setujui. Setelah persetujuan ditarik, model tetap diblokir sampai kamu menyetujuinya lagi.",
-      "SETTINGS_EMPTY": "Kamu belum memberikan persetujuan apa pun.",
-      "BUSINESS": "Model yang memerlukan persetujuan tidak tersedia untuk akun bisnis.",
-      "META": {
-        "TITLE": "Model dengan penggunaan untuk pelatihan | {appName}",
-        "DESCRIPTION": "Berikan atau tarik persetujuanmu untuk setiap model di {appName} yang penyedianya menggunakan masukanmu untuk tujuan mereka sendiri.",
-        "KEYWORDS": "penggunaan untuk pelatihan, persetujuan, privasi, pemindahan ke negara ketiga"
-      },
-      "PAGE_TITLE": "Model dengan penggunaan untuk pelatihan",
-      "PAGE_INTRO": "Penyedia model ini dapat menggunakan masukanmu untuk tujuan mereka sendiri, misalnya untuk melatih model AI. Jika mereka berkedudukan di negara tanpa tingkat perlindungan data yang memadai, kamu perlu memberikan persetujuan sebelum penggunaan pertama, termasuk untuk API. Kamu dapat menarik persetujuan apa pun kapan saja.",
-      "ALL_MODELS": "Semua model dengan penggunaan untuk pelatihan"
-    }
+    "ALL_MODELS": "Semua model dengan penggunaan untuk pelatihan"
   },
   "OWN_PURPOSE": {
     "TITLE": "Keberatan atas penggunaan untuk tujuan penyedia sendiri",

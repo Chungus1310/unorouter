@@ -6,7 +6,6 @@ import { Icon } from "@/components/ui/icon";
 import { Link } from "@/i18n/navigation";
 import { useGrantFreeConsentMutation } from "@/hooks/auth/free-consent-hook";
 import { useModelGroupsQuery } from "@/hooks/models/pricing-hook";
-import { useOwnPurposeEnabled } from "@/hooks/ops/status-hook";
 import { useApiKey } from "@/hooks/ui/use-api-key";
 import { APP_VALUES } from "@/lib/config/constants";
 import { useLocale, useTranslations } from "next-intl";
@@ -21,7 +20,6 @@ import { toast } from "sonner";
 function useConsentScope(model: string) {
   const t = useTranslations();
   const locale = useLocale();
-  const enabled = useOwnPurposeEnabled();
   const groups = useModelGroupsQuery(model).data;
   if (!groups) return null;
   const unknown = t("FREE_CONSENT.UNKNOWN_COUNTRY");
@@ -49,9 +47,8 @@ function useConsentScope(model: string) {
   return {
     destinations: [...destinations],
     unsafe: [...unsafe],
-    // With the switch off every free model takes the full consent, as before.
-    consentRequired: !enabled || (groups.own_purpose?.consent_required ?? false),
-    trainsOrRetains: !enabled || (groups.own_purpose?.trains_or_retains ?? false),
+    consentRequired: groups.own_purpose?.consent_required ?? false,
+    trainsOrRetains: groups.own_purpose?.trains_or_retains ?? false,
   };
 }
 

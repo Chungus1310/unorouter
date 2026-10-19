@@ -3,28 +3,20 @@ import type { FreeConsentItem, OwnPurposeSummary } from "@/openapi";
 
 type OwnPurposeModel = {
   model_name: string;
-  is_free?: boolean;
   own_purpose?: OwnPurposeSummary;
 };
 
-// `enabled` is the gateway's own_purpose_enabled switch: while it is off only
-// free models are gated and the own purpose summary is ignored.
 // The gateway still takes a grant for every :free model, so those stay gated
 // even when their summary says no consent is needed.
-export function needsTransferConsent(
-  model: OwnPurposeModel,
-  enabled: boolean,
-): boolean {
-  const free = model.model_name.toLowerCase().endsWith(":free");
-  if (!enabled) return (model.is_free ?? false) || free;
-  return (model.own_purpose?.consent_required ?? false) || free;
+export function needsTransferConsent(model: OwnPurposeModel): boolean {
+  return (
+    (model.own_purpose?.consent_required ?? false) ||
+    model.model_name.toLowerCase().endsWith(":free")
+  );
 }
 
-export function usesInputsForOwnPurposes(
-  model: OwnPurposeModel,
-  enabled: boolean,
-): boolean {
-  return enabled && (model.own_purpose?.trains_or_retains ?? false);
+export function usesInputsForOwnPurposes(model: OwnPurposeModel): boolean {
+  return model.own_purpose?.trains_or_retains ?? false;
 }
 
 // A consent stops counting once a provider it did not cover serves the model.
@@ -32,11 +24,8 @@ export function usesInputsForOwnPurposes(
 export function hasCoveringConsent(
   consents: FreeConsentItem[] | null | undefined,
   model: string,
-  enabled: boolean,
 ): boolean {
-  return (consents ?? []).some(
-    (c) => c.model === model && (!enabled || c.covers !== false),
-  );
+  return (consents ?? []).some((c) => c.model === model && c.covers !== false);
 }
 
 export const OWN_PURPOSE_OBJECTED = "own_purpose_objected";

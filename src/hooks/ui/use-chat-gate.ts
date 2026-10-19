@@ -3,7 +3,6 @@
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useFreeConsentsQuery } from "@/hooks/auth/free-consent-hook";
 import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
-import { useOwnPurposeEnabled } from "@/hooks/ops/status-hook";
 import { useApiKey } from "@/hooks/ui/use-api-key";
 import {
   hasCoveringConsent,
@@ -16,13 +15,12 @@ export function useChatGate() {
   const token = useApiKey();
   const authQuery = useAuthQuery();
   const selectedModel = useAtomValue(chatModelAtom);
-  const enabled = useOwnPurposeEnabled();
   const pricingData = usePricingCatalogQuery().data?.models;
   const selected = pricingData?.find((m) => m.model_name === selectedModel);
   const isSelectedModelFree = selected?.is_free ?? false;
   const demanded = useAtomValue(consentDemandedModelsAtom);
   const consentModel =
-    (selected ? needsTransferConsent(selected, enabled) : false) ||
+    (selected ? needsTransferConsent(selected) : false) ||
     (selectedModel != null && demanded.includes(selectedModel));
   const consentsQuery = useFreeConsentsQuery(consentModel);
 
@@ -38,7 +36,7 @@ export function useChatGate() {
     !business &&
     selectedModel != null &&
     consentsQuery.data != null &&
-    !hasCoveringConsent(consentsQuery.data.consents, selectedModel, enabled);
+    !hasCoveringConsent(consentsQuery.data.consents, selectedModel);
 
-  return { needsToken, needsConsent, business, selectedModel, enabled };
+  return { needsToken, needsConsent, business, selectedModel };
 }

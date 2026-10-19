@@ -18,7 +18,6 @@ import { formatMsDate, formatYearMonth } from "@/lib/utils/format/date";
 import { cn } from "@/lib/utils";
 import { getDocsApiKey } from "@/lib/api/page-data";
 import { usesInputsForOwnPurposes } from "@/lib/api/own-purpose";
-import { ownPurposeEnabled } from "@/server/auth/free-consent/free-consent.service";
 import { getLocale, getTranslations } from "next-intl/server";
 import { AtCapacityBanner } from "./header/at-capacity-banner";
 import { OwnPurposeNotice } from "./header/own-purpose-notice";
@@ -280,9 +279,7 @@ print(res.choices[0].message.content)`;
         </div>
 
         {props.offline && <AtCapacityBanner />}
-        {usesInputsForOwnPurposes(m, await ownPurposeEnabled()) && (
-          <OwnPurposeNotice />
-        )}
+        {usesInputsForOwnPurposes(m) && <OwnPurposeNotice />}
       </section>
 
       <ModelTabs

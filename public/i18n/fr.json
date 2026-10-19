@@ -6345,42 +6345,28 @@
     "NOTICE_CONFIRM": "J'ai compris",
     "NOTICE_SAVED": "Avis confirmé",
     "UNKNOWN_COUNTRY": "siège inconnu",
-    "BUSINESS": "Les modèles gratuits ne sont pas disponibles pour les comptes professionnels.",
+    "BUSINESS": "Les modèles qui nécessitent un consentement ne sont pas disponibles pour les comptes professionnels.",
     "REQUIRED_ERROR": "Ce modèle nécessite ton consentement avant utilisation, par exemple parce qu'un fournisseur a été ajouté. Confirme-le dans le panneau affiché dans le chat.",
-    "SETTINGS_TITLE": "Modèles gratuits",
-    "SETTINGS_DESC": "Modèles gratuits à l'utilisation desquels tu as consenti. Après un retrait, le modèle reste bloqué jusqu'à ce que tu consentes à nouveau.",
-    "SETTINGS_EMPTY": "Tu n'as encore consenti à aucun modèle gratuit.",
+    "SETTINGS_TITLE": "Modèles utilisés pour l'entraînement",
+    "SETTINGS_DESC": "Modèles dont les fournisseurs utilisent tes saisies à leurs propres fins et dont tu as accepté le transfert. Après un retrait, le modèle reste bloqué jusqu'à ce que tu consentes à nouveau.",
+    "SETTINGS_EMPTY": "Tu n'as encore donné aucun consentement.",
     "REVOKE_BUTTON": "Retirer",
     "REVOKED": "Consentement retiré",
     "GRANTED_ON": "Donné le {date}",
     "MANAGE": "Gérer les consentements",
     "SAVED": "Consentement enregistré",
     "META": {
-      "TITLE": "Consentements pour les modèles gratuits - {appName}",
-      "DESCRIPTION": "Donne ou retire ton consentement pour chaque modèle gratuit sur {appName}.",
-      "KEYWORDS": "modèles gratuits, consentement, confidentialité"
+      "TITLE": "Modèles utilisés pour l'entraînement | {appName}",
+      "DESCRIPTION": "Donne ou retire ton consentement pour chaque modèle sur {appName} dont les fournisseurs utilisent tes saisies à leurs propres fins.",
+      "KEYWORDS": "utilisation pour l'entraînement, consentement, confidentialité, transfert vers un pays tiers"
     },
-    "PAGE_TITLE": "Modèles gratuits",
-    "PAGE_INTRO": "Les modèles gratuits sont fournis par des prestataires qui peuvent utiliser tes saisies à leurs propres fins. Ici, tu peux donner ton consentement pour chaque modèle avant de l'utiliser, y compris pour l'API, et le retirer à tout moment.",
+    "PAGE_TITLE": "Modèles utilisés pour l'entraînement",
+    "PAGE_INTRO": "Les fournisseurs de ces modèles peuvent utiliser tes saisies à leurs propres fins, par exemple pour entraîner des modèles d'IA. S'ils sont établis dans un pays sans niveau de protection des données adéquat, tu dois donner ton consentement avant la première utilisation, y compris pour l'API. Tu peux retirer tout consentement à tout moment.",
     "SEARCH": "Rechercher des modèles",
     "GIVE": "Consentir",
     "NOT_NEEDED": "Aucun consentement requis",
     "OFFLINE": "hors ligne",
-    "ALL_MODELS": "Tous les modèles gratuits",
-    "TRAINING_USE": {
-      "SETTINGS_TITLE": "Modèles utilisés pour l'entraînement",
-      "SETTINGS_DESC": "Modèles dont les fournisseurs utilisent tes saisies à leurs propres fins et dont tu as accepté le transfert. Après un retrait, le modèle reste bloqué jusqu'à ce que tu consentes à nouveau.",
-      "SETTINGS_EMPTY": "Tu n'as encore donné aucun consentement.",
-      "BUSINESS": "Les modèles qui nécessitent un consentement ne sont pas disponibles pour les comptes professionnels.",
-      "META": {
-        "TITLE": "Modèles utilisés pour l'entraînement | {appName}",
-        "DESCRIPTION": "Donne ou retire ton consentement pour chaque modèle sur {appName} dont les fournisseurs utilisent tes saisies à leurs propres fins.",
-        "KEYWORDS": "utilisation pour l'entraînement, consentement, confidentialité, transfert vers un pays tiers"
-      },
-      "PAGE_TITLE": "Modèles utilisés pour l'entraînement",
-      "PAGE_INTRO": "Les fournisseurs de ces modèles peuvent utiliser tes saisies à leurs propres fins, par exemple pour entraîner des modèles d'IA. S'ils sont établis dans un pays sans niveau de protection des données adéquat, tu dois donner ton consentement avant la première utilisation, y compris pour l'API. Tu peux retirer tout consentement à tout moment.",
-      "ALL_MODELS": "Tous les modèles utilisés pour l'entraînement"
-    }
+    "ALL_MODELS": "Tous les modèles utilisés pour l'entraînement"
   },
   "OWN_PURPOSE": {
     "TITLE": "Opposition à l'utilisation aux propres fins des fournisseurs",

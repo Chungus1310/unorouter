@@ -22,7 +22,6 @@ import {
   conversationSettingsOpenAtom,
   focusMemoryFieldAtom,
 } from "@/store/chat-store";
-import { useOwnPurposeEnabled } from "@/hooks/ops/status-hook";
 import { useAtom, useSetAtom } from "jotai";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
@@ -53,7 +52,6 @@ const ThemeCustomizerSheet = dynamic(
 
 export function ChatActionsMenu(props: Props) {
   const t = useTranslations();
-  const ownPurposeEnabled = useOwnPurposeEnabled();
   const [themeOpen, setThemeOpen] = useState(false);
   const [logsOpen, setLogsOpen] = useState(false);
   const [consentsOpen, setConsentsOpen] = useState(false);
@@ -125,30 +123,18 @@ export function ChatActionsMenu(props: Props) {
       <Dialog open={consentsOpen} onOpenChange={setConsentsOpen}>
         <DialogContent>
           <DialogHeader>
-            <DialogTitle>
-              {t(
-                ownPurposeEnabled
-                  ? "FREE_CONSENT.TRAINING_USE.SETTINGS_TITLE"
-                  : "FREE_CONSENT.SETTINGS_TITLE",
-              )}
-            </DialogTitle>
+            <DialogTitle>{t("FREE_CONSENT.SETTINGS_TITLE")}</DialogTitle>
             <DialogDescription>
-              {t(
-                ownPurposeEnabled
-                  ? "FREE_CONSENT.TRAINING_USE.SETTINGS_DESC"
-                  : "FREE_CONSENT.SETTINGS_DESC",
-              )}
+              {t("FREE_CONSENT.SETTINGS_DESC")}
             </DialogDescription>
           </DialogHeader>
           <FreeConsentList />
-          {ownPurposeEnabled && (
-            <div className="space-y-2 border-t pt-4">
-              <h3 className="text-foreground text-sm font-medium">
-                {t("OWN_PURPOSE.TITLE")}
-              </h3>
-              <OwnPurposeObjectionToggle />
-            </div>
-          )}
+          <div className="space-y-2 border-t pt-4">
+            <h3 className="text-foreground text-sm font-medium">
+              {t("OWN_PURPOSE.TITLE")}
+            </h3>
+            <OwnPurposeObjectionToggle />
+          </div>
         </DialogContent>
       </Dialog>
       {logsOpen && props.convId && (

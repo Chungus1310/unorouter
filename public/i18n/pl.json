@@ -6345,42 +6345,28 @@
     "NOTICE_CONFIRM": "Przyjmuję do wiadomości",
     "NOTICE_SAVED": "Informacja potwierdzona",
     "UNKNOWN_COUNTRY": "siedziba nieznana",
-    "BUSINESS": "Darmowe modele nie są dostępne dla kont firmowych.",
+    "BUSINESS": "Modele wymagające zgody nie są dostępne dla kont firmowych.",
     "REQUIRED_ERROR": "Ten model wymaga Twojej zgody przed użyciem, na przykład dlatego, że dodano dostawcę. Potwierdź ją w panelu wyświetlonym w czacie.",
-    "SETTINGS_TITLE": "Darmowe modele",
-    "SETTINGS_DESC": "Darmowe modele, na których używanie wyraziłeś zgodę. Po wycofaniu zgody model pozostaje zablokowany, dopóki ponownie jej nie wyrazisz.",
-    "SETTINGS_EMPTY": "Nie wyraziłeś jeszcze zgody na żaden darmowy model.",
+    "SETTINGS_TITLE": "Modele wykorzystywane do trenowania",
+    "SETTINGS_DESC": "Modele, których dostawcy wykorzystują Twoje dane wejściowe do własnych celów i na których przekazanie wyraziłeś zgodę. Po wycofaniu zgody model pozostaje zablokowany, dopóki ponownie jej nie wyrazisz.",
+    "SETTINGS_EMPTY": "Nie wyraziłeś jeszcze żadnej zgody.",
     "REVOKE_BUTTON": "Wycofaj",
     "REVOKED": "Zgoda wycofana",
     "GRANTED_ON": "Udzielona {date}",
     "MANAGE": "Zarządzaj zgodami",
     "SAVED": "Zgoda zapisana",
     "META": {
-      "TITLE": "Zgody na darmowe modele - {appName}",
-      "DESCRIPTION": "Udziel lub wycofaj zgodę na każdy darmowy model w {appName}.",
-      "KEYWORDS": "darmowe modele, zgoda, prywatność"
+      "TITLE": "Modele wykorzystywane do trenowania | {appName}",
+      "DESCRIPTION": "Wyraź lub wycofaj zgodę dla każdego modelu w {appName}, którego dostawcy wykorzystują Twoje dane wejściowe do własnych celów.",
+      "KEYWORDS": "wykorzystanie do trenowania, zgoda, prywatność, przekazanie do państwa trzeciego"
     },
-    "PAGE_TITLE": "Darmowe modele",
-    "PAGE_INTRO": "Darmowe modele są udostępniane przez dostawców, którzy mogą wykorzystywać Twoje dane wejściowe do własnych celów. Tutaj możesz wyrazić zgodę na każdy model przed jego użyciem, także przez API, i w każdej chwili ją wycofać.",
+    "PAGE_TITLE": "Modele wykorzystywane do trenowania",
+    "PAGE_INTRO": "Dostawcy tych modeli mogą wykorzystywać Twoje dane wejściowe do własnych celów, na przykład do trenowania modeli AI. Jeśli mają siedzibę w państwie bez odpowiedniego poziomu ochrony danych, musisz wyrazić zgodę przed pierwszym użyciem, również dla API. Każdą zgodę możesz w dowolnym momencie wycofać.",
     "SEARCH": "Szukaj modeli",
     "GIVE": "Wyraź zgodę",
     "NOT_NEEDED": "Zgoda nie jest wymagana",
     "OFFLINE": "offline",
-    "ALL_MODELS": "Wszystkie darmowe modele",
-    "TRAINING_USE": {
-      "SETTINGS_TITLE": "Modele wykorzystywane do trenowania",
-      "SETTINGS_DESC": "Modele, których dostawcy wykorzystują Twoje dane wejściowe do własnych celów i na których przekazanie wyraziłeś zgodę. Po wycofaniu zgody model pozostaje zablokowany, dopóki ponownie jej nie wyrazisz.",
-      "SETTINGS_EMPTY": "Nie wyraziłeś jeszcze żadnej zgody.",
-      "BUSINESS": "Modele wymagające zgody nie są dostępne dla kont firmowych.",
-      "META": {
-        "TITLE": "Modele wykorzystywane do trenowania | {appName}",
-        "DESCRIPTION": "Wyraź lub wycofaj zgodę dla każdego modelu w {appName}, którego dostawcy wykorzystują Twoje dane wejściowe do własnych celów.",
-        "KEYWORDS": "wykorzystanie do trenowania, zgoda, prywatność, przekazanie do państwa trzeciego"
-      },
-      "PAGE_TITLE": "Modele wykorzystywane do trenowania",
-      "PAGE_INTRO": "Dostawcy tych modeli mogą wykorzystywać Twoje dane wejściowe do własnych celów, na przykład do trenowania modeli AI. Jeśli mają siedzibę w państwie bez odpowiedniego poziomu ochrony danych, musisz wyrazić zgodę przed pierwszym użyciem, również dla API. Każdą zgodę możesz w dowolnym momencie wycofać.",
-      "ALL_MODELS": "Wszystkie modele wykorzystywane do trenowania"
-    }
+    "ALL_MODELS": "Wszystkie modele wykorzystywane do trenowania"
   },
   "OWN_PURPOSE": {
     "TITLE": "Sprzeciw wobec wykorzystania do własnych celów dostawców",

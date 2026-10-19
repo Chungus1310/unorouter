@@ -126,10 +126,9 @@ async function guestConsentedModels(
     headers: guestConsentHeaders(guestId),
   });
   const consents = res.data?.success ? (res.data.data?.consents ?? []) : [];
-  const enabled = await ownPurposeEnabled();
   const models = new Set(
     consents
-      .filter((consent) => hasCoveringConsent(consents, consent.model, enabled))
+      .filter((consent) => hasCoveringConsent(consents, consent.model))
       .map((consent) => consent.model),
   );
   cacheGuestEntry(guestConsents, guestId, {
@@ -139,29 +138,17 @@ async function guestConsentedModels(
   return models;
 }
 
-const STATUS_FLAGS_TTL_MS = 30_000;
-let statusFlags:
-  | { enforced: boolean; ownPurpose: boolean; expires: number }
-  | undefined;
-
-async function gatewayFlags() {
-  if (statusFlags && statusFlags.expires > Date.now()) return statusFlags;
-  const data = (await getStatus()).data?.data;
-  statusFlags = {
-    enforced: data?.free_consent_enforced === true,
-    ownPurpose: data?.own_purpose_enabled === true,
-    expires: Date.now() + STATUS_FLAGS_TTL_MS,
-  };
-  return statusFlags;
-}
+const ENFORCEMENT_TTL_MS = 30_000;
+let enforcement: { on: boolean; expires: number } | undefined;
 
 // Follows the gateway's switch, so turning enforcement off frees guests too.
 async function consentEnforced(): Promise<boolean> {
-  return (await gatewayFlags()).enforced;
-}
-
-export async function ownPurposeEnabled(): Promise<boolean> {
-  return (await gatewayFlags()).ownPurpose;
+  if (enforcement && enforcement.expires > Date.now()) return enforcement.on;
+  const data = (await getStatus()).data?.data;
+  // free_consent_enforced is the pre rename field of gateways not yet updated.
+  const on = (data?.consent_enforced ?? data?.free_consent_enforced) === true;
+  enforcement = { on, expires: Date.now() + ENFORCEMENT_TTL_MS };
+  return on;
 }
 
 // The gateway delegates a guest's objection and consent to this check, since
@@ -177,14 +164,13 @@ export async function assertGuestOwnPurposeAccess(
   const info = await getModelByName(model);
   if (!info) return;
   const guestId = readGuestId(cookie);
-  const enabled = await ownPurposeEnabled();
   if (
-    usesInputsForOwnPurposes(info, enabled) &&
+    usesInputsForOwnPurposes(info) &&
     guestId &&
     (await guestObjects(guestId))
   )
     throw new Error(msg("OWN_PURPOSE.OBJECTED_ERROR"));
-  if (!needsTransferConsent(info, enabled)) return;
+  if (!needsTransferConsent(info)) return;
   if (!(await consentEnforced())) return;
   if (guestId && (await guestConsentedModels(guestId, model)).has(model))
     return;
