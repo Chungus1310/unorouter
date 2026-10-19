@@ -6409,16 +6409,25 @@
     "SEARCH": "Anbieter oder Modelle suchen",
     "TRAINS": "Dieser Anbieter nutzt deine Eingaben für eigene Zwecke, zum Beispiel zum Training von KI-Modellen",
     "UNSAFE_NOTE": "Kein angemessenes Datenschutzniveau",
-    "MODEL_COUNT": "{count, plural, one {# Modell} other {# Modelle}}",
     "SORT": {
       "MODELS_DESC": "Meiste Modelle",
       "ALIAS": "Kennung",
-      "COUNTRY": "Land"
+      "COUNTRY": "Land",
+      "ACTIVE_FIRST": "Aktive zuerst",
+      "ACTIVE_MODELS_DESC": "Meiste aktive Modelle",
+      "ACTIVE_LANES_DESC": "Meiste aktive Lanes"
     },
     "TABLE": {
       "PROVIDER": "Anbieter",
       "COUNTRY": "Land",
       "MODELS": "Modelle"
+    },
+    "INACTIVE": "inaktiv",
+    "MODELS_ACTIVE": "{active} von {count, plural, one {# Modell} other {# Modellen}} aktiv",
+    "LANES_ACTIVE": "{active} von {count, plural, one {# Lane} other {# Lanes}} aktiv",
+    "FILTER": {
+      "ACTIVITY": "Aktivität",
+      "ACTIVE_ONLY": "Nur aktive"
     }
   }
 }

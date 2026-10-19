@@ -6409,16 +6409,25 @@
     "SEARCH": "प्रदाता या मॉडल खोजें",
     "TRAINS": "यह प्रदाता आपके इनपुट को अपने उद्देश्यों के लिए इस्तेमाल करता है, जैसे AI मॉडल को प्रशिक्षित करने के लिए",
     "UNSAFE_NOTE": "पर्याप्त डेटा सुरक्षा नहीं",
-    "MODEL_COUNT": "{count, plural, one {# मॉडल} other {# मॉडल}}",
     "SORT": {
       "MODELS_DESC": "सबसे ज़्यादा मॉडल",
       "ALIAS": "कोड",
-      "COUNTRY": "देश"
+      "COUNTRY": "देश",
+      "ACTIVE_FIRST": "सक्रिय पहले",
+      "ACTIVE_MODELS_DESC": "सबसे ज़्यादा सक्रिय मॉडल",
+      "ACTIVE_LANES_DESC": "सबसे ज़्यादा सक्रिय लेन"
     },
     "TABLE": {
       "PROVIDER": "प्रदाता",
       "COUNTRY": "देश",
       "MODELS": "मॉडल की संख्या"
+    },
+    "INACTIVE": "निष्क्रिय",
+    "MODELS_ACTIVE": "{count, plural, one {# मॉडल} other {# मॉडल}} में से {active} सक्रिय",
+    "LANES_ACTIVE": "{count, plural, one {# लेन} other {# लेन}} में से {active} सक्रिय",
+    "FILTER": {
+      "ACTIVITY": "गतिविधि",
+      "ACTIVE_ONLY": "केवल सक्रिय"
     }
   }
 }

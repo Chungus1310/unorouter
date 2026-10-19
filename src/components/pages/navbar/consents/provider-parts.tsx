@@ -5,6 +5,7 @@ import {
   GroupDataPolicyBadges,
   OwnPurposeHint,
 } from "@/components/elements/model/group-data-policy";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Collapsible,
@@ -12,9 +13,11 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Icon } from "@/components/ui/icon";
+import { cn } from "@/lib/utils";
 import { formatLongDate } from "@/lib/utils/format/date";
 import type { ProviderConsentItem } from "@/openapi";
 import { useLocale, useTranslations } from "next-intl";
+import { providerModels } from "./provider-rows";
 
 export type ProviderHandlers = {
   open: (alias: string) => void;
@@ -26,7 +29,7 @@ export function ProviderName(props: { provider: ProviderConsentItem }) {
   const t = useTranslations();
   const p = props.provider;
   return (
-    <span className="flex min-w-0 items-center gap-1.5">
+    <span className="flex min-w-0 flex-wrap items-center gap-1.5">
       <span className="font-mono text-xs font-medium lg:text-sm">
         {p.alias}
       </span>
@@ -35,6 +38,16 @@ export function ProviderName(props: { provider: ProviderConsentItem }) {
       />
       {p.trains_or_retains && (
         <OwnPurposeHint label={t("PROVIDER_CONSENT.TRAINS")} />
+      )}
+      {(p.tags ?? []).map((tag) => (
+        <Badge key={tag} variant="secondary" className="font-mono text-[10px]">
+          {tag}
+        </Badge>
+      ))}
+      {!p.active && (
+        <Badge variant="outline" className="text-[10px]">
+          {t("PROVIDER_CONSENT.INACTIVE")}
+        </Badge>
       )}
     </span>
   );
@@ -58,25 +71,51 @@ export function ProviderCountry(props: { provider: ProviderConsentItem }) {
 
 export function ProviderModels(props: { provider: ProviderConsentItem }) {
   const t = useTranslations();
-  const models = props.provider.models ?? [];
+  const p = props.provider;
+  const models = providerModels(p).sort(
+    (a, b) =>
+      Number(b.active) - Number(a.active) || a.name.localeCompare(b.name),
+  );
   return (
     <Collapsible>
-      <CollapsibleTrigger className="text-muted-foreground hover:text-foreground group/pm flex items-center gap-1 text-xs">
-        {t("PROVIDER_CONSENT.MODEL_COUNT", {
-          count: props.provider.model_count,
-        })}
+      <CollapsibleTrigger className="text-muted-foreground hover:text-foreground group/pm flex items-center gap-1 text-left text-xs">
+        <span className="flex flex-col">
+          <span>
+            {t("PROVIDER_CONSENT.MODELS_ACTIVE", {
+              active: p.active_model_count,
+              count: p.model_count,
+            })}
+          </span>
+          <span>
+            {t("PROVIDER_CONSENT.LANES_ACTIVE", {
+              active: p.active_lane_count,
+              count: p.lane_count,
+            })}
+          </span>
+        </span>
         {models.length > 0 && (
           <Icon
             name="chevron-down"
-            className="h-3.5 w-3.5 transition-transform group-data-panel-open/pm:rotate-180"
+            className="h-3.5 w-3.5 shrink-0 transition-transform group-data-panel-open/pm:rotate-180"
           />
         )}
       </CollapsibleTrigger>
       <CollapsibleContent>
         <ul className="mt-1 space-y-0.5">
-          {[...models].sort().map((model) => (
-            <li key={model} className="font-mono text-xs">
-              {model}
+          {models.map((model) => (
+            <li
+              key={model.name}
+              className={cn(
+                "flex items-center gap-1.5 font-mono text-xs",
+                !model.active && "text-muted-foreground/60",
+              )}
+            >
+              {model.name}
+              {!model.active && (
+                <span className="font-sans text-[10px]">
+                  {t("PROVIDER_CONSENT.INACTIVE")}
+                </span>
+              )}
             </li>
           ))}
         </ul>

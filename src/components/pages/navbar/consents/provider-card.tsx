@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import type { ProviderConsentItem } from "@/openapi";
 import {
   ProviderAction,
@@ -15,7 +16,12 @@ export function ProviderCard(props: {
   handlers: ProviderHandlers;
 }) {
   return (
-    <div className="border-border/60 flex items-start justify-between gap-4 border-b px-2 py-5">
+    <div
+      className={cn(
+        "border-border/60 flex items-start justify-between gap-4 border-b px-2 py-5",
+        !props.provider.active && "opacity-60",
+      )}
+    >
       <div className="min-w-0 space-y-2">
         <div className="text-lg">
           <ProviderName provider={props.provider} />

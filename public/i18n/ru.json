@@ -6409,16 +6409,25 @@
     "SEARCH": "Искать поставщиков или модели",
     "TRAINS": "Этот поставщик использует ваши вводные данные в собственных целях, например для обучения моделей ИИ",
     "UNSAFE_NOTE": "Нет надлежащей защиты данных",
-    "MODEL_COUNT": "{count, plural, one {# модель} few {# модели} many {# моделей} other {# модели}}",
     "SORT": {
       "MODELS_DESC": "Больше всего моделей",
       "ALIAS": "Код",
-      "COUNTRY": "Страна"
+      "COUNTRY": "Страна",
+      "ACTIVE_FIRST": "Сначала активные",
+      "ACTIVE_MODELS_DESC": "Больше всего активных моделей",
+      "ACTIVE_LANES_DESC": "Больше всего активных каналов"
     },
     "TABLE": {
       "PROVIDER": "Поставщик",
       "COUNTRY": "Страна",
       "MODELS": "Модели"
+    },
+    "INACTIVE": "неактивен",
+    "MODELS_ACTIVE": "активно {active} из {count, plural, one {# модели} few {# моделей} many {# моделей} other {# модели}}",
+    "LANES_ACTIVE": "активно {active} из {count, plural, one {# канала} few {# каналов} many {# каналов} other {# канала}}",
+    "FILTER": {
+      "ACTIVITY": "Активность",
+      "ACTIVE_ONLY": "Только активные"
     }
   }
 }

@@ -6409,16 +6409,25 @@
     "SEARCH": "Cari penyedia atau model",
     "TRAINS": "Penyedia ini menggunakan masukanmu untuk tujuannya sendiri, misalnya untuk melatih model AI",
     "UNSAFE_NOTE": "Tanpa perlindungan data yang memadai",
-    "MODEL_COUNT": "{count, plural, other {# model}}",
     "SORT": {
       "MODELS_DESC": "Model terbanyak",
       "ALIAS": "Kode",
-      "COUNTRY": "Negara"
+      "COUNTRY": "Negara",
+      "ACTIVE_FIRST": "Aktif lebih dulu",
+      "ACTIVE_MODELS_DESC": "Model aktif terbanyak",
+      "ACTIVE_LANES_DESC": "Jalur aktif terbanyak"
     },
     "TABLE": {
       "PROVIDER": "Penyedia",
       "COUNTRY": "Negara",
       "MODELS": "Jumlah model"
+    },
+    "INACTIVE": "tidak aktif",
+    "MODELS_ACTIVE": "{active} dari {count, plural, other {# model}} aktif",
+    "LANES_ACTIVE": "{active} dari {count, plural, other {# jalur}} aktif",
+    "FILTER": {
+      "ACTIVITY": "Aktivitas",
+      "ACTIVE_ONLY": "Hanya yang aktif"
     }
   }
 }

@@ -28,7 +28,7 @@ export function buildProviderColumns(opts: {
           title="PROVIDER_CONSENT.TABLE.PROVIDER"
         />
       ),
-      meta: { headerClassName: "w-[22%]" },
+      meta: { headerClassName: "w-[30%]" },
       cell: ({ row }) => <ProviderName provider={row.original} />,
     },
     {
@@ -45,7 +45,7 @@ export function buildProviderColumns(opts: {
     },
     {
       id: "models",
-      accessorFn: (p) => p.model_count,
+      accessorFn: (p) => p.active_model_count,
       enableSorting: true,
       header: ({ column }) => (
         <DataTableColumnHeader

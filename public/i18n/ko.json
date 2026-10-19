@@ -6409,16 +6409,25 @@
     "SEARCH": "제공자 또는 모델 검색",
     "TRAINS": "이 제공자는 입력 내용을 자체 목적, 예를 들어 AI 모델 학습에 사용합니다",
     "UNSAFE_NOTE": "적절한 데이터 보호 없음",
-    "MODEL_COUNT": "{count, plural, other {모델 #개}}",
     "SORT": {
       "MODELS_DESC": "모델 많은 순",
       "ALIAS": "코드",
-      "COUNTRY": "국가"
+      "COUNTRY": "국가",
+      "ACTIVE_FIRST": "활성 먼저",
+      "ACTIVE_MODELS_DESC": "활성 모델 많은 순",
+      "ACTIVE_LANES_DESC": "활성 레인 많은 순"
     },
     "TABLE": {
       "PROVIDER": "제공자",
       "COUNTRY": "국가",
       "MODELS": "모델 수"
+    },
+    "INACTIVE": "비활성",
+    "MODELS_ACTIVE": "{count, plural, other {모델 #개}} 중 {active}개 활성",
+    "LANES_ACTIVE": "{count, plural, other {레인 #개}} 중 {active}개 활성",
+    "FILTER": {
+      "ACTIVITY": "활성 상태",
+      "ACTIVE_ONLY": "활성만"
     }
   }
 }

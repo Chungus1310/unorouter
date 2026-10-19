@@ -6409,16 +6409,25 @@
     "SEARCH": "搜尋供應商或模型",
     "TRAINS": "此供應商將你的輸入用於其自身目的（例如訓練 AI 模型）",
     "UNSAFE_NOTE": "沒有充分的資料保護",
-    "MODEL_COUNT": "{count, plural, other {# 個模型}}",
     "SORT": {
       "MODELS_DESC": "模型最多",
       "ALIAS": "代碼",
-      "COUNTRY": "國家"
+      "COUNTRY": "國家",
+      "ACTIVE_FIRST": "可用優先",
+      "ACTIVE_MODELS_DESC": "可用模型最多",
+      "ACTIVE_LANES_DESC": "可用線路最多"
     },
     "TABLE": {
       "PROVIDER": "供應商",
       "COUNTRY": "國家",
       "MODELS": "模型數"
+    },
+    "INACTIVE": "未啟用",
+    "MODELS_ACTIVE": "{count, plural, other {# 個模型}}中 {active} 個可用",
+    "LANES_ACTIVE": "{count, plural, other {# 條線路}}中 {active} 條可用",
+    "FILTER": {
+      "ACTIVITY": "狀態",
+      "ACTIVE_ONLY": "僅可用"
     }
   }
 }

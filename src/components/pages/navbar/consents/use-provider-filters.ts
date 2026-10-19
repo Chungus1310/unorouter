@@ -5,6 +5,7 @@ import type { ProviderConsentItem } from "@/openapi";
 import { useLocale } from "next-intl";
 import {
   parseAsArrayOf,
+  parseAsBoolean,
   parseAsString,
   parseAsStringLiteral,
   useQueryStates,
@@ -20,6 +21,7 @@ import {
 // Prefixed so the provider tab keeps its own state next to the model tab's.
 const PARSERS = {
   pq: parseAsString.withDefault(""),
+  pactive: parseAsBoolean.withDefault(false),
   pcountry: parseAsArrayOf(parseAsString).withDefault([]),
   pstatus: parseAsArrayOf(parseAsStringLiteral(PROVIDER_STATUSES)).withDefault(
     [],
@@ -39,12 +41,14 @@ export function useProviderFilters(providers: ProviderConsentItem[]) {
       needle.length === 0 ||
       p.alias.toLowerCase().includes(needle) ||
       countryName(p.country, locale).toLowerCase().includes(needle) ||
+      (p.tags ?? []).some((tag) => tag.toLowerCase().includes(needle)) ||
       (p.models ?? []).some((m) => m.toLowerCase().includes(needle));
     const matchesCountry =
       params.pcountry.length === 0 || params.pcountry.includes(p.country);
     const matchesStatus =
       params.pstatus.length === 0 || params.pstatus.includes(providerStatus(p));
-    return matchesSearch && matchesCountry && matchesStatus;
+    const matchesActive = !params.pactive || p.active;
+    return matchesSearch && matchesCountry && matchesStatus && matchesActive;
   });
   const activeSort =
     params.porder.length > 0 ? params.porder : DEFAULT_PROVIDER_SORT;
@@ -53,10 +57,17 @@ export function useProviderFilters(providers: ProviderConsentItem[]) {
   const activeFilterCount =
     params.pcountry.length +
     params.pstatus.length +
+    (params.pactive ? 1 : 0) +
     (needle.length > 0 ? 1 : 0);
 
   function reset() {
-    void setParams({ pq: null, pcountry: null, pstatus: null, porder: null });
+    void setParams({
+      pq: null,
+      pactive: null,
+      pcountry: null,
+      pstatus: null,
+      porder: null,
+    });
   }
 
   return { params, setParams, filtered, activeFilterCount, activeSort, reset };

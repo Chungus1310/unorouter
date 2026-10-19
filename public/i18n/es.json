@@ -6409,16 +6409,25 @@
     "SEARCH": "Buscar proveedores o modelos",
     "TRAINS": "Este proveedor usa tus entradas para sus propios fines, por ejemplo para entrenar modelos de IA",
     "UNSAFE_NOTE": "Sin protección de datos adecuada",
-    "MODEL_COUNT": "{count, plural, one {# modelo} other {# modelos}}",
     "SORT": {
       "MODELS_DESC": "Más modelos",
       "ALIAS": "Código",
-      "COUNTRY": "País"
+      "COUNTRY": "País",
+      "ACTIVE_FIRST": "Activos primero",
+      "ACTIVE_MODELS_DESC": "Más modelos activos",
+      "ACTIVE_LANES_DESC": "Más canales activos"
     },
     "TABLE": {
       "PROVIDER": "Proveedor",
       "COUNTRY": "País",
       "MODELS": "Modelos"
+    },
+    "INACTIVE": "inactivo",
+    "MODELS_ACTIVE": "{active} de {count, plural, one {# modelo} other {# modelos}} activos",
+    "LANES_ACTIVE": "{active} de {count, plural, one {# canal} other {# canales}} activos",
+    "FILTER": {
+      "ACTIVITY": "Actividad",
+      "ACTIVE_ONLY": "Solo activos"
     }
   }
 }

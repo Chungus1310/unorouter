@@ -6409,16 +6409,25 @@
     "SEARCH": "Rechercher des fournisseurs ou des modèles",
     "TRAINS": "Ce fournisseur utilise tes saisies à ses propres fins, par exemple pour entraîner des modèles d'IA",
     "UNSAFE_NOTE": "Pas de protection des données adéquate",
-    "MODEL_COUNT": "{count, plural, one {# modèle} other {# modèles}}",
     "SORT": {
       "MODELS_DESC": "Le plus de modèles",
       "ALIAS": "Identifiant",
-      "COUNTRY": "Pays"
+      "COUNTRY": "Pays",
+      "ACTIVE_FIRST": "Actifs d'abord",
+      "ACTIVE_MODELS_DESC": "Le plus de modèles actifs",
+      "ACTIVE_LANES_DESC": "Le plus de canaux actifs"
     },
     "TABLE": {
       "PROVIDER": "Fournisseur",
       "COUNTRY": "Pays",
       "MODELS": "Modèles"
+    },
+    "INACTIVE": "inactif",
+    "MODELS_ACTIVE": "{active} sur {count, plural, one {# modèle} other {# modèles}} actifs",
+    "LANES_ACTIVE": "{active} sur {count, plural, one {# canal} other {# canaux}} actifs",
+    "FILTER": {
+      "ACTIVITY": "Activité",
+      "ACTIVE_ONLY": "Actifs uniquement"
     }
   }
 }

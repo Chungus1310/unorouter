@@ -6409,16 +6409,25 @@
     "SEARCH": "חיפוש ספקים או מודלים",
     "TRAINS": "ספק זה משתמש בקלט שלך למטרותיו, למשל לאימון מודלי בינה מלאכותית",
     "UNSAFE_NOTE": "אין הגנת מידע מספקת",
-    "MODEL_COUNT": "{count, plural, one {מודל אחד} two {שני מודלים} other {# מודלים}}",
     "SORT": {
       "MODELS_DESC": "הכי הרבה מודלים",
       "ALIAS": "קוד",
-      "COUNTRY": "מדינה"
+      "COUNTRY": "מדינה",
+      "ACTIVE_FIRST": "פעילים קודם",
+      "ACTIVE_MODELS_DESC": "הכי הרבה מודלים פעילים",
+      "ACTIVE_LANES_DESC": "הכי הרבה נתיבים פעילים"
     },
     "TABLE": {
       "PROVIDER": "ספק",
       "COUNTRY": "מדינה",
       "MODELS": "מודלים"
+    },
+    "INACTIVE": "לא פעיל",
+    "MODELS_ACTIVE": "{active} מתוך {count, plural, one {מודל אחד} two {שני מודלים} other {# מודלים}} פעילים",
+    "LANES_ACTIVE": "{active} מתוך {count, plural, one {נתיב אחד} two {שני נתיבים} other {# נתיבים}} פעילים",
+    "FILTER": {
+      "ACTIVITY": "פעילות",
+      "ACTIVE_ONLY": "פעילים בלבד"
     }
   }
 }

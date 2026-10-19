@@ -61,6 +61,13 @@ export function ProviderFilterSidebar(props: {
           )}
         </SidebarHeader>
         <SidebarContent className="gap-4 overflow-y-auto px-3 py-2">
+          <GroupShell label={t("PROVIDER_CONSENT.FILTER.ACTIVITY")}>
+            <CheckRow
+              label={t("PROVIDER_CONSENT.FILTER.ACTIVE_ONLY")}
+              checked={params.pactive}
+              onToggle={() => void setParams({ pactive: !params.pactive })}
+            />
+          </GroupShell>
           <GroupShell label={t("FREE_CONSENT.FILTER.STATUS")}>
             {PROVIDER_STATUSES.map((status) => (
               <CheckRow

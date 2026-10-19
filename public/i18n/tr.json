@@ -6409,16 +6409,25 @@
     "SEARCH": "Sağlayıcı veya model ara",
     "TRAINS": "Bu sağlayıcı girdilerini kendi amaçları için kullanır, örneğin yapay zeka modellerini eğitmek için",
     "UNSAFE_NOTE": "Yeterli veri koruması yok",
-    "MODEL_COUNT": "{count, plural, one {# model} other {# model}}",
     "SORT": {
       "MODELS_DESC": "En çok model",
       "ALIAS": "Kod",
-      "COUNTRY": "Ülke"
+      "COUNTRY": "Ülke",
+      "ACTIVE_FIRST": "Önce etkin olanlar",
+      "ACTIVE_MODELS_DESC": "En çok etkin model",
+      "ACTIVE_LANES_DESC": "En çok etkin hat"
     },
     "TABLE": {
       "PROVIDER": "Sağlayıcı",
       "COUNTRY": "Ülke",
       "MODELS": "Modeller"
+    },
+    "INACTIVE": "etkin değil",
+    "MODELS_ACTIVE": "{count, plural, one {# modelden} other {# modelden}} {active} tanesi etkin",
+    "LANES_ACTIVE": "{count, plural, one {# hattan} other {# hattan}} {active} tanesi etkin",
+    "FILTER": {
+      "ACTIVITY": "Etkinlik",
+      "ACTIVE_ONLY": "Yalnızca etkin olanlar"
     }
   }
 }

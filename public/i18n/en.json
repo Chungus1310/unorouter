@@ -6409,16 +6409,25 @@
     "SEARCH": "Search providers or models",
     "TRAINS": "This provider uses your inputs for its own purposes, for example to train AI models",
     "UNSAFE_NOTE": "No adequate data protection",
-    "MODEL_COUNT": "{count, plural, one {# model} other {# models}}",
     "SORT": {
       "MODELS_DESC": "Most models",
       "ALIAS": "Code",
-      "COUNTRY": "Country"
+      "COUNTRY": "Country",
+      "ACTIVE_FIRST": "Active first",
+      "ACTIVE_MODELS_DESC": "Most active models",
+      "ACTIVE_LANES_DESC": "Most active lanes"
     },
     "TABLE": {
       "PROVIDER": "Provider",
       "COUNTRY": "Country",
       "MODELS": "Models"
+    },
+    "INACTIVE": "inactive",
+    "MODELS_ACTIVE": "{active} of {count, plural, one {# model} other {# models}} active",
+    "LANES_ACTIVE": "{active} of {count, plural, one {# lane} other {# lanes}} active",
+    "FILTER": {
+      "ACTIVITY": "Activity",
+      "ACTIVE_ONLY": "Active only"
     }
   }
 }

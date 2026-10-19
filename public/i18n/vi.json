@@ -6409,16 +6409,25 @@
     "SEARCH": "Tìm nhà cung cấp hoặc mô hình",
     "TRAINS": "Nhà cung cấp này sử dụng dữ liệu đầu vào của bạn cho mục đích riêng, ví dụ để huấn luyện mô hình AI",
     "UNSAFE_NOTE": "Không có mức bảo vệ dữ liệu đầy đủ",
-    "MODEL_COUNT": "{count, plural, other {# mô hình}}",
     "SORT": {
       "MODELS_DESC": "Nhiều mô hình nhất",
       "ALIAS": "Mã",
-      "COUNTRY": "Quốc gia"
+      "COUNTRY": "Quốc gia",
+      "ACTIVE_FIRST": "Đang hoạt động trước",
+      "ACTIVE_MODELS_DESC": "Nhiều mô hình hoạt động nhất",
+      "ACTIVE_LANES_DESC": "Nhiều kênh hoạt động nhất"
     },
     "TABLE": {
       "PROVIDER": "Nhà cung cấp",
       "COUNTRY": "Quốc gia",
       "MODELS": "Số mô hình"
+    },
+    "INACTIVE": "không hoạt động",
+    "MODELS_ACTIVE": "{active} trên {count, plural, other {# mô hình}} đang hoạt động",
+    "LANES_ACTIVE": "{active} trên {count, plural, other {# kênh}} đang hoạt động",
+    "FILTER": {
+      "ACTIVITY": "Hoạt động",
+      "ACTIVE_ONLY": "Chỉ đang hoạt động"
     }
   }
 }

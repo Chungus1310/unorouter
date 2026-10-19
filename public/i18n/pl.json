@@ -6409,16 +6409,25 @@
     "SEARCH": "Szukaj dostawców lub modeli",
     "TRAINS": "Ten dostawca wykorzystuje Twoje dane wejściowe do własnych celów, na przykład do trenowania modeli AI",
     "UNSAFE_NOTE": "Brak odpowiedniej ochrony danych",
-    "MODEL_COUNT": "{count, plural, one {# model} few {# modele} many {# modeli} other {# modelu}}",
     "SORT": {
       "MODELS_DESC": "Najwięcej modeli",
       "ALIAS": "Kod",
-      "COUNTRY": "Kraj"
+      "COUNTRY": "Kraj",
+      "ACTIVE_FIRST": "Najpierw aktywni",
+      "ACTIVE_MODELS_DESC": "Najwięcej aktywnych modeli",
+      "ACTIVE_LANES_DESC": "Najwięcej aktywnych kanałów"
     },
     "TABLE": {
       "PROVIDER": "Dostawca",
       "COUNTRY": "Kraj",
       "MODELS": "Modele"
+    },
+    "INACTIVE": "nieaktywny",
+    "MODELS_ACTIVE": "{active} z {count, plural, one {# modelu} few {# modeli} many {# modeli} other {# modelu}} aktywnych",
+    "LANES_ACTIVE": "{active} z {count, plural, one {# kanału} few {# kanałów} many {# kanałów} other {# kanału}} aktywnych",
+    "FILTER": {
+      "ACTIVITY": "Aktywność",
+      "ACTIVE_ONLY": "Tylko aktywni"
     }
   }
 }

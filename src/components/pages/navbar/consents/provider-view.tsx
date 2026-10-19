@@ -37,6 +37,9 @@ import { useProviderFilters } from "./use-provider-filters";
 const providerTableAtoms = createTableAtoms(DataTableId.PROVIDER_CONSENTS);
 
 const SORT_LABEL = {
+  activeFirst: msg("PROVIDER_CONSENT.SORT.ACTIVE_FIRST"),
+  activeModelsDesc: msg("PROVIDER_CONSENT.SORT.ACTIVE_MODELS_DESC"),
+  activeLanesDesc: msg("PROVIDER_CONSENT.SORT.ACTIVE_LANES_DESC"),
   modelsDesc: msg("PROVIDER_CONSENT.SORT.MODELS_DESC"),
   alias: msg("PROVIDER_CONSENT.SORT.ALIAS"),
   country: msg("PROVIDER_CONSENT.SORT.COUNTRY"),
@@ -136,6 +139,9 @@ export function ProviderView(props: {
               columns={columns}
               localSorting
               isLoading={providersQuery.isLoading}
+              rowClassName={(row) =>
+                row.original.active ? undefined : "opacity-60"
+              }
               stickyHeaderTop="3.5rem"
             />
           ) : (

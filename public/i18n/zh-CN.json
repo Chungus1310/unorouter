@@ -6409,16 +6409,25 @@
     "SEARCH": "搜索提供商或模型",
     "TRAINS": "此提供商将你的输入用于其自身目的（例如训练 AI 模型）",
     "UNSAFE_NOTE": "没有充分的数据保护",
-    "MODEL_COUNT": "{count, plural, other {# 个模型}}",
     "SORT": {
       "MODELS_DESC": "模型最多",
       "ALIAS": "代码",
-      "COUNTRY": "国家"
+      "COUNTRY": "国家",
+      "ACTIVE_FIRST": "可用优先",
+      "ACTIVE_MODELS_DESC": "可用模型最多",
+      "ACTIVE_LANES_DESC": "可用线路最多"
     },
     "TABLE": {
       "PROVIDER": "提供商",
       "COUNTRY": "国家",
       "MODELS": "模型数"
+    },
+    "INACTIVE": "未启用",
+    "MODELS_ACTIVE": "{count, plural, other {# 个模型}}中 {active} 个可用",
+    "LANES_ACTIVE": "{count, plural, other {# 条线路}}中 {active} 条可用",
+    "FILTER": {
+      "ACTIVITY": "状态",
+      "ACTIVE_ONLY": "仅可用"
     }
   }
 }

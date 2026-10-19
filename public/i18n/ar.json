@@ -6409,16 +6409,25 @@
     "SEARCH": "ابحث عن مزودين أو نماذج",
     "TRAINS": "يستخدم هذا المزود مدخلاتك لأغراضه الخاصة، مثل تدريب نماذج الذكاء الاصطناعي",
     "UNSAFE_NOTE": "لا توجد حماية كافية للبيانات",
-    "MODEL_COUNT": "{count, plural, zero {لا نماذج} one {نموذج واحد} two {نموذجان} few {# نماذج} many {# نموذجًا} other {# نموذج}}",
     "SORT": {
       "MODELS_DESC": "الأكثر نماذج",
       "ALIAS": "الرمز",
-      "COUNTRY": "البلد"
+      "COUNTRY": "البلد",
+      "ACTIVE_FIRST": "النشطة أولًا",
+      "ACTIVE_MODELS_DESC": "الأكثر نماذج نشطة",
+      "ACTIVE_LANES_DESC": "الأكثر مسارات نشطة"
     },
     "TABLE": {
       "PROVIDER": "المزود",
       "COUNTRY": "البلد",
       "MODELS": "النماذج"
+    },
+    "INACTIVE": "غير نشط",
+    "MODELS_ACTIVE": "{active} من {count, plural, zero {# نموذج} one {نموذج واحد} two {نموذجين} few {# نماذج} many {# نموذجًا} other {# نموذج}} نشطة",
+    "LANES_ACTIVE": "{active} من {count, plural, zero {# مسار} one {مسار واحد} two {مسارين} few {# مسارات} many {# مسارًا} other {# مسار}} نشطة",
+    "FILTER": {
+      "ACTIVITY": "النشاط",
+      "ACTIVE_ONLY": "النشطة فقط"
     }
   }
 }
