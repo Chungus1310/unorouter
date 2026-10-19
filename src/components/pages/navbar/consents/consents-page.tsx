@@ -9,6 +9,7 @@ import {
   SearchInput,
 } from "@/components/pages/navbar/models/browse/models-toolbar";
 import { ModalityTabs } from "@/components/pages/navbar/models/filters/modality-tabs";
+import { SortMenu } from "@/components/pages/navbar/models/filters/sort-filter";
 import { ViewModeButtons } from "@/components/pages/navbar/models/filters/view-mode-toggle";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import {
@@ -20,8 +21,10 @@ import {
   useFreeConsentsQuery,
   useRevokeFreeConsentMutation,
 } from "@/hooks/auth/free-consent-hook";
-import { useFreeModelsQuery } from "@/hooks/models/pricing-hook";
+import { useConsentModelsQuery } from "@/hooks/models/pricing-hook";
 import { DataTableId } from "@/lib/types/enums";
+import { createTableAtoms } from "@/store/data-table-store";
+import { useAtomValue, useSetAtom } from "jotai";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -32,22 +35,26 @@ import { ConsentModelCard } from "./consent-model-card";
 import { buildConsentRows } from "./consent-rows";
 import { useConsentFilters } from "./use-consent-filters";
 
+const consentTableAtoms = createTableAtoms(DataTableId.FREE_MODELS);
+
 // Every model that takes a consent or a notice, or whose providers use inputs
 // for their own purposes, offline ones included, so API users can consent
 // before their first request.
-export function FreeModelsPage() {
+export function ConsentsPage() {
   const t = useTranslations();
-  const freeModelsQuery = useFreeModelsQuery();
+  const consentModelsQuery = useConsentModelsQuery();
   const consentsQuery = useFreeConsentsQuery();
   const revokeMutation = useRevokeFreeConsentMutation();
   const [open, setOpen] = useState<string | null>(null);
 
   const rows = buildConsentRows(
-    freeModelsQuery.data ?? [],
+    consentModelsQuery.data ?? [],
     consentsQuery.data?.consents ?? [],
   );
   const filters = useConsentFilters(rows);
   const params = filters.params;
+  const columnSorting = useAtomValue(consentTableAtoms.sortingAtom);
+  const setColumnSorting = useSetAtom(consentTableAtoms.sortingAtom);
 
   const handlers: ConsentHandlers = {
     open: setOpen,
@@ -70,8 +77,16 @@ export function FreeModelsPage() {
     flatNoParamsLabel: t("MODELS.TABLE.FLAT_NO_PARAMS"),
   });
 
-  const loading = freeModelsQuery.isLoading || consentsQuery.isLoading;
-  const showReset = filters.activeFilterCount > 0;
+  const loading = consentModelsQuery.isLoading || consentsQuery.isLoading;
+  const showReset =
+    filters.activeFilterCount > 0 ||
+    params.order.length > 0 ||
+    columnSorting.length > 0;
+
+  function resetAll() {
+    filters.reset();
+    setColumnSorting([]);
+  }
 
   return (
     <div className="w-full pt-20 pb-16">
@@ -90,7 +105,7 @@ export function FreeModelsPage() {
               {showReset && (
                 <ResetFiltersButton
                   activeFilterCount={filters.activeFilterCount}
-                  onReset={filters.reset}
+                  onReset={resetAll}
                 />
               )}
               <SearchInput
@@ -98,6 +113,11 @@ export function FreeModelsPage() {
                 placeholder={t("FREE_CONSENT.SEARCH")}
                 value={params.q}
                 onChange={(q) => void filters.setParams({ q: q || null })}
+              />
+              <SortMenu
+                value={params.order}
+                active={filters.activeSort}
+                onChange={(order) => void filters.setParams({ order })}
               />
               <ViewModeButtons
                 value={params.view}
@@ -142,7 +162,7 @@ export function FreeModelsPage() {
               <ModelsEmpty
                 filtered={showReset}
                 count={filters.activeFilterCount}
-                onReset={filters.reset}
+                onReset={resetAll}
               />
             ) : params.view === "table" ? (
               <DataTable

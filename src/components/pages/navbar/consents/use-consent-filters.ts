@@ -1,6 +1,10 @@
 "use client";
 
+import { useRankingsQuery } from "@/hooks/models/rankings-hook";
 import { matchesModality, OUTPUT_MODALITIES } from "@/lib/api/model-modality";
+import { sortModels } from "@/lib/api/model-sort";
+import type { RankedModel } from "@/openapi";
+import { SORT_VALUES, type SortOrder } from "@/store/models-store";
 import {
   parseAsArrayOf,
   parseAsString,
@@ -24,10 +28,19 @@ const PARSERS = {
   country: parseAsArrayOf(parseAsString).withDefault([]),
   price: parseAsArrayOf(parseAsStringLiteral(PRICE_KINDS)).withDefault([]),
   view: parseAsStringLiteral(["table", "list"] as const).withDefault("table"),
+  order: parseAsArrayOf(parseAsStringLiteral(SORT_VALUES)).withDefault([]),
 };
+
+// The models page falls back to its initial sortOrder when nothing is picked.
+const DEFAULT_SORT: readonly SortOrder[] = ["newest"];
 
 export function useConsentFilters(rows: ConsentRow[]) {
   const [params, setParams] = useQueryStates(PARSERS);
+  const rankings = useRankingsQuery("week");
+  const rankMap = new Map<string, RankedModel>(
+    (rankings.data?.models ?? []).map((row) => [row.model_name, row]),
+  );
+  const activeSort = params.order.length > 0 ? params.order : DEFAULT_SORT;
 
   const needle = params.q.trim().toLowerCase();
   // Everything but the modality, so the tab counts follow the other filters
@@ -57,8 +70,11 @@ export function useConsentFilters(rows: ConsentRow[]) {
       matchesPrice
     );
   });
-  const filtered = tabRows.filter((row) =>
-    matchesModality(row.model, params.modality),
+  const filtered = sortModels(
+    tabRows.filter((row) => matchesModality(row.model, params.modality)),
+    (row) => row.model,
+    activeSort,
+    rankMap,
   );
 
   const activeFilterCount =
@@ -77,6 +93,7 @@ export function useConsentFilters(rows: ConsentRow[]) {
       kind: null,
       country: null,
       price: null,
+      order: null,
     });
   }
 
@@ -86,6 +103,8 @@ export function useConsentFilters(rows: ConsentRow[]) {
     tabRows,
     filtered,
     activeFilterCount,
+    activeSort,
+    rankMap,
     reset,
   };
 }

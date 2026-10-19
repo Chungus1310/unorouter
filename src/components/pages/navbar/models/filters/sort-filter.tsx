@@ -41,7 +41,19 @@ const OPPOSITE: Partial<Record<SortOrder, SortOrder>> = {
 export function SortFilter() {
   const [sortKeys, setSortKeys] = useAtom(sortKeysAtom);
   const active = useAtomValue(effectiveSortKeysAtom);
+  return <SortMenu value={sortKeys} active={active} onChange={setSortKeys} />;
+}
+
+// `value` is what the user picked; `active` adds the fallback when it is empty.
+export function SortMenu(props: {
+  value: SortOrder[];
+  active: readonly SortOrder[];
+  onChange: (next: SortOrder[]) => void;
+}) {
   const t = useTranslations();
+  const sortKeys = props.value;
+  const active = props.active;
+  const setSortKeys = props.onChange;
 
   const label =
     active.length > 1

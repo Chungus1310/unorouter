@@ -80,8 +80,8 @@ export function useModelGroupsQuery(name: string | null) {
   );
 }
 
-export function useFreeModelsQuery() {
-  return useElysiaQuery(queryKeys.freeModels(), () =>
-    rpc.api.models.pricing["free-models"].get(),
+export function useConsentModelsQuery() {
+  return useElysiaQuery(queryKeys.consentModels(), () =>
+    rpc.api.models.pricing["consent-models"].get(),
   );
 }

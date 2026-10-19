@@ -28,7 +28,7 @@ export function FreeConsentList() {
 
   const allModelsLink = (
     <Link
-      href="/free-models"
+      href="/consents"
       className="text-primary text-sm underline-offset-4 hover:underline"
     >
       {t("FREE_CONSENT.ALL_MODELS")}

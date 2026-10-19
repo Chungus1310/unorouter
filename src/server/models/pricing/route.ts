@@ -31,7 +31,7 @@ export const pricingRoute = new Elysia({ prefix: "/pricing" })
   // Offline ones included: a consent can be given before the model is back.
   // Paid models whose providers use inputs for their own purposes belong here
   // too; the route keeps its old name.
-  .get("/free-models", async () =>
+  .get("/consent-models", async () =>
     (await getCatalog(false, true)).models.filter(
       (m) =>
         m.is_free || needsTransferConsent(m) || usesInputsForOwnPurposes(m),

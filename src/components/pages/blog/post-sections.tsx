@@ -11,7 +11,11 @@ export const PAGE_CHUNKS: Chunks = {
   register: (chunks) => <Link href="/register">{chunks}</Link>,
   models: (chunks) => <Link href="/models">{chunks}</Link>,
   chat: (chunks) => <Link href="/chat">{chunks}</Link>,
-  free: (chunks) => <Link href="/free-models">{chunks}</Link>,
+  free: (chunks) => (
+    <Link href={{ pathname: "/consents", query: { price: "free" } }}>
+      {chunks}
+    </Link>
+  ),
   settings: (chunks) => <Link href="/settings">{chunks}</Link>,
   pricing: (chunks) => <Link href="/pricing">{chunks}</Link>,
   docs: (chunks) => <Link href="/docs">{chunks}</Link>,

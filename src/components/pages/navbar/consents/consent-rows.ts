@@ -29,24 +29,22 @@ export function buildConsentRows(
   consents: FreeConsentItem[],
 ): ConsentRow[] {
   const byModel = new Map(consents.map((c) => [c.model, c]));
-  return models
-    .map((model) => {
-      const kind = kindOf(model);
-      const consent = byModel.get(model.model_name);
-      const status: ConsentStatus = consent
-        ? consent.covers === false
-          ? "stale"
-          : "given"
-        : kind === "none"
-          ? "not_needed"
-          : "missing";
-      return {
-        model,
-        kind,
-        status,
-        grantedAt: consent?.created_at ?? null,
-        countries: model.own_purpose?.countries ?? [],
-      };
-    })
-    .sort((a, b) => a.model.model_name.localeCompare(b.model.model_name));
+  return models.map((model) => {
+    const kind = kindOf(model);
+    const consent = byModel.get(model.model_name);
+    const status: ConsentStatus = consent
+      ? consent.covers === false
+        ? "stale"
+        : "given"
+      : kind === "none"
+        ? "not_needed"
+        : "missing";
+    return {
+      model,
+      kind,
+      status,
+      grantedAt: consent?.created_at ?? null,
+      countries: model.own_purpose?.countries ?? [],
+    };
+  });
 }

@@ -1,4 +1,4 @@
-import { FreeModelsPage } from "@/components/pages/navbar/free-models/free-models-page";
+import { ConsentsPage } from "@/components/pages/navbar/consents/consents-page";
 import { pageMetadata } from "@/lib/seo/metadata";
 
 export function generateMetadata(props: {
@@ -7,11 +7,11 @@ export function generateMetadata(props: {
   return pageMetadata({
     props,
     namespace: "FREE_CONSENT",
-    href: "/free-models",
+    href: "/consents",
     robots: false,
   });
 }
 
 export default function Page() {
-  return <FreeModelsPage />;
+  return <ConsentsPage />;
 }

@@ -1,11 +1,11 @@
 "use client";
 
 import { matchesModality } from "@/lib/api/model-modality";
-import type { PricingCatalogModel, RankedModel } from "@/openapi";
-import type { SortOrder } from "@/store/models-store";
+import type { RankedModel } from "@/openapi";
 import { usePricingBrowseQuery } from "@/hooks/models/pricing-hook";
 import { useRankingsQuery } from "@/hooks/models/rankings-hook";
 import { dayjs } from "@/lib/utils/format/date";
+import { effectivePrice, sortModels } from "@/lib/api/model-sort";
 import { bestDiscountPercent } from "@/lib/utils/format/number";
 import {
   categoriesAtom,
@@ -30,10 +30,6 @@ import {
 import { useAtom, useAtomValue } from "jotai";
 
 export const NEW_MODEL_MS = 30 * 24 * 60 * 60 * 1000;
-
-function effectivePrice(model: PricingCatalogModel): number {
-  return model.is_fixed_price ? model.fixed_price : model.input_price;
-}
 
 // "free" is deliberately absent: every free model carries a :free suffix, so
 // the name match already covers it. These are the words that find nothing.
@@ -65,18 +61,6 @@ function matchesFreeKeyword(query: string): boolean {
     const word = raw.toLowerCase();
     return word.startsWith(query) || query.includes(word);
   });
-}
-
-// null sorts LAST, not as 0: unmeasured is not the same as measured at 0%.
-function byReliability(
-  a: number | null | undefined,
-  b: number | null | undefined,
-): number {
-  if (a == null || b == null) {
-    if (a == null && b == null) return 0;
-    return a == null ? 1 : -1;
-  }
-  return b - a;
 }
 
 export function useModelsFilter() {
@@ -173,51 +157,12 @@ export function useModelsFilter() {
     );
   });
 
-  let filtered = tabModels.filter((model) =>
-    matchesModality(model, outputModality),
+  const filtered = sortModels(
+    tabModels.filter((model) => matchesModality(model, outputModality)),
+    (m) => m,
+    activeSortKeys,
+    rankMap,
   );
-
-  // Every key MUST return 0 on a tie, or every later key is dead code.
-  const compareBy = (
-    key: SortOrder,
-    a: PricingCatalogModel,
-    b: PricingCatalogModel,
-  ): number => {
-    if (key === "newest") return b.release_ts - a.release_ts;
-    if (key === "popular") {
-      const ra = rankMap.get(a.model_name)?.rank ?? Number.POSITIVE_INFINITY;
-      const rb = rankMap.get(b.model_name)?.rank ?? Number.POSITIVE_INFINITY;
-      return ra - rb;
-    }
-    if (key === "topWeekly") {
-      return (
-        (rankMap.get(b.model_name)?.total_tokens ?? 0) -
-        (rankMap.get(a.model_name)?.total_tokens ?? 0)
-      );
-    }
-    if (key === "contextDesc") {
-      const ca = a.metadata?.contextWindow ?? a.metadata?.maxInputTokens ?? 0;
-      const cb = b.metadata?.contextWindow ?? b.metadata?.maxInputTokens ?? 0;
-      return cb - ca;
-    }
-    if (key === "priceAsc") return effectivePrice(a) - effectivePrice(b);
-    if (key === "priceDesc") return effectivePrice(b) - effectivePrice(a);
-    if (key === "discountDesc")
-      return bestDiscountPercent(b) - bestDiscountPercent(a);
-    if (key === "uptimeDesc") return byReliability(a.uptime_24h, b.uptime_24h);
-    if (key === "successDesc")
-      return byReliability(a.success_rate, b.success_rate);
-    return a.model_name.localeCompare(b.model_name);
-  };
-
-  filtered = [...filtered].sort((a, b) => {
-    for (const key of activeSortKeys) {
-      const diff = compareBy(key, a, b);
-      if (diff !== 0) return diff;
-    }
-    // Name last so the order is total; input order shifts between renders.
-    return a.model_name.localeCompare(b.model_name);
-  });
 
   return {
     search,

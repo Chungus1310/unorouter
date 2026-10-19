@@ -10,7 +10,7 @@ export const queryKeys = {
   passkeyStatus: () => ["passkey-status"] as const,
   freeConsents: () => ["free-consents"] as const,
   ownPurposeObjection: () => ["own-purpose-objection"] as const,
-  freeModels: () => ["free-models"] as const,
+  consentModels: () => ["consent-models"] as const,
   verificationMethods: (scope: SecurityScope) =>
     ["verification-methods", scope] as const,
 
