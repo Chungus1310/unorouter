@@ -6,12 +6,14 @@ import {
   useFreeConsentsQuery,
   useRevokeFreeConsentMutation,
 } from "@/hooks/auth/free-consent-hook";
+import { useOwnPurposeEnabled } from "@/hooks/ops/status-hook";
 import { formatLongDate } from "@/lib/utils/format/date";
 import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 export function FreeConsentList() {
   const t = useTranslations();
+  const enabled = useOwnPurposeEnabled();
   const consentsQuery = useFreeConsentsQuery();
   const revokeMutation = useRevokeFreeConsentMutation();
   const consents = consentsQuery.data?.consents ?? [];
@@ -31,7 +33,11 @@ export function FreeConsentList() {
       href="/free-models"
       className="text-primary text-sm underline-offset-4 hover:underline"
     >
-      {t("FREE_CONSENT.ALL_MODELS")}
+      {t(
+        enabled
+          ? "FREE_CONSENT.TRAINING_USE.ALL_MODELS"
+          : "FREE_CONSENT.ALL_MODELS",
+      )}
     </Link>
   );
 
@@ -39,7 +45,11 @@ export function FreeConsentList() {
     return (
       <div className="space-y-2">
         <p className="text-muted-foreground text-sm">
-          {t("FREE_CONSENT.SETTINGS_EMPTY")}
+          {t(
+            enabled
+              ? "FREE_CONSENT.TRAINING_USE.SETTINGS_EMPTY"
+              : "FREE_CONSENT.SETTINGS_EMPTY",
+          )}
         </p>
         {allModelsLink}
       </div>

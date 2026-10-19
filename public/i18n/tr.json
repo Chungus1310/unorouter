@@ -6342,28 +6342,42 @@
     "NOTICE_CONFIRM": "Okudum",
     "NOTICE_SAVED": "Bilgilendirme onaylandı",
     "UNKNOWN_COUNTRY": "merkezi bilinmiyor",
-    "BUSINESS": "Onay gerektiren modeller kurumsal hesaplarda kullanılamaz.",
+    "BUSINESS": "Ücretsiz modeller kurumsal hesaplar için kullanılamaz.",
     "REQUIRED_ERROR": "Bu model kullanılmadan önce onayını gerektiriyor, örneğin yeni bir sağlayıcı eklendiği için. Lütfen sohbette gösterilen panelde onayla.",
-    "SETTINGS_TITLE": "Eğitim amaçlı kullanılan modeller",
-    "SETTINGS_DESC": "Sağlayıcıları girdilerini kendi amaçları için kullanan ve aktarımına onay verdiğin modeller. Onayı geri aldıktan sonra model, yeniden onay verene kadar engelli kalır.",
-    "SETTINGS_EMPTY": "Henüz hiçbir onay vermedin.",
+    "SETTINGS_TITLE": "Ücretsiz modeller",
+    "SETTINGS_DESC": "Kullanımına onay verdiğin ücretsiz modeller. Onayı geri aldıktan sonra model, yeniden onay verene kadar engelli kalır.",
+    "SETTINGS_EMPTY": "Henüz hiçbir ücretsiz modele onay vermedin.",
     "REVOKE_BUTTON": "Geri al",
     "REVOKED": "Onay geri alındı",
     "GRANTED_ON": "{date} tarihinde verildi",
     "MANAGE": "Onayları yönet",
     "SAVED": "Onay kaydedildi",
     "META": {
-      "TITLE": "Eğitim amaçlı kullanılan modeller | {appName}",
-      "DESCRIPTION": "{appName} üzerinde sağlayıcıları girdilerini kendi amaçları için kullanan her model için onay ver veya onayını geri al.",
-      "KEYWORDS": "eğitim amaçlı kullanım, onay, gizlilik, üçüncü ülkeye aktarım"
+      "TITLE": "Ücretsiz model onayları - {appName}",
+      "DESCRIPTION": "{appName} üzerindeki her ücretsiz model için onayını ver veya geri al.",
+      "KEYWORDS": "ücretsiz modeller, onay, gizlilik"
     },
-    "PAGE_TITLE": "Eğitim amaçlı kullanılan modeller",
-    "PAGE_INTRO": "Bu modellerin sağlayıcıları girdilerini kendi amaçları için, örneğin yapay zekâ modellerini eğitmek için kullanabilir. Yeterli veri koruma düzeyi olmayan bir ülkede yerleşiklerse, API dahil ilk kullanımdan önce onay vermen gerekir. Verdiğin her onayı istediğin zaman geri alabilirsin.",
+    "PAGE_TITLE": "Ücretsiz modeller",
+    "PAGE_INTRO": "Ücretsiz modeller, girdilerini kendi amaçları için kullanabilen sağlayıcılar üzerinden sunulur. Burada her model için, API dahil, kullanmadan önce onay verebilir ve onayı istediğin zaman geri alabilirsin.",
     "SEARCH": "Model ara",
     "GIVE": "Onayla",
     "NOT_NEEDED": "Onay gerekmez",
     "OFFLINE": "çevrimdışı",
-    "ALL_MODELS": "Eğitim amaçlı kullanılan tüm modeller"
+    "ALL_MODELS": "Tüm ücretsiz modeller",
+    "TRAINING_USE": {
+      "SETTINGS_TITLE": "Eğitim amaçlı kullanılan modeller",
+      "SETTINGS_DESC": "Sağlayıcıları girdilerini kendi amaçları için kullanan ve aktarımına onay verdiğin modeller. Onayı geri aldıktan sonra model, yeniden onay verene kadar engelli kalır.",
+      "SETTINGS_EMPTY": "Henüz hiçbir onay vermedin.",
+      "BUSINESS": "Onay gerektiren modeller kurumsal hesaplarda kullanılamaz.",
+      "META": {
+        "TITLE": "Eğitim amaçlı kullanılan modeller | {appName}",
+        "DESCRIPTION": "{appName} üzerinde sağlayıcıları girdilerini kendi amaçları için kullanan her model için onay ver veya onayını geri al.",
+        "KEYWORDS": "eğitim amaçlı kullanım, onay, gizlilik, üçüncü ülkeye aktarım"
+      },
+      "PAGE_TITLE": "Eğitim amaçlı kullanılan modeller",
+      "PAGE_INTRO": "Bu modellerin sağlayıcıları girdilerini kendi amaçları için, örneğin yapay zekâ modellerini eğitmek için kullanabilir. Yeterli veri koruma düzeyi olmayan bir ülkede yerleşiklerse, API dahil ilk kullanımdan önce onay vermen gerekir. Verdiğin her onayı istediğin zaman geri alabilirsin.",
+      "ALL_MODELS": "Eğitim amaçlı kullanılan tüm modeller"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Sağlayıcıların kendi amaçları için kullanımına itiraz",

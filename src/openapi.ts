@@ -3913,6 +3913,7 @@ export interface StatusData {
   oidc_client_id: string;
   oidc_display_name: string;
   oidc_enabled: boolean;
+  own_purpose_enabled: boolean;
   passkey_allow_insecure: boolean;
   passkey_attachment: string;
   passkey_display_name: string;

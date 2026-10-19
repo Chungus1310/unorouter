@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useFreeConsentsQuery } from "@/hooks/auth/free-consent-hook";
+import { useOwnPurposeEnabled } from "@/hooks/ops/status-hook";
 import {
   hasCoveringConsent,
   needsTransferConsent,
@@ -31,7 +32,8 @@ export function SubmitBar(props: Props) {
   const nav = useImageNav();
   const form = useFormContext<ImageFormValues>();
   const authQuery = useAuthQuery();
-  const consentModel = needsTransferConsent(props.descriptor);
+  const enabled = useOwnPurposeEnabled();
+  const consentModel = needsTransferConsent(props.descriptor, enabled);
   const consentsQuery = useFreeConsentsQuery(consentModel);
 
   const prompt = useWatch({ control: form.control, name: "prompt" }) ?? "";
@@ -69,12 +71,17 @@ export function SubmitBar(props: Props) {
     !hasCoveringConsent(
       consentsQuery.data.consents,
       props.descriptor.model_name,
+      enabled,
     );
 
   if (business)
     return (
       <p className="text-muted-foreground py-2 text-sm">
-        {t("FREE_CONSENT.BUSINESS")}
+        {t(
+          enabled
+            ? "FREE_CONSENT.TRAINING_USE.BUSINESS"
+            : "FREE_CONSENT.BUSINESS",
+        )}
       </p>
     );
   if (needsConsent)

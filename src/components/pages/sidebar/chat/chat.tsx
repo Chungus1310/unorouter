@@ -83,7 +83,11 @@ export function Chat(props: ChatProps) {
     return (
       <div className="chat-shell-reveal flex min-h-0 flex-1 flex-col items-center justify-center p-8">
         <p className="text-muted-foreground text-center text-sm">
-          {t("FREE_CONSENT.BUSINESS")}
+          {t(
+            gate.enabled
+              ? "FREE_CONSENT.TRAINING_USE.BUSINESS"
+              : "FREE_CONSENT.BUSINESS",
+          )}
         </p>
       </div>
     );

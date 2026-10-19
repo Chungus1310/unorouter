@@ -6342,28 +6342,42 @@
     "NOTICE_CONFIRM": "Zur Kenntnis genommen",
     "NOTICE_SAVED": "Hinweis bestätigt",
     "UNKNOWN_COUNTRY": "Sitzland unbekannt",
-    "BUSINESS": "Modelle, die eine Einwilligung erfordern, sind für Geschäftskonten nicht verfügbar.",
+    "BUSINESS": "Kostenlose Modelle sind für Geschäftskonten nicht verfügbar.",
     "REQUIRED_ERROR": "Dieses Modell erfordert vor der Nutzung deine Einwilligung, etwa weil ein Anbieter hinzugekommen ist. Bitte bestätige sie im angezeigten Feld im Chat.",
-    "SETTINGS_TITLE": "Modelle mit Trainingsnutzung",
-    "SETTINGS_DESC": "Modelle, deren Anbieter deine Eingaben für eigene Zwecke nutzen und in deren Übermittlung du eingewilligt hast. Nach einem Widerruf bleibt das Modell gesperrt, bis du erneut einwilligst.",
-    "SETTINGS_EMPTY": "Du hast noch keine Einwilligung erteilt.",
+    "SETTINGS_TITLE": "Kostenlose Modelle",
+    "SETTINGS_DESC": "Kostenlose Modelle, in deren Nutzung du eingewilligt hast. Nach einem Widerruf bleibt das Modell gesperrt, bis du erneut einwilligst.",
+    "SETTINGS_EMPTY": "Du hast noch in kein kostenloses Modell eingewilligt.",
     "REVOKE_BUTTON": "Widerrufen",
     "REVOKED": "Einwilligung widerrufen",
     "GRANTED_ON": "Erteilt am {date}",
     "MANAGE": "Einwilligungen verwalten",
     "SAVED": "Einwilligung gespeichert",
     "META": {
-      "TITLE": "Modelle mit Trainingsnutzung | {appName}",
-      "DESCRIPTION": "Erteile oder widerrufe deine Einwilligung für jedes Modell auf {appName}, dessen Anbieter deine Eingaben für eigene Zwecke nutzen.",
-      "KEYWORDS": "Trainingsnutzung, Einwilligung, Datenschutz, Drittlandübermittlung"
+      "TITLE": "Einwilligungen für kostenlose Modelle - {appName}",
+      "DESCRIPTION": "Erteile oder widerrufe deine Einwilligung für jedes kostenlose Modell auf {appName}.",
+      "KEYWORDS": "kostenlose Modelle, Einwilligung, Datenschutz"
     },
-    "PAGE_TITLE": "Modelle mit Trainingsnutzung",
-    "PAGE_INTRO": "Die Anbieter dieser Modelle können deine Eingaben für eigene Zwecke nutzen, etwa zum Training von KI-Modellen. Sitzen sie in einem Land ohne angemessenes Datenschutzniveau, musst du vor der ersten Nutzung einwilligen, auch für die API. Jede Einwilligung kannst du jederzeit widerrufen.",
+    "PAGE_TITLE": "Kostenlose Modelle",
+    "PAGE_INTRO": "Kostenlose Modelle werden über Anbieter bereitgestellt, die deine Eingaben für eigene Zwecke nutzen können. Hier kannst du für jedes Modell vor der Nutzung einwilligen, auch für die API, und die Einwilligung jederzeit widerrufen.",
     "SEARCH": "Modelle suchen",
     "GIVE": "Einwilligen",
     "NOT_NEEDED": "Keine Einwilligung nötig",
     "OFFLINE": "offline",
-    "ALL_MODELS": "Alle Modelle mit Trainingsnutzung"
+    "ALL_MODELS": "Alle kostenlosen Modelle",
+    "TRAINING_USE": {
+      "SETTINGS_TITLE": "Modelle mit Trainingsnutzung",
+      "SETTINGS_DESC": "Modelle, deren Anbieter deine Eingaben für eigene Zwecke nutzen und in deren Übermittlung du eingewilligt hast. Nach einem Widerruf bleibt das Modell gesperrt, bis du erneut einwilligst.",
+      "SETTINGS_EMPTY": "Du hast noch keine Einwilligung erteilt.",
+      "BUSINESS": "Modelle, die eine Einwilligung erfordern, sind für Geschäftskonten nicht verfügbar.",
+      "META": {
+        "TITLE": "Modelle mit Trainingsnutzung | {appName}",
+        "DESCRIPTION": "Erteile oder widerrufe deine Einwilligung für jedes Modell auf {appName}, dessen Anbieter deine Eingaben für eigene Zwecke nutzen.",
+        "KEYWORDS": "Trainingsnutzung, Einwilligung, Datenschutz, Drittlandübermittlung"
+      },
+      "PAGE_TITLE": "Modelle mit Trainingsnutzung",
+      "PAGE_INTRO": "Die Anbieter dieser Modelle können deine Eingaben für eigene Zwecke nutzen, etwa zum Training von KI-Modellen. Sitzen sie in einem Land ohne angemessenes Datenschutzniveau, musst du vor der ersten Nutzung einwilligen, auch für die API. Jede Einwilligung kannst du jederzeit widerrufen.",
+      "ALL_MODELS": "Alle Modelle mit Trainingsnutzung"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Widerspruch gegen die Nutzung für eigene Zwecke der Anbieter",

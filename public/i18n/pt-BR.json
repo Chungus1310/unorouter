@@ -6342,28 +6342,42 @@
     "NOTICE_CONFIRM": "Estou ciente",
     "NOTICE_SAVED": "Aviso confirmado",
     "UNKNOWN_COUNTRY": "sede desconhecida",
-    "BUSINESS": "Modelos que exigem consentimento não estão disponíveis para contas empresariais.",
+    "BUSINESS": "Modelos gratuitos não estão disponíveis para contas empresariais.",
     "REQUIRED_ERROR": "Este modelo exige seu consentimento antes do uso, por exemplo porque um provedor foi adicionado. Confirme-o no painel exibido no chat.",
-    "SETTINGS_TITLE": "Modelos com uso para treinamento",
-    "SETTINGS_DESC": "Modelos cujos provedores usam suas entradas para fins próprios e para cuja transferência você deu consentimento. Após uma revogação, o modelo fica bloqueado até você consentir novamente.",
-    "SETTINGS_EMPTY": "Você ainda não deu nenhum consentimento.",
+    "SETTINGS_TITLE": "Modelos gratuitos",
+    "SETTINGS_DESC": "Modelos gratuitos para cujo uso você deu consentimento. Após uma revogação, o modelo fica bloqueado até você consentir novamente.",
+    "SETTINGS_EMPTY": "Você ainda não deu consentimento para nenhum modelo gratuito.",
     "REVOKE_BUTTON": "Revogar",
     "REVOKED": "Consentimento revogado",
     "GRANTED_ON": "Dado em {date}",
     "MANAGE": "Gerenciar consentimentos",
     "SAVED": "Consentimento salvo",
     "META": {
-      "TITLE": "Modelos com uso para treinamento | {appName}",
-      "DESCRIPTION": "Dê ou revogue seu consentimento para cada modelo no {appName} cujos provedores usam suas entradas para fins próprios.",
-      "KEYWORDS": "uso para treinamento, consentimento, privacidade, transferência para país terceiro"
+      "TITLE": "Consentimentos para modelos gratuitos - {appName}",
+      "DESCRIPTION": "Dê ou revogue seu consentimento para cada modelo gratuito no {appName}.",
+      "KEYWORDS": "modelos gratuitos, consentimento, privacidade"
     },
-    "PAGE_TITLE": "Modelos com uso para treinamento",
-    "PAGE_INTRO": "Os provedores desses modelos podem usar suas entradas para fins próprios, por exemplo para treinar modelos de IA. Se tiverem sede em um país sem nível adequado de proteção de dados, você precisa dar seu consentimento antes do primeiro uso, também para a API. Você pode revogar qualquer consentimento a qualquer momento.",
+    "PAGE_TITLE": "Modelos gratuitos",
+    "PAGE_INTRO": "Os modelos gratuitos são oferecidos por provedores que podem usar suas entradas para fins próprios. Aqui você pode dar seu consentimento para cada modelo antes de usá-lo, inclusive pela API, e revogá-lo a qualquer momento.",
     "SEARCH": "Buscar modelos",
     "GIVE": "Consentir",
     "NOT_NEEDED": "Nenhum consentimento necessário",
     "OFFLINE": "offline",
-    "ALL_MODELS": "Todos os modelos com uso para treinamento"
+    "ALL_MODELS": "Todos os modelos gratuitos",
+    "TRAINING_USE": {
+      "SETTINGS_TITLE": "Modelos com uso para treinamento",
+      "SETTINGS_DESC": "Modelos cujos provedores usam suas entradas para fins próprios e para cuja transferência você deu consentimento. Após uma revogação, o modelo fica bloqueado até você consentir novamente.",
+      "SETTINGS_EMPTY": "Você ainda não deu nenhum consentimento.",
+      "BUSINESS": "Modelos que exigem consentimento não estão disponíveis para contas empresariais.",
+      "META": {
+        "TITLE": "Modelos com uso para treinamento | {appName}",
+        "DESCRIPTION": "Dê ou revogue seu consentimento para cada modelo no {appName} cujos provedores usam suas entradas para fins próprios.",
+        "KEYWORDS": "uso para treinamento, consentimento, privacidade, transferência para país terceiro"
+      },
+      "PAGE_TITLE": "Modelos com uso para treinamento",
+      "PAGE_INTRO": "Os provedores desses modelos podem usar suas entradas para fins próprios, por exemplo para treinar modelos de IA. Se tiverem sede em um país sem nível adequado de proteção de dados, você precisa dar seu consentimento antes do primeiro uso, também para a API. Você pode revogar qualquer consentimento a qualquer momento.",
+      "ALL_MODELS": "Todos os modelos com uso para treinamento"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Oposição ao uso para fins próprios dos provedores",

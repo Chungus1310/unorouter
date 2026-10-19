@@ -6342,28 +6342,42 @@
     "NOTICE_CONFIRM": "我已知悉",
     "NOTICE_SAVED": "已確認提示",
     "UNKNOWN_COUNTRY": "所在地未知",
-    "BUSINESS": "需要同意的模型不適用於企業帳戶。",
+    "BUSINESS": "企業帳戶無法使用免費模型。",
     "REQUIRED_ERROR": "此模型在使用前需要你的同意，例如因為新增了供應商。請在聊天中顯示的面板中確認。",
-    "SETTINGS_TITLE": "用於訓練的模型",
-    "SETTINGS_DESC": "供應商將你的輸入用於其自身目的、且你已同意傳輸的模型。撤回後，在你再次同意之前，該模型將維持封鎖。",
-    "SETTINGS_EMPTY": "你尚未給予任何同意。",
+    "SETTINGS_TITLE": "免費模型",
+    "SETTINGS_DESC": "你已同意使用的免費模型。撤回後，該模型將保持鎖定，直到你再次同意。",
+    "SETTINGS_EMPTY": "你尚未同意使用任何免費模型。",
     "REVOKE_BUTTON": "撤回",
     "REVOKED": "已撤回同意",
     "GRANTED_ON": "同意於 {date}",
     "MANAGE": "管理同意",
     "SAVED": "已儲存同意",
     "META": {
-      "TITLE": "用於訓練的模型 | {appName}",
-      "DESCRIPTION": "在 {appName} 上，為每個供應商將你的輸入用於其自身目的的模型給予或撤回同意。",
-      "KEYWORDS": "訓練用途, 同意, 隱私, 跨境傳輸"
+      "TITLE": "免費模型使用同意 - {appName}",
+      "DESCRIPTION": "為 {appName} 上的每個免費模型給予或撤回同意。",
+      "KEYWORDS": "免費模型, 同意, 隱私"
     },
-    "PAGE_TITLE": "用於訓練的模型",
-    "PAGE_INTRO": "這些模型的供應商可能將你的輸入用於其自身目的，例如訓練 AI 模型。若供應商位於資料保護水準不足的國家/地區，你需要在首次使用前（包括透過 API 使用）給予同意。你可以隨時撤回任何同意。",
+    "PAGE_TITLE": "免費模型",
+    "PAGE_INTRO": "免費模型透過可能將你的輸入用於自身目的的供應商提供。你可以在這裡於使用前（包括透過 API 使用）為每個模型給予同意，並可隨時撤回。",
     "SEARCH": "搜尋模型",
     "GIVE": "同意",
     "NOT_NEEDED": "無需同意",
     "OFFLINE": "離線",
-    "ALL_MODELS": "所有用於訓練的模型"
+    "ALL_MODELS": "全部免費模型",
+    "TRAINING_USE": {
+      "SETTINGS_TITLE": "用於訓練的模型",
+      "SETTINGS_DESC": "供應商將你的輸入用於其自身目的、且你已同意傳輸的模型。撤回後，在你再次同意之前，該模型將維持封鎖。",
+      "SETTINGS_EMPTY": "你尚未給予任何同意。",
+      "BUSINESS": "需要同意的模型不適用於企業帳戶。",
+      "META": {
+        "TITLE": "用於訓練的模型 | {appName}",
+        "DESCRIPTION": "在 {appName} 上，為每個供應商將你的輸入用於其自身目的的模型給予或撤回同意。",
+        "KEYWORDS": "訓練用途, 同意, 隱私, 跨境傳輸"
+      },
+      "PAGE_TITLE": "用於訓練的模型",
+      "PAGE_INTRO": "這些模型的供應商可能將你的輸入用於其自身目的，例如訓練 AI 模型。若供應商位於資料保護水準不足的國家/地區，你需要在首次使用前（包括透過 API 使用）給予同意。你可以隨時撤回任何同意。",
+      "ALL_MODELS": "所有用於訓練的模型"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "反對供應商將輸入用於其自身目的",

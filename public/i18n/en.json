@@ -6342,28 +6342,42 @@
     "NOTICE_CONFIRM": "Acknowledge",
     "NOTICE_SAVED": "Notice acknowledged",
     "UNKNOWN_COUNTRY": "seat unknown",
-    "BUSINESS": "Models that need a consent are not available for business accounts.",
+    "BUSINESS": "Free models are not available for business accounts.",
     "REQUIRED_ERROR": "This model needs your consent before use, for example because a provider was added. Please confirm it in the panel shown in the chat.",
-    "SETTINGS_TITLE": "Models with training use",
-    "SETTINGS_DESC": "Models whose providers use your inputs for their own purposes and to whose transfer you have consented. After a withdrawal the model stays blocked until you consent again.",
-    "SETTINGS_EMPTY": "You have not given any consent yet.",
+    "SETTINGS_TITLE": "Free models",
+    "SETTINGS_DESC": "Free models you have consented to. After a withdrawal the model stays blocked until you consent again.",
+    "SETTINGS_EMPTY": "You have not consented to any free model yet.",
     "REVOKE_BUTTON": "Withdraw",
     "REVOKED": "Consent withdrawn",
     "GRANTED_ON": "Given on {date}",
     "MANAGE": "Manage consents",
     "SAVED": "Consent saved",
     "META": {
-      "TITLE": "Models with training use | {appName}",
-      "DESCRIPTION": "Give or withdraw your consent for each model on {appName} whose providers use your inputs for their own purposes.",
-      "KEYWORDS": "training use, consent, privacy, third country transfer"
+      "TITLE": "Free model consents - {appName}",
+      "DESCRIPTION": "Give or withdraw your consent for each free model on {appName}.",
+      "KEYWORDS": "free models, consent, privacy"
     },
-    "PAGE_TITLE": "Models with training use",
-    "PAGE_INTRO": "The providers of these models may use your inputs for their own purposes, for example to train AI models. Where they are based in a country without adequate data protection, you need to consent before the first use, also for the API. You can withdraw any consent at any time.",
+    "PAGE_TITLE": "Free models",
+    "PAGE_INTRO": "Free models are offered through providers that may use your inputs for their own purposes. Here you can give your consent for each model before you use it, also for the API, and withdraw it at any time.",
     "SEARCH": "Search models",
     "GIVE": "Consent",
     "NOT_NEEDED": "No consent needed",
     "OFFLINE": "offline",
-    "ALL_MODELS": "All models with training use"
+    "ALL_MODELS": "All free models",
+    "TRAINING_USE": {
+      "SETTINGS_TITLE": "Models with training use",
+      "SETTINGS_DESC": "Models whose providers use your inputs for their own purposes and to whose transfer you have consented. After a withdrawal the model stays blocked until you consent again.",
+      "SETTINGS_EMPTY": "You have not given any consent yet.",
+      "BUSINESS": "Models that need a consent are not available for business accounts.",
+      "META": {
+        "TITLE": "Models with training use | {appName}",
+        "DESCRIPTION": "Give or withdraw your consent for each model on {appName} whose providers use your inputs for their own purposes.",
+        "KEYWORDS": "training use, consent, privacy, third country transfer"
+      },
+      "PAGE_TITLE": "Models with training use",
+      "PAGE_INTRO": "The providers of these models may use your inputs for their own purposes, for example to train AI models. Where they are based in a country without adequate data protection, you need to consent before the first use, also for the API. You can withdraw any consent at any time.",
+      "ALL_MODELS": "All models with training use"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Objection to use for the providers' own purposes",

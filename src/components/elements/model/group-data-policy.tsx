@@ -6,6 +6,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useOwnPurposeEnabled } from "@/hooks/ops/status-hook";
 import { FLAG_LOADERS } from "@/lib/config/flag-loaders";
 import type { IconName } from "@/lib/config/icon-map";
 import { cn } from "@/lib/utils";
@@ -200,7 +201,8 @@ export function OwnPurposeBadge(props: {
   className?: string;
 }) {
   const t = useTranslations();
-  if (!props.ownPurpose?.trains_or_retains) return null;
+  const enabled = useOwnPurposeEnabled();
+  if (!enabled || !props.ownPurpose?.trains_or_retains) return null;
   return (
     <span className={cn("inline-flex shrink-0 items-center", props.className)}>
       <Hint label={t("MODELS.DATA_POLICY.OWN_PURPOSE")}>

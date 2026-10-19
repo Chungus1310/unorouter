@@ -10,3 +10,8 @@ export function useStatusQuery() {
     rpc.api.auth.account.status.get(),
   );
 }
+
+// Gateway switch for consent, notice and objection beyond free models.
+export function useOwnPurposeEnabled() {
+  return useStatusQuery().data?.own_purpose_enabled === true;
+}
