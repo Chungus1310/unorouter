@@ -111,6 +111,12 @@ export function useLogoutMutation() {
   return useApiMutation({
     mutationFn: async () =>
       handleElysia(await rpc.api.auth.account.logout.get()),
-    onSuccess: (_data, _vars, qc) => qc.setQueryData(queryKeys.auth(), null),
+    onSuccess: (_data, _vars, qc) => {
+      qc.setQueryData(queryKeys.auth(), null);
+      // Both answer for the account until now; signed out they belong to the
+      // browser's guest id.
+      qc.removeQueries({ queryKey: queryKeys.freeConsents() });
+      qc.removeQueries({ queryKey: queryKeys.ownPurposeObjection() });
+    },
   });
 }

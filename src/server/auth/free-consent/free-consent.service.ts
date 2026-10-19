@@ -5,9 +5,11 @@ import {
   msg,
 } from "@/lib/config/constants";
 import {
+  hasCoveringConsent,
   needsTransferConsent,
   usesInputsForOwnPurposes,
 } from "@/lib/api/own-purpose";
+import { logger } from "@/lib/utils/logger";
 import {
   getGuestFreeConsents,
   getGuestOwnPurposeObjection,
@@ -19,12 +21,33 @@ import type { Cookie } from "elysia";
 
 const GUEST_ID_PATTERN = /^[A-Za-z0-9-]{16,64}$/;
 const GUEST_CONSENT_TTL_MS = 30_000;
+const GUEST_CACHE_MAX = 10_000;
 
 // Per pod; a revoke reaches the other pods within the TTL.
 const guestConsents = new Map<
   string,
   { models: Set<string>; expires: number }
 >();
+
+// Guest ids are unbounded caller input: expired entries go first, then the
+// oldest, so neither cache grows with the number of guests.
+function cacheGuestEntry<T extends { expires: number }>(
+  cache: Map<string, T>,
+  guestId: string,
+  entry: T,
+) {
+  cache.delete(guestId);
+  if (cache.size >= GUEST_CACHE_MAX) {
+    const now = Date.now();
+    for (const [key, value] of cache)
+      if (value.expires <= now) cache.delete(key);
+    for (const key of cache.keys()) {
+      if (cache.size < GUEST_CACHE_MAX) break;
+      cache.delete(key);
+    }
+  }
+  cache.set(guestId, entry);
+}
 
 export function readGuestId(
   cookie: Record<string, Cookie<unknown>>,
@@ -66,19 +89,28 @@ export function forgetGuestObjection(guestId: string) {
   guestObjections.delete(guestId);
 }
 
+// Fails open: the account path in the gateway is authoritative and an objecting
+// guest is rare, so an outage here must not stop every guest chat.
 async function guestObjects(guestId: string): Promise<boolean> {
   const cached = guestObjections.get(guestId);
   if (cached && cached.expires > Date.now()) return cached.objects;
-  const res = await getGuestOwnPurposeObjection({
-    headers: guestConsentHeaders(guestId),
-  });
-  if (!res.data?.success) throw new Error(msg("ERRORS.UNEXPECTED_ERROR"));
-  const objects = res.data.data.objection;
-  guestObjections.set(guestId, {
-    objects,
-    expires: Date.now() + GUEST_CONSENT_TTL_MS,
-  });
-  return objects;
+  try {
+    const res = await getGuestOwnPurposeObjection({
+      headers: guestConsentHeaders(guestId),
+    });
+    if (!res.data?.success) throw new Error(res.data?.message);
+    const objects = res.data.data.objection;
+    cacheGuestEntry(guestObjections, guestId, {
+      objects,
+      expires: Date.now() + GUEST_CONSENT_TTL_MS,
+    });
+    return objects;
+  } catch (error) {
+    logger.error("guest objection lookup failed", {
+      error: error instanceof Error ? error.message : String(error),
+    });
+    return false;
+  }
 }
 
 async function guestConsentedModels(
@@ -94,8 +126,12 @@ async function guestConsentedModels(
     headers: guestConsentHeaders(guestId),
   });
   const consents = res.data?.success ? (res.data.data?.consents ?? []) : [];
-  const models = new Set(consents.map((consent) => consent.model));
-  guestConsents.set(guestId, {
+  const models = new Set(
+    consents
+      .filter((consent) => hasCoveringConsent(consents, consent.model))
+      .map((consent) => consent.model),
+  );
+  cacheGuestEntry(guestConsents, guestId, {
     models,
     expires: Date.now() + GUEST_CONSENT_TTL_MS,
   });

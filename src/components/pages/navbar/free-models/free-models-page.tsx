@@ -30,8 +30,11 @@ export function FreeModelsPage() {
   const [open, setOpen] = useState<string | null>(null);
   const [modality, setModality] = useState<OutputModality>("all");
 
+  // A consent that no longer covers the current providers has to be renewed.
   const consents = new Map(
-    (consentsQuery.data?.consents ?? []).map((c) => [c.model, c.created_at]),
+    (consentsQuery.data?.consents ?? [])
+      .filter((c) => c.covers !== false)
+      .map((c) => [c.model, c.created_at]),
   );
   const needle = search.trim().toLowerCase();
   const allModels = freeModelsQuery.data ?? [];

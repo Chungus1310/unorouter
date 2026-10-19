@@ -103,6 +103,9 @@ export const showThinkingTokensAtom = storeField("showThinkingTokens");
 export const bestDealAtom = storeField("bestDeal");
 export const priceSeenAtom = storeField("priceSeen");
 export const bestDealDialogOpenAtom = atom(false);
+// Models the gateway answered free_consent_required for, so the chat asks for
+// consent even while the cached catalog or consent list says otherwise.
+export const consentDemandedModelsAtom = atom<string[]>([]);
 
 // A model the user picks by hand ends best deal mode; only its own pick keeps it.
 export const chooseChatModelAtom = atom(null, (get, set, model: string) => {

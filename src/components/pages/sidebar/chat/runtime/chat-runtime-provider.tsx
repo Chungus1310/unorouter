@@ -24,12 +24,18 @@ import { useRoomBroadcast } from "@/lib/ai/chat/room/use-room-broadcast";
 import { acquireLock, releaseLock } from "@/lib/db/client/outbox/resource-lock";
 import type { ChatUIMessage } from "@/lib/types";
 import { captureFailedRequest, logChatDebug } from "@/lib/utils/chat-debug-log";
+import {
+  FREE_CONSENT_REQUIRED,
+  gatewayCodeMessage,
+} from "@/lib/api/own-purpose";
 import { msg } from "@/lib/config/constants";
+import { queryKeys } from "@/lib/react-query/keys";
 import { extractErrorDetail, handleError } from "@/lib/utils/client";
 import {
   assistantRuntimeAtom,
   chatModelAtom,
   chatStore,
+  consentDemandedModelsAtom,
   convIdAtom,
   freshConvId,
   lastStreamErrorAtom,
@@ -179,18 +185,30 @@ function ChatRuntimeHook() {
         requestId: detail.requestId,
         message: detail.message,
       });
+      const mapped =
+        gatewayCodeMessage(detail.code) ??
+        (detail.message === msg("OWN_PURPOSE.OBJECTED_ERROR")
+          ? detail.message
+          : null);
+      if (detail.code === FREE_CONSENT_REQUIRED) {
+        const model = chatStore.get(chatModelAtom);
+        if (model)
+          chatStore.set(consentDemandedModelsAtom, (prev) =>
+            prev.includes(model) ? prev : [...prev, model],
+          );
+        void queryClient.invalidateQueries({
+          queryKey: queryKeys.freeConsents(),
+        });
+      }
       chatStore.set(lastStreamErrorAtom, {
-        message:
-          detail.code === "own_purpose_objected" ||
-          detail.message === msg("OWN_PURPOSE.OBJECTED_ERROR")
-            ? t("OWN_PURPOSE.OBJECTED_ERROR")
-            : detail.message,
+        message: mapped ? t(mapped) : detail.message,
         at: Date.now(),
         code: detail.code,
         status: detail.status,
         requestId: detail.requestId,
       });
-      handleError(e, t);
+      if (mapped) toast.error(t(mapped));
+      else handleError(e, t);
     },
     onFinish: ({ message }) => {
       releaseStreamLock();

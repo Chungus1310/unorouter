@@ -4,8 +4,11 @@ import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useFreeConsentsQuery } from "@/hooks/auth/free-consent-hook";
 import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
 import { useApiKey } from "@/hooks/ui/use-api-key";
-import { needsTransferConsent } from "@/lib/api/own-purpose";
-import { chatModelAtom } from "@/store/chat-store";
+import {
+  hasCoveringConsent,
+  needsTransferConsent,
+} from "@/lib/api/own-purpose";
+import { chatModelAtom, consentDemandedModelsAtom } from "@/store/chat-store";
 import { useAtomValue } from "jotai";
 
 export function useChatGate() {
@@ -15,7 +18,10 @@ export function useChatGate() {
   const pricingData = usePricingCatalogQuery().data?.models;
   const selected = pricingData?.find((m) => m.model_name === selectedModel);
   const isSelectedModelFree = selected?.is_free ?? false;
-  const consentModel = selected ? needsTransferConsent(selected) : false;
+  const demanded = useAtomValue(consentDemandedModelsAtom);
+  const consentModel =
+    (selected ? needsTransferConsent(selected) : false) ||
+    (selectedModel != null && demanded.includes(selectedModel));
   const consentsQuery = useFreeConsentsQuery(consentModel);
 
   const inputsSettled = selectedModel != null && pricingData != null;
@@ -28,8 +34,9 @@ export function useChatGate() {
   const needsConsent =
     consentModel &&
     !business &&
+    selectedModel != null &&
     consentsQuery.data != null &&
-    !(consentsQuery.data.consents ?? []).some((c) => c.model === selectedModel);
+    !hasCoveringConsent(consentsQuery.data.consents, selectedModel);
 
   return { needsToken, needsConsent, business, selectedModel };
 }

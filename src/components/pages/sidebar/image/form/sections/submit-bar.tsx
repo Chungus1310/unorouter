@@ -12,7 +12,10 @@ import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useFreeConsentsQuery } from "@/hooks/auth/free-consent-hook";
-import { needsTransferConsent } from "@/lib/api/own-purpose";
+import {
+  hasCoveringConsent,
+  needsTransferConsent,
+} from "@/lib/api/own-purpose";
 import { useTranslations } from "next-intl";
 import { useFormContext, useWatch } from "react-hook-form";
 import { clampVariants } from "../../image-constants";
@@ -63,8 +66,9 @@ export function SubmitBar(props: Props) {
     consentModel &&
     !business &&
     consentsQuery.data != null &&
-    !(consentsQuery.data.consents ?? []).some(
-      (c) => c.model === props.descriptor.model_name,
+    !hasCoveringConsent(
+      consentsQuery.data.consents,
+      props.descriptor.model_name,
     );
 
   if (business)

@@ -1239,6 +1239,7 @@ export interface FreeConsentGrantRequest {
 }
 
 export interface FreeConsentItem {
+  covers?: boolean;
   created_at: number;
   locale: string;
   model: string;

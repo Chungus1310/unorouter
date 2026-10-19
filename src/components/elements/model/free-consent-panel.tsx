@@ -12,29 +12,44 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 
-// The destinations the consent covers as the gateway computed them, else the
-// seat countries of every group behind the model. Operators stay unnamed
-// (which upstreams serve us is a business secret); a group without a recorded
-// seat adds "unknown", so the list never claims fewer destinations.
-function useSeatCountries(model: string): string[] | null {
+// Destinations are the countries the gateway computed for the consent, else
+// the seat of every group behind the model. Operators stay unnamed (which
+// upstreams serve us is a business secret); a group without a recorded seat
+// adds "unknown", so the list never claims fewer destinations. Only seats the
+// gateway flags as unsafe third countries are named as a risk, never the EEA.
+function useConsentScope(model: string) {
   const t = useTranslations();
   const locale = useLocale();
   const groups = useModelGroupsQuery(model).data;
   if (!groups) return null;
+  const unknown = t("FREE_CONSENT.UNKNOWN_COUNTRY");
   const covered = groups.own_purpose?.countries ?? [];
-  const labels = new Set<string>(
+  const destinations = new Set<string>(
     covered.map((code) => countryName(code, locale)),
   );
+  const unsafe = new Set<string>();
+  const free = model.toLowerCase().endsWith(":free");
   for (const group of groups.enable_groups) {
     const policy = Object.hasOwn(groups.group_providers, group)
       ? groups.group_providers[group]
       : undefined;
-    if (!policy?.seat_country) labels.add(t("FREE_CONSENT.UNKNOWN_COUNTRY"));
-    else if (covered.length === 0)
-      labels.add(countryName(policy.seat_country, locale));
+    const seat = policy?.seat_country
+      ? countryName(policy.seat_country, locale)
+      : unknown;
+    if (!policy?.seat_country || covered.length === 0) destinations.add(seat);
+    const ownPurpose =
+      policy?.prompts === "trains" ||
+      policy?.prompts === "retains" ||
+      (free && policy?.prompts !== "none");
+    if (policy?.unsafe_third_country && ownPurpose) unsafe.add(seat);
   }
-  if (labels.size === 0) labels.add(t("FREE_CONSENT.UNKNOWN_COUNTRY"));
-  return [...labels];
+  if (destinations.size === 0) destinations.add(unknown);
+  return {
+    destinations: [...destinations],
+    unsafe: [...unsafe],
+    consentRequired: groups.own_purpose?.consent_required ?? false,
+    trainsOrRetains: groups.own_purpose?.trains_or_retains ?? false,
+  };
 }
 
 export function FreeConsentPanel(props: {
@@ -45,10 +60,10 @@ export function FreeConsentPanel(props: {
   const locale = useLocale();
   const token = useApiKey();
   const grantMutation = useGrantFreeConsentMutation();
-  const countries = useSeatCountries(props.model);
+  const scope = useConsentScope(props.model);
   const [declined, setDeclined] = useState(false);
 
-  if (!countries)
+  if (!scope)
     return (
       <div className="flex flex-1 items-center justify-center p-8">
         <Icon
@@ -61,28 +76,42 @@ export function FreeConsentPanel(props: {
   const where = token.isLoggedIn
     ? t("FREE_CONSENT.WHERE_ACCOUNT")
     : t("FREE_CONSENT.WHERE_GUEST");
+  // A :free model the gateway does not require a consent for still takes an
+  // acknowledgement, but no transfer consent or risk statement.
+  const notice = !scope.consentRequired;
+  const title = notice
+    ? t("FREE_CONSENT.NOTICE_TITLE")
+    : t("FREE_CONSENT.TITLE");
   const paragraphs = [
     t("FREE_CONSENT.PROVIDED_BY", {
       model: props.model,
-      countries: countries.join(", "),
+      countries: scope.destinations.join(", "),
     }),
-    t("FREE_CONSENT.RISK"),
-    t("FREE_CONSENT.MAY_USE"),
+    ...(!notice && scope.unsafe.length > 0
+      ? [t("FREE_CONSENT.RISK", { countries: scope.unsafe.join(", ") })]
+      : []),
+    scope.trainsOrRetains
+      ? t("FREE_CONSENT.MAY_USE")
+      : t("FREE_CONSENT.MAY_USE_UNKNOWN"),
     t("FREE_CONSENT.NO_INFLUENCE", APP_VALUES),
     t("FREE_CONSENT.THIRD_PARTY"),
-    t("FREE_CONSENT.CONSENT"),
-    t("FREE_CONSENT.REVOKE", { where }),
+    notice ? t("FREE_CONSENT.NOTICE_ACK") : t("FREE_CONSENT.CONSENT"),
+    notice
+      ? t("FREE_CONSENT.NOTICE_REVOKE", { where })
+      : t("FREE_CONSENT.REVOKE", { where }),
     t("FREE_CONSENT.MORE_INFO"),
   ];
 
   function confirm() {
     // Stored verbatim: the consent is only provable with the text it was given to.
-    const text = [t("FREE_CONSENT.TITLE"), ...paragraphs].join("\n\n");
+    const text = [title, ...paragraphs].join("\n\n");
     grantMutation.mutate(
       { body: { model: props.model, locale, text } },
       {
         onSuccess: () => {
-          toast.success(t("FREE_CONSENT.SAVED"));
+          toast.success(
+            notice ? t("FREE_CONSENT.NOTICE_SAVED") : t("FREE_CONSENT.SAVED"),
+          );
           props.onDone?.();
         },
         onError: (error) => toast.error(error.message),
@@ -93,9 +122,7 @@ export function FreeConsentPanel(props: {
   return (
     <div className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto p-4 sm:p-8">
       <div className="bg-card my-auto w-full max-w-xl space-y-3 rounded-lg border p-5">
-        <h2 className="text-foreground text-base font-medium">
-          {t("FREE_CONSENT.TITLE")}
-        </h2>
+        <h2 className="text-foreground text-base font-medium">{title}</h2>
         {paragraphs.map((paragraph) => (
           <p key={paragraph} className="text-muted-foreground text-sm">
             {paragraph}
@@ -127,7 +154,9 @@ export function FreeConsentPanel(props: {
             onClick={confirm}
             disabled={grantMutation.isPending}
           >
-            {t("FREE_CONSENT.CONFIRM")}
+            {notice
+              ? t("FREE_CONSENT.NOTICE_CONFIRM")
+              : t("FREE_CONSENT.CONFIRM")}
           </Button>
         </div>
       </div>

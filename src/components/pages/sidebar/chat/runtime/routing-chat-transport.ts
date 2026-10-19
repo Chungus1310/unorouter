@@ -49,6 +49,7 @@ import { rpc } from "@/lib/rpc";
 import { handleElysia } from "@/lib/utils/base";
 import { queryKeys } from "@/lib/react-query/keys";
 import { isMediaType } from "@/lib/api/pricing";
+import { gatewayCodeMessage } from "@/lib/api/own-purpose";
 import type { PricingCatalogData } from "@/openapi";
 import { buildChatRequestBody, buildMediaRequestBody } from "./chat-transport";
 import { resolveModelTargetFromStore } from "./resolve-model-target";
@@ -61,7 +62,6 @@ type SendOptions = Parameters<ChatTransport<ChatUIMessage>["sendMessages"]>[0];
 // The sdk's wording when the response body stops mid-read: the connection
 // dropped, the request itself had succeeded.
 const BODY_READ_FAILED = "Failed to process successful response";
-const OWN_PURPOSE_OBJECTED = "own_purpose_objected";
 
 function streamErrorText(error: unknown): string {
   const detail = extractErrorDetail(error);
@@ -70,9 +70,7 @@ function streamErrorText(error: unknown): string {
     message:
       detail.message === BODY_READ_FAILED
         ? msg("ERRORS.STREAM_CONNECTION_LOST")
-        : detail.code === OWN_PURPOSE_OBJECTED
-          ? msg("OWN_PURPOSE.OBJECTED_ERROR")
-          : detail.message,
+        : (gatewayCodeMessage(detail.code) ?? detail.message),
     status: detail.status ?? null,
     code: detail.code ?? null,
     requestId: detail.requestId ?? null,
