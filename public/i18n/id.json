@@ -6430,6 +6430,8 @@
       "ACTIVITY": "Aktivitas",
       "ACTIVE_ONLY": "Hanya yang aktif"
     },
-    "CHANNELS_ACTIVE": "{active} dari {count, plural, other {# koneksi}} aktif"
+    "CHANNELS_ACTIVE": "{active} dari {count, plural, other {# koneksi}} aktif",
+    "ONWARD_UNVETTED": "Meneruskan masukan ke penerima yang tidak diperiksa",
+    "ONWARD_RISK": "Penyedia berikut meneruskan masukanmu ke penerima yang tidak diperiksa: {providers}. Karena itu masukanmu dapat sampai ke negara yang tidak menjamin tingkat perlindungan data yang setara dengan UE, tempat kamu mungkin tidak memiliki hak yang dapat ditegakkan atau upaya hukum yang efektif."
   }
 }

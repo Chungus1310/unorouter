@@ -6430,6 +6430,8 @@
       "ACTIVITY": "Etkinlik",
       "ACTIVE_ONLY": "Yalnızca etkin olanlar"
     },
-    "CHANNELS_ACTIVE": "{count, plural, one {# bağlantıdan} other {# bağlantıdan}} {active} tanesi etkin"
+    "CHANNELS_ACTIVE": "{count, plural, one {# bağlantıdan} other {# bağlantıdan}} {active} tanesi etkin",
+    "ONWARD_UNVETTED": "Girdileri denetlenmemiş alıcılara iletir",
+    "ONWARD_RISK": "Şu sağlayıcılar girdilerini denetlenmemiş alıcılara iletir: {providers}. Bu nedenle girdilerin, AB ile karşılaştırılabilir bir veri koruma düzeyi sağlamayan ve uygulanabilir hakların veya etkili hukuki çarelerin olmayabileceği ülkelere ulaşabilir."
   }
 }

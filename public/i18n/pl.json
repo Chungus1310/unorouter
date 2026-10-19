@@ -6430,6 +6430,8 @@
       "ACTIVITY": "Aktywność",
       "ACTIVE_ONLY": "Tylko aktywni"
     },
-    "CHANNELS_ACTIVE": "{active} z {count, plural, one {# połączenia} few {# połączeń} many {# połączeń} other {# połączenia}} aktywnych"
+    "CHANNELS_ACTIVE": "{active} z {count, plural, one {# połączenia} few {# połączeń} many {# połączeń} other {# połączenia}} aktywnych",
+    "ONWARD_UNVETTED": "Przekazuje dane wejściowe niezweryfikowanym odbiorcom",
+    "ONWARD_RISK": "Następujący dostawcy przekazują Twoje dane wejściowe niezweryfikowanym odbiorcom: {providers}. Twoje dane wejściowe mogą więc trafić do krajów, które nie zapewniają poziomu ochrony danych porównywalnego z UE i w których możesz nie mieć egzekwowalnych praw ani skutecznych środków prawnych."
   }
 }

@@ -1317,6 +1317,7 @@ export interface GrantDiscordQuotaRequest {
 }
 
 export interface GroupDataPolicy {
+  onward_unvetted: boolean;
   prompts: string;
   seat_country?: string;
   transfer: string;
@@ -2495,6 +2496,7 @@ export interface ProviderConsentItem {
   model_details: ProviderConsentModelItem[] | null;
   /** @nullable */
   models: string[] | null;
+  onward_unvetted: boolean;
   status: string;
   /** @nullable */
   tags: string[] | null;

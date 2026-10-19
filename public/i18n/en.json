@@ -6430,6 +6430,8 @@
       "ACTIVITY": "Activity",
       "ACTIVE_ONLY": "Active only"
     },
-    "CHANNELS_ACTIVE": "{active} of {count, plural, one {# channel} other {# channels}} active"
+    "CHANNELS_ACTIVE": "{active} of {count, plural, one {# channel} other {# channels}} active",
+    "ONWARD_UNVETTED": "Passes inputs on to unvetted recipients",
+    "ONWARD_RISK": "The following providers pass your inputs on to unvetted recipients: {providers}. Your inputs may therefore reach countries that do not ensure a level of data protection comparable to the EU, where you may have no enforceable rights or effective legal remedies."
   }
 }

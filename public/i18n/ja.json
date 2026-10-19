@@ -6430,6 +6430,8 @@
       "ACTIVITY": "稼働状況",
       "ACTIVE_ONLY": "稼働中のみ"
     },
-    "CHANNELS_ACTIVE": "{count, plural, other {# 接続}}中 {active} が稼働中"
+    "CHANNELS_ACTIVE": "{count, plural, other {# 接続}}中 {active} が稼働中",
+    "ONWARD_UNVETTED": "入力内容を未審査の受領者へ転送します",
+    "ONWARD_RISK": "次の提供者は入力内容を未審査の受領者へ転送します：{providers}。そのため入力内容は、EUと同等のデータ保護水準が確保されておらず、行使可能な権利や有効な法的救済がない可能性のある国に届くことがあります。"
   }
 }

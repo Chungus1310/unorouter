@@ -87,10 +87,12 @@ export function ProviderConsentPanel(props: {
   const unsafe = [
     ...new Set(
       targets
-        .filter((p) => p.unsafe)
+        .filter((p) => p.unsafe && !p.onward_unvetted)
         .map((p) => countryName(p.country, locale)),
     ),
   ];
+  // Seat country is safe, the risk is where the provider passes inputs on.
+  const onward = targets.filter((p) => p.onward_unvetted).map(named);
   const where = token.isLoggedIn
     ? t("FREE_CONSENT.WHERE_ACCOUNT")
     : t("FREE_CONSENT.WHERE_GUEST");
@@ -104,6 +106,9 @@ export function ProviderConsentPanel(props: {
       : []),
     ...(unsafe.length > 0
       ? [t("FREE_CONSENT.RISK", { countries: unsafe.join(", ") })]
+      : []),
+    ...(onward.length > 0
+      ? [t("PROVIDER_CONSENT.ONWARD_RISK", { providers: onward.join(", ") })]
       : []),
     targets.some((p) => p.trains_or_retains)
       ? t("FREE_CONSENT.MAY_USE")

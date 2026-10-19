@@ -6430,6 +6430,8 @@
       "ACTIVITY": "활성 상태",
       "ACTIVE_ONLY": "활성만"
     },
-    "CHANNELS_ACTIVE": "{count, plural, other {연결 #개}} 중 {active}개 활성"
+    "CHANNELS_ACTIVE": "{count, plural, other {연결 #개}} 중 {active}개 활성",
+    "ONWARD_UNVETTED": "입력 내용을 검증되지 않은 수신자에게 전달합니다",
+    "ONWARD_RISK": "다음 제공자는 입력 내용을 검증되지 않은 수신자에게 전달합니다: {providers}. 따라서 입력 내용이 EU와 동등한 데이터 보호 수준을 보장하지 않으며 집행 가능한 권리나 효과적인 법적 구제가 없을 수 있는 국가에 도달할 수 있습니다."
   }
 }

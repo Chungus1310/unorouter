@@ -6430,6 +6430,8 @@
       "ACTIVITY": "Hoạt động",
       "ACTIVE_ONLY": "Chỉ đang hoạt động"
     },
-    "CHANNELS_ACTIVE": "{active} trên {count, plural, other {# kết nối}} đang hoạt động"
+    "CHANNELS_ACTIVE": "{active} trên {count, plural, other {# kết nối}} đang hoạt động",
+    "ONWARD_UNVETTED": "Chuyển tiếp dữ liệu đầu vào cho bên nhận chưa được kiểm tra",
+    "ONWARD_RISK": "Các nhà cung cấp sau chuyển tiếp dữ liệu đầu vào của bạn cho bên nhận chưa được kiểm tra: {providers}. Vì vậy dữ liệu đầu vào của bạn có thể đến các quốc gia không bảo đảm mức bảo vệ dữ liệu tương đương EU, nơi bạn có thể không có quyền được thực thi hay biện pháp pháp lý hiệu quả."
   }
 }

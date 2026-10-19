@@ -6430,6 +6430,8 @@
       "ACTIVITY": "Attività",
       "ACTIVE_ONLY": "Solo attivi"
     },
-    "CHANNELS_ACTIVE": "{active} su {count, plural, one {# connessione} other {# connessioni}} attive"
+    "CHANNELS_ACTIVE": "{active} su {count, plural, one {# connessione} other {# connessioni}} attive",
+    "ONWARD_UNVETTED": "Trasmette gli input a destinatari non verificati",
+    "ONWARD_RISK": "I seguenti fornitori trasmettono i tuoi input a destinatari non verificati: {providers}. I tuoi input possono quindi arrivare in paesi che non garantiscono un livello di protezione dei dati paragonabile a quello dell'UE, dove potresti non avere diritti azionabili né mezzi di ricorso effettivi."
   }
 }

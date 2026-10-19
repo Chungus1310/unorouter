@@ -6430,6 +6430,8 @@
       "ACTIVITY": "Aktivität",
       "ACTIVE_ONLY": "Nur aktive"
     },
-    "CHANNELS_ACTIVE": "{active} von {count, plural, one {# Kanal} other {# Kanälen}} aktiv"
+    "CHANNELS_ACTIVE": "{active} von {count, plural, one {# Kanal} other {# Kanälen}} aktiv",
+    "ONWARD_UNVETTED": "Gibt Eingaben an ungeprüfte Empfänger weiter",
+    "ONWARD_RISK": "Folgende Anbieter geben deine Eingaben an ungeprüfte Empfänger weiter: {providers}. Deine Eingaben können dadurch in Länder gelangen, die kein mit der EU vergleichbares Datenschutzniveau gewährleisten und in denen dir möglicherweise keine durchsetzbaren Rechte oder wirksamen Rechtsbehelfe zustehen."
   }
 }

@@ -6430,6 +6430,8 @@
       "ACTIVITY": "Activité",
       "ACTIVE_ONLY": "Actifs uniquement"
     },
-    "CHANNELS_ACTIVE": "{active} sur {count, plural, one {# connexion} other {# connexions}} actives"
+    "CHANNELS_ACTIVE": "{active} sur {count, plural, one {# connexion} other {# connexions}} actives",
+    "ONWARD_UNVETTED": "Transmet les saisies à des destinataires non vérifiés",
+    "ONWARD_RISK": "Les fournisseurs suivants transmettent tes saisies à des destinataires non vérifiés : {providers}. Tes saisies peuvent donc parvenir dans des pays qui ne garantissent pas un niveau de protection des données comparable à celui de l'UE, où tu ne disposes peut-être d'aucun droit opposable ni de recours effectif."
   }
 }

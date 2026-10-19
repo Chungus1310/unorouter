@@ -6430,6 +6430,8 @@
       "ACTIVITY": "狀態",
       "ACTIVE_ONLY": "僅可用"
     },
-    "CHANNELS_ACTIVE": "{count, plural, other {# 個連線}}中 {active} 個可用"
+    "CHANNELS_ACTIVE": "{count, plural, other {# 個連線}}中 {active} 個可用",
+    "ONWARD_UNVETTED": "會將輸入轉交給未經審查的接收方",
+    "ONWARD_RISK": "以下供應商會將你的輸入轉交給未經審查的接收方：{providers}。因此，你的輸入可能到達資料保護水準不及歐盟、你可能無法行使權利或獲得有效法律救濟的國家。"
   }
 }

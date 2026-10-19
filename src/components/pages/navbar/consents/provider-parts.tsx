@@ -58,7 +58,11 @@ export function ProviderName(props: { provider: ProviderConsentItem }) {
         <span className="font-mono text-xs font-medium lg:text-sm">{name}</span>
       )}
       <GroupDataPolicyBadges
-        policy={{ seat_country: p.country, unsafe_third_country: p.unsafe }}
+        policy={{
+          seat_country: p.country,
+          // A safe seat that passes inputs on is not an unsafe seat country.
+          unsafe_third_country: p.unsafe && !p.onward_unvetted,
+        }}
       />
       {p.trains_or_retains && (
         <OwnPurposeHint label={t("PROVIDER_CONSENT.TRAINS")} />
@@ -79,9 +83,11 @@ export function ProviderCountry(props: { provider: ProviderConsentItem }) {
   return (
     <span className="flex flex-col">
       <span>{countryName(p.country, locale)}</span>
-      {p.unsafe && (
+      {(p.unsafe || p.onward_unvetted) && (
         <span className="text-destructive text-xs">
-          {t("PROVIDER_CONSENT.UNSAFE_NOTE")}
+          {p.onward_unvetted
+            ? t("PROVIDER_CONSENT.ONWARD_UNVETTED")
+            : t("PROVIDER_CONSENT.UNSAFE_NOTE")}
         </span>
       )}
     </span>

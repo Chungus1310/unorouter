@@ -6430,6 +6430,8 @@
       "ACTIVITY": "状态",
       "ACTIVE_ONLY": "仅可用"
     },
-    "CHANNELS_ACTIVE": "{count, plural, other {# 个连接}}中 {active} 个可用"
+    "CHANNELS_ACTIVE": "{count, plural, other {# 个连接}}中 {active} 个可用",
+    "ONWARD_UNVETTED": "会将输入转交给未经审核的接收方",
+    "ONWARD_RISK": "以下提供商会将你的输入转交给未经审核的接收方：{providers}。因此，你的输入可能到达数据保护水平不及欧盟、你可能无法行使权利或获得有效法律救济的国家。"
   }
 }
