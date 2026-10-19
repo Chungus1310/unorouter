@@ -25,6 +25,15 @@ export const modelTesterRoute = new Elysia({ prefix: "/model-tester" })
     "/verify-and-publish",
     async ({ body, request }) => {
       const { user } = await resolveSelf(request);
+      // Anonymous submissions verified against a host the caller controls could
+      // write any result they liked into the public rankings.
+      if (!user) {
+        const refused: { published: false; error: string } = {
+          published: false,
+          error: "login-required",
+        };
+        return refused;
+      }
       return verifyAndPublish(
         body,
         user?.id ?? null,

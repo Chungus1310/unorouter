@@ -32,8 +32,12 @@ export const logsRoute = new Elysia({ prefix: "/logs" })
 
   .get(
     "/by-request",
-    async ({ query }) => {
-      const res = await getLogByRequest({ request_id: query.request_id });
+    async ({ query, upstream }) => {
+      // The gateway answers only the caller's own row, so the session must go along.
+      const res = await getLogByRequest(
+        { request_id: query.request_id },
+        { headers: upstream.headers },
+      );
       const row = unwrap(res)?.data;
       if (!row?.model_name) return Value.Create(byRequestResponse);
       return {

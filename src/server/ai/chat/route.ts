@@ -17,6 +17,7 @@ import {
   resolveChatApiKey,
 } from "@/server/billing/token/best-key.service";
 import { getUserId } from "@/server/constants";
+import { serverEnv } from "@/server/env";
 import { rateLimit } from "@/server/rate-limit";
 import { Elysia } from "elysia";
 import { generateInlayImage } from "./media/inlay.service";
@@ -128,10 +129,17 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
   })
 
   // Ordering is load-bearing: routes above must NOT resolve a chat key.
-  .resolve(async ({ cookie }) => ({
-    apiKey: await resolveChatApiKey(cookie),
-    userId: (await getUserId(cookie, true)) ?? GUEST_USER_ID,
-  }))
+  // A request running on the guest key is a guest's request, whatever user-id
+  // cookie came with it: an expired or dropped access_token kept a real user id,
+  // so every guest gate keyed on userId waved it through on the shared key.
+  .resolve(async ({ cookie }) => {
+    const apiKey = await resolveChatApiKey(cookie);
+    const userId =
+      apiKey === serverEnv.guestApiKey
+        ? GUEST_USER_ID
+        : ((await getUserId(cookie, true)) ?? GUEST_USER_ID);
+    return { apiKey, userId };
+  })
 
   .post(
     "/title",
@@ -192,7 +200,8 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
       const block = await resolveWebSearch(apiKey, userId, body.text);
       return { success: true, data: { block } };
     },
-    { body: webSearchBody },
+    // Every call runs a three-model classifier race and may spend a Tavily credit.
+    { body: webSearchBody, beforeHandle: rateLimit(20) },
   )
 
   .post(

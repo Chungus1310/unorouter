@@ -31,6 +31,9 @@ export const { dynamic, dynamicParams, revalidate, generateStaticParams } =
 export async function GET(
   ...args: Parameters<typeof serwistRoute.GET>
 ): Promise<Response> {
+  // The worker's source map exposes unminified source and internal notes.
+  if (new URL(args[0].url).pathname.endsWith(".map"))
+    return new Response(null, { status: 404 });
   const res = await serwistRoute.GET(...args);
   const headers = new Headers(res.headers);
   headers.set("Cache-Control", "no-store, must-revalidate");
