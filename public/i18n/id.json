@@ -6401,7 +6401,7 @@
   },
   "PROVIDER_CONSENT": {
     "TITLE": "Persetujuan pemindahan masukanmu ke penyedia ini",
-    "PROVIDERS": "Persetujuan ini mencakup penyedia berikut, masing-masing ditampilkan dengan kode dan negaranya: {providers}. Untuk menggunakannya, masukanmu dipindahkan ke negara-negara ini.",
+    "PROVIDERS": "Persetujuan ini mencakup penyedia berikut, masing-masing ditampilkan dengan nama dan negaranya: {providers}. Untuk menggunakannya, masukanmu dipindahkan ke negara-negara ini.",
     "FOR_MODEL": "Mereka menyediakan model {model}.",
     "CONSENT": "Dengan mengonfirmasi, kamu secara tegas menyetujui berdasarkan Pasal 49 ayat 1 huruf a GDPR bahwa masukanmu, termasuk data pribadi di dalamnya, dipindahkan ke penyedia ini dan negaranya meskipun ada risiko yang dijelaskan.",
     "NOTHING_MISSING": "Kamu sudah memberikan persetujuan untuk semua penyedia model ini.",
@@ -6411,7 +6411,7 @@
     "UNSAFE_NOTE": "Tanpa perlindungan data yang memadai",
     "SORT": {
       "MODELS_DESC": "Model terbanyak",
-      "ALIAS": "Kode",
+      "NAME": "Nama",
       "COUNTRY": "Negara",
       "ACTIVE_FIRST": "Aktif lebih dulu",
       "ACTIVE_MODELS_DESC": "Model aktif terbanyak",

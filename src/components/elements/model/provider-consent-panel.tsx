@@ -1,5 +1,6 @@
 "use client";
 
+import { providerName } from "@/lib/api/provider-consent";
 import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
 import { countryName } from "@/components/elements/model/group-data-policy";
 import { Button } from "@/components/ui/button";
@@ -82,7 +83,7 @@ export function ProviderConsentPanel(props: {
     );
 
   const named = (p: ProviderConsentItem) =>
-    `${p.alias} (${countryName(p.country, locale)})`;
+    `${providerName(p)} (${countryName(p.country, locale)})`;
   const unsafe = [
     ...new Set(
       targets
@@ -115,7 +116,8 @@ export function ProviderConsentPanel(props: {
   ];
 
   function confirm() {
-    // Stored verbatim on every granted row; the gateway checks it names each alias.
+    // Stored verbatim on every granted row; the gateway checks it names each
+    // provider granted.
     const text = [title, ...paragraphs].join("\n\n");
     grantMutation.mutate(
       {

@@ -1,5 +1,6 @@
 "use client";
 
+import { providerName } from "@/lib/api/provider-consent";
 import { countryName } from "@/components/elements/model/group-data-policy";
 import type { ProviderConsentItem } from "@/openapi";
 import { useLocale } from "next-intl";
@@ -39,7 +40,7 @@ export function useProviderFilters(providers: ProviderConsentItem[]) {
   const matching = providers.filter((p) => {
     const matchesSearch =
       needle.length === 0 ||
-      p.alias.toLowerCase().includes(needle) ||
+      providerName(p).toLowerCase().includes(needle) ||
       countryName(p.country, locale).toLowerCase().includes(needle) ||
       (p.tags ?? []).some((tag) => tag.toLowerCase().includes(needle)) ||
       (p.models ?? []).some((m) => m.toLowerCase().includes(needle));

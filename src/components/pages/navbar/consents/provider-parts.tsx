@@ -1,5 +1,6 @@
 "use client";
 
+import { providerName } from "@/lib/api/provider-consent";
 import {
   countryName,
   GroupDataPolicyBadges,
@@ -22,7 +23,7 @@ import { cn } from "@/lib/utils";
 import { formatLongDate } from "@/lib/utils/format/date";
 import type { ProviderConsentItem } from "@/openapi";
 import { useLocale, useTranslations } from "next-intl";
-import { groupTags, providerModels } from "./provider-rows";
+import { providerModels } from "./provider-rows";
 
 export type ProviderHandlers = {
   open: (alias: string) => void;
@@ -33,43 +34,34 @@ export type ProviderHandlers = {
 export function ProviderName(props: { provider: ProviderConsentItem }) {
   const t = useTranslations();
   const p = props.provider;
+  const tags = p.tags ?? [];
+  const name = providerName(p);
+  // The label already lists short tag sets; collapsed families get the full
+  // list on hover.
+  const collapsed = tags.length > 0 && name !== tags.join(", ");
   return (
     <span className="flex min-w-0 flex-wrap items-center gap-1.5">
-      <span className="font-mono text-xs font-medium lg:text-sm">
-        {p.alias}
-      </span>
+      {collapsed ? (
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <span className="cursor-help font-mono text-xs font-medium underline decoration-dotted underline-offset-4 lg:text-sm" />
+            }
+          >
+            {name}
+          </TooltipTrigger>
+          <TooltipContent className="max-w-80 font-mono text-xs">
+            {tags.join(", ")}
+          </TooltipContent>
+        </Tooltip>
+      ) : (
+        <span className="font-mono text-xs font-medium lg:text-sm">{name}</span>
+      )}
       <GroupDataPolicyBadges
         policy={{ seat_country: p.country, unsafe_third_country: p.unsafe }}
       />
       {p.trains_or_retains && (
         <OwnPurposeHint label={t("PROVIDER_CONSENT.TRAINS")} />
-      )}
-      {groupTags(p.tags ?? []).map((group) =>
-        group.tags.length > 1 ? (
-          <Tooltip key={group.label}>
-            <TooltipTrigger
-              render={
-                <Badge
-                  variant="secondary"
-                  className="cursor-help font-mono text-[10px]"
-                />
-              }
-            >
-              {group.label}
-            </TooltipTrigger>
-            <TooltipContent className="max-w-80 font-mono text-xs">
-              {group.tags.join(", ")}
-            </TooltipContent>
-          </Tooltip>
-        ) : (
-          <Badge
-            key={group.label}
-            variant="secondary"
-            className="font-mono text-[10px]"
-          >
-            {group.label}
-          </Badge>
-        ),
       )}
       {!p.active && (
         <Badge variant="outline" className="text-[10px]">

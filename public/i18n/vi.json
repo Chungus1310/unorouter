@@ -6401,7 +6401,7 @@
   },
   "PROVIDER_CONSENT": {
     "TITLE": "Đồng ý chuyển dữ liệu đầu vào của bạn đến các nhà cung cấp này",
-    "PROVIDERS": "Sự đồng ý này áp dụng cho các nhà cung cấp sau, mỗi nhà cung cấp được hiển thị bằng một mã và quốc gia: {providers}. Để sử dụng, dữ liệu đầu vào của bạn được chuyển đến các quốc gia này.",
+    "PROVIDERS": "Sự đồng ý này áp dụng cho các nhà cung cấp sau, mỗi nhà cung cấp được hiển thị bằng tên và quốc gia: {providers}. Để sử dụng, dữ liệu đầu vào của bạn được chuyển đến các quốc gia này.",
     "FOR_MODEL": "Họ cung cấp mô hình {model}.",
     "CONSENT": "Khi xác nhận, bạn đồng ý rõ ràng theo Điều 49 khoản 1 điểm a GDPR rằng dữ liệu đầu vào của bạn, bao gồm dữ liệu cá nhân trong đó, được chuyển đến các nhà cung cấp này và quốc gia của họ bất chấp các rủi ro đã nêu.",
     "NOTHING_MISSING": "Bạn đã đồng ý cho tất cả nhà cung cấp của mô hình này.",
@@ -6411,7 +6411,7 @@
     "UNSAFE_NOTE": "Không có mức bảo vệ dữ liệu đầy đủ",
     "SORT": {
       "MODELS_DESC": "Nhiều mô hình nhất",
-      "ALIAS": "Mã",
+      "NAME": "Tên",
       "COUNTRY": "Quốc gia",
       "ACTIVE_FIRST": "Đang hoạt động trước",
       "ACTIVE_MODELS_DESC": "Nhiều mô hình hoạt động nhất",

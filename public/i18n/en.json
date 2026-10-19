@@ -6401,7 +6401,7 @@
   },
   "PROVIDER_CONSENT": {
     "TITLE": "Consent to the transfer of your inputs to these providers",
-    "PROVIDERS": "This consent covers the following providers, each shown by a code and its country: {providers}. To use them, your inputs are transferred to these countries.",
+    "PROVIDERS": "This consent covers the following providers, each shown by its name and country: {providers}. To use them, your inputs are transferred to these countries.",
     "FOR_MODEL": "They serve the model {model}.",
     "CONSENT": "By confirming, you expressly consent under Art. 49(1)(a) GDPR to your inputs, including any personal data they contain, being transferred to these providers and their countries despite the risks described.",
     "NOTHING_MISSING": "Every provider of this model already has your consent.",
@@ -6411,7 +6411,7 @@
     "UNSAFE_NOTE": "No adequate data protection",
     "SORT": {
       "MODELS_DESC": "Most models",
-      "ALIAS": "Code",
+      "NAME": "Name",
       "COUNTRY": "Country",
       "ACTIVE_FIRST": "Active first",
       "ACTIVE_MODELS_DESC": "Most active models",

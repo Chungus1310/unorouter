@@ -6401,7 +6401,7 @@
   },
   "PROVIDER_CONSENT": {
     "TITLE": "Zgoda na przekazanie Twoich danych wejściowych tym dostawcom",
-    "PROVIDERS": "Ta zgoda obejmuje następujących dostawców, każdego oznaczonego kodem i krajem: {providers}. Aby z nich korzystać, Twoje dane wejściowe są przekazywane do tych krajów.",
+    "PROVIDERS": "Ta zgoda obejmuje następujących dostawców, każdego oznaczonego nazwą i krajem: {providers}. Aby z nich korzystać, Twoje dane wejściowe są przekazywane do tych krajów.",
     "FOR_MODEL": "Udostępniają model {model}.",
     "CONSENT": "Potwierdzając, wyrażasz wyraźną zgodę na podstawie art. 49 ust. 1 lit. a RODO na przekazanie Twoich danych wejściowych, w tym zawartych w nich danych osobowych, tym dostawcom i do ich krajów pomimo opisanych zagrożeń.",
     "NOTHING_MISSING": "Wyraziłeś już zgodę dla wszystkich dostawców tego modelu.",
@@ -6411,7 +6411,7 @@
     "UNSAFE_NOTE": "Brak odpowiedniej ochrony danych",
     "SORT": {
       "MODELS_DESC": "Najwięcej modeli",
-      "ALIAS": "Kod",
+      "NAME": "Nazwa",
       "COUNTRY": "Kraj",
       "ACTIVE_FIRST": "Najpierw aktywni",
       "ACTIVE_MODELS_DESC": "Najwięcej aktywnych modeli",

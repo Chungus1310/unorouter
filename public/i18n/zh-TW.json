@@ -6401,7 +6401,7 @@
   },
   "PROVIDER_CONSENT": {
     "TITLE": "同意將你的輸入傳輸給這些供應商",
-    "PROVIDERS": "本同意涵蓋以下供應商，每個皆以代碼與國家顯示：{providers}。為使用它們，你的輸入將被傳輸至這些國家。",
+    "PROVIDERS": "本同意涵蓋以下供應商，每個皆以名稱與國家顯示：{providers}。為使用它們，你的輸入將被傳輸至這些國家。",
     "FOR_MODEL": "它們提供模型 {model}。",
     "CONSENT": "確認即表示你依 GDPR 第 49 條第 1 項 (a) 款明確同意，儘管存在上述風險，你的輸入（包括其中的個人資料）仍將被傳輸給這些供應商及其所在國家。",
     "NOTHING_MISSING": "你已同意此模型的所有供應商。",
@@ -6411,7 +6411,7 @@
     "UNSAFE_NOTE": "沒有充分的資料保護",
     "SORT": {
       "MODELS_DESC": "模型最多",
-      "ALIAS": "代碼",
+      "NAME": "名稱",
       "COUNTRY": "國家",
       "ACTIVE_FIRST": "可用優先",
       "ACTIVE_MODELS_DESC": "可用模型最多",

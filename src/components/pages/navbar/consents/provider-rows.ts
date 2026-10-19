@@ -1,5 +1,6 @@
 import { countryName } from "@/components/elements/model/group-data-policy";
 import { sortByKeys } from "@/lib/api/model-sort";
+import { providerName } from "@/lib/api/provider-consent";
 import type { ProviderConsentItem } from "@/openapi";
 
 export const PROVIDER_STATUSES = ["given", "missing"] as const;
@@ -11,7 +12,7 @@ export const PROVIDER_SORT_VALUES = [
   "activeModelsDesc",
   "activeLanesDesc",
   "modelsDesc",
-  "alias",
+  "name",
   "country",
 ] as const;
 export type ProviderSort = (typeof PROVIDER_SORT_VALUES)[number];
@@ -74,29 +75,8 @@ export function sortProviders(
         return countryName(a.country, locale).localeCompare(
           countryName(b.country, locale),
         );
-      return a.alias.localeCompare(b.alias);
+      return providerName(a).localeCompare(providerName(b));
     },
-    (a, b) => a.alias.localeCompare(b.alias),
+    (a, b) => providerName(a).localeCompare(providerName(b)),
   );
-}
-
-export type TagGroup = { label: string; tags: string[] };
-
-// Numbered lane families (dahl1..dahl100) collapse into one chip; a prefix
-// with a single member stays as the plain tag.
-export function groupTags(tags: string[]): TagGroup[] {
-  const families = new Map<string, string[]>();
-  for (const tag of tags) {
-    const prefix = /^(.*?\D)\d+$/.exec(tag)?.[1] ?? tag;
-    families.set(prefix, [...(families.get(prefix) ?? []), tag]);
-  }
-  return [...families.entries()].map(([prefix, members]) => {
-    const sorted = [...members].sort((a, b) =>
-      a.localeCompare(b, undefined, { numeric: true }),
-    );
-    return {
-      label: sorted.length > 1 ? `${prefix} ×${sorted.length}` : sorted[0]!,
-      tags: sorted,
-    };
-  });
 }

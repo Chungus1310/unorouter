@@ -6401,7 +6401,7 @@
   },
   "PROVIDER_CONSENT": {
     "TITLE": "Einwilligung in die Übermittlung deiner Eingaben an diese Anbieter",
-    "PROVIDERS": "Diese Einwilligung gilt für folgende Anbieter, jeweils mit Kennung und Land angegeben: {providers}. Für ihre Nutzung werden deine Eingaben in diese Länder übermittelt.",
+    "PROVIDERS": "Diese Einwilligung gilt für folgende Anbieter, jeweils mit Name und Land angegeben: {providers}. Für ihre Nutzung werden deine Eingaben in diese Länder übermittelt.",
     "FOR_MODEL": "Sie stellen das Modell {model} bereit.",
     "CONSENT": "Mit der Bestätigung willigst du nach Art. 49 Abs. 1 lit. a DSGVO ausdrücklich ein, dass deine Eingaben einschließlich darin enthaltener personenbezogener Daten trotz der beschriebenen Risiken an diese Anbieter und in ihre Länder übermittelt werden.",
     "NOTHING_MISSING": "Für alle Anbieter dieses Modells hast du bereits eingewilligt.",
@@ -6411,7 +6411,7 @@
     "UNSAFE_NOTE": "Kein angemessenes Datenschutzniveau",
     "SORT": {
       "MODELS_DESC": "Meiste Modelle",
-      "ALIAS": "Kennung",
+      "NAME": "Bezeichnung",
       "COUNTRY": "Land",
       "ACTIVE_FIRST": "Aktive zuerst",
       "ACTIVE_MODELS_DESC": "Meiste aktive Modelle",

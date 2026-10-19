@@ -42,7 +42,7 @@ const SORT_LABEL = {
   activeModelsDesc: msg("PROVIDER_CONSENT.SORT.ACTIVE_MODELS_DESC"),
   activeLanesDesc: msg("PROVIDER_CONSENT.SORT.ACTIVE_LANES_DESC"),
   modelsDesc: msg("PROVIDER_CONSENT.SORT.MODELS_DESC"),
-  alias: msg("PROVIDER_CONSENT.SORT.ALIAS"),
+  name: msg("PROVIDER_CONSENT.SORT.NAME"),
   country: msg("PROVIDER_CONSENT.SORT.COUNTRY"),
 } satisfies Record<ProviderSort, ReturnType<typeof msg>>;
 

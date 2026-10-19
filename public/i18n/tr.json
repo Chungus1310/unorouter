@@ -6401,7 +6401,7 @@
   },
   "PROVIDER_CONSENT": {
     "TITLE": "Girdilerinin bu sağlayıcılara aktarılmasına onay",
-    "PROVIDERS": "Bu onay, her biri bir kod ve ülkesiyle gösterilen şu sağlayıcıları kapsar: {providers}. Bunları kullanmak için girdilerin bu ülkelere aktarılır.",
+    "PROVIDERS": "Bu onay, her biri adı ve ülkesiyle gösterilen şu sağlayıcıları kapsar: {providers}. Bunları kullanmak için girdilerin bu ülkelere aktarılır.",
     "FOR_MODEL": "{model} modelini sunarlar.",
     "CONSENT": "Onaylayarak, GDPR madde 49 fıkra 1 bent a uyarınca, girdilerinin içerdikleri kişisel veriler dahil, açıklanan risklere rağmen bu sağlayıcılara ve ülkelerine aktarılmasına açıkça onay vermiş olursun.",
     "NOTHING_MISSING": "Bu modelin tüm sağlayıcılarına zaten onay verdin.",
@@ -6411,7 +6411,7 @@
     "UNSAFE_NOTE": "Yeterli veri koruması yok",
     "SORT": {
       "MODELS_DESC": "En çok model",
-      "ALIAS": "Kod",
+      "NAME": "Ad",
       "COUNTRY": "Ülke",
       "ACTIVE_FIRST": "Önce etkin olanlar",
       "ACTIVE_MODELS_DESC": "En çok etkin model",

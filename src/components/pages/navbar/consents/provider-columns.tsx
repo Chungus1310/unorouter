@@ -1,5 +1,6 @@
 "use client";
 
+import { providerName } from "@/lib/api/provider-consent";
 import { DataTableColumnHeader } from "@/components/elements/table/data-table-column-header";
 import type { TableFeats } from "@/lib/config/table-features";
 import type { ProviderConsentItem } from "@/openapi";
@@ -19,8 +20,8 @@ export function buildProviderColumns(opts: {
 }): ColumnDef<TableFeats, ProviderConsentItem>[] {
   return [
     {
-      id: "alias",
-      accessorFn: (p) => p.alias,
+      id: "name",
+      accessorFn: (p) => providerName(p),
       enableSorting: true,
       header: ({ column }) => (
         <DataTableColumnHeader

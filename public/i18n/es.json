@@ -6401,7 +6401,7 @@
   },
   "PROVIDER_CONSENT": {
     "TITLE": "Consentimiento para la transferencia de tus entradas a estos proveedores",
-    "PROVIDERS": "Este consentimiento abarca los siguientes proveedores, cada uno indicado con un código y su país: {providers}. Para usarlos, tus entradas se transfieren a estos países.",
+    "PROVIDERS": "Este consentimiento abarca los siguientes proveedores, cada uno indicado con su nombre y su país: {providers}. Para usarlos, tus entradas se transfieren a estos países.",
     "FOR_MODEL": "Ofrecen el modelo {model}.",
     "CONSENT": "Al confirmar, consientes expresamente, conforme al art. 49, apartado 1, letra a del RGPD, que tus entradas, incluidos los datos personales que contengan, se transfieran a estos proveedores y a sus países pese a los riesgos descritos.",
     "NOTHING_MISSING": "Ya has dado tu consentimiento a todos los proveedores de este modelo.",
@@ -6411,7 +6411,7 @@
     "UNSAFE_NOTE": "Sin protección de datos adecuada",
     "SORT": {
       "MODELS_DESC": "Más modelos",
-      "ALIAS": "Código",
+      "NAME": "Nombre",
       "COUNTRY": "País",
       "ACTIVE_FIRST": "Activos primero",
       "ACTIVE_MODELS_DESC": "Más modelos activos",

@@ -6401,7 +6401,7 @@
   },
   "PROVIDER_CONSENT": {
     "TITLE": "Consentement au transfert de tes saisies vers ces fournisseurs",
-    "PROVIDERS": "Ce consentement couvre les fournisseurs suivants, chacun indiqué par un code et son pays : {providers}. Pour les utiliser, tes saisies sont transférées vers ces pays.",
+    "PROVIDERS": "Ce consentement couvre les fournisseurs suivants, chacun indiqué par son nom et son pays : {providers}. Pour les utiliser, tes saisies sont transférées vers ces pays.",
     "FOR_MODEL": "Ils fournissent le modèle {model}.",
     "CONSENT": "En confirmant, tu consens expressément, conformément à l'art. 49, paragraphe 1, point a du RGPD, au transfert de tes saisies, y compris les données personnelles qu'elles contiennent, vers ces fournisseurs et leurs pays malgré les risques décrits.",
     "NOTHING_MISSING": "Tu as déjà donné ton consentement à tous les fournisseurs de ce modèle.",
@@ -6411,7 +6411,7 @@
     "UNSAFE_NOTE": "Pas de protection des données adéquate",
     "SORT": {
       "MODELS_DESC": "Le plus de modèles",
-      "ALIAS": "Identifiant",
+      "NAME": "Nom",
       "COUNTRY": "Pays",
       "ACTIVE_FIRST": "Actifs d'abord",
       "ACTIVE_MODELS_DESC": "Le plus de modèles actifs",
