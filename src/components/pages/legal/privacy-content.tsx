@@ -18,6 +18,11 @@ const SECTIONS: LegalDocSection[] = [
     para: { key: "SHARING_CONTENT" },
     outro: { key: "SHARING_MODERATION" },
   },
+  {
+    title: "TRAINING_TITLE",
+    para: { key: "TRAINING_CONTENT", values: true },
+    outro: { key: "TRAINING_OBJECTION", values: true },
+  },
   { title: "RIGHTS_TITLE", para: { key: "RIGHTS_CONTENT", values: true } },
   { title: "SECURITY_TITLE", para: { key: "SECURITY_CONTENT" } },
   { title: "THIRD_PARTY_TITLE", para: { key: "THIRD_PARTY_CONTENT" } },
