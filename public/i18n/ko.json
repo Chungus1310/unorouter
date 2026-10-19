@@ -2912,7 +2912,14 @@
       "BAND_MIN": "최소 가격 배율",
       "BAND_MAX": "최대 가격 배율",
       "GROUP_SELECT_ALL": "모두 선택",
-      "GROUP_SELECT_NONE": "선택 해제"
+      "GROUP_SELECT_NONE": "선택 해제",
+      "REASONING": "기본 추론 수준",
+      "REASONING_DESC": "요청이 추론 수준을 직접 지정하지 않을 때 사용됩니다. 수준이 높을수록 더 오래 생각하고 토큰을 더 많이 씁니다.",
+      "REASONING_OFF": "끄기 (모델 기본값)",
+      "REASONING_LOW": "낮음",
+      "REASONING_MEDIUM": "보통",
+      "REASONING_HIGH": "높음",
+      "REASONING_MAX": "최대"
     },
     "ENUM": {
       "ENABLED": "활성화됨",

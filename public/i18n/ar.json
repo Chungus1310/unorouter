@@ -2912,7 +2912,14 @@
       "BAND_MIN": "أدنى نسبة سعر",
       "BAND_MAX": "أعلى نسبة سعر",
       "GROUP_SELECT_ALL": "تحديد الكل",
-      "GROUP_SELECT_NONE": "إلغاء تحديد الكل"
+      "GROUP_SELECT_NONE": "إلغاء تحديد الكل",
+      "REASONING": "مستوى التفكير الافتراضي",
+      "REASONING_DESC": "يُستخدم عندما لا يحدد الطلب مستوى التفكير بنفسه. المستويات الأعلى تفكر لفترة أطول وتستهلك رموزًا أكثر.",
+      "REASONING_OFF": "إيقاف (افتراضي النموذج)",
+      "REASONING_LOW": "منخفض",
+      "REASONING_MEDIUM": "متوسط",
+      "REASONING_HIGH": "مرتفع",
+      "REASONING_MAX": "أقصى"
     },
     "ENUM": {
       "ENABLED": "مُفعّل",

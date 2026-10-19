@@ -2912,7 +2912,14 @@
       "BAND_MIN": "Rasio harga minimum",
       "BAND_MAX": "Rasio harga maksimum",
       "GROUP_SELECT_ALL": "Pilih semua",
-      "GROUP_SELECT_NONE": "Batalkan semua"
+      "GROUP_SELECT_NONE": "Batalkan semua",
+      "REASONING": "Penalaran bawaan",
+      "REASONING_DESC": "Dipakai saat permintaan tidak menetapkan tingkat penalarannya sendiri. Tingkat lebih tinggi berpikir lebih lama dan memakai lebih banyak token.",
+      "REASONING_OFF": "Mati (bawaan model)",
+      "REASONING_LOW": "Rendah",
+      "REASONING_MEDIUM": "Sedang",
+      "REASONING_HIGH": "Tinggi",
+      "REASONING_MAX": "Maksimal"
     },
     "ENUM": {
       "ENABLED": "Aktif",

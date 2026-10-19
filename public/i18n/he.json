@@ -2912,7 +2912,14 @@
       "BAND_MIN": "יחס מחיר מינימלי",
       "BAND_MAX": "יחס מחיר מקסימלי",
       "GROUP_SELECT_ALL": "בחר הכל",
-      "GROUP_SELECT_NONE": "בטל בחירה"
+      "GROUP_SELECT_NONE": "בטל בחירה",
+      "REASONING": "רמת חשיבה ברירת מחדל",
+      "REASONING_DESC": "חלה כשהבקשה לא קובעת רמת חשיבה בעצמה. רמות גבוהות חושבות זמן רב יותר ומשתמשות ביותר טוקנים.",
+      "REASONING_OFF": "כבוי (ברירת המחדל של המודל)",
+      "REASONING_LOW": "נמוכה",
+      "REASONING_MEDIUM": "בינונית",
+      "REASONING_HIGH": "גבוהה",
+      "REASONING_MAX": "מרבית"
     },
     "ENUM": {
       "ENABLED": "מופעל",

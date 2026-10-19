@@ -2912,7 +2912,14 @@
       "BAND_MIN": "最低价格倍率",
       "BAND_MAX": "最高价格倍率",
       "GROUP_SELECT_ALL": "全选",
-      "GROUP_SELECT_NONE": "取消全选"
+      "GROUP_SELECT_NONE": "取消全选",
+      "REASONING": "默认推理强度",
+      "REASONING_DESC": "请求本身未设置推理强度时使用。强度越高，思考越久，消耗的 token 越多。",
+      "REASONING_OFF": "关闭（模型默认）",
+      "REASONING_LOW": "低",
+      "REASONING_MEDIUM": "中",
+      "REASONING_HIGH": "高",
+      "REASONING_MAX": "最高"
     },
     "ENUM": {
       "ENABLED": "已启用",

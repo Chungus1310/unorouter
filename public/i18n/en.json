@@ -2912,7 +2912,14 @@
       "BAND_MIN": "Minimum price ratio",
       "BAND_MAX": "Maximum price ratio",
       "GROUP_SELECT_ALL": "Select all",
-      "GROUP_SELECT_NONE": "Select none"
+      "GROUP_SELECT_NONE": "Select none",
+      "REASONING": "Default reasoning",
+      "REASONING_DESC": "Used when a request does not set a reasoning level itself. Higher levels think longer and use more tokens.",
+      "REASONING_OFF": "Off (model default)",
+      "REASONING_LOW": "Low",
+      "REASONING_MEDIUM": "Medium",
+      "REASONING_HIGH": "High",
+      "REASONING_MAX": "Max"
     },
     "ENUM": {
       "ENABLED": "Enabled",

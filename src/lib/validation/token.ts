@@ -13,6 +13,16 @@ export const tokenFormSchema = t.Object({
   model_limits_enabled: t.Boolean({ default: false }),
   model_limits: t.Array(t.String(), { default: [] }),
   allow_ips: t.String({ default: "" }),
+  default_reasoning_effort: t.Union(
+    [
+      t.Literal("off"),
+      t.Literal("low"),
+      t.Literal("medium"),
+      t.Literal("high"),
+      t.Literal("max"),
+    ],
+    { default: "off" },
+  ),
   group_mapping: t.Record(
     t.String(),
     t.Object({

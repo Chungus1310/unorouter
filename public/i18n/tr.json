@@ -2912,7 +2912,14 @@
       "BAND_MIN": "Minimum fiyat oranı",
       "BAND_MAX": "Maksimum fiyat oranı",
       "GROUP_SELECT_ALL": "Tümünü seç",
-      "GROUP_SELECT_NONE": "Seçimi kaldır"
+      "GROUP_SELECT_NONE": "Seçimi kaldır",
+      "REASONING": "Varsayılan akıl yürütme",
+      "REASONING_DESC": "Bir istek kendi akıl yürütme düzeyini belirtmediğinde kullanılır. Yüksek düzeyler daha uzun düşünür ve daha fazla token kullanır.",
+      "REASONING_OFF": "Kapalı (model varsayılanı)",
+      "REASONING_LOW": "Düşük",
+      "REASONING_MEDIUM": "Orta",
+      "REASONING_HIGH": "Yüksek",
+      "REASONING_MAX": "Maksimum"
     },
     "ENUM": {
       "ENABLED": "Etkin",

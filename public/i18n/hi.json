@@ -2912,7 +2912,14 @@
       "BAND_MIN": "न्यूनतम मूल्य अनुपात",
       "BAND_MAX": "अधिकतम मूल्य अनुपात",
       "GROUP_SELECT_ALL": "सभी चुनें",
-      "GROUP_SELECT_NONE": "चयन हटाएं"
+      "GROUP_SELECT_NONE": "चयन हटाएं",
+      "REASONING": "डिफ़ॉल्ट रीज़निंग",
+      "REASONING_DESC": "तब लागू होता है जब अनुरोध खुद रीज़निंग स्तर तय नहीं करता। ऊँचे स्तर ज़्यादा देर सोचते हैं और ज़्यादा टोकन इस्तेमाल करते हैं।",
+      "REASONING_OFF": "बंद (मॉडल डिफ़ॉल्ट)",
+      "REASONING_LOW": "कम",
+      "REASONING_MEDIUM": "मध्यम",
+      "REASONING_HIGH": "ऊँचा",
+      "REASONING_MAX": "अधिकतम"
     },
     "ENUM": {
       "ENABLED": "सक्षम",

@@ -2912,7 +2912,14 @@
       "BAND_MIN": "Tỷ lệ giá tối thiểu",
       "BAND_MAX": "Tỷ lệ giá tối đa",
       "GROUP_SELECT_ALL": "Chọn tất cả",
-      "GROUP_SELECT_NONE": "Bỏ chọn tất cả"
+      "GROUP_SELECT_NONE": "Bỏ chọn tất cả",
+      "REASONING": "Mức suy luận mặc định",
+      "REASONING_DESC": "Áp dụng khi yêu cầu không tự đặt mức suy luận. Mức cao hơn suy nghĩ lâu hơn và dùng nhiều token hơn.",
+      "REASONING_OFF": "Tắt (mặc định của mô hình)",
+      "REASONING_LOW": "Thấp",
+      "REASONING_MEDIUM": "Trung bình",
+      "REASONING_HIGH": "Cao",
+      "REASONING_MAX": "Tối đa"
     },
     "ENUM": {
       "ENABLED": "Đã bật",

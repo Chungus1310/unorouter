@@ -2912,7 +2912,14 @@
       "BAND_MIN": "Ratio de prix minimum",
       "BAND_MAX": "Ratio de prix maximum",
       "GROUP_SELECT_ALL": "Tout sélectionner",
-      "GROUP_SELECT_NONE": "Tout désélectionner"
+      "GROUP_SELECT_NONE": "Tout désélectionner",
+      "REASONING": "Raisonnement par défaut",
+      "REASONING_DESC": "Utilisé quand une requête ne fixe pas elle-même de niveau de raisonnement. Les niveaux élevés réfléchissent plus longtemps et consomment plus de jetons.",
+      "REASONING_OFF": "Désactivé (valeur du modèle)",
+      "REASONING_LOW": "Faible",
+      "REASONING_MEDIUM": "Moyen",
+      "REASONING_HIGH": "Élevé",
+      "REASONING_MAX": "Maximal"
     },
     "ENUM": {
       "ENABLED": "Activée",

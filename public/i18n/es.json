@@ -2912,7 +2912,14 @@
       "BAND_MIN": "Ratio de precio mínimo",
       "BAND_MAX": "Ratio de precio máximo",
       "GROUP_SELECT_ALL": "Seleccionar todo",
-      "GROUP_SELECT_NONE": "No seleccionar ninguno"
+      "GROUP_SELECT_NONE": "No seleccionar ninguno",
+      "REASONING": "Razonamiento predeterminado",
+      "REASONING_DESC": "Se usa cuando una solicitud no fija su propio nivel de razonamiento. Los niveles altos piensan más y consumen más tokens.",
+      "REASONING_OFF": "Desactivado (predeterminado del modelo)",
+      "REASONING_LOW": "Bajo",
+      "REASONING_MEDIUM": "Medio",
+      "REASONING_HIGH": "Alto",
+      "REASONING_MAX": "Máximo"
     },
     "ENUM": {
       "ENABLED": "Activada",

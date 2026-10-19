@@ -3,6 +3,7 @@
 import { MyFormError } from "@/components/elements/form/my-form-error";
 import { Icon } from "@/components/ui/icon";
 import { MyFormInput } from "@/components/elements/form/my-form-input";
+import { MyFormKeyedSelect } from "@/components/elements/form/my-form-keyed-select";
 import { MyFormSwitch } from "@/components/elements/form/my-form-switch";
 import { Button } from "@/components/ui/button";
 import {
@@ -58,12 +59,35 @@ import {
 import { TokenKeyDisplay } from "./token-key-display";
 import { TokenModelSelect } from "./token-model-select";
 import { formDefaults } from "@/lib/validation/helpers";
+import type { TranslationKey } from "@/lib/types";
 
 type TokenDialogProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   token?: TokenRow | null;
 };
+
+const REASONING_OPTION_KEYS = {
+  off: "TOKEN.FORM.REASONING_OFF",
+  low: "TOKEN.FORM.REASONING_LOW",
+  medium: "TOKEN.FORM.REASONING_MEDIUM",
+  high: "TOKEN.FORM.REASONING_HIGH",
+  max: "TOKEN.FORM.REASONING_MAX",
+} as const satisfies Record<
+  TokenFormSchema["default_reasoning_effort"],
+  TranslationKey
+>;
+
+function reasoningFormValue(
+  value: string | undefined,
+): TokenFormSchema["default_reasoning_effort"] {
+  return value === "low" ||
+    value === "medium" ||
+    value === "high" ||
+    value === "max"
+    ? value
+    : "off";
+}
 
 const QUOTA_PRESETS = [
   { label: "$1", value: dollarsToQuota(1) },
@@ -125,6 +149,9 @@ export function TokenDialog(props: TokenDialogProps) {
           : [],
         allow_ips: props.token.allow_ips ?? "",
         group_mapping: tokenMapping,
+        default_reasoning_effort: reasoningFormValue(
+          props.token.default_reasoning_effort,
+        ),
       });
     } else {
       form.reset(formDefaults(tokenFormSchema));
@@ -226,6 +253,10 @@ export function TokenDialog(props: TokenDialogProps) {
         Object.keys(data.group_mapping).length > 0
           ? JSON.stringify(data.group_mapping)
           : "",
+      default_reasoning_effort:
+        data.default_reasoning_effort === "off"
+          ? ""
+          : data.default_reasoning_effort,
     };
 
     if (isEdit) {
@@ -506,6 +537,34 @@ export function TokenDialog(props: TokenDialogProps) {
                   />
                   <p className="text-muted-foreground text-[11px]">
                     {t("TOKEN.FORM.GROUP_MAPPING_HINT")}
+                  </p>
+                </div>
+              </div>
+
+              <Separator />
+
+              <div>
+                <div className="mb-3 flex items-center gap-2">
+                  <Icon
+                    name="brain"
+                    className="text-muted-foreground h-4 w-4"
+                  />
+                  <span className="text-muted-foreground font-mono text-[10px] tracking-widest uppercase">
+                    {t("TOKEN.FORM.REASONING")}
+                  </span>
+                </div>
+
+                <div className="flex flex-col gap-2">
+                  <MyFormKeyedSelect
+                    control={form.control}
+                    name="default_reasoning_effort"
+                    label={t("TOKEN.FORM.REASONING")}
+                    labelClassName="sr-only"
+                    fallback="off"
+                    optionKeys={REASONING_OPTION_KEYS}
+                  />
+                  <p className="text-muted-foreground text-[11px]">
+                    {t("TOKEN.FORM.REASONING_DESC")}
                   </p>
                 </div>
               </div>

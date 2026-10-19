@@ -2912,7 +2912,14 @@
       "BAND_MIN": "Rapporto di prezzo minimo",
       "BAND_MAX": "Rapporto di prezzo massimo",
       "GROUP_SELECT_ALL": "Seleziona tutto",
-      "GROUP_SELECT_NONE": "Deseleziona tutto"
+      "GROUP_SELECT_NONE": "Deseleziona tutto",
+      "REASONING": "Ragionamento predefinito",
+      "REASONING_DESC": "Usato quando una richiesta non imposta da sola un livello di ragionamento. I livelli più alti ragionano più a lungo e usano più token.",
+      "REASONING_OFF": "Disattivato (predefinito del modello)",
+      "REASONING_LOW": "Basso",
+      "REASONING_MEDIUM": "Medio",
+      "REASONING_HIGH": "Alto",
+      "REASONING_MAX": "Massimo"
     },
     "ENUM": {
       "ENABLED": "Abilitata",

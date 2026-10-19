@@ -2912,7 +2912,14 @@
       "BAND_MIN": "Minimales Preisverhältnis",
       "BAND_MAX": "Maximales Preisverhältnis",
       "GROUP_SELECT_ALL": "Alle auswählen",
-      "GROUP_SELECT_NONE": "Keine auswählen"
+      "GROUP_SELECT_NONE": "Keine auswählen",
+      "REASONING": "Standard-Reasoning",
+      "REASONING_DESC": "Gilt, wenn eine Anfrage selbst keine Reasoning-Stufe setzt. Höhere Stufen denken länger und verbrauchen mehr Tokens.",
+      "REASONING_OFF": "Aus (Modellstandard)",
+      "REASONING_LOW": "Niedrig",
+      "REASONING_MEDIUM": "Mittel",
+      "REASONING_HIGH": "Hoch",
+      "REASONING_MAX": "Maximal"
     },
     "ENUM": {
       "ENABLED": "Aktiviert",

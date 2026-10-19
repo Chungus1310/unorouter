@@ -2912,7 +2912,14 @@
       "BAND_MIN": "Minimalny współczynnik ceny",
       "BAND_MAX": "Maksymalny współczynnik ceny",
       "GROUP_SELECT_ALL": "Zaznacz wszystko",
-      "GROUP_SELECT_NONE": "Odznacz wszystko"
+      "GROUP_SELECT_NONE": "Odznacz wszystko",
+      "REASONING": "Domyślne rozumowanie",
+      "REASONING_DESC": "Używane, gdy zapytanie samo nie ustawia poziomu rozumowania. Wyższe poziomy myślą dłużej i zużywają więcej tokenów.",
+      "REASONING_OFF": "Wyłączone (domyślne modelu)",
+      "REASONING_LOW": "Niski",
+      "REASONING_MEDIUM": "Średni",
+      "REASONING_HIGH": "Wysoki",
+      "REASONING_MAX": "Maksymalny"
     },
     "ENUM": {
       "ENABLED": "Włączony",

@@ -2912,7 +2912,14 @@
       "BAND_MIN": "最低価格倍率",
       "BAND_MAX": "最高価格倍率",
       "GROUP_SELECT_ALL": "すべて選択",
-      "GROUP_SELECT_NONE": "選択を解除"
+      "GROUP_SELECT_NONE": "選択を解除",
+      "REASONING": "既定の推論レベル",
+      "REASONING_DESC": "リクエスト側で推論レベルを指定しない場合に使われます。レベルが高いほど長く考え、より多くのトークンを使います。",
+      "REASONING_OFF": "オフ（モデルの既定）",
+      "REASONING_LOW": "低",
+      "REASONING_MEDIUM": "中",
+      "REASONING_HIGH": "高",
+      "REASONING_MAX": "最大"
     },
     "ENUM": {
       "ENABLED": "有効",
