@@ -6356,17 +6356,37 @@
     "MANAGE": "Gerenciar consentimentos",
     "SAVED": "Consentimento salvo",
     "META": {
-      "TITLE": "Modelos com uso para treinamento | {appName}",
-      "DESCRIPTION": "Dê ou revogue seu consentimento para cada modelo no {appName} cujos provedores usam suas entradas para fins próprios.",
+      "TITLE": "Consentimentos para modelos | {appName}",
+      "DESCRIPTION": "Dê, renove ou retire seu consentimento para cada modelo do {appName} cujos provedores usam suas entradas para fins próprios.",
       "KEYWORDS": "uso para treinamento, consentimento, privacidade, transferência para país terceiro"
     },
-    "PAGE_TITLE": "Modelos com uso para treinamento",
-    "PAGE_INTRO": "Os provedores desses modelos podem usar suas entradas para fins próprios, por exemplo para treinar modelos de IA. Se tiverem sede em um país sem nível adequado de proteção de dados, você precisa dar seu consentimento antes do primeiro uso, também para a API. Você pode revogar qualquer consentimento a qualquer momento.",
+    "PAGE_TITLE": "Consentimentos para modelos",
+    "PAGE_INTRO": "Todos os modelos cujos provedores usam ou podem usar suas entradas para fins próprios, por exemplo para treinar modelos de IA, pagos e gratuitos, online e offline. Se um provedor estiver sediado em um país sem nível adequado de proteção de dados, você precisa consentir antes do primeiro uso, também para a API. Modelos gratuitos sem essa transferência exigem a confirmação de um aviso. Você pode retirar qualquer consentimento a qualquer momento ou se opor totalmente ao uso para fins próprios.",
     "SEARCH": "Buscar modelos",
     "GIVE": "Consentir",
     "NOT_NEEDED": "Nenhum consentimento necessário",
     "OFFLINE": "offline",
-    "ALL_MODELS": "Todos os modelos com uso para treinamento"
+    "ALL_MODELS": "Todos os consentimentos para modelos",
+    "KIND_CONSENT": "Requer consentimento",
+    "KIND_NOTICE": "Apenas aviso",
+    "STALE": "Não cobre mais os provedores atuais",
+    "RENEW": "Renovar",
+    "FILTER": {
+      "STATUS": "Status do consentimento",
+      "GIVEN": "Dado",
+      "MISSING": "Não dado",
+      "STALE": "Não cobre mais",
+      "KIND": "Requisito",
+      "PRICE": "Preço",
+      "PAID": "Pago",
+      "FREE": "Gratuito",
+      "COUNTRY": "País de destino"
+    },
+    "TABLE": {
+      "COUNTRIES": "Países",
+      "REQUIREMENT": "Requisito",
+      "STATUS": "Status do consentimento"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Oposição ao uso para fins próprios dos provedores",

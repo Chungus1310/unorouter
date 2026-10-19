@@ -209,3 +209,23 @@ export function OwnPurposeBadge(props: {
     </span>
   );
 }
+
+// Destination countries as flags, each named in its tooltip.
+export function CountryFlags(props: { codes: string[]; className?: string }) {
+  const locale = useLocale();
+  if (props.codes.length === 0) return null;
+  return (
+    <span
+      className={cn(
+        "inline-flex flex-wrap items-center gap-1",
+        props.className,
+      )}
+    >
+      {props.codes.map((code) => (
+        <Hint key={code} label={countryName(code, locale)}>
+          <CountryFlag code={code} />
+        </Hint>
+      ))}
+    </span>
+  );
+}

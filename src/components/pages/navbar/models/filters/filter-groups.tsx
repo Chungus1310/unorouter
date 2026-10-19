@@ -15,7 +15,7 @@ import { formatTokenCount } from "@/lib/utils/format/number";
 import { PRICE_MAX } from "@/store/models-store";
 import { useLocale, useTranslations } from "next-intl";
 
-function GroupShell(props: {
+export function GroupShell(props: {
   label: string;
   children: React.ReactNode;
   defaultOpen?: boolean;
@@ -40,7 +40,7 @@ function GroupShell(props: {
   );
 }
 
-function CheckRow(props: {
+export function CheckRow(props: {
   label: string;
   checked: boolean;
   onToggle: () => void;
@@ -274,6 +274,7 @@ export function MultiSelectGroup(props: {
   options: string[];
   value: string[];
   onChange: (next: string[]) => void;
+  optionLabel?: (option: string) => string;
 }) {
   const toggle = (opt: string) =>
     props.onChange(
@@ -288,7 +289,7 @@ export function MultiSelectGroup(props: {
         {props.options.map((opt) => (
           <CheckRow
             key={opt}
-            label={opt}
+            label={props.optionLabel ? props.optionLabel(opt) : opt}
             checked={props.value.includes(opt)}
             onToggle={() => toggle(opt)}
           />

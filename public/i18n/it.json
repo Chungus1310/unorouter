@@ -6356,17 +6356,37 @@
     "MANAGE": "Gestisci consensi",
     "SAVED": "Consenso salvato",
     "META": {
-      "TITLE": "Modelli con uso per l'addestramento | {appName}",
-      "DESCRIPTION": "Dai o revoca il tuo consenso per ogni modello su {appName} i cui fornitori utilizzano i tuoi input per scopi propri.",
+      "TITLE": "Consensi per i modelli | {appName}",
+      "DESCRIPTION": "Dai, rinnova o revoca il tuo consenso per ogni modello su {appName} i cui fornitori usano i tuoi input per scopi propri.",
       "KEYWORDS": "uso per l'addestramento, consenso, privacy, trasferimento verso paesi terzi"
     },
-    "PAGE_TITLE": "Modelli con uso per l'addestramento",
-    "PAGE_INTRO": "I fornitori di questi modelli possono utilizzare i tuoi input per scopi propri, ad esempio per addestrare modelli di IA. Se hanno sede in un paese senza un livello adeguato di protezione dei dati, devi acconsentire prima del primo utilizzo, anche per l'API. Puoi revocare qualsiasi consenso in qualsiasi momento.",
+    "PAGE_TITLE": "Consensi per i modelli",
+    "PAGE_INTRO": "Tutti i modelli i cui fornitori usano o possono usare i tuoi input per scopi propri, ad esempio per addestrare modelli di IA, a pagamento e gratuiti, online e offline. Se un fornitore ha sede in un paese senza un livello adeguato di protezione dei dati, devi dare il consenso prima del primo utilizzo, anche per l'API. I modelli gratuiti senza tale trasferimento richiedono la presa visione di un avviso. Puoi revocare qualsiasi consenso in qualsiasi momento oppure opporti del tutto all'uso per scopi propri.",
     "SEARCH": "Cerca modelli",
     "GIVE": "Acconsenti",
     "NOT_NEEDED": "Nessun consenso necessario",
     "OFFLINE": "offline",
-    "ALL_MODELS": "Tutti i modelli con uso per l'addestramento"
+    "ALL_MODELS": "Tutti i consensi per i modelli",
+    "KIND_CONSENT": "Richiede consenso",
+    "KIND_NOTICE": "Solo avviso",
+    "STALE": "Non copre più i fornitori attuali",
+    "RENEW": "Rinnova",
+    "FILTER": {
+      "STATUS": "Stato del consenso",
+      "GIVEN": "Dato",
+      "MISSING": "Non dato",
+      "STALE": "Non copre più",
+      "KIND": "Requisito",
+      "PRICE": "Prezzo",
+      "PAID": "A pagamento",
+      "FREE": "Gratuito",
+      "COUNTRY": "Paese di destinazione"
+    },
+    "TABLE": {
+      "COUNTRIES": "Paesi",
+      "REQUIREMENT": "Requisito",
+      "STATUS": "Stato del consenso"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Opposizione all'uso per scopi propri dei fornitori",

@@ -6356,17 +6356,37 @@
     "MANAGE": "Onayları yönet",
     "SAVED": "Onay kaydedildi",
     "META": {
-      "TITLE": "Eğitim amaçlı kullanılan modeller | {appName}",
-      "DESCRIPTION": "{appName} üzerinde sağlayıcıları girdilerini kendi amaçları için kullanan her model için onay ver veya onayını geri al.",
+      "TITLE": "Model onayları | {appName}",
+      "DESCRIPTION": "{appName} üzerinde sağlayıcıları girdilerini kendi amaçları için kullanan her model için onayını ver, yenile veya geri çek.",
       "KEYWORDS": "eğitim amaçlı kullanım, onay, gizlilik, üçüncü ülkeye aktarım"
     },
-    "PAGE_TITLE": "Eğitim amaçlı kullanılan modeller",
-    "PAGE_INTRO": "Bu modellerin sağlayıcıları girdilerini kendi amaçları için, örneğin yapay zekâ modellerini eğitmek için kullanabilir. Yeterli veri koruma düzeyi olmayan bir ülkede yerleşiklerse, API dahil ilk kullanımdan önce onay vermen gerekir. Verdiğin her onayı istediğin zaman geri alabilirsin.",
+    "PAGE_TITLE": "Model onayları",
+    "PAGE_INTRO": "Sağlayıcıları girdilerini kendi amaçları için kullanan veya kullanabilecek tüm modeller, örneğin yapay zeka modellerini eğitmek için; ücretli ve ücretsiz, çevrimiçi ve çevrimdışı. Bir sağlayıcı yeterli veri koruma düzeyi olmayan bir ülkedeyse, ilk kullanımdan önce onay vermen gerekir, API için de. Böyle bir aktarım içermeyen ücretsiz modeller için bir bilgilendirmeyi okuduğunu onaylaman gerekir. Herhangi bir onayı istediğin zaman geri çekebilir veya kendi amaçlarla kullanıma tamamen itiraz edebilirsin.",
     "SEARCH": "Model ara",
     "GIVE": "Onayla",
     "NOT_NEEDED": "Onay gerekmez",
     "OFFLINE": "çevrimdışı",
-    "ALL_MODELS": "Eğitim amaçlı kullanılan tüm modeller"
+    "ALL_MODELS": "Tüm model onayları",
+    "KIND_CONSENT": "Onay gerekir",
+    "KIND_NOTICE": "Yalnızca bilgilendirme",
+    "STALE": "Artık mevcut sağlayıcıları kapsamıyor",
+    "RENEW": "Yenile",
+    "FILTER": {
+      "STATUS": "Onay durumu",
+      "GIVEN": "Verildi",
+      "MISSING": "Verilmedi",
+      "STALE": "Artık kapsamıyor",
+      "KIND": "Gereklilik",
+      "PRICE": "Fiyat",
+      "PAID": "Ücretli",
+      "FREE": "Ücretsiz",
+      "COUNTRY": "Hedef ülke"
+    },
+    "TABLE": {
+      "COUNTRIES": "Ülkeler",
+      "REQUIREMENT": "Gereklilik",
+      "STATUS": "Onay durumu"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Sağlayıcıların kendi amaçları için kullanımına itiraz",

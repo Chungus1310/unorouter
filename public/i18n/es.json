@@ -6356,17 +6356,37 @@
     "MANAGE": "Gestionar consentimientos",
     "SAVED": "Consentimiento guardado",
     "META": {
-      "TITLE": "Modelos con uso para entrenamiento | {appName}",
-      "DESCRIPTION": "Da o retira tu consentimiento para cada modelo de {appName} cuyos proveedores utilizan tus entradas para sus propios fines.",
+      "TITLE": "Consentimientos para modelos | {appName}",
+      "DESCRIPTION": "Da, renueva o retira tu consentimiento para cada modelo de {appName} cuyos proveedores usan tus entradas para sus propios fines.",
       "KEYWORDS": "uso para entrenamiento, consentimiento, privacidad, transferencia a terceros países"
     },
-    "PAGE_TITLE": "Modelos con uso para entrenamiento",
-    "PAGE_INTRO": "Los proveedores de estos modelos pueden utilizar tus entradas para sus propios fines, por ejemplo para entrenar modelos de IA. Si tienen su sede en un país sin un nivel adecuado de protección de datos, debes dar tu consentimiento antes del primer uso, también para la API. Puedes retirar cualquier consentimiento en cualquier momento.",
+    "PAGE_TITLE": "Consentimientos para modelos",
+    "PAGE_INTRO": "Todos los modelos cuyos proveedores usan o pueden usar tus entradas para sus propios fines, por ejemplo para entrenar modelos de IA, de pago y gratuitos, en línea y sin conexión. Si un proveedor tiene su sede en un país sin un nivel adecuado de protección de datos, debes dar tu consentimiento antes del primer uso, también para la API. Los modelos gratuitos sin dicha transferencia requieren que aceptes un aviso. Puedes retirar cualquier consentimiento en cualquier momento u oponerte por completo al uso para fines propios.",
     "SEARCH": "Buscar modelos",
     "GIVE": "Consentir",
     "NOT_NEEDED": "No requiere consentimiento",
     "OFFLINE": "sin conexión",
-    "ALL_MODELS": "Todos los modelos con uso para entrenamiento"
+    "ALL_MODELS": "Todos los consentimientos para modelos",
+    "KIND_CONSENT": "Requiere consentimiento",
+    "KIND_NOTICE": "Solo aviso",
+    "STALE": "Ya no cubre a los proveedores actuales",
+    "RENEW": "Renovar",
+    "FILTER": {
+      "STATUS": "Estado del consentimiento",
+      "GIVEN": "Otorgado",
+      "MISSING": "No otorgado",
+      "STALE": "Ya no cubre",
+      "KIND": "Requisito",
+      "PRICE": "Precio",
+      "PAID": "De pago",
+      "FREE": "Gratis",
+      "COUNTRY": "País de destino"
+    },
+    "TABLE": {
+      "COUNTRIES": "Países",
+      "REQUIREMENT": "Requisito",
+      "STATUS": "Estado del consentimiento"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Oposición al uso para fines propios de los proveedores",

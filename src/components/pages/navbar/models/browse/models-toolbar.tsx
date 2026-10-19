@@ -14,18 +14,57 @@ export function SearchBox(props: { className: string }) {
   const t = useTranslations();
   const m = useModelsFilter();
   return (
+    <SearchInput
+      className={props.className}
+      placeholder={t("MODELS.SEARCH_PLACEHOLDER")}
+      value={m.search}
+      onChange={m.setSearch}
+    />
+  );
+}
+
+export function SearchInput(props: {
+  className: string;
+  placeholder: string;
+  value: string;
+  onChange: (next: string) => void;
+}) {
+  return (
     <div className={props.className}>
       <Icon
         name="search"
         className="text-muted-foreground absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2"
       />
       <Input
-        placeholder={t("MODELS.SEARCH_PLACEHOLDER")}
-        value={m.search}
-        onChange={(e) => m.setSearch(e.target.value)}
+        placeholder={props.placeholder}
+        value={props.value}
+        onChange={(e) => props.onChange(e.target.value)}
         className="pl-10"
       />
     </div>
+  );
+}
+
+export function ResetFiltersButton(props: {
+  activeFilterCount: number;
+  onReset: () => void;
+}) {
+  const t = useTranslations();
+  return (
+    <Button
+      variant="default"
+      size="sm"
+      onClick={props.onReset}
+      className="h-9 px-2 lg:px-3"
+    >
+      <Icon name="filter-x" className="h-4 w-4 lg:mr-1.5" />
+      <span className="hidden lg:inline">{t("MODELS.FILTER.RESET")}</span>
+      {props.activeFilterCount > 0 && (
+        <span className="bg-background/25 ml-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] leading-none font-semibold">
+          {props.activeFilterCount}
+        </span>
+      )}
+    </Button>
   );
 }
 
@@ -43,20 +82,10 @@ export function ModelsToolbar(props: {
       <p className="text-muted-foreground sr-only">{t("MODELS.SUBTITLE")}</p>
       <div className="ml-auto flex flex-1 items-center justify-end gap-2">
         {props.showReset && (
-          <Button
-            variant="default"
-            size="sm"
-            onClick={props.onReset}
-            className="h-9 px-2 lg:px-3"
-          >
-            <Icon name="filter-x" className="h-4 w-4 lg:mr-1.5" />
-            <span className="hidden lg:inline">{t("MODELS.FILTER.RESET")}</span>
-            {props.activeFilterCount > 0 && (
-              <span className="bg-background/25 ml-1 inline-flex h-4 min-w-4 items-center justify-center rounded-full px-1 text-[10px] leading-none font-semibold">
-                {props.activeFilterCount}
-              </span>
-            )}
-          </Button>
+          <ResetFiltersButton
+            activeFilterCount={props.activeFilterCount}
+            onReset={props.onReset}
+          />
         )}
         <SearchBox className="relative hidden w-full max-w-xs lg:block" />
         <Button

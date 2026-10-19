@@ -94,6 +94,43 @@ function RateCell(props: { value: number | null | undefined }) {
   return <span className={tone}>{formatPct(props.value, 1)}</span>;
 }
 
+export function ModelNameCell(props: {
+  model: PricingCatalogModel;
+  freeLabel: string;
+  flatNoParamsLabel: string;
+}) {
+  const m = props.model;
+  return (
+    <span className="flex min-w-0 items-center gap-1.5">
+      <VendorIcon vendor={m.vendor} size={18} />
+      <span className="truncate font-mono text-xs lg:text-sm @max-4xl:max-w-56">
+        {m.model_name}
+      </span>
+      {m.is_free && (
+        <span className="flex shrink-0 items-center gap-0.5 rounded bg-emerald-500/15 px-1 py-0.5 font-mono text-[10px] text-emerald-600 lg:px-1.5 dark:text-emerald-400">
+          <Icon name="gift" className="h-3 w-3" />
+          <span className="hidden lg:inline">{props.freeLabel}</span>
+        </span>
+      )}
+      <OwnPurposeBadge ownPurpose={m.own_purpose} />
+      {isFlatVariant(m) && (
+        <Tooltip>
+          <TooltipTrigger
+            render={
+              <span className="text-muted-foreground/70 hover:text-muted-foreground flex shrink-0 items-center" />
+            }
+          >
+            <Icon name="circle-help" className="h-3.5 w-3.5" />
+          </TooltipTrigger>
+          <TooltipContent className="max-w-60 text-xs">
+            {props.flatNoParamsLabel}
+          </TooltipContent>
+        </Tooltip>
+      )}
+    </span>
+  );
+}
+
 export function buildModelColumns(opts: {
   rankMap: Map<string, RankedModel>;
   offLabel: (pct: number) => string;
@@ -114,38 +151,13 @@ export function buildModelColumns(opts: {
         <DataTableColumnHeader column={column} title="MODELS.TABLE.MODEL" />
       ),
       meta: { headerClassName: "w-[40%]" },
-      cell: ({ row }) => {
-        const m = row.original;
-        return (
-          <span className="flex min-w-0 items-center gap-1.5">
-            <VendorIcon vendor={m.vendor} size={18} />
-            <span className="truncate font-mono text-xs lg:text-sm @max-4xl:max-w-56">
-              {m.model_name}
-            </span>
-            {m.is_free && (
-              <span className="flex shrink-0 items-center gap-0.5 rounded bg-emerald-500/15 px-1 py-0.5 font-mono text-[10px] text-emerald-600 lg:px-1.5 dark:text-emerald-400">
-                <Icon name="gift" className="h-3 w-3" />
-                <span className="hidden lg:inline">{opts.freeLabel}</span>
-              </span>
-            )}
-            <OwnPurposeBadge ownPurpose={m.own_purpose} />
-            {isFlatVariant(m) && (
-              <Tooltip>
-                <TooltipTrigger
-                  render={
-                    <span className="text-muted-foreground/70 hover:text-muted-foreground flex shrink-0 items-center" />
-                  }
-                >
-                  <Icon name="circle-help" className="h-3.5 w-3.5" />
-                </TooltipTrigger>
-                <TooltipContent className="max-w-60 text-xs">
-                  {opts.flatNoParamsLabel}
-                </TooltipContent>
-              </Tooltip>
-            )}
-          </span>
-        );
-      },
+      cell: ({ row }) => (
+        <ModelNameCell
+          model={row.original}
+          freeLabel={opts.freeLabel}
+          flatNoParamsLabel={opts.flatNoParamsLabel}
+        />
+      ),
     },
     {
       id: "topWeekly",

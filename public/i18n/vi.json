@@ -6356,17 +6356,37 @@
     "MANAGE": "Quản lý đồng ý",
     "SAVED": "Đã lưu sự đồng ý",
     "META": {
-      "TITLE": "Mô hình có sử dụng để huấn luyện | {appName}",
-      "DESCRIPTION": "Đồng ý hoặc rút lại sự đồng ý cho từng mô hình trên {appName} mà nhà cung cấp sử dụng dữ liệu bạn nhập cho mục đích riêng.",
+      "TITLE": "Đồng ý cho mô hình | {appName}",
+      "DESCRIPTION": "Đồng ý, gia hạn hoặc rút lại sự đồng ý cho từng mô hình trên {appName} có nhà cung cấp sử dụng dữ liệu đầu vào của bạn cho mục đích riêng.",
       "KEYWORDS": "sử dụng để huấn luyện, đồng ý, quyền riêng tư, chuyển dữ liệu sang nước thứ ba"
     },
-    "PAGE_TITLE": "Mô hình có sử dụng để huấn luyện",
-    "PAGE_INTRO": "Nhà cung cấp của các mô hình này có thể sử dụng dữ liệu bạn nhập cho mục đích riêng, chẳng hạn để huấn luyện mô hình AI. Nếu họ có trụ sở tại quốc gia không có mức bảo vệ dữ liệu phù hợp, bạn cần đồng ý trước lần sử dụng đầu tiên, kể cả qua API. Bạn có thể rút lại mọi sự đồng ý bất cứ lúc nào.",
+    "PAGE_TITLE": "Đồng ý cho mô hình",
+    "PAGE_INTRO": "Tất cả mô hình có nhà cung cấp sử dụng hoặc có thể sử dụng dữ liệu đầu vào của bạn cho mục đích riêng, ví dụ để huấn luyện mô hình AI, trả phí và miễn phí, trực tuyến và ngoại tuyến. Nếu nhà cung cấp đặt trụ sở tại quốc gia không có mức bảo vệ dữ liệu đầy đủ, bạn cần đồng ý trước lần sử dụng đầu tiên, kể cả với API. Các mô hình miễn phí không có việc chuyển dữ liệu như vậy cần bạn xác nhận đã đọc thông báo. Bạn có thể rút lại bất kỳ sự đồng ý nào bất cứ lúc nào hoặc phản đối hoàn toàn việc sử dụng cho mục đích riêng.",
     "SEARCH": "Tìm mô hình",
     "GIVE": "Đồng ý",
     "NOT_NEEDED": "Không cần đồng ý",
     "OFFLINE": "ngoại tuyến",
-    "ALL_MODELS": "Tất cả mô hình có sử dụng để huấn luyện"
+    "ALL_MODELS": "Tất cả sự đồng ý cho mô hình",
+    "KIND_CONSENT": "Cần đồng ý",
+    "KIND_NOTICE": "Chỉ thông báo",
+    "STALE": "Không còn bao gồm các nhà cung cấp hiện tại",
+    "RENEW": "Gia hạn",
+    "FILTER": {
+      "STATUS": "Trạng thái đồng ý",
+      "GIVEN": "Đã đồng ý",
+      "MISSING": "Chưa đồng ý",
+      "STALE": "Không còn bao gồm",
+      "KIND": "Yêu cầu",
+      "PRICE": "Giá",
+      "PAID": "Trả phí",
+      "FREE": "Miễn phí",
+      "COUNTRY": "Quốc gia đích"
+    },
+    "TABLE": {
+      "COUNTRIES": "Quốc gia",
+      "REQUIREMENT": "Yêu cầu",
+      "STATUS": "Trạng thái đồng ý"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Phản đối việc nhà cung cấp sử dụng cho mục đích riêng",

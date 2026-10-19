@@ -6356,17 +6356,37 @@
     "MANAGE": "Gérer les consentements",
     "SAVED": "Consentement enregistré",
     "META": {
-      "TITLE": "Modèles utilisés pour l'entraînement | {appName}",
-      "DESCRIPTION": "Donne ou retire ton consentement pour chaque modèle sur {appName} dont les fournisseurs utilisent tes saisies à leurs propres fins.",
+      "TITLE": "Consentements pour les modèles | {appName}",
+      "DESCRIPTION": "Donne, renouvelle ou retire ton consentement pour chaque modèle de {appName} dont les fournisseurs utilisent tes saisies à leurs propres fins.",
       "KEYWORDS": "utilisation pour l'entraînement, consentement, confidentialité, transfert vers un pays tiers"
     },
-    "PAGE_TITLE": "Modèles utilisés pour l'entraînement",
-    "PAGE_INTRO": "Les fournisseurs de ces modèles peuvent utiliser tes saisies à leurs propres fins, par exemple pour entraîner des modèles d'IA. S'ils sont établis dans un pays sans niveau de protection des données adéquat, tu dois donner ton consentement avant la première utilisation, y compris pour l'API. Tu peux retirer tout consentement à tout moment.",
+    "PAGE_TITLE": "Consentements pour les modèles",
+    "PAGE_INTRO": "Tous les modèles dont les fournisseurs utilisent ou peuvent utiliser tes saisies à leurs propres fins, par exemple pour entraîner des modèles d'IA, payants et gratuits, en ligne et hors ligne. Si un fournisseur est établi dans un pays sans niveau de protection des données adéquat, tu dois donner ton consentement avant la première utilisation, y compris pour l'API. Les modèles gratuits sans un tel transfert nécessitent que tu prennes connaissance d'un avis. Tu peux retirer tout consentement à tout moment ou t'opposer entièrement à l'utilisation à des fins propres.",
     "SEARCH": "Rechercher des modèles",
     "GIVE": "Consentir",
     "NOT_NEEDED": "Aucun consentement requis",
     "OFFLINE": "hors ligne",
-    "ALL_MODELS": "Tous les modèles utilisés pour l'entraînement"
+    "ALL_MODELS": "Tous les consentements pour les modèles",
+    "KIND_CONSENT": "Consentement requis",
+    "KIND_NOTICE": "Avis uniquement",
+    "STALE": "Ne couvre plus les fournisseurs actuels",
+    "RENEW": "Renouveler",
+    "FILTER": {
+      "STATUS": "Statut du consentement",
+      "GIVEN": "Donné",
+      "MISSING": "Non donné",
+      "STALE": "Ne couvre plus",
+      "KIND": "Exigence",
+      "PRICE": "Prix",
+      "PAID": "Payant",
+      "FREE": "Gratuit",
+      "COUNTRY": "Pays de destination"
+    },
+    "TABLE": {
+      "COUNTRIES": "Pays",
+      "REQUIREMENT": "Exigence",
+      "STATUS": "Statut du consentement"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Opposition à l'utilisation aux propres fins des fournisseurs",

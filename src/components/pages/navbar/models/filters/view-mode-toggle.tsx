@@ -6,9 +6,20 @@ import { viewModeAtom } from "@/store/models-store";
 import { useAtom } from "jotai";
 import { useTranslations } from "next-intl";
 
+export type ViewMode = "table" | "list";
+
 export function ViewModeToggle() {
   const [viewMode, setViewMode] = useAtom(viewModeAtom);
+  return <ViewModeButtons value={viewMode} onChange={setViewMode} />;
+}
+
+export function ViewModeButtons(props: {
+  value: ViewMode;
+  onChange: (next: ViewMode) => void;
+}) {
   const t = useTranslations();
+  const viewMode = props.value;
+  const setViewMode = props.onChange;
 
   return (
     <div className="border-border flex items-center gap-0.5 rounded-md border p-0.5 md:gap-1 md:p-1">

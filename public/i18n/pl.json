@@ -6356,17 +6356,37 @@
     "MANAGE": "Zarządzaj zgodami",
     "SAVED": "Zgoda zapisana",
     "META": {
-      "TITLE": "Modele wykorzystywane do trenowania | {appName}",
-      "DESCRIPTION": "Wyraź lub wycofaj zgodę dla każdego modelu w {appName}, którego dostawcy wykorzystują Twoje dane wejściowe do własnych celów.",
+      "TITLE": "Zgody dla modeli | {appName}",
+      "DESCRIPTION": "Wyraź, odnów lub wycofaj zgodę dla każdego modelu w {appName}, którego dostawcy wykorzystują Twoje dane wejściowe do własnych celów.",
       "KEYWORDS": "wykorzystanie do trenowania, zgoda, prywatność, przekazanie do państwa trzeciego"
     },
-    "PAGE_TITLE": "Modele wykorzystywane do trenowania",
-    "PAGE_INTRO": "Dostawcy tych modeli mogą wykorzystywać Twoje dane wejściowe do własnych celów, na przykład do trenowania modeli AI. Jeśli mają siedzibę w państwie bez odpowiedniego poziomu ochrony danych, musisz wyrazić zgodę przed pierwszym użyciem, również dla API. Każdą zgodę możesz w dowolnym momencie wycofać.",
+    "PAGE_TITLE": "Zgody dla modeli",
+    "PAGE_INTRO": "Wszystkie modele, których dostawcy wykorzystują lub mogą wykorzystywać Twoje dane wejściowe do własnych celów, na przykład do trenowania modeli AI, płatne i bezpłatne, online i offline. Jeśli dostawca ma siedzibę w kraju bez odpowiedniego poziomu ochrony danych, przed pierwszym użyciem musisz wyrazić zgodę, także dla API. Bezpłatne modele bez takiego przekazania wymagają przyjęcia informacji do wiadomości. Każdą zgodę możesz w dowolnym momencie wycofać albo całkowicie sprzeciwić się wykorzystywaniu do własnych celów.",
     "SEARCH": "Szukaj modeli",
     "GIVE": "Wyraź zgodę",
     "NOT_NEEDED": "Zgoda nie jest wymagana",
     "OFFLINE": "offline",
-    "ALL_MODELS": "Wszystkie modele wykorzystywane do trenowania"
+    "ALL_MODELS": "Wszystkie zgody dla modeli",
+    "KIND_CONSENT": "Wymaga zgody",
+    "KIND_NOTICE": "Tylko informacja",
+    "STALE": "Nie obejmuje już obecnych dostawców",
+    "RENEW": "Odnów",
+    "FILTER": {
+      "STATUS": "Stan zgody",
+      "GIVEN": "Wyrażona",
+      "MISSING": "Niewyrażona",
+      "STALE": "Już nie obejmuje",
+      "KIND": "Wymóg",
+      "PRICE": "Cena",
+      "PAID": "Płatne",
+      "FREE": "Bezpłatne",
+      "COUNTRY": "Kraj docelowy"
+    },
+    "TABLE": {
+      "COUNTRIES": "Kraje",
+      "REQUIREMENT": "Wymóg",
+      "STATUS": "Stan zgody"
+    }
   },
   "OWN_PURPOSE": {
     "TITLE": "Sprzeciw wobec wykorzystania do własnych celów dostawców",
