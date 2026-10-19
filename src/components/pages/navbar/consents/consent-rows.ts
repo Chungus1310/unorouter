@@ -1,5 +1,9 @@
 import { needsTransferConsent } from "@/lib/api/own-purpose";
-import type { FreeConsentItem, PricingCatalogModel } from "@/openapi";
+import type {
+  FreeConsentItem,
+  PricingCatalogModel,
+  ProviderConsentItem,
+} from "@/openapi";
 
 export const CONSENT_KINDS = ["consent", "notice", "none"] as const;
 export type ConsentKind = (typeof CONSENT_KINDS)[number];
@@ -14,6 +18,9 @@ export type ConsentRow = {
   kind: ConsentKind;
   status: ConsentStatus;
   grantedAt: number | null;
+  // What covers a given consent: the providers' own consents or an earlier
+  // consent for the model, which the gateway still counts.
+  via: "providers" | "model" | null;
   countries: string[];
 };
 
@@ -27,23 +34,36 @@ function kindOf(model: PricingCatalogModel): ConsentKind {
 export function buildConsentRows(
   models: PricingCatalogModel[],
   consents: FreeConsentItem[],
+  providers: ProviderConsentItem[],
 ): ConsentRow[] {
   const byModel = new Map(consents.map((c) => [c.model, c]));
   return models.map((model) => {
     const kind = kindOf(model);
     const consent = byModel.get(model.model_name);
-    const status: ConsentStatus = consent
-      ? consent.covers === false
-        ? "stale"
-        : "given"
-      : kind === "none"
-        ? "not_needed"
-        : "missing";
+    const serving = providers.filter((p) =>
+      (p.models ?? []).includes(model.model_name),
+    );
+    const byProviders =
+      kind === "consent" &&
+      serving.length > 0 &&
+      serving.every((p) => p.status === "given");
+    const status: ConsentStatus = byProviders
+      ? "given"
+      : consent
+        ? consent.covers === false
+          ? "stale"
+          : "given"
+        : kind === "none"
+          ? "not_needed"
+          : "missing";
     return {
       model,
       kind,
       status,
-      grantedAt: consent?.created_at ?? null,
+      grantedAt: byProviders
+        ? Math.max(...serving.map((p) => p.given_at ?? 0))
+        : (consent?.created_at ?? null),
+      via: byProviders ? "providers" : consent ? "model" : null,
       countries: model.own_purpose?.countries ?? [],
     };
   });

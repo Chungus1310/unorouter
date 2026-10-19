@@ -6386,7 +6386,10 @@
       "COUNTRIES": "Países",
       "REQUIREMENT": "Requisito",
       "STATUS": "Status do consentimento"
-    }
+    },
+    "TAB_PROVIDERS": "Provedores",
+    "TAB_MODELS": "Modelos",
+    "COVERED_BY_PROVIDERS": "Coberto por consentimentos a provedores"
   },
   "OWN_PURPOSE": {
     "TITLE": "Oposição ao uso para fins próprios dos provedores",
@@ -6395,5 +6398,27 @@
     "SAVED": "Oposição salva",
     "WITHDRAWN": "Oposição retirada",
     "OBJECTED_ERROR": "Você se opôs ao repasse das suas entradas a provedores que as usam para fins próprios, e este modelo é oferecido por meio desses provedores. Escolha outro modelo ou retire a oposição nas configurações da sua conta ou em \"Gerenciar consentimentos\" no chat."
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "Consentimento para a transferência das suas entradas a estes provedores",
+    "PROVIDERS": "Este consentimento abrange os seguintes provedores, cada um indicado por um código e seu país: {providers}. Para usá-los, suas entradas são transferidas para esses países.",
+    "FOR_MODEL": "Eles oferecem o modelo {model}.",
+    "CONSENT": "Ao confirmar, você consente expressamente, nos termos do art. 49, n.º 1, alínea a do RGPD, que suas entradas, incluindo os dados pessoais nelas contidos, sejam transferidas a esses provedores e aos seus países apesar dos riscos descritos.",
+    "NOTHING_MISSING": "Você já deu consentimento a todos os provedores deste modelo.",
+    "CLOSE": "Fechar",
+    "SEARCH": "Buscar provedores ou modelos",
+    "TRAINS": "Este provedor usa suas entradas para fins próprios, por exemplo para treinar modelos de IA",
+    "UNSAFE_NOTE": "Sem proteção de dados adequada",
+    "MODEL_COUNT": "{count, plural, one {# modelo} other {# modelos}}",
+    "SORT": {
+      "MODELS_DESC": "Mais modelos",
+      "ALIAS": "Código",
+      "COUNTRY": "País"
+    },
+    "TABLE": {
+      "PROVIDER": "Provedor",
+      "COUNTRY": "País",
+      "MODELS": "Modelos"
+    }
   }
 }

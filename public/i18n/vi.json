@@ -6386,7 +6386,10 @@
       "COUNTRIES": "Quốc gia",
       "REQUIREMENT": "Yêu cầu",
       "STATUS": "Trạng thái đồng ý"
-    }
+    },
+    "TAB_PROVIDERS": "Nhà cung cấp",
+    "TAB_MODELS": "Mô hình",
+    "COVERED_BY_PROVIDERS": "Đã được bao gồm bởi sự đồng ý cho nhà cung cấp"
   },
   "OWN_PURPOSE": {
     "TITLE": "Phản đối việc nhà cung cấp sử dụng cho mục đích riêng",
@@ -6395,5 +6398,27 @@
     "SAVED": "Đã lưu phản đối",
     "WITHDRAWN": "Đã rút lại phản đối",
     "OBJECTED_ERROR": "Bạn đã phản đối việc chuyển dữ liệu bạn nhập cho các nhà cung cấp sử dụng chúng cho mục đích riêng, và mô hình này được cung cấp qua những nhà cung cấp đó. Hãy chọn mô hình khác hoặc rút lại phản đối trong cài đặt tài khoản hoặc qua \"Quản lý đồng ý\" trong chat."
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "Đồng ý chuyển dữ liệu đầu vào của bạn đến các nhà cung cấp này",
+    "PROVIDERS": "Sự đồng ý này áp dụng cho các nhà cung cấp sau, mỗi nhà cung cấp được hiển thị bằng một mã và quốc gia: {providers}. Để sử dụng, dữ liệu đầu vào của bạn được chuyển đến các quốc gia này.",
+    "FOR_MODEL": "Họ cung cấp mô hình {model}.",
+    "CONSENT": "Khi xác nhận, bạn đồng ý rõ ràng theo Điều 49 khoản 1 điểm a GDPR rằng dữ liệu đầu vào của bạn, bao gồm dữ liệu cá nhân trong đó, được chuyển đến các nhà cung cấp này và quốc gia của họ bất chấp các rủi ro đã nêu.",
+    "NOTHING_MISSING": "Bạn đã đồng ý cho tất cả nhà cung cấp của mô hình này.",
+    "CLOSE": "Đóng",
+    "SEARCH": "Tìm nhà cung cấp hoặc mô hình",
+    "TRAINS": "Nhà cung cấp này sử dụng dữ liệu đầu vào của bạn cho mục đích riêng, ví dụ để huấn luyện mô hình AI",
+    "UNSAFE_NOTE": "Không có mức bảo vệ dữ liệu đầy đủ",
+    "MODEL_COUNT": "{count, plural, other {# mô hình}}",
+    "SORT": {
+      "MODELS_DESC": "Nhiều mô hình nhất",
+      "ALIAS": "Mã",
+      "COUNTRY": "Quốc gia"
+    },
+    "TABLE": {
+      "PROVIDER": "Nhà cung cấp",
+      "COUNTRY": "Quốc gia",
+      "MODELS": "Số mô hình"
+    }
   }
 }

@@ -199,6 +199,9 @@ function ChatRuntimeHook() {
         void queryClient.invalidateQueries({
           queryKey: queryKeys.freeConsents(),
         });
+        void queryClient.invalidateQueries({
+          queryKey: queryKeys.providerConsents(),
+        });
       }
       chatStore.set(lastStreamErrorAtom, {
         message: mapped ? t(mapped) : detail.message,

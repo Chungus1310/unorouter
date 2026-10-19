@@ -1,6 +1,6 @@
 "use client";
 
-import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
+import { ModelConsentPanel } from "@/components/elements/model/provider-consent-panel";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
 import { estimateImageCost, willClamp } from "@/lib/ai/image/cost-estimate";
@@ -11,11 +11,7 @@ import { dollarsToQuota, renderQuota } from "@/lib/config/constants";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
-import { useFreeConsentsQuery } from "@/hooks/auth/free-consent-hook";
-import {
-  hasCoveringConsent,
-  needsTransferConsent,
-} from "@/lib/api/own-purpose";
+import { useModelConsentGate } from "@/hooks/ui/use-model-consent-gate";
 import { useTranslations } from "next-intl";
 import { useFormContext, useWatch } from "react-hook-form";
 import { clampVariants } from "../../image-constants";
@@ -31,8 +27,12 @@ export function SubmitBar(props: Props) {
   const nav = useImageNav();
   const form = useFormContext<ImageFormValues>();
   const authQuery = useAuthQuery();
-  const consentModel = needsTransferConsent(props.descriptor);
-  const consentsQuery = useFreeConsentsQuery(consentModel);
+  const consentGate = useModelConsentGate(
+    props.descriptor,
+    props.descriptor.model_name,
+    false,
+  );
+  const consentModel = consentGate.consentModel;
 
   const prompt = useWatch({ control: form.control, name: "prompt" }) ?? "";
   const inpaintPrompt = useWatch({
@@ -62,14 +62,7 @@ export function SubmitBar(props: Props) {
     : `~${renderQuota(dollarsToQuota(cost.estimate), 2)}`;
   const clampWarning = willClamp(width, height, steps);
   const business = consentModel && authQuery.data?.customer_type === "business";
-  const needsConsent =
-    consentModel &&
-    !business &&
-    consentsQuery.data != null &&
-    !hasCoveringConsent(
-      consentsQuery.data.consents,
-      props.descriptor.model_name,
-    );
+  const needsConsent = !business && consentGate.needsConsent;
 
   if (business)
     return (
@@ -78,7 +71,7 @@ export function SubmitBar(props: Props) {
       </p>
     );
   if (needsConsent)
-    return <FreeConsentPanel model={props.descriptor.model_name} />;
+    return <ModelConsentPanel model={props.descriptor.model_name} />;
 
   return (
     <div className="bg-background sticky bottom-0 z-10 flex flex-col gap-2 py-2">

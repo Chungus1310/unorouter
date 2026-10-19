@@ -1,7 +1,7 @@
 import { msg } from "@/lib/config/constants";
 import type { FreeConsentItem, OwnPurposeSummary } from "@/openapi";
 
-type OwnPurposeModel = {
+export type OwnPurposeModel = {
   model_name: string;
   own_purpose?: OwnPurposeSummary;
 };

@@ -21,6 +21,12 @@ export type ConsentHandlers = {
 export function ConsentStatusText(props: { row: ConsentRow }) {
   const t = useTranslations();
   const row = props.row;
+  if (row.status === "given" && row.via === "providers")
+    return (
+      <span className="text-muted-foreground text-xs">
+        {t("FREE_CONSENT.COVERED_BY_PROVIDERS")}
+      </span>
+    );
   if (row.status === "given" && row.grantedAt != null)
     return (
       <span className="text-muted-foreground text-xs">
@@ -51,6 +57,8 @@ export function ConsentActionButton(props: {
   const t = useTranslations();
   const row = props.row;
   const model = row.model.model_name;
+  // Provider consents are withdrawn per provider on the providers tab.
+  if (row.via === "providers") return null;
   // A model that needs nothing any more only offers the withdrawal.
   if (row.status === "given" || (row.status === "stale" && row.kind === "none"))
     return (

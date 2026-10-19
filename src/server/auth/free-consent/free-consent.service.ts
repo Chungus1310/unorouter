@@ -15,6 +15,7 @@ import {
   getGuestOwnPurposeObjection,
   getStatus,
 } from "@/openapi";
+import { fetchGuestProviderConsents } from "@/server/auth/provider-consent/provider-consent.service";
 import { bffServiceHeader, cookieString } from "@/server/constants";
 import { getModelByName } from "@/server/models/pricing/pricing.service";
 import type { Cookie } from "elysia";
@@ -28,6 +29,10 @@ const guestConsents = new Map<
   string,
   { models: Set<string>; expires: number }
 >();
+
+// Per pod, keyed by guest and model; only a yes is cached, so a consent given
+// through another pod counts at once.
+const guestCoverage = new Map<string, { expires: number }>();
 
 // Guest ids are unbounded caller input: expired entries go first, then the
 // oldest, so neither cache grows with the number of guests.
@@ -77,6 +82,8 @@ export function guestConsentHeaders(guestId: string): Record<string, string> {
 
 export function forgetGuestConsents(guestId: string) {
   guestConsents.delete(guestId);
+  for (const key of guestCoverage.keys())
+    if (key.startsWith(`${guestId}\n`)) guestCoverage.delete(key);
 }
 
 // Per pod like the consents; a change reaches the other pods within the TTL.
@@ -139,16 +146,40 @@ async function guestConsentedModels(
 }
 
 const ENFORCEMENT_TTL_MS = 30_000;
-let enforcement: { on: boolean; expires: number } | undefined;
+let enforcement:
+  { on: boolean; models: Set<string>; expires: number } | undefined;
 
-// Follows the gateway's switch, so turning enforcement off frees guests too.
-async function consentEnforced(): Promise<boolean> {
-  if (enforcement && enforcement.expires > Date.now()) return enforcement.on;
-  const data = (await getStatus()).data?.data;
-  // free_consent_enforced is the pre rename field of gateways not yet updated.
-  const on = (data?.consent_enforced ?? data?.free_consent_enforced) === true;
-  enforcement = { on, expires: Date.now() + ENFORCEMENT_TTL_MS };
-  return on;
+// Follows the gateway's staging: the global switch or its model list.
+async function consentEnforcedFor(names: string[]): Promise<boolean> {
+  if (!enforcement || enforcement.expires <= Date.now()) {
+    const data = (await getStatus()).data?.data;
+    enforcement = {
+      on: data?.consent_enforced === true,
+      models: new Set(data?.consent_enforced_models ?? []),
+      expires: Date.now() + ENFORCEMENT_TTL_MS,
+    };
+  }
+  const current = enforcement;
+  return current.on || names.some((name) => current.models.has(name));
+}
+
+async function guestProviderCovered(
+  guestId: string,
+  model: string,
+): Promise<boolean> {
+  const key = `${guestId}\n${model}`;
+  const cached = guestCoverage.get(key);
+  if (cached && cached.expires > Date.now()) return true;
+  const res = await fetchGuestProviderConsents(
+    guestConsentHeaders(guestId),
+    model,
+  );
+  const covered = res.data?.success === true && res.data.data.covered === true;
+  if (covered)
+    cacheGuestEntry(guestCoverage, key, {
+      expires: Date.now() + GUEST_CONSENT_TTL_MS,
+    });
+  return covered;
 }
 
 // The gateway delegates a guest's objection and consent to this check, since
@@ -171,8 +202,12 @@ export async function assertGuestOwnPurposeAccess(
   )
     throw new Error(msg("OWN_PURPOSE.OBJECTED_ERROR"));
   if (!needsTransferConsent(info)) return;
-  if (!(await consentEnforced())) return;
-  if (guestId && (await guestConsentedModels(guestId, model)).has(model))
-    return;
-  throw new Error(msg("FREE_CONSENT.DECLINED"));
+  if (!(await consentEnforcedFor([model, info.model_name]))) return;
+  // A provider consent covers what the gateway requires; a :free model that
+  // needs only the notice keeps its acknowledgement per model.
+  const covered = info.own_purpose?.consent_required
+    ? guestId !== undefined && (await guestProviderCovered(guestId, model))
+    : guestId !== undefined &&
+      (await guestConsentedModels(guestId, model)).has(model);
+  if (!covered) throw new Error(msg("FREE_CONSENT.DECLINED"));
 }

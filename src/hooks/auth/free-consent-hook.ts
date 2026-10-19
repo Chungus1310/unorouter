@@ -20,8 +20,7 @@ export function useGrantFreeConsentMutation() {
   return useApiMutation({
     mutationFn: async (args: EdenArgs<FreeConsents, "post">) =>
       handleElysia(await rpc.api.auth["free-consents"].post(args.body)),
-    onSuccess: (_, __, qc) =>
-      qc.invalidateQueries({ queryKey: queryKeys.freeConsents() }),
+    invalidates: [queryKeys.freeConsents(), queryKeys.providerConsents()],
   });
 }
 
@@ -29,7 +28,6 @@ export function useRevokeFreeConsentMutation() {
   return useApiMutation({
     mutationFn: async (args: EdenArgs<FreeConsents, "delete">) =>
       handleElysia(await rpc.api.auth["free-consents"].delete(args.body)),
-    onSuccess: (_, __, qc) =>
-      qc.invalidateQueries({ queryKey: queryKeys.freeConsents() }),
+    invalidates: [queryKeys.freeConsents(), queryKeys.providerConsents()],
   });
 }

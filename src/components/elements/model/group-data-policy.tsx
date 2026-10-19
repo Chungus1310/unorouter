@@ -202,8 +202,17 @@ export function OwnPurposeBadge(props: {
   const t = useTranslations();
   if (!props.ownPurpose?.trains_or_retains) return null;
   return (
+    <OwnPurposeHint
+      label={t("MODELS.DATA_POLICY.OWN_PURPOSE")}
+      className={props.className}
+    />
+  );
+}
+
+export function OwnPurposeHint(props: { label: string; className?: string }) {
+  return (
     <span className={cn("inline-flex shrink-0 items-center", props.className)}>
-      <Hint label={t("MODELS.DATA_POLICY.OWN_PURPOSE")}>
+      <Hint label={props.label}>
         <PolicyIcon name="brain" className="text-warning!" />
       </Hint>
     </span>

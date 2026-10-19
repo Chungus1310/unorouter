@@ -6386,7 +6386,10 @@
       "COUNTRIES": "Pays",
       "REQUIREMENT": "Exigence",
       "STATUS": "Statut du consentement"
-    }
+    },
+    "TAB_PROVIDERS": "Fournisseurs",
+    "TAB_MODELS": "Modèles",
+    "COVERED_BY_PROVIDERS": "Couvert par les consentements aux fournisseurs"
   },
   "OWN_PURPOSE": {
     "TITLE": "Opposition à l'utilisation aux propres fins des fournisseurs",
@@ -6395,5 +6398,27 @@
     "SAVED": "Opposition enregistrée",
     "WITHDRAWN": "Opposition retirée",
     "OBJECTED_ERROR": "Tu t'es opposé à la transmission de tes saisies à des fournisseurs qui les utilisent à leurs propres fins, et ce modèle est proposé par l'intermédiaire de tels fournisseurs. Choisis un autre modèle ou retire l'opposition dans les paramètres de ton compte ou via « Gérer les consentements » dans le chat."
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "Consentement au transfert de tes saisies vers ces fournisseurs",
+    "PROVIDERS": "Ce consentement couvre les fournisseurs suivants, chacun indiqué par un code et son pays : {providers}. Pour les utiliser, tes saisies sont transférées vers ces pays.",
+    "FOR_MODEL": "Ils fournissent le modèle {model}.",
+    "CONSENT": "En confirmant, tu consens expressément, conformément à l'art. 49, paragraphe 1, point a du RGPD, au transfert de tes saisies, y compris les données personnelles qu'elles contiennent, vers ces fournisseurs et leurs pays malgré les risques décrits.",
+    "NOTHING_MISSING": "Tu as déjà donné ton consentement à tous les fournisseurs de ce modèle.",
+    "CLOSE": "Fermer",
+    "SEARCH": "Rechercher des fournisseurs ou des modèles",
+    "TRAINS": "Ce fournisseur utilise tes saisies à ses propres fins, par exemple pour entraîner des modèles d'IA",
+    "UNSAFE_NOTE": "Pas de protection des données adéquate",
+    "MODEL_COUNT": "{count, plural, one {# modèle} other {# modèles}}",
+    "SORT": {
+      "MODELS_DESC": "Le plus de modèles",
+      "ALIAS": "Identifiant",
+      "COUNTRY": "Pays"
+    },
+    "TABLE": {
+      "PROVIDER": "Fournisseur",
+      "COUNTRY": "Pays",
+      "MODELS": "Modèles"
+    }
   }
 }

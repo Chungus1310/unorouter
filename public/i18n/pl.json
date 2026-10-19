@@ -6386,7 +6386,10 @@
       "COUNTRIES": "Kraje",
       "REQUIREMENT": "Wymóg",
       "STATUS": "Stan zgody"
-    }
+    },
+    "TAB_PROVIDERS": "Dostawcy",
+    "TAB_MODELS": "Modele",
+    "COVERED_BY_PROVIDERS": "Objęte zgodami dla dostawców"
   },
   "OWN_PURPOSE": {
     "TITLE": "Sprzeciw wobec wykorzystania do własnych celów dostawców",
@@ -6395,5 +6398,27 @@
     "SAVED": "Sprzeciw zapisany",
     "WITHDRAWN": "Sprzeciw wycofany",
     "OBJECTED_ERROR": "Wniosłeś sprzeciw wobec przekazywania Twoich danych wejściowych dostawcom, którzy wykorzystują je do własnych celów, a ten model jest oferowany za pośrednictwem takich dostawców. Wybierz inny model albo wycofaj sprzeciw w ustawieniach konta lub przez „Zarządzaj zgodami” w czacie."
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "Zgoda na przekazanie Twoich danych wejściowych tym dostawcom",
+    "PROVIDERS": "Ta zgoda obejmuje następujących dostawców, każdego oznaczonego kodem i krajem: {providers}. Aby z nich korzystać, Twoje dane wejściowe są przekazywane do tych krajów.",
+    "FOR_MODEL": "Udostępniają model {model}.",
+    "CONSENT": "Potwierdzając, wyrażasz wyraźną zgodę na podstawie art. 49 ust. 1 lit. a RODO na przekazanie Twoich danych wejściowych, w tym zawartych w nich danych osobowych, tym dostawcom i do ich krajów pomimo opisanych zagrożeń.",
+    "NOTHING_MISSING": "Wyraziłeś już zgodę dla wszystkich dostawców tego modelu.",
+    "CLOSE": "Zamknij",
+    "SEARCH": "Szukaj dostawców lub modeli",
+    "TRAINS": "Ten dostawca wykorzystuje Twoje dane wejściowe do własnych celów, na przykład do trenowania modeli AI",
+    "UNSAFE_NOTE": "Brak odpowiedniej ochrony danych",
+    "MODEL_COUNT": "{count, plural, one {# model} few {# modele} many {# modeli} other {# modelu}}",
+    "SORT": {
+      "MODELS_DESC": "Najwięcej modeli",
+      "ALIAS": "Kod",
+      "COUNTRY": "Kraj"
+    },
+    "TABLE": {
+      "PROVIDER": "Dostawca",
+      "COUNTRY": "Kraj",
+      "MODELS": "Modele"
+    }
   }
 }

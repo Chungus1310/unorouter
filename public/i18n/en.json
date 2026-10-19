@@ -6386,7 +6386,10 @@
       "COUNTRIES": "Countries",
       "REQUIREMENT": "Requirement",
       "STATUS": "Consent status"
-    }
+    },
+    "TAB_PROVIDERS": "Providers",
+    "TAB_MODELS": "Models",
+    "COVERED_BY_PROVIDERS": "Covered by provider consents"
   },
   "OWN_PURPOSE": {
     "TITLE": "Objection to use for the providers' own purposes",
@@ -6395,5 +6398,27 @@
     "SAVED": "Objection saved",
     "WITHDRAWN": "Objection withdrawn",
     "OBJECTED_ERROR": "You have objected to your inputs being passed to providers that use them for their own purposes, and this model is offered through such providers. Choose another model or withdraw the objection in your account settings or via \"Manage consents\" in the chat."
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "Consent to the transfer of your inputs to these providers",
+    "PROVIDERS": "This consent covers the following providers, each shown by a code and its country: {providers}. To use them, your inputs are transferred to these countries.",
+    "FOR_MODEL": "They serve the model {model}.",
+    "CONSENT": "By confirming, you expressly consent under Art. 49(1)(a) GDPR to your inputs, including any personal data they contain, being transferred to these providers and their countries despite the risks described.",
+    "NOTHING_MISSING": "Every provider of this model already has your consent.",
+    "CLOSE": "Close",
+    "SEARCH": "Search providers or models",
+    "TRAINS": "This provider uses your inputs for its own purposes, for example to train AI models",
+    "UNSAFE_NOTE": "No adequate data protection",
+    "MODEL_COUNT": "{count, plural, one {# model} other {# models}}",
+    "SORT": {
+      "MODELS_DESC": "Most models",
+      "ALIAS": "Code",
+      "COUNTRY": "Country"
+    },
+    "TABLE": {
+      "PROVIDER": "Provider",
+      "COUNTRY": "Country",
+      "MODELS": "Models"
+    }
   }
 }

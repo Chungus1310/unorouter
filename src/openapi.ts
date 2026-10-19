@@ -775,6 +775,8 @@ export interface CreateTokenRequest {
   auto_groups: string[] | null;
   /** @nullable */
   cross_group_retry: boolean | null;
+  /** @nullable */
+  default_reasoning_effort: string | null;
   expired_time: number;
   group: string;
   /** @nullable */
@@ -1083,40 +1085,29 @@ export interface EmbeddingResponseItem {
   object: string;
 }
 
-export interface OutputTokenDetails {
-  audio_tokens: number;
-  image_tokens: number;
-  reasoning_tokens: number;
-  text_tokens: number;
-}
-
-export interface InputTokenDetails {
-  audio_tokens: number;
-  cache_write_tokens?: number;
-  cached_creation_tokens?: number;
-  cached_tokens: number;
-  cached_tokens_details?: CachedTokenDetails;
-  image_tokens: number;
-  text_tokens: number;
+export interface GeminiUsageMetadata {
+  billing_usage?: BillingUsage;
+  cachedContentTokenCount: number;
+  candidatesTokenCount: number;
+  /** @nullable */
+  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
+  promptTokenCount: number;
+  /** @nullable */
+  promptTokensDetails: GeminiPromptTokensDetails[] | null;
+  thoughtsTokenCount: number;
+  toolUsePromptTokenCount: number;
+  /** @nullable */
+  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
+  totalTokenCount: number;
 }
 
 export interface Usage {
-  billing_usage?: BillingUsage;
-  claude_cache_creation_1_h_tokens: number;
-  claude_cache_creation_5_m_tokens: number;
-  completion_tokens: number;
-  completion_tokens_details: OutputTokenDetails;
-  cost?: unknown;
-  input_tokens: number;
-  input_tokens_details: InputTokenDetails;
-  output_tokens: number;
-  output_tokens_details?: OutputTokenDetails;
-  prompt_cache_hit_tokens?: number;
-  prompt_tokens: number;
-  prompt_tokens_details: InputTokenDetails;
-  total_tokens: number;
-  usage_semantic?: string;
-  usage_source?: string;
+  claude_usage?: ClaudeUsage;
+  estimated?: boolean;
+  gemini_usage_metadata?: GeminiUsageMetadata;
+  openai_usage?: Usage;
+  semantic?: string;
+  source?: string;
 }
 
 /**
@@ -1239,7 +1230,7 @@ export interface FreeConsentGrantRequest {
 }
 
 export interface FreeConsentItem {
-  covers?: boolean;
+  covers: boolean;
   created_at: number;
   locale: string;
   model: string;
@@ -1264,22 +1255,6 @@ export interface FreeConsentRevokeRequest {
 export interface GeminiModelList {
   models: unknown;
   nextPageToken: unknown;
-}
-
-export interface GeminiUsageMetadata {
-  billing_usage?: BillingUsage;
-  cachedContentTokenCount: number;
-  candidatesTokenCount: number;
-  /** @nullable */
-  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
-  promptTokenCount: number;
-  /** @nullable */
-  promptTokensDetails: GeminiPromptTokensDetails[] | null;
-  thoughtsTokenCount: number;
-  toolUsePromptTokenCount: number;
-  /** @nullable */
-  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
-  totalTokenCount: number;
 }
 
 export type GetAllChannelsDataTypeCountsAnyOf = { [key: string]: number };
@@ -1320,7 +1295,6 @@ export interface GrantDiscordQuotaRequest {
 
 export interface GroupDataPolicy {
   prompts: string;
-  provider?: string;
   seat_country?: string;
   transfer: string;
   unsafe_third_country: boolean;
@@ -1428,6 +1402,16 @@ export interface ImageParams {
   supportsSize: boolean;
   supportsSteps: boolean;
   supportsStrength: boolean;
+}
+
+export interface InputTokenDetails {
+  audio_tokens: number;
+  cache_write_tokens?: number;
+  cached_creation_tokens?: number;
+  cached_tokens: number;
+  cached_tokens_details?: CachedTokenDetails;
+  image_tokens: number;
+  text_tokens: number;
 }
 
 export interface InvitedUser {
@@ -1918,10 +1902,14 @@ export interface OAuthExchangeData {
   access_token: string;
   action?: string;
   display_name: string;
+  flow_token?: string;
+  /** @nullable */
+  methods?: null;
   proof_expires_at?: number;
   proof_token?: string;
   role: number;
   scope?: string;
+  state?: string;
   user_id: number;
   username: string;
 }
@@ -1996,6 +1984,13 @@ export interface Option {
 export interface OptionUpdateRequest {
   key: string;
   value: unknown;
+}
+
+export interface OutputTokenDetails {
+  audio_tokens: number;
+  image_tokens: number;
+  reasoning_tokens: number;
+  text_tokens: number;
 }
 
 export interface OwnPurposeObjectionData {
@@ -2447,6 +2442,56 @@ export interface PricingVendorModel {
 export interface PricingVendorsData {
   model_vendors: PricingVendorModel[];
   vendor_names: string[];
+}
+
+export interface ProviderConsentGrantData {
+  /** @nullable */
+  granted: string[] | null;
+}
+
+/**
+ * ProviderConsentGrantRequest schema
+ */
+export interface ProviderConsentGrantRequest {
+  /**
+   * @nullable
+   * @items.maxLength 500
+   */
+  aliases: string[] | null;
+  /** @maxLength 16 */
+  locale: string;
+  /** @maxLength 255 */
+  model: string;
+  /** @maxLength 20000 */
+  text: string;
+}
+
+export interface ProviderConsentItem {
+  alias: string;
+  country: string;
+  given_at?: number;
+  model_count: number;
+  /** @nullable */
+  models: string[] | null;
+  status: string;
+  trains_or_retains: boolean;
+  unsafe: boolean;
+}
+
+export interface ProviderConsentListData {
+  /** @nullable */
+  covered?: boolean | null;
+  model?: string;
+  /** @nullable */
+  providers: ProviderConsentItem[] | null;
+}
+
+/**
+ * ProviderConsentRevokeRequest schema
+ */
+export interface ProviderConsentRevokeRequest {
+  /** @maxLength 16 */
+  alias: string;
 }
 
 export interface Summary {
@@ -2958,6 +3003,7 @@ export interface TokenResponse {
   auto_groups: string[] | null;
   created_time: number;
   cross_group_retry: boolean;
+  default_reasoning_effort: string;
   expired_time: number;
   group: string;
   group_mapping: string;
@@ -3388,19 +3434,19 @@ export interface ResponseDtoOAuthExchangeData {
 }
 
 /**
- * Response_dto.OwnPurposeObjectionData schema
+ * Response_dto.OllamaVersionData schema
  */
-export interface ResponseDtoOwnPurposeObjectionData {
-  data: OwnPurposeObjectionData;
+export interface ResponseDtoOllamaVersionData {
+  data: OllamaVersionData;
   message: string;
   success: boolean;
 }
 
 /**
- * Response_dto.OllamaVersionData schema
+ * Response_dto.OwnPurposeObjectionData schema
  */
-export interface ResponseDtoOllamaVersionData {
-  data: OllamaVersionData;
+export interface ResponseDtoOwnPurposeObjectionData {
+  data: OwnPurposeObjectionData;
   message: string;
   success: boolean;
 }
@@ -3649,6 +3695,7 @@ export interface TopUp {
   payment_method: string;
   payment_provider: string;
   provider_payment_id: string;
+  reversed_quota: number;
   status: string;
   trade_no: string;
   user_id: number;
@@ -3803,6 +3850,24 @@ export interface ResponseDtoPerformanceStats {
 }
 
 /**
+ * Response_dto.ProviderConsentGrantData schema
+ */
+export interface ResponseDtoProviderConsentGrantData {
+  data: ProviderConsentGrantData;
+  message: string;
+  success: boolean;
+}
+
+/**
+ * Response_dto.ProviderConsentListData schema
+ */
+export interface ResponseDtoProviderConsentListData {
+  data: ProviderConsentListData;
+  message: string;
+  success: boolean;
+}
+
+/**
  * Response_dto.RefreshCodexData schema
  */
 export interface ResponseDtoRefreshCodexData {
@@ -3877,6 +3942,8 @@ export interface StatusData {
   chats: StatusDataChatsItem[] | null;
   checkin_enabled: boolean;
   consent_enforced: boolean;
+  /** @nullable */
+  consent_enforced_models: string[] | null;
   custom_currency_exchange_rate: number;
   custom_currency_symbol: string;
   /** @nullable */
@@ -3898,7 +3965,6 @@ export interface StatusData {
   faq?: FAQEntry[] | null;
   faq_enabled: boolean;
   footer_html: string;
-  free_consent_enforced: boolean;
   github_client_id: string;
   github_oauth: boolean;
   google_client_id: string;
@@ -4327,7 +4393,6 @@ export interface UserGroupInfo {
   desc: string;
   online: boolean;
   prompts?: string;
-  provider?: string;
   ratio: unknown;
   seat_country?: string;
   transfer?: string;
@@ -4771,6 +4836,8 @@ export interface UpdateTokenRequest {
   auto_groups: string[] | null;
   /** @nullable */
   cross_group_retry: boolean | null;
+  /** @nullable */
+  default_reasoning_effort: string | null;
   expired_time: number;
   group: string;
   /** @nullable */
@@ -5860,6 +5927,10 @@ export type SearchUsersParams = {
    * Only users whose balance is below zero
    */
   negative_quota?: boolean;
+  /**
+   * Only users with consent enforcement switched on for their account
+   */
+  consent_enforced?: boolean;
   /**
    * Field to sort by
    */
@@ -17990,6 +18061,174 @@ export const setGuestOwnPurposeObjection = async (
   );
 };
 
+export type revokeGuestProviderConsentResponse200ApplicationJson = {
+  data: ResponseDtoMessageResponse;
+  status: 200;
+};
+
+export type revokeGuestProviderConsentResponse200ApplicationXml = {
+  data: ResponseDtoMessageResponse;
+  status: 200;
+};
+
+export type revokeGuestProviderConsentResponseSuccess = (
+  | revokeGuestProviderConsentResponse200ApplicationJson
+  | revokeGuestProviderConsentResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type revokeGuestProviderConsentResponse =
+  revokeGuestProviderConsentResponseSuccess;
+
+export const getRevokeGuestProviderConsentUrl = () => {
+  return `/api/user/guest/provider-consents`;
+};
+
+/**
+ * @summary Revoke Guest Provider Consent
+ */
+export const revokeGuestProviderConsent = async (
+  providerConsentRevokeRequest: ProviderConsentRevokeRequest,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<revokeGuestProviderConsentResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+  return customFetch<revokeGuestProviderConsentResponse>(
+    getRevokeGuestProviderConsentUrl(),
+    {
+      ...options,
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        ...getHeaders(options?.headers),
+      },
+      body: JSON.stringify(providerConsentRevokeRequest),
+    },
+  );
+};
+
+export type getGuestProviderConsentsResponse200ApplicationJson = {
+  data: ResponseDtoProviderConsentListData;
+  status: 200;
+};
+
+export type getGuestProviderConsentsResponse200ApplicationXml = {
+  data: ResponseDtoProviderConsentListData;
+  status: 200;
+};
+
+export type getGuestProviderConsentsResponseSuccess = (
+  | getGuestProviderConsentsResponse200ApplicationJson
+  | getGuestProviderConsentsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getGuestProviderConsentsResponse =
+  getGuestProviderConsentsResponseSuccess;
+
+export const getGetGuestProviderConsentsUrl = () => {
+  return `/api/user/guest/provider-consents`;
+};
+
+/**
+ * @summary Get Guest Provider Consents
+ */
+export const getGuestProviderConsents = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getGuestProviderConsentsResponse> => {
+  return customFetch<getGuestProviderConsentsResponse>(
+    getGetGuestProviderConsentsUrl(),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export type grantGuestProviderConsentsResponse200ApplicationJson = {
+  data: ResponseDtoProviderConsentGrantData;
+  status: 200;
+};
+
+export type grantGuestProviderConsentsResponse200ApplicationXml = {
+  data: ResponseDtoProviderConsentGrantData;
+  status: 200;
+};
+
+export type grantGuestProviderConsentsResponseSuccess = (
+  | grantGuestProviderConsentsResponse200ApplicationJson
+  | grantGuestProviderConsentsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type grantGuestProviderConsentsResponse =
+  grantGuestProviderConsentsResponseSuccess;
+
+export const getGrantGuestProviderConsentsUrl = () => {
+  return `/api/user/guest/provider-consents`;
+};
+
+/**
+ * @summary Grant Guest Provider Consents
+ */
+export const grantGuestProviderConsents = async (
+  providerConsentGrantRequest: ProviderConsentGrantRequest,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<grantGuestProviderConsentsResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+  return customFetch<grantGuestProviderConsentsResponse>(
+    getGrantGuestProviderConsentsUrl(),
+    {
+      ...options,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...getHeaders(options?.headers),
+      },
+      body: JSON.stringify(providerConsentGrantRequest),
+    },
+  );
+};
+
 export type loginResponse200ApplicationJson = {
   data: ResponseDtoLoginData;
   status: 200;
@@ -19766,6 +20005,170 @@ export const setOwnPurposeObjection = async (
         ...getHeaders(options?.headers),
       },
       body: JSON.stringify(ownPurposeObjectionRequest),
+    },
+  );
+};
+
+export type revokeProviderConsentResponse200ApplicationJson = {
+  data: ResponseDtoMessageResponse;
+  status: 200;
+};
+
+export type revokeProviderConsentResponse200ApplicationXml = {
+  data: ResponseDtoMessageResponse;
+  status: 200;
+};
+
+export type revokeProviderConsentResponseSuccess = (
+  | revokeProviderConsentResponse200ApplicationJson
+  | revokeProviderConsentResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type revokeProviderConsentResponse =
+  revokeProviderConsentResponseSuccess;
+
+export const getRevokeProviderConsentUrl = () => {
+  return `/api/user/self/provider-consents`;
+};
+
+/**
+ * @summary Revoke Provider Consent
+ */
+export const revokeProviderConsent = async (
+  providerConsentRevokeRequest: ProviderConsentRevokeRequest,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<revokeProviderConsentResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+  return customFetch<revokeProviderConsentResponse>(
+    getRevokeProviderConsentUrl(),
+    {
+      ...options,
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        ...getHeaders(options?.headers),
+      },
+      body: JSON.stringify(providerConsentRevokeRequest),
+    },
+  );
+};
+
+export type getProviderConsentsResponse200ApplicationJson = {
+  data: ResponseDtoProviderConsentListData;
+  status: 200;
+};
+
+export type getProviderConsentsResponse200ApplicationXml = {
+  data: ResponseDtoProviderConsentListData;
+  status: 200;
+};
+
+export type getProviderConsentsResponseSuccess = (
+  | getProviderConsentsResponse200ApplicationJson
+  | getProviderConsentsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getProviderConsentsResponse = getProviderConsentsResponseSuccess;
+
+export const getGetProviderConsentsUrl = () => {
+  return `/api/user/self/provider-consents`;
+};
+
+/**
+ * @summary Get Provider Consents
+ */
+export const getProviderConsents = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getProviderConsentsResponse> => {
+  return customFetch<getProviderConsentsResponse>(getGetProviderConsentsUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export type grantProviderConsentsResponse200ApplicationJson = {
+  data: ResponseDtoProviderConsentGrantData;
+  status: 200;
+};
+
+export type grantProviderConsentsResponse200ApplicationXml = {
+  data: ResponseDtoProviderConsentGrantData;
+  status: 200;
+};
+
+export type grantProviderConsentsResponseSuccess = (
+  | grantProviderConsentsResponse200ApplicationJson
+  | grantProviderConsentsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type grantProviderConsentsResponse =
+  grantProviderConsentsResponseSuccess;
+
+export const getGrantProviderConsentsUrl = () => {
+  return `/api/user/self/provider-consents`;
+};
+
+/**
+ * @summary Grant Provider Consents
+ */
+export const grantProviderConsents = async (
+  providerConsentGrantRequest: ProviderConsentGrantRequest,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<grantProviderConsentsResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+  return customFetch<grantProviderConsentsResponse>(
+    getGrantProviderConsentsUrl(),
+    {
+      ...options,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        ...getHeaders(options?.headers),
+      },
+      body: JSON.stringify(providerConsentGrantRequest),
     },
   );
 };

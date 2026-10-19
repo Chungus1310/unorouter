@@ -1,13 +1,9 @@
 "use client";
 
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
-import { useFreeConsentsQuery } from "@/hooks/auth/free-consent-hook";
 import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
 import { useApiKey } from "@/hooks/ui/use-api-key";
-import {
-  hasCoveringConsent,
-  needsTransferConsent,
-} from "@/lib/api/own-purpose";
+import { useModelConsentGate } from "@/hooks/ui/use-model-consent-gate";
 import { chatModelAtom, consentDemandedModelsAtom } from "@/store/chat-store";
 import { useAtomValue } from "jotai";
 
@@ -19,10 +15,12 @@ export function useChatGate() {
   const selected = pricingData?.find((m) => m.model_name === selectedModel);
   const isSelectedModelFree = selected?.is_free ?? false;
   const demanded = useAtomValue(consentDemandedModelsAtom);
-  const consentModel =
-    (selected ? needsTransferConsent(selected) : false) ||
-    (selectedModel != null && demanded.includes(selectedModel));
-  const consentsQuery = useFreeConsentsQuery(consentModel);
+  const consentGate = useModelConsentGate(
+    selected,
+    selectedModel,
+    selectedModel != null && demanded.includes(selectedModel),
+  );
+  const consentModel = consentGate.consentModel;
 
   const inputsSettled = selectedModel != null && pricingData != null;
   const needsToken =
@@ -31,12 +29,7 @@ export function useChatGate() {
     inputsSettled &&
     !isSelectedModelFree;
   const business = consentModel && authQuery.data?.customer_type === "business";
-  const needsConsent =
-    consentModel &&
-    !business &&
-    selectedModel != null &&
-    consentsQuery.data != null &&
-    !hasCoveringConsent(consentsQuery.data.consents, selectedModel);
+  const needsConsent = !business && consentGate.needsConsent;
 
   return { needsToken, needsConsent, business, selectedModel };
 }

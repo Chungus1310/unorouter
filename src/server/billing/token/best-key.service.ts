@@ -78,6 +78,7 @@ async function createAutoToken(
       model_limits: "",
       model_limits_enabled: false,
       cross_group_retry: false,
+      default_reasoning_effort: null,
       allow_ips: null,
       group_mapping: "",
       auto_groups: null,

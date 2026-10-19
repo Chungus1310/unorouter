@@ -1,7 +1,7 @@
 "use client";
 
 import { SectionBoundary } from "@/components/elements/feedback/section-boundary";
-import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
+import { ModelConsentPanel } from "@/components/elements/model/provider-consent-panel";
 import { Thread } from "@/components/ui/assistant-ui/thread";
 import { useConversationQuery } from "@/hooks/ai/chat-hook";
 import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
@@ -91,7 +91,7 @@ export function Chat(props: ChatProps) {
   if (gate.needsConsent && gate.selectedModel)
     return (
       <div className="chat-shell-reveal flex min-h-0 flex-1 flex-col">
-        <FreeConsentPanel model={gate.selectedModel} />
+        <ModelConsentPanel model={gate.selectedModel} />
       </div>
     );
 

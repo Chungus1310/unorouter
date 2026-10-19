@@ -6386,7 +6386,10 @@
       "COUNTRIES": "国家",
       "REQUIREMENT": "要求",
       "STATUS": "同意状态"
-    }
+    },
+    "TAB_PROVIDERS": "提供商",
+    "TAB_MODELS": "模型",
+    "COVERED_BY_PROVIDERS": "已由对提供商的同意涵盖"
   },
   "OWN_PURPOSE": {
     "TITLE": "反对提供商将输入用于其自身目的",
@@ -6395,5 +6398,27 @@
     "SAVED": "已保存反对",
     "WITHDRAWN": "已撤回反对",
     "OBJECTED_ERROR": "你已反对将你的输入转交给将其用于自身目的的提供商，而此模型正是通过此类提供商提供的。请选择其他模型，或在账户设置中或通过聊天中的“管理同意”撤回反对。"
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "同意将你的输入传输给这些提供商",
+    "PROVIDERS": "本同意涵盖以下提供商，每个均以代码和国家显示：{providers}。为使用它们，你的输入将被传输到这些国家。",
+    "FOR_MODEL": "它们提供模型 {model}。",
+    "CONSENT": "确认即表示你根据 GDPR 第 49 条第 1 款 (a) 项明确同意，尽管存在上述风险，你的输入（包括其中的个人数据）仍将被传输给这些提供商及其所在国家。",
+    "NOTHING_MISSING": "你已同意此模型的所有提供商。",
+    "CLOSE": "关闭",
+    "SEARCH": "搜索提供商或模型",
+    "TRAINS": "此提供商将你的输入用于其自身目的（例如训练 AI 模型）",
+    "UNSAFE_NOTE": "没有充分的数据保护",
+    "MODEL_COUNT": "{count, plural, other {# 个模型}}",
+    "SORT": {
+      "MODELS_DESC": "模型最多",
+      "ALIAS": "代码",
+      "COUNTRY": "国家"
+    },
+    "TABLE": {
+      "PROVIDER": "提供商",
+      "COUNTRY": "国家",
+      "MODELS": "模型数"
+    }
   }
 }

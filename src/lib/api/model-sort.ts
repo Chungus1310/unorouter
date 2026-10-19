@@ -52,20 +52,33 @@ function compareBy(
   return a.model_name.localeCompare(b.model_name);
 }
 
+// Index 0 is primary, later keys break its ties, `last` makes the order total.
+export function sortByKeys<T, K>(
+  items: T[],
+  keys: readonly K[],
+  compare: (key: K, a: T, b: T) => number,
+  last: (a: T, b: T) => number,
+): T[] {
+  return [...items].sort((a, b) => {
+    for (const key of keys) {
+      const diff = compare(key, a, b);
+      if (diff !== 0) return diff;
+    }
+    return last(a, b);
+  });
+}
+
 export function sortModels<T>(
   items: T[],
   model: (item: T) => PricingCatalogModel,
   keys: readonly SortOrder[],
   rankMap: Map<string, RankedModel>,
 ): T[] {
-  return [...items].sort((x, y) => {
-    const a = model(x);
-    const b = model(y);
-    for (const key of keys) {
-      const diff = compareBy(key, a, b, rankMap);
-      if (diff !== 0) return diff;
-    }
+  return sortByKeys(
+    items,
+    keys,
+    (key, x, y) => compareBy(key, model(x), model(y), rankMap),
     // Name last so the order is total; input order shifts between renders.
-    return a.model_name.localeCompare(b.model_name);
-  });
+    (x, y) => model(x).model_name.localeCompare(model(y).model_name),
+  );
 }

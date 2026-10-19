@@ -41,35 +41,61 @@ const OPPOSITE: Partial<Record<SortOrder, SortOrder>> = {
 export function SortFilter() {
   const [sortKeys, setSortKeys] = useAtom(sortKeysAtom);
   const active = useAtomValue(effectiveSortKeysAtom);
-  return <SortMenu value={sortKeys} active={active} onChange={setSortKeys} />;
+  return (
+    <ModelSortMenu value={sortKeys} active={active} onChange={setSortKeys} />
+  );
 }
 
-// `value` is what the user picked; `active` adds the fallback when it is empty.
-export function SortMenu(props: {
+export function ModelSortMenu(props: {
   value: SortOrder[];
   active: readonly SortOrder[];
   onChange: (next: SortOrder[]) => void;
 }) {
   const t = useTranslations();
+  return (
+    <SortMenu
+      options={SORT_VALUES}
+      label={(key) => t(LABEL_KEY[key])}
+      opposite={OPPOSITE}
+      value={props.value}
+      active={props.active}
+      onChange={props.onChange}
+    />
+  );
+}
+
+// `value` is what the user picked; `active` adds the fallback when it is empty.
+export function SortMenu<K extends string>(props: {
+  options: readonly K[];
+  label: (key: K) => string;
+  opposite?: Partial<Record<K, K>>;
+  value: K[];
+  active: readonly K[];
+  onChange: (next: K[]) => void;
+}) {
+  const t = useTranslations();
   const sortKeys = props.value;
   const active = props.active;
   const setSortKeys = props.onChange;
+  const label = props.label;
 
-  const label =
+  const summary =
     active.length > 1
       ? t("MODELS.SORT.MULTI", {
-          first: t(LABEL_KEY[active[0]!]),
+          first: label(active[0]!),
           count: active.length - 1,
         })
-      : t(LABEL_KEY[active[0] ?? "newest"]);
+      : active[0] !== undefined
+        ? label(active[0])
+        : t("MODELS.SORT.HINT");
 
-  function toggle(key: SortOrder) {
+  function toggle(key: K) {
     const at = sortKeys.indexOf(key);
     if (at >= 0) {
       setSortKeys(sortKeys.filter((k) => k !== key));
       return;
     }
-    const opposite = OPPOSITE[key];
+    const opposite = props.opposite?.[key];
     const without = opposite
       ? sortKeys.filter((k) => k !== opposite)
       : sortKeys;
@@ -86,7 +112,7 @@ export function SortMenu(props: {
             className="h-8 border-dashed md:h-9"
           >
             <Icon name="arrow-up-down" className="mr-1.5 h-4 w-4 md:mr-2" />
-            <span>{label}</span>
+            <span>{summary}</span>
           </Button>
         }
       />
@@ -95,7 +121,7 @@ export function SortMenu(props: {
           {t("MODELS.SORT.HINT")}
         </p>
         <DropdownMenuSeparator />
-        {SORT_VALUES.map((key) => {
+        {props.options.map((key) => {
           const rank = sortKeys.indexOf(key);
           return (
             <DropdownMenuItem
@@ -104,7 +130,7 @@ export function SortMenu(props: {
               onClick={() => toggle(key)}
               className="flex items-center justify-between gap-2"
             >
-              <span>{t(LABEL_KEY[key])}</span>
+              <span>{label(key)}</span>
               {rank >= 0 && (
                 // The menu item forces text-accent-foreground onto every descendant while
                 // focused, erasing this number against its own background.

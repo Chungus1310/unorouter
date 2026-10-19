@@ -6386,7 +6386,10 @@
       "COUNTRIES": "Ülkeler",
       "REQUIREMENT": "Gereklilik",
       "STATUS": "Onay durumu"
-    }
+    },
+    "TAB_PROVIDERS": "Sağlayıcılar",
+    "TAB_MODELS": "Modeller",
+    "COVERED_BY_PROVIDERS": "Sağlayıcı onaylarıyla kapsanıyor"
   },
   "OWN_PURPOSE": {
     "TITLE": "Sağlayıcıların kendi amaçları için kullanımına itiraz",
@@ -6395,5 +6398,27 @@
     "SAVED": "İtiraz kaydedildi",
     "WITHDRAWN": "İtiraz geri alındı",
     "OBJECTED_ERROR": "Girdilerinin, onları kendi amaçları için kullanan sağlayıcılara iletilmesine itiraz ettin ve bu model bu tür sağlayıcılar aracılığıyla sunuluyor. Başka bir model seç ya da itirazını hesap ayarlarından veya sohbetteki \"Onayları yönet\" üzerinden geri al."
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "Girdilerinin bu sağlayıcılara aktarılmasına onay",
+    "PROVIDERS": "Bu onay, her biri bir kod ve ülkesiyle gösterilen şu sağlayıcıları kapsar: {providers}. Bunları kullanmak için girdilerin bu ülkelere aktarılır.",
+    "FOR_MODEL": "{model} modelini sunarlar.",
+    "CONSENT": "Onaylayarak, GDPR madde 49 fıkra 1 bent a uyarınca, girdilerinin içerdikleri kişisel veriler dahil, açıklanan risklere rağmen bu sağlayıcılara ve ülkelerine aktarılmasına açıkça onay vermiş olursun.",
+    "NOTHING_MISSING": "Bu modelin tüm sağlayıcılarına zaten onay verdin.",
+    "CLOSE": "Kapat",
+    "SEARCH": "Sağlayıcı veya model ara",
+    "TRAINS": "Bu sağlayıcı girdilerini kendi amaçları için kullanır, örneğin yapay zeka modellerini eğitmek için",
+    "UNSAFE_NOTE": "Yeterli veri koruması yok",
+    "MODEL_COUNT": "{count, plural, one {# model} other {# model}}",
+    "SORT": {
+      "MODELS_DESC": "En çok model",
+      "ALIAS": "Kod",
+      "COUNTRY": "Ülke"
+    },
+    "TABLE": {
+      "PROVIDER": "Sağlayıcı",
+      "COUNTRY": "Ülke",
+      "MODELS": "Modeller"
+    }
   }
 }

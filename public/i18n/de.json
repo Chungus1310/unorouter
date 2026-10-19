@@ -6386,7 +6386,10 @@
       "COUNTRIES": "Länder",
       "REQUIREMENT": "Anforderung",
       "STATUS": "Einwilligungsstatus"
-    }
+    },
+    "TAB_PROVIDERS": "Anbieter",
+    "TAB_MODELS": "Modelle",
+    "COVERED_BY_PROVIDERS": "Durch Einwilligungen für Anbieter abgedeckt"
   },
   "OWN_PURPOSE": {
     "TITLE": "Widerspruch gegen die Nutzung für eigene Zwecke der Anbieter",
@@ -6395,5 +6398,27 @@
     "SAVED": "Widerspruch gespeichert",
     "WITHDRAWN": "Widerspruch zurückgenommen",
     "OBJECTED_ERROR": "Du hast der Weitergabe deiner Eingaben an Anbieter widersprochen, die sie für eigene Zwecke nutzen, und dieses Modell wird über solche Anbieter angeboten. Wähle ein anderes Modell oder nimm den Widerspruch in den Kontoeinstellungen oder über „Einwilligungen verwalten“ im Chat zurück."
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "Einwilligung in die Übermittlung deiner Eingaben an diese Anbieter",
+    "PROVIDERS": "Diese Einwilligung gilt für folgende Anbieter, jeweils mit Kennung und Land angegeben: {providers}. Für ihre Nutzung werden deine Eingaben in diese Länder übermittelt.",
+    "FOR_MODEL": "Sie stellen das Modell {model} bereit.",
+    "CONSENT": "Mit der Bestätigung willigst du nach Art. 49 Abs. 1 lit. a DSGVO ausdrücklich ein, dass deine Eingaben einschließlich darin enthaltener personenbezogener Daten trotz der beschriebenen Risiken an diese Anbieter und in ihre Länder übermittelt werden.",
+    "NOTHING_MISSING": "Für alle Anbieter dieses Modells hast du bereits eingewilligt.",
+    "CLOSE": "Schließen",
+    "SEARCH": "Anbieter oder Modelle suchen",
+    "TRAINS": "Dieser Anbieter nutzt deine Eingaben für eigene Zwecke, zum Beispiel zum Training von KI-Modellen",
+    "UNSAFE_NOTE": "Kein angemessenes Datenschutzniveau",
+    "MODEL_COUNT": "{count, plural, one {# Modell} other {# Modelle}}",
+    "SORT": {
+      "MODELS_DESC": "Meiste Modelle",
+      "ALIAS": "Kennung",
+      "COUNTRY": "Land"
+    },
+    "TABLE": {
+      "PROVIDER": "Anbieter",
+      "COUNTRY": "Land",
+      "MODELS": "Modelle"
+    }
   }
 }

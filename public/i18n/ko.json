@@ -6386,7 +6386,10 @@
       "COUNTRIES": "국가",
       "REQUIREMENT": "요건",
       "STATUS": "동의 상태"
-    }
+    },
+    "TAB_PROVIDERS": "제공자",
+    "TAB_MODELS": "모델",
+    "COVERED_BY_PROVIDERS": "제공자 동의로 포함됨"
   },
   "OWN_PURPOSE": {
     "TITLE": "제공자의 자체 목적 사용에 대한 반대",
@@ -6395,5 +6398,27 @@
     "SAVED": "반대가 저장되었습니다",
     "WITHDRAWN": "반대가 철회되었습니다",
     "OBJECTED_ERROR": "입력 내용을 자체 목적에 사용하는 제공자에게 전달되는 것에 반대하셨으며, 이 모델은 그러한 제공자를 통해 제공됩니다. 다른 모델을 선택하거나 계정 설정에서 또는 채팅의 \"동의 관리\"에서 반대를 철회하세요."
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "이 제공자들에게 입력 내용을 이전하는 데 대한 동의",
+    "PROVIDERS": "이 동의는 코드와 국가로 표시된 다음 제공자에게 적용됩니다: {providers}. 이를 사용하기 위해 입력 내용이 이 국가들로 이전됩니다.",
+    "FOR_MODEL": "이들은 {model} 모델을 제공합니다.",
+    "CONSENT": "확인하면 GDPR 제49조 제1항 (a)에 따라 입력 내용이, 포함된 개인정보를 포함하여, 설명된 위험에도 불구하고 이 제공자들과 그 국가로 이전되는 데 명시적으로 동의하게 됩니다.",
+    "NOTHING_MISSING": "이 모델의 모든 제공자에게 이미 동의했습니다.",
+    "CLOSE": "닫기",
+    "SEARCH": "제공자 또는 모델 검색",
+    "TRAINS": "이 제공자는 입력 내용을 자체 목적, 예를 들어 AI 모델 학습에 사용합니다",
+    "UNSAFE_NOTE": "적절한 데이터 보호 없음",
+    "MODEL_COUNT": "{count, plural, other {모델 #개}}",
+    "SORT": {
+      "MODELS_DESC": "모델 많은 순",
+      "ALIAS": "코드",
+      "COUNTRY": "국가"
+    },
+    "TABLE": {
+      "PROVIDER": "제공자",
+      "COUNTRY": "국가",
+      "MODELS": "모델 수"
+    }
   }
 }

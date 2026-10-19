@@ -1,200 +1,116 @@
 "use client";
 
-import { DataTable } from "@/components/elements/table/data-table";
-import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
 import { OwnPurposeObjectionToggle } from "@/components/elements/model/own-purpose-objection-toggle";
-import { ModelsEmpty } from "@/components/pages/navbar/models/browse/models-empty";
 import {
-  ResetFiltersButton,
-  SearchInput,
-} from "@/components/pages/navbar/models/browse/models-toolbar";
-import { ModalityTabs } from "@/components/pages/navbar/models/filters/modality-tabs";
-import { SortMenu } from "@/components/pages/navbar/models/filters/sort-filter";
-import { ViewModeButtons } from "@/components/pages/navbar/models/filters/view-mode-toggle";
+  ModelConsentPanel,
+  ProviderConsentPanel,
+} from "@/components/elements/model/provider-consent-panel";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar";
-import {
-  useFreeConsentsQuery,
-  useRevokeFreeConsentMutation,
-} from "@/hooks/auth/free-consent-hook";
-import { useConsentModelsQuery } from "@/hooks/models/pricing-hook";
-import { DataTableId } from "@/lib/types/enums";
-import { createTableAtoms } from "@/store/data-table-store";
-import { useAtomValue, useSetAtom } from "jotai";
+import { Icon } from "@/components/ui/icon";
+import type { IconName } from "@/lib/config/icon-map";
+import { msg } from "@/lib/config/constants";
+import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
-import { useState } from "react";
-import { toast } from "sonner";
-import { KIND_LABEL, type ConsentHandlers } from "./consent-action";
-import { buildConsentColumns } from "./consent-columns";
-import { ConsentFilterSidebar } from "./consent-filter-sidebar";
-import { ConsentModelCard } from "./consent-model-card";
-import { buildConsentRows } from "./consent-rows";
-import { useConsentFilters } from "./use-consent-filters";
+import { parseAsString, parseAsStringLiteral, useQueryStates } from "nuqs";
+import { ModelView } from "./model-view";
+import { ProviderView } from "./provider-view";
 
-const consentTableAtoms = createTableAtoms(DataTableId.FREE_MODELS);
+const TABS = ["providers", "models"] as const;
+type Tab = (typeof TABS)[number];
 
-// Every model that takes a consent or a notice, or whose providers use inputs
-// for their own purposes, offline ones included, so API users can consent
-// before their first request.
+const TAB_LABEL = {
+  providers: msg("FREE_CONSENT.TAB_PROVIDERS"),
+  models: msg("FREE_CONSENT.TAB_MODELS"),
+} satisfies Record<Tab, ReturnType<typeof msg>>;
+
+const TAB_ICON: Record<Tab, IconName> = {
+  providers: "server",
+  models: "layout-grid",
+};
+
+// The open dialog lives in the URL too, so the gateway's refusal can link to
+// /consents?model=<name> and land on that model's consent.
+const PARSERS = {
+  tab: parseAsStringLiteral(TABS).withDefault("providers"),
+  view: parseAsStringLiteral(["table", "list"] as const).withDefault("table"),
+  model: parseAsString,
+  alias: parseAsString,
+};
+
 export function ConsentsPage() {
   const t = useTranslations();
-  const consentModelsQuery = useConsentModelsQuery();
-  const consentsQuery = useFreeConsentsQuery();
-  const revokeMutation = useRevokeFreeConsentMutation();
-  const [open, setOpen] = useState<string | null>(null);
+  const [params, setParams] = useQueryStates(PARSERS);
 
-  const rows = buildConsentRows(
-    consentModelsQuery.data ?? [],
-    consentsQuery.data?.consents ?? [],
-  );
-  const filters = useConsentFilters(rows);
-  const params = filters.params;
-  const columnSorting = useAtomValue(consentTableAtoms.sortingAtom);
-  const setColumnSorting = useSetAtom(consentTableAtoms.sortingAtom);
-
-  const handlers: ConsentHandlers = {
-    open: setOpen,
-    revoke: (model) =>
-      revokeMutation.mutate(
-        { body: { model } },
-        {
-          onSuccess: () => toast.success(t("FREE_CONSENT.REVOKED")),
-          onError: (error) => toast.error(error.message),
-        },
-      ),
-    revoking: revokeMutation.isPending,
-  };
-
-  const columns = buildConsentColumns({
-    handlers,
-    kindLabel: (row) => t(KIND_LABEL[row.kind]),
-    offlineLabel: t("FREE_CONSENT.OFFLINE"),
-    freeLabel: t("MODELS.TABLE.FREE"),
-    flatNoParamsLabel: t("MODELS.TABLE.FLAT_NO_PARAMS"),
-  });
-
-  const loading = consentModelsQuery.isLoading || consentsQuery.isLoading;
-  const showReset =
-    filters.activeFilterCount > 0 ||
-    params.order.length > 0 ||
-    columnSorting.length > 0;
-
-  function resetAll() {
-    filters.reset();
-    setColumnSorting([]);
+  function close() {
+    void setParams({ model: null, alias: null });
   }
 
   return (
     <div className="w-full pt-20 pb-16">
-      <SidebarProvider
-        defaultOpen
-        className="relative h-auto min-h-0 overflow-visible"
+      <div className="mb-4 space-y-3 px-4 md:px-6">
+        <h1 className="text-lg font-semibold tracking-tight">
+          {t("FREE_CONSENT.PAGE_TITLE")}
+        </h1>
+        <p className="text-muted-foreground text-sm">
+          {t("FREE_CONSENT.PAGE_INTRO")}
+        </p>
+        <div className="bg-card space-y-2 rounded-lg border p-4">
+          <h2 className="text-foreground text-sm font-medium">
+            {t("OWN_PURPOSE.TITLE")}
+          </h2>
+          <OwnPurposeObjectionToggle />
+        </div>
+        <div className="border-border flex gap-1 border-b pb-px">
+          {TABS.map((tab) => {
+            const active = params.tab === tab;
+            return (
+              <button
+                key={tab}
+                type="button"
+                onClick={() => void setParams({ tab })}
+                aria-pressed={active}
+                className={cn(
+                  "flex items-center gap-1.5 border-b-2 px-3 py-2 font-mono text-sm whitespace-nowrap transition-colors",
+                  active
+                    ? "border-primary text-foreground"
+                    : "text-muted-foreground hover:text-foreground border-transparent",
+                )}
+              >
+                <Icon name={TAB_ICON[tab]} className="h-4 w-4" />
+                {t(TAB_LABEL[tab])}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {params.tab === "providers" ? (
+        <ProviderView
+          view={params.view}
+          onViewChange={(view) => void setParams({ view })}
+          onOpen={(alias) => void setParams({ alias, model: null })}
+        />
+      ) : (
+        <ModelView
+          view={params.view}
+          onViewChange={(view) => void setParams({ view })}
+          onOpen={(model) => void setParams({ model, alias: null })}
+        />
+      )}
+
+      <Dialog
+        open={params.model !== null || params.alias !== null}
+        onOpenChange={(o) => !o && close()}
       >
-        <ConsentFilterSidebar rows={rows} filters={filters} />
-
-        <SidebarInset className="@container max-h-none! min-w-0 overflow-visible bg-transparent px-4 md:px-6">
-          <div className="mb-4 flex flex-wrap items-center gap-2">
-            <h1 className="mr-2 basis-full text-lg font-semibold tracking-tight @5xl:basis-auto">
-              {t("FREE_CONSENT.PAGE_TITLE")}
-            </h1>
-            <div className="ml-auto flex flex-1 items-center justify-end gap-2">
-              {showReset && (
-                <ResetFiltersButton
-                  activeFilterCount={filters.activeFilterCount}
-                  onReset={resetAll}
-                />
-              )}
-              <SearchInput
-                className="relative hidden w-full max-w-xs lg:block"
-                placeholder={t("FREE_CONSENT.SEARCH")}
-                value={params.q}
-                onChange={(q) => void filters.setParams({ q: q || null })}
-              />
-              <SortMenu
-                value={params.order}
-                active={filters.activeSort}
-                onChange={(order) => void filters.setParams({ order })}
-              />
-              <ViewModeButtons
-                value={params.view}
-                onChange={(view) => void filters.setParams({ view })}
-              />
-            </div>
-          </div>
-
-          <div className="mb-4 space-y-3">
-            <p className="text-muted-foreground text-sm">
-              {t("FREE_CONSENT.PAGE_INTRO")}
-            </p>
-            <div className="bg-card space-y-2 rounded-lg border p-4">
-              <h2 className="text-foreground text-sm font-medium">
-                {t("OWN_PURPOSE.TITLE")}
-              </h2>
-              <OwnPurposeObjectionToggle />
-            </div>
-          </div>
-
-          <div className="scroll-surface sticky top-14 z-20 flex h-9.75 items-center gap-2 overflow-hidden">
-            <SidebarTrigger
-              aria-label={t("MODELS.FILTER.TITLE")}
-              className="size-8 shrink-0 border"
-            />
-            <ModalityTabs
-              models={filters.tabRows.map((row) => row.model)}
-              value={params.modality}
-              onChange={(modality) => void filters.setParams({ modality })}
-            />
-          </div>
-
-          <SearchInput
-            className="relative mt-3 w-full lg:hidden"
-            placeholder={t("FREE_CONSENT.SEARCH")}
-            value={params.q}
-            onChange={(q) => void filters.setParams({ q: q || null })}
-          />
-
-          <div className="mt-4 min-h-svh">
-            {!loading && filters.filtered.length === 0 ? (
-              <ModelsEmpty
-                filtered={showReset}
-                count={filters.activeFilterCount}
-                onReset={resetAll}
-              />
-            ) : params.view === "table" ? (
-              <DataTable
-                id={DataTableId.FREE_MODELS}
-                data={filters.filtered}
-                columns={columns}
-                localSorting
-                windowVirtual
-                isLoading={loading}
-                stickyHeaderTop="calc(3.5rem + 2.4375rem)"
-              />
-            ) : (
-              filters.filtered.map((row) => (
-                <ConsentModelCard
-                  key={row.model.model_name}
-                  row={row}
-                  handlers={handlers}
-                />
-              ))
-            )}
-          </div>
-        </SidebarInset>
-      </SidebarProvider>
-
-      <Dialog open={open !== null} onOpenChange={(o) => !o && setOpen(null)}>
         <DialogContent className="max-h-[90vh] overflow-y-auto p-0">
           <DialogTitle className="sr-only">
-            {t("FREE_CONSENT.TITLE")}
+            {t("PROVIDER_CONSENT.TITLE")}
           </DialogTitle>
-          {open && (
-            <FreeConsentPanel model={open} onDone={() => setOpen(null)} />
-          )}
+          {params.model !== null ? (
+            <ModelConsentPanel model={params.model} onDone={close} />
+          ) : params.alias !== null ? (
+            <ProviderConsentPanel alias={params.alias} onDone={close} />
+          ) : null}
         </DialogContent>
       </Dialog>
     </div>

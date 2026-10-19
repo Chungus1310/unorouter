@@ -6386,7 +6386,10 @@
       "COUNTRIES": "Paesi",
       "REQUIREMENT": "Requisito",
       "STATUS": "Stato del consenso"
-    }
+    },
+    "TAB_PROVIDERS": "Fornitori",
+    "TAB_MODELS": "Modelli",
+    "COVERED_BY_PROVIDERS": "Coperto dai consensi ai fornitori"
   },
   "OWN_PURPOSE": {
     "TITLE": "Opposizione all'uso per scopi propri dei fornitori",
@@ -6395,5 +6398,27 @@
     "SAVED": "Opposizione salvata",
     "WITHDRAWN": "Opposizione revocata",
     "OBJECTED_ERROR": "Ti sei opposto alla trasmissione dei tuoi input a fornitori che li utilizzano per scopi propri, e questo modello è offerto tramite tali fornitori. Scegli un altro modello oppure revoca l'opposizione nelle impostazioni del tuo account o tramite «Gestisci consensi» nella chat."
+  },
+  "PROVIDER_CONSENT": {
+    "TITLE": "Consenso al trasferimento dei tuoi input a questi fornitori",
+    "PROVIDERS": "Questo consenso riguarda i seguenti fornitori, ciascuno indicato con un codice e il suo paese: {providers}. Per usarli, i tuoi input vengono trasferiti in questi paesi.",
+    "FOR_MODEL": "Forniscono il modello {model}.",
+    "CONSENT": "Confermando, acconsenti espressamente ai sensi dell'art. 49, paragrafo 1, lettera a del GDPR al trasferimento dei tuoi input, compresi i dati personali in essi contenuti, a questi fornitori e nei loro paesi nonostante i rischi descritti.",
+    "NOTHING_MISSING": "Hai già dato il consenso a tutti i fornitori di questo modello.",
+    "CLOSE": "Chiudi",
+    "SEARCH": "Cerca fornitori o modelli",
+    "TRAINS": "Questo fornitore usa i tuoi input per scopi propri, ad esempio per addestrare modelli di IA",
+    "UNSAFE_NOTE": "Nessuna protezione dei dati adeguata",
+    "MODEL_COUNT": "{count, plural, one {# modello} other {# modelli}}",
+    "SORT": {
+      "MODELS_DESC": "Più modelli",
+      "ALIAS": "Codice",
+      "COUNTRY": "Paese"
+    },
+    "TABLE": {
+      "PROVIDER": "Fornitore",
+      "COUNTRY": "Paese",
+      "MODELS": "Modelli"
+    }
   }
 }

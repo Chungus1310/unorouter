@@ -27,7 +27,6 @@ const PARSERS = {
   kind: parseAsArrayOf(parseAsStringLiteral(CONSENT_KINDS)).withDefault([]),
   country: parseAsArrayOf(parseAsString).withDefault([]),
   price: parseAsArrayOf(parseAsStringLiteral(PRICE_KINDS)).withDefault([]),
-  view: parseAsStringLiteral(["table", "list"] as const).withDefault("table"),
   order: parseAsArrayOf(parseAsStringLiteral(SORT_VALUES)).withDefault([]),
 };
 
