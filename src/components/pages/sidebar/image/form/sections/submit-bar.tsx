@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/navigation";
 import { useAuthQuery } from "@/hooks/auth/auth-hook";
 import { useFreeConsentsQuery } from "@/hooks/auth/free-consent-hook";
+import { needsTransferConsent } from "@/lib/api/own-purpose";
 import { useTranslations } from "next-intl";
 import { useFormContext, useWatch } from "react-hook-form";
 import { clampVariants } from "../../image-constants";
@@ -27,7 +28,8 @@ export function SubmitBar(props: Props) {
   const nav = useImageNav();
   const form = useFormContext<ImageFormValues>();
   const authQuery = useAuthQuery();
-  const consentsQuery = useFreeConsentsQuery(props.descriptor.is_free);
+  const consentModel = needsTransferConsent(props.descriptor);
+  const consentsQuery = useFreeConsentsQuery(consentModel);
 
   const prompt = useWatch({ control: form.control, name: "prompt" }) ?? "";
   const inpaintPrompt = useWatch({
@@ -56,10 +58,9 @@ export function SubmitBar(props: Props) {
     ? t("IMAGE.FREE_BADGE")
     : `~${renderQuota(dollarsToQuota(cost.estimate), 2)}`;
   const clampWarning = willClamp(width, height, steps);
-  const business =
-    props.descriptor.is_free && authQuery.data?.customer_type === "business";
+  const business = consentModel && authQuery.data?.customer_type === "business";
   const needsConsent =
-    props.descriptor.is_free &&
+    consentModel &&
     !business &&
     consentsQuery.data != null &&
     !(consentsQuery.data.consents ?? []).some(

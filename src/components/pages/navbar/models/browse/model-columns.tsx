@@ -1,6 +1,7 @@
 "use client";
 
 import { VendorIcon } from "@/components/elements/brand/vendor-icon";
+import { OwnPurposeBadge } from "@/components/elements/model/group-data-policy";
 import { ModelRowActions } from "./model-row-actions";
 import { DataTableColumnHeader } from "@/components/elements/table/data-table-column-header";
 import { Icon } from "@/components/ui/icon";
@@ -127,6 +128,7 @@ export function buildModelColumns(opts: {
                 <span className="hidden lg:inline">{opts.freeLabel}</span>
               </span>
             )}
+            <OwnPurposeBadge ownPurpose={m.own_purpose} />
             {isFlatVariant(m) && (
               <Tooltip>
                 <TooltipTrigger

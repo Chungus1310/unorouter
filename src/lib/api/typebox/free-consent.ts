@@ -9,3 +9,7 @@ export const freeConsentGrantBody = t.Object({
 export const freeConsentRevokeBody = t.Object({
   model: t.String({ maxLength: 255 }),
 });
+
+export const ownPurposeObjectionBody = t.Object({
+  objection: t.Boolean(),
+});

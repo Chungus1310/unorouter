@@ -2,6 +2,7 @@
 
 import { EMPTY_METADATA } from "@/lib/api/model-modality";
 import { VendorIcon } from "@/components/elements/brand/vendor-icon";
+import { OwnPurposeBadge } from "@/components/elements/model/group-data-policy";
 import { Link } from "@/i18n/navigation";
 import { NEW_MODEL_MS } from "@/hooks/ui/use-models-hook";
 import { useState } from "react";
@@ -59,6 +60,7 @@ export function VendorModelCard(props: { model: PricingCatalogModel }) {
               {t("MODELS.TABLE.FREE")}
             </span>
           )}
+          <OwnPurposeBadge ownPurpose={model.own_purpose} />
           {isNew && (
             <span className="rounded bg-orange-500/15 px-1.5 py-0.5 font-mono text-[10px] text-orange-600 dark:text-orange-400">
               {t("MODELS.VENDOR.NEW")}

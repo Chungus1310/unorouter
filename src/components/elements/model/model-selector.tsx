@@ -41,8 +41,12 @@ import {
   useModelStatusMap,
 } from "@/hooks/models/model-status-hook";
 import { UptimeDot } from "@/components/elements/model/uptime-dot";
-import { GroupDataPolicyBadges } from "@/components/elements/model/group-data-policy";
+import {
+  GroupDataPolicyBadges,
+  OwnPurposeBadge,
+} from "@/components/elements/model/group-data-policy";
 import type { GroupProviders } from "@/lib/validation/data-policy";
+import type { OwnPurposeSummary } from "@/openapi";
 import { useLoginRedirect } from "@/hooks/auth/use-login-redirect";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
@@ -114,6 +118,7 @@ type CatalogModel = {
   type: string;
   input_price?: number;
   output_price?: number;
+  own_purpose?: OwnPurposeSummary;
 };
 
 function CatalogModelItem(props: {
@@ -147,6 +152,7 @@ function CatalogModelItem(props: {
       <VendorIcon vendor={model.vendor} size={14} />
       <span className="min-w-0 flex-1 font-mono">{model.model_name}</span>
       <UptimeDot info={props.status} />
+      <OwnPurposeBadge ownPurpose={model.own_purpose} />
       {!model.is_free &&
         model.input_price !== undefined &&
         model.output_price !== undefined && (
@@ -435,6 +441,7 @@ export function ModelSelector(props: ModelSelectorProps) {
           {selected?.is_free && (
             <FreeBadge label={t("CHAT.MODEL.FREE_BADGE")} />
           )}
+          <OwnPurposeBadge ownPurpose={selected?.own_purpose} />
         </div>
         <Icon
           name="chevrons-up-down"

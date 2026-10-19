@@ -1,6 +1,7 @@
 "use client";
 
 import { FreeConsentList } from "@/components/elements/model/free-consent-list";
+import { OwnPurposeObjectionToggle } from "@/components/elements/model/own-purpose-objection-toggle";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -128,6 +129,12 @@ export function ChatActionsMenu(props: Props) {
             </DialogDescription>
           </DialogHeader>
           <FreeConsentList />
+          <div className="space-y-2 border-t pt-4">
+            <h3 className="text-foreground text-sm font-medium">
+              {t("OWN_PURPOSE.TITLE")}
+            </h3>
+            <OwnPurposeObjectionToggle />
+          </div>
         </DialogContent>
       </Dialog>
       {logsOpen && props.convId && (

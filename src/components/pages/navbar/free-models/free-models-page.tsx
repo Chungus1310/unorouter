@@ -1,6 +1,7 @@
 "use client";
 
 import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
+import { OwnPurposeBadge } from "@/components/elements/model/group-data-policy";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
@@ -10,6 +11,7 @@ import {
   useRevokeFreeConsentMutation,
 } from "@/hooks/auth/free-consent-hook";
 import { useFreeModelsQuery } from "@/hooks/models/pricing-hook";
+import { needsTransferConsent } from "@/lib/api/own-purpose";
 import { formatLongDate } from "@/lib/utils/format/date";
 import { ModalityTabs } from "@/components/pages/navbar/models/filters/modality-tabs";
 import { matchesModality, type OutputModality } from "@/lib/api/model-modality";
@@ -17,8 +19,8 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 
-// Consent per free model outside the chat, offline models included, so API
-// users can enable a model before their first request.
+// Consent per model outside the chat, offline models included, so API users
+// can enable a model before their first request.
 export function FreeModelsPage() {
   const t = useTranslations();
   const freeModelsQuery = useFreeModelsQuery();
@@ -81,6 +83,7 @@ export function FreeModelsPage() {
                   <span className="text-foreground truncate font-mono text-sm">
                     {m.model_name}
                   </span>
+                  <OwnPurposeBadge ownPurpose={m.own_purpose} />
                   {!m.online && (
                     <Badge variant="outline">{t("FREE_CONSENT.OFFLINE")}</Badge>
                   )}
@@ -102,10 +105,14 @@ export function FreeModelsPage() {
                 >
                   {t("FREE_CONSENT.REVOKE_BUTTON")}
                 </Button>
-              ) : (
+              ) : needsTransferConsent(m) ? (
                 <Button size="sm" onClick={() => setOpen(m.model_name)}>
                   {t("FREE_CONSENT.GIVE")}
                 </Button>
+              ) : (
+                <span className="text-muted-foreground shrink-0 text-xs">
+                  {t("FREE_CONSENT.NOT_NEEDED")}
+                </span>
               )}
             </li>
           );

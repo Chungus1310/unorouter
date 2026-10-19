@@ -1,5 +1,5 @@
 import { GUEST_USER_ID } from "@/lib/config/constants";
-import { assertGuestFreeConsent } from "@/server/auth/free-consent/free-consent.service";
+import { assertGuestOwnPurposeAccess } from "@/server/auth/free-consent/free-consent.service";
 import {
   finalizeTaskBody,
   forwardBody,
@@ -147,8 +147,8 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
       await assertGuestFreeModel(userId, body.model);
       // The title model is billed separately, so it needs its own guest check.
       await assertGuestFreeModel(userId, body.titleModel);
-      await assertGuestFreeConsent(cookie, userId, body.model);
-      await assertGuestFreeConsent(cookie, userId, body.titleModel);
+      await assertGuestOwnPurposeAccess(cookie, userId, body.model);
+      await assertGuestOwnPurposeAccess(cookie, userId, body.titleModel);
       // A guest's text may only reach a model the guest consented to, so the
       // free trio is off the table and the chat model titles its own chat.
       const titleModel =
@@ -169,7 +169,7 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
     "/stream",
     async ({ body, cookie, apiKey, userId }) => {
       await assertGuestFreeModel(userId, body.model);
-      await assertGuestFreeConsent(cookie, userId, body.model);
+      await assertGuestOwnPurposeAccess(cookie, userId, body.model);
       return streamMedia(apiKey, body);
     },
     { body: streamBody },
@@ -178,7 +178,7 @@ export const chatRoute = new Elysia({ prefix: "/chat" })
   .post(
     "/forward/chat/completions",
     async ({ body, cookie, request, apiKey, userId }) => {
-      await assertGuestFreeConsent(
+      await assertGuestOwnPurposeAccess(
         cookie,
         userId,
         typeof body.model === "string" ? body.model : undefined,

@@ -17,8 +17,10 @@ import { discountPercent, formatPrice } from "@/lib/utils/format/number";
 import { formatMsDate, formatYearMonth } from "@/lib/utils/format/date";
 import { cn } from "@/lib/utils";
 import { getDocsApiKey } from "@/lib/api/page-data";
+import { usesInputsForOwnPurposes } from "@/lib/api/own-purpose";
 import { getLocale, getTranslations } from "next-intl/server";
 import { AtCapacityBanner } from "./header/at-capacity-banner";
+import { OwnPurposeNotice } from "./header/own-purpose-notice";
 import { ModelDescription } from "./header/model-description";
 import { ModelFaq } from "./header/model-faq";
 import { ModelHeaderChips, ModelMetaStats } from "./header/model-header-chips";
@@ -277,6 +279,7 @@ print(res.choices[0].message.content)`;
         </div>
 
         {props.offline && <AtCapacityBanner />}
+        {usesInputsForOwnPurposes(m) && <OwnPurposeNotice />}
       </section>
 
       <ModelTabs

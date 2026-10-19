@@ -1,6 +1,7 @@
 "use client";
 
 import { VendorIcon } from "@/components/elements/brand/vendor-icon";
+import { OwnPurposeBadge } from "@/components/elements/model/group-data-policy";
 import { Icon } from "@/components/ui/icon";
 import { isFlatVariant } from "@/lib/api/model-modality";
 import type { PricingCatalogModel } from "@/openapi";
@@ -58,6 +59,7 @@ export function ModelListCard(props: {
               aria-label={t("MODELS.TABLE.FREE")}
             />
           )}
+          <OwnPurposeBadge ownPurpose={model.own_purpose} />
           {isFlatVariant(model) && (
             <span
               className="text-muted-foreground/70 flex shrink-0 items-center"

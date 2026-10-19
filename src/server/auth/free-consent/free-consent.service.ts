@@ -4,7 +4,15 @@ import {
   GUEST_USER_ID,
   msg,
 } from "@/lib/config/constants";
-import { getGuestFreeConsents, getStatus } from "@/openapi";
+import {
+  needsTransferConsent,
+  usesInputsForOwnPurposes,
+} from "@/lib/api/own-purpose";
+import {
+  getGuestFreeConsents,
+  getGuestOwnPurposeObjection,
+  getStatus,
+} from "@/openapi";
 import { bffServiceHeader, cookieString } from "@/server/constants";
 import { getModelByName } from "@/server/models/pricing/pricing.service";
 import type { Cookie } from "elysia";
@@ -48,6 +56,31 @@ export function forgetGuestConsents(guestId: string) {
   guestConsents.delete(guestId);
 }
 
+// Per pod like the consents; a change reaches the other pods within the TTL.
+const guestObjections = new Map<
+  string,
+  { objects: boolean; expires: number }
+>();
+
+export function forgetGuestObjection(guestId: string) {
+  guestObjections.delete(guestId);
+}
+
+async function guestObjects(guestId: string): Promise<boolean> {
+  const cached = guestObjections.get(guestId);
+  if (cached && cached.expires > Date.now()) return cached.objects;
+  const res = await getGuestOwnPurposeObjection({
+    headers: guestConsentHeaders(guestId),
+  });
+  if (!res.data?.success) throw new Error(msg("ERRORS.UNEXPECTED_ERROR"));
+  const objects = res.data.data.objection;
+  guestObjections.set(guestId, {
+    objects,
+    expires: Date.now() + GUEST_CONSENT_TTL_MS,
+  });
+  return objects;
+}
+
 async function guestConsentedModels(
   guestId: string,
   model: string,
@@ -81,17 +114,27 @@ async function consentEnforced(): Promise<boolean> {
   return on;
 }
 
-// The gateway delegates guest consent to this check, since every guest shares
-// one key; it has to run wherever a guest request reaches a free model.
-export async function assertGuestFreeConsent(
+// The gateway delegates a guest's objection and consent to this check, since
+// every guest shares one key; it has to run wherever a guest request reaches a
+// model. Unlike the gateway it cannot route around the providers objected to,
+// so an objection refuses the whole model.
+export async function assertGuestOwnPurposeAccess(
   cookie: Record<string, Cookie<unknown>>,
   userId: number,
   model?: string,
 ) {
   if (userId !== GUEST_USER_ID || !model) return;
-  if (!(await getModelByName(model))?.is_free) return;
-  if (!(await consentEnforced())) return;
+  const info = await getModelByName(model);
+  if (!info) return;
   const guestId = readGuestId(cookie);
+  if (
+    usesInputsForOwnPurposes(info) &&
+    guestId &&
+    (await guestObjects(guestId))
+  )
+    throw new Error(msg("OWN_PURPOSE.OBJECTED_ERROR"));
+  if (!needsTransferConsent(info)) return;
+  if (!(await consentEnforced())) return;
   if (guestId && (await guestConsentedModels(guestId, model)).has(model))
     return;
   throw new Error(msg("FREE_CONSENT.DECLINED"));

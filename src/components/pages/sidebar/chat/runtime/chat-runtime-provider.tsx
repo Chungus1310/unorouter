@@ -24,6 +24,7 @@ import { useRoomBroadcast } from "@/lib/ai/chat/room/use-room-broadcast";
 import { acquireLock, releaseLock } from "@/lib/db/client/outbox/resource-lock";
 import type { ChatUIMessage } from "@/lib/types";
 import { captureFailedRequest, logChatDebug } from "@/lib/utils/chat-debug-log";
+import { msg } from "@/lib/config/constants";
 import { extractErrorDetail, handleError } from "@/lib/utils/client";
 import {
   assistantRuntimeAtom,
@@ -179,7 +180,11 @@ function ChatRuntimeHook() {
         message: detail.message,
       });
       chatStore.set(lastStreamErrorAtom, {
-        message: detail.message,
+        message:
+          detail.code === "own_purpose_objected" ||
+          detail.message === msg("OWN_PURPOSE.OBJECTED_ERROR")
+            ? t("OWN_PURPOSE.OBJECTED_ERROR")
+            : detail.message,
         at: Date.now(),
         code: detail.code,
         status: detail.status,

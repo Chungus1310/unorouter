@@ -3,6 +3,7 @@
 import { countryName } from "@/components/elements/model/group-data-policy";
 import { Button } from "@/components/ui/button";
 import { Icon } from "@/components/ui/icon";
+import { Link } from "@/i18n/navigation";
 import { useGrantFreeConsentMutation } from "@/hooks/auth/free-consent-hook";
 import { useModelGroupsQuery } from "@/hooks/models/pricing-hook";
 import { useApiKey } from "@/hooks/ui/use-api-key";
@@ -11,24 +12,26 @@ import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
 
-// The seat countries of every group behind the model. Operators stay unnamed
+// The destinations the consent covers as the gateway computed them, else the
+// seat countries of every group behind the model. Operators stay unnamed
 // (which upstreams serve us is a business secret); a group without a recorded
-// seat still counts, so the list never claims fewer destinations.
+// seat adds "unknown", so the list never claims fewer destinations.
 function useSeatCountries(model: string): string[] | null {
   const t = useTranslations();
   const locale = useLocale();
   const groups = useModelGroupsQuery(model).data;
   if (!groups) return null;
-  const labels = new Set<string>();
+  const covered = groups.own_purpose?.countries ?? [];
+  const labels = new Set<string>(
+    covered.map((code) => countryName(code, locale)),
+  );
   for (const group of groups.enable_groups) {
     const policy = Object.hasOwn(groups.group_providers, group)
       ? groups.group_providers[group]
       : undefined;
-    labels.add(
-      policy?.seat_country
-        ? countryName(policy.seat_country, locale)
-        : t("FREE_CONSENT.UNKNOWN_COUNTRY"),
-    );
+    if (!policy?.seat_country) labels.add(t("FREE_CONSENT.UNKNOWN_COUNTRY"));
+    else if (covered.length === 0)
+      labels.add(countryName(policy.seat_country, locale));
   }
   if (labels.size === 0) labels.add(t("FREE_CONSENT.UNKNOWN_COUNTRY"));
   return [...labels];
@@ -63,6 +66,7 @@ export function FreeConsentPanel(props: {
       model: props.model,
       countries: countries.join(", "),
     }),
+    t("FREE_CONSENT.RISK"),
     t("FREE_CONSENT.MAY_USE"),
     t("FREE_CONSENT.NO_INFLUENCE", APP_VALUES),
     t("FREE_CONSENT.THIRD_PARTY"),
@@ -97,6 +101,13 @@ export function FreeConsentPanel(props: {
             {paragraph}
           </p>
         ))}
+        <Link
+          href="/privacy"
+          target="_blank"
+          className="text-primary inline-block text-sm underline-offset-4 hover:underline"
+        >
+          {t("FREE_CONSENT.PRIVACY_LINK")}
+        </Link>
         {declined && (
           <p className="text-foreground text-sm font-medium">
             {t("FREE_CONSENT.DECLINED")}

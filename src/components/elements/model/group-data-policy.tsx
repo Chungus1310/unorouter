@@ -9,6 +9,7 @@ import {
 import { FLAG_LOADERS } from "@/lib/config/flag-loaders";
 import type { IconName } from "@/lib/config/icon-map";
 import { cn } from "@/lib/utils";
+import type { OwnPurposeSummary } from "@/openapi";
 import type {
   GroupDataPolicy,
   TransferBasis,
@@ -188,6 +189,23 @@ export function GroupDataPolicyBadges(props: {
           />
         </Hint>
       )}
+    </span>
+  );
+}
+
+// Model-level notice before a model is chosen: at least one provider behind it
+// trains on or retains inputs.
+export function OwnPurposeBadge(props: {
+  ownPurpose: OwnPurposeSummary | undefined;
+  className?: string;
+}) {
+  const t = useTranslations();
+  if (!props.ownPurpose?.trains_or_retains) return null;
+  return (
+    <span className={cn("inline-flex shrink-0 items-center", props.className)}>
+      <Hint label={t("MODELS.DATA_POLICY.OWN_PURPOSE")}>
+        <PolicyIcon name="brain" className="text-warning!" />
+      </Hint>
     </span>
   );
 }

@@ -61,6 +61,7 @@ type SendOptions = Parameters<ChatTransport<ChatUIMessage>["sendMessages"]>[0];
 // The sdk's wording when the response body stops mid-read: the connection
 // dropped, the request itself had succeeded.
 const BODY_READ_FAILED = "Failed to process successful response";
+const OWN_PURPOSE_OBJECTED = "own_purpose_objected";
 
 function streamErrorText(error: unknown): string {
   const detail = extractErrorDetail(error);
@@ -69,7 +70,9 @@ function streamErrorText(error: unknown): string {
     message:
       detail.message === BODY_READ_FAILED
         ? msg("ERRORS.STREAM_CONNECTION_LOST")
-        : detail.message,
+        : detail.code === OWN_PURPOSE_OBJECTED
+          ? msg("OWN_PURPOSE.OBJECTED_ERROR")
+          : detail.message,
     status: detail.status ?? null,
     code: detail.code ?? null,
     requestId: detail.requestId ?? null,

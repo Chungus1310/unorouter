@@ -1997,6 +1997,24 @@ export interface OptionUpdateRequest {
   value: unknown;
 }
 
+export interface OwnPurposeObjectionData {
+  objection: boolean;
+}
+
+/**
+ * OwnPurposeObjectionRequest schema
+ */
+export interface OwnPurposeObjectionRequest {
+  /** @nullable */
+  objection: boolean | null;
+}
+
+export interface OwnPurposeSummary {
+  consent_required: boolean;
+  countries: string[];
+  trains_or_retains: boolean;
+}
+
 export interface PartnerGrantData {
   balance_after: number;
   granted: number;
@@ -2231,6 +2249,7 @@ export interface PricingCatalogModel {
   /** @nullable */
   original_output_price?: number | null;
   output_price: number;
+  own_purpose?: OwnPurposeSummary;
   release_ts: number;
   /** @nullable */
   success_rate?: number | null;
@@ -2309,6 +2328,7 @@ export interface PricingCatalogDetail {
   /** @nullable */
   original_output_price?: number | null;
   output_price: number;
+  own_purpose?: OwnPurposeSummary;
   release_ts: number;
   /** @nullable */
   success_rate?: number | null;
@@ -2408,6 +2428,7 @@ export interface PricingModelGroupsData {
   enable_groups: string[];
   group_providers: PricingModelGroupsDataGroupProviders;
   group_ratio: PricingModelGroupsDataGroupRatio;
+  own_purpose?: OwnPurposeSummary;
 }
 
 export interface PricingVendorModel {
@@ -3361,6 +3382,15 @@ export interface ResponseDtoNowPaymentsPayData {
  */
 export interface ResponseDtoOAuthExchangeData {
   data: OAuthExchangeData;
+  message: string;
+  success: boolean;
+}
+
+/**
+ * Response_dto.OwnPurposeObjectionData schema
+ */
+export interface ResponseDtoOwnPurposeObjectionData {
+  data: OwnPurposeObjectionData;
   message: string;
   success: boolean;
 }
@@ -17855,6 +17885,109 @@ export const grantGuestFreeConsent = async (
   );
 };
 
+export type getGuestOwnPurposeObjectionResponse200ApplicationJson = {
+  data: ResponseDtoOwnPurposeObjectionData;
+  status: 200;
+};
+
+export type getGuestOwnPurposeObjectionResponse200ApplicationXml = {
+  data: ResponseDtoOwnPurposeObjectionData;
+  status: 200;
+};
+
+export type getGuestOwnPurposeObjectionResponseSuccess = (
+  | getGuestOwnPurposeObjectionResponse200ApplicationJson
+  | getGuestOwnPurposeObjectionResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getGuestOwnPurposeObjectionResponse =
+  getGuestOwnPurposeObjectionResponseSuccess;
+
+export const getGetGuestOwnPurposeObjectionUrl = () => {
+  return `/api/user/guest/own-purpose-objection`;
+};
+
+/**
+ * @summary Get Guest Own Purpose Objection
+ */
+export const getGuestOwnPurposeObjection = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getGuestOwnPurposeObjectionResponse> => {
+  return customFetch<getGuestOwnPurposeObjectionResponse>(
+    getGetGuestOwnPurposeObjectionUrl(),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export type setGuestOwnPurposeObjectionResponse200ApplicationJson = {
+  data: ResponseDtoOwnPurposeObjectionData;
+  status: 200;
+};
+
+export type setGuestOwnPurposeObjectionResponse200ApplicationXml = {
+  data: ResponseDtoOwnPurposeObjectionData;
+  status: 200;
+};
+
+export type setGuestOwnPurposeObjectionResponseSuccess = (
+  | setGuestOwnPurposeObjectionResponse200ApplicationJson
+  | setGuestOwnPurposeObjectionResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type setGuestOwnPurposeObjectionResponse =
+  setGuestOwnPurposeObjectionResponseSuccess;
+
+export const getSetGuestOwnPurposeObjectionUrl = () => {
+  return `/api/user/guest/own-purpose-objection`;
+};
+
+/**
+ * @summary Set Guest Own Purpose Objection
+ */
+export const setGuestOwnPurposeObjection = async (
+  ownPurposeObjectionRequest: OwnPurposeObjectionRequest,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<setGuestOwnPurposeObjectionResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+  return customFetch<setGuestOwnPurposeObjectionResponse>(
+    getSetGuestOwnPurposeObjectionUrl(),
+    {
+      ...options,
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        ...getHeaders(options?.headers),
+      },
+      body: JSON.stringify(ownPurposeObjectionRequest),
+    },
+  );
+};
+
 export type loginResponse200ApplicationJson = {
   data: ResponseDtoLoginData;
   status: 200;
@@ -19528,6 +19661,109 @@ export const getApiUserSelfGroups = async (
     {
       ...options,
       method: "GET",
+    },
+  );
+};
+
+export type getOwnPurposeObjectionResponse200ApplicationJson = {
+  data: ResponseDtoOwnPurposeObjectionData;
+  status: 200;
+};
+
+export type getOwnPurposeObjectionResponse200ApplicationXml = {
+  data: ResponseDtoOwnPurposeObjectionData;
+  status: 200;
+};
+
+export type getOwnPurposeObjectionResponseSuccess = (
+  | getOwnPurposeObjectionResponse200ApplicationJson
+  | getOwnPurposeObjectionResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getOwnPurposeObjectionResponse =
+  getOwnPurposeObjectionResponseSuccess;
+
+export const getGetOwnPurposeObjectionUrl = () => {
+  return `/api/user/self/own-purpose-objection`;
+};
+
+/**
+ * @summary Get Own Purpose Objection
+ */
+export const getOwnPurposeObjection = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getOwnPurposeObjectionResponse> => {
+  return customFetch<getOwnPurposeObjectionResponse>(
+    getGetOwnPurposeObjectionUrl(),
+    {
+      ...options,
+      method: "GET",
+    },
+  );
+};
+
+export type setOwnPurposeObjectionResponse200ApplicationJson = {
+  data: ResponseDtoOwnPurposeObjectionData;
+  status: 200;
+};
+
+export type setOwnPurposeObjectionResponse200ApplicationXml = {
+  data: ResponseDtoOwnPurposeObjectionData;
+  status: 200;
+};
+
+export type setOwnPurposeObjectionResponseSuccess = (
+  | setOwnPurposeObjectionResponse200ApplicationJson
+  | setOwnPurposeObjectionResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type setOwnPurposeObjectionResponse =
+  setOwnPurposeObjectionResponseSuccess;
+
+export const getSetOwnPurposeObjectionUrl = () => {
+  return `/api/user/self/own-purpose-objection`;
+};
+
+/**
+ * @summary Set Own Purpose Objection
+ */
+export const setOwnPurposeObjection = async (
+  ownPurposeObjectionRequest: OwnPurposeObjectionRequest,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<setOwnPurposeObjectionResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+  return customFetch<setOwnPurposeObjectionResponse>(
+    getSetOwnPurposeObjectionUrl(),
+    {
+      ...options,
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        ...getHeaders(options?.headers),
+      },
+      body: JSON.stringify(ownPurposeObjectionRequest),
     },
   );
 };
