@@ -13,11 +13,16 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { Icon } from "@/components/ui/icon";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 import { formatLongDate } from "@/lib/utils/format/date";
 import type { ProviderConsentItem } from "@/openapi";
 import { useLocale, useTranslations } from "next-intl";
-import { providerModels } from "./provider-rows";
+import { groupTags, providerModels } from "./provider-rows";
 
 export type ProviderHandlers = {
   open: (alias: string) => void;
@@ -39,11 +44,33 @@ export function ProviderName(props: { provider: ProviderConsentItem }) {
       {p.trains_or_retains && (
         <OwnPurposeHint label={t("PROVIDER_CONSENT.TRAINS")} />
       )}
-      {(p.tags ?? []).map((tag) => (
-        <Badge key={tag} variant="secondary" className="font-mono text-[10px]">
-          {tag}
-        </Badge>
-      ))}
+      {groupTags(p.tags ?? []).map((group) =>
+        group.tags.length > 1 ? (
+          <Tooltip key={group.label}>
+            <TooltipTrigger
+              render={
+                <Badge
+                  variant="secondary"
+                  className="cursor-help font-mono text-[10px]"
+                />
+              }
+            >
+              {group.label}
+            </TooltipTrigger>
+            <TooltipContent className="max-w-80 font-mono text-xs">
+              {group.tags.join(", ")}
+            </TooltipContent>
+          </Tooltip>
+        ) : (
+          <Badge
+            key={group.label}
+            variant="secondary"
+            className="font-mono text-[10px]"
+          >
+            {group.label}
+          </Badge>
+        ),
+      )}
       {!p.active && (
         <Badge variant="outline" className="text-[10px]">
           {t("PROVIDER_CONSENT.INACTIVE")}

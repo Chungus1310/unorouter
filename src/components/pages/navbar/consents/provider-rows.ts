@@ -79,3 +79,24 @@ export function sortProviders(
     (a, b) => a.alias.localeCompare(b.alias),
   );
 }
+
+export type TagGroup = { label: string; tags: string[] };
+
+// Numbered lane families (dahl1..dahl100) collapse into one chip; a prefix
+// with a single member stays as the plain tag.
+export function groupTags(tags: string[]): TagGroup[] {
+  const families = new Map<string, string[]>();
+  for (const tag of tags) {
+    const prefix = /^(.*?\D)\d+$/.exec(tag)?.[1] ?? tag;
+    families.set(prefix, [...(families.get(prefix) ?? []), tag]);
+  }
+  return [...families.entries()].map(([prefix, members]) => {
+    const sorted = [...members].sort((a, b) =>
+      a.localeCompare(b, undefined, { numeric: true }),
+    );
+    return {
+      label: sorted.length > 1 ? `${prefix} ×${sorted.length}` : sorted[0]!,
+      tags: sorted,
+    };
+  });
+}
