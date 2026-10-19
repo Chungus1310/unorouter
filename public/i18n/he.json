@@ -6415,7 +6415,8 @@
       "COUNTRY": "מדינה",
       "ACTIVE_FIRST": "פעילים קודם",
       "ACTIVE_MODELS_DESC": "הכי הרבה מודלים פעילים",
-      "ACTIVE_LANES_DESC": "הכי הרבה נתיבים פעילים"
+      "ACTIVE_LANES_DESC": "הכי הרבה נתיבים פעילים",
+      "ACTIVE_CHANNELS_DESC": "הכי הרבה חיבורים פעילים"
     },
     "TABLE": {
       "PROVIDER": "ספק",
@@ -6428,6 +6429,7 @@
     "FILTER": {
       "ACTIVITY": "פעילות",
       "ACTIVE_ONLY": "פעילים בלבד"
-    }
+    },
+    "CHANNELS_ACTIVE": "{active} מתוך {count, plural, one {חיבור אחד} two {שני חיבורים} other {# חיבורים}} פעילים"
   }
 }

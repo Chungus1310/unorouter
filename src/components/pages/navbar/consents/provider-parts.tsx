@@ -72,10 +72,7 @@ export function ProviderCountry(props: { provider: ProviderConsentItem }) {
 export function ProviderModels(props: { provider: ProviderConsentItem }) {
   const t = useTranslations();
   const p = props.provider;
-  const models = providerModels(p).sort(
-    (a, b) =>
-      Number(b.active) - Number(a.active) || a.name.localeCompare(b.name),
-  );
+  const models = providerModels(p);
   return (
     <Collapsible>
       <CollapsibleTrigger className="text-muted-foreground hover:text-foreground group/pm flex items-center gap-1 text-left text-xs">
@@ -84,6 +81,12 @@ export function ProviderModels(props: { provider: ProviderConsentItem }) {
             {t("PROVIDER_CONSENT.MODELS_ACTIVE", {
               active: p.active_model_count,
               count: p.model_count,
+            })}
+          </span>
+          <span>
+            {t("PROVIDER_CONSENT.CHANNELS_ACTIVE", {
+              active: p.active_channel_count,
+              count: p.channel_count,
             })}
           </span>
           <span>
@@ -111,6 +114,14 @@ export function ProviderModels(props: { provider: ProviderConsentItem }) {
               )}
             >
               {model.name}
+              {model.channels > 0 && (
+                <span className="text-muted-foreground font-sans text-[10px]">
+                  {t("PROVIDER_CONSENT.CHANNELS_ACTIVE", {
+                    active: model.active_channels,
+                    count: model.channels,
+                  })}
+                </span>
+              )}
               {!model.active && (
                 <span className="font-sans text-[10px]">
                   {t("PROVIDER_CONSENT.INACTIVE")}

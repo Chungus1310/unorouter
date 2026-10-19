@@ -6415,7 +6415,8 @@
       "COUNTRY": "देश",
       "ACTIVE_FIRST": "सक्रिय पहले",
       "ACTIVE_MODELS_DESC": "सबसे ज़्यादा सक्रिय मॉडल",
-      "ACTIVE_LANES_DESC": "सबसे ज़्यादा सक्रिय लेन"
+      "ACTIVE_LANES_DESC": "सबसे ज़्यादा सक्रिय लेन",
+      "ACTIVE_CHANNELS_DESC": "सबसे ज़्यादा सक्रिय कनेक्शन"
     },
     "TABLE": {
       "PROVIDER": "प्रदाता",
@@ -6428,6 +6429,7 @@
     "FILTER": {
       "ACTIVITY": "गतिविधि",
       "ACTIVE_ONLY": "केवल सक्रिय"
-    }
+    },
+    "CHANNELS_ACTIVE": "{count, plural, one {# कनेक्शन} other {# कनेक्शन}} में से {active} सक्रिय"
   }
 }

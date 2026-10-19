@@ -6415,7 +6415,8 @@
       "COUNTRY": "国家",
       "ACTIVE_FIRST": "可用优先",
       "ACTIVE_MODELS_DESC": "可用模型最多",
-      "ACTIVE_LANES_DESC": "可用线路最多"
+      "ACTIVE_LANES_DESC": "可用线路最多",
+      "ACTIVE_CHANNELS_DESC": "可用连接最多"
     },
     "TABLE": {
       "PROVIDER": "提供商",
@@ -6428,6 +6429,7 @@
     "FILTER": {
       "ACTIVITY": "状态",
       "ACTIVE_ONLY": "仅可用"
-    }
+    },
+    "CHANNELS_ACTIVE": "{count, plural, other {# 个连接}}中 {active} 个可用"
   }
 }

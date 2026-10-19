@@ -6415,7 +6415,8 @@
       "COUNTRY": "البلد",
       "ACTIVE_FIRST": "النشطة أولًا",
       "ACTIVE_MODELS_DESC": "الأكثر نماذج نشطة",
-      "ACTIVE_LANES_DESC": "الأكثر مسارات نشطة"
+      "ACTIVE_LANES_DESC": "الأكثر مسارات نشطة",
+      "ACTIVE_CHANNELS_DESC": "الأكثر اتصالات نشطة"
     },
     "TABLE": {
       "PROVIDER": "المزود",
@@ -6428,6 +6429,7 @@
     "FILTER": {
       "ACTIVITY": "النشاط",
       "ACTIVE_ONLY": "النشطة فقط"
-    }
+    },
+    "CHANNELS_ACTIVE": "{active} من {count, plural, zero {# اتصال} one {اتصال واحد} two {اتصالين} few {# اتصالات} many {# اتصالًا} other {# اتصال}} نشطة"
   }
 }

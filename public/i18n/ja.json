@@ -6415,7 +6415,8 @@
       "COUNTRY": "国",
       "ACTIVE_FIRST": "稼働中を先に",
       "ACTIVE_MODELS_DESC": "稼働中モデルが多い順",
-      "ACTIVE_LANES_DESC": "稼働中レーンが多い順"
+      "ACTIVE_LANES_DESC": "稼働中レーンが多い順",
+      "ACTIVE_CHANNELS_DESC": "稼働中の接続が多い順"
     },
     "TABLE": {
       "PROVIDER": "提供者",
@@ -6428,6 +6429,7 @@
     "FILTER": {
       "ACTIVITY": "稼働状況",
       "ACTIVE_ONLY": "稼働中のみ"
-    }
+    },
+    "CHANNELS_ACTIVE": "{count, plural, other {# 接続}}中 {active} が稼働中"
   }
 }

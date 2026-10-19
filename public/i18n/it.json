@@ -6415,7 +6415,8 @@
       "COUNTRY": "Paese",
       "ACTIVE_FIRST": "Prima gli attivi",
       "ACTIVE_MODELS_DESC": "Più modelli attivi",
-      "ACTIVE_LANES_DESC": "Più canali attivi"
+      "ACTIVE_LANES_DESC": "Più canali attivi",
+      "ACTIVE_CHANNELS_DESC": "Più connessioni attive"
     },
     "TABLE": {
       "PROVIDER": "Fornitore",
@@ -6428,6 +6429,7 @@
     "FILTER": {
       "ACTIVITY": "Attività",
       "ACTIVE_ONLY": "Solo attivi"
-    }
+    },
+    "CHANNELS_ACTIVE": "{active} su {count, plural, one {# connessione} other {# connessioni}} attive"
   }
 }

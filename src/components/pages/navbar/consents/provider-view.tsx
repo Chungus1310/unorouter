@@ -38,6 +38,7 @@ const providerTableAtoms = createTableAtoms(DataTableId.PROVIDER_CONSENTS);
 
 const SORT_LABEL = {
   activeFirst: msg("PROVIDER_CONSENT.SORT.ACTIVE_FIRST"),
+  activeChannelsDesc: msg("PROVIDER_CONSENT.SORT.ACTIVE_CHANNELS_DESC"),
   activeModelsDesc: msg("PROVIDER_CONSENT.SORT.ACTIVE_MODELS_DESC"),
   activeLanesDesc: msg("PROVIDER_CONSENT.SORT.ACTIVE_LANES_DESC"),
   modelsDesc: msg("PROVIDER_CONSENT.SORT.MODELS_DESC"),

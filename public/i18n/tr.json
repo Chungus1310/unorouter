@@ -6415,7 +6415,8 @@
       "COUNTRY": "Ülke",
       "ACTIVE_FIRST": "Önce etkin olanlar",
       "ACTIVE_MODELS_DESC": "En çok etkin model",
-      "ACTIVE_LANES_DESC": "En çok etkin hat"
+      "ACTIVE_LANES_DESC": "En çok etkin hat",
+      "ACTIVE_CHANNELS_DESC": "En çok etkin bağlantı"
     },
     "TABLE": {
       "PROVIDER": "Sağlayıcı",
@@ -6428,6 +6429,7 @@
     "FILTER": {
       "ACTIVITY": "Etkinlik",
       "ACTIVE_ONLY": "Yalnızca etkin olanlar"
-    }
+    },
+    "CHANNELS_ACTIVE": "{count, plural, one {# bağlantıdan} other {# bağlantıdan}} {active} tanesi etkin"
   }
 }

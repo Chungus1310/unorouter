@@ -7,6 +7,7 @@ export type ProviderStatus = (typeof PROVIDER_STATUSES)[number];
 
 export const PROVIDER_SORT_VALUES = [
   "activeFirst",
+  "activeChannelsDesc",
   "activeModelsDesc",
   "activeLanesDesc",
   "modelsDesc",
@@ -16,16 +17,36 @@ export const PROVIDER_SORT_VALUES = [
 export type ProviderSort = (typeof PROVIDER_SORT_VALUES)[number];
 export const DEFAULT_PROVIDER_SORT: readonly ProviderSort[] = [
   "activeFirst",
+  "activeChannelsDesc",
   "activeModelsDesc",
   "activeLanesDesc",
 ];
 
-export type ProviderModel = { name: string; active: boolean };
+export type ProviderModel = {
+  name: string;
+  active: boolean;
+  channels: number;
+  active_channels: number;
+};
 
 // model_details is newer than models; a gateway without it lists names only.
+// Most active channels first, then active, then by name.
 export function providerModels(p: ProviderConsentItem): ProviderModel[] {
-  if (p.model_details && p.model_details.length > 0) return p.model_details;
-  return (p.models ?? []).map((name) => ({ name, active: true }));
+  const details: ProviderModel[] =
+    p.model_details && p.model_details.length > 0
+      ? p.model_details
+      : (p.models ?? []).map((name) => ({
+          name,
+          active: true,
+          channels: 0,
+          active_channels: 0,
+        }));
+  return [...details].sort(
+    (a, b) =>
+      b.active_channels - a.active_channels ||
+      Number(b.active) - Number(a.active) ||
+      a.name.localeCompare(b.name),
+  );
 }
 
 export function providerStatus(p: ProviderConsentItem): ProviderStatus {
@@ -42,6 +63,8 @@ export function sortProviders(
     keys,
     (key, a, b) => {
       if (key === "activeFirst") return Number(b.active) - Number(a.active);
+      if (key === "activeChannelsDesc")
+        return b.active_channel_count - a.active_channel_count;
       if (key === "activeModelsDesc")
         return b.active_model_count - a.active_model_count;
       if (key === "activeLanesDesc")

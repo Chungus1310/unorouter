@@ -6415,7 +6415,8 @@
       "COUNTRY": "국가",
       "ACTIVE_FIRST": "활성 먼저",
       "ACTIVE_MODELS_DESC": "활성 모델 많은 순",
-      "ACTIVE_LANES_DESC": "활성 레인 많은 순"
+      "ACTIVE_LANES_DESC": "활성 레인 많은 순",
+      "ACTIVE_CHANNELS_DESC": "활성 연결 많은 순"
     },
     "TABLE": {
       "PROVIDER": "제공자",
@@ -6428,6 +6429,7 @@
     "FILTER": {
       "ACTIVITY": "활성 상태",
       "ACTIVE_ONLY": "활성만"
-    }
+    },
+    "CHANNELS_ACTIVE": "{count, plural, other {연결 #개}} 중 {active}개 활성"
   }
 }
