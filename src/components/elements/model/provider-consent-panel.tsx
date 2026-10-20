@@ -8,6 +8,7 @@ import {
 import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
 import { countryName } from "@/components/elements/model/group-data-policy";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Icon } from "@/components/ui/icon";
 import { Link } from "@/i18n/navigation";
 import {
@@ -17,10 +18,23 @@ import {
 } from "@/hooks/auth/provider-consent-hook";
 import { useApiKey } from "@/hooks/ui/use-api-key";
 import { APP_VALUES } from "@/lib/config/constants";
+import { cn } from "@/lib/utils";
 import type { ProviderConsentItem } from "@/openapi";
 import { useLocale, useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
+
+function outerClass(inDialog?: boolean) {
+  return inDialog
+    ? "flex flex-col"
+    : "flex min-h-0 flex-1 flex-col items-center overflow-y-auto p-4 sm:p-8";
+}
+
+function cardClass(inDialog?: boolean) {
+  return inDialog
+    ? "space-y-3 px-5 pt-6 pb-5 sm:px-8 sm:pt-8"
+    : "bg-card my-auto w-full max-w-xl space-y-3 rounded-lg border p-5";
+}
 
 function PanelLoader() {
   return (
@@ -57,6 +71,8 @@ export function ProviderConsentPanel(props: {
   model?: string;
   alias?: string;
   onDone?: () => void;
+  // The dialog already frames the text, so the page padding and card border go.
+  inDialog?: boolean;
 }) {
   const t = useTranslations();
   const locale = useLocale();
@@ -70,8 +86,8 @@ export function ProviderConsentPanel(props: {
 
   if (targets.length === 0)
     return (
-      <div className="flex min-h-0 flex-1 flex-col items-center p-4 sm:p-8">
-        <div className="bg-card my-auto w-full max-w-xl space-y-3 rounded-lg border p-5">
+      <div className={outerClass(props.inDialog)}>
+        <div className={cardClass(props.inDialog)}>
           <p className="text-muted-foreground text-sm">
             {t("PROVIDER_CONSENT.NOTHING_MISSING")}
           </p>
@@ -170,9 +186,16 @@ export function ProviderConsentPanel(props: {
   }
 
   return (
-    <div className="flex min-h-0 flex-1 flex-col items-center overflow-y-auto p-4 sm:p-8">
-      <div className="bg-card my-auto w-full max-w-xl space-y-3 rounded-lg border p-5">
-        <h2 className="text-foreground text-base font-medium">{title}</h2>
+    <div className={outerClass(props.inDialog)}>
+      <div className={cardClass(props.inDialog)}>
+        <h2
+          className={cn(
+            "text-foreground text-base font-medium",
+            props.inDialog && "pr-8",
+          )}
+        >
+          {title}
+        </h2>
         {paragraphs.map((paragraph) => (
           <p key={paragraph} className="text-muted-foreground text-sm">
             {paragraph}
@@ -190,7 +213,12 @@ export function ProviderConsentPanel(props: {
             {t("FREE_CONSENT.DECLINED")}
           </p>
         )}
-        <div className="flex justify-end gap-2 pt-2">
+        <div
+          className={cn(
+            "flex justify-end gap-2 pt-2",
+            props.inDialog && "bg-overlay sticky bottom-0 border-t pt-3",
+          )}
+        >
           <Button
             variant="outline"
             size="sm"
@@ -224,4 +252,30 @@ export function ModelConsentPanel(props: {
   if ((query.data.providers ?? []).length > 0)
     return <ProviderConsentPanel model={props.model} onDone={props.onDone} />;
   return <FreeConsentPanel model={props.model} onDone={props.onDone} />;
+}
+
+export function ProviderConsentDialog(props: {
+  open: boolean;
+  onClose: () => void;
+  model?: string;
+  alias?: string;
+}) {
+  const t = useTranslations();
+  return (
+    <Dialog open={props.open} onOpenChange={(o) => !o && props.onClose()}>
+      <DialogContent className="max-h-[90svh] gap-0 overflow-y-auto p-0 sm:max-w-xl lg:max-w-2xl">
+        <DialogTitle className="sr-only">
+          {t("PROVIDER_CONSENT.TITLE")}
+        </DialogTitle>
+        {props.open && (
+          <ProviderConsentPanel
+            model={props.model}
+            alias={props.alias}
+            onDone={props.onClose}
+            inDialog
+          />
+        )}
+      </DialogContent>
+    </Dialog>
+  );
 }

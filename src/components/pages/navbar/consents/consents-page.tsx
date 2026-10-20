@@ -1,8 +1,7 @@
 "use client";
 
 import { OwnPurposeObjectionToggle } from "@/components/elements/model/own-purpose-objection-toggle";
-import { ProviderConsentPanel } from "@/components/elements/model/provider-consent-panel";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { ProviderConsentDialog } from "@/components/elements/model/provider-consent-panel";
 import { Icon } from "@/components/ui/icon";
 import type { IconName } from "@/lib/config/icon-map";
 import { msg } from "@/lib/config/constants";
@@ -105,16 +104,11 @@ export function ConsentsPage() {
         />
       )}
 
-      <Dialog open={params.alias !== null} onOpenChange={(o) => !o && close()}>
-        <DialogContent className="max-h-[90vh] overflow-y-auto p-0">
-          <DialogTitle className="sr-only">
-            {t("PROVIDER_CONSENT.TITLE")}
-          </DialogTitle>
-          {params.alias !== null && (
-            <ProviderConsentPanel alias={params.alias} onDone={close} />
-          )}
-        </DialogContent>
-      </Dialog>
+      <ProviderConsentDialog
+        open={params.alias !== null}
+        alias={params.alias ?? undefined}
+        onClose={close}
+      />
     </div>
   );
 }

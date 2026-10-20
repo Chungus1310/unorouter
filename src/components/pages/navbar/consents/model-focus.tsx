@@ -1,7 +1,7 @@
 "use client";
 
 import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
-import { ProviderConsentPanel } from "@/components/elements/model/provider-consent-panel";
+import { ProviderConsentDialog } from "@/components/elements/model/provider-consent-panel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,7 +9,6 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
-import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Icon } from "@/components/ui/icon";
 import {
   useModelProviderConsentsQuery,
@@ -174,19 +173,11 @@ export function ModelFocus(props: {
 
       {table}
 
-      <Dialog open={granting} onOpenChange={setGranting}>
-        <DialogContent className="max-h-[90vh] overflow-y-auto p-0">
-          <DialogTitle className="sr-only">
-            {t("PROVIDER_CONSENT.TITLE")}
-          </DialogTitle>
-          {granting && (
-            <ProviderConsentPanel
-              model={props.model}
-              onDone={() => setGranting(false)}
-            />
-          )}
-        </DialogContent>
-      </Dialog>
+      <ProviderConsentDialog
+        open={granting}
+        model={props.model}
+        onClose={() => setGranting(false)}
+      />
     </div>
   );
 }
