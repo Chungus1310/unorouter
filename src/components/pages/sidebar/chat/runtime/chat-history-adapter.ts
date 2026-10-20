@@ -347,6 +347,43 @@ type BranchPlacement = {
 // Existing siblings MUST be deactivated and the new one take the next
 // branchIndex, else walkActiveBranch picks the wrong tip and a branch switch
 // renders an empty thread.
+// A message is only ever added to the branch on screen, so its ancestors ARE
+// the active branch. A swipe whose switch never reached the database left an
+// older reply inactive under a live continuation, and the next reload from the
+// database jumped back to the stale swipe.
+async function activateAncestors(
+  convId: string,
+  parentId: string | null,
+  now: Date,
+): Promise<void> {
+  const rows = (await readLocalMessages(convId)) ?? [];
+  const byId = new Map(rows.map((m) => [m.id, m]));
+  const fixed: string[] = [];
+  const seen = new Set<string>();
+  for (
+    let cur = parentId ? byId.get(parentId) : undefined;
+    cur && !seen.has(cur.id);
+    cur = cur.parentId ? byId.get(cur.parentId) : undefined
+  ) {
+    seen.add(cur.id);
+    if (cur.isActiveBranch !== false) continue;
+    fixed.push(cur.id);
+    const parent = cur.parentId ?? null;
+    for (const sib of rows) {
+      if ((sib.parentId ?? null) !== parent) continue;
+      const active = sib.id === cur.id;
+      if ((sib.isActiveBranch !== false) === active) continue;
+      await upsertLocalMessage({
+        ...sib,
+        isActiveBranch: active,
+        updatedAt: now,
+      });
+    }
+  }
+  if (fixed.length > 0)
+    logChatDebug("branch.reactivated", { convId, messages: fixed });
+}
+
 async function placeOnBranch(
   convId: string,
   messageId: string,
@@ -415,6 +452,7 @@ async function placeOnBranch(
       updatedAt: now,
     });
   }
+  await activateAncestors(convId, parentId, now);
   return { parentId, parentBranchVars, nextBranchIndex };
 }
 
