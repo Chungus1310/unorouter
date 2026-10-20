@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { discountPercent, formatPrice } from "@/lib/utils/format/number";
 import { useTranslations } from "next-intl";
 import { FixedPriceUnit } from "../shared/fixed-price-unit";
-import { MINI_TABLE, MINI_TABLE_BODY_ROW } from "../shared/mini-table";
 
 type Row = {
   labelKey: TranslationKey;
@@ -81,40 +80,31 @@ export function PriceRows(props: {
   return (
     <div
       className={cn(
-        "rounded-lg border px-3 py-1",
+        "grid grid-cols-2 gap-x-2 rounded-lg border px-1 py-1 sm:grid-cols-4",
         props.theme.bg,
         props.theme.border,
       )}
     >
-      <table className={MINI_TABLE}>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.labelKey} className={MINI_TABLE_BODY_ROW}>
-              <td className="text-muted-foreground py-1.5 pr-3 text-[10px] uppercase">
-                {t(row.labelKey)}
-              </td>
-              <td
-                className={cn(
-                  "py-1.5 text-right font-medium whitespace-nowrap",
-                  props.theme.text,
-                )}
-              >
-                {formatPrice(row.price)}
-                <span className="text-muted-foreground ml-0.5 text-[10px]">
-                  {perMillion ? t("MODELS.PRICE.PER_MILLION") : row.unit}
-                </span>
-              </td>
-              <td className="w-0 py-1.5 pl-2 text-right">
-                {row.pct > 0 && (
-                  <span className="rounded bg-green-500/15 px-1 text-[10px] whitespace-nowrap text-green-600 dark:text-green-400">
-                    {t("MODELS.TABLE.OFF", { pct: row.pct })}
-                  </span>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {rows.map((row) => (
+        <div key={row.labelKey} className="flex flex-col gap-0.5 px-2 py-1.5">
+          <span className="text-muted-foreground text-[10px] uppercase">
+            {t(row.labelKey)}
+          </span>
+          <span
+            className={cn("font-medium whitespace-nowrap", props.theme.text)}
+          >
+            {formatPrice(row.price)}
+            <span className="text-muted-foreground ml-0.5 text-[10px]">
+              {perMillion ? t("MODELS.PRICE.PER_MILLION") : row.unit}
+            </span>
+          </span>
+          {row.pct > 0 && (
+            <span className="w-fit rounded bg-green-500/15 px-1 text-[10px] whitespace-nowrap text-green-600 dark:text-green-400">
+              {t("MODELS.TABLE.OFF", { pct: row.pct })}
+            </span>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
