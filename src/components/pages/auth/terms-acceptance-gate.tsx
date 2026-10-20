@@ -73,7 +73,7 @@ export function TermsAcceptanceGate() {
                 <Link
                   href="/terms"
                   target="_blank"
-                  className="text-primary underline-offset-4 hover:underline"
+                  className="text-primary underline underline-offset-4"
                 >
                   {chunks}
                 </Link>
@@ -82,7 +82,7 @@ export function TermsAcceptanceGate() {
                 <Link
                   href="/privacy"
                   target="_blank"
-                  className="text-primary underline-offset-4 hover:underline"
+                  className="text-primary underline underline-offset-4"
                 >
                   {chunks}
                 </Link>
