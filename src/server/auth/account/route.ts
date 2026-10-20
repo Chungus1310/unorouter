@@ -135,6 +135,9 @@ export const authRoute = new Elysia({ prefix: "/account" })
           action: query.action,
           customer_type: query.customer_type,
           turnstile: query.turnstile,
+          terms_version: query.terms_version,
+          terms_locale: query.terms_locale,
+          terms_text: query.terms_text,
         },
         upstream,
       );

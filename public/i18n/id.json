@@ -2772,6 +2772,14 @@
     "TERMS_NOTICE": {
       "REGISTER": "Dengan membuat akun, Anda menyetujui <terms>Ketentuan Layanan</terms> kami. Informasi tentang cara kami menangani data Anda tersedia di <privacy>Kebijakan Privasi</privacy> kami.",
       "OAUTH": "Jika Anda membuat akun baru melalui salah satu layanan ini, Anda menyetujui <terms>Ketentuan Layanan</terms> kami. Informasi tentang cara kami menangani data Anda tersedia di <privacy>Kebijakan Privasi</privacy> kami."
+    },
+    "TERMS_UPDATE": {
+      "TITLE": "Ketentuan Layanan kami telah berubah",
+      "INTRO": "Kami telah memperbarui Ketentuan Layanan dan Kebijakan Privasi kami. Untuk terus menggunakan akun Anda, silakan terima Ketentuan Layanan yang telah diperbarui.",
+      "CHANGES": "Perubahan utama: bagian 6 yang baru mengatur penyedia di negara ketiga; penawaran mereka ditandai dengan negara kedudukan penyedia, dan Anda tidak boleh memasukkan data pribadi pihak ketiga ke dalamnya. Persetujuan untuk penyedia yang menggunakan masukan untuk tujuan mereka sendiri kini diberikan per penyedia.",
+      "LINKS": "Silakan baca <terms>Ketentuan Layanan</terms> dan <privacy>Kebijakan Privasi</privacy> yang telah diperbarui.",
+      "ACCEPT": "Terima",
+      "LOG_OUT": "Keluar"
     }
   },
   "SIDEBAR": {

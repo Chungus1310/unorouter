@@ -263,6 +263,7 @@ export function LoginForm() {
           <OAuthButtons
             status={statusQuery.data}
             notice={<TermsNotice variant="oauth" />}
+            termsVariant="oauth"
             turnstileToken={turnstileToken}
             onTurnstileSpent={() => {
               turnstileRef.current?.reset();

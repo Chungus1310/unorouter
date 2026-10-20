@@ -301,28 +301,25 @@ export interface BillingPreferenceRequest {
   billing_preference: string;
 }
 
-export interface ClaudeCacheCreationUsage {
-  ephemeral_1h_input_tokens?: number;
-  ephemeral_5m_input_tokens?: number;
-}
-
-export interface ClaudeServerToolUse {
-  code_execution_requests?: number;
-  tool_search_requests?: number;
-  web_fetch_requests?: number;
-  web_search_requests?: number;
+export interface GeminiPromptTokensDetails {
+  modality: string;
+  tokenCount: number;
 }
 
 export interface BillingUsage {
   billing_usage?: BillingUsage;
-  cache_creation?: ClaudeCacheCreationUsage;
-  cache_creation_input_tokens: number;
-  cache_read_input_tokens: number;
-  claude_cache_creation_1_h_tokens: number;
-  claude_cache_creation_5_m_tokens: number;
-  input_tokens: number;
-  output_tokens: number;
-  server_tool_use?: ClaudeServerToolUse;
+  cachedContentTokenCount: number;
+  candidatesTokenCount: number;
+  /** @nullable */
+  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
+  promptTokenCount: number;
+  /** @nullable */
+  promptTokensDetails: GeminiPromptTokensDetails[] | null;
+  thoughtsTokenCount: number;
+  toolUsePromptTokenCount: number;
+  /** @nullable */
+  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
+  totalTokenCount: number;
 }
 
 export interface BucketPoint {
@@ -522,6 +519,11 @@ export interface CheckinStatusData {
   stats: CheckinStats;
 }
 
+export interface ClaudeCacheCreationUsage {
+  ephemeral_1h_input_tokens?: number;
+  ephemeral_5m_input_tokens?: number;
+}
+
 /**
  * ClaudeMessageResponse schema
  */
@@ -536,6 +538,13 @@ export interface ClaudeMessageResponse {
   stop_sequence: string | null;
   type: string;
   usage: unknown;
+}
+
+export interface ClaudeServerToolUse {
+  code_execution_requests?: number;
+  tool_search_requests?: number;
+  web_fetch_requests?: number;
+  web_search_requests?: number;
 }
 
 export interface ClaudeUsage {
@@ -1076,34 +1085,40 @@ export interface EmbeddingResponseItem {
   object: string;
 }
 
-export interface GeminiPromptTokensDetails {
-  modality: string;
-  tokenCount: number;
+export interface OutputTokenDetails {
+  audio_tokens: number;
+  image_tokens: number;
+  reasoning_tokens: number;
+  text_tokens: number;
 }
 
-export interface GeminiUsageMetadata {
-  billing_usage?: BillingUsage;
-  cachedContentTokenCount: number;
-  candidatesTokenCount: number;
-  /** @nullable */
-  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
-  promptTokenCount: number;
-  /** @nullable */
-  promptTokensDetails: GeminiPromptTokensDetails[] | null;
-  thoughtsTokenCount: number;
-  toolUsePromptTokenCount: number;
-  /** @nullable */
-  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
-  totalTokenCount: number;
+export interface InputTokenDetails {
+  audio_tokens: number;
+  cache_write_tokens?: number;
+  cached_creation_tokens?: number;
+  cached_tokens: number;
+  cached_tokens_details?: CachedTokenDetails;
+  image_tokens: number;
+  text_tokens: number;
 }
 
 export interface Usage {
-  claude_usage?: ClaudeUsage;
-  estimated?: boolean;
-  gemini_usage_metadata?: GeminiUsageMetadata;
-  openai_usage?: Usage;
-  semantic?: string;
-  source?: string;
+  billing_usage?: BillingUsage;
+  claude_cache_creation_1_h_tokens: number;
+  claude_cache_creation_5_m_tokens: number;
+  completion_tokens: number;
+  completion_tokens_details: OutputTokenDetails;
+  cost?: unknown;
+  input_tokens: number;
+  input_tokens_details: InputTokenDetails;
+  output_tokens: number;
+  output_tokens_details?: OutputTokenDetails;
+  prompt_cache_hit_tokens?: number;
+  prompt_tokens: number;
+  prompt_tokens_details: InputTokenDetails;
+  total_tokens: number;
+  usage_semantic?: string;
+  usage_source?: string;
 }
 
 /**
@@ -1253,6 +1268,22 @@ export interface GeminiModelList {
   nextPageToken: unknown;
 }
 
+export interface GeminiUsageMetadata {
+  billing_usage?: BillingUsage;
+  cachedContentTokenCount: number;
+  candidatesTokenCount: number;
+  /** @nullable */
+  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
+  promptTokenCount: number;
+  /** @nullable */
+  promptTokensDetails: GeminiPromptTokensDetails[] | null;
+  thoughtsTokenCount: number;
+  toolUsePromptTokenCount: number;
+  /** @nullable */
+  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
+  totalTokenCount: number;
+}
+
 export type GetAllChannelsDataTypeCountsAnyOf = { [key: string]: number };
 
 /**
@@ -1399,16 +1430,6 @@ export interface ImageParams {
   supportsSize: boolean;
   supportsSteps: boolean;
   supportsStrength: boolean;
-}
-
-export interface InputTokenDetails {
-  audio_tokens: number;
-  cache_write_tokens?: number;
-  cached_creation_tokens?: number;
-  cached_tokens: number;
-  cached_tokens_details?: CachedTokenDetails;
-  image_tokens: number;
-  text_tokens: number;
 }
 
 export interface InvitedUser {
@@ -1981,13 +2002,6 @@ export interface Option {
 export interface OptionUpdateRequest {
   key: string;
   value: unknown;
-}
-
-export interface OutputTokenDetails {
-  audio_tokens: number;
-  image_tokens: number;
-  reasoning_tokens: number;
-  text_tokens: number;
 }
 
 export interface OwnPurposeObjectionData {
@@ -2684,6 +2698,12 @@ export interface RegisterRequest {
    * @maxLength 72
    */
   password: string;
+  /** @maxLength 16 */
+  terms_locale?: string;
+  /** @maxLength 20000 */
+  terms_text?: string;
+  /** @maxLength 16 */
+  terms_version?: string;
   /** @maxLength 64 */
   username: string;
   verification_code?: string;
@@ -4083,6 +4103,20 @@ export interface ResponseDtoSubscriptionActionData {
   success: boolean;
 }
 
+export interface TermsAcceptanceData {
+  accepted_at: number;
+  version: string;
+}
+
+/**
+ * Response_dto.TermsAcceptanceData schema
+ */
+export interface ResponseDtoTermsAcceptanceData {
+  data: TermsAcceptanceData;
+  message: string;
+  success: boolean;
+}
+
 export interface TestConnectionResponse {
   hardware_count: number;
   total_available: number;
@@ -4705,6 +4739,18 @@ export interface TaskResponseDoc {
   code: string;
   data: unknown;
   message: string;
+}
+
+/**
+ * TermsAcceptRequest schema
+ */
+export interface TermsAcceptRequest {
+  /** @maxLength 16 */
+  locale: string;
+  /** @maxLength 20000 */
+  text: string;
+  /** @maxLength 16 */
+  version: string;
 }
 
 /**
@@ -5576,6 +5622,18 @@ export type GenerateOAuthCodeQueryParams = {
    * JSON object with the step-up context, for scopes that bind one
    */
   context?: string;
+  /**
+   * Terms of use version the signup page showed (YYYY-MM-DD), recorded as accepted on an account this login creates
+   */
+  terms_version?: string;
+  /**
+   * Locale of the terms notice shown
+   */
+  terms_locale?: string;
+  /**
+   * The terms notice exactly as shown
+   */
+  terms_text?: string;
 };
 
 export type GenerateOAuthCodeParams = {
@@ -20200,6 +20258,100 @@ export const grantProviderConsents = async (
       body: JSON.stringify(providerConsentGrantRequest),
     },
   );
+};
+
+export type getTermsAcceptanceResponse200ApplicationJson = {
+  data: ResponseDtoTermsAcceptanceData;
+  status: 200;
+};
+
+export type getTermsAcceptanceResponse200ApplicationXml = {
+  data: ResponseDtoTermsAcceptanceData;
+  status: 200;
+};
+
+export type getTermsAcceptanceResponseSuccess = (
+  | getTermsAcceptanceResponse200ApplicationJson
+  | getTermsAcceptanceResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type getTermsAcceptanceResponse = getTermsAcceptanceResponseSuccess;
+
+export const getGetTermsAcceptanceUrl = () => {
+  return `/api/user/self/terms-acceptance`;
+};
+
+/**
+ * @summary Get Terms Acceptance
+ */
+export const getTermsAcceptance = async (
+  options?: Parameters<typeof customFetch>[1],
+): Promise<getTermsAcceptanceResponse> => {
+  return customFetch<getTermsAcceptanceResponse>(getGetTermsAcceptanceUrl(), {
+    ...options,
+    method: "GET",
+  });
+};
+
+export type acceptTermsResponse200ApplicationJson = {
+  data: ResponseDtoTermsAcceptanceData;
+  status: 200;
+};
+
+export type acceptTermsResponse200ApplicationXml = {
+  data: ResponseDtoTermsAcceptanceData;
+  status: 200;
+};
+
+export type acceptTermsResponseSuccess = (
+  acceptTermsResponse200ApplicationJson | acceptTermsResponse200ApplicationXml
+) & {
+  headers: Headers;
+};
+export type acceptTermsResponse = acceptTermsResponseSuccess;
+
+export const getAcceptTermsUrl = () => {
+  return `/api/user/self/terms-acceptance`;
+};
+
+/**
+ * @summary Accept Terms
+ */
+export const acceptTerms = async (
+  termsAcceptRequest: TermsAcceptRequest,
+  options?: Parameters<typeof customFetch>[1],
+): Promise<acceptTermsResponse> => {
+  const getHeaders = (
+    h?: NonNullable<RequestInit["headers"]>,
+  ): Record<string, string | readonly string[]> => {
+    if (!h) return {};
+    if (h instanceof Headers) return Object.fromEntries(h.entries());
+    if (Symbol.iterator in h) {
+      return Object.fromEntries(
+        Array.from(
+          h as Iterable<Iterable<string>>,
+          (entry) => Array.from(entry) as [string, string],
+        ),
+      );
+    }
+    const headers: Record<string, string | readonly string[]> = {};
+    for (const [name, value] of Object.entries<
+      string | readonly string[] | undefined
+    >(h)) {
+      if (value !== undefined) headers[name] = value;
+    }
+    return headers;
+  };
+  return customFetch<acceptTermsResponse>(getAcceptTermsUrl(), {
+    ...options,
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...getHeaders(options?.headers),
+    },
+    body: JSON.stringify(termsAcceptRequest),
+  });
 };
 
 export type updateTimeoutPreferenceResponse200ApplicationJson = {

@@ -2772,6 +2772,14 @@
     "TERMS_NOTICE": {
       "REGISTER": "Khi tạo tài khoản, bạn chấp nhận <terms>Điều khoản dịch vụ</terms> của chúng tôi. Bạn có thể tìm hiểu cách chúng tôi xử lý dữ liệu của bạn trong <privacy>Chính sách bảo mật</privacy>.",
       "OAUTH": "Nếu bạn tạo tài khoản mới bằng một trong các dịch vụ này, bạn chấp nhận <terms>Điều khoản dịch vụ</terms> của chúng tôi. Bạn có thể tìm hiểu cách chúng tôi xử lý dữ liệu của bạn trong <privacy>Chính sách bảo mật</privacy>."
+    },
+    "TERMS_UPDATE": {
+      "TITLE": "Điều khoản dịch vụ của chúng tôi đã thay đổi",
+      "INTRO": "Chúng tôi đã cập nhật Điều khoản dịch vụ và Chính sách bảo mật. Để tiếp tục sử dụng tài khoản, vui lòng chấp nhận Điều khoản dịch vụ đã cập nhật.",
+      "CHANGES": "Những thay đổi chính: mục 6 mới quy định về nhà cung cấp tại nước thứ ba; dịch vụ của họ được đánh dấu kèm theo nước đặt trụ sở của nhà cung cấp, và bạn không được nhập dữ liệu cá nhân của bên thứ ba vào đó. Sự đồng ý đối với các nhà cung cấp sử dụng dữ liệu nhập cho mục đích riêng nay được đưa ra riêng cho từng nhà cung cấp.",
+      "LINKS": "Vui lòng đọc <terms>Điều khoản dịch vụ</terms> và <privacy>Chính sách bảo mật</privacy> đã cập nhật.",
+      "ACCEPT": "Chấp nhận",
+      "LOG_OUT": "Đăng xuất"
     }
   },
   "SIDEBAR": {

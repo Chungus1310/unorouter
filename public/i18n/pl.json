@@ -2772,6 +2772,14 @@
     "TERMS_NOTICE": {
       "REGISTER": "Tworząc konto, akceptujesz nasze <terms>Warunki usługi</terms>. Informacje o tym, jak przetwarzamy Twoje dane, znajdziesz w naszej <privacy>Polityce prywatności</privacy>.",
       "OAUTH": "Jeśli utworzysz nowe konto za pomocą jednej z tych usług, akceptujesz nasze <terms>Warunki usługi</terms>. Informacje o tym, jak przetwarzamy Twoje dane, znajdziesz w naszej <privacy>Polityce prywatności</privacy>."
+    },
+    "TERMS_UPDATE": {
+      "TITLE": "Zmieniliśmy nasze Warunki usługi",
+      "INTRO": "Zaktualizowaliśmy nasze Warunki usługi i Politykę prywatności. Aby dalej korzystać z konta, zaakceptuj zaktualizowane Warunki usługi.",
+      "CHANGES": "Najważniejsze zmiany: nowy punkt 6 reguluje dostawców w państwach trzecich; ich oferty są oznaczone państwem siedziby dostawcy i nie wolno Ci wprowadzać do nich danych osobowych osób trzecich. Zgodę na dostawców, którzy wykorzystują dane wejściowe do własnych celów, wyrażasz teraz osobno dla każdego dostawcy.",
+      "LINKS": "Przeczytaj zaktualizowane <terms>Warunki usługi</terms> i <privacy>Politykę prywatności</privacy>.",
+      "ACCEPT": "Akceptuję",
+      "LOG_OUT": "Wyloguj się"
     }
   },
   "SIDEBAR": {

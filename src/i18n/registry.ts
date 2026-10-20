@@ -1,6 +1,7 @@
 import { CHAT_DOCS } from "@/components/pages/docs/chat/chat-docs";
 import { PLATFORM_DOCS } from "@/components/pages/docs/platform/platform-docs";
 import { SETUP_GUIDES } from "@/components/pages/docs/setup-guides";
+import { TERMS_VERSION } from "@/i18n/terms-version";
 import {
   BlogEntry,
   DocEntry,
@@ -128,7 +129,7 @@ export const DOCS_REGISTRY: readonly DocEntry[] = [
 
 export const LEGAL_REGISTRY = [
   { slug: "legal/privacy", date: "2026-03-07", updated: "2026-10-20" },
-  { slug: "legal/terms", date: "2026-03-07", updated: "2026-10-20" },
+  { slug: "legal/terms", date: "2026-03-07", updated: TERMS_VERSION },
   { slug: "legal/refund", date: "2026-06-17" },
   { slug: "legal/aup", date: "2026-06-30" },
   { slug: "legal/impressum", date: "2026-10-14" },

@@ -1,5 +1,9 @@
 "use client";
 
+import {
+  useTermsShown,
+  type TermsNoticeVariant,
+} from "@/components/pages/auth/terms-notice";
 import { Icon } from "@/components/ui/icon";
 import { AFF_CODE_KEY } from "@/lib/config/constants";
 import { env } from "@/lib/config/env";
@@ -23,6 +27,8 @@ type OAuthButtonsProps = {
   signup?: { customerType: CustomerType };
   /** Rendered above the buttons, so it is read before an account gets created. */
   notice?: React.ReactNode;
+  /** The terms notice the page shows, recorded on an account this login creates. */
+  termsVariant: TermsNoticeVariant;
 };
 
 type OAuthProvider = {
@@ -70,6 +76,7 @@ export function buildOAuthAuthorizeUrl(
 export function OAuthButtons(props: OAuthButtonsProps) {
   const t = useTranslations();
   const [loading, setLoading] = useState<string | null>(null);
+  const termsShown = useTermsShown(props.termsVariant);
 
   const providers: OAuthProvider[] = [];
 
@@ -136,6 +143,7 @@ export function OAuthButtons(props: OAuthButtonsProps) {
             aff: typeof affCode === "string" ? affCode : undefined,
             customer_type: props.signup?.customerType,
             turnstile: props.turnstileToken,
+            ...termsShown,
           },
         }),
       );

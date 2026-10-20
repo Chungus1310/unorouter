@@ -2,7 +2,10 @@
 
 import { MyFormInput } from "@/components/elements/form/my-form-input";
 import { OAuthButtons } from "@/components/pages/auth/oauth-buttons";
-import { TermsNotice } from "@/components/pages/auth/terms-notice";
+import {
+  TermsNotice,
+  useTermsShown,
+} from "@/components/pages/auth/terms-notice";
 import { Button } from "@/components/ui/button";
 import { Form } from "@/components/ui/form";
 import { GlassAuthCard } from "@/components/ui/glass-auth-card";
@@ -39,6 +42,7 @@ export function RegisterForm() {
   const verificationMutation = useSendVerificationMutation();
   const statusQuery = useStatusQuery();
   const status = statusQuery.data;
+  const termsShown = useTermsShown("register");
 
   const form = useForm({
     resolver: typeboxResolver(registerSchema),
@@ -93,6 +97,7 @@ export function RegisterForm() {
           aff_code: affCode,
           customer_type: "consumer",
           turnstile: turnstileToken,
+          ...termsShown,
         },
       });
       deleteCookie(AFF_CODE_KEY);
@@ -291,6 +296,7 @@ export function RegisterForm() {
           <OAuthButtons
             status={status}
             signup={{ customerType: "consumer" }}
+            termsVariant="register"
             notice={
               showPasswordForm ? undefined : <TermsNotice variant="register" />
             }

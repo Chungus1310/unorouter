@@ -13,6 +13,7 @@ export const queryKeys = {
   providerConsentsForModel: (model: string) =>
     ["provider-consents", model] as const,
   ownPurposeObjection: () => ["own-purpose-objection"] as const,
+  termsAcceptance: () => ["terms-acceptance"] as const,
   consentModels: () => ["consent-models"] as const,
   verificationMethods: (scope: SecurityScope) =>
     ["verification-methods", scope] as const,

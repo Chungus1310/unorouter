@@ -4,6 +4,7 @@ import { ContentBoundary } from "@/components/elements/feedback/content-boundary
 import type { SidebarNavConfig } from "@/components/layout/sidebar/app-sidebar";
 import { AppSidebar } from "@/components/layout/sidebar/app-sidebar";
 import { SidebarHeader } from "@/components/layout/sidebar/sidebar-header";
+import { TermsAcceptanceGate } from "@/components/pages/auth/terms-acceptance-gate";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { cn } from "@/lib/utils";
 import { sidebarOpenAtom } from "@/store/client-store";
@@ -57,6 +58,7 @@ export function SidebarLayout(props: SidebarLayoutProps) {
       }
     >
       {props.before}
+      <TermsAcceptanceGate />
       <AppSidebar navConfig={props.navConfig} chatContent={props.chatContent} />
       <SidebarInset className={isChat ? "overflow-hidden" : undefined}>
         <SidebarHeader

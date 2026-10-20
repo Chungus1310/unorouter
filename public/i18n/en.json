@@ -2772,6 +2772,14 @@
     "TERMS_NOTICE": {
       "REGISTER": "By creating an account, you accept our <terms>Terms of Service</terms>. You can find information on how we handle your data in our <privacy>Privacy Policy</privacy>.",
       "OAUTH": "If you create a new account with one of these services, you accept our <terms>Terms of Service</terms>. You can find information on how we handle your data in our <privacy>Privacy Policy</privacy>."
+    },
+    "TERMS_UPDATE": {
+      "TITLE": "Our Terms of Service have changed",
+      "INTRO": "We have updated our Terms of Service and our Privacy Policy. To continue using your account, please accept the updated Terms of Service.",
+      "CHANGES": "The main changes: the new section 6 governs providers in third countries; their offers are marked with the country where the provider is based, and you must not enter personal data of third parties into them. Consent to providers that use inputs for their own purposes is now given per provider.",
+      "LINKS": "Please read the updated <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>.",
+      "ACCEPT": "Accept",
+      "LOG_OUT": "Log out"
     }
   },
   "SIDEBAR": {

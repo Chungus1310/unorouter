@@ -2772,6 +2772,14 @@
     "TERMS_NOTICE": {
       "REGISTER": "Al crear una cuenta, aceptas nuestros <terms>Términos de servicio</terms>. Encontrarás información sobre cómo tratamos tus datos en nuestra <privacy>Política de privacidad</privacy>.",
       "OAUTH": "Si creas una cuenta nueva con uno de estos servicios, aceptas nuestros <terms>Términos de servicio</terms>. Encontrarás información sobre cómo tratamos tus datos en nuestra <privacy>Política de privacidad</privacy>."
+    },
+    "TERMS_UPDATE": {
+      "TITLE": "Hemos cambiado nuestros Términos de servicio",
+      "INTRO": "Hemos actualizado nuestros Términos de servicio y nuestra Política de privacidad. Para seguir usando tu cuenta, acepta los Términos de servicio actualizados.",
+      "CHANGES": "Principales cambios: la nueva sección 6 regula los proveedores en terceros países; sus ofertas están marcadas con el país de sede del proveedor y no debes introducir en ellas datos personales de terceros. El consentimiento para los proveedores que utilizan las entradas para sus propios fines se otorga ahora por proveedor.",
+      "LINKS": "Lee los <terms>Términos de servicio</terms> y la <privacy>Política de privacidad</privacy> actualizados.",
+      "ACCEPT": "Aceptar",
+      "LOG_OUT": "Cerrar sesión"
     }
   },
   "SIDEBAR": {

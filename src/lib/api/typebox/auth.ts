@@ -7,6 +7,14 @@ export const loginBody = t.Object({
   turnstile: t.Optional(t.String()),
 });
 
+// The terms notice a signup form showed; the gateway records it as the
+// accepted terms version of the account it creates.
+const termsShownFields = {
+  terms_version: t.Optional(t.String({ maxLength: 16 })),
+  terms_locale: t.Optional(t.String({ maxLength: 16 })),
+  terms_text: t.Optional(t.String({ maxLength: 20000 })),
+};
+
 export const registerBody = t.Object({
   username: t.String(),
   password: t.String(),
@@ -15,6 +23,7 @@ export const registerBody = t.Object({
   aff_code: t.Optional(t.String()),
   customer_type: customerTypeSchema,
   turnstile: t.Optional(t.String()),
+  ...termsShownFields,
 });
 
 export const oauthStateQuery = t.Object({
@@ -24,6 +33,13 @@ export const oauthStateQuery = t.Object({
   action: t.Optional(t.String()),
   customer_type: t.Optional(customerTypeSchema),
   turnstile: t.Optional(t.String()),
+  ...termsShownFields,
+});
+
+export const termsAcceptBody = t.Object({
+  version: t.String({ maxLength: 16 }),
+  locale: t.String({ maxLength: 16 }),
+  text: t.String({ minLength: 1, maxLength: 20000 }),
 });
 
 export const oauthCallbackQuery = t.Object({

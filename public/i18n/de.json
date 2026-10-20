@@ -2772,6 +2772,14 @@
     "TERMS_NOTICE": {
       "REGISTER": "Mit dem Erstellen eines Kontos akzeptierst du unsere <terms>Nutzungsbedingungen</terms>. Informationen dazu, wie wir mit deinen Daten umgehen, findest du in unserer <privacy>Datenschutzrichtlinie</privacy>.",
       "OAUTH": "Wenn du über einen dieser Dienste ein neues Konto erstellst, akzeptierst du unsere <terms>Nutzungsbedingungen</terms>. Informationen dazu, wie wir mit deinen Daten umgehen, findest du in unserer <privacy>Datenschutzrichtlinie</privacy>."
+    },
+    "TERMS_UPDATE": {
+      "TITLE": "Unsere Nutzungsbedingungen haben sich geändert",
+      "INTRO": "Wir haben unsere Nutzungsbedingungen und unsere Datenschutzrichtlinie aktualisiert. Um Ihr Konto weiter zu nutzen, akzeptieren Sie bitte die aktualisierten Nutzungsbedingungen.",
+      "CHANGES": "Die wichtigsten Änderungen: Die neue Ziffer 6 regelt Anbieter in Drittländern; deren Angebote sind mit dem Sitzland des Anbieters gekennzeichnet, und Sie dürfen dort keine personenbezogenen Daten Dritter eingeben. Die Einwilligung für Anbieter, die Eingaben für eigene Zwecke nutzen, erteilen Sie jetzt je Anbieter.",
+      "LINKS": "Bitte lesen Sie die aktualisierten <terms>Nutzungsbedingungen</terms> und die <privacy>Datenschutzrichtlinie</privacy>.",
+      "ACCEPT": "Akzeptieren",
+      "LOG_OUT": "Abmelden"
     }
   },
   "SIDEBAR": {

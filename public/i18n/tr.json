@@ -2772,6 +2772,14 @@
     "TERMS_NOTICE": {
       "REGISTER": "Hesap oluşturarak <terms>Hizmet Şartlarımızı</terms> kabul etmiş olursunuz. Verilerinizi nasıl işlediğimize ilişkin bilgileri <privacy>Gizlilik Politikamızda</privacy> bulabilirsiniz.",
       "OAUTH": "Bu hizmetlerden biriyle yeni bir hesap oluşturursanız <terms>Hizmet Şartlarımızı</terms> kabul etmiş olursunuz. Verilerinizi nasıl işlediğimize ilişkin bilgileri <privacy>Gizlilik Politikamızda</privacy> bulabilirsiniz."
+    },
+    "TERMS_UPDATE": {
+      "TITLE": "Hizmet Şartlarımız değişti",
+      "INTRO": "Hizmet Şartlarımızı ve Gizlilik Politikamızı güncelledik. Hesabınızı kullanmaya devam etmek için lütfen güncellenmiş Hizmet Şartlarını kabul edin.",
+      "CHANGES": "Başlıca değişiklikler: yeni 6. madde üçüncü ülkelerdeki sağlayıcıları düzenler; bu sağlayıcıların teklifleri sağlayıcının merkez ülkesiyle işaretlenir ve bu tekliflere üçüncü kişilerin kişisel verilerini girmemeniz gerekir. Girdileri kendi amaçları için kullanan sağlayıcılara onay artık her sağlayıcı için ayrı ayrı verilir.",
+      "LINKS": "Lütfen güncellenmiş <terms>Hizmet Şartlarını</terms> ve <privacy>Gizlilik Politikasını</privacy> okuyun.",
+      "ACCEPT": "Kabul et",
+      "LOG_OUT": "Çıkış yap"
     }
   },
   "SIDEBAR": {
