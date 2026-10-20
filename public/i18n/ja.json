@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "{name}に掲載",
     "BADGE_VERIFIED_ON": "{name}で認証済み",
     "AUP": "利用ポリシー",
-    "IMPRESSUM": "運営者情報"
+    "IMPRESSUM": "運営者情報",
+    "CONSENTS": "同意"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "アフィリエイト",
     "BILLING": "請求",
     "SETTINGS": "設定",
-    "GIFT_CARDS": "ギフトカード"
+    "GIFT_CARDS": "ギフトカード",
+    "CONSENTS": "同意"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} にはどの提供者への同意も不要です。",
       "GRANT_ALL": "{count, plural, other {# 件すべてに同意する}}",
       "BACK": "すべての提供者に戻る",
-      "CLEAR": "モデルの絞り込みを解除"
+      "CLEAR": "モデルの絞り込みを解除",
+      "INACTIVE_GROUP": "{count, plural, other {停止中の提供者 # 件（同意に含まれます）}}"
     },
     "COUNTS_SHORT": "モデル {activeModels}/{models}、接続 {activeChannels}/{channels}",
     "REASON": {

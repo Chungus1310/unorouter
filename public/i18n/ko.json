@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "{name}에 소개됨",
     "BADGE_VERIFIED_ON": "{name}에서 인증됨",
     "AUP": "이용 정책",
-    "IMPRESSUM": "법적 고지"
+    "IMPRESSUM": "법적 고지",
+    "CONSENTS": "동의"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "제휴",
     "BILLING": "결제",
     "SETTINGS": "설정",
-    "GIFT_CARDS": "기프트 카드"
+    "GIFT_CARDS": "기프트 카드",
+    "CONSENTS": "동의"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model}에는 어떤 제공자에 대한 동의도 필요하지 않습니다.",
       "GRANT_ALL": "{count, plural, other {#개 모두 동의}}",
       "BACK": "모든 제공자로 돌아가기",
-      "CLEAR": "모델 필터 제거"
+      "CLEAR": "모델 필터 제거",
+      "INACTIVE_GROUP": "{count, plural, other {비활성 제공자 #개 (동의에 포함됨)}}"
     },
     "COUNTS_SHORT": "모델 {activeModels}/{models}, 연결 {activeChannels}/{channels}",
     "REASON": {

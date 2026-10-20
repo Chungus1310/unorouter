@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "Vorgestellt auf {name}",
     "BADGE_VERIFIED_ON": "Verifiziert auf {name}",
     "AUP": "Nutzungsrichtlinie",
-    "IMPRESSUM": "Impressum"
+    "IMPRESSUM": "Impressum",
+    "CONSENTS": "Einwilligungen"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "Partnerprogramm",
     "BILLING": "Abrechnung",
     "SETTINGS": "Einstellungen",
-    "GIFT_CARDS": "Geschenkkarten"
+    "GIFT_CARDS": "Geschenkkarten",
+    "CONSENTS": "Einwilligungen"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} braucht für keinen Anbieter eine Einwilligung.",
       "GRANT_ALL": "{count, plural, one {In diesen Anbieter einwilligen} other {In alle # einwilligen}}",
       "BACK": "Zurück zu allen Anbietern",
-      "CLEAR": "Modellfilter entfernen"
+      "CLEAR": "Modellfilter entfernen",
+      "INACTIVE_GROUP": "{count, plural, one {# inaktiver Anbieter (in der Einwilligung enthalten)} other {# inaktive Anbieter (in der Einwilligung enthalten)}}"
     },
     "COUNTS_SHORT": "{activeModels}/{models} Modelle, {activeChannels}/{channels} Kan.",
     "REASON": {

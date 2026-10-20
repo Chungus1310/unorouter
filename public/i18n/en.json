@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "Featured on {name}",
     "BADGE_VERIFIED_ON": "Verified on {name}",
     "AUP": "Acceptable Use Policy",
-    "IMPRESSUM": "Legal Notice"
+    "IMPRESSUM": "Legal Notice",
+    "CONSENTS": "Consents"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "Affiliate",
     "BILLING": "Billing",
     "SETTINGS": "Settings",
-    "GIFT_CARDS": "Gift Cards"
+    "GIFT_CARDS": "Gift Cards",
+    "CONSENTS": "Consents"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} needs no consent for any provider.",
       "GRANT_ALL": "{count, plural, one {Consent to this provider} other {Consent to all #}}",
       "BACK": "Back to all providers",
-      "CLEAR": "Remove model filter"
+      "CLEAR": "Remove model filter",
+      "INACTIVE_GROUP": "{count, plural, one {# inactive provider (included in the consent)} other {# inactive providers (included in the consent)}}"
     },
     "COUNTS_SHORT": "{activeModels}/{models} models, {activeChannels}/{channels} ch",
     "REASON": {

@@ -201,6 +201,11 @@ export const sidebarNavigation = (isPartner = false): NavigationItem[] => {
       href: "/settings",
       iconName: "settings",
     },
+    {
+      name: "SIDEBAR.CONSENTS",
+      href: "/consents",
+      iconName: "shield-check",
+    },
   ];
   return items.filter((item) => item !== false);
 };

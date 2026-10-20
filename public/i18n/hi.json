@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "{name} पर फ़ीचर्ड",
     "BADGE_VERIFIED_ON": "{name} पर सत्यापित",
     "AUP": "स्वीकार्य उपयोग नीति",
-    "IMPRESSUM": "कानूनी सूचना"
+    "IMPRESSUM": "कानूनी सूचना",
+    "CONSENTS": "सहमतियाँ"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "Affiliate",
     "BILLING": "Billing",
     "SETTINGS": "Settings",
-    "GIFT_CARDS": "गिफ़्ट कार्ड"
+    "GIFT_CARDS": "गिफ़्ट कार्ड",
+    "CONSENTS": "सहमतियाँ"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} को किसी भी प्रदाता के लिए सहमति नहीं चाहिए।",
       "GRANT_ALL": "{count, plural, one {इस प्रदाता को सहमति दें} other {सभी # को सहमति दें}}",
       "BACK": "सभी प्रदाताओं पर वापस जाएँ",
-      "CLEAR": "मॉडल फ़िल्टर हटाएँ"
+      "CLEAR": "मॉडल फ़िल्टर हटाएँ",
+      "INACTIVE_GROUP": "{count, plural, one {# निष्क्रिय प्रदाता (सहमति में शामिल)} other {# निष्क्रिय प्रदाता (सहमति में शामिल)}}"
     },
     "COUNTS_SHORT": "{activeModels}/{models} मॉडल, {activeChannels}/{channels} कनेक्शन",
     "REASON": {

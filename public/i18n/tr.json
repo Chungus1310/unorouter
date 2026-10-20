@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "{name} üzerinde öne çıkan",
     "BADGE_VERIFIED_ON": "{name} üzerinde doğrulandı",
     "AUP": "Kabul Edilebilir Kullanım Politikası",
-    "IMPRESSUM": "Künye"
+    "IMPRESSUM": "Künye",
+    "CONSENTS": "Onaylar"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "Affiliate",
     "BILLING": "Faturalandırma",
     "SETTINGS": "Ayarlar",
-    "GIFT_CARDS": "Hediye kartları"
+    "GIFT_CARDS": "Hediye kartları",
+    "CONSENTS": "Onaylar"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} hiçbir sağlayıcı için onay gerektirmiyor.",
       "GRANT_ALL": "{count, plural, one {Bu sağlayıcıya onay ver} other {# sağlayıcının tümüne onay ver}}",
       "BACK": "Tüm sağlayıcılara dön",
-      "CLEAR": "Model filtresini kaldır"
+      "CLEAR": "Model filtresini kaldır",
+      "INACTIVE_GROUP": "{count, plural, one {# etkin olmayan sağlayıcı (onaya dahil)} other {# etkin olmayan sağlayıcı (onaya dahil)}}"
     },
     "COUNTS_SHORT": "{activeModels}/{models} model, {activeChannels}/{channels} bağl.",
     "REASON": {

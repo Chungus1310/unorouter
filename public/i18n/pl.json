@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "Wyróżniony w {name}",
     "BADGE_VERIFIED_ON": "Zweryfikowany w {name}",
     "AUP": "Zasady dopuszczalnego użytkowania",
-    "IMPRESSUM": "Nota prawna"
+    "IMPRESSUM": "Nota prawna",
+    "CONSENTS": "Zgody"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "Program partnerski",
     "BILLING": "Rozliczenia",
     "SETTINGS": "Ustawienia",
-    "GIFT_CARDS": "Karty podarunkowe"
+    "GIFT_CARDS": "Karty podarunkowe",
+    "CONSENTS": "Zgody"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} nie wymaga zgody dla żadnego dostawcy.",
       "GRANT_ALL": "{count, plural, one {Wyraź zgodę dla tego dostawcy} few {Wyraź zgodę dla wszystkich #} many {Wyraź zgodę dla wszystkich #} other {Wyraź zgodę dla wszystkich #}}",
       "BACK": "Wróć do wszystkich dostawców",
-      "CLEAR": "Usuń filtr modelu"
+      "CLEAR": "Usuń filtr modelu",
+      "INACTIVE_GROUP": "{count, plural, one {# nieaktywny dostawca (objęty zgodą)} few {# nieaktywni dostawcy (objęci zgodą)} many {# nieaktywnych dostawców (objętych zgodą)} other {# nieaktywnego dostawcy (objętego zgodą)}}"
     },
     "COUNTS_SHORT": "{activeModels}/{models} modeli, {activeChannels}/{channels} poł.",
     "REASON": {

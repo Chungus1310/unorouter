@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "Được giới thiệu trên {name}",
     "BADGE_VERIFIED_ON": "Đã xác minh trên {name}",
     "AUP": "Chính sách sử dụng được chấp nhận",
-    "IMPRESSUM": "Thông tin pháp lý"
+    "IMPRESSUM": "Thông tin pháp lý",
+    "CONSENTS": "Đồng ý"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "Tiếp thị liên kết",
     "BILLING": "Thanh toán",
     "SETTINGS": "Cài đặt",
-    "GIFT_CARDS": "Thẻ quà tặng"
+    "GIFT_CARDS": "Thẻ quà tặng",
+    "CONSENTS": "Đồng ý"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} không cần đồng ý cho nhà cung cấp nào.",
       "GRANT_ALL": "{count, plural, other {Đồng ý cho cả #}}",
       "BACK": "Quay lại tất cả nhà cung cấp",
-      "CLEAR": "Bỏ bộ lọc mô hình"
+      "CLEAR": "Bỏ bộ lọc mô hình",
+      "INACTIVE_GROUP": "{count, plural, other {# nhà cung cấp không hoạt động (đã bao gồm trong sự đồng ý)}}"
     },
     "COUNTS_SHORT": "{activeModels}/{models} mô hình, {activeChannels}/{channels} kết nối",
     "REASON": {

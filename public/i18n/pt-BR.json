@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "Destaque em {name}",
     "BADGE_VERIFIED_ON": "Verificado em {name}",
     "AUP": "Política de uso aceitável",
-    "IMPRESSUM": "Aviso legal"
+    "IMPRESSUM": "Aviso legal",
+    "CONSENTS": "Consentimentos"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "Afiliado",
     "BILLING": "Faturamento",
     "SETTINGS": "Configurações",
-    "GIFT_CARDS": "Cartões-presente"
+    "GIFT_CARDS": "Cartões-presente",
+    "CONSENTS": "Consentimentos"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} não precisa de consentimento para nenhum provedor.",
       "GRANT_ALL": "{count, plural, one {Consentir a este provedor} other {Consentir aos #}}",
       "BACK": "Voltar a todos os provedores",
-      "CLEAR": "Remover o filtro de modelo"
+      "CLEAR": "Remover o filtro de modelo",
+      "INACTIVE_GROUP": "{count, plural, one {# provedor inativo (incluído no consentimento)} other {# provedores inativos (incluídos no consentimento)}}"
     },
     "COUNTS_SHORT": "{activeModels}/{models} modelos, {activeChannels}/{channels} con.",
     "REASON": {

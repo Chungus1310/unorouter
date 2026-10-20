@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "מופיע ב{name}",
     "BADGE_VERIFIED_ON": "מאומת ב{name}",
     "AUP": "מדיניות שימוש מקובל",
-    "IMPRESSUM": "הודעה משפטית"
+    "IMPRESSUM": "הודעה משפטית",
+    "CONSENTS": "הסכמות"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "שותפים",
     "BILLING": "חיובים",
     "SETTINGS": "הגדרות",
-    "GIFT_CARDS": "כרטיסי מתנה"
+    "GIFT_CARDS": "כרטיסי מתנה",
+    "CONSENTS": "הסכמות"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} לא צריך הסכמה לאף ספק.",
       "GRANT_ALL": "{count, plural, one {הסכמה לספק זה} two {הסכמה לשני הספקים} other {הסכמה לכל #}}",
       "BACK": "חזרה לכל הספקים",
-      "CLEAR": "הסרת סינון המודל"
+      "CLEAR": "הסרת סינון המודל",
+      "INACTIVE_GROUP": "{count, plural, one {ספק לא פעיל אחד (כלול בהסכמה)} two {שני ספקים לא פעילים (כלולים בהסכמה)} other {# ספקים לא פעילים (כלולים בהסכמה)}}"
     },
     "COUNTS_SHORT": "{activeModels}/{models} מודלים, {activeChannels}/{channels} חיבורים",
     "REASON": {

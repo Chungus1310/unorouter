@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "已在 {name} 推薦",
     "BADGE_VERIFIED_ON": "已在 {name} 驗證",
     "AUP": "使用政策",
-    "IMPRESSUM": "法律聲明"
+    "IMPRESSUM": "法律聲明",
+    "CONSENTS": "同意"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "聯盟推廣",
     "BILLING": "帳務",
     "SETTINGS": "設定",
-    "GIFT_CARDS": "禮品卡"
+    "GIFT_CARDS": "禮品卡",
+    "CONSENTS": "同意"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} 不需要對任何供應商的同意。",
       "GRANT_ALL": "{count, plural, other {同意全部 # 個}}",
       "BACK": "返回所有供應商",
-      "CLEAR": "移除模型篩選"
+      "CLEAR": "移除模型篩選",
+      "INACTIVE_GROUP": "{count, plural, other {# 個未啟用的供應商（已包含在同意中）}}"
     },
     "COUNTS_SHORT": "模型 {activeModels}/{models}，連線 {activeChannels}/{channels}",
     "REASON": {

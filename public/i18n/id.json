@@ -2372,7 +2372,8 @@
     "BADGE_FEATURED_ON": "Ditampilkan di {name}",
     "BADGE_VERIFIED_ON": "Terverifikasi di {name}",
     "AUP": "Kebijakan Penggunaan yang Dapat Diterima",
-    "IMPRESSUM": "Informasi Hukum"
+    "IMPRESSUM": "Informasi Hukum",
+    "CONSENTS": "Persetujuan"
   },
   "PRIVACY": {
     "META": {
@@ -2782,7 +2783,8 @@
     "AFFILIATE": "Afiliasi",
     "BILLING": "Penagihan",
     "SETTINGS": "Pengaturan",
-    "GIFT_CARDS": "Kartu hadiah"
+    "GIFT_CARDS": "Kartu hadiah",
+    "CONSENTS": "Persetujuan"
   },
   "DASHBOARD": {
     "GREETING": {
@@ -6440,7 +6442,8 @@
       "NONE_NEEDED": "{model} tidak memerlukan persetujuan untuk penyedia mana pun.",
       "GRANT_ALL": "{count, plural, other {Setujui semua #}}",
       "BACK": "Kembali ke semua penyedia",
-      "CLEAR": "Hapus filter model"
+      "CLEAR": "Hapus filter model",
+      "INACTIVE_GROUP": "{count, plural, other {# penyedia tidak aktif (termasuk dalam persetujuan)}}"
     },
     "COUNTS_SHORT": "{activeModels}/{models} model, {activeChannels}/{channels} kon.",
     "REASON": {

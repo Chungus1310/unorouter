@@ -4,6 +4,11 @@ import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel
 import { ProviderConsentPanel } from "@/components/elements/model/provider-consent-panel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Icon } from "@/components/ui/icon";
 import {
@@ -79,16 +84,44 @@ export function ModelFocus(props: {
   const covered = providers.filter((p) => p.status !== "missing");
   const others = (query.data.other_providers ?? []).map(otherProviderRow);
   // One table: what still needs consent, what is covered, what needs none.
-  const rows: ProviderRow[] = [...missing, ...covered, ...others];
-  const table =
-    rows.length > 0 ? (
-      <ProviderList
-        id={DataTableId.PROVIDER_CONSENTS_MODEL}
-        providers={rows}
-        view={props.view}
-        handlers={handlers}
-      />
-    ) : null;
+  // Disabled providers fold away below; "Consent to all" still includes them.
+  const rows: ProviderRow[] = [...missing, ...covered, ...others].filter(
+    (p) => p.active,
+  );
+  const inactive = providers.filter((p) => !p.active);
+  const table = (
+    <>
+      {rows.length > 0 && (
+        <ProviderList
+          id={DataTableId.PROVIDER_CONSENTS_MODEL}
+          providers={rows}
+          view={props.view}
+          handlers={handlers}
+        />
+      )}
+      {inactive.length > 0 && (
+        <Collapsible>
+          <CollapsibleTrigger className="text-muted-foreground hover:text-foreground group/in flex items-center gap-1 text-sm">
+            {t("PROVIDER_CONSENT.FOCUS.INACTIVE_GROUP", {
+              count: inactive.length,
+            })}
+            <Icon
+              name="chevron-down"
+              className="h-4 w-4 transition-transform group-data-panel-open/in:rotate-180"
+            />
+          </CollapsibleTrigger>
+          <CollapsibleContent>
+            <ProviderList
+              id={DataTableId.PROVIDER_CONSENTS_MODEL}
+              providers={inactive}
+              view={props.view}
+              handlers={handlers}
+            />
+          </CollapsibleContent>
+        </Collapsible>
+      )}
+    </>
+  );
 
   // No provider consent behind this model: a :free notice or nothing at all.
   if (providers.length === 0)
