@@ -1,10 +1,7 @@
 "use client";
 
 import { OwnPurposeObjectionToggle } from "@/components/elements/model/own-purpose-objection-toggle";
-import {
-  ModelConsentPanel,
-  ProviderConsentPanel,
-} from "@/components/elements/model/provider-consent-panel";
+import { ProviderConsentPanel } from "@/components/elements/model/provider-consent-panel";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Icon } from "@/components/ui/icon";
 import type { IconName } from "@/lib/config/icon-map";
@@ -12,6 +9,7 @@ import { msg } from "@/lib/config/constants";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 import { parseAsString, parseAsStringLiteral, useQueryStates } from "nuqs";
+import { ModelFocus } from "./model-focus";
 import { ModelView } from "./model-view";
 import { ProviderView } from "./provider-view";
 
@@ -28,8 +26,8 @@ const TAB_ICON: Record<Tab, IconName> = {
   models: "layout-grid",
 };
 
-// The open dialog lives in the URL too, so the gateway's refusal can link to
-// /consents?model=<name> and land on that model's consent.
+// The gateway's refusal links to /consents?model=<name>, which lands on that
+// model's missing providers; the provider dialog lives in the URL too.
 const PARSERS = {
   tab: parseAsStringLiteral(TABS).withDefault("providers"),
   view: parseAsStringLiteral(["table", "list"] as const).withDefault("table"),
@@ -42,7 +40,7 @@ export function ConsentsPage() {
   const [params, setParams] = useQueryStates(PARSERS);
 
   function close() {
-    void setParams({ model: null, alias: null });
+    void setParams({ alias: null });
   }
 
   return (
@@ -67,7 +65,7 @@ export function ConsentsPage() {
               <button
                 key={tab}
                 type="button"
-                onClick={() => void setParams({ tab })}
+                onClick={() => void setParams({ tab, model: null })}
                 aria-pressed={active}
                 className={cn(
                   "flex items-center gap-1.5 border-b-2 px-3 py-2 font-mono text-sm whitespace-nowrap transition-colors",
@@ -84,7 +82,13 @@ export function ConsentsPage() {
         </div>
       </div>
 
-      {params.tab === "providers" ? (
+      {params.model !== null ? (
+        <ModelFocus
+          model={params.model}
+          onClear={() => void setParams({ model: null })}
+          onOpenAlias={(alias) => void setParams({ alias })}
+        />
+      ) : params.tab === "providers" ? (
         <ProviderView
           view={params.view}
           onViewChange={(view) => void setParams({ view })}
@@ -94,23 +98,20 @@ export function ConsentsPage() {
         <ModelView
           view={params.view}
           onViewChange={(view) => void setParams({ view })}
-          onOpen={(model) => void setParams({ model, alias: null })}
+          onOpen={(model) =>
+            void setParams({ model, tab: "providers", alias: null })
+          }
         />
       )}
 
-      <Dialog
-        open={params.model !== null || params.alias !== null}
-        onOpenChange={(o) => !o && close()}
-      >
+      <Dialog open={params.alias !== null} onOpenChange={(o) => !o && close()}>
         <DialogContent className="max-h-[90vh] overflow-y-auto p-0">
           <DialogTitle className="sr-only">
             {t("PROVIDER_CONSENT.TITLE")}
           </DialogTitle>
-          {params.model !== null ? (
-            <ModelConsentPanel model={params.model} onDone={close} />
-          ) : params.alias !== null ? (
+          {params.alias !== null && (
             <ProviderConsentPanel alias={params.alias} onDone={close} />
-          ) : null}
+          )}
         </DialogContent>
       </Dialog>
     </div>

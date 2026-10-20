@@ -171,6 +171,12 @@ export function ProviderStatusText(props: { provider: ProviderConsentItem }) {
           : t("FREE_CONSENT.FILTER.GIVEN")}
       </span>
     );
+  if (p.status === "model_consent")
+    return (
+      <span className="text-muted-foreground text-xs">
+        {t("PROVIDER_CONSENT.MODEL_CONSENT_STATUS")}
+      </span>
+    );
   return (
     <span className="text-muted-foreground text-xs">
       {t("FREE_CONSENT.FILTER.MISSING")}

@@ -6432,6 +6432,17 @@
     },
     "CHANNELS_ACTIVE": "{active} of {count, plural, one {# channel} other {# channels}} active",
     "ONWARD_UNVETTED": "Passes inputs on to unvetted recipients",
-    "ONWARD_RISK": "The following providers pass your inputs on to unvetted recipients: {providers}. Your inputs may therefore reach countries that do not ensure a level of data protection comparable to the EU, where you may have no enforceable rights or effective legal remedies."
+    "ONWARD_RISK": "The following providers pass your inputs on to unvetted recipients: {providers}. Your inputs may therefore reach countries that do not ensure a level of data protection comparable to the EU, where you may have no enforceable rights or effective legal remedies.",
+    "MODEL_CONSENT_STATUS": "Covered by your consent for this model",
+    "FOCUS": {
+      "TITLE": "{model} needs your consent for these providers",
+      "COVERED": "{model} has your consent for all its providers",
+      "COVERED_HINT": "Consent saved. You can use the model now, also through the API.",
+      "NONE_NEEDED": "{model} needs no consent for any provider.",
+      "GRANT_ALL": "{count, plural, one {Consent to this provider} other {Consent to all #}}",
+      "ALREADY_GIVEN": "{count, plural, one {# provider already has your consent} other {# providers already have your consent}}",
+      "BACK": "Back to all providers",
+      "CLEAR": "Remove model filter"
+    }
   }
 }

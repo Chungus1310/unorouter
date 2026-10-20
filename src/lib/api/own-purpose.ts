@@ -29,11 +29,20 @@ export function hasCoveringConsent(
 }
 
 export const OWN_PURPOSE_OBJECTED = "own_purpose_objected";
-export const FREE_CONSENT_REQUIRED = "free_consent_required";
+
+// The gateway renamed free_consent_required and free_models_business; both
+// spellings are mapped while either may arrive.
+const CONSENT_REQUIRED_CODES = ["consent_required", "free_consent_required"];
+
+export function isConsentRequiredCode(code: string | null | undefined) {
+  return code != null && CONSENT_REQUIRED_CODES.includes(code);
+}
 
 const GATEWAY_CODE_MESSAGES = {
   [OWN_PURPOSE_OBJECTED]: msg("OWN_PURPOSE.OBJECTED_ERROR"),
-  [FREE_CONSENT_REQUIRED]: msg("FREE_CONSENT.REQUIRED_ERROR"),
+  consent_required: msg("FREE_CONSENT.REQUIRED_ERROR"),
+  free_consent_required: msg("FREE_CONSENT.REQUIRED_ERROR"),
+  consent_business: msg("FREE_CONSENT.BUSINESS"),
   free_models_business: msg("FREE_CONSENT.BUSINESS"),
 } as const;
 

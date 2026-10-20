@@ -6432,6 +6432,17 @@
     },
     "CHANNELS_ACTIVE": "{count, plural, other {# 接続}}中 {active} が稼働中",
     "ONWARD_UNVETTED": "入力内容を未審査の受領者へ転送します",
-    "ONWARD_RISK": "次の提供者は入力内容を未審査の受領者へ転送します：{providers}。そのため入力内容は、EUと同等のデータ保護水準が確保されておらず、行使可能な権利や有効な法的救済がない可能性のある国に届くことがあります。"
+    "ONWARD_RISK": "次の提供者は入力内容を未審査の受領者へ転送します：{providers}。そのため入力内容は、EUと同等のデータ保護水準が確保されておらず、行使可能な権利や有効な法的救済がない可能性のある国に届くことがあります。",
+    "MODEL_CONSENT_STATUS": "このモデルへの同意でカバー済み",
+    "FOCUS": {
+      "TITLE": "{model} にはこれらの提供者への同意が必要です",
+      "COVERED": "{model} のすべての提供者に同意済みです",
+      "COVERED_HINT": "同意を保存しました。API を含め、今すぐこのモデルを利用できます。",
+      "NONE_NEEDED": "{model} にはどの提供者への同意も不要です。",
+      "GRANT_ALL": "{count, plural, other {# 件すべてに同意する}}",
+      "ALREADY_GIVEN": "{count, plural, other {# 件の提供者にはすでに同意済みです}}",
+      "BACK": "すべての提供者に戻る",
+      "CLEAR": "モデルの絞り込みを解除"
+    }
   }
 }

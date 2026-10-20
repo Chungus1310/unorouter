@@ -6432,6 +6432,17 @@
     },
     "CHANNELS_ACTIVE": "{active} dari {count, plural, other {# koneksi}} aktif",
     "ONWARD_UNVETTED": "Meneruskan masukan ke penerima yang tidak diperiksa",
-    "ONWARD_RISK": "Penyedia berikut meneruskan masukanmu ke penerima yang tidak diperiksa: {providers}. Karena itu masukanmu dapat sampai ke negara yang tidak menjamin tingkat perlindungan data yang setara dengan UE, tempat kamu mungkin tidak memiliki hak yang dapat ditegakkan atau upaya hukum yang efektif."
+    "ONWARD_RISK": "Penyedia berikut meneruskan masukanmu ke penerima yang tidak diperiksa: {providers}. Karena itu masukanmu dapat sampai ke negara yang tidak menjamin tingkat perlindungan data yang setara dengan UE, tempat kamu mungkin tidak memiliki hak yang dapat ditegakkan atau upaya hukum yang efektif.",
+    "MODEL_CONSENT_STATUS": "Tercakup oleh persetujuanmu untuk model ini",
+    "FOCUS": {
+      "TITLE": "{model} memerlukan persetujuanmu untuk penyedia ini",
+      "COVERED": "{model} sudah mendapat persetujuanmu untuk semua penyedianya",
+      "COVERED_HINT": "Persetujuan disimpan. Kamu sekarang bisa memakai model ini, juga lewat API.",
+      "NONE_NEEDED": "{model} tidak memerlukan persetujuan untuk penyedia mana pun.",
+      "GRANT_ALL": "{count, plural, other {Setujui semua #}}",
+      "ALREADY_GIVEN": "{count, plural, other {# penyedia sudah mendapat persetujuanmu}}",
+      "BACK": "Kembali ke semua penyedia",
+      "CLEAR": "Hapus filter model"
+    }
   }
 }

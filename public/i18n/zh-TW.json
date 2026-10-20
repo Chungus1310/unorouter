@@ -6432,6 +6432,17 @@
     },
     "CHANNELS_ACTIVE": "{count, plural, other {# 個連線}}中 {active} 個可用",
     "ONWARD_UNVETTED": "會將輸入轉交給未經審查的接收方",
-    "ONWARD_RISK": "以下供應商會將你的輸入轉交給未經審查的接收方：{providers}。因此，你的輸入可能到達資料保護水準不及歐盟、你可能無法行使權利或獲得有效法律救濟的國家。"
+    "ONWARD_RISK": "以下供應商會將你的輸入轉交給未經審查的接收方：{providers}。因此，你的輸入可能到達資料保護水準不及歐盟、你可能無法行使權利或獲得有效法律救濟的國家。",
+    "MODEL_CONSENT_STATUS": "已由你對此模型的同意涵蓋",
+    "FOCUS": {
+      "TITLE": "{model} 需要你同意以下供應商",
+      "COVERED": "你已同意 {model} 的所有供應商",
+      "COVERED_HINT": "同意已儲存。你現在可以使用此模型，包括透過 API。",
+      "NONE_NEEDED": "{model} 不需要對任何供應商的同意。",
+      "GRANT_ALL": "{count, plural, other {同意全部 # 個}}",
+      "ALREADY_GIVEN": "{count, plural, other {你已同意 # 個供應商}}",
+      "BACK": "返回所有供應商",
+      "CLEAR": "移除模型篩選"
+    }
   }
 }

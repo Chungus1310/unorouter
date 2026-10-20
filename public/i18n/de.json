@@ -6432,6 +6432,17 @@
     },
     "CHANNELS_ACTIVE": "{active} von {count, plural, one {# Kanal} other {# Kanälen}} aktiv",
     "ONWARD_UNVETTED": "Gibt Eingaben an ungeprüfte Empfänger weiter",
-    "ONWARD_RISK": "Folgende Anbieter geben deine Eingaben an ungeprüfte Empfänger weiter: {providers}. Deine Eingaben können dadurch in Länder gelangen, die kein mit der EU vergleichbares Datenschutzniveau gewährleisten und in denen dir möglicherweise keine durchsetzbaren Rechte oder wirksamen Rechtsbehelfe zustehen."
+    "ONWARD_RISK": "Folgende Anbieter geben deine Eingaben an ungeprüfte Empfänger weiter: {providers}. Deine Eingaben können dadurch in Länder gelangen, die kein mit der EU vergleichbares Datenschutzniveau gewährleisten und in denen dir möglicherweise keine durchsetzbaren Rechte oder wirksamen Rechtsbehelfe zustehen.",
+    "MODEL_CONSENT_STATUS": "Durch deine Einwilligung für dieses Modell abgedeckt",
+    "FOCUS": {
+      "TITLE": "{model} braucht deine Einwilligung für diese Anbieter",
+      "COVERED": "{model} hat deine Einwilligung für alle seine Anbieter",
+      "COVERED_HINT": "Einwilligung gespeichert. Du kannst das Modell jetzt nutzen, auch über die API.",
+      "NONE_NEEDED": "{model} braucht für keinen Anbieter eine Einwilligung.",
+      "GRANT_ALL": "{count, plural, one {In diesen Anbieter einwilligen} other {In alle # einwilligen}}",
+      "ALREADY_GIVEN": "{count, plural, one {Für # Anbieter hast du bereits eingewilligt} other {Für # Anbieter hast du bereits eingewilligt}}",
+      "BACK": "Zurück zu allen Anbietern",
+      "CLEAR": "Modellfilter entfernen"
+    }
   }
 }

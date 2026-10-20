@@ -6432,6 +6432,17 @@
     },
     "CHANNELS_ACTIVE": "{active} su {count, plural, one {# connessione} other {# connessioni}} attive",
     "ONWARD_UNVETTED": "Trasmette gli input a destinatari non verificati",
-    "ONWARD_RISK": "I seguenti fornitori trasmettono i tuoi input a destinatari non verificati: {providers}. I tuoi input possono quindi arrivare in paesi che non garantiscono un livello di protezione dei dati paragonabile a quello dell'UE, dove potresti non avere diritti azionabili né mezzi di ricorso effettivi."
+    "ONWARD_RISK": "I seguenti fornitori trasmettono i tuoi input a destinatari non verificati: {providers}. I tuoi input possono quindi arrivare in paesi che non garantiscono un livello di protezione dei dati paragonabile a quello dell'UE, dove potresti non avere diritti azionabili né mezzi di ricorso effettivi.",
+    "MODEL_CONSENT_STATUS": "Coperto dal tuo consenso per questo modello",
+    "FOCUS": {
+      "TITLE": "{model} richiede il tuo consenso per questi fornitori",
+      "COVERED": "{model} ha il tuo consenso per tutti i suoi fornitori",
+      "COVERED_HINT": "Consenso salvato. Ora puoi usare il modello, anche tramite l'API.",
+      "NONE_NEEDED": "{model} non richiede il consenso per nessun fornitore.",
+      "GRANT_ALL": "{count, plural, one {Acconsenti a questo fornitore} other {Acconsenti a tutti e #}}",
+      "ALREADY_GIVEN": "{count, plural, one {# fornitore ha già il tuo consenso} other {# fornitori hanno già il tuo consenso}}",
+      "BACK": "Torna a tutti i fornitori",
+      "CLEAR": "Rimuovi il filtro del modello"
+    }
   }
 }

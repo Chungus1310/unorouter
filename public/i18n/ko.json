@@ -6432,6 +6432,17 @@
     },
     "CHANNELS_ACTIVE": "{count, plural, other {연결 #개}} 중 {active}개 활성",
     "ONWARD_UNVETTED": "입력 내용을 검증되지 않은 수신자에게 전달합니다",
-    "ONWARD_RISK": "다음 제공자는 입력 내용을 검증되지 않은 수신자에게 전달합니다: {providers}. 따라서 입력 내용이 EU와 동등한 데이터 보호 수준을 보장하지 않으며 집행 가능한 권리나 효과적인 법적 구제가 없을 수 있는 국가에 도달할 수 있습니다."
+    "ONWARD_RISK": "다음 제공자는 입력 내용을 검증되지 않은 수신자에게 전달합니다: {providers}. 따라서 입력 내용이 EU와 동등한 데이터 보호 수준을 보장하지 않으며 집행 가능한 권리나 효과적인 법적 구제가 없을 수 있는 국가에 도달할 수 있습니다.",
+    "MODEL_CONSENT_STATUS": "이 모델에 대한 동의로 포함됨",
+    "FOCUS": {
+      "TITLE": "{model}에는 이 제공자들에 대한 동의가 필요합니다",
+      "COVERED": "{model}의 모든 제공자에 대해 이미 동의했습니다",
+      "COVERED_HINT": "동의가 저장되었습니다. 이제 API를 포함해 모델을 사용할 수 있습니다.",
+      "NONE_NEEDED": "{model}에는 어떤 제공자에 대한 동의도 필요하지 않습니다.",
+      "GRANT_ALL": "{count, plural, other {#개 모두 동의}}",
+      "ALREADY_GIVEN": "{count, plural, other {제공자 #개에 이미 동의했습니다}}",
+      "BACK": "모든 제공자로 돌아가기",
+      "CLEAR": "모델 필터 제거"
+    }
   }
 }

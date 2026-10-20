@@ -6432,6 +6432,17 @@
     },
     "CHANNELS_ACTIVE": "{active} z {count, plural, one {# połączenia} few {# połączeń} many {# połączeń} other {# połączenia}} aktywnych",
     "ONWARD_UNVETTED": "Przekazuje dane wejściowe niezweryfikowanym odbiorcom",
-    "ONWARD_RISK": "Następujący dostawcy przekazują Twoje dane wejściowe niezweryfikowanym odbiorcom: {providers}. Twoje dane wejściowe mogą więc trafić do krajów, które nie zapewniają poziomu ochrony danych porównywalnego z UE i w których możesz nie mieć egzekwowalnych praw ani skutecznych środków prawnych."
+    "ONWARD_RISK": "Następujący dostawcy przekazują Twoje dane wejściowe niezweryfikowanym odbiorcom: {providers}. Twoje dane wejściowe mogą więc trafić do krajów, które nie zapewniają poziomu ochrony danych porównywalnego z UE i w których możesz nie mieć egzekwowalnych praw ani skutecznych środków prawnych.",
+    "MODEL_CONSENT_STATUS": "Objęte Twoją zgodą dla tego modelu",
+    "FOCUS": {
+      "TITLE": "{model} wymaga Twojej zgody dla tych dostawców",
+      "COVERED": "{model} ma Twoją zgodę dla wszystkich swoich dostawców",
+      "COVERED_HINT": "Zgoda zapisana. Możesz teraz korzystać z modelu, także przez API.",
+      "NONE_NEEDED": "{model} nie wymaga zgody dla żadnego dostawcy.",
+      "GRANT_ALL": "{count, plural, one {Wyraź zgodę dla tego dostawcy} few {Wyraź zgodę dla wszystkich #} many {Wyraź zgodę dla wszystkich #} other {Wyraź zgodę dla wszystkich #}}",
+      "ALREADY_GIVEN": "{count, plural, one {# dostawca ma już Twoją zgodę} few {# dostawców ma już Twoją zgodę} many {# dostawców ma już Twoją zgodę} other {# dostawcy ma już Twoją zgodę}}",
+      "BACK": "Wróć do wszystkich dostawców",
+      "CLEAR": "Usuń filtr modelu"
+    }
   }
 }

@@ -25,8 +25,8 @@ import { acquireLock, releaseLock } from "@/lib/db/client/outbox/resource-lock";
 import type { ChatUIMessage } from "@/lib/types";
 import { captureFailedRequest, logChatDebug } from "@/lib/utils/chat-debug-log";
 import {
-  FREE_CONSENT_REQUIRED,
   gatewayCodeMessage,
+  isConsentRequiredCode,
 } from "@/lib/api/own-purpose";
 import { msg } from "@/lib/config/constants";
 import { queryKeys } from "@/lib/react-query/keys";
@@ -190,7 +190,7 @@ function ChatRuntimeHook() {
         (detail.message === msg("OWN_PURPOSE.OBJECTED_ERROR")
           ? detail.message
           : null);
-      if (detail.code === FREE_CONSENT_REQUIRED) {
+      if (isConsentRequiredCode(detail.code)) {
         const model = chatStore.get(chatModelAtom);
         if (model)
           chatStore.set(consentDemandedModelsAtom, (prev) =>

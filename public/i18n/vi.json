@@ -6432,6 +6432,17 @@
     },
     "CHANNELS_ACTIVE": "{active} trên {count, plural, other {# kết nối}} đang hoạt động",
     "ONWARD_UNVETTED": "Chuyển tiếp dữ liệu đầu vào cho bên nhận chưa được kiểm tra",
-    "ONWARD_RISK": "Các nhà cung cấp sau chuyển tiếp dữ liệu đầu vào của bạn cho bên nhận chưa được kiểm tra: {providers}. Vì vậy dữ liệu đầu vào của bạn có thể đến các quốc gia không bảo đảm mức bảo vệ dữ liệu tương đương EU, nơi bạn có thể không có quyền được thực thi hay biện pháp pháp lý hiệu quả."
+    "ONWARD_RISK": "Các nhà cung cấp sau chuyển tiếp dữ liệu đầu vào của bạn cho bên nhận chưa được kiểm tra: {providers}. Vì vậy dữ liệu đầu vào của bạn có thể đến các quốc gia không bảo đảm mức bảo vệ dữ liệu tương đương EU, nơi bạn có thể không có quyền được thực thi hay biện pháp pháp lý hiệu quả.",
+    "MODEL_CONSENT_STATUS": "Đã được bao gồm bởi sự đồng ý của bạn cho mô hình này",
+    "FOCUS": {
+      "TITLE": "{model} cần bạn đồng ý cho các nhà cung cấp này",
+      "COVERED": "{model} đã có sự đồng ý của bạn cho tất cả nhà cung cấp",
+      "COVERED_HINT": "Đã lưu sự đồng ý. Bạn có thể dùng mô hình ngay, kể cả qua API.",
+      "NONE_NEEDED": "{model} không cần đồng ý cho nhà cung cấp nào.",
+      "GRANT_ALL": "{count, plural, other {Đồng ý cho cả #}}",
+      "ALREADY_GIVEN": "{count, plural, other {# nhà cung cấp đã có sự đồng ý của bạn}}",
+      "BACK": "Quay lại tất cả nhà cung cấp",
+      "CLEAR": "Bỏ bộ lọc mô hình"
+    }
   }
 }

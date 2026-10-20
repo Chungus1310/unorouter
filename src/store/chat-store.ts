@@ -103,7 +103,7 @@ export const showThinkingTokensAtom = storeField("showThinkingTokens");
 export const bestDealAtom = storeField("bestDeal");
 export const priceSeenAtom = storeField("priceSeen");
 export const bestDealDialogOpenAtom = atom(false);
-// Models the gateway answered free_consent_required for, so the chat asks for
+// Models the gateway answered consent_required for, so the chat asks for
 // consent even while the cached catalog or consent list says otherwise.
 export const consentDemandedModelsAtom = atom<string[]>([]);
 
