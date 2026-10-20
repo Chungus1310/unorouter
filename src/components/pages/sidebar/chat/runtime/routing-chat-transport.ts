@@ -125,6 +125,7 @@ async function mergeDbHistory(
     dbTotal: db.allIds.size,
     captured: captured.length,
     walkTruncated: db.activeCount > branch.length + 1,
+    activeCount: db.activeCount,
   });
   if (branch.length === 0) return captured;
   const capturedIds = new Set(captured.map((m) => m.id));

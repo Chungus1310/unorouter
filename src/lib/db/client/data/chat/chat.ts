@@ -411,6 +411,11 @@ export async function setLocalActiveBranch(convId: string, msgId: string) {
     return;
   }
   const parentId = target.parentId ?? null;
+  logChatDebug("branch.switch", {
+    convId,
+    msgId,
+    siblings: msgs.filter((m) => (m.parentId ?? null) === parentId).length,
+  });
   const now = dayjs().toDate();
   for (const m of msgs) {
     if ((m.parentId ?? null) === parentId) {

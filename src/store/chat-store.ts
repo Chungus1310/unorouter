@@ -260,10 +260,15 @@ export function clearLiveError(): void {
 }
 
 export async function reloadLiveThreadFromDb(convId: string): Promise<void> {
-  if (chatStore.get(convIdAtom) !== convId) return;
+  const active = chatStore.get(convIdAtom);
+  if (active !== convId) {
+    logChatDebug("thread.reload_skipped", { convId, active });
+    return;
+  }
   const { readActiveBranchParts } =
     await import("@/lib/db/client/data/chat/chat");
   const live = await readActiveBranchParts(convId);
+  logChatDebug("thread.reload", { convId, messages: live.length });
   setLiveMessages(() => live, convId);
 }
 
