@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "同意を保存しました。API を含め、今すぐこのモデルを利用できます。",
       "NONE_NEEDED": "{model} にはどの提供者への同意も不要です。",
       "GRANT_ALL": "{count, plural, other {# 件すべてに同意する}}",
-      "ALREADY_GIVEN": "{count, plural, other {# 件の提供者にはすでに同意済みです}}",
       "BACK": "すべての提供者に戻る",
       "CLEAR": "モデルの絞り込みを解除"
     },
-    "COUNTS_SHORT": "モデル {activeModels}/{models}、接続 {activeChannels}/{channels}"
+    "COUNTS_SHORT": "モデル {activeModels}/{models}、接続 {activeChannels}/{channels}",
+    "REASON": {
+      "SAFE_COUNTRY": "安全な国",
+      "PROMPTS_UNKNOWN_PAID": "取り扱い不明、有料",
+      "NO_OWN_PURPOSE": "保存・学習なし"
+    }
   }
 }

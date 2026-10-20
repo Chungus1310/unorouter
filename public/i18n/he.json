@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "ההסכמה נשמרה. אפשר להשתמש במודל עכשיו, גם דרך ה־API.",
       "NONE_NEEDED": "{model} לא צריך הסכמה לאף ספק.",
       "GRANT_ALL": "{count, plural, one {הסכמה לספק זה} two {הסכמה לשני הספקים} other {הסכמה לכל #}}",
-      "ALREADY_GIVEN": "{count, plural, one {לספק אחד כבר נתת הסכמה} two {לשני ספקים כבר נתת הסכמה} other {ל־# ספקים כבר נתת הסכמה}}",
       "BACK": "חזרה לכל הספקים",
       "CLEAR": "הסרת סינון המודל"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} מודלים, {activeChannels}/{channels} חיבורים"
+    "COUNTS_SHORT": "{activeModels}/{models} מודלים, {activeChannels}/{channels} חיבורים",
+    "REASON": {
+      "SAFE_COUNTRY": "מדינה בטוחה",
+      "PROMPTS_UNKNOWN_PAID": "הנוהג לא ידוע, בתשלום",
+      "NO_OWN_PURPOSE": "ללא שמירה וללא אימון"
+    }
   }
 }

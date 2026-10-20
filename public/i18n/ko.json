@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "동의가 저장되었습니다. 이제 API를 포함해 모델을 사용할 수 있습니다.",
       "NONE_NEEDED": "{model}에는 어떤 제공자에 대한 동의도 필요하지 않습니다.",
       "GRANT_ALL": "{count, plural, other {#개 모두 동의}}",
-      "ALREADY_GIVEN": "{count, plural, other {제공자 #개에 이미 동의했습니다}}",
       "BACK": "모든 제공자로 돌아가기",
       "CLEAR": "모델 필터 제거"
     },
-    "COUNTS_SHORT": "모델 {activeModels}/{models}, 연결 {activeChannels}/{channels}"
+    "COUNTS_SHORT": "모델 {activeModels}/{models}, 연결 {activeChannels}/{channels}",
+    "REASON": {
+      "SAFE_COUNTRY": "안전한 국가",
+      "PROMPTS_UNKNOWN_PAID": "처리 방식 불명, 유료",
+      "NO_OWN_PURPOSE": "저장 및 학습 없음"
+    }
   }
 }

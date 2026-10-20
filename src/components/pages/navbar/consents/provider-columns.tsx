@@ -1,9 +1,10 @@
 "use client";
 
+import type { ProviderRow } from "./provider-rows";
+
 import { providerName } from "@/lib/api/provider-consent";
 import { DataTableColumnHeader } from "@/components/elements/table/data-table-column-header";
 import type { TableFeats } from "@/lib/config/table-features";
-import type { ProviderConsentItem } from "@/openapi";
 import type { ColumnDef } from "@tanstack/react-table";
 import {
   ProviderAction,
@@ -17,7 +18,7 @@ import {
 export function buildProviderColumns(opts: {
   handlers: ProviderHandlers;
   countryLabel: (code: string) => string;
-}): ColumnDef<TableFeats, ProviderConsentItem>[] {
+}): ColumnDef<TableFeats, ProviderRow>[] {
   return [
     {
       id: "name",

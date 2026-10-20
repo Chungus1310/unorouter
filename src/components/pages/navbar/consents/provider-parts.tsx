@@ -13,11 +13,27 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { msg } from "@/lib/config/constants";
 import { cn } from "@/lib/utils";
 import { formatLongDate } from "@/lib/utils/format/date";
-import type { ProviderConsentItem } from "@/openapi";
 import { useLocale, useTranslations } from "next-intl";
-import { providerModels } from "./provider-rows";
+import { providerModels, type ProviderRow } from "./provider-rows";
+
+const REASON_LABEL = {
+  safe_country: msg("PROVIDER_CONSENT.REASON.SAFE_COUNTRY"),
+  prompts_unknown_paid: msg("PROVIDER_CONSENT.REASON.PROMPTS_UNKNOWN_PAID"),
+  no_own_purpose: msg("PROVIDER_CONSENT.REASON.NO_OWN_PURPOSE"),
+} as const;
+
+function isReason(reason: string): reason is keyof typeof REASON_LABEL {
+  return Object.hasOwn(REASON_LABEL, reason);
+}
+
+function reasonLabel(reason: string) {
+  return isReason(reason)
+    ? REASON_LABEL[reason]
+    : msg("FREE_CONSENT.NOT_NEEDED");
+}
 
 export type ProviderHandlers = {
   open: (alias: string) => void;
@@ -25,7 +41,7 @@ export type ProviderHandlers = {
   revoking: boolean;
 };
 
-export function ProviderName(props: { provider: ProviderConsentItem }) {
+export function ProviderName(props: { provider: ProviderRow }) {
   const t = useTranslations();
   const p = props.provider;
   const tags = p.tags ?? [];
@@ -72,7 +88,7 @@ export function ProviderName(props: { provider: ProviderConsentItem }) {
   );
 }
 
-export function ProviderCountry(props: { provider: ProviderConsentItem }) {
+export function ProviderCountry(props: { provider: ProviderRow }) {
   const t = useTranslations();
   const locale = useLocale();
   const p = props.provider;
@@ -94,9 +110,10 @@ export function ProviderCountry(props: { provider: ProviderConsentItem }) {
 }
 
 // One short line; lanes and the model list sit in the expanded row.
-export function ProviderCounts(props: { provider: ProviderConsentItem }) {
+export function ProviderCounts(props: { provider: ProviderRow }) {
   const t = useTranslations();
   const p = props.provider;
+  if (p.reason) return <span className="text-muted-foreground">-</span>;
   return (
     <span className="text-muted-foreground text-xs whitespace-nowrap">
       {t("PROVIDER_CONSENT.COUNTS_SHORT", {
@@ -109,9 +126,10 @@ export function ProviderCounts(props: { provider: ProviderConsentItem }) {
   );
 }
 
-export function ProviderDetails(props: { provider: ProviderConsentItem }) {
+export function ProviderDetails(props: { provider: ProviderRow }) {
   const t = useTranslations();
   const p = props.provider;
+  if (p.reason) return null;
   const models = providerModels(p);
   return (
     <div className="space-y-2 px-4 py-3">
@@ -158,9 +176,20 @@ export function ProviderDetails(props: { provider: ProviderConsentItem }) {
   );
 }
 
-export function ProviderStatusBadge(props: { provider: ProviderConsentItem }) {
+export function ProviderStatusBadge(props: { provider: ProviderRow }) {
   const t = useTranslations();
   const p = props.provider;
+  if (p.reason)
+    return (
+      <span className="flex items-center gap-1.5 whitespace-nowrap">
+        <Badge variant="outline" className="text-muted-foreground text-[10px]">
+          {t("FREE_CONSENT.NOT_NEEDED")}
+        </Badge>
+        <span className="text-muted-foreground text-[10px]">
+          {t(reasonLabel(p.reason))}
+        </span>
+      </span>
+    );
   if (p.status === "given")
     return (
       <Badge
@@ -193,11 +222,12 @@ export function ProviderStatusBadge(props: { provider: ProviderConsentItem }) {
 }
 
 export function ProviderAction(props: {
-  provider: ProviderConsentItem;
+  provider: ProviderRow;
   handlers: ProviderHandlers;
 }) {
   const t = useTranslations();
   const alias = props.provider.alias;
+  if (props.provider.reason) return null;
   // The row toggles its details on click; the button must not.
   if (props.provider.status === "given")
     return (

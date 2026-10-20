@@ -1,10 +1,11 @@
 "use client";
 
+import type { ProviderRow } from "./provider-rows";
+
 import { countryName } from "@/components/elements/model/group-data-policy";
 import { DataTable } from "@/components/elements/table/data-table";
 import type { ViewMode } from "@/components/pages/navbar/models/filters/view-mode-toggle";
 import type { DataTableId } from "@/lib/types/enums";
-import type { ProviderConsentItem } from "@/openapi";
 import { useLocale } from "next-intl";
 import { buildProviderColumns } from "./provider-columns";
 import { ProviderCard } from "./provider-card";
@@ -14,7 +15,7 @@ import { ProviderDetails, type ProviderHandlers } from "./provider-parts";
 // rows, details (lanes, every model) in the expanded row.
 export function ProviderList(props: {
   id: DataTableId;
-  providers: ProviderConsentItem[];
+  providers: ProviderRow[];
   view: ViewMode;
   handlers: ProviderHandlers;
   isLoading?: boolean;
@@ -44,7 +45,7 @@ export function ProviderList(props: {
       localSorting
       isLoading={props.isLoading}
       rowClassName={(row) => (row.original.active ? undefined : "opacity-60")}
-      getRowCanExpand={() => true}
+      getRowCanExpand={(row) => !row.original.reason}
       renderExpandedRow={(row) => <ProviderDetails provider={row.original} />}
     />
   );

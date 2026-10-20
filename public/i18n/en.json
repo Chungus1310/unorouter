@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "Consent saved. You can use the model now, also through the API.",
       "NONE_NEEDED": "{model} needs no consent for any provider.",
       "GRANT_ALL": "{count, plural, one {Consent to this provider} other {Consent to all #}}",
-      "ALREADY_GIVEN": "{count, plural, one {# provider already has your consent} other {# providers already have your consent}}",
       "BACK": "Back to all providers",
       "CLEAR": "Remove model filter"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} models, {activeChannels}/{channels} ch"
+    "COUNTS_SHORT": "{activeModels}/{models} models, {activeChannels}/{channels} ch",
+    "REASON": {
+      "SAFE_COUNTRY": "safe country",
+      "PROMPTS_UNKNOWN_PAID": "practice unknown, paid",
+      "NO_OWN_PURPOSE": "no storage or training"
+    }
   }
 }

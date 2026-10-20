@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "Persetujuan disimpan. Kamu sekarang bisa memakai model ini, juga lewat API.",
       "NONE_NEEDED": "{model} tidak memerlukan persetujuan untuk penyedia mana pun.",
       "GRANT_ALL": "{count, plural, other {Setujui semua #}}",
-      "ALREADY_GIVEN": "{count, plural, other {# penyedia sudah mendapat persetujuanmu}}",
       "BACK": "Kembali ke semua penyedia",
       "CLEAR": "Hapus filter model"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} model, {activeChannels}/{channels} kon."
+    "COUNTS_SHORT": "{activeModels}/{models} model, {activeChannels}/{channels} kon.",
+    "REASON": {
+      "SAFE_COUNTRY": "negara aman",
+      "PROMPTS_UNKNOWN_PAID": "praktik tidak diketahui, berbayar",
+      "NO_OWN_PURPOSE": "tanpa penyimpanan atau pelatihan"
+    }
   }
 }

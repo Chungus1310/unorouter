@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "सहमति सहेजी गई। अब आप मॉडल का इस्तेमाल कर सकते हैं, API से भी।",
       "NONE_NEEDED": "{model} को किसी भी प्रदाता के लिए सहमति नहीं चाहिए।",
       "GRANT_ALL": "{count, plural, one {इस प्रदाता को सहमति दें} other {सभी # को सहमति दें}}",
-      "ALREADY_GIVEN": "{count, plural, one {# प्रदाता को आप पहले ही सहमति दे चुके हैं} other {# प्रदाताओं को आप पहले ही सहमति दे चुके हैं}}",
       "BACK": "सभी प्रदाताओं पर वापस जाएँ",
       "CLEAR": "मॉडल फ़िल्टर हटाएँ"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} मॉडल, {activeChannels}/{channels} कनेक्शन"
+    "COUNTS_SHORT": "{activeModels}/{models} मॉडल, {activeChannels}/{channels} कनेक्शन",
+    "REASON": {
+      "SAFE_COUNTRY": "सुरक्षित देश",
+      "PROMPTS_UNKNOWN_PAID": "तरीका अज्ञात, सशुल्क",
+      "NO_OWN_PURPOSE": "न भंडारण, न प्रशिक्षण"
+    }
   }
 }

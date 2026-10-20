@@ -1,7 +1,7 @@
 import { countryName } from "@/components/elements/model/group-data-policy";
 import { sortByKeys } from "@/lib/api/model-sort";
 import { providerName } from "@/lib/api/provider-consent";
-import type { ProviderConsentItem } from "@/openapi";
+import type { ProviderConsentItem, ProviderOtherItem } from "@/openapi";
 
 export const PROVIDER_STATUSES = ["given", "missing"] as const;
 export type ProviderStatus = (typeof PROVIDER_STATUSES)[number];
@@ -79,4 +79,31 @@ export function sortProviders(
     },
     (a, b) => providerName(a).localeCompare(providerName(b)),
   );
+}
+
+// A provider of the model that needs no consent shares the table; `reason`
+// says why, and it has no counts, models or action.
+export type ProviderRow = ProviderConsentItem & { reason?: string };
+
+export function otherProviderRow(o: ProviderOtherItem): ProviderRow {
+  return {
+    alias: `other:${o.label}:${o.country}`,
+    label: o.label,
+    country: o.country,
+    unsafe: o.unsafe,
+    onward_unvetted: o.onward_unvetted,
+    active: o.active,
+    trains_or_retains: o.reason === "safe_country",
+    status: "not_needed",
+    reason: o.reason,
+    tags: [],
+    models: [],
+    model_details: [],
+    model_count: 0,
+    active_model_count: 0,
+    lane_count: 0,
+    active_lane_count: 0,
+    channel_count: 0,
+    active_channel_count: 0,
+  };
 }

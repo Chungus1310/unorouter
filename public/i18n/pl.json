@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "Zgoda zapisana. Możesz teraz korzystać z modelu, także przez API.",
       "NONE_NEEDED": "{model} nie wymaga zgody dla żadnego dostawcy.",
       "GRANT_ALL": "{count, plural, one {Wyraź zgodę dla tego dostawcy} few {Wyraź zgodę dla wszystkich #} many {Wyraź zgodę dla wszystkich #} other {Wyraź zgodę dla wszystkich #}}",
-      "ALREADY_GIVEN": "{count, plural, one {# dostawca ma już Twoją zgodę} few {# dostawców ma już Twoją zgodę} many {# dostawców ma już Twoją zgodę} other {# dostawcy ma już Twoją zgodę}}",
       "BACK": "Wróć do wszystkich dostawców",
       "CLEAR": "Usuń filtr modelu"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} modeli, {activeChannels}/{channels} poł."
+    "COUNTS_SHORT": "{activeModels}/{models} modeli, {activeChannels}/{channels} poł.",
+    "REASON": {
+      "SAFE_COUNTRY": "bezpieczny kraj",
+      "PROMPTS_UNKNOWN_PAID": "praktyka nieznana, płatny",
+      "NO_OWN_PURPOSE": "bez przechowywania i trenowania"
+    }
   }
 }

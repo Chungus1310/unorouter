@@ -301,28 +301,25 @@ export interface BillingPreferenceRequest {
   billing_preference: string;
 }
 
-export interface ClaudeCacheCreationUsage {
-  ephemeral_1h_input_tokens?: number;
-  ephemeral_5m_input_tokens?: number;
-}
-
-export interface ClaudeServerToolUse {
-  code_execution_requests?: number;
-  tool_search_requests?: number;
-  web_fetch_requests?: number;
-  web_search_requests?: number;
+export interface GeminiPromptTokensDetails {
+  modality: string;
+  tokenCount: number;
 }
 
 export interface BillingUsage {
   billing_usage?: BillingUsage;
-  cache_creation?: ClaudeCacheCreationUsage;
-  cache_creation_input_tokens: number;
-  cache_read_input_tokens: number;
-  claude_cache_creation_1_h_tokens: number;
-  claude_cache_creation_5_m_tokens: number;
-  input_tokens: number;
-  output_tokens: number;
-  server_tool_use?: ClaudeServerToolUse;
+  cachedContentTokenCount: number;
+  candidatesTokenCount: number;
+  /** @nullable */
+  candidatesTokensDetails: GeminiPromptTokensDetails[] | null;
+  promptTokenCount: number;
+  /** @nullable */
+  promptTokensDetails: GeminiPromptTokensDetails[] | null;
+  thoughtsTokenCount: number;
+  toolUsePromptTokenCount: number;
+  /** @nullable */
+  toolUsePromptTokensDetails: GeminiPromptTokensDetails[] | null;
+  totalTokenCount: number;
 }
 
 export interface BucketPoint {
@@ -522,6 +519,11 @@ export interface CheckinStatusData {
   stats: CheckinStats;
 }
 
+export interface ClaudeCacheCreationUsage {
+  ephemeral_1h_input_tokens?: number;
+  ephemeral_5m_input_tokens?: number;
+}
+
 /**
  * ClaudeMessageResponse schema
  */
@@ -536,6 +538,13 @@ export interface ClaudeMessageResponse {
   stop_sequence: string | null;
   type: string;
   usage: unknown;
+}
+
+export interface ClaudeServerToolUse {
+  code_execution_requests?: number;
+  tool_search_requests?: number;
+  web_fetch_requests?: number;
+  web_search_requests?: number;
 }
 
 export interface ClaudeUsage {
@@ -1257,11 +1266,6 @@ export interface FreeConsentRevokeRequest {
 export interface GeminiModelList {
   models: unknown;
   nextPageToken: unknown;
-}
-
-export interface GeminiPromptTokensDetails {
-  modality: string;
-  tokenCount: number;
 }
 
 export interface GeminiUsageMetadata {
@@ -2504,10 +2508,21 @@ export interface ProviderConsentItem {
   unsafe: boolean;
 }
 
+export interface ProviderOtherItem {
+  active: boolean;
+  country: string;
+  label: string;
+  onward_unvetted: boolean;
+  reason: string;
+  unsafe: boolean;
+}
+
 export interface ProviderConsentListData {
   /** @nullable */
   covered?: boolean | null;
   model?: string;
+  /** @nullable */
+  other_providers?: ProviderOtherItem[] | null;
   /** @nullable */
   providers: ProviderConsentItem[] | null;
 }

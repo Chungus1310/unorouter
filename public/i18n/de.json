@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "Einwilligung gespeichert. Du kannst das Modell jetzt nutzen, auch über die API.",
       "NONE_NEEDED": "{model} braucht für keinen Anbieter eine Einwilligung.",
       "GRANT_ALL": "{count, plural, one {In diesen Anbieter einwilligen} other {In alle # einwilligen}}",
-      "ALREADY_GIVEN": "{count, plural, one {Für # Anbieter hast du bereits eingewilligt} other {Für # Anbieter hast du bereits eingewilligt}}",
       "BACK": "Zurück zu allen Anbietern",
       "CLEAR": "Modellfilter entfernen"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} Modelle, {activeChannels}/{channels} Kan."
+    "COUNTS_SHORT": "{activeModels}/{models} Modelle, {activeChannels}/{channels} Kan.",
+    "REASON": {
+      "SAFE_COUNTRY": "sicheres Land",
+      "PROMPTS_UNKNOWN_PAID": "Praxis unbekannt, kostenpflichtig",
+      "NO_OWN_PURPOSE": "keine Speicherung, kein Training"
+    }
   }
 }

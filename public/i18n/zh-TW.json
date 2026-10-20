@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "同意已儲存。你現在可以使用此模型，包括透過 API。",
       "NONE_NEEDED": "{model} 不需要對任何供應商的同意。",
       "GRANT_ALL": "{count, plural, other {同意全部 # 個}}",
-      "ALREADY_GIVEN": "{count, plural, other {你已同意 # 個供應商}}",
       "BACK": "返回所有供應商",
       "CLEAR": "移除模型篩選"
     },
-    "COUNTS_SHORT": "模型 {activeModels}/{models}，連線 {activeChannels}/{channels}"
+    "COUNTS_SHORT": "模型 {activeModels}/{models}，連線 {activeChannels}/{channels}",
+    "REASON": {
+      "SAFE_COUNTRY": "安全國家",
+      "PROMPTS_UNKNOWN_PAID": "處理方式未知，付費",
+      "NO_OWN_PURPOSE": "不儲存、不訓練"
+    }
   }
 }

@@ -1,5 +1,7 @@
 "use client";
 
+import type { ProviderRow } from "./provider-rows";
+
 import {
   Collapsible,
   CollapsibleContent,
@@ -7,7 +9,6 @@ import {
 } from "@/components/ui/collapsible";
 import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
-import type { ProviderConsentItem } from "@/openapi";
 import {
   ProviderAction,
   ProviderCountry,
@@ -19,7 +20,7 @@ import {
 } from "./provider-parts";
 
 export function ProviderCard(props: {
-  provider: ProviderConsentItem;
+  provider: ProviderRow;
   handlers: ProviderHandlers;
 }) {
   return (

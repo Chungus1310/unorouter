@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "Đã lưu sự đồng ý. Bạn có thể dùng mô hình ngay, kể cả qua API.",
       "NONE_NEEDED": "{model} không cần đồng ý cho nhà cung cấp nào.",
       "GRANT_ALL": "{count, plural, other {Đồng ý cho cả #}}",
-      "ALREADY_GIVEN": "{count, plural, other {# nhà cung cấp đã có sự đồng ý của bạn}}",
       "BACK": "Quay lại tất cả nhà cung cấp",
       "CLEAR": "Bỏ bộ lọc mô hình"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} mô hình, {activeChannels}/{channels} kết nối"
+    "COUNTS_SHORT": "{activeModels}/{models} mô hình, {activeChannels}/{channels} kết nối",
+    "REASON": {
+      "SAFE_COUNTRY": "quốc gia an toàn",
+      "PROMPTS_UNKNOWN_PAID": "chưa rõ cách xử lý, trả phí",
+      "NO_OWN_PURPOSE": "không lưu trữ hay huấn luyện"
+    }
   }
 }

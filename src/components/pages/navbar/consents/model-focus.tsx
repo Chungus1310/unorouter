@@ -4,11 +4,6 @@ import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel
 import { ProviderConsentPanel } from "@/components/elements/model/provider-consent-panel";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Icon } from "@/components/ui/icon";
 import {
@@ -21,6 +16,7 @@ import { toast } from "sonner";
 import type { ViewMode } from "@/components/pages/navbar/models/filters/view-mode-toggle";
 import { DataTableId } from "@/lib/types/enums";
 import { ProviderList } from "./provider-list";
+import { otherProviderRow, type ProviderRow } from "./provider-rows";
 import type { ProviderHandlers } from "./provider-parts";
 
 // The landing for /consents?model=<name>, where the gateway's refusal links:
@@ -81,6 +77,18 @@ export function ModelFocus(props: {
   const providers = query.data.providers ?? [];
   const missing = providers.filter((p) => p.status === "missing");
   const covered = providers.filter((p) => p.status !== "missing");
+  const others = (query.data.other_providers ?? []).map(otherProviderRow);
+  // One table: what still needs consent, what is covered, what needs none.
+  const rows: ProviderRow[] = [...missing, ...covered, ...others];
+  const table =
+    rows.length > 0 ? (
+      <ProviderList
+        id={DataTableId.PROVIDER_CONSENTS_MODEL}
+        providers={rows}
+        view={props.view}
+        handlers={handlers}
+      />
+    ) : null;
 
   // No provider consent behind this model: a :free notice or nothing at all.
   if (providers.length === 0)
@@ -90,13 +98,14 @@ export function ModelFocus(props: {
         {props.model.toLowerCase().endsWith(":free") ? (
           <FreeConsentPanel model={props.model} onDone={props.onClear} />
         ) : (
-          <div className="bg-card space-y-3 rounded-lg border p-5">
-            <p className="text-muted-foreground text-sm">
+          <div className="bg-card flex flex-wrap items-center gap-3 rounded-lg border p-4">
+            <p className="text-muted-foreground flex-1 text-sm">
               {t("PROVIDER_CONSENT.FOCUS.NONE_NEEDED", { model: props.model })}
             </p>
             {backLink}
           </div>
         )}
+        {table}
       </div>
     );
 
@@ -120,15 +129,8 @@ export function ModelFocus(props: {
         )}
       </div>
 
-      {missing.length > 0 ? (
-        <ProviderList
-          id={DataTableId.PROVIDER_CONSENTS_MODEL}
-          providers={missing}
-          view={props.view}
-          handlers={handlers}
-        />
-      ) : (
-        <div className="bg-card flex flex-wrap items-center gap-3 rounded-lg border p-5">
+      {missing.length === 0 && (
+        <div className="bg-card flex flex-wrap items-center gap-3 rounded-lg border p-4">
           <Icon name="circle-check" className="text-success h-5 w-5" />
           <p className="text-muted-foreground flex-1 text-sm">
             {t("PROVIDER_CONSENT.FOCUS.COVERED_HINT")}
@@ -137,27 +139,7 @@ export function ModelFocus(props: {
         </div>
       )}
 
-      {covered.length > 0 && (
-        <Collapsible>
-          <CollapsibleTrigger className="text-muted-foreground hover:text-foreground group/cv flex items-center gap-1 text-sm">
-            {t("PROVIDER_CONSENT.FOCUS.ALREADY_GIVEN", {
-              count: covered.length,
-            })}
-            <Icon
-              name="chevron-down"
-              className="h-4 w-4 transition-transform group-data-panel-open/cv:rotate-180"
-            />
-          </CollapsibleTrigger>
-          <CollapsibleContent>
-            <ProviderList
-              id={DataTableId.PROVIDER_CONSENTS_MODEL}
-              providers={covered}
-              view={props.view}
-              handlers={handlers}
-            />
-          </CollapsibleContent>
-        </Collapsible>
-      )}
+      {table}
 
       <Dialog open={granting} onOpenChange={setGranting}>
         <DialogContent className="max-h-[90vh] overflow-y-auto p-0">

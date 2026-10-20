@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "Onay kaydedildi. Modeli artık API üzerinden de kullanabilirsin.",
       "NONE_NEEDED": "{model} hiçbir sağlayıcı için onay gerektirmiyor.",
       "GRANT_ALL": "{count, plural, one {Bu sağlayıcıya onay ver} other {# sağlayıcının tümüne onay ver}}",
-      "ALREADY_GIVEN": "{count, plural, one {# sağlayıcıya zaten onay verdin} other {# sağlayıcıya zaten onay verdin}}",
       "BACK": "Tüm sağlayıcılara dön",
       "CLEAR": "Model filtresini kaldır"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} model, {activeChannels}/{channels} bağl."
+    "COUNTS_SHORT": "{activeModels}/{models} model, {activeChannels}/{channels} bağl.",
+    "REASON": {
+      "SAFE_COUNTRY": "güvenli ülke",
+      "PROMPTS_UNKNOWN_PAID": "uygulama bilinmiyor, ücretli",
+      "NO_OWN_PURPOSE": "saklama ve eğitim yok"
+    }
   }
 }

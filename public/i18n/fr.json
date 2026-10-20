@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "Consentement enregistré. Tu peux maintenant utiliser le modèle, y compris via l'API.",
       "NONE_NEEDED": "{model} n'a besoin d'aucun consentement pour un fournisseur.",
       "GRANT_ALL": "{count, plural, one {Consentir à ce fournisseur} other {Consentir aux #}}",
-      "ALREADY_GIVEN": "{count, plural, one {# fournisseur a déjà ton consentement} other {# fournisseurs ont déjà ton consentement}}",
       "BACK": "Retour à tous les fournisseurs",
       "CLEAR": "Retirer le filtre de modèle"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} modèles, {activeChannels}/{channels} conn."
+    "COUNTS_SHORT": "{activeModels}/{models} modèles, {activeChannels}/{channels} conn.",
+    "REASON": {
+      "SAFE_COUNTRY": "pays sûr",
+      "PROMPTS_UNKNOWN_PAID": "pratique inconnue, payant",
+      "NO_OWN_PURPOSE": "ni stockage ni entraînement"
+    }
   }
 }

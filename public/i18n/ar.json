@@ -6440,10 +6440,14 @@
       "COVERED_HINT": "تم حفظ الموافقة. يمكنك الآن استخدام النموذج، بما في ذلك عبر واجهة البرمجة.",
       "NONE_NEEDED": "لا يحتاج {model} إلى موافقة على أي مزود.",
       "GRANT_ALL": "{count, plural, zero {الموافقة} one {الموافقة على هذا المزود} two {الموافقة على المزودَين} few {الموافقة على جميع الـ #} many {الموافقة على جميع الـ #} other {الموافقة على جميع الـ #}}",
-      "ALREADY_GIVEN": "{count, plural, zero {لا مزودين لديهم موافقتك} one {مزود واحد لديه موافقتك بالفعل} two {مزودان لديهما موافقتك بالفعل} few {# مزودين لديهم موافقتك بالفعل} many {# مزودًا لديهم موافقتك بالفعل} other {# مزود لديهم موافقتك بالفعل}}",
       "BACK": "العودة إلى جميع المزودين",
       "CLEAR": "إزالة مرشح النموذج"
     },
-    "COUNTS_SHORT": "{activeModels}/{models} نماذج، {activeChannels}/{channels} اتصالات"
+    "COUNTS_SHORT": "{activeModels}/{models} نماذج، {activeChannels}/{channels} اتصالات",
+    "REASON": {
+      "SAFE_COUNTRY": "بلد آمن",
+      "PROMPTS_UNKNOWN_PAID": "الممارسة غير معروفة، مدفوع",
+      "NO_OWN_PURPOSE": "لا تخزين ولا تدريب"
+    }
   }
 }
