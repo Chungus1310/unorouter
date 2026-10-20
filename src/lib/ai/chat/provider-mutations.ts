@@ -102,9 +102,12 @@ export function makeUpstreamFetch(opts?: BodyMutations): typeof fetch {
         if (opts.deepSeekThinking) {
           body.thinking = {
             type: opts.deepSeekThinking.enabled ? "enabled" : "disabled",
-            reasoning_effort: opts.deepSeekThinking.effort,
           };
-          delete body.reasoning_effort;
+          // Top level: nested inside `thinking` the effort is dropped and the
+          // model answers with no reasoning at all.
+          if (opts.deepSeekThinking.enabled)
+            body.reasoning_effort = opts.deepSeekThinking.effort;
+          else delete body.reasoning_effort;
           if (opts.deepSeekThinking.enabled) {
             delete body.temperature;
             delete body.top_p;
