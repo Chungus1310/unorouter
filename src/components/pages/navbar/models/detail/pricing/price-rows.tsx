@@ -31,24 +31,26 @@ function buildRows(model: PricingCatalogDetail): Row[] {
       },
     ];
   }
-  // One badge for both directions: input and output are discounted off the
-  // same canonical list, so the deeper cut is the honest headline.
-  const pct = Math.max(
-    discountPercent(model.input_price, model.original_input_price ?? null),
-    discountPercent(model.output_price, model.original_output_price ?? null),
+  // Cache prices are the input price times a ratio, so they carry its discount.
+  const inputPct = discountPercent(
+    model.input_price,
+    model.original_input_price ?? null,
   );
   const rows: Row[] = [
     {
       labelKey: "MODELS.PRICE.INPUT",
       price: model.input_price,
       unit: null,
-      pct,
+      pct: inputPct,
     },
     {
       labelKey: "MODELS.PRICE.OUTPUT",
       price: model.output_price,
       unit: null,
-      pct: 0,
+      pct: discountPercent(
+        model.output_price,
+        model.original_output_price ?? null,
+      ),
     },
   ];
   if (model.create_cache_ratio != null && model.create_cache_ratio > 0)
@@ -56,14 +58,14 @@ function buildRows(model: PricingCatalogDetail): Row[] {
       labelKey: "MODELS.PRICE.CACHE_WRITE",
       price: model.input_price * model.create_cache_ratio,
       unit: null,
-      pct: 0,
+      pct: inputPct,
     });
   if (model.cache_ratio != null && model.cache_ratio > 0)
     rows.push({
       labelKey: "MODELS.PRICE.CACHE_READ",
       price: model.input_price * model.cache_ratio,
       unit: null,
-      pct: 0,
+      pct: inputPct,
     });
   return rows;
 }
