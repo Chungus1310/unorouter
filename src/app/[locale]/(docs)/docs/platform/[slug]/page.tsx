@@ -1,4 +1,5 @@
 import { AccountAndBillingContent } from "@/components/pages/docs/platform/content/account-and-billing-content";
+import { ConsentsContent } from "@/components/pages/docs/platform/content/consents-content";
 import { DiscordRewardsContent } from "@/components/pages/docs/platform/content/discord-rewards-content";
 import { ErrorsAndRateLimitsContent } from "@/components/pages/docs/platform/content/errors-and-rate-limits-content";
 import { GroupPinningContent } from "@/components/pages/docs/platform/content/group-pinning-content";
@@ -48,6 +49,7 @@ const CONTENT: Record<string, React.ComponentType> = {
   notifications: NotificationsContent,
   "group-pinning": GroupPinningContent,
   "platform-api": PlatformApiContent,
+  consents: ConsentsContent,
   "errors-and-rate-limits": ErrorsAndRateLimitsContent,
   "account-and-billing": AccountAndBillingContent,
   "discord-rewards": DiscordRewardsContent,

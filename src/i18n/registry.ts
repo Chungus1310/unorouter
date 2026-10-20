@@ -77,6 +77,7 @@ const PLATFORM_DOC_DATES: Record<string, string> = {
   notifications: "2026-07-19",
   "group-pinning": "2026-07-19",
   "platform-api": "2026-09-15",
+  consents: "2026-10-20",
 };
 
 const PLATFORM_DOC_UPDATED: Record<string, string> = {

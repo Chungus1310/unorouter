@@ -127,6 +127,19 @@ export const PLATFORM_DOCS: PlatformDoc[] = [
     ],
   }),
   platformDoc({
+    slug: "consents",
+    name: "CONSENTS",
+    section: "GUIDE",
+    iconName: "shield-check",
+    headings: [
+      ["why", "H_WHY"],
+      ["how", "H_HOW"],
+      ["objection", "H_OBJECTION"],
+      ["api", "H_API"],
+      ["rollout", "H_ROLLOUT"],
+    ],
+  }),
+  platformDoc({
     slug: "errors-and-rate-limits",
     name: "ERRORS_AND_RATE_LIMITS",
     section: "FAQ",
