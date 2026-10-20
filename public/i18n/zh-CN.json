@@ -6443,6 +6443,7 @@
       "ALREADY_GIVEN": "{count, plural, other {你已同意 # 个提供商}}",
       "BACK": "返回所有提供商",
       "CLEAR": "移除模型筛选"
-    }
+    },
+    "COUNTS_SHORT": "模型 {activeModels}/{models}，连接 {activeChannels}/{channels}"
   }
 }

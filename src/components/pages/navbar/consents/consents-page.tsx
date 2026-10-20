@@ -85,6 +85,7 @@ export function ConsentsPage() {
       {params.model !== null ? (
         <ModelFocus
           model={params.model}
+          view={params.view}
           onClear={() => void setParams({ model: null })}
           onOpenAlias={(alias) => void setParams({ alias })}
         />

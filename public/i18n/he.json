@@ -6443,6 +6443,7 @@
       "ALREADY_GIVEN": "{count, plural, one {לספק אחד כבר נתת הסכמה} two {לשני ספקים כבר נתת הסכמה} other {ל־# ספקים כבר נתת הסכמה}}",
       "BACK": "חזרה לכל הספקים",
       "CLEAR": "הסרת סינון המודל"
-    }
+    },
+    "COUNTS_SHORT": "{activeModels}/{models} מודלים, {activeChannels}/{channels} חיבורים"
   }
 }

@@ -6443,6 +6443,7 @@
       "ALREADY_GIVEN": "{count, plural, other {제공자 #개에 이미 동의했습니다}}",
       "BACK": "모든 제공자로 돌아가기",
       "CLEAR": "모델 필터 제거"
-    }
+    },
+    "COUNTS_SHORT": "모델 {activeModels}/{models}, 연결 {activeChannels}/{channels}"
   }
 }

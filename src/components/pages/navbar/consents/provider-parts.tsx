@@ -9,12 +9,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
-import { Icon } from "@/components/ui/icon";
-import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
@@ -40,12 +34,12 @@ export function ProviderName(props: { provider: ProviderConsentItem }) {
   // list on hover.
   const collapsed = tags.length > 0 && name !== tags.join(", ");
   return (
-    <span className="flex min-w-0 flex-wrap items-center gap-1.5">
+    <span className="flex min-w-0 items-center gap-1.5 whitespace-nowrap">
       {collapsed ? (
         <Tooltip>
           <TooltipTrigger
             render={
-              <span className="cursor-help font-mono text-xs font-medium underline decoration-dotted underline-offset-4 lg:text-sm" />
+              <span className="cursor-help truncate font-mono text-xs font-medium underline decoration-dotted underline-offset-4 lg:text-sm" />
             }
           >
             {name}
@@ -55,7 +49,9 @@ export function ProviderName(props: { provider: ProviderConsentItem }) {
           </TooltipContent>
         </Tooltip>
       ) : (
-        <span className="font-mono text-xs font-medium lg:text-sm">{name}</span>
+        <span className="truncate font-mono text-xs font-medium lg:text-sm">
+          {name}
+        </span>
       )}
       <GroupDataPolicyBadges
         policy={{
@@ -68,7 +64,7 @@ export function ProviderName(props: { provider: ProviderConsentItem }) {
         <OwnPurposeHint label={t("PROVIDER_CONSENT.TRAINS")} />
       )}
       {!p.active && (
-        <Badge variant="outline" className="text-[10px]">
+        <Badge variant="outline" className="h-4 px-1 text-[10px]">
           {t("PROVIDER_CONSENT.INACTIVE")}
         </Badge>
       )}
@@ -80,107 +76,119 @@ export function ProviderCountry(props: { provider: ProviderConsentItem }) {
   const t = useTranslations();
   const locale = useLocale();
   const p = props.provider;
+  const risk = p.onward_unvetted
+    ? t("PROVIDER_CONSENT.ONWARD_UNVETTED")
+    : p.unsafe
+      ? t("PROVIDER_CONSENT.UNSAFE_NOTE")
+      : null;
   return (
-    <span className="flex flex-col">
+    <span className="flex min-w-0 items-center gap-1.5 whitespace-nowrap">
       <span>{countryName(p.country, locale)}</span>
-      {(p.unsafe || p.onward_unvetted) && (
-        <span className="text-destructive text-xs">
-          {p.onward_unvetted
-            ? t("PROVIDER_CONSENT.ONWARD_UNVETTED")
-            : t("PROVIDER_CONSENT.UNSAFE_NOTE")}
+      {risk && (
+        <span className="text-destructive truncate text-xs" title={risk}>
+          {risk}
         </span>
       )}
     </span>
   );
 }
 
-export function ProviderModels(props: { provider: ProviderConsentItem }) {
+// One short line; lanes and the model list sit in the expanded row.
+export function ProviderCounts(props: { provider: ProviderConsentItem }) {
+  const t = useTranslations();
+  const p = props.provider;
+  return (
+    <span className="text-muted-foreground text-xs whitespace-nowrap">
+      {t("PROVIDER_CONSENT.COUNTS_SHORT", {
+        activeModels: p.active_model_count,
+        models: p.model_count,
+        activeChannels: p.active_channel_count,
+        channels: p.channel_count,
+      })}
+    </span>
+  );
+}
+
+export function ProviderDetails(props: { provider: ProviderConsentItem }) {
   const t = useTranslations();
   const p = props.provider;
   const models = providerModels(p);
   return (
-    <Collapsible>
-      <CollapsibleTrigger className="text-muted-foreground hover:text-foreground group/pm flex items-center gap-1 text-left text-xs">
-        <span className="flex flex-col">
-          <span>
-            {t("PROVIDER_CONSENT.MODELS_ACTIVE", {
-              active: p.active_model_count,
-              count: p.model_count,
-            })}
-          </span>
-          <span>
-            {t("PROVIDER_CONSENT.CHANNELS_ACTIVE", {
-              active: p.active_channel_count,
-              count: p.channel_count,
-            })}
-          </span>
-          <span>
-            {t("PROVIDER_CONSENT.LANES_ACTIVE", {
-              active: p.active_lane_count,
-              count: p.lane_count,
-            })}
-          </span>
-        </span>
-        {models.length > 0 && (
-          <Icon
-            name="chevron-down"
-            className="h-3.5 w-3.5 shrink-0 transition-transform group-data-panel-open/pm:rotate-180"
-          />
-        )}
-      </CollapsibleTrigger>
-      <CollapsibleContent>
-        <ul className="mt-1 space-y-0.5">
-          {models.map((model) => (
-            <li
-              key={model.name}
-              className={cn(
-                "flex items-center gap-1.5 font-mono text-xs",
-                !model.active && "text-muted-foreground/60",
-              )}
-            >
-              {model.name}
-              {model.channels > 0 && (
-                <span className="text-muted-foreground font-sans text-[10px]">
-                  {t("PROVIDER_CONSENT.CHANNELS_ACTIVE", {
-                    active: model.active_channels,
-                    count: model.channels,
-                  })}
-                </span>
-              )}
-              {!model.active && (
-                <span className="font-sans text-[10px]">
-                  {t("PROVIDER_CONSENT.INACTIVE")}
-                </span>
-              )}
-            </li>
-          ))}
-        </ul>
-      </CollapsibleContent>
-    </Collapsible>
+    <div className="space-y-2 px-4 py-3">
+      <p className="text-muted-foreground text-xs">
+        {[
+          t("PROVIDER_CONSENT.MODELS_ACTIVE", {
+            active: p.active_model_count,
+            count: p.model_count,
+          }),
+          t("PROVIDER_CONSENT.CHANNELS_ACTIVE", {
+            active: p.active_channel_count,
+            count: p.channel_count,
+          }),
+          t("PROVIDER_CONSENT.LANES_ACTIVE", {
+            active: p.active_lane_count,
+            count: p.lane_count,
+          }),
+        ].join(", ")}
+      </p>
+      <ul className="grid gap-x-6 gap-y-0.5 sm:grid-cols-2 lg:grid-cols-3">
+        {models.map((model) => (
+          <li
+            key={model.name}
+            className={cn(
+              "flex items-center gap-1.5 truncate font-mono text-xs",
+              !model.active && "text-muted-foreground/60",
+            )}
+          >
+            <span className="truncate">{model.name}</span>
+            {model.channels > 0 && (
+              <span className="text-muted-foreground shrink-0 font-sans text-[10px]">
+                {model.active_channels}/{model.channels}
+              </span>
+            )}
+            {!model.active && (
+              <span className="shrink-0 font-sans text-[10px]">
+                {t("PROVIDER_CONSENT.INACTIVE")}
+              </span>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
-export function ProviderStatusText(props: { provider: ProviderConsentItem }) {
+export function ProviderStatusBadge(props: { provider: ProviderConsentItem }) {
   const t = useTranslations();
   const p = props.provider;
   if (p.status === "given")
     return (
-      <span className="text-muted-foreground text-xs">
-        {p.given_at
-          ? t("FREE_CONSENT.GRANTED_ON", { date: formatLongDate(p.given_at) })
-          : t("FREE_CONSENT.FILTER.GIVEN")}
-      </span>
+      <Badge
+        variant="secondary"
+        className="text-[10px]"
+        title={
+          p.given_at
+            ? t("FREE_CONSENT.GRANTED_ON", { date: formatLongDate(p.given_at) })
+            : undefined
+        }
+      >
+        {t("FREE_CONSENT.FILTER.GIVEN")}
+      </Badge>
     );
   if (p.status === "model_consent")
     return (
-      <span className="text-muted-foreground text-xs">
-        {t("PROVIDER_CONSENT.MODEL_CONSENT_STATUS")}
-      </span>
+      <Badge
+        variant="secondary"
+        className="text-[10px]"
+        title={t("PROVIDER_CONSENT.MODEL_CONSENT_STATUS")}
+      >
+        {t("FREE_CONSENT.FILTER.GIVEN")}
+      </Badge>
     );
   return (
-    <span className="text-muted-foreground text-xs">
+    <Badge variant="outline" className="text-[10px]">
       {t("FREE_CONSENT.FILTER.MISSING")}
-    </span>
+    </Badge>
   );
 }
 
@@ -190,19 +198,29 @@ export function ProviderAction(props: {
 }) {
   const t = useTranslations();
   const alias = props.provider.alias;
+  // The row toggles its details on click; the button must not.
   if (props.provider.status === "given")
     return (
       <Button
         variant="outline"
-        size="sm"
-        onClick={() => props.handlers.revoke(alias)}
+        size="xs"
+        onClick={(e) => {
+          e.stopPropagation();
+          props.handlers.revoke(alias);
+        }}
         disabled={props.handlers.revoking}
       >
         {t("FREE_CONSENT.REVOKE_BUTTON")}
       </Button>
     );
   return (
-    <Button size="sm" onClick={() => props.handlers.open(alias)}>
+    <Button
+      size="xs"
+      onClick={(e) => {
+        e.stopPropagation();
+        props.handlers.open(alias);
+      }}
+    >
       {t("FREE_CONSENT.GIVE")}
     </Button>
   );

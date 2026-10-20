@@ -6443,6 +6443,7 @@
       "ALREADY_GIVEN": "{count, plural, one {# provedor já tem seu consentimento} other {# provedores já têm seu consentimento}}",
       "BACK": "Voltar a todos os provedores",
       "CLEAR": "Remover o filtro de modelo"
-    }
+    },
+    "COUNTS_SHORT": "{activeModels}/{models} modelos, {activeChannels}/{channels} con."
   }
 }

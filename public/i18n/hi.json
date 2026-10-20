@@ -6443,6 +6443,7 @@
       "ALREADY_GIVEN": "{count, plural, one {# प्रदाता को आप पहले ही सहमति दे चुके हैं} other {# प्रदाताओं को आप पहले ही सहमति दे चुके हैं}}",
       "BACK": "सभी प्रदाताओं पर वापस जाएँ",
       "CLEAR": "मॉडल फ़िल्टर हटाएँ"
-    }
+    },
+    "COUNTS_SHORT": "{activeModels}/{models} मॉडल, {activeChannels}/{channels} कनेक्शन"
   }
 }

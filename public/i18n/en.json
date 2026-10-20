@@ -6443,6 +6443,7 @@
       "ALREADY_GIVEN": "{count, plural, one {# provider already has your consent} other {# providers already have your consent}}",
       "BACK": "Back to all providers",
       "CLEAR": "Remove model filter"
-    }
+    },
+    "COUNTS_SHORT": "{activeModels}/{models} models, {activeChannels}/{channels} ch"
   }
 }

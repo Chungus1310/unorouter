@@ -18,13 +18,16 @@ import {
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ProviderCard } from "./provider-card";
+import type { ViewMode } from "@/components/pages/navbar/models/filters/view-mode-toggle";
+import { DataTableId } from "@/lib/types/enums";
+import { ProviderList } from "./provider-list";
 import type { ProviderHandlers } from "./provider-parts";
 
 // The landing for /consents?model=<name>, where the gateway's refusal links:
 // only the providers this model still needs, granted in one step.
 export function ModelFocus(props: {
   model: string;
+  view: ViewMode;
   onClear: () => void;
   onOpenAlias: (alias: string) => void;
 }) {
@@ -106,23 +109,24 @@ export function ModelFocus(props: {
             : t("PROVIDER_CONSENT.FOCUS.COVERED", { model: props.model })}
         </h2>
         {chip}
+        {missing.length > 0 && (
+          <Button
+            size="sm"
+            className="ml-auto"
+            onClick={() => setGranting(true)}
+          >
+            {t("PROVIDER_CONSENT.FOCUS.GRANT_ALL", { count: missing.length })}
+          </Button>
+        )}
       </div>
 
       {missing.length > 0 ? (
-        <>
-          <div>
-            {missing.map((provider) => (
-              <ProviderCard
-                key={provider.alias}
-                provider={provider}
-                handlers={handlers}
-              />
-            ))}
-          </div>
-          <Button onClick={() => setGranting(true)}>
-            {t("PROVIDER_CONSENT.FOCUS.GRANT_ALL", { count: missing.length })}
-          </Button>
-        </>
+        <ProviderList
+          id={DataTableId.PROVIDER_CONSENTS_MODEL}
+          providers={missing}
+          view={props.view}
+          handlers={handlers}
+        />
       ) : (
         <div className="bg-card flex flex-wrap items-center gap-3 rounded-lg border p-5">
           <Icon name="circle-check" className="text-success h-5 w-5" />
@@ -145,13 +149,12 @@ export function ModelFocus(props: {
             />
           </CollapsibleTrigger>
           <CollapsibleContent>
-            {covered.map((provider) => (
-              <ProviderCard
-                key={provider.alias}
-                provider={provider}
-                handlers={handlers}
-              />
-            ))}
+            <ProviderList
+              id={DataTableId.PROVIDER_CONSENTS_MODEL}
+              providers={covered}
+              view={props.view}
+              handlers={handlers}
+            />
           </CollapsibleContent>
         </Collapsible>
       )}

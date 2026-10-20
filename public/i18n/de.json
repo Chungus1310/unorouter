@@ -6443,6 +6443,7 @@
       "ALREADY_GIVEN": "{count, plural, one {Für # Anbieter hast du bereits eingewilligt} other {Für # Anbieter hast du bereits eingewilligt}}",
       "BACK": "Zurück zu allen Anbietern",
       "CLEAR": "Modellfilter entfernen"
-    }
+    },
+    "COUNTS_SHORT": "{activeModels}/{models} Modelle, {activeChannels}/{channels} Kan."
   }
 }

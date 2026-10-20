@@ -8,9 +8,9 @@ import type { ColumnDef } from "@tanstack/react-table";
 import {
   ProviderAction,
   ProviderCountry,
-  ProviderModels,
+  ProviderCounts,
   ProviderName,
-  ProviderStatusText,
+  ProviderStatusBadge,
   type ProviderHandlers,
 } from "./provider-parts";
 
@@ -46,7 +46,7 @@ export function buildProviderColumns(opts: {
     },
     {
       id: "models",
-      accessorFn: (p) => p.active_model_count,
+      accessorFn: (p) => p.active_channel_count,
       enableSorting: true,
       header: ({ column }) => (
         <DataTableColumnHeader
@@ -54,7 +54,7 @@ export function buildProviderColumns(opts: {
           title="PROVIDER_CONSENT.TABLE.MODELS"
         />
       ),
-      cell: ({ row }) => <ProviderModels provider={row.original} />,
+      cell: ({ row }) => <ProviderCounts provider={row.original} />,
     },
     {
       id: "status",
@@ -66,13 +66,13 @@ export function buildProviderColumns(opts: {
           title="FREE_CONSENT.TABLE.STATUS"
         />
       ),
-      cell: ({ row }) => <ProviderStatusText provider={row.original} />,
+      cell: ({ row }) => <ProviderStatusBadge provider={row.original} />,
     },
     {
       id: "actions",
       enableSorting: false,
       header: () => null,
-      meta: { headerClassName: "w-32", cellClassName: "text-right" },
+      meta: { headerClassName: "w-24", cellClassName: "text-right" },
       cell: ({ row }) => (
         <ProviderAction provider={row.original} handlers={opts.handlers} />
       ),

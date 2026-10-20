@@ -6443,6 +6443,7 @@
       "ALREADY_GIVEN": "{count, plural, other {# penyedia sudah mendapat persetujuanmu}}",
       "BACK": "Kembali ke semua penyedia",
       "CLEAR": "Hapus filter model"
-    }
+    },
+    "COUNTS_SHORT": "{activeModels}/{models} model, {activeChannels}/{channels} kon."
   }
 }

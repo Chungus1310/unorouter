@@ -6443,6 +6443,7 @@
       "ALREADY_GIVEN": "{count, plural, other {# nhà cung cấp đã có sự đồng ý của bạn}}",
       "BACK": "Quay lại tất cả nhà cung cấp",
       "CLEAR": "Bỏ bộ lọc mô hình"
-    }
+    },
+    "COUNTS_SHORT": "{activeModels}/{models} mô hình, {activeChannels}/{channels} kết nối"
   }
 }

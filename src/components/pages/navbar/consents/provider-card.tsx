@@ -1,13 +1,20 @@
 "use client";
 
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import { Icon } from "@/components/ui/icon";
 import { cn } from "@/lib/utils";
 import type { ProviderConsentItem } from "@/openapi";
 import {
   ProviderAction,
   ProviderCountry,
-  ProviderModels,
+  ProviderCounts,
+  ProviderDetails,
   ProviderName,
-  ProviderStatusText,
+  ProviderStatusBadge,
   type ProviderHandlers,
 } from "./provider-parts";
 
@@ -16,25 +23,32 @@ export function ProviderCard(props: {
   handlers: ProviderHandlers;
 }) {
   return (
-    <div
+    <Collapsible
       className={cn(
-        "border-border/60 flex items-start justify-between gap-4 border-b px-2 py-5",
+        "border-border/60 border-b px-2 py-3",
         !props.provider.active && "opacity-60",
       )}
     >
-      <div className="min-w-0 space-y-2">
-        <div className="text-lg">
+      <div className="flex items-center gap-3">
+        <div className="min-w-0 flex-1">
           <ProviderName provider={props.provider} />
         </div>
-        <div className="text-muted-foreground text-sm">
-          <ProviderCountry provider={props.provider} />
-        </div>
-        <ProviderModels provider={props.provider} />
-        <ProviderStatusText provider={props.provider} />
-      </div>
-      <div className="shrink-0">
+        <ProviderStatusBadge provider={props.provider} />
         <ProviderAction provider={props.provider} handlers={props.handlers} />
       </div>
-    </div>
+      <CollapsibleTrigger className="text-muted-foreground hover:text-foreground group/pc mt-1 flex w-full min-w-0 items-center gap-3 text-left text-sm">
+        <span className="min-w-0 flex-1">
+          <ProviderCountry provider={props.provider} />
+        </span>
+        <ProviderCounts provider={props.provider} />
+        <Icon
+          name="chevron-down"
+          className="h-3.5 w-3.5 shrink-0 transition-transform group-data-panel-open/pc:rotate-180"
+        />
+      </CollapsibleTrigger>
+      <CollapsibleContent>
+        <ProviderDetails provider={props.provider} />
+      </CollapsibleContent>
+    </Collapsible>
   );
 }

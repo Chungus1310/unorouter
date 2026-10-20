@@ -1,7 +1,5 @@
 "use client";
 
-import { countryName } from "@/components/elements/model/group-data-policy";
-import { DataTable } from "@/components/elements/table/data-table";
 import { ModelsEmpty } from "@/components/pages/navbar/models/browse/models-empty";
 import {
   ResetFiltersButton,
@@ -25,10 +23,9 @@ import { msg } from "@/lib/config/constants";
 import { DataTableId } from "@/lib/types/enums";
 import { createTableAtoms } from "@/store/data-table-store";
 import { useAtomValue, useSetAtom } from "jotai";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
-import { buildProviderColumns } from "./provider-columns";
-import { ProviderCard } from "./provider-card";
+import { ProviderList } from "./provider-list";
 import { ProviderFilterSidebar } from "./provider-filter-sidebar";
 import type { ProviderHandlers } from "./provider-parts";
 import { PROVIDER_SORT_VALUES, type ProviderSort } from "./provider-rows";
@@ -52,7 +49,6 @@ export function ProviderView(props: {
   onOpen: (alias: string) => void;
 }) {
   const t = useTranslations();
-  const locale = useLocale();
   const providersQuery = useProviderConsentsQuery();
   const revokeMutation = useRevokeProviderConsentMutation();
   const providers = providersQuery.data?.providers ?? [];
@@ -73,10 +69,6 @@ export function ProviderView(props: {
       ),
     revoking: revokeMutation.isPending,
   };
-  const columns = buildProviderColumns({
-    handlers,
-    countryLabel: (code) => countryName(code, locale),
-  });
 
   const showReset =
     filters.activeFilterCount > 0 ||
@@ -133,26 +125,14 @@ export function ProviderView(props: {
               count={filters.activeFilterCount}
               onReset={resetAll}
             />
-          ) : props.view === "table" ? (
-            <DataTable
-              id={DataTableId.PROVIDER_CONSENTS}
-              data={filters.filtered}
-              columns={columns}
-              localSorting
-              isLoading={providersQuery.isLoading}
-              rowClassName={(row) =>
-                row.original.active ? undefined : "opacity-60"
-              }
-              stickyHeaderTop="3.5rem"
-            />
           ) : (
-            filters.filtered.map((provider) => (
-              <ProviderCard
-                key={provider.alias}
-                provider={provider}
-                handlers={handlers}
-              />
-            ))
+            <ProviderList
+              id={DataTableId.PROVIDER_CONSENTS}
+              providers={filters.filtered}
+              view={props.view}
+              handlers={handlers}
+              isLoading={providersQuery.isLoading}
+            />
           )}
         </div>
       </SidebarInset>
