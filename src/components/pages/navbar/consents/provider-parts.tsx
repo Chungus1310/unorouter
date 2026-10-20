@@ -9,7 +9,9 @@ import {
   countryName,
   GroupDataPolicyBadges,
 } from "@/components/elements/model/group-data-policy";
+import { VendorIcon } from "@/components/elements/brand/vendor-icon";
 import { Badge } from "@/components/ui/badge";
+import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,
@@ -157,11 +159,21 @@ export function ProviderCounts(props: { provider: ProviderRow }) {
   );
 }
 
+function ModelVendorIcon(props: { vendor: string | undefined }) {
+  if (!props.vendor) return <span className="size-3 shrink-0" />;
+  return <VendorIcon vendor={props.vendor} size={12} />;
+}
+
 export function ProviderDetails(props: { provider: ProviderRow }) {
   const t = useTranslations();
   const p = props.provider;
+  const catalog = usePricingCatalogQuery().data?.models;
   if (p.reason) return null;
-  const models = providerModels(p);
+  const vendorOf = new Map(catalog?.map((m) => [m.model_name, m.vendor]));
+  const vendorKey = (name: string) => vendorOf.get(name) || "\uffff";
+  const models = [...providerModels(p)].sort((a, b) =>
+    vendorKey(a.name).localeCompare(vendorKey(b.name)),
+  );
   return (
     <div className="space-y-2 px-4 py-3">
       <p className="text-muted-foreground text-xs">
@@ -189,6 +201,7 @@ export function ProviderDetails(props: { provider: ProviderRow }) {
               !model.active && "text-muted-foreground/60",
             )}
           >
+            <ModelVendorIcon vendor={vendorOf.get(model.name)} />
             <span className="truncate">{model.name}</span>
             {model.channels > 0 && (
               <span className="text-muted-foreground shrink-0 font-sans text-[10px]">
