@@ -1291,7 +1291,28 @@
         "P_GUESTS": "Guests can still try free models. Your consent is then linked to your browser through a random guest ID, and you can see and withdraw it under <s>Manage consents</s> in the chat menu.",
         "H_BUSINESS": "Withdrawing, and business accounts",
         "P_BUSINESS": "You can withdraw a consent at any time on the free models page, in your <settings>account settings</settings> or in the chat; the model is then blocked for you until you consent again. Free models are not available to business accounts, because their prompts may contain personal data of other people.",
-        "CTA": "Ready? Open the <free>free models page</free> and enable the models you use."
+        "CTA": "Ready? Open the <free>free models page</free> and enable the models you use.",
+        "NOTE": "Update from October 21, 2026: this post is out of date. Consent is now given once per provider and covers paid models too. <post_consent_per_provider>Read how it works now</post_consent_per_provider>."
+      },
+      "CONSENT_PER_PROVIDER": {
+        "TITLE": "Consent per provider, for free and paid models",
+        "DESCRIPTION": "Consent on {appName} now belongs to the provider instead of the free model, and one consent covers every model that provider serves, paid or free. Here is who asks, how to consent or object, and what API clients will see.",
+        "AUTHOR": "{appName} team",
+        "INTRO": "On October 16 we started asking for your consent once per free model, as described in <post_consent_for_free_models>this earlier post</post_consent_for_free_models>. That system is now replaced by a simpler and broader one: you consent once per <s>provider</s>, and that consent covers every model this provider serves. Nothing is blocked yet, so you can set it up at your own pace.",
+        "H_WHAT": "What changed",
+        "P_WHAT": "What matters now is what a provider does with your inputs, not whether the model is free. A consent is needed when a provider uses inputs for its own purposes, for example to keep them or to train its models, or has not published what it does with them, and when it is based in a country without an EU adequacy decision. Your inputs then only go there after you have agreed to the transfer to that country (Art. 49(1)(a) GDPR). This can apply to paid models too. Providers of this kind in safe countries only show a notice before you pick the model, and providers that use inputs only to answer your request need nothing at all. Every provider is shown with its label and the country it is based in.",
+        "H_HOW": "How to give consent",
+        "P_HOW": "Open the <consents>consents page</consents>. The <s>Providers</s> tab lists every provider that needs a consent, with its country, what it does with inputs and whether you have agreed. The <s>Models</s> tab lists models instead: open a model and <s>Consent to all</s> grants every provider it still needs in one step. Both tabs have search and filters. One consent covers all models of a provider, so a few clicks usually cover the models you use. Consents you gave per free model before keep counting for the providers they covered. You can withdraw a consent at any time on the same page, in your <settings>account settings</settings> or in the <chat>chat</chat>. Without an account, consents belong to your browser, and guests find them under <s>Manage consents</s> in the chat menu.",
+        "H_OBJECT": "Objecting instead",
+        "P_OBJECT": "If you do not want your inputs shared with such providers at all, you can object (Art. 21 GDPR). The switch sits at the top of the consents page and in your account settings. While it is on, these providers are not used for you, and a model served only by them answers with <c>own_purpose_objected</c>. Independent of consent or objection, we now remove identifiers such as <c>user</c>, <c>metadata.user_id</c> and <c>safety_identifier</c> from requests before they reach a provider that uses inputs for its own purposes.",
+        "H_API": "If you use the API",
+        "P_API_1": "Once blocking is on for a model, a request without the needed consent is refused with HTTP 403 and the code <c>consent_required</c>. The message names the missing providers with their countries and links the consent page for exactly that model, and <c>param</c> carries the provider codes:",
+        "P_API_2": "Show the link to the person who owns the key; after the consent the same request goes through. Business accounts receive <c>consent_business</c> instead, because these providers are not available to them. All codes are explained in the <docs>consents documentation</docs>.",
+        "H_WHEN": "When blocking starts",
+        "P_WHEN": "Not yet. Today requests without a consent are not refused. We will switch blocking on in stages, per model and per account, and announce the date beforehand in our <discord>Discord</discord> and here on the blog. If you consent now, nothing breaks when it starts.",
+        "H_TERMS": "Updated terms and privacy policy",
+        "P_TERMS": "Our <terms>Terms of Service</terms> have a new section 6 on providers in third countries: their offers are marked with the country the provider is based in, and you must not enter other people's personal data into them. The <privacy>privacy policy</privacy> describes the consent and the objection in detail. If you have an account, you accept the updated terms once, the next time you use the site while logged in. Your API keys are not affected.",
+        "CTA": "Open the <consents>consents page</consents> now and agree to the providers you use. The full details are in the <docs>documentation</docs>."
       }
     }
   },

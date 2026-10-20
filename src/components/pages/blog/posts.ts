@@ -9,6 +9,8 @@ import { OpenSourceOpenrouterAlternativeContent } from "@/components/pages/blog/
 import { HowToConnectUnorouterToNevikaContent } from "@/components/pages/blog/posts/2026-08-01-how-to-connect-unorouter-to-nevika-content";
 import { ServerTagCutsFreeModelWaitContent } from "@/components/pages/blog/posts/2026-08-19-server-tag-cuts-free-model-wait-content";
 import { AiModelVerifierContent } from "@/components/pages/blog/posts/2026-09-03-ai-model-verifier-content";
+import { ConsentForFreeModelsContent } from "@/components/pages/blog/posts/2026-10-16-consent-for-free-models-content";
+import { ConsentPerProviderContent } from "@/components/pages/blog/posts/2026-10-21-consent-per-provider-content";
 import { BLOG_REGISTRY, type BlogSlug } from "@/i18n/registry";
 import { APP_VALUES } from "@/lib/config/constants";
 import type {
@@ -31,6 +33,8 @@ const CUSTOM_COMPONENTS: Partial<Record<BlogSlug, ComponentType>> = {
   "how-to-connect-unorouter-to-nevika": HowToConnectUnorouterToNevikaContent,
   "server-tag-cuts-free-model-wait": ServerTagCutsFreeModelWaitContent,
   "ai-model-verifier": AiModelVerifierContent,
+  "consent-for-free-models": ConsentForFreeModelsContent,
+  "consent-per-provider": ConsentPerProviderContent,
 };
 
 export const POSTS: BlogPost<BlogSlug>[] = BLOG_REGISTRY.map((entry) => ({

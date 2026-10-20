@@ -13,7 +13,7 @@ import { platformDocKey } from "../platform-doc-template";
 
 const P = "DOCS_PLATFORM.CONSENTS";
 
-const CONSENT_ERROR = `HTTP/1.1 403 Forbidden
+export const CONSENT_ERROR = `HTTP/1.1 403 Forbidden
 
 {
   "error": {
