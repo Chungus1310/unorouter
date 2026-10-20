@@ -26,12 +26,6 @@ export const healthRoute = new Elysia({ prefix: "/health" }).get(
 
     const healthy = Object.values(checks).every((v) => v === "ok");
 
-    return {
-      status: healthy ? "healthy" : "degraded",
-      checks,
-      upstreamUrl: upstreamApiUrl,
-      uptime: process.uptime(),
-      version: process.env.NEXT_PUBLIC_RELEASE_VERSION ?? "dev",
-    };
+    return { status: healthy ? "healthy" : "degraded", checks };
   },
 );
