@@ -5,3 +5,16 @@ import type { ProviderConsentItem } from "@/openapi";
 export function providerName(p: ProviderConsentItem): string {
   return p.label || p.alias;
 }
+
+export const PRACTICES = ["trains", "retains", "unknown"] as const;
+export type Practice = (typeof PRACTICES)[number];
+
+// A gateway without the field only says whether a provider trains or retains.
+export function providerPractice(p: {
+  practice?: string;
+  trains_or_retains: boolean;
+}): Practice {
+  if (p.practice === "trains" || p.practice === "retains") return p.practice;
+  if (p.practice === "unknown") return "unknown";
+  return p.trains_or_retains ? "trains" : "unknown";
+}

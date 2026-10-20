@@ -94,6 +94,7 @@ export function otherProviderRow(o: ProviderOtherItem): ProviderRow {
     onward_unvetted: o.onward_unvetted,
     active: o.active,
     trains_or_retains: o.reason === "safe_country",
+    practice: o.practice,
     status: "not_needed",
     reason: o.reason,
     tags: [],

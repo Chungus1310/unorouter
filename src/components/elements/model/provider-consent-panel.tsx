@@ -1,6 +1,10 @@
 "use client";
 
-import { providerName } from "@/lib/api/provider-consent";
+import {
+  providerName,
+  providerPractice,
+  type Practice,
+} from "@/lib/api/provider-consent";
 import { FreeConsentPanel } from "@/components/elements/model/free-consent-panel";
 import { countryName } from "@/components/elements/model/group-data-policy";
 import { Button } from "@/components/ui/button";
@@ -93,6 +97,27 @@ export function ProviderConsentPanel(props: {
   ];
   // Seat country is safe, the risk is where the provider passes inputs on.
   const onward = targets.filter((p) => p.onward_unvetted).map(named);
+  const ofPractice = (practice: Practice) => {
+    const listed = targets.filter((p) => providerPractice(p) === practice);
+    return { providers: listed.map(named).join(", "), count: listed.length };
+  };
+  const trains = ofPractice("trains");
+  const retains = ofPractice("retains");
+  const unknown = ofPractice("unknown");
+  const practiceLines = {
+    trains:
+      trains.count > 0
+        ? [t("PROVIDER_CONSENT.PRACTICE_TEXT.TRAINS", trains)]
+        : [],
+    retains:
+      retains.count > 0
+        ? [t("PROVIDER_CONSENT.PRACTICE_TEXT.RETAINS", retains)]
+        : [],
+    unknown:
+      unknown.count > 0
+        ? [t("PROVIDER_CONSENT.PRACTICE_TEXT.UNKNOWN", unknown)]
+        : [],
+  };
   const where = token.isLoggedIn
     ? t("FREE_CONSENT.WHERE_ACCOUNT")
     : t("FREE_CONSENT.WHERE_GUEST");
@@ -110,9 +135,10 @@ export function ProviderConsentPanel(props: {
     ...(onward.length > 0
       ? [t("PROVIDER_CONSENT.ONWARD_RISK", { providers: onward.join(", ") })]
       : []),
-    targets.some((p) => p.trains_or_retains)
-      ? t("FREE_CONSENT.MAY_USE")
-      : t("FREE_CONSENT.MAY_USE_UNKNOWN"),
+    // What each provider does with inputs, stated as far as it is known.
+    ...practiceLines.trains,
+    ...practiceLines.retains,
+    ...practiceLines.unknown,
     t("FREE_CONSENT.NO_INFLUENCE", APP_VALUES),
     t("FREE_CONSENT.THIRD_PARTY"),
     t("PROVIDER_CONSENT.CONSENT"),

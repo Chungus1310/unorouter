@@ -1,10 +1,13 @@
 "use client";
 
-import { providerName } from "@/lib/api/provider-consent";
+import {
+  providerName,
+  providerPractice,
+  type Practice,
+} from "@/lib/api/provider-consent";
 import {
   countryName,
   GroupDataPolicyBadges,
-  OwnPurposeHint,
 } from "@/components/elements/model/group-data-policy";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -21,7 +24,6 @@ import { providerModels, type ProviderRow } from "./provider-rows";
 
 const REASON_LABEL = {
   safe_country: msg("PROVIDER_CONSENT.REASON.SAFE_COUNTRY"),
-  prompts_unknown_paid: msg("PROVIDER_CONSENT.REASON.PROMPTS_UNKNOWN_PAID"),
   no_own_purpose: msg("PROVIDER_CONSENT.REASON.NO_OWN_PURPOSE"),
 } as const;
 
@@ -76,15 +78,44 @@ export function ProviderName(props: { provider: ProviderRow }) {
           unsafe_third_country: p.unsafe && !p.onward_unvetted,
         }}
       />
-      {p.trains_or_retains && (
-        <OwnPurposeHint label={t("PROVIDER_CONSENT.TRAINS")} />
-      )}
+      <PracticeBadge provider={p} />
       {!p.active && (
         <Badge variant="outline" className="h-4 px-1 text-[10px]">
           {t("PROVIDER_CONSENT.INACTIVE")}
         </Badge>
       )}
     </span>
+  );
+}
+
+const PRACTICE_LABEL = {
+  trains: msg("PROVIDER_CONSENT.PRACTICE.TRAINS"),
+  retains: msg("PROVIDER_CONSENT.PRACTICE.RETAINS"),
+  unknown: msg("PROVIDER_CONSENT.PRACTICE.UNKNOWN"),
+} satisfies Record<Practice, ReturnType<typeof msg>>;
+
+const PRACTICE_HINT = {
+  trains: msg("PROVIDER_CONSENT.PRACTICE_HINT.TRAINS"),
+  retains: msg("PROVIDER_CONSENT.PRACTICE_HINT.RETAINS"),
+  unknown: msg("PROVIDER_CONSENT.PRACTICE_HINT.UNKNOWN"),
+} satisfies Record<Practice, ReturnType<typeof msg>>;
+
+// A provider that needs no consent because it keeps nothing has no badge.
+function PracticeBadge(props: { provider: ProviderRow }) {
+  const t = useTranslations();
+  if (props.provider.reason === "no_own_purpose") return null;
+  const practice = providerPractice(props.provider);
+  return (
+    <Badge
+      variant="outline"
+      className={cn(
+        "h-4 px-1 text-[10px]",
+        practice === "unknown" ? "text-muted-foreground" : "text-warning",
+      )}
+      title={t(PRACTICE_HINT[practice])}
+    >
+      {t(PRACTICE_LABEL[practice])}
+    </Badge>
   );
 }
 
