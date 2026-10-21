@@ -89,7 +89,7 @@ export function ChatActionsMenu(props: Props) {
               }}
             >
               <Icon name="scroll-text" className="size-4" />
-              {t("CHAT.MORE.MEMORY")}
+              {t("CHAT.MORE.AUTHOR_NOTE")}
             </DropdownMenuItem>
           )}
           <DropdownMenuSeparator />
