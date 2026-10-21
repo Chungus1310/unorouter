@@ -48,8 +48,8 @@ function PanelLoader() {
 }
 
 // From the model view the gateway grants every missing provider of the model;
-// from the provider view exactly the one alias.
-function useTargets(props: { model?: string; alias?: string }) {
+// from the provider view exactly the chosen aliases.
+function useTargets(props: { model?: string; aliases?: string[] }) {
   const modelQuery = useModelProviderConsentsQuery(
     props.model ?? null,
     props.model !== undefined,
@@ -62,15 +62,15 @@ function useTargets(props: { model?: string; alias?: string }) {
     );
   }
   if (!listQuery.data) return null;
-  return (listQuery.data.providers ?? []).filter(
-    (p) => p.alias === props.alias,
-  );
+  const chosen = new Set(props.aliases ?? []);
+  return (listQuery.data.providers ?? []).filter((p) => chosen.has(p.alias));
 }
 
 export function ProviderConsentPanel(props: {
   model?: string;
-  alias?: string;
+  aliases?: string[];
   onDone?: () => void;
+  onGranted?: () => void;
   // The dialog already frames the text, so the page padding and card border go.
   inDialog?: boolean;
 }) {
@@ -178,6 +178,7 @@ export function ProviderConsentPanel(props: {
       {
         onSuccess: () => {
           toast.success(t("FREE_CONSENT.SAVED"));
+          props.onGranted?.();
           props.onDone?.();
         },
         onError: (error) => toast.error(error.message),
@@ -258,7 +259,8 @@ export function ProviderConsentDialog(props: {
   open: boolean;
   onClose: () => void;
   model?: string;
-  alias?: string;
+  aliases?: string[];
+  onGranted?: () => void;
 }) {
   const t = useTranslations();
   return (
@@ -270,8 +272,9 @@ export function ProviderConsentDialog(props: {
         {props.open && (
           <ProviderConsentPanel
             model={props.model}
-            alias={props.alias}
+            aliases={props.aliases}
             onDone={props.onClose}
+            onGranted={props.onGranted}
             inDialog
           />
         )}

@@ -6536,6 +6536,13 @@
       "TRAINS": "Kann deine Eingaben zum Training seiner Modelle nutzen",
       "RETAINS": "Speichert deine Eingaben",
       "UNKNOWN": "Keine Bedingungen veröffentlicht. Ob Eingaben gespeichert oder zum Training genutzt werden, ist nicht prüfbar, geh davon aus, dass es geschehen kann"
+    },
+    "SELECT": {
+      "ALL": "Alle fehlenden Anbieter auswählen",
+      "ONE": "{provider} auswählen",
+      "CLEAR": "Auswahl aufheben",
+      "GRANT_SELECTED": "{count, plural, one {In # ausgewählten Anbieter einwilligen} other {In # ausgewählte Anbieter einwilligen}}",
+      "GRANT_ALL_MISSING": "In alle fehlenden einwilligen ({count})"
     }
   }
 }

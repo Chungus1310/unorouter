@@ -6536,6 +6536,13 @@
       "TRAINS": "Może wykorzystywać Twoje dane wejściowe do trenowania swoich modeli",
       "RETAINS": "Przechowuje Twoje dane wejściowe",
       "UNKNOWN": "Nie opublikował warunków. Nie da się sprawdzić, czy przechowuje dane wejściowe lub na nich trenuje, przyjmij, że może"
+    },
+    "SELECT": {
+      "ALL": "Zaznacz wszystkich brakujących dostawców",
+      "ONE": "Zaznacz {provider}",
+      "CLEAR": "Wyczyść zaznaczenie",
+      "GRANT_SELECTED": "{count, plural, one {Wyraź zgodę dla # zaznaczonego dostawcy} few {Wyraź zgodę dla # zaznaczonych dostawców} many {Wyraź zgodę dla # zaznaczonych dostawców} other {Wyraź zgodę dla # zaznaczonych dostawców}}",
+      "GRANT_ALL_MISSING": "Wyraź zgodę dla wszystkich brakujących ({count})"
     }
   }
 }

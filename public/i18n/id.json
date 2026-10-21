@@ -6536,6 +6536,13 @@
       "TRAINS": "Dapat menggunakan masukanmu untuk melatih modelnya",
       "RETAINS": "Menyimpan masukanmu",
       "UNKNOWN": "Tidak memublikasikan ketentuan. Tidak dapat dipastikan apakah masukanmu disimpan atau dipakai untuk pelatihan, anggap bisa terjadi"
+    },
+    "SELECT": {
+      "ALL": "Pilih semua penyedia yang belum disetujui",
+      "ONE": "Pilih {provider}",
+      "CLEAR": "Hapus pilihan",
+      "GRANT_SELECTED": "{count, plural, other {Setujui # penyedia yang dipilih}}",
+      "GRANT_ALL_MISSING": "Setujui semua yang belum ({count})"
     }
   }
 }

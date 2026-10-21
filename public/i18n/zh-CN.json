@@ -6536,6 +6536,13 @@
       "TRAINS": "可能会将你的输入用于训练其模型",
       "RETAINS": "会保存你的输入",
       "UNKNOWN": "未公布条款。无法核实是否存储或用于训练，请假定可能会"
+    },
+    "SELECT": {
+      "ALL": "选择所有未同意的提供商",
+      "ONE": "选择 {provider}",
+      "CLEAR": "清除选择",
+      "GRANT_SELECTED": "{count, plural, other {同意所选的 # 个提供商}}",
+      "GRANT_ALL_MISSING": "同意全部未同意的提供商（{count}）"
     }
   }
 }

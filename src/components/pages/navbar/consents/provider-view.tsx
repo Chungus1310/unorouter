@@ -22,13 +22,20 @@ import {
 import { msg } from "@/lib/config/constants";
 import { DataTableId } from "@/lib/types/enums";
 import { createTableAtoms } from "@/store/data-table-store";
+import { ProviderConsentDialog } from "@/components/elements/model/provider-consent-panel";
+import { Button } from "@/components/ui/button";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useTranslations } from "next-intl";
+import { useState } from "react";
 import { toast } from "sonner";
 import { ProviderList } from "./provider-list";
 import { ProviderFilterSidebar } from "./provider-filter-sidebar";
-import type { ProviderHandlers } from "./provider-parts";
-import { PROVIDER_SORT_VALUES, type ProviderSort } from "./provider-rows";
+import type { ProviderHandlers, ProviderSelection } from "./provider-parts";
+import {
+  isSelectable,
+  PROVIDER_SORT_VALUES,
+  type ProviderSort,
+} from "./provider-rows";
 import { useProviderFilters } from "./use-provider-filters";
 
 const providerTableAtoms = createTableAtoms(DataTableId.PROVIDER_CONSENTS);
@@ -56,6 +63,35 @@ export function ProviderView(props: {
   const params = filters.params;
   const columnSorting = useAtomValue(providerTableAtoms.sortingAtom);
   const setColumnSorting = useSetAtom(providerTableAtoms.sortingAtom);
+  const [selected, setSelected] = useState<ReadonlySet<string>>(new Set());
+  // Frozen while the dialog is open, so a refetch cannot change the text shown.
+  const [granting, setGranting] = useState<string[] | null>(null);
+
+  // A provider granted elsewhere or filtered out no longer counts.
+  const missingAliases = filters.filtered
+    .filter(isSelectable)
+    .map((p) => p.alias);
+  const chosen = missingAliases.filter((alias) => selected.has(alias));
+  const selection: ProviderSelection = {
+    selected,
+    toggle: (alias, on) => {
+      const next = new Set(selected);
+      if (on) next.add(alias);
+      else next.delete(alias);
+      setSelected(next);
+    },
+    all:
+      chosen.length === 0
+        ? "none"
+        : chosen.length === missingAliases.length
+          ? "all"
+          : "some",
+    setAll: (on) => setSelected(new Set(on ? missingAliases : [])),
+  };
+  function grantAllMissing() {
+    setSelected(new Set(missingAliases));
+    setGranting(missingAliases);
+  }
 
   const handlers: ProviderHandlers = {
     open: props.onOpen,
@@ -99,6 +135,13 @@ export function ProviderView(props: {
             aria-label={t("MODELS.FILTER.TITLE")}
             className="size-8 shrink-0 border"
           />
+          {missingAliases.length > 0 && (
+            <Button size="sm" onClick={grantAllMissing}>
+              {t("PROVIDER_CONSENT.SELECT.GRANT_ALL_MISSING", {
+                count: missingAliases.length,
+              })}
+            </Button>
+          )}
           <div className="ml-auto flex flex-1 items-center justify-end gap-2">
             {showReset && (
               <ResetFiltersButton
@@ -132,9 +175,32 @@ export function ProviderView(props: {
               view={props.view}
               handlers={handlers}
               isLoading={providersQuery.isLoading}
+              selection={selection}
             />
           )}
         </div>
+        {chosen.length > 0 && (
+          <div className="bg-overlay sticky bottom-0 z-10 -mx-4 flex flex-wrap items-center justify-end gap-2 border-t px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:-mx-6 md:px-6">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setSelected(new Set())}
+            >
+              {t("PROVIDER_CONSENT.SELECT.CLEAR")}
+            </Button>
+            <Button size="sm" onClick={() => setGranting(chosen)}>
+              {t("PROVIDER_CONSENT.SELECT.GRANT_SELECTED", {
+                count: chosen.length,
+              })}
+            </Button>
+          </div>
+        )}
+        <ProviderConsentDialog
+          open={granting !== null}
+          aliases={granting ?? undefined}
+          onClose={() => setGranting(null)}
+          onGranted={() => setSelected(new Set())}
+        />
       </SidebarInset>
     </SidebarProvider>
   );

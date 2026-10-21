@@ -106,7 +106,7 @@ export function ConsentsPage() {
 
       <ProviderConsentDialog
         open={params.alias !== null}
-        alias={params.alias ?? undefined}
+        aliases={params.alias === null ? undefined : [params.alias]}
         onClose={close}
       />
     </div>

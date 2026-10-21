@@ -13,6 +13,7 @@ import { VendorIcon } from "@/components/elements/brand/vendor-icon";
 import { Badge } from "@/components/ui/badge";
 import { usePricingCatalogQuery } from "@/hooks/models/pricing-hook";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Tooltip,
   TooltipContent,
@@ -22,7 +23,11 @@ import { msg } from "@/lib/config/constants";
 import { cn } from "@/lib/utils";
 import { formatLongDate } from "@/lib/utils/format/date";
 import { useLocale, useTranslations } from "next-intl";
-import { providerModels, type ProviderRow } from "./provider-rows";
+import {
+  isSelectable,
+  providerModels,
+  type ProviderRow,
+} from "./provider-rows";
 
 const REASON_LABEL = {
   safe_country: msg("PROVIDER_CONSENT.REASON.SAFE_COUNTRY"),
@@ -44,6 +49,48 @@ export type ProviderHandlers = {
   revoke: (alias: string) => void;
   revoking: boolean;
 };
+
+export type ProviderSelection = {
+  selected: ReadonlySet<string>;
+  toggle: (alias: string, on: boolean) => void;
+  // Every selectable provider of the current filter at once.
+  all: "none" | "some" | "all";
+  setAll: (on: boolean) => void;
+};
+
+export function ProviderSelectAll(props: { selection: ProviderSelection }) {
+  const t = useTranslations();
+  const all = props.selection.all;
+  return (
+    <Checkbox
+      aria-label={t("PROVIDER_CONSENT.SELECT.ALL")}
+      checked={all === "all"}
+      indeterminate={all === "some"}
+      onCheckedChange={(on) => props.selection.setAll(on)}
+    />
+  );
+}
+
+// Rows that cannot be granted keep the slot so the columns stay aligned.
+export function ProviderSelect(props: {
+  provider: ProviderRow;
+  selection: ProviderSelection;
+}) {
+  const t = useTranslations();
+  const p = props.provider;
+  if (!isSelectable(p)) return <span className="block size-4 shrink-0" />;
+  return (
+    <span className="flex" onClick={(e) => e.stopPropagation()}>
+      <Checkbox
+        aria-label={t("PROVIDER_CONSENT.SELECT.ONE", {
+          provider: providerName(p),
+        })}
+        checked={props.selection.selected.has(p.alias)}
+        onCheckedChange={(on) => props.selection.toggle(p.alias, on)}
+      />
+    </span>
+  );
+}
 
 export function ProviderName(props: { provider: ProviderRow }) {
   const t = useTranslations();

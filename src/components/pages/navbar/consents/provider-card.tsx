@@ -15,13 +15,16 @@ import {
   ProviderCounts,
   ProviderDetails,
   ProviderName,
+  ProviderSelect,
   ProviderStatusBadge,
   type ProviderHandlers,
+  type ProviderSelection,
 } from "./provider-parts";
 
 export function ProviderCard(props: {
   provider: ProviderRow;
   handlers: ProviderHandlers;
+  selection?: ProviderSelection;
 }) {
   return (
     <Collapsible
@@ -31,6 +34,12 @@ export function ProviderCard(props: {
       )}
     >
       <div className="flex items-center gap-3">
+        {props.selection && (
+          <ProviderSelect
+            provider={props.provider}
+            selection={props.selection}
+          />
+        )}
         <div className="min-w-0 flex-1">
           <ProviderName provider={props.provider} />
         </div>

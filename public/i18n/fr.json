@@ -6536,6 +6536,13 @@
       "TRAINS": "Peut utiliser tes saisies pour entraîner ses modèles",
       "RETAINS": "Conserve tes saisies",
       "UNKNOWN": "Aucune condition publiée. Impossible de vérifier s'il conserve tes saisies ou s'en sert pour l'entraînement, suppose que c'est possible"
+    },
+    "SELECT": {
+      "ALL": "Sélectionner tous les fournisseurs manquants",
+      "ONE": "Sélectionner {provider}",
+      "CLEAR": "Effacer la sélection",
+      "GRANT_SELECTED": "{count, plural, one {Consentir pour # fournisseur sélectionné} other {Consentir pour # fournisseurs sélectionnés}}",
+      "GRANT_ALL_MISSING": "Consentir pour tous les manquants ({count})"
     }
   }
 }

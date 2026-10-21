@@ -6536,6 +6536,13 @@
       "TRAINS": "Có thể dùng dữ liệu đầu vào của bạn để huấn luyện mô hình",
       "RETAINS": "Lưu giữ dữ liệu đầu vào của bạn",
       "UNKNOWN": "Chưa công bố điều khoản. Không thể kiểm tra việc lưu trữ hay huấn luyện, hãy giả định là có thể"
+    },
+    "SELECT": {
+      "ALL": "Chọn tất cả nhà cung cấp chưa đồng ý",
+      "ONE": "Chọn {provider}",
+      "CLEAR": "Bỏ chọn",
+      "GRANT_SELECTED": "{count, plural, other {Đồng ý cho # nhà cung cấp đã chọn}}",
+      "GRANT_ALL_MISSING": "Đồng ý cho tất cả nhà cung cấp còn thiếu ({count})"
     }
   }
 }

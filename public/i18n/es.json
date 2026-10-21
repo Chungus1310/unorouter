@@ -6536,6 +6536,13 @@
       "TRAINS": "Puede usar tus entradas para entrenar sus modelos",
       "RETAINS": "Conserva tus entradas",
       "UNKNOWN": "No ha publicado condiciones. No se puede comprobar si almacena tus entradas o entrena con ellas, así que supón que puede hacerlo"
+    },
+    "SELECT": {
+      "ALL": "Seleccionar todos los proveedores pendientes",
+      "ONE": "Seleccionar {provider}",
+      "CLEAR": "Quitar selección",
+      "GRANT_SELECTED": "{count, plural, one {Dar consentimiento a # proveedor seleccionado} other {Dar consentimiento a # proveedores seleccionados}}",
+      "GRANT_ALL_MISSING": "Dar consentimiento a todos los pendientes ({count})"
     }
   }
 }

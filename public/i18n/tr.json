@@ -6536,6 +6536,13 @@
       "TRAINS": "Girdilerini kendi modellerini eğitmek için kullanabilir",
       "RETAINS": "Girdilerini saklar",
       "UNKNOWN": "Koşul yayımlamadı. Girdileri saklayıp saklamadığı veya onlarla eğitip eğitmediği doğrulanamaz, yapabileceğini varsay"
+    },
+    "SELECT": {
+      "ALL": "Eksik tüm sağlayıcıları seç",
+      "ONE": "{provider} seç",
+      "CLEAR": "Seçimi temizle",
+      "GRANT_SELECTED": "{count, plural, other {Seçili # sağlayıcıya onay ver}}",
+      "GRANT_ALL_MISSING": "Eksik olanların tümüne onay ver ({count})"
     }
   }
 }

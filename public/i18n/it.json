@@ -6536,6 +6536,13 @@
       "TRAINS": "Può usare i tuoi input per addestrare i propri modelli",
       "RETAINS": "Conserva i tuoi input",
       "UNKNOWN": "Nessuna condizione pubblicata. Non è verificabile se conserva i tuoi input o li usa per l'addestramento, presumi che possa farlo"
+    },
+    "SELECT": {
+      "ALL": "Seleziona tutti i fornitori mancanti",
+      "ONE": "Seleziona {provider}",
+      "CLEAR": "Annulla selezione",
+      "GRANT_SELECTED": "{count, plural, one {Acconsenti per # fornitore selezionato} other {Acconsenti per # fornitori selezionati}}",
+      "GRANT_ALL_MISSING": "Acconsenti per tutti i mancanti ({count})"
     }
   }
 }

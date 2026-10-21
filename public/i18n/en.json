@@ -6536,6 +6536,13 @@
       "TRAINS": "May use your inputs to train its models",
       "RETAINS": "Keeps your inputs",
       "UNKNOWN": "Has published no terms. Whether it stores or trains on your inputs cannot be verified, so assume it may"
+    },
+    "SELECT": {
+      "ALL": "Select all missing providers",
+      "ONE": "Select {provider}",
+      "CLEAR": "Clear selection",
+      "GRANT_SELECTED": "{count, plural, one {Consent to # selected provider} other {Consent to # selected providers}}",
+      "GRANT_ALL_MISSING": "Consent to all missing ({count})"
     }
   }
 }

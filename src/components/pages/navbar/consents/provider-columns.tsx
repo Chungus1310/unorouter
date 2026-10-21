@@ -11,15 +11,34 @@ import {
   ProviderCountry,
   ProviderCounts,
   ProviderName,
+  ProviderSelect,
+  ProviderSelectAll,
   ProviderStatusBadge,
   type ProviderHandlers,
+  type ProviderSelection,
 } from "./provider-parts";
 
 export function buildProviderColumns(opts: {
   handlers: ProviderHandlers;
   countryLabel: (code: string) => string;
+  selection?: ProviderSelection;
 }): ColumnDef<TableFeats, ProviderRow>[] {
+  const selection = opts.selection;
+  const select: ColumnDef<TableFeats, ProviderRow>[] = selection
+    ? [
+        {
+          id: "select",
+          enableSorting: false,
+          header: () => <ProviderSelectAll selection={selection} />,
+          meta: { headerClassName: "w-10" },
+          cell: ({ row }) => (
+            <ProviderSelect provider={row.original} selection={selection} />
+          ),
+        },
+      ]
+    : [];
   return [
+    ...select,
     {
       id: "name",
       accessorFn: (p) => providerName(p),

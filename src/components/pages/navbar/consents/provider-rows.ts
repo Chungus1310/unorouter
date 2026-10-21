@@ -54,6 +54,11 @@ export function providerStatus(p: ProviderConsentItem): ProviderStatus {
   return p.status === "given" ? "given" : "missing";
 }
 
+// Only a provider still waiting for consent can join a batch grant.
+export function isSelectable(p: ProviderRow): boolean {
+  return !p.reason && p.status === "missing";
+}
+
 export function sortProviders(
   items: ProviderConsentItem[],
   keys: readonly ProviderSort[],

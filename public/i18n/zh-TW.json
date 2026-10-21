@@ -6536,6 +6536,13 @@
       "TRAINS": "可能會將你的輸入用於訓練其模型",
       "RETAINS": "會保存你的輸入",
       "UNKNOWN": "未公布條款。無法核實是否儲存或用於訓練，請假定可能會"
+    },
+    "SELECT": {
+      "ALL": "選取所有未同意的供應商",
+      "ONE": "選取 {provider}",
+      "CLEAR": "清除選取",
+      "GRANT_SELECTED": "{count, plural, other {同意所選的 # 個供應商}}",
+      "GRANT_ALL_MISSING": "同意全部未同意的供應商（{count}）"
     }
   }
 }
