@@ -43,8 +43,10 @@ export function buildConsentRows(
     const serving = providers.filter((p) =>
       (p.models ?? []).includes(model.model_name),
     );
+    // The model view reads a notice model as covered once its providers are,
+    // so the row must agree or its button never clears.
     const byProviders =
-      kind === "consent" &&
+      kind !== "none" &&
       serving.length > 0 &&
       serving.every((p) => p.status === "given");
     const status: ConsentStatus = byProviders
