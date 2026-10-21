@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "Ghi đè prompt hệ thống",
       "SYSTEM_PROMPT_PLACEHOLDER": "Để trống để dùng prompt hệ thống của nhân vật.",
       "AUTHOR_NOTE": "Ghi chú của tác giả",
+      "AUTHOR_NOTE_HINT": "Ghi chú riêng của bạn cho cuộc trò chuyện này mà AI luôn ghi nhớ, như một bộ nhớ: sự thật, các mối quan hệ, những gì đã xảy ra đến nay. Chúng được gửi kèm mỗi tin nhắn, cách cuối vài tin nhắn (chỉnh khoảng cách bằng Chèn ở độ sâu).",
       "AUTHOR_NOTE_PLACEHOLDER": "Những sự thật AI luôn cần ghi nhớ trong cuộc trò chuyện này. Được gửi kèm mỗi tin nhắn, gần cuối cuộc trò chuyện.",
       "AUTHOR_NOTE_DEPTH": "Chèn ở độ sâu",
       "WEB_SEARCH": "Tìm kiếm web",

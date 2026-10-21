@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "Sistem istemi geçersiz kılma",
       "SYSTEM_PROMPT_PLACEHOLDER": "Karakterin sistem istemini kullanmak için boş bırakın.",
       "AUTHOR_NOTE": "Yazar notu",
+      "AUTHOR_NOTE_HINT": "Bu sohbet için yapay zekanın bir hafıza gibi her zaman aklında tuttuğu kendi notlarınız: gerçekler, ilişkiler, şimdiye kadar olanlar. Her mesajla birlikte, sondan birkaç mesaj önce gönderilir (ne kadar önce olacağını Derinlikte enjekte et ile ayarlayın).",
       "AUTHOR_NOTE_PLACEHOLDER": "Yapay zekânın bu sohbette her zaman aklında tutması gereken bilgiler. Her mesajla birlikte, sohbetin sonuna yakın gönderilir.",
       "AUTHOR_NOTE_DEPTH": "Derinlikte enjekte et",
       "WEB_SEARCH": "Web arama",

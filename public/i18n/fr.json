@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "Surcharge du prompt système",
       "SYSTEM_PROMPT_PLACEHOLDER": "Laissez vide pour utiliser le prompt système du personnage.",
       "AUTHOR_NOTE": "Note de l'auteur",
+      "AUTHOR_NOTE_HINT": "Vos propres notes pour ce chat, que l'IA garde toujours en tête, comme une mémoire : faits, relations, ce qui s'est passé jusqu'ici. Elles sont envoyées avec chaque message, quelques messages avant la fin (réglez la distance avec Insérer à la profondeur).",
       "AUTHOR_NOTE_PLACEHOLDER": "Faits que l'IA doit toujours garder en tête dans ce chat. Envoyés avec chaque message, vers la fin de la conversation.",
       "AUTHOR_NOTE_DEPTH": "Insérer à la profondeur",
       "WEB_SEARCH": "Recherche web",

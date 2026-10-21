@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "Override prompt sistem",
       "SYSTEM_PROMPT_PLACEHOLDER": "Biarkan kosong untuk menggunakan prompt sistem karakter.",
       "AUTHOR_NOTE": "Catatan penulis",
+      "AUTHOR_NOTE_HINT": "Catatan Anda sendiri untuk chat ini yang selalu diingat AI, seperti memori: fakta, hubungan, apa yang terjadi sejauh ini. Catatan ini dikirim bersama setiap pesan, beberapa pesan sebelum akhir (atur seberapa jauh dengan Suntik pada kedalaman).",
       "AUTHOR_NOTE_PLACEHOLDER": "Fakta yang harus selalu diingat AI dalam obrolan ini. Dikirim bersama setiap pesan, di dekat akhir percakapan.",
       "AUTHOR_NOTE_DEPTH": "Suntik pada kedalaman",
       "WEB_SEARCH": "Pencarian web",

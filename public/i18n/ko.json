@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "시스템 프롬프트 재정의",
       "SYSTEM_PROMPT_PLACEHOLDER": "캐릭터의 시스템 프롬프트를 사용하려면 비워 두세요.",
       "AUTHOR_NOTE": "작성자 메모",
+      "AUTHOR_NOTE_HINT": "이 채팅에 대한 나만의 메모로, AI가 기억처럼 항상 염두에 둡니다: 사실, 관계, 지금까지 일어난 일. 메시지를 보낼 때마다 끝에서 몇 개 앞의 메시지 위치에 함께 전송됩니다(얼마나 앞일지는 주입 깊이에서 설정).",
       "AUTHOR_NOTE_PLACEHOLDER": "이 채팅에서 AI가 항상 기억해야 할 사실. 모든 메시지와 함께 대화의 끝부분 근처에 전송됩니다.",
       "AUTHOR_NOTE_DEPTH": "주입 깊이",
       "WEB_SEARCH": "웹 검색",

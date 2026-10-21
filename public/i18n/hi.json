@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "System prompt override",
       "SYSTEM_PROMPT_PLACEHOLDER": "Character के system prompt का उपयोग करने के लिए खाली छोड़ें।",
       "AUTHOR_NOTE": "लेखक का नोट",
+      "AUTHOR_NOTE_HINT": "इस चैट के लिए आपके अपने नोट्स, जिन्हें AI हमेशा याद रखता है, एक स्मृति की तरह: तथ्य, रिश्ते, अब तक क्या हुआ। ये हर संदेश के साथ भेजे जाते हैं, अंत से कुछ संदेश पहले (कितना पहले, यह Depth पर inject करें से तय करें)।",
       "AUTHOR_NOTE_PLACEHOLDER": "वे तथ्य जिन्हें AI को इस चैट में हमेशा याद रखना चाहिए। हर संदेश के साथ, बातचीत के अंत के पास भेजे जाते हैं।",
       "AUTHOR_NOTE_DEPTH": "Depth पर inject करें",
       "WEB_SEARCH": "Web search",

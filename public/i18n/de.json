@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "System-Prompt überschreiben",
       "SYSTEM_PROMPT_PLACEHOLDER": "Leer lassen, um den System-Prompt des Charakters zu verwenden.",
       "AUTHOR_NOTE": "Autorenhinweis",
+      "AUTHOR_NOTE_HINT": "Deine eigenen Notizen zu diesem Chat, die die KI immer im Kopf behält, wie ein Gedächtnis: Fakten, Beziehungen, was bisher passiert ist. Sie werden mit jeder Nachricht gesendet, einige Nachrichten vor dem Ende (wie weit, legst du mit Einfügen bei Tiefe fest).",
       "AUTHOR_NOTE_PLACEHOLDER": "Fakten, die die KI in diesem Chat immer im Kopf behalten soll. Wird mit jeder Nachricht gesendet, nahe dem Ende der Konversation.",
       "AUTHOR_NOTE_DEPTH": "Einfügen bei Tiefe",
       "WEB_SEARCH": "Websuche",

@@ -531,7 +531,10 @@ export function OverridesPromptFields(props: {
           name="authorNote"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>{t("CHAT.OVERRIDES.AUTHOR_NOTE")}</FormLabel>
+              <div className="flex items-center gap-1.5">
+                <FormLabel>{t("CHAT.OVERRIDES.AUTHOR_NOTE")}</FormLabel>
+                <InfoPopover text={t("CHAT.OVERRIDES.AUTHOR_NOTE_HINT")} />
+              </div>
               <FormControl>
                 <Textarea
                   {...field}

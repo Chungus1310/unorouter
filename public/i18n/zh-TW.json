@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "覆寫系統提示詞",
       "SYSTEM_PROMPT_PLACEHOLDER": "留空則使用角色內建的系統提示詞。",
       "AUTHOR_NOTE": "作者註記",
+      "AUTHOR_NOTE_HINT": "你為這個對話寫的筆記，AI會像記憶一樣始終記在心裡：事實、關係、到目前為止發生的事。它們隨每則訊息傳送，插在距結尾幾則訊息之前的位置（用插入深度設定具體距離）。",
       "AUTHOR_NOTE_PLACEHOLDER": "AI 在此聊天中應始終記住的事實。隨每則訊息一起傳送，位於對話末端附近。",
       "AUTHOR_NOTE_DEPTH": "插入深度",
       "WEB_SEARCH": "網路搜尋",

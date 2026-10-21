@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "Anulación de prompt de sistema",
       "SYSTEM_PROMPT_PLACEHOLDER": "Deja vacío para usar el prompt de sistema del personaje.",
       "AUTHOR_NOTE": "Nota del autor",
+      "AUTHOR_NOTE_HINT": "Tus propias notas para este chat que la IA siempre tiene presentes, como una memoria: hechos, relaciones, lo que ha pasado hasta ahora. Se envían con cada mensaje, unos mensajes antes del final (ajusta a qué distancia con Inyectar a profundidad).",
       "AUTHOR_NOTE_PLACEHOLDER": "Datos que la IA debe tener siempre presentes en este chat. Se envían con cada mensaje, cerca del final de la conversación.",
       "AUTHOR_NOTE_DEPTH": "Inyectar a profundidad",
       "WEB_SEARCH": "Búsqueda web",

@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "System prompt override",
       "SYSTEM_PROMPT_PLACEHOLDER": "Leave empty to use the character's system prompt.",
       "AUTHOR_NOTE": "Author's note",
+      "AUTHOR_NOTE_HINT": "Your own notes for this chat that the AI always keeps in mind, like a memory: facts, relationships, what happened so far. They are sent with every message, a few messages before the end (set how far with Inject at depth).",
       "AUTHOR_NOTE_PLACEHOLDER": "Facts the AI should always keep in mind in this chat. Sent with every message, near the end of the conversation.",
       "AUTHOR_NOTE_DEPTH": "Inject at depth",
       "WEB_SEARCH": "Web search",

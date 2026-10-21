@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "Override prompt di sistema",
       "SYSTEM_PROMPT_PLACEHOLDER": "Lascia vuoto per usare il prompt di sistema del personaggio.",
       "AUTHOR_NOTE": "Nota dell'autore",
+      "AUTHOR_NOTE_HINT": "Le tue note per questa chat che l'IA tiene sempre a mente, come una memoria: fatti, relazioni, cosa è successo finora. Vengono inviate con ogni messaggio, qualche messaggio prima della fine (imposta quanto prima con Inietta a profondità).",
       "AUTHOR_NOTE_PLACEHOLDER": "Fatti che l'IA deve sempre tenere a mente in questa chat. Inviati con ogni messaggio, verso la fine della conversazione.",
       "AUTHOR_NOTE_DEPTH": "Inietta a profondità",
       "WEB_SEARCH": "Ricerca web",

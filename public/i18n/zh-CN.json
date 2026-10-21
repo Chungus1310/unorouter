@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "覆盖系统提示词",
       "SYSTEM_PROMPT_PLACEHOLDER": "留空则使用角色自带的系统提示词。",
       "AUTHOR_NOTE": "作者注释",
+      "AUTHOR_NOTE_HINT": "你为这个对话写的笔记，AI会像记忆一样始终记在心里：事实、关系、到目前为止发生的事。它们随每条消息发送，插在距末尾几条消息之前的位置（用插入深度设置具体距离）。",
       "AUTHOR_NOTE_PLACEHOLDER": "AI 在此聊天中应始终记住的事实。随每条消息一起发送，位于对话末尾附近。",
       "AUTHOR_NOTE_DEPTH": "插入深度",
       "WEB_SEARCH": "联网搜索",

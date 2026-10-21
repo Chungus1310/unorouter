@@ -3902,6 +3902,7 @@
       "SYSTEM_PROMPT": "Nadpisanie promptu systemowego",
       "SYSTEM_PROMPT_PLACEHOLDER": "Pozostaw puste, aby użyć promptu systemowego postaci.",
       "AUTHOR_NOTE": "Notatka autora",
+      "AUTHOR_NOTE_HINT": "Twoje własne notatki do tego czatu, o których AI zawsze pamięta, jak pamięć: fakty, relacje, co wydarzyło się do tej pory. Są wysyłane z każdą wiadomością, kilka wiadomości przed końcem (jak daleko, ustawisz w Wstrzyknij na głębokości).",
       "AUTHOR_NOTE_PLACEHOLDER": "Fakty, o których AI powinna zawsze pamiętać w tym czacie. Wysyłane z każdą wiadomością, blisko końca rozmowy.",
       "AUTHOR_NOTE_DEPTH": "Wstrzyknij na głębokości",
       "WEB_SEARCH": "Wyszukiwanie web",
