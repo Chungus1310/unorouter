@@ -24,6 +24,7 @@ import { DataTableId } from "@/lib/types/enums";
 import { createTableAtoms } from "@/store/data-table-store";
 import { ProviderConsentDialog } from "@/components/elements/model/provider-consent-panel";
 import { Button } from "@/components/ui/button";
+import { Icon } from "@/components/ui/icon";
 import { useAtomValue, useSetAtom } from "jotai";
 import { useTranslations } from "next-intl";
 import { useState } from "react";
@@ -74,18 +75,14 @@ export function ProviderView(props: {
   const chosen = missingAliases.filter((alias) => selected.has(alias));
   const selection: ProviderSelection = {
     selected,
-    toggle: (alias, on) => {
-      const next = new Set(selected);
-      if (on) next.add(alias);
-      else next.delete(alias);
-      setSelected(next);
-    },
-    all:
-      chosen.length === 0
-        ? "none"
-        : chosen.length === missingAliases.length
-          ? "all"
-          : "some",
+    toggle: (alias, on) =>
+      setSelected((prev) => {
+        const next = new Set(prev);
+        if (on) next.add(alias);
+        else next.delete(alias);
+        return next;
+      }),
+    all: chosen.length > 0 && chosen.length === missingAliases.length,
     setAll: (on) => setSelected(new Set(on ? missingAliases : [])),
   };
   function grantAllMissing() {
@@ -180,15 +177,23 @@ export function ProviderView(props: {
           )}
         </div>
         {chosen.length > 0 && (
-          <div className="bg-overlay sticky bottom-0 z-10 -mx-4 flex flex-wrap items-center justify-end gap-2 border-t px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:-mx-6 md:px-6">
+          <div className="bg-overlay sticky bottom-0 z-10 -mx-4 flex items-center justify-end gap-2 border-t px-4 py-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:-mx-6 md:px-6">
             <Button
               variant="outline"
               size="sm"
+              aria-label={t("PROVIDER_CONSENT.SELECT.CLEAR")}
               onClick={() => setSelected(new Set())}
             >
-              {t("PROVIDER_CONSENT.SELECT.CLEAR")}
+              <Icon name="x" className="h-4 w-4 sm:hidden" />
+              <span className="hidden sm:inline">
+                {t("PROVIDER_CONSENT.SELECT.CLEAR")}
+              </span>
             </Button>
-            <Button size="sm" onClick={() => setGranting(chosen)}>
+            <Button
+              size="sm"
+              className="min-w-0 flex-1 sm:flex-none"
+              onClick={() => setGranting(chosen)}
+            >
               {t("PROVIDER_CONSENT.SELECT.GRANT_SELECTED", {
                 count: chosen.length,
               })}

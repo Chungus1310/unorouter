@@ -54,18 +54,16 @@ export type ProviderSelection = {
   selected: ReadonlySet<string>;
   toggle: (alias: string, on: boolean) => void;
   // Every selectable provider of the current filter at once.
-  all: "none" | "some" | "all";
+  all: boolean;
   setAll: (on: boolean) => void;
 };
 
 export function ProviderSelectAll(props: { selection: ProviderSelection }) {
   const t = useTranslations();
-  const all = props.selection.all;
   return (
     <Checkbox
       aria-label={t("PROVIDER_CONSENT.SELECT.ALL")}
-      checked={all === "all"}
-      indeterminate={all === "some"}
+      checked={props.selection.all}
       onCheckedChange={(on) => props.selection.setAll(on)}
     />
   );
